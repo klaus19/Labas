@@ -3,6 +3,7 @@ package com.example.visuallithuanian
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.visuallithuanian.ui.FirstScreen
 import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         activityScope.launch {
 
             delay(1000)
-            val intent = Intent(this@MainActivity,FirstScreen::class.java)
+            val intent = Intent(this@MainActivity, FirstScreen::class.java)
             startActivity(intent)
             finish()
         }
