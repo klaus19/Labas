@@ -20,7 +20,5 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
-
     }
 }
