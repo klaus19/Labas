@@ -26,7 +26,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".ui.FirstScreen"/>
+        <activity android:name=".ui.activities.FirstScreen"/>
     </application>
 
 </manifest>

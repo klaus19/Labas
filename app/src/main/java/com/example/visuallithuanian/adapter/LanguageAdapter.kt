@@ -10,9 +10,9 @@ import android.widget.TextView
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.model.LanguageModel
 
-class LanguageAdapter(context: Context,itemsModelArrayList:ArrayList<LanguageModel?>?):
+class LanguageAdapter(context: Context, itemsModelArrayList: ArrayList<LanguageModel>):
 
-   ArrayAdapter<LanguageModel?>(context,0, itemsModelArrayList!!){
+   ArrayAdapter<LanguageModel?>(context,0, itemsModelArrayList!! as List<LanguageModel?>){
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
@@ -23,6 +23,7 @@ class LanguageAdapter(context: Context,itemsModelArrayList:ArrayList<LanguageMod
 
         val languageModel:LanguageModel? = getItem(position)
         val textItem = listItemView!!.findViewById<TextView>(R.id.text_Lithuanian)
+        val textItem2 = listItemView!!.findViewById<TextView>(R.id.text_English)
         val imageLanguage = listItemView.findViewById<ImageView>(R.id.image_Lithuanian)
 
         textItem.setText(languageModel?.getItem_name())

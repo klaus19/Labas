@@ -3,7 +3,7 @@ package com.example.visuallithuanian
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.visuallithuanian.ui.FirstScreen
+import com.example.visuallithuanian.ui.activities.FirstScreen
 import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
