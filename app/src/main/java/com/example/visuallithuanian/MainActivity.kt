@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         activityScope.launch {
 
-            delay(1000)
+            delay(2000)
             val intent = Intent(this@MainActivity, FirstScreen::class.java)
             startActivity(intent)
             finish()

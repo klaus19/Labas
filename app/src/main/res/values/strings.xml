@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">VisualLithuanian</string>
+    <string name="english">English</string>
+    <string name="lithuanian">Lithuanian</string>
 </resources>

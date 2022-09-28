@@ -5,8 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="170dp"
     android:layout_gravity="center"
-    android:layout_margin="5dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     app:cardCornerRadius="5dp"
+    android:id="@+id/card_language"
+    app:cardBackgroundColor="@color/green_card"
     app:cardElevation="5dp">
 
     <LinearLayout
@@ -26,15 +29,17 @@
             android:id="@+id/text_Lithuanian"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
+            android:text="@string/lithuanian"
             android:textSize="20sp"
+            android:textColor="@color/silver"
             android:textAlignment="center" />
         <TextView
             android:id="@+id/text_English"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
+            android:text="@string/english"
             android:textSize="20sp"
+            android:textColor="@color/silver"
             android:textAlignment="center" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

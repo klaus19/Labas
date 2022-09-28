@@ -28,6 +28,13 @@ class FirstScreen:AppCompatActivity() {
         languageModelArrayList.add(LanguageModel("Gėlės",R.drawable.flowers,"Flowers"))
         languageModelArrayList.add(LanguageModel("Daržovės",R.drawable.vegetable,"Vegetables"))
         languageModelArrayList.add(LanguageModel("Architektūros",R.drawable.campus,"Architectures"))
+        languageModelArrayList.add(LanguageModel("Saulės Sistema",R.drawable.universe,"Solar System"))
+        languageModelArrayList.add(LanguageModel("Sezonus",R.drawable.season,"Seasons"))
+        languageModelArrayList.add(LanguageModel("Kompasas",R.drawable.compass,"Compass"))
+        languageModelArrayList.add(LanguageModel("Gyvūnai",R.drawable.animals,"Animals"))
+        languageModelArrayList.add(LanguageModel("Paukščiai",R.drawable.birds,"Birds"))
+        languageModelArrayList.add(LanguageModel("Sporto",R.drawable.sports,"Sports"))
+
 
         val languageAdapter = LanguageAdapter(this,languageModelArrayList)
         gridView.adapter=languageAdapter

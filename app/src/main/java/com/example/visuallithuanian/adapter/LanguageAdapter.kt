@@ -27,6 +27,7 @@ class LanguageAdapter(context: Context, itemsModelArrayList: ArrayList<LanguageM
         val imageLanguage = listItemView.findViewById<ImageView>(R.id.image_Lithuanian)
 
         textItem.setText(languageModel?.getItem_name())
+        textItem2.setText(languageModel?.getItem_English())
         if (languageModel != null) {
             imageLanguage.setImageResource(languageModel.getImgid())
         }
