@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="silver">#EEEEEE</color>
     <color name="green_card">#1EAE98</color>
+    <color name="bottomNavigation">#004c8c</color>
 </resources>
