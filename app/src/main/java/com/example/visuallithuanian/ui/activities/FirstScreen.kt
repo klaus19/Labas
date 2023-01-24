@@ -22,6 +22,8 @@ class FirstScreen:AppCompatActivity() {
             setContentView(binding.root)
         }
 
+
+
         gridView = findViewById(R.id.mainSpecimens)
         val languageModelArrayList:ArrayList<LanguageModel> = ArrayList()
         languageModelArrayList.add(LanguageModel("Vaisiai",R.drawable.fruits,"Fruits"))
