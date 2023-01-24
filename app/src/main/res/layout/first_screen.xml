@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MainActivity">
+    tools:context=".ui.activities.FirstScreen">
 
     <!-- android:numColumns=2 is the number of columns for Grid View
          android:horizontalSpacing is the space between horizontal grid items -->
@@ -16,14 +16,16 @@
         android:horizontalSpacing="6dp"
         android:numColumns="2"
         android:verticalSpacing="6dp" />
-    <FrameLayout
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/flFragment"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        app:navGraph ="@navigation/nav_graph"
+        app:defaultNavHost = "true"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
