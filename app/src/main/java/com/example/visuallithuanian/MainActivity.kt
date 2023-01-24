@@ -9,6 +9,8 @@ import kotlinx.coroutines.*
 class MainActivity : AppCompatActivity() {
 
     val activityScope = CoroutineScope(Dispatchers.Main)
+
+   // Used Kotlin coroutines for splashscreen
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
