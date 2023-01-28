@@ -1,43 +1,47 @@
 package com.example.visuallithuanian.ui.activities
 
 import android.os.Bundle
-import android.widget.GridView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.example.visuallithuanian.R
-import com.example.visuallithuanian.adapter.LanguageAdapter
 import com.example.visuallithuanian.databinding.FirstScreenBinding
-import com.example.visuallithuanian.model.LanguageModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class FirstScreen:AppCompatActivity() {
-
-    lateinit var binding: FirstScreenBinding
-    lateinit var gridView:GridView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.first_screen)
 
-        binding = FirstScreenBinding.inflate(layoutInflater)
-        binding.apply {
-            setContentView(binding.root)
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        bottomNav.setupWithNavController(navController)
+        //map the menu items
+        bottomNav.setOnNavigationItemSelectedListener{item ->
+            if (item.isChecked) {
+                return@setOnNavigationItemSelectedListener false
+            }
+            when (item.itemId) {
+                R.id.page_1 -> {
+                    // handle item1 selection
+                    navController.navigate(R.id.userFragment)
+                }
+                R.id.page_2 -> {
+                    // handle item2 selection
+                    navController.navigate(R.id.locationFragment)
+                }
+            }
+            true
+
+
         }
 
-        gridView = findViewById(R.id.mainSpecimens)
-        val languageModelArrayList:ArrayList<LanguageModel> = ArrayList()
-        languageModelArrayList.add(LanguageModel("Vaisiai",R.drawable.fruits,"Fruits"))
-        languageModelArrayList.add(LanguageModel("Gėlės",R.drawable.flowers,"Flowers"))
-        languageModelArrayList.add(LanguageModel("Daržovės",R.drawable.vegetable,"Vegetables"))
-        languageModelArrayList.add(LanguageModel("Architektūros",R.drawable.campus,"Architectures"))
-        languageModelArrayList.add(LanguageModel("Saulės Sistema",R.drawable.universe,"Solar System"))
-        languageModelArrayList.add(LanguageModel("Sezonus",R.drawable.season,"Seasons"))
-        languageModelArrayList.add(LanguageModel("Kompasas",R.drawable.compass,"Compass"))
-        languageModelArrayList.add(LanguageModel("Gyvūnai",R.drawable.animals,"Animals"))
-        languageModelArrayList.add(LanguageModel("Paukščiai",R.drawable.birds,"Birds"))
-        languageModelArrayList.add(LanguageModel("Sporto",R.drawable.sports,"Sports"))
-
-
-        val languageAdapter = LanguageAdapter(this,languageModelArrayList)
-        gridView.adapter=languageAdapter
     }
 
 

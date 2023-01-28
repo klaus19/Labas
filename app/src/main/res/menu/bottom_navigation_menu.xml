@@ -9,7 +9,7 @@
     <item
         android:id="@+id/page_2"
         android:enabled="true"
-        android:icon="@drawable/location_foreground"
-        android:title="Location"/>
+        android:icon="@drawable/baseline_settings_24"
+        android:title="Settings"/>
 
 </menu>

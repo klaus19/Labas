@@ -4,11 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UserFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:fillViewport="true">
+
+    <GridView
+
+        android:id="@+id/mainSpecimens"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:horizontalSpacing="6dp"
+        android:numColumns="2"
+        android:paddingBottom="56dp"
+        android:verticalSpacing="6dp" />
+    </androidx.core.widget.NestedScrollView>
 
 </FrameLayout>
