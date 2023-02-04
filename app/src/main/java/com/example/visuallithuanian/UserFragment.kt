@@ -9,14 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
 import com.example.visuallithuanian.adapter.LanguageAdapter
-import com.example.visuallithuanian.databinding.FragmentUserBinding
 import com.example.visuallithuanian.model.LanguageModel
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
+
 
 class UserFragment : Fragment() {
 

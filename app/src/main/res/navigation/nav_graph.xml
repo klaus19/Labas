@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/locationFragment"
-        android:name="com.example.visuallithuanian.LocationFragment"
+        android:name="com.example.visuallithuanian.PractiseFragment"
         android:label="fragment_location"
-        tools:layout="@layout/fragment_location" />
+        tools:layout="@layout/fragment_practise" />
 </navigation>
