@@ -12,10 +12,22 @@
         <action
             android:id="@+id/action_userFragment_to_locationFragment"
             app:destination="@id/locationFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_animals"
+            app:destination="@id/animalsFragment" />
     </fragment>
     <fragment
         android:id="@+id/locationFragment"
         android:name="com.example.visuallithuanian.PractiseFragment"
         android:label="fragment_location"
-        tools:layout="@layout/fragment_practise" />
+        tools:layout="@layout/fragment_practise"/>
+    <fragment
+        android:id="@+id/animalsFragment"
+        android:name="com.example.visuallithuanian.AnimalsFragment"
+        android:label="fragment_animals"
+        tools:layout="@layout/fragment_animals" >
+        <action
+            android:id="@+id/action_animalsFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
 </navigation>

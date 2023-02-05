@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.adapter.LanguageAdapter
 import com.example.visuallithuanian.model.LanguageModel
 
@@ -38,6 +40,11 @@ class UserFragment : Fragment() {
         val languageAdapter = context?.let { LanguageAdapter(it,languageModelArrayList) }
         gridView.adapter=languageAdapter
         gridView.isNestedScrollingEnabled = true
+
+         gridView.setOnItemClickListener { parent, view, position, id ->
+             val navController = Navigation.findNavController(requireActivity(),R.id.nav_host_fragment)
+             navController.navigate(R.id.action_userFragment_to_animals)
+         }
         return view
     }
 

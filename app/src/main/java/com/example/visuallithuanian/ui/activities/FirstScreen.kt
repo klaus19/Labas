@@ -17,6 +17,8 @@ class FirstScreen:AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.first_screen)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
