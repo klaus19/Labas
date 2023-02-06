@@ -55,11 +55,11 @@ class AnimalsFragment : Fragment() {
     // Created a list aato store the images and it's other properties
     private fun generateExampleList(): List<ImageInfo> {
         return listOf(
-            ImageInfo(R.drawable.fox,"Fox","Lapė"),
-            ImageInfo(R.drawable.wolf,"Wolf","Vilkas"),
-            ImageInfo(R.drawable.lion,"Lion","Liūtas"),
-            ImageInfo(R.drawable.tiger,"Tiger","Tigras"),
-            ImageInfo(R.drawable.squir,"Squirrel","Voverė")
+            ImageInfo(R.drawable.fox,"Fox","Lapė",listOf(R.drawable.purp),R.drawable.mic),
+            ImageInfo(R.drawable.wolf,"Wolf","Vilkas", listOf(R.drawable.purp),R.drawable.mic),
+            ImageInfo(R.drawable.lion,"Lion","Liūtas", listOf(R.drawable.purp),R.drawable.mic),
+            ImageInfo(R.drawable.tiger,"Tiger","Tigras", listOf(R.drawable.purp),R.drawable.mic),
+            ImageInfo(R.drawable.squir,"Squirrel","Voverė", listOf(R.drawable.purp),R.drawable.mic)
         )
 
     }
