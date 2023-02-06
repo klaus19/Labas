@@ -66,7 +66,13 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
- 
+
+
+    //circularImageView Library for showing images in circles
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+
+    //ripple layout
+    implementation 'com.balysv:material-ripple:1.0.2'
 
 
 
