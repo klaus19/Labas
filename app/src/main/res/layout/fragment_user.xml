@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
     tools:context=".UserFragment">
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -10,11 +12,11 @@
         android:fillViewport="true">
 
     <GridView
-
         android:id="@+id/mainSpecimens"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
         android:horizontalSpacing="6dp"
         android:numColumns="2"
         android:paddingBottom="56dp"
