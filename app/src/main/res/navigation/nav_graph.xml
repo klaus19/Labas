@@ -29,5 +29,13 @@
         <action
             android:id="@+id/action_animalsFragment_to_userFragment"
             app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_animalsFragment_to_flashCards"
+            app:destination="@id/flashCards" />
     </fragment>
+    <fragment
+        android:id="@+id/flashCards"
+        android:name="com.example.visuallithuanian.FlashCards"
+        android:label="fragment_flash_cards"
+        tools:layout="@layout/fragment_flash_cards" />
 </navigation>

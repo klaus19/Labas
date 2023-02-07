@@ -16,10 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
+        android:clipToPadding="false"
         android:horizontalSpacing="6dp"
         android:numColumns="2"
-        android:paddingBottom="56dp"
+        android:paddingBottom="66dp"
         android:verticalSpacing="6dp" />
     </androidx.core.widget.NestedScrollView>
 

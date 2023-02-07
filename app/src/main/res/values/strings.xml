@@ -5,4 +5,6 @@
     <string name="action_up">Up</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="flashcards">Flashcards Fragment</string>
+    <string name="add_item">Flash Cards</string>
 </resources>
