@@ -35,6 +35,7 @@
                 android:textColor="@color/textColor"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
+                android:textStyle="bold"
                 android:textSize="18sp" />
 
             <TextView
@@ -42,6 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="text2"
+                android:textStyle="bold"
                 android:textColor="@color/textColor"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
