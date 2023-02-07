@@ -1,6 +1,8 @@
 package com.example.visuallithuanian
 
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
@@ -13,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.adapter.ImageAdapter
 import com.example.visuallithuanian.data.ImageInfo
-
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class AnimalsFragment : Fragment() {
@@ -40,6 +42,13 @@ class AnimalsFragment : Fragment() {
         // setting up recyclerview
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewAnimals)
         recyclerView.layoutManager = LinearLayoutManager(context)
+
+        //setting up FloatingActionButton
+        val floatingButton = view.findViewById<FloatingActionButton>(R.id.floatingActionButton)
+
+        floatingButton.setOnClickListener {
+            findNavController().navigate(R.id.action_animalsFragment_to_flashCards)
+        }
 
 
         val exampleList = generateExampleList()
