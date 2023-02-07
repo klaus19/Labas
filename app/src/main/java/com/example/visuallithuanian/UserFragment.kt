@@ -43,7 +43,14 @@ class UserFragment : Fragment() {
 
          gridView.setOnItemClickListener { parent, view, position, id ->
              val navController = Navigation.findNavController(requireActivity(),R.id.nav_host_fragment)
-             navController.navigate(R.id.action_userFragment_to_animals)
+
+
+             // The position of the Animals item in the GridView
+             val animalPosition = 7
+             if (position==animalPosition){
+                 navController.navigate(R.id.action_userFragment_to_animals)
+             }
+
          }
         return view
     }
