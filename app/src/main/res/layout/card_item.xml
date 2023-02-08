@@ -7,8 +7,9 @@
     android:layout_gravity="center"
     android:layout_marginLeft="20dp"
     android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
     android:layout_marginRight="20dp"
-    app:cardCornerRadius="5dp"
+    app:cardCornerRadius="15dp"
     android:id="@+id/card_language"
     app:cardElevation="5dp">
 
