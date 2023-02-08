@@ -6,15 +6,16 @@
     android:layout_height="170dp"
     android:layout_gravity="center"
     android:layout_marginLeft="20dp"
+    android:layout_marginTop="10dp"
     android:layout_marginRight="20dp"
     app:cardCornerRadius="5dp"
     android:id="@+id/card_language"
-    app:cardBackgroundColor="@color/green_card"
     app:cardElevation="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/gradient_cardview"
         android:orientation="vertical">
 
         <ImageView
@@ -31,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="@string/lithuanian"
             android:textSize="20sp"
-            android:textColor="@color/card_color"
+            android:textColor="@color/textColor"
             android:textAlignment="center" />
         <TextView
             android:id="@+id/text_English"
@@ -39,7 +40,7 @@
             android:layout_height="wrap_content"
             android:text="@string/english"
             android:textSize="20sp"
-            android:textColor="@color/card_color"
+            android:textColor="@color/textColor"
             android:textAlignment="center" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
