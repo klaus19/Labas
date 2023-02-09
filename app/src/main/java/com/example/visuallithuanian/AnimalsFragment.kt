@@ -68,7 +68,9 @@ class AnimalsFragment : Fragment() {
             ImageInfo(R.drawable.wolf,"Wolf","Vilkas", listOf(R.drawable.purp),R.drawable.mic),
             ImageInfo(R.drawable.lion,"Lion","Liūtas", listOf(R.drawable.purp),R.drawable.mic),
             ImageInfo(R.drawable.tiger,"Tiger","Tigras", listOf(R.drawable.purp),R.drawable.mic),
-            ImageInfo(R.drawable.squir,"Squirrel","Voverė", listOf(R.drawable.purp),R.drawable.mic)
+            ImageInfo(R.drawable.squir,"Squirrel","Voverė", listOf(R.drawable.purp),R.drawable.mic),
+                    ImageInfo(R.drawable.moose,"Moose","Briedis", listOf(R.drawable.purp),R.drawable.mic),
+
         )
 
     }
