@@ -36,7 +36,7 @@ class ImageAdapter(private val imageList: List<ImageInfo>) : RecyclerView.Adapte
         val imageIcon =
             holder.itemView.findViewById<ImageView>(com.example.visuallithuanian.R.id.gemCount)
         val cardAnimals =
-            holder.itemView.findViewById<CardView>(com.example.visuallithuanian.R.id.card_language)
+            holder.itemView.findViewById<CardView>(com.example.visuallithuanian.R.id.cardAnimals)
         val textHidden =
             holder.itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.hiddenTextView)
 
