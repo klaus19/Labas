@@ -4,10 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
+        <View
+            android:id="@+id/grayBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#A0A0A0"
+            android:visibility="gone" />
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -73,16 +78,29 @@
             android:layout_marginBottom="10dp"
             android:layout_gravity="bottom|start" />
     </androidx.cardview.widget.CardView>
-    <TextView
-        android:id="@+id/hiddenTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:text="Hello"
-        android:textColor="@color/textColor"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        />
-    </LinearLayout>
+        <TextView
+            android:id="@+id/hiddenTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Added in List"
+            android:layout_marginEnd="16dp"
+            android:layout_gravity="end|center_vertical"
+            android:textColor="@color/bottomNavigation"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_marginTop="50dp"
+            android:id="@+id/emojiImageView"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="40dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:visibility="visible"
+            android:src="@drawable/emoji" />
+
+    </FrameLayout>
 
 </androidx.core.widget.NestedScrollView>

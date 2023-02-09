@@ -4,11 +4,13 @@ import android.R
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.data.ImageInfo
@@ -27,6 +29,12 @@ class ImageAdapter(private val imageList: List<ImageInfo>) : RecyclerView.Adapte
         return ViewHolder(view)
     }
 
+
+
+
+
+
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = imageList[position]
         holder.imageView.setImageResource(currentItem.imageId)
@@ -40,6 +48,8 @@ class ImageAdapter(private val imageList: List<ImageInfo>) : RecyclerView.Adapte
         val textHidden =
             holder.itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.hiddenTextView)
 
+        //Code for the emoji bouncy animation
+        val imageEmoji = holder.itemView.findViewById<ImageView>(com.example.visuallithuanian.R.id.emojiImageView)
 
          //Code where the cardview moves to left and Textview gets shown behind it.
         imageIcon.setOnClickListener {
