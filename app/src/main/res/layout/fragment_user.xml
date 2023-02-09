@@ -5,12 +5,12 @@
     android:layout_height="match_parent"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
+    android:background="@color/gridview_color"
     tools:context=".UserFragment">
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
-
     <GridView
         android:id="@+id/mainSpecimens"
         android:layout_width="match_parent"
@@ -18,8 +18,8 @@
         android:layout_marginTop="10dp"
         android:clipToPadding="false"
         android:horizontalSpacing="6dp"
+        android:paddingBottom="10dp"
         android:numColumns="2"
-        android:paddingBottom="66dp"
         android:verticalSpacing="6dp" />
     </androidx.core.widget.NestedScrollView>
 

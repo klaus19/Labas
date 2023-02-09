@@ -8,6 +8,7 @@ import android.view.*
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -56,6 +57,7 @@ class AnimalsFragment : Fragment() {
         // settingup ImageAdapter
         val adapter = ImageAdapter(exampleList)
         recyclerView.adapter = adapter
+
 
         return view
     }
