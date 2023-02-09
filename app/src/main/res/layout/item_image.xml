@@ -4,10 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:id="@+id/cardAnimals"
         app:cardCornerRadius="8dp"
         android:layout_margin="10dp"
         app:cardElevation="4dp"
@@ -52,8 +57,8 @@
         </LinearLayout>
         <ImageView
             android:id="@+id/gemCount"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_gravity="end|top"
@@ -68,4 +73,16 @@
             android:layout_marginBottom="10dp"
             android:layout_gravity="bottom|start" />
     </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/hiddenTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:text="Hello"
+        android:textColor="@color/textColor"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        />
+    </LinearLayout>
+
 </androidx.core.widget.NestedScrollView>
