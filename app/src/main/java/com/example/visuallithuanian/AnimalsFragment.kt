@@ -66,7 +66,7 @@ class AnimalsFragment : Fragment() {
     // Created a list aato store the images and it's other properties
     private fun generateExampleList(): List<ImageInfo> {
         return listOf(
-            ImageInfo(R.drawable.fox,"Fox","Lapė",listOf(R.drawable.purp),R.drawable.mic),
+            ImageInfo(R.drawable.fox,"Red Fox","Raudona lapė",listOf(R.drawable.purp),R.drawable.mic),
             ImageInfo(R.drawable.wolf,"Wolf","Vilkas", listOf(R.drawable.purp),R.drawable.mic),
             ImageInfo(R.drawable.lion,"Lion","Liūtas", listOf(R.drawable.purp),R.drawable.mic),
             ImageInfo(R.drawable.tiger,"Tiger","Tigras", listOf(R.drawable.purp),R.drawable.mic),
@@ -75,8 +75,15 @@ class AnimalsFragment : Fragment() {
             ImageInfo(R.drawable.deer,"Deer","elnias", listOf(R.drawable.purp),R.drawable.mic),
             ImageInfo(R.drawable.beaver,"Beaver","bebras", listOf(R.drawable.purp),R.drawable.mic),
             ImageInfo(R.drawable.bison,"Bison","bizonų", listOf(R.drawable.purp),R.drawable.mic),
-
-
+            ImageInfo(R.drawable.frog,"Frog","Pelkės varlė", listOf(R.drawable.purp),R.drawable.mic),
+            ImageInfo(R.drawable.fish,"Fish","Žuvis", listOf(R.drawable.purp),R.drawable.mic),
+            ImageInfo(R.drawable.cat,"Cat","Katė", listOf(R.drawable.purp),R.drawable.mic),
+            ImageInfo(R.drawable.dog,"Dog","šuo", listOf(R.drawable.purp),R.drawable.mic),
+            ImageInfo(R.drawable.rabbit,"Rabbit","Triušis", listOf(R.drawable.purp),R.drawable.mic),
+            ImageInfo(R.drawable.snake,"Snake","Gyvatė", listOf(R.drawable.purp),R.drawable.mic),
+            ImageInfo(R.drawable.boar,"Wild Boar","Šernas", listOf(R.drawable.purp),R.drawable.mic),
+            ImageInfo(R.drawable.polarbear,"Polar Bear","Baltoji meška", listOf(R.drawable.purp),R.drawable.mic),
+            ImageInfo(R.drawable.bear,"Bear","Turėti", listOf(R.drawable.purp),R.drawable.mic)
         )
 
     }
