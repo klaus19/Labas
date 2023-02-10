@@ -29,12 +29,7 @@ class ImageAdapter(private val imageList: List<ImageInfo>) : RecyclerView.Adapte
         return ViewHolder(view)
     }
 
-
-
-
-
-
-    @RequiresApi(Build.VERSION_CODES.M)
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = imageList[position]
         holder.imageView.setImageResource(currentItem.imageId)
