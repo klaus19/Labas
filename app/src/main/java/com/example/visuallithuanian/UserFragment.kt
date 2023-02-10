@@ -32,7 +32,7 @@ class UserFragment : Fragment() {
         languageModelArrayList.add(LanguageModel("Architektūra",R.drawable.campus,"Architectures"))
         languageModelArrayList.add(LanguageModel("Saulės sistema",R.drawable.universe,"Solar System"))
         languageModelArrayList.add(LanguageModel("Sezonai",R.drawable.season,"Seasons"))
-        languageModelArrayList.add(LanguageModel("Kryptys",R.drawable.compass,"Compass"))
+        languageModelArrayList.add(LanguageModel("Kryptys",R.drawable.compass,"Directions"))
         languageModelArrayList.add(LanguageModel("Gyvūnai",R.drawable.animals,"Animals"))
         languageModelArrayList.add(LanguageModel("Paukščiai",R.drawable.birds,"Birds"))
         languageModelArrayList.add(LanguageModel("Sporto",R.drawable.sports,"Sports"))
