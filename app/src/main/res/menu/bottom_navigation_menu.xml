@@ -5,11 +5,11 @@
         android:id="@+id/page_1"
         android:enabled="true"
         android:icon="@drawable/person_foreground"
-        android:title="User"/>
+        android:title=""/>
     <item
         android:id="@+id/page_2"
         android:enabled="true"
         android:icon="@drawable/baseline_kitesurfing_24"
-        android:title="Practise"/>
+        android:title=""/>
 
 </menu>
