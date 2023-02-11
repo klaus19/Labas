@@ -21,8 +21,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class AnimalsFragment : Fragment() {
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -57,7 +55,6 @@ class AnimalsFragment : Fragment() {
         // settingup ImageAdapter
         val adapter = ImageAdapter(exampleList)
         recyclerView.adapter = adapter
-
 
         return view
     }
