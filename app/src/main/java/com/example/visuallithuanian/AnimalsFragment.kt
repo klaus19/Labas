@@ -4,31 +4,78 @@ package com.example.visuallithuanian
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.os.Handler
 import android.view.*
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.adapter.ImageAdapter
 import com.example.visuallithuanian.data.ImageInfo
+import com.example.visuallithuanian.ui.activities.FirstScreen
+import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.*
 
 
 class AnimalsFragment : Fragment() {
+
+    private lateinit var viewModel: BottomNavigationViewModel
+    private lateinit var bottomNav:BottomNavigationView
+    private var isScrolling=false
+
+    private val handler = Handler()  // This assures that hnadler is iniyialised only once
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
+        bottomNav = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         val view = inflater.inflate(R.layout.fragment_animals, container, false)
+
+        viewModel = ViewModelProvider(requireActivity()).get(BottomNavigationViewModel::class.java)
+        val recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerViewAnimals)
+
+        viewModel.bottomNavigationVisibility.observe(viewLifecycleOwner, Observer { visibility ->
+            bottomNav.visibility = if (visibility) View.VISIBLE else View.GONE
+        })
+
+        // setting up recyclerview
+
+        recyclerView?.layoutManager = LinearLayoutManager(context)
+
+        // Added a functionality where the bottomnavigation view will get invisible while scrolling and
+        // appear after scrolling is stopped
+        recyclerView?.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (dy > 0 || dy < 0) {
+                    viewModel.setBottomNavigationVisibility(false)
+                    if (!isScrolling) {
+                        isScrolling = true
+                        handler.postDelayed({
+                            if (isScrolling) {
+                                viewModel.setBottomNavigationVisibility(true)
+                                isScrolling = false
+                            }
+                        }, 300)
+                    }
+                }
+
+            }
+
+        })
+
         // setting up Toolbar and it's icon
         val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
         val back_icon = view.findViewById<ImageView>(R.id.back_icon)
@@ -38,9 +85,6 @@ class AnimalsFragment : Fragment() {
             activity?.onBackPressed()
         }
 
-        // setting up recyclerview
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewAnimals)
-        recyclerView.layoutManager = LinearLayoutManager(context)
 
         //setting up FloatingActionButton
         val floatingButton = view.findViewById<FloatingActionButton>(R.id.floatingActionButton)
@@ -54,7 +98,7 @@ class AnimalsFragment : Fragment() {
 
         // settingup ImageAdapter
         val adapter = ImageAdapter(exampleList)
-        recyclerView.adapter = adapter
+        recyclerView?.adapter = adapter
 
         return view
     }
