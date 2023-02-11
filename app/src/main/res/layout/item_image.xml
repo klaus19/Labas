@@ -7,19 +7,12 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <View
-            android:id="@+id/grayBackground"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#A0A0A0"
-            android:visibility="gone" />
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:id="@+id/cardAnimals"
         app:cardCornerRadius="8dp"
-        android:layout_margin="10dp"
         app:cardElevation="4dp"
         >
         <LinearLayout
