@@ -11,13 +11,16 @@
         tools:layout="@layout/fragment_user" >
         <action
             android:id="@+id/action_userFragment_to_locationFragment"
-            app:destination="@id/locationFragment" />
+            app:destination="@id/practiseFragment" />
         <action
             android:id="@+id/action_userFragment_to_animals"
             app:destination="@id/animalsFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_fruitsFragment"
+            app:destination="@id/fruitsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/locationFragment"
+        android:id="@+id/practiseFragment"
         android:name="com.example.visuallithuanian.PractiseFragment"
         android:label="fragment_location"
         tools:layout="@layout/fragment_practise" />
@@ -38,4 +41,13 @@
         android:name="com.example.visuallithuanian.FlashCards"
         android:label="fragment_flash_cards"
         tools:layout="@layout/fragment_flash_cards" />
+    <fragment
+        android:id="@+id/fruitsFragment"
+        android:name="com.example.visuallithuanian.FruitsFragment"
+        android:label="fragment_fruits"
+        tools:layout="@layout/fragment_fruits" >
+        <action
+            android:id="@+id/action_fruitsFragment_to_flashCards"
+            app:destination="@id/flashCards" />
+    </fragment>
 </navigation>
