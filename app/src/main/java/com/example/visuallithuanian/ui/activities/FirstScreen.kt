@@ -1,13 +1,17 @@
 package com.example.visuallithuanian.ui.activities
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.databinding.FirstScreenBinding
+import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -20,6 +24,9 @@ class FirstScreen:AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+
+
+        //Created a NavHost Controller
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
