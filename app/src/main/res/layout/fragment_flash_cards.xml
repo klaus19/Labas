@@ -6,8 +6,8 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/bottomNavigation"
+        android:layout_height="50dp"
+        android:background="@drawable/flash_tablebar"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         android:layout_alignParentTop="true">
@@ -18,15 +18,17 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:src="@drawable/ic_arrow_back" />
+
+
     </androidx.appcompat.widget.Toolbar>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:elevation="6dp"
+        android:background="@drawable/tab_background"
         android:minHeight="?attr/actionBarSize"
         android:layout_below="@id/toolbar"
-        app:tabBackground="@drawable/tab_background"
         app:tabGravity="fill"
         app:tabMode="fixed" />
 
@@ -35,4 +37,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/tabLayout" />
+
 </RelativeLayout>

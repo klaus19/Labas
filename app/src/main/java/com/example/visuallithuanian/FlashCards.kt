@@ -10,6 +10,8 @@ import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.example.visuallithuanian.adapter.ViewPagerAdapter
 import com.example.visuallithuanian.ui.activities.FirstScreen
+import com.example.visuallithuanian.ui.activities.fragments.CardsFragment
+import com.example.visuallithuanian.ui.activities.fragments.SavedFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -35,37 +37,30 @@ class FlashCards : Fragment() {
 
         tabLayout = view.findViewById(R.id.tabLayout)
         viewPager = view.findViewById(R.id.viewPager)
-
-        tabLayout.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.bottomNavigation))
-
-
         setupViewPagerAndTabs()
 
         return view
     }
-
     //This is used to setup the TabLayout with viewPager
     private fun setupViewPagerAndTabs() {
 
-        // Create an adapter for the view pager
         val adapter = ViewPagerAdapter(this)
 
-        // Set the adapter to the view pager
+        adapter.addFragment(SavedFragment(), "Saved")
+        adapter.addFragment(CardsFragment(), "Cards")
+
         viewPager.adapter = adapter
-
-        // Attach the view pager to the tab layout
-        TabLayoutMediator(tabLayout,viewPager){tab,position ->
-            when (position) {
-                0 -> {
-                    tab.text = "Saved"
-                }
-
-                1 -> tab.text = "Cards"
-            }
-
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = adapter.getPageTitle(position)
         }.attach()
 
+        // change the color of the text
+        tabLayout.setTabTextColors(ContextCompat.getColor(requireContext(), android.R.color.white),
+            ContextCompat.getColor(requireContext(), R.color.gridview_color))
+        tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(requireContext(), R.color.white))
+
+
+        // Set the default tab to display as "SavedFragment"
+        viewPager.currentItem = 0
     }
-
-
 }

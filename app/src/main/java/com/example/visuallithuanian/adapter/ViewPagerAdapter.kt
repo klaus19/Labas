@@ -2,6 +2,8 @@ package com.example.visuallithuanian.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.visuallithuanian.ui.activities.fragments.CardsFragment
+import com.example.visuallithuanian.ui.activities.fragments.SavedFragment
 
 class ViewPagerAdapter(fragment:Fragment):FragmentStateAdapter(fragment) {
 
@@ -14,11 +16,15 @@ class ViewPagerAdapter(fragment:Fragment):FragmentStateAdapter(fragment) {
     }
 
     override fun getItemCount(): Int {
-        return fragments.size
+        return 2
     }
 
     override fun createFragment(position: Int): Fragment {
-        return fragments[position]
+        return when (position) {
+            0 -> SavedFragment()
+            1 -> CardsFragment()
+            else -> throw IllegalStateException("Invalid position")
+        }
     }
 
     fun getPageTitle(position: Int):CharSequence?{
