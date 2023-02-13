@@ -57,13 +57,13 @@ class ImageAdapter(private val imageList:List<ImageInfo>) : RecyclerView.Adapter
          //Code where the cardview moves to left and Textview gets shown behind it.
         imageIcon.setOnClickListener {
 
-            val anim = ObjectAnimator.ofFloat(cardAnimals, "translationX", -1200f)
+            val anim = ObjectAnimator.ofFloat(cardAnimals, "translationX", -600f)
             anim.duration = 1000
             anim.start()
             anim.addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
                     val anim = ObjectAnimator.ofFloat(cardAnimals, "translationX", 0f)
-                    anim.duration = 10000
+                    anim.duration = 8000
                     anim.start()
                     anim.addListener(object : AnimatorListenerAdapter() {
                         override fun onAnimationEnd(animation: Animator) {

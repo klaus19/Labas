@@ -82,12 +82,12 @@ class AnimalsFragment : Fragment() {
         return listOf(
             ImageInfo(
                 R.drawable.fox,"Red Fox","Raudona lapė",listOf(R.drawable.purp), R.drawable.mic,
-                "A red fox ran across the field.","Raudona liūta bėgo per lauką"),
+                "A red fox ran across the field","Raudona liūta bėgo per lauką"),
             ImageInfo(
-                R.drawable.wolf,"Wolf","Vilkas", listOf(R.drawable.purp), R.drawable.mic,"The wolf howled at the moon." ,
+                R.drawable.wolf,"Wolf","Vilkas", listOf(R.drawable.purp), R.drawable.mic,"The wolf howled at the moon" ,
                     "Vilkas šaukė į mėnulį"),
             ImageInfo(
-                R.drawable.lion,"Lion","Liūtas", listOf(R.drawable.purp), R.drawable.mic,"The lion roared loudly.",
+                R.drawable.lion,"Lion","Liūtas", listOf(R.drawable.purp), R.drawable.mic,"The lion roared loudly",
                 "Liūtas garsiai riaumojęs"),
             ImageInfo(
                 R.drawable.tiger,"Tiger","Tigras", listOf(R.drawable.purp),
@@ -97,7 +97,7 @@ class AnimalsFragment : Fragment() {
                 R.drawable.mic,"The squirrel climbed up the tree","Voveraitė kopė į medį"),
             ImageInfo(
                 R.drawable.moose,"Moose","Karas", listOf(R.drawable.purp),
-                R.drawable.mic,"The moose stood in the pond.","Karas stovėjo ežere"),
+                R.drawable.mic,"The moose stood in the pond","Karas stovėjo ežere"),
             ImageInfo(
                 R.drawable.deer,"Deer","elnias", listOf(R.drawable.purp),
                 R.drawable.mic,"The deer grazed in the meadow","Elnias pažįstamoje pievoje"),
