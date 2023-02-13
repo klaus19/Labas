@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TableLayout
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
@@ -21,8 +22,7 @@ class FlashCards : Fragment() {
 
     private lateinit var bottomNav:BottomNavigationView
 
-    private lateinit var viewPager:ViewPager2
-    private lateinit var tabLayout:TabLayout
+
 
 
     override fun onCreateView(
@@ -37,32 +37,15 @@ class FlashCards : Fragment() {
         bottomNav = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         bottomNav.visibility = View.VISIBLE
 
-        tabLayout = view.findViewById(R.id.tabLayout)
-        viewPager = view.findViewById(R.id.viewPager)
-        setupViewPagerAndTabs()
+        val back_icon = view.findViewById<ImageView>(R.id.back_icon)
+
+        // setting up listener
+        back_icon.setOnClickListener {
+            activity?.onBackPressed()
+        }
 
         return view
     }
-    //This is used to setup the TabLayout with viewPager
-    private fun setupViewPagerAndTabs() {
-
-        val adapter = ViewPagerAdapter(this)
-
-        adapter.addFragment(SavedFragment(), "Saved")
-        adapter.addFragment(CardsFragment(), "Cards")
-
-        viewPager.adapter = adapter
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = adapter.getPageTitle(position)
-        }.attach()
-
-        // change the color of the text
-        tabLayout.setTabTextColors(ContextCompat.getColor(requireContext(), android.R.color.white),
-            ContextCompat.getColor(requireContext(), R.color.gridview_color))
-        tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(requireContext(), R.color.white))
 
 
-        // Set the default tab to display as "SavedFragment"
-        viewPager.currentItem = 0
-    }
 }
