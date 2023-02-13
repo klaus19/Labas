@@ -84,10 +84,12 @@ class AnimalsFragment : Fragment() {
                 R.drawable.fox,"Red Fox","Raudona lapė",listOf(R.drawable.purp), R.drawable.mic,
                 "A red fox ran across the field","Raudona liūta bėgo per lauką"),
             ImageInfo(
-                R.drawable.wolf,"Wolf","Vilkas", listOf(R.drawable.purp), R.drawable.mic,"The wolf howled at the moon" ,
+                R.drawable.wolf,"Wolf","Vilkas", listOf(R.drawable.purp), R.drawable.mic,
+                "The wolf howled at the moon" ,
                     "Vilkas šaukė į mėnulį"),
             ImageInfo(
-                R.drawable.lion,"Lion","Liūtas", listOf(R.drawable.purp), R.drawable.mic,"The lion roared loudly",
+                R.drawable.lion,"Lion","Liūtas", listOf(R.drawable.purp), R.drawable.mic,
+                "The lion roared loudly",
                 "Liūtas garsiai riaumojęs"),
             ImageInfo(
                 R.drawable.tiger,"Tiger","Tigras", listOf(R.drawable.purp),
