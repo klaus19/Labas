@@ -6,7 +6,7 @@
     app:startDestination="@id/userFragment">
     <fragment
         android:id="@+id/userFragment"
-        android:name="com.example.visuallithuanian.UserFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.UserFragment"
         android:label="fragment_user"
         tools:layout="@layout/fragment_user" >
         <action
@@ -21,12 +21,12 @@
     </fragment>
     <fragment
         android:id="@+id/practiseFragment"
-        android:name="com.example.visuallithuanian.PractiseFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.PractiseFragment"
         android:label="fragment_location"
         tools:layout="@layout/fragment_practise" />
     <fragment
         android:id="@+id/animalsFragment"
-        android:name="com.example.visuallithuanian.AnimalsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.AnimalsFragment"
         android:label="fragment_animals"
         tools:layout="@layout/fragment_animals" >
         <action
@@ -38,12 +38,12 @@
     </fragment>
     <fragment
         android:id="@+id/flashCards"
-        android:name="com.example.visuallithuanian.FlashCards"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.FlashCards"
         android:label="fragment_flash_cards"
         tools:layout="@layout/fragment_flash_cards" />
     <fragment
         android:id="@+id/fruitsFragment"
-        android:name="com.example.visuallithuanian.FruitsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.FruitsFragment"
         android:label="fragment_fruits"
         tools:layout="@layout/fragment_fruits" >
         <action

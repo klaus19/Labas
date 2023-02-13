@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.ImageAdapter
 import com.example.visuallithuanian.base.BottomNavigationScrollListener
 import com.example.visuallithuanian.data.ImageInfo
@@ -82,18 +83,33 @@ class FruitsFragment : Fragment() {
     private fun generateFruitsList(): List<ImageInfo> {
 
         return listOf(
-            ImageInfo(R.drawable.apple,"Apple","obuolys",listOf(R.drawable.purp),R.drawable.mic,"",""),
-            ImageInfo(R.drawable.orange,"Orange","Oranžinė",listOf(R.drawable.purp),R.drawable.mic,"",""),
-            ImageInfo(R.drawable.raspberry,"Raspberry","Avietinė",listOf(R.drawable.purp),R.drawable.mic,"",""),
-            ImageInfo(R.drawable.gooseberry,"GooseBerry","agrastas",listOf(R.drawable.purp),R.drawable.mic,"",""),
-            ImageInfo(R.drawable.plum,"Plum","Slyvos",listOf(R.drawable.purp),R.drawable.mic,"",""),
-            ImageInfo(R.drawable.pear,"Pear","Kriaušė",listOf(R.drawable.purp),R.drawable.mic,"",""),
-            ImageInfo(R.drawable.grape,"Grapes","Vynuogės",listOf(R.drawable.purp),R.drawable.mic,"",""),
-            ImageInfo(R.drawable.gooseberry,"Banana","Bananas",listOf(R.drawable.purp),R.drawable.mic,"",""),
-            ImageInfo(R.drawable.blackcurrant,"Black currant","Juodieji serbentai",listOf(R.drawable.purp),R.drawable.mic,"",""),
-            ImageInfo(R.drawable.mango,"Mango","Mango",listOf(R.drawable.purp),R.drawable.mic,"",""),
-            ImageInfo(R.drawable.strawberry,"Strawberry","\n" +
-                    "braškių",listOf(R.drawable.purp),R.drawable.mic,"","")
+            ImageInfo(
+                R.drawable.apple,"Apple","obuolys",listOf(R.drawable.purp),
+                R.drawable.mic,"",""),
+            ImageInfo(
+                R.drawable.orange,"Orange","Oranžinė",listOf(R.drawable.purp),
+                R.drawable.mic,"",""),
+            ImageInfo(
+                R.drawable.raspberry,"Raspberry","Avietinė",listOf(R.drawable.purp),
+                R.drawable.mic,"",""),
+            ImageInfo(
+                R.drawable.gooseberry,"GooseBerry","agrastas",listOf(R.drawable.purp),
+                R.drawable.mic,"",""),
+            ImageInfo(R.drawable.plum,"Plum","Slyvos",listOf(R.drawable.purp), R.drawable.mic,"",""),
+            ImageInfo(R.drawable.pear,"Pear","Kriaušė",listOf(R.drawable.purp), R.drawable.mic,"",""),
+            ImageInfo(
+                R.drawable.grape,"Grapes","Vynuogės",listOf(R.drawable.purp),
+                R.drawable.mic,"",""),
+            ImageInfo(
+                R.drawable.gooseberry,"Banana","Bananas",listOf(R.drawable.purp),
+                R.drawable.mic,"",""),
+            ImageInfo(
+                R.drawable.blackcurrant,"Black currant","Juodieji serbentai",listOf(R.drawable.purp),
+                R.drawable.mic,"",""),
+            ImageInfo(R.drawable.mango,"Mango","Mango",listOf(R.drawable.purp), R.drawable.mic,"",""),
+            ImageInfo(
+                R.drawable.strawberry,"Strawberry","\n" +
+                    "braškių",listOf(R.drawable.purp), R.drawable.mic,"","")
         )
 
 
