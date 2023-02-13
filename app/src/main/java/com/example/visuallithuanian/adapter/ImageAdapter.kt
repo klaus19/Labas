@@ -1,6 +1,5 @@
 package com.example.visuallithuanian.adapter
 
-import android.R
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
@@ -14,14 +13,21 @@ import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.data.ImageInfo
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.w3c.dom.Text
 
 
-class ImageAdapter(private val imageList: List<ImageInfo>) : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
+class ImageAdapter(private val imageList:List<ImageInfo>) : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
+
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(com.example.visuallithuanian.R.id.imageView)
         val textView1: TextView = itemView.findViewById(com.example.visuallithuanian.R.id.name1TextView)
         val textView2: TextView = itemView.findViewById(com.example.visuallithuanian.R.id.name2TextView)
+        val englishTextView: TextView = itemView.findViewById(com.example.visuallithuanian.R.id.hiddenTextViewEnglish)
+        val lithuanianTextView: TextView = itemView.findViewById(com.example.visuallithuanian.R.id.hiddenTextViewLithuanian)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,30 +41,34 @@ class ImageAdapter(private val imageList: List<ImageInfo>) : RecyclerView.Adapte
         holder.imageView.setImageResource(currentItem.imageId)
         holder.textView1.text = currentItem.name1
         holder.textView2.text = currentItem.name2
+        holder.englishTextView.text = currentItem.english
+        holder.lithuanianTextView.text = currentItem.lithuanian
 
         val imageIcon =
             holder.itemView.findViewById<ImageView>(com.example.visuallithuanian.R.id.gemCount)
         val cardAnimals =
             holder.itemView.findViewById<CardView>(com.example.visuallithuanian.R.id.cardAnimals)
-        val textHidden =
-            holder.itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.hiddenTextView)
+        val textHiddenEnglish =
+            holder.itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.hiddenTextViewEnglish)
 
         //Code for the emoji bouncy animation
-        val imageEmoji = holder.itemView.findViewById<ImageView>(com.example.visuallithuanian.R.id.emojiImageView)
+        val txtLithuanian = holder.itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.hiddenTextViewLithuanian)
 
          //Code where the cardview moves to left and Textview gets shown behind it.
         imageIcon.setOnClickListener {
-            val anim = ObjectAnimator.ofFloat(cardAnimals, "translationX", -500f)
+
+            val anim = ObjectAnimator.ofFloat(cardAnimals, "translationX", -1200f)
             anim.duration = 1000
             anim.start()
             anim.addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
                     val anim = ObjectAnimator.ofFloat(cardAnimals, "translationX", 0f)
-                    anim.duration = 1000
+                    anim.duration = 10000
                     anim.start()
                     anim.addListener(object : AnimatorListenerAdapter() {
                         override fun onAnimationEnd(animation: Animator) {
-                            textHidden.visibility = View.VISIBLE
+                            textHiddenEnglish.visibility = View.VISIBLE
+                            txtLithuanian.visibility = View.VISIBLE
                         }
                     })
                 }

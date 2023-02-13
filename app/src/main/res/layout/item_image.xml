@@ -72,27 +72,28 @@
             android:layout_gravity="bottom|start" />
     </androidx.cardview.widget.CardView>
         <TextView
-            android:id="@+id/hiddenTextView"
+            android:id="@+id/hiddenTextViewEnglish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="20dp"
             android:text="Added in List"
-            android:layout_marginEnd="16dp"
-            android:layout_gravity="end|center_vertical"
-            android:textColor="@color/bottomNavigation"
+            android:layout_gravity="center|right"
+            android:textColor="@color/green_card"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <ImageView
+        <TextView
             android:layout_marginTop="50dp"
-            android:id="@+id/emojiImageView"
+            android:id="@+id/hiddenTextViewLithuanian"
             android:layout_width="wrap_content"
-            android:layout_marginRight="40dp"
+            android:layout_marginLeft="20dp"
+            android:text="English Text"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/gridview_color"
             android:layout_height="wrap_content"
-            android:layout_gravity="end|center_vertical"
-            android:visibility="visible"
-            android:src="@drawable/emoji" />
+            android:layout_gravity="center|right"
+            android:visibility="visible" />
 
     </FrameLayout>
 
