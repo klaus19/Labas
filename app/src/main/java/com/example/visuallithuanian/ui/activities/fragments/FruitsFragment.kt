@@ -85,31 +85,35 @@ class FruitsFragment : Fragment() {
         return listOf(
             ImageInfo(
                 R.drawable.apple,"Apple","obuolys",listOf(R.drawable.purp),
-                R.drawable.mic,"",""),
+                R.drawable.mic,"I love to eat a red apple ","Mėgstu valgyti raudoną obuolį"),
             ImageInfo(
-                R.drawable.orange,"Orange","Oranžinė",listOf(R.drawable.purp),
-                R.drawable.mic,"",""),
+                R.drawable.orange,"Orange","Apelsinas",listOf(R.drawable.purp),
+                R.drawable.mic,"This orange is very sweet"," Šis apelsinas yra labai saldus"),
             ImageInfo(
-                R.drawable.raspberry,"Raspberry","Avietinė",listOf(R.drawable.purp),
-                R.drawable.mic,"",""),
+                R.drawable.raspberry,"Raspberry","Aviečių",listOf(R.drawable.purp),
+                R.drawable.mic,"I like raspberry juice","Mėgstu aviečių sultis"),
             ImageInfo(
                 R.drawable.gooseberry,"GooseBerry","agrastas",listOf(R.drawable.purp),
-                R.drawable.mic,"",""),
-            ImageInfo(R.drawable.plum,"Plum","Slyvos",listOf(R.drawable.purp), R.drawable.mic,"",""),
-            ImageInfo(R.drawable.pear,"Pear","Kriaušė",listOf(R.drawable.purp), R.drawable.mic,"",""),
+                R.drawable.mic,"I don't like GooseBerry","Nemėgstu agrastas"),
+            ImageInfo(R.drawable.plum,"Plum","Slyvos",listOf(R.drawable.purp), R.drawable.mic,
+                "The plum was juicy and delicious","Slyva buvo sultinga ir skani"),
+            ImageInfo(R.drawable.pear,"Pear","Kriaušė",listOf(R.drawable.purp), R.drawable.mic,
+                "Pears are one of my favorite fruits to eat","Kriaušės yra vienas mėgstamiausių mano valgomų vaisių"),
             ImageInfo(
                 R.drawable.grape,"Grapes","Vynuogės",listOf(R.drawable.purp),
-                R.drawable.mic,"",""),
+                R.drawable.mic,"He ate grapes as a healthy snack","Jis valgė vynuoges kaip sveiką užkandį"),
             ImageInfo(
                 R.drawable.gooseberry,"Banana","Bananas",listOf(R.drawable.purp),
-                R.drawable.mic,"",""),
+                R.drawable.mic,"She likes to eat bananas","Ji mėgsta valgyti bananus"),
             ImageInfo(
                 R.drawable.blackcurrant,"Black currant","Juodieji serbentai",listOf(R.drawable.purp),
-                R.drawable.mic,"",""),
-            ImageInfo(R.drawable.mango,"Mango","Mango",listOf(R.drawable.purp), R.drawable.mic,"",""),
+                R.drawable.mic,"The black currants from my garden made great jam","Iš juodųjų serbentų iš mano sodo pagaminta puiki uogienė"),
+            ImageInfo(R.drawable.mango,"Mango","Mango",listOf(R.drawable.purp), R.drawable.mic,
+                "I made jam from black currants","Gaminau uogienę iš juodųjų serbentų"),
             ImageInfo(
                 R.drawable.strawberry,"Strawberry","\n" +
-                    "braškių",listOf(R.drawable.purp), R.drawable.mic,"","")
+                    "braškių",listOf(R.drawable.purp), R.drawable.mic,
+                "I love to eat fresh strawberries in the summer","Vasarą mėgstu valgyti šviežias braškes")
         )
 
 
