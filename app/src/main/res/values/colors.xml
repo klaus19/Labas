@@ -9,11 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="silver">#EEEEEE</color>
     <color name="green_card">#0097a7</color>
-    <color name="bottomNavigation">#ff9800</color>
+    <color name="bottomNavigation">#0288d1</color>
     <color name="textColor">#37474f</color>
     <color name="card_color">#f0f4c3</color>
     <color name="orange">#b39ddb</color>
     <color name="blue_card">#0288d1</color>
     <color name="gridview_color">#546e7a</color>
     <color name="tab_background">#ffb300</color>
+    <color name="action_bar">#0288d1</color>
 </resources>
