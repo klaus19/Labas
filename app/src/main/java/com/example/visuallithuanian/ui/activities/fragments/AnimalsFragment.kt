@@ -108,7 +108,7 @@ class AnimalsFragment : Fragment() {
                 R.drawable.bison,"Bison","bizonų", listOf(R.drawable.purp),
                 R.drawable.mic,"The bison roamed the prairie","Bizonas klajojo per prerijas"),
             ImageInfo(
-                R.drawable.frog,"Frog","žaba", listOf(R.drawable.purp),
+                R.drawable.frog,"Frog","Varlė", listOf(R.drawable.purp),
                 R.drawable.mic,"The frog jumped into the pond","Varlė šoko į ežerą"),
             ImageInfo(
                 R.drawable.fish,"Fish","Žuvis", listOf(R.drawable.purp),
