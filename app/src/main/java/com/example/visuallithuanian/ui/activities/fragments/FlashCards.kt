@@ -49,10 +49,12 @@ class FlashCards : Fragment() {
 
     private fun generateFlashCards():List<FlashCardInfo> {
         return listOf(
-            FlashCardInfo(  R.drawable.talking,"Daily Conversation"),
+            FlashCardInfo(R.drawable.words,"Words"),
+            FlashCardInfo(R.drawable.talking,"Daily Conversation"),
             FlashCardInfo(R.drawable.food,"Food"),
-            FlashCardInfo(R.drawable.relatives,"Relatives")
-        )
+            FlashCardInfo(R.drawable.relatives,"Relatives"),
+
+            )
 
     }
 
