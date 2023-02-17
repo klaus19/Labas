@@ -55,6 +55,10 @@ class UserFragment : Fragment() {
                  navController.navigate(R.id.action_userFragment_to_animals)
              }
 
+             val solarsystemPosition =4
+             if (position==solarsystemPosition){
+                 navController.navigate(R.id.action_userFragment_to_solarsystem)
+             }
          }
         return view
     }

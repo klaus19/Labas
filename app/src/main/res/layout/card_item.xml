@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:text="@string/lithuanian"
             android:textSize="20sp"
-            android:textColor="@color/textColor"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:textAlignment="center" />
         <TextView
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:text="@string/english"
             android:textSize="20sp"
-            android:textColor="@color/textColor"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:textAlignment="center" />
     </LinearLayout>
