@@ -48,7 +48,7 @@ class FruitsFragment : Fragment() {
         })
 
         //Putting the base listener here
-        recyclerView?.addOnScrollListener(BottomNavigationScrollListener(viewModel))
+       // recyclerView?.addOnScrollListener(BottomNavigationScrollListener(viewModel))
 
 
         // setting up Toolbar and it's icon

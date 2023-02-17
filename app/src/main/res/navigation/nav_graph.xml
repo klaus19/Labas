@@ -10,7 +10,7 @@
         android:label="fragment_user"
         tools:layout="@layout/fragment_user" >
         <action
-            android:id="@+id/action_userFragment_to_locationFragment"
+            android:id="@+id/action_userFragment_to_practiseFragment"
             app:destination="@id/practiseFragment" />
         <action
             android:id="@+id/action_userFragment_to_animals"
@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_userFragment_to_fruitsFragment"
             app:destination="@id/fruitsFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_solarsystem"
+            app:destination="@id/solarsystem" />
     </fragment>
     <fragment
         android:id="@+id/practiseFragment"
@@ -48,6 +51,15 @@
         tools:layout="@layout/fragment_fruits" >
         <action
             android:id="@+id/action_fruitsFragment_to_flashCards"
+            app:destination="@id/flashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/solarsystem"
+        android:name="com.example.visuallithuanian.Solarsystem"
+        android:label="fragment_solarsystem"
+        tools:layout="@layout/fragment_solarsystem" >
+        <action
+            android:id="@+id/action_solarsystem_to_flashCards"
             app:destination="@id/flashCards" />
     </fragment>
 </navigation>

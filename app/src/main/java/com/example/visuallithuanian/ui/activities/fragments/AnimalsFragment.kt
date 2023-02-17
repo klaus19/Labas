@@ -38,13 +38,10 @@ class AnimalsFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(BottomNavigationViewModel::class.java)
         val recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerViewAnimals)
 
-        viewModel.bottomNavigationVisibility.observe(viewLifecycleOwner, Observer { visibility ->
-            bottomNav.visibility = if (visibility) View.VISIBLE else View.GONE
-        })
 
         // Added a functionality where the bottomnavigation view will get invisible while scrolling and
         // appear after scrolling is stopped
-         recyclerView?.addOnScrollListener(BottomNavigationScrollListener(viewModel))
+        // recyclerView?.addOnScrollListener(BottomNavigationScrollListener(viewModel))
         // setting up recyclerview
 
         recyclerView?.layoutManager = LinearLayoutManager(context)

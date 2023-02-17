@@ -63,7 +63,7 @@ class ImageAdapter(private val imageList:List<ImageInfo>) : RecyclerView.Adapter
             anim.addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
                     val anim = ObjectAnimator.ofFloat(cardAnimals, "translationX", 0f)
-                    anim.duration = 8000
+                    anim.duration = 4000
                     anim.start()
                     anim.addListener(object : AnimatorListenerAdapter() {
                         override fun onAnimationEnd(animation: Animator) {
