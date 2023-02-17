@@ -103,7 +103,7 @@ class FruitsFragment : Fragment() {
                 R.drawable.grape,"Grapes","Vynuogės",listOf(R.drawable.purp),
                 R.drawable.mic,"He ate grapes as a healthy snack","Jis valgė vynuoges kaip sveiką užkandį"),
             ImageInfo(
-                R.drawable.gooseberry,"Banana","Bananas",listOf(R.drawable.purp),
+                R.drawable.banana,"Banana","Bananas",listOf(R.drawable.purp),
                 R.drawable.mic,"She likes to eat bananas","Ji mėgsta valgyti bananus"),
             ImageInfo(
                 R.drawable.blackcurrant,"Black currant","Juodieji serbentai",listOf(R.drawable.purp),

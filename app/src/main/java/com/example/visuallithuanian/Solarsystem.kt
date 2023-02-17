@@ -88,7 +88,7 @@ class Solarsystem : Fragment() {
             ImageInfo(R.drawable.earth,"Earth","Žemė",listOf(R.drawable.purp), R.drawable.mic,
                 "",""),
             ImageInfo(
-                R.drawable.mercury,"Mars","Marsas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.mars,"Mars","Marsas",listOf(R.drawable.purp), R.drawable.mic,
                 "",""),
             ImageInfo(R.drawable.jupiter,"Jupiter","Jupiteris",listOf(R.drawable.purp), R.drawable.mic,
                 "",""),
@@ -101,6 +101,7 @@ class Solarsystem : Fragment() {
                 "",""),
             ImageInfo(R.drawable.planets,"Planets","Planetos",listOf(R.drawable.purp), R.drawable.mic,
                 "",""),
+
         )
 
     }
