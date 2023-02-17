@@ -101,6 +101,7 @@ class Solarsystem : Fragment() {
                 "",""),
             ImageInfo(R.drawable.planets,"Planets","Planetos",listOf(R.drawable.purp), R.drawable.mic,
                 "",""),
+
         )
 
     }
