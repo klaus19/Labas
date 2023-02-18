@@ -49,16 +49,22 @@ class UserFragment : Fragment() {
                  navController.navigate(R.id.action_userFragment_to_fruitsFragment)
              }
 
+             val solarsystemPosition =4
+             if (position==solarsystemPosition){
+                 navController.navigate(R.id.action_userFragment_to_solarsystem)
+             }
+             val directionsPosition =6
+             if (position==directionsPosition){
+                 navController.navigate(R.id.action_userFragment_to_directionsFragment)
+             }
+
              // The position of the Animals item in the GridView
              val animalPosition = 7
              if (position==animalPosition){
                  navController.navigate(R.id.action_userFragment_to_animals)
              }
 
-             val solarsystemPosition =4
-             if (position==solarsystemPosition){
-                 navController.navigate(R.id.action_userFragment_to_solarsystem)
-             }
+
          }
         return view
     }

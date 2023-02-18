@@ -134,7 +134,11 @@ class AnimalsFragment : Fragment() {
                 "The bear was searching for honey inside the forest","Meška ieškojo medaus girioje"),
             ImageInfo(
                 R.drawable.cow,"Cow","Karvė", listOf(R.drawable.purp), R.drawable.mic,
-                "The cow gives milk","Karvė duoda pieno")
+                "The cow gives milk","Karvė duoda pieno"),
+            ImageInfo(
+                R.drawable.horse,"Horse","Arklys", listOf(R.drawable.purp), R.drawable.mic,
+                "The horse is running","Arklys bėga"),
+
         )
 
     }

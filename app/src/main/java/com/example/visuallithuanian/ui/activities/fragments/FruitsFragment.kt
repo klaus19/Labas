@@ -98,7 +98,7 @@ class FruitsFragment : Fragment() {
             ImageInfo(R.drawable.plum,"Plum","Slyvos",listOf(R.drawable.purp), R.drawable.mic,
                 "The plum was juicy and delicious","Slyva buvo sultinga ir skani"),
             ImageInfo(R.drawable.pear,"Pear","Kriaušė",listOf(R.drawable.purp), R.drawable.mic,
-                "Pears are one of my favorite fruits to eat","Kriaušės yra vienas mėgstamiausių mano valgomų vaisių"),
+                "I like pears a lot","Man labai patinka kriaušės"),
             ImageInfo(
                 R.drawable.grape,"Grapes","Vynuogės",listOf(R.drawable.purp),
                 R.drawable.mic,"He ate grapes as a healthy snack","Jis valgė vynuoges kaip sveiką užkandį"),
@@ -107,7 +107,7 @@ class FruitsFragment : Fragment() {
                 R.drawable.mic,"She likes to eat bananas","Ji mėgsta valgyti bananus"),
             ImageInfo(
                 R.drawable.blackcurrant,"Black currant","Juodieji serbentai",listOf(R.drawable.purp),
-                R.drawable.mic,"The black currants from my garden made great jam","Iš juodųjų serbentų iš mano sodo pagaminta puiki uogienė"),
+                R.drawable.mic,"Black currants are sweet","Juodieji serbentai yra saldūs"),
             ImageInfo(R.drawable.mango,"Mango","Mango",listOf(R.drawable.purp), R.drawable.mic,
                 "I made jam from black currants","Gaminau uogienę iš juodųjų serbentų"),
             ImageInfo(
