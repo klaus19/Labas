@@ -78,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Added in List"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center_horizontal|center"
             android:textColor="@color/green_card"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -92,7 +92,7 @@
             android:textStyle="bold"
             android:textColor="@color/gridview_color"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center_horizontal|center"
             android:visibility="visible" />
 
     </FrameLayout>
