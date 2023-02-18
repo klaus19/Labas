@@ -13,11 +13,13 @@ import com.example.visuallithuanian.adapter.FlashcardsAdapter
 import com.example.visuallithuanian.data.FlashCardInfo
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
+
 
 
 class FlashCards : Fragment() {
 
-    private lateinit var bottomNav:BottomNavigationView
+    lateinit var bottomNav:BottomNavigationView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

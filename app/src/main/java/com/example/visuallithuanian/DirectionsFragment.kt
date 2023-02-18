@@ -16,12 +16,15 @@ import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
+@AndroidEntryPoint
 class DirectionsFragment : Fragment() {
 
-    private lateinit var viewModel: BottomNavigationViewModel
-    private lateinit var bottomNavigationView: BottomNavigationView
+     lateinit var viewModel: BottomNavigationViewModel
+     lateinit var bottomNavigationView: BottomNavigationView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

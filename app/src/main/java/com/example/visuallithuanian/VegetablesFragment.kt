@@ -6,22 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.adapter.ImageAdapter
 import com.example.visuallithuanian.data.ImageInfo
-import com.example.visuallithuanian.ui.activities.FirstScreen
-import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class VegetablesFragment : Fragment() {
 
-    private lateinit var viewModel: BottomNavigationViewModel
-    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,14 +24,8 @@ class VegetablesFragment : Fragment() {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_vegetables, container, false)
 
-        bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
-        viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
         val recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerViewAnimals)
 
-        // Added a functionality where the bottomnavigation view will get invisible while scrolling and
-        // appear after scrolling is stopped
-        // recyclerView?.addOnScrollListener(BottomNavigationScrollListener(viewModel))
-        // setting up recyclerview
 
         recyclerView?.layoutManager = LinearLayoutManager(context)
 
@@ -60,7 +48,7 @@ class VegetablesFragment : Fragment() {
 
         val exampleList = generateVegetablesList()
 
-        // settingup ImageAdapter
+
         val adapter = ImageAdapter(exampleList)
         recyclerView?.adapter = adapter
 
@@ -69,7 +57,7 @@ class VegetablesFragment : Fragment() {
 
     private fun generateVegetablesList(): List<ImageInfo> {
         return listOf(
-            ImageInfo(R.drawable.potato,"Potato","Bulvės",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(R.drawable.potato,"Potato","Bulvė",listOf(R.drawable.purp), R.drawable.mic,
                 "Potato is popular in Lithuania","Bulvės populiarios Lietuvoje"),
             ImageInfo(
                 R.drawable.cabbage,"Cabbage","Kopūstai",listOf(R.drawable.purp), R.drawable.mic,
@@ -84,7 +72,7 @@ class VegetablesFragment : Fragment() {
             ImageInfo(
                 R.drawable.onion,"Onion","Svogūnai",listOf(R.drawable.purp), R.drawable.mic,
                 "",""),
-            ImageInfo(R.drawable.pepper,"Peppers","Paprikos",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(R.drawable.pepper,"Pepper","Pipirai",listOf(R.drawable.purp), R.drawable.mic,
                 "",""),
             ImageInfo(
                 R.drawable.tomato,"Tomatoes","Pomidorai",listOf(R.drawable.purp), R.drawable.mic,
@@ -92,7 +80,7 @@ class VegetablesFragment : Fragment() {
             ImageInfo(R.drawable.cucumber,"Cucumber","Agurkai",listOf(R.drawable.purp), R.drawable.mic,
                 "",""),
             ImageInfo(
-                R.drawable.radish,"Radish","Ridikėliai",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.radish,"Radish","Ridikas",listOf(R.drawable.purp), R.drawable.mic,
                 "",""),
         )
 

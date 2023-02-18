@@ -11,12 +11,13 @@ import androidx.room.Room
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.ImageAdapter
 import com.example.visuallithuanian.data.ImageInfo
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 
 
 class SavedFragment : Fragment() {
 
-    private lateinit var recyclerViewSaved: RecyclerView
+     lateinit var recyclerViewSaved: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
