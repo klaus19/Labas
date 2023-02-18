@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_userFragment_to_solarsystem"
             app:destination="@id/solarsystem" />
+        <action
+            android:id="@+id/action_userFragment_to_directionsFragment"
+            app:destination="@id/directionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/practiseFragment"
@@ -60,6 +63,15 @@
         tools:layout="@layout/fragment_solarsystem" >
         <action
             android:id="@+id/action_solarsystem_to_flashCards"
+            app:destination="@id/flashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/directionsFragment"
+        android:name="com.example.visuallithuanian.DirectionsFragment"
+        android:label="fragment_directions"
+        tools:layout="@layout/fragment_directions" >
+        <action
+            android:id="@+id/action_directionsFragment_to_flashCards"
             app:destination="@id/flashCards" />
     </fragment>
 </navigation>

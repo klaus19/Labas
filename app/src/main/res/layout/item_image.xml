@@ -10,8 +10,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_margin="10dp"
         android:id="@+id/cardAnimals"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
@@ -19,6 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:background="@drawable/simple_cardview"
             android:orientation="vertical">
 
@@ -73,28 +73,26 @@
             android:layout_gravity="bottom|start" />
     </androidx.cardview.widget.CardView>
         <TextView
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginTop="20dp"
             android:id="@+id/hiddenTextViewEnglish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Added in List"
-            android:layout_gravity="center|right"
+            android:layout_gravity="center_horizontal"
             android:textColor="@color/green_card"
             android:textSize="14sp"
             android:textStyle="bold" />
 
         <TextView
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="5dp"
             android:id="@+id/hiddenTextViewLithuanian"
             android:layout_width="wrap_content"
+            android:layout_marginTop="40dp"
             android:text="English Text"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="@color/gridview_color"
             android:layout_height="wrap_content"
-            android:layout_gravity="center|right"
+            android:layout_gravity="center_horizontal"
             android:visibility="visible" />
 
     </FrameLayout>
