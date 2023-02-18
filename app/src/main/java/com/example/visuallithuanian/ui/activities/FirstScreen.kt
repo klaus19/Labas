@@ -13,6 +13,8 @@ import com.example.visuallithuanian.R
 import com.example.visuallithuanian.databinding.FirstScreenBinding
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
+
 
 
 class FirstScreen:AppCompatActivity() {

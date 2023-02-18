@@ -18,12 +18,16 @@ import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+
 
 
 class AnimalsFragment : Fragment() {
 
-    private lateinit var viewModel: BottomNavigationViewModel
-    private lateinit var bottomNav:BottomNavigationView
+
+    lateinit var viewModel: BottomNavigationViewModel
+    lateinit var bottomNav:BottomNavigationView
 
 
     override fun onCreateView(
@@ -130,7 +134,7 @@ class AnimalsFragment : Fragment() {
                 R.drawable.mic,"The polar bear hunted the seal on the ice",
                 "Baltoji meška  medžiojo ruonius ant ledo"),
             ImageInfo(
-                R.drawable.bear,"Bear","Turėti", listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.bear,"Bear","Meška", listOf(R.drawable.purp), R.drawable.mic,
                 "The bear was searching for honey inside the forest","Meška ieškojo medaus girioje"),
             ImageInfo(
                 R.drawable.cow,"Cow","Karvė", listOf(R.drawable.purp), R.drawable.mic,

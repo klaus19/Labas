@@ -20,12 +20,15 @@ import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 class FruitsFragment : Fragment() {
 
-    private lateinit var viewModel: BottomNavigationViewModel
-    private lateinit var bottomNav: BottomNavigationView
+
+    lateinit var viewModel: BottomNavigationViewModel
+    lateinit var bottomNav: BottomNavigationView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -4,7 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class BottomNavigationViewModel:ViewModel() {
+
+class BottomNavigationViewModel :ViewModel() {
 
     private val _bottomNavigationVisibility = MutableLiveData<Boolean>()
     val bottomNavigationVisibility:LiveData<Boolean>
