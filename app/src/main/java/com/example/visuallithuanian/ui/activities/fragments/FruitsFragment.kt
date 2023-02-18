@@ -90,7 +90,7 @@ class FruitsFragment : Fragment() {
                 R.drawable.orange,"Orange","Apelsinas",listOf(R.drawable.purp),
                 R.drawable.mic,"This orange is very sweet"," Šis apelsinas yra labai saldus"),
             ImageInfo(
-                R.drawable.raspberry,"Raspberry","Aviečių",listOf(R.drawable.purp),
+                R.drawable.raspberry,"Raspberries","Avietės",listOf(R.drawable.purp),
                 R.drawable.mic,"I like raspberry juice","Mėgstu aviečių sultis"),
             ImageInfo(
                 R.drawable.gooseberry,"GooseBerry","agrastas",listOf(R.drawable.purp),
@@ -111,8 +111,7 @@ class FruitsFragment : Fragment() {
             ImageInfo(R.drawable.mango,"Mango","Mango",listOf(R.drawable.purp), R.drawable.mic,
                 "I made jam from black currants","Gaminau uogienę iš juodųjų serbentų"),
             ImageInfo(
-                R.drawable.strawberry,"Strawberry","\n" +
-                    "braškių",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.strawberry,"Strawberry","braškių",listOf(R.drawable.purp), R.drawable.mic,
                 "I love to eat fresh strawberries in the summer","Vasarą mėgstu valgyti šviežias braškes")
         )
 
