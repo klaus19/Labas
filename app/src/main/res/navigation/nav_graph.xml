@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_userFragment_to_directionsFragment"
             app:destination="@id/directionsFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_vegetables_Fragment"
+            app:destination="@id/vegetables_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/practiseFragment"
@@ -72,6 +75,15 @@
         tools:layout="@layout/fragment_directions" >
         <action
             android:id="@+id/action_directionsFragment_to_flashCards"
+            app:destination="@id/flashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/vegetables_Fragment"
+        android:name="com.example.visuallithuanian.VegetablesFragment"
+        android:label="fragment_vegetables"
+        tools:layout="@layout/fragment_vegetables" >
+        <action
+            android:id="@+id/action_vegetables_Fragment_to_flashCards"
             app:destination="@id/flashCards" />
     </fragment>
 </navigation>

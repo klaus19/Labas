@@ -48,6 +48,10 @@ class UserFragment : Fragment() {
              if (position==fruitsPosition){
                  navController.navigate(R.id.action_userFragment_to_fruitsFragment)
              }
+             val vegetablesPosition =2
+             if (position==vegetablesPosition){
+                 navController.navigate(R.id.action_userFragment_to_vegetables_Fragment)
+             }
 
              val solarsystemPosition =4
              if (position==solarsystemPosition){
