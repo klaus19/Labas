@@ -70,24 +70,21 @@ class DirectionsFragment : Fragment() {
 
         return listOf(
             ImageInfo(R.drawable.north,"North","Šiaurės",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                "","","",""),
             ImageInfo(R.drawable.south,"South","Pietų",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                "","","",""),
             ImageInfo(R.drawable.west,"West","Vakarų",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                "","","",""),
             ImageInfo(R.drawable.east,"East","Rytų",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                "","","",""),
             ImageInfo(R.drawable.northwest,"North West","Šiaurės vakarai",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                "","","",""),
             ImageInfo(R.drawable.northeast,"North East","Šiaurės rytai",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                "","","",""),
             ImageInfo(R.drawable.southwest,"South West","Pietvakariai",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                "","","",""),
             ImageInfo(R.drawable.southeast,"South East","Pietryčiai",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
-
-
-
+                "","","",""),
         )
 
     }

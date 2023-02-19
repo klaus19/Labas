@@ -5,13 +5,16 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.os.Build
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.data.ImageInfo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -23,19 +26,19 @@ class ImageAdapter(private val imageList:List<ImageInfo>) : RecyclerView.Adapter
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imageView: ImageView = itemView.findViewById(com.example.visuallithuanian.R.id.imageView)
-        val textView1: TextView = itemView.findViewById(com.example.visuallithuanian.R.id.name1TextView)
-        val textView2: TextView = itemView.findViewById(com.example.visuallithuanian.R.id.name2TextView)
-        val englishTextView: TextView = itemView.findViewById(com.example.visuallithuanian.R.id.hiddenTextViewEnglish)
-        val lithuanianTextView: TextView = itemView.findViewById(com.example.visuallithuanian.R.id.hiddenTextViewLithuanian)
+        val imageView: ImageView = itemView.findViewById(R.id.imageView)
+        val textView1: TextView = itemView.findViewById(R.id.name1TextView)
+        val textView2: TextView = itemView.findViewById(R.id.name2TextView)
+        val englishTextView: TextView = itemView.findViewById(R.id.hiddenTextViewEnglish)
+        val lithuanianTextView: TextView = itemView.findViewById(R.id.hiddenTextViewLithuanian)
+        val pluralEnglish:TextView = itemView.findViewById(R.id.pluralEnglish)
+        val pluralLithuanian:TextView = itemView.findViewById(R.id.pluralLithuanian)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(com.example.visuallithuanian.R.layout.item_image, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_image, parent, false)
         return ViewHolder(view)
     }
-
-    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = imageList[position]
         holder.imageView.setImageResource(currentItem.imageId)
@@ -43,16 +46,18 @@ class ImageAdapter(private val imageList:List<ImageInfo>) : RecyclerView.Adapter
         holder.textView2.text = currentItem.name2
         holder.englishTextView.text = currentItem.english
         holder.lithuanianTextView.text = currentItem.lithuanian
+        holder.pluralEnglish.text = currentItem.pluralEnglish
+        holder.pluralLithuanian.text = currentItem.pluralLithuanian
 
         val imageIcon =
-            holder.itemView.findViewById<ImageView>(com.example.visuallithuanian.R.id.gemCount)
+            holder.itemView.findViewById<ImageView>(R.id.gemCount)
         val cardAnimals =
-            holder.itemView.findViewById<CardView>(com.example.visuallithuanian.R.id.cardAnimals)
+            holder.itemView.findViewById<CardView>(R.id.cardAnimals)
         val textHiddenEnglish =
-            holder.itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.hiddenTextViewEnglish)
+            holder.itemView.findViewById<TextView>(R.id.hiddenTextViewEnglish)
 
         //Code for the emoji bouncy animation
-        val txtLithuanian = holder.itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.hiddenTextViewLithuanian)
+        val txtLithuanian = holder.itemView.findViewById<TextView>(R.id.hiddenTextViewLithuanian)
 
          //Code where the cardview moves to left and Textview gets shown behind it.
         imageIcon.setOnClickListener {
@@ -74,7 +79,6 @@ class ImageAdapter(private val imageList:List<ImageInfo>) : RecyclerView.Adapter
                 }
             })
         }
-
     }
     override fun getItemCount() = imageList.size
 }
