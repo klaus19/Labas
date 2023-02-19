@@ -43,6 +43,16 @@
                     android:gravity="center"
                     android:textStyle="bold"
                     android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/textflashCardLithuanian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Text2"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </FrameLayout>

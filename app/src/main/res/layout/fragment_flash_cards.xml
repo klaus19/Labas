@@ -20,16 +20,44 @@
             android:layout_marginLeft="10dp"
             android:src="@drawable/ic_arrow_back" />
 
+        <RelativeLayout
+            android:id="@+id/relativeFlashcard"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_toRightOf="@id/back_icon"
+            >
         <TextView
         android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
             android:textStyle="bold"
             android:layout_marginLeft="30dp"
-        android:layout_toRightOf="@id/back_icon"
         android:text="Flashcards"
         android:textSize="40sp"
         android:textColor="#FFF" />
+            <TextView
+                android:id="@+id/subtext_flash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_below="@id/title_text"
+                android:layout_marginLeft="30dp"
+                android:text="Pick a set to practice"
+                android:textSize="20sp"
+                android:textColor="#FFF" />
+
+            <ImageView
+                android:layout_marginLeft="20dp"
+                android:id="@+id/imageMonster"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/subtext_flash"
+                android:src="@drawable/monster"/>
+
+        </RelativeLayout>
+
+
+
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView

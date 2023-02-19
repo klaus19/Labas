@@ -109,7 +109,7 @@ class Solarsystem : Fragment() {
                 R.raw.pepper,
                 "",""),
             ImageInfo(
-                R.drawable.uranus,"","Uranas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.uranus,"Uranus","Uranas",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.zuccini,
                 "",""),
             ImageInfo(R.drawable.moon,"Moon","Mėnulis",listOf(R.drawable.purp), R.drawable.mic,
