@@ -47,6 +47,10 @@ class FirstScreen:AppCompatActivity() {
                     // handle item2 selection
                     navController.navigate(R.id.practiseFragment)
                 }
+                R.id.page_3 ->{
+                    // handle item3 selection
+                    navController.navigate(R.id.settingsFragment)
+                }
             }
             true
 
