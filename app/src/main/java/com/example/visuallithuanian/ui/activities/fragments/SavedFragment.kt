@@ -14,7 +14,7 @@ import com.example.visuallithuanian.data.ImageInfo
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 
-
+@AndroidEntryPoint
 class SavedFragment : Fragment() {
 
      lateinit var recyclerViewSaved: RecyclerView

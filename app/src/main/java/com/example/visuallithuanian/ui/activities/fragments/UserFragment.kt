@@ -13,7 +13,7 @@ import com.example.visuallithuanian.model.LanguageModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
-
+@AndroidEntryPoint
 class UserFragment : Fragment() {
 
     override fun onCreateView(
@@ -49,6 +49,10 @@ class UserFragment : Fragment() {
               val fruitsPosition=0
              if (position==fruitsPosition){
                  navController.navigate(R.id.action_userFragment_to_fruitsFragment)
+             }
+             val flowersPosition =1
+             if (position==flowersPosition){
+                 navController.navigate(R.id.action_userFragment_to_flowersFragment)
              }
              val vegetablesPosition =2
              if (position==vegetablesPosition){

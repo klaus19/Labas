@@ -23,7 +23,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class FruitsFragment : Fragment() {
 
 
@@ -45,10 +45,6 @@ class FruitsFragment : Fragment() {
 
         // setting up recyclerview
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewAnimals)
-
-        viewModel.bottomNavigationVisibility.observe(viewLifecycleOwner, Observer { visibility ->
-            bottomNav.visibility = if (visibility) View.VISIBLE else View.GONE
-        })
 
         //Putting the base listener here
        // recyclerView?.addOnScrollListener(BottomNavigationScrollListener(viewModel))
@@ -112,7 +108,7 @@ class FruitsFragment : Fragment() {
                 R.drawable.blackcurrant,"Black currant","Juodieji serbentai",listOf(R.drawable.purp),
                 R.drawable.mic,R.raw.potato,"Black currants are sweet","Juodieji serbentai yra saldūs"),
             ImageInfo(R.drawable.mango,"Mango","Mango",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
-                "I made jam from black currants","Gaminau uogienę iš juodųjų serbentų"),
+                "I made juice from Mango",""),
             ImageInfo(
                 R.drawable.strawberry,"Strawberry","braškių",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
                 "I love to eat fresh strawberries in the summer","Vasarą mėgstu valgyti šviežias braškes")

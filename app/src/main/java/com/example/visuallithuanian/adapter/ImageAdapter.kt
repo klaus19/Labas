@@ -4,20 +4,14 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.media.MediaPlayer
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.data.ImageInfo
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import org.w3c.dom.Text
 
 
 class ImageAdapter(private val imageList:List<ImageInfo>) : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
@@ -38,7 +32,6 @@ class ImageAdapter(private val imageList:List<ImageInfo>) : RecyclerView.Adapter
         return ViewHolder(view)
     }
 
-    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = imageList[position]
         holder.imageView.setImageResource(currentItem.imageId)
@@ -80,20 +73,17 @@ class ImageAdapter(private val imageList:List<ImageInfo>) : RecyclerView.Adapter
             })
         }
         val audioId = currentItem.audioId
-        val mediaPlayer = audioId?.let { MediaPlayer.create(holder.itemView.context, it) }
+        val mediaPlayer = audioId.run {
+            MediaPlayer.create(holder.itemView.context, this)
+        } ?: throw IllegalArgumentException("audioId cannot be null")
         holder.mediaPlayer = mediaPlayer
 
         imageAudio?.setOnClickListener {
-           mediaPlayer?.start()
+           mediaPlayer.start()
         }
 
 
     }
     override fun getItemCount() = imageList.size
 
-    override fun onViewRecycled(holder: ViewHolder) {
-        holder.mediaPlayer?.release()
-        holder.mediaPlayer = null
-        super.onViewRecycled(holder)
-    }
 }
