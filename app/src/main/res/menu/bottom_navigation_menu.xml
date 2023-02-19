@@ -5,11 +5,16 @@
         android:id="@+id/page_1"
         android:enabled="true"
         android:icon="@drawable/user"
-        android:title=""/>
+        android:title="User"/>
     <item
         android:id="@+id/page_2"
         android:enabled="true"
         android:icon="@drawable/learn"
-        android:title=""/>
+        android:title="Practice"/>
+    <item
+        android:id="@+id/page_3"
+        android:enabled="true"
+        android:icon="@drawable/baseline_settings_24"
+        android:title="Settings"/>
 
 </menu>
