@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_userFragment_to_flowersFragment"
             app:destination="@id/flowersFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/practiseFragment"
@@ -98,4 +101,9 @@
             android:id="@+id/action_flowersFragment_to_flashCards"
             app:destination="@id/flashCards" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.visuallithuanian.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>
