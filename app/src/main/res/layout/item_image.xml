@@ -54,6 +54,8 @@
                 android:gravity="center"
                 android:textSize="18sp" />
         </LinearLayout>
+        <include layout="@layout/card_back_layout"
+            />
         <ImageView
             android:id="@+id/gemCount"
             android:layout_width="30dp"

@@ -58,32 +58,31 @@ class VegetablesFragment : Fragment() {
     private fun generateVegetablesList(): List<ImageInfo> {
         return listOf(
             ImageInfo(R.drawable.potato,"Potato","Bulvė",listOf(R.drawable.purp), R.drawable.mic,
-                "Potato is popular in Lithuania","Bulvės populiarios Lietuvoje"),
+                "Potato is popular in Lithuania","Bulvės populiarios Lietuvoje","",""),
             ImageInfo(
                 R.drawable.cabbage,"Cabbage","Kopūstai",listOf(R.drawable.purp), R.drawable.mic,
-                "I don't eat cabbage","Aš nevalgau kopūstų"),
+                "I don't eat cabbage","Aš nevalgau kopūstų","",""),
             ImageInfo(R.drawable.zucchini,"Zucchini","Cukinijos",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                "","","",""),
             ImageInfo(
                 R.drawable.carrot,"Carrot","Morkos",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                "","","",""),
             ImageInfo(R.drawable.beet,"Beet","burokėliai",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                "","","",""),
             ImageInfo(
                 R.drawable.onion,"Onion","Svogūnai",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                "","","",""),
             ImageInfo(R.drawable.pepper,"Pepper","Pipirai",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                "","","",""),
             ImageInfo(
                 R.drawable.tomato,"Tomatoes","Pomidorai",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                "","","",""),
             ImageInfo(R.drawable.cucumber,"Cucumber","Agurkai",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                "","","",""),
             ImageInfo(
                 R.drawable.radish,"Radish","Ridikas",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                "","","",""),
         )
-
     }
 
 }
