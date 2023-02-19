@@ -64,12 +64,12 @@
             android:scaleType="fitXY"
             android:src="@drawable/purp" />
         <ImageView
-            android:id="@+id/newImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/imageAudio"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:src="@drawable/mic"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="15dp"
             android:layout_gravity="bottom|start" />
     </androidx.cardview.widget.CardView>
         <TextView
