@@ -16,7 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 
-
+@AndroidEntryPoint
 class FlashCards : Fragment() {
 
     lateinit var bottomNav:BottomNavigationView

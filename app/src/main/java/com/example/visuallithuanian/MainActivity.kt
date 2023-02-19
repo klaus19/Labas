@@ -7,7 +7,7 @@ import com.example.visuallithuanian.ui.activities.FirstScreen
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     val activityScope = CoroutineScope(Dispatchers.Main)
