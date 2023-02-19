@@ -68,8 +68,8 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:src="@drawable/mic"
-            android:layout_marginLeft="15dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_gravity="bottom|start" />
     </androidx.cardview.widget.CardView>
         <TextView

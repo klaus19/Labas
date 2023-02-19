@@ -15,6 +15,7 @@ class FlashcardsAdapter(private val imageList: List<FlashCardInfo>) :RecyclerVie
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageViewFlashcards = itemView.findViewById<ImageView>(com.example.visuallithuanian.R.id.imageViewFlashcards)
         val textViewFlashcards = itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.textflashCardName)
+        val textViewFlashcardsLithuanian = itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.textflashCardLithuanian)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,10 +29,12 @@ class FlashcardsAdapter(private val imageList: List<FlashCardInfo>) :RecyclerVie
 
         holder.imageViewFlashcards.setImageResource(current_item.imageId)
         holder.textViewFlashcards.text = current_item.name
+        holder.textViewFlashcardsLithuanian.text = current_item.translation
 
         val imageFlashcards = holder.itemView.findViewById<ImageView>(com.example.visuallithuanian.R.id.imageViewFlashcards)
         val textViewFlashCards = holder.itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.textflashCardName)
         val cardviewFlashcard = holder.itemView.findViewById<CardView>(com.example.visuallithuanian.R.id.cardFlashCards)
+        val textLithuanian = holder.itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.textflashCardLithuanian)
     }
 
     override fun getItemCount(): Int {
