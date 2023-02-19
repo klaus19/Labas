@@ -58,30 +58,32 @@ class VegetablesFragment : Fragment() {
     private fun generateVegetablesList(): List<ImageInfo> {
         return listOf(
             ImageInfo(R.drawable.potato,"Potato","Bulvė",listOf(R.drawable.purp), R.drawable.mic,
-                "Potato is popular in Lithuania","Bulvės populiarios Lietuvoje"),
+                R.raw.potato,
+                "Potato is popular in Lithuania","Bulvė yra populiari Lietuvoje"),
             ImageInfo(
-                R.drawable.cabbage,"Cabbage","Kopūstai",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.cabbage,"Cabbage","Kopūstas",listOf(R.drawable.purp), R.drawable.mic, R.raw.cabbage,
                 "I don't eat cabbage","Aš nevalgau kopūstų"),
-            ImageInfo(R.drawable.zucchini,"Zucchini","Cukinijos",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+            ImageInfo(R.drawable.zucchini,"Zucchini","Cukinija",listOf(R.drawable.purp), R.drawable.mic,
+                R.raw.zuccini,
+                "Zucchini is healthy to eat","Cukinijas valgyti sveika"),
             ImageInfo(
-                R.drawable.carrot,"Carrot","Morkos",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
-            ImageInfo(R.drawable.beet,"Beet","burokėliai",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                R.drawable.carrot,"Carrot","Morka",listOf(R.drawable.purp), R.drawable.mic, R.raw.carrot,
+                "Rabbit likes Carrots","Triušiui patinka morkos"),
+            ImageInfo(R.drawable.beet,"Beet","Burokas",listOf(R.drawable.purp), R.drawable.mic, R.raw.beet,
+                "Doctor told me to eat beet","Gydytojas liepė valgyti burokus"),
             ImageInfo(
-                R.drawable.onion,"Onion","Svogūnai",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
-            ImageInfo(R.drawable.pepper,"Pepper","Pipirai",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                R.drawable.onion,"Onion","svogūnas",listOf(R.drawable.purp), R.drawable.mic, R.raw.onion,
+                "Onion makes soup tasty","Svogūnai padaro sriubą skanią"),
+            ImageInfo(R.drawable.pepper,"Pepper","Pipiras",listOf(R.drawable.purp), R.drawable.mic, R.raw.pepper,
+                "This pizza has peppers ","Šioje picoje yra pipirų"),
             ImageInfo(
-                R.drawable.tomato,"Tomatoes","Pomidorai",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
-            ImageInfo(R.drawable.cucumber,"Cucumber","Agurkai",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                R.drawable.tomato,"Tomatoes","Pomidoras",listOf(R.drawable.purp), R.drawable.mic, R.raw.tomato,
+                "I like Tomato sauce","Man patinka pomidorų padažas"),
+            ImageInfo(R.drawable.cucumber,"Cucumber","Agurkas",listOf(R.drawable.purp), R.drawable.mic, R.raw.cucumber,
+                "She doesn't like Cucumber salad","Ji nemėgsta agurkų salotų"),
             ImageInfo(
-                R.drawable.radish,"Radish","Ridikas",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
+                R.drawable.radish,"Radish","Ridikas",listOf(R.drawable.purp), R.drawable.mic, R.raw.radish,
+                "Radish is good for health","Ridikai yra naudingi sveikatai"),
         )
 
     }

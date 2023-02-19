@@ -76,35 +76,35 @@ class Solarsystem : Fragment() {
     private fun generateSolarSystemList(): List<ImageInfo> {
 
         return listOf(
-            ImageInfo(R.drawable.sun,"Sun","Saulė",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(R.drawable.sun,"Sun","Saulė",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
                 "",""),
             ImageInfo(
-                R.drawable.star,"Star","Žvaigždė",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.star,"Star","Žvaigždė",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.meteor,"Meteor","Meteoras",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(R.drawable.meteor,"Meteor","Meteoras",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.comet,"Comet","Kometa",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
-            ImageInfo(
-                R.drawable.mercury,"Mercury","Merkurijus",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
-            ImageInfo(R.drawable.venus,"Venus","Venera",listOf(R.drawable.purp), R.drawable.mic,
-                "",""),
-            ImageInfo(R.drawable.earth,"Earth","Žemė",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(R.drawable.comet,"Comet","Kometa",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
                 "",""),
             ImageInfo(
-                R.drawable.mars,"Mars","Marsas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.mercury,"Mercury","Merkurijus",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.jupiter,"Jupiter","Jupiteris",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(R.drawable.venus,"Venus","Venera",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.saturn,"Saturn","Saturnas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(R.drawable.earth,"Earth","Žemė",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
                 "",""),
             ImageInfo(
-                R.drawable.uranus,"","Uranas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.mars,"Mars","Marsas",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.moon,"Moon","Mėnulis",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(R.drawable.jupiter,"Jupiter","Jupiteris",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.planets,"Planets","Planetos",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(R.drawable.saturn,"Saturn","Saturnas",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+                "",""),
+            ImageInfo(
+                R.drawable.uranus,"","Uranas",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+                "",""),
+            ImageInfo(R.drawable.moon,"Moon","Mėnulis",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+                "",""),
+            ImageInfo(R.drawable.planets,"Planets","Planetos",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
                 "",""),
 
         )

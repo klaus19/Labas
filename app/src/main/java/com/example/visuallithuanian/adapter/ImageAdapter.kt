@@ -3,6 +3,7 @@ package com.example.visuallithuanian.adapter
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
+import android.media.MediaPlayer
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -23,11 +24,13 @@ class ImageAdapter(private val imageList:List<ImageInfo>) : RecyclerView.Adapter
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val imageClip:ImageView = itemView.findViewById(com.example.visuallithuanian.R.id.imageAudio)
         val imageView: ImageView = itemView.findViewById(com.example.visuallithuanian.R.id.imageView)
         val textView1: TextView = itemView.findViewById(com.example.visuallithuanian.R.id.name1TextView)
         val textView2: TextView = itemView.findViewById(com.example.visuallithuanian.R.id.name2TextView)
         val englishTextView: TextView = itemView.findViewById(com.example.visuallithuanian.R.id.hiddenTextViewEnglish)
         val lithuanianTextView: TextView = itemView.findViewById(com.example.visuallithuanian.R.id.hiddenTextViewLithuanian)
+        var mediaPlayer: MediaPlayer? = null
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,11 +42,13 @@ class ImageAdapter(private val imageList:List<ImageInfo>) : RecyclerView.Adapter
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = imageList[position]
         holder.imageView.setImageResource(currentItem.imageId)
+        currentItem.voice?.let { holder.imageClip.setImageResource(it) }
         holder.textView1.text = currentItem.name1
         holder.textView2.text = currentItem.name2
         holder.englishTextView.text = currentItem.english
         holder.lithuanianTextView.text = currentItem.lithuanian
 
+        val imageAudio  = holder.itemView.findViewById<ImageView>(com.example.visuallithuanian.R.id.imageAudio)
         val imageIcon =
             holder.itemView.findViewById<ImageView>(com.example.visuallithuanian.R.id.gemCount)
         val cardAnimals =
@@ -74,7 +79,21 @@ class ImageAdapter(private val imageList:List<ImageInfo>) : RecyclerView.Adapter
                 }
             })
         }
+        val audioId = currentItem.audioId
+        val mediaPlayer = audioId?.let { MediaPlayer.create(holder.itemView.context, it) }
+        holder.mediaPlayer = mediaPlayer
+
+        imageAudio?.setOnClickListener {
+           mediaPlayer?.start()
+        }
+
 
     }
     override fun getItemCount() = imageList.size
+
+    override fun onViewRecycled(holder: ViewHolder) {
+        holder.mediaPlayer?.release()
+        holder.mediaPlayer = null
+        super.onViewRecycled(holder)
+    }
 }
