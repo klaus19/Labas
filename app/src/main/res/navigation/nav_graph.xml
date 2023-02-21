@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_userFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_sportsFragment"
+            app:destination="@id/sportsFragment" />
     </fragment>
     <fragment
         android:id="@+id/practiseFragment"
@@ -106,4 +109,13 @@
         android:name="com.example.visuallithuanian.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/sportsFragment"
+        android:name="com.example.visuallithuanian.SportsFragment"
+        android:label="fragment_sports"
+        tools:layout="@layout/fragment_sports" >
+        <action
+            android:id="@+id/action_sportsFragment_to_flashCards"
+            app:destination="@id/flashCards" />
+    </fragment>
 </navigation>

@@ -74,6 +74,11 @@ class UserFragment : Fragment() {
                  navController.navigate(R.id.action_userFragment_to_animals)
              }
 
+             val sportsPosition =9
+             if (position==sportsPosition){
+                 navController.navigate(R.id.action_userFragment_to_sportsFragment)
+             }
+
 
          }
         return view
