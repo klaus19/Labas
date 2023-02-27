@@ -33,12 +33,14 @@ class FlashCards : Fragment() {
         bottomNav.visibility = View.VISIBLE
 
         val back_icon = view.findViewById<ImageView>(R.id.back_icon)
-        val recyclerViewCards = view.findViewById<RecyclerView>(R.id.recyclerViewFlashcards)
-        recyclerViewCards.layoutManager = LinearLayoutManager(context)
+        val recyclerViewCards1 = view.findViewById<RecyclerView>(R.id.recyclerViewFlashcards)
+
+        recyclerViewCards1.layoutManager = LinearLayoutManager(context)
+
 
         val flashCardList = generateFlashCards()
         val adapter = FlashcardsAdapter(flashCardList)
-        recyclerViewCards.adapter = adapter
+        recyclerViewCards1.adapter = adapter
 
 
         // setting up listener
@@ -51,12 +53,12 @@ class FlashCards : Fragment() {
 
     private fun generateFlashCards():List<FlashCardInfo> {
         return listOf(
-            FlashCardInfo(R.drawable.word,"Words","žodžiai"),
-            FlashCardInfo(  R.drawable.talking,"Daily Conversation","Kasdienis pokalbis"),
+            FlashCardInfo(R.drawable.talking,"Daily Conversation","Kasdienis pokalbis"),
             FlashCardInfo(R.drawable.food,"Food","Maistas"),
             FlashCardInfo(R.drawable.relatives,"Relatives","Giminaičiai"),
             FlashCardInfo(R.drawable.clothing,"Clothing","Drabužiai"),
-
+            FlashCardInfo(R.drawable.village,"Towns and Villages","Miestai ir kaimai"),
+            FlashCardInfo(R.drawable.nature,"Nature","Gamta"),
         )
 
     }

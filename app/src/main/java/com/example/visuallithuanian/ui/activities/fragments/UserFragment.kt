@@ -36,6 +36,7 @@ class UserFragment : Fragment() {
         languageModelArrayList.add(LanguageModel("Gyvūnai", R.drawable.animals,"Animals"))
         languageModelArrayList.add(LanguageModel("Paukščiai", R.drawable.birds,"Birds"))
         languageModelArrayList.add(LanguageModel("Sporto", R.drawable.sports,"Sports"))
+        languageModelArrayList.add(LanguageModel("Spalvos", R.drawable.colors,"Colors"))
 
         val languageAdapter = context?.let { LanguageAdapter(it,languageModelArrayList) }
         gridView.adapter=languageAdapter
