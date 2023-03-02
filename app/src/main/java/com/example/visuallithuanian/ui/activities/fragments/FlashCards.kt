@@ -60,6 +60,8 @@ class FlashCards : Fragment() {
             FlashCardInfo(R.drawable.clothing,"Clothing","Drabužiai"),
             FlashCardInfo(R.drawable.village,"Towns and Villages","Miestai ir kaimai"),
             FlashCardInfo(R.drawable.nature,"Nature","Gamta"),
+            FlashCardInfo(R.drawable.verbs,"Popular Verbs","Populiariausi veiksmažodžiai"),
+
 
         )
 
