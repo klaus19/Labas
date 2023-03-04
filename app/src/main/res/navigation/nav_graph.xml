@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_userFragment_to_sportsFragment"
             app:destination="@id/sportsFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_seasonsFragment"
+            app:destination="@id/seasonsFragment" />
     </fragment>
     <fragment
         android:id="@+id/practiseFragment"
@@ -116,6 +119,15 @@
         tools:layout="@layout/fragment_sports" >
         <action
             android:id="@+id/action_sportsFragment_to_flashCards"
+            app:destination="@id/flashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/seasonsFragment"
+        android:name="com.example.visuallithuanian.SeasonsFragment"
+        android:label="fragment_seasons"
+        tools:layout="@layout/fragment_seasons" >
+        <action
+            android:id="@+id/action_seasonsFragment_to_flashCards"
             app:destination="@id/flashCards" />
     </fragment>
 </navigation>
