@@ -64,6 +64,10 @@ class UserFragment : Fragment() {
              if (position==solarsystemPosition){
                  navController.navigate(R.id.action_userFragment_to_solarsystem)
              }
+             val seasonsPosition =5
+             if (position==seasonsPosition){
+                 navController.navigate(R.id.action_userFragment_to_seasonsFragment)
+             }
              val directionsPosition =6
              if (position==directionsPosition){
                  navController.navigate(R.id.action_userFragment_to_directionsFragment)
