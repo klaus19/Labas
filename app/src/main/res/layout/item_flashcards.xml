@@ -9,11 +9,11 @@
         android:layout_height="wrap_content">
         <androidx.cardview.widget.CardView
             android:layout_width="270dp"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:layout_margin="10dp"
             android:layout_gravity="center"
             android:id="@+id/cardFlashCards"
-            app:cardCornerRadius="45dp"
+            app:cardCornerRadius="25dp"
             app:cardElevation="4dp"
             >
             <LinearLayout
@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:text="Text1"
                     android:textColor="@color/white"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:textSize="18sp" />
@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:text="Text2"
                     android:textColor="@color/white"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:textSize="18sp" />
