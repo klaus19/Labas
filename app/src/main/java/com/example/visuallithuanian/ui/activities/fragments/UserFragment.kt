@@ -29,7 +29,7 @@ class UserFragment : Fragment() {
         languageModelArrayList.add(LanguageModel("Vaisiai", R.drawable.fruits,"Fruits"))
         languageModelArrayList.add(LanguageModel("Gėlės", R.drawable.flowers,"Flowers"))
         languageModelArrayList.add(LanguageModel("Daržovės", R.drawable.vegetable,"Vegetables"))
-        languageModelArrayList.add(LanguageModel("Architektūra", R.drawable.campus,"Architectures"))
+        languageModelArrayList.add(LanguageModel("Institucijos", R.drawable.campus,"Institutions"))
         languageModelArrayList.add(LanguageModel("Saulės sistema", R.drawable.universe,"Solar System"))
         languageModelArrayList.add(LanguageModel("Metų laikai", R.drawable.season,"Seasons"))
         languageModelArrayList.add(LanguageModel("Kryptys", R.drawable.compass,"Directions"))
@@ -58,6 +58,10 @@ class UserFragment : Fragment() {
              val vegetablesPosition =2
              if (position==vegetablesPosition){
                  navController.navigate(R.id.action_userFragment_to_vegetables_Fragment)
+             }
+             val instituitonsPosition =3
+             if (position==instituitonsPosition){
+                 navController.navigate(R.id.action_userFragment_to_institutionsFragment)
              }
 
              val solarsystemPosition =4

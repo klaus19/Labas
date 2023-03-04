@@ -17,8 +17,10 @@ import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class SeasonsFragment : Fragment() {
 
     //View Binding
