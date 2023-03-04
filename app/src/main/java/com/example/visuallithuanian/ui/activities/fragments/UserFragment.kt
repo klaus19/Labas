@@ -37,6 +37,12 @@ class UserFragment : Fragment() {
         languageModelArrayList.add(LanguageModel("Paukščiai", R.drawable.birds,"Birds"))
         languageModelArrayList.add(LanguageModel("Sporto", R.drawable.sports,"Sports"))
         languageModelArrayList.add(LanguageModel("Spalvos", R.drawable.colors,"Colors"))
+        languageModelArrayList.add(LanguageModel("Kontinentai", R.drawable.continents,"Continents"))
+        languageModelArrayList.add(LanguageModel("Numeriai", R.drawable.numbers,"Numbers"))
+        languageModelArrayList.add(LanguageModel("Mėnesiai", R.drawable.months,"Months"))
+        languageModelArrayList.add(LanguageModel("Dienos", R.drawable.days,"Days"))
+        languageModelArrayList.add(LanguageModel("Laikas", R.drawable.time,"Time"))
+
 
         val languageAdapter = context?.let { LanguageAdapter(it,languageModelArrayList) }
         gridView.adapter=languageAdapter
