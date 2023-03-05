@@ -43,6 +43,7 @@ class UserFragment : Fragment() {
         languageModelArrayList.add(LanguageModel("Dienos", R.drawable.days,"Days"))
         languageModelArrayList.add(LanguageModel("Laikas", R.drawable.time,"Time"))
         languageModelArrayList.add(LanguageModel("Profesija", R.drawable.profession,"Profession"))
+        languageModelArrayList.add(LanguageModel("Transportas", R.drawable.transportation,"Transportations"))
 
 
 
