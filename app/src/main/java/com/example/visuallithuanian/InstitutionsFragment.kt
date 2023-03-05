@@ -36,7 +36,7 @@ class InstitutionsFragment : Fragment() {
         }
 
         binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_seasonsFragment_to_flashCards)
+            findNavController().navigate(R.id.action_institutionsFragment_to_flashCards)
         }
 
         val exampleList = generateInstitutionsList()
