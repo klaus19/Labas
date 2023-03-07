@@ -42,6 +42,9 @@
         <action
             android:id="@+id/action_userFragment_to_institutionsFragment"
             app:destination="@id/institutionsFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_birdsFragment"
+            app:destination="@id/birdsFragment" />
     </fragment>
     <fragment
         android:id="@+id/practiseFragment"
@@ -140,6 +143,15 @@
         tools:layout="@layout/fragment_institutions" >
         <action
             android:id="@+id/action_institutionsFragment_to_flashCards"
+            app:destination="@id/flashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/birdsFragment"
+        android:name="com.example.visuallithuanian.BirdsFragment"
+        android:label="fragment_birds"
+        tools:layout="@layout/fragment_birds" >
+        <action
+            android:id="@+id/action_birdsFragment_to_flashCards"
             app:destination="@id/flashCards" />
     </fragment>
 </navigation>
