@@ -67,7 +67,11 @@
         android:id="@+id/flashCards"
         android:name="com.example.visuallithuanian.ui.activities.fragments.FlashCards"
         android:label="fragment_flash_cards"
-        tools:layout="@layout/fragment_flash_cards" />
+        tools:layout="@layout/fragment_flash_cards" >
+        <action
+            android:id="@+id/action_flashCards_to_questionsFragment"
+            app:destination="@id/questionsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
         android:name="com.example.visuallithuanian.ui.activities.fragments.FruitsFragment"
@@ -154,4 +158,9 @@
             android:id="@+id/action_birdsFragment_to_flashCards"
             app:destination="@id/flashCards" />
     </fragment>
+    <fragment
+        android:id="@+id/questionsFragment"
+        android:name="com.example.visuallithuanian.QuestionsFragment"
+        android:label="fragment_questions"
+        tools:layout="@layout/fragment_questions" />
 </navigation>

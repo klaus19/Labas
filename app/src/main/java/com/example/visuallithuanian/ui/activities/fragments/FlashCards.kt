@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.cardview.widget.CardView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.R
@@ -20,6 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class FlashCards : Fragment() {
 
     lateinit var bottomNav:BottomNavigationView
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,6 +40,9 @@ class FlashCards : Fragment() {
 
         recyclerViewCards1.layoutManager = LinearLayoutManager(context)
 
+        val navController = Navigation.findNavController(requireActivity(),
+            R.id.nav_host_fragment
+        )
 
         val flashCardList = generateFlashCards()
         val adapter = FlashcardsAdapter(flashCardList)
@@ -61,8 +67,6 @@ class FlashCards : Fragment() {
             FlashCardInfo(R.drawable.village,"Towns and Villages","Miestai ir kaimai"),
             FlashCardInfo(R.drawable.nature,"Nature","Gamta"),
             FlashCardInfo(R.drawable.verbs,"Popular Verbs","Populiariausi veiksmažodžiai"),
-
-
         )
 
     }
