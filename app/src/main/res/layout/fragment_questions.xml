@@ -61,6 +61,7 @@
             android:layout_marginTop="100dp">
 
             <TextView
+                android:id="@+id/text_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Card Title"
@@ -72,28 +73,29 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
     <ProgressBar
         android:background="@drawable/progressbar_drawable"
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:indeterminate="false"
         android:max="100"
         android:progress="10"
-        android:layout_marginTop="2dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/progress_horizontal"
         android:layout_width="240dp"
         android:layout_height="20dp"
-        android:layout_below="@id/card_view_questions"
-        ></ProgressBar>
+        android:layout_below="@id/card_view_questions" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="100dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="Flip"
+        android:id="@+id/btnFlip"
         android:textColor="#FFFF"
         android:background="@drawable/button_background"
         android:padding="15dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/progress_horizontal"
         android:gravity="center_horizontal"
-        android:layout_centerHorizontal="true"></androidx.appcompat.widget.AppCompatButton>
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
