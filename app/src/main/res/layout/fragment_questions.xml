@@ -38,4 +38,62 @@
         app:backgroundTint="@color/pink"
         app:fabSize="normal" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_questions"
+        android:layout_width="240dp"
+        android:layout_height="350dp"
+        android:layout_below="@id/toolbar"
+        android:layout_marginStart="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="126dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="80dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="#0077c2"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginTop="100dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Card Title"
+                android:layout_marginTop="35dp"
+                android:textColor="#FFFF"
+                android:textSize="18sp"
+
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <ProgressBar
+        android:background="@drawable/progressbar_drawable"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="10"
+        android:layout_marginTop="2dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/progress_horizontal"
+        android:layout_width="240dp"
+        android:layout_height="20dp"
+        android:layout_below="@id/card_view_questions"
+        ></ProgressBar>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="100dp"
+        android:layout_marginTop="20dp"
+        android:text="Flip"
+        android:textColor="#FFFF"
+        android:background="@drawable/button_background"
+        android:padding="15dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progress_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"></androidx.appcompat.widget.AppCompatButton>
 </RelativeLayout>
