@@ -6,16 +6,24 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.data.FlashCardInfo
+import com.example.visuallithuanian.ui.activities.fragments.FlashCardsDirections
 
 
-class FlashcardsAdapter(private val imageList: List<FlashCardInfo>) :RecyclerView.Adapter<FlashcardsAdapter.ViewHolder>(){
+class FlashcardsAdapter(private val imageList: List<FlashCardInfo>
+,  private val navController: NavController
+) :RecyclerView.Adapter<FlashcardsAdapter.ViewHolder>(){
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageViewFlashcards = itemView.findViewById<ImageView>(com.example.visuallithuanian.R.id.imageViewFlashcards)
         val textViewFlashcards = itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.textflashCardName)
         val textViewFlashcardsLithuanian = itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.textflashCardLithuanian)
+
+        val cardviewFlashcard = itemView.findViewById<CardView>(com.example.visuallithuanian.R.id.cardFlashCards)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,7 +43,22 @@ class FlashcardsAdapter(private val imageList: List<FlashCardInfo>) :RecyclerVie
         val textViewFlashCards = holder.itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.textflashCardName)
         val cardviewFlashcard = holder.itemView.findViewById<CardView>(com.example.visuallithuanian.R.id.cardFlashCards)
         val textLithuanian = holder.itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.textflashCardLithuanian)
+
+        holder.cardviewFlashcard.setOnClickListener {
+            val action = when(position){
+                    1 ->FlashCardsDirections.actionFlashCardsToQuestionsFragment()
+
+                else -> return@setOnClickListener
+            }
+            action.let {
+                navController.navigate(it)
+            }
+
+        }
+
+
     }
+
 
     override fun getItemCount(): Int {
         return imageList.size

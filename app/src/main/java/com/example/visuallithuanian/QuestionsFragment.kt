@@ -5,55 +5,64 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.visuallithuanian.databinding.FragmentQuestionsBinding
+import com.example.visuallithuanian.ui.activities.FirstScreen
+import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [QuestionsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class QuestionsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding:FragmentQuestionsBinding?=null
+    private val binding get() = _binding!!
+
+    lateinit var viewModel: BottomNavigationViewModel
+
+    lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_questions, container, false)
+        _binding = FragmentQuestionsBinding.inflate(inflater, container, false)
+
+        bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
+        viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
+
+        bottomNavigationView.visibility = View.GONE
+
+
+        // Added a functionality where the bottomnavigation view will get invisible while scrolling and
+        // appear after scrolling is stopped
+        // recyclerView?.addOnScrollListener(BottomNavigationScrollListener(viewModel))
+        // setting up recyclerview
+
+        //binding.recyclerViewAnimals.layoutManager = LinearLayoutManager(context)
+
+
+        // setting up listener for back Icon
+        binding.backIcon?.setOnClickListener {
+            activity?.onBackPressed()
+        }
+
+        binding.floatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_questionsFragment_to_flashCards)
+        }
+
+
+
+        // settingup ImageAdapter
+       // val adapter = ImageAdapter(exampleList)
+        //binding.recyclerViewAnimals.adapter = adapter
+
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment QuestionsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            QuestionsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 }

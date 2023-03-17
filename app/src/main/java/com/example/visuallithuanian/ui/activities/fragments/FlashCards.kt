@@ -45,7 +45,7 @@ class FlashCards : Fragment() {
         )
 
         val flashCardList = generateFlashCards()
-        val adapter = FlashcardsAdapter(flashCardList)
+        val adapter = FlashcardsAdapter(flashCardList,navController)
         recyclerViewCards1.adapter = adapter
 
 

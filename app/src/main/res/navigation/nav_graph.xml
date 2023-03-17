@@ -162,5 +162,9 @@
         android:id="@+id/questionsFragment"
         android:name="com.example.visuallithuanian.QuestionsFragment"
         android:label="fragment_questions"
-        tools:layout="@layout/fragment_questions" />
+        tools:layout="@layout/fragment_questions" >
+        <action
+            android:id="@+id/action_questionsFragment_to_flashCards"
+            app:destination="@id/flashCards" />
+    </fragment>
 </navigation>
