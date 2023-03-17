@@ -61,16 +61,29 @@
             android:layout_marginTop="100dp">
 
             <TextView
-                android:id="@+id/text_card"
+                android:id="@+id/text_card_front"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Card Title"
+                android:text="@string/questions_tag"
                 android:layout_marginTop="35dp"
                 android:textColor="#FFFF"
                 android:textSize="18sp"
 
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+            <TextView
+                android:id="@+id/text_card_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Back_side"
+                android:visibility="invisible"
+                android:layout_marginTop="35dp"
+                android:textColor="#FFFF"
+                android:textSize="18sp"
+
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

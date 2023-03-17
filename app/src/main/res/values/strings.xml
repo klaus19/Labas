@@ -8,4 +8,5 @@
     <string name="questions">Questions</string>
     <string name="flashcards">Flashcards Fragment</string>
     <string name="add_item">Flash Cards</string>
+    <string name="questions_tag">Front Side</string>
 </resources>

@@ -1,9 +1,8 @@
 package com.example.visuallithuanian
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
+import android.animation.*
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -22,23 +21,26 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class QuestionsFragment : Fragment() {
-
-    private var _binding:FragmentQuestionsBinding?=null
-    private val binding get() = _binding!!
-
+    lateinit var binding: FragmentQuestionsBinding
     lateinit var viewModel: BottomNavigationViewModel
 
     lateinit var bottomNavigationView: BottomNavigationView
 
     private val hashMap = HashMap<String,String>()
-    private var progress = 0
 
+    private var currentPairIndex =0
+    private lateinit var currentPair:Map.Entry<String,String>
+
+    var isFront=true
+
+
+    @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentQuestionsBinding.inflate(inflater, container, false)
+        binding = FragmentQuestionsBinding.inflate(inflater, container, false)
 
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
@@ -63,42 +65,61 @@ class QuestionsFragment : Fragment() {
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
         R.color.silver))
 
-        hashMap["key1"] = "value1"
-        hashMap["key2"] = "value2"
-        hashMap["key3"] = "value3"
+        // Hashmap of strings that will shown on cardview front and back side
+        hashMap["What"] = "Kas"
+        hashMap["When"] = "Kai"
+        hashMap["Where"] = "Kur"
+        hashMap["Who"] = "Kas"
+        hashMap["Whom"] = "Kam"
+        hashMap["Why"] = "Kodėl"
+        hashMap["How"] = "Kaip"
+        hashMap["Which"] = "Kuris/kuri"
+        hashMap["Whose"] = "Kieno"
 
-        // button on click listener
-        binding.btnFlip.setOnClickListener {
-            val currentText = binding.textCard.text.toString()
-            if (hashMap.containsKey(currentText)){
-                binding.textCard.text = hashMap[currentText]
-                flipAnimation()
-            }else{
-                binding.textCard.text = hashMap.keys.first()
+       val front_animation = AnimatorInflater.loadAnimator(context, R.anim.front_animator) as AnimatorSet
+        val back_animation = AnimatorInflater.loadAnimator(context,R.anim.back_animator)as AnimatorSet
+
+        currentPair = hashMap.entries.elementAt(currentPairIndex)
+        binding.textCardFront.text = currentPair.key
+        binding.textCardBack.text = hashMap[currentPair.key]
+
+        with(binding) {
+            btnFlip.setOnClickListener {
+                // initialize currentPairIndex to 0 if it hasn't been initialized yet
+                if (currentPairIndex < 0) {
+                    currentPairIndex = 0
+                }
+                if (isFront) {
+                    front_animation.setTarget(textCardFront)
+                    back_animation.setTarget(textCardBack)
+                    front_animation.start()
+                    back_animation.start()
+                    isFront = false
+                    textCardBack.visibility = View.VISIBLE
+                    textCardFront.visibility = View.GONE
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.pink))
+
+                } else {
+
+                    textCardFront.visibility = View.VISIBLE
+                    textCardBack.visibility = View.GONE
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue_card))
+                    front_animation.setTarget(textCardBack)
+                    back_animation.setTarget(textCardFront)
+                    back_animation.start()
+                    front_animation.start()
+                    isFront = true
+                }
+                // retrieve the current pair from the hashMap
+                currentPair = hashMap.entries.elementAt(currentPairIndex)
+                binding.textCardFront.text = currentPair.key
+                binding.textCardBack.text = hashMap[currentPair.key]
+
+                // increment currentPairIndex for the next flip
+                currentPairIndex = (currentPairIndex + 1) % hashMap.size
             }
-
         }
+
         return binding.root
     }
-
-    private fun flipAnimation() {
-        val rotationY = PropertyValuesHolder.ofFloat(View.ROTATION_Y, 0f, 180f)
-        val flipAnimator = ObjectAnimator.ofPropertyValuesHolder(binding.cardViewQuestions, rotationY)
-        flipAnimator.duration = 500 // set the duration of the animation
-        flipAnimator.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator) {
-                val rotation = PropertyValuesHolder.ofFloat(View.ROTATION, 180f, 0f)
-                val textRotateAnimator = ObjectAnimator.ofPropertyValuesHolder(binding.textCard, rotation)
-                textRotateAnimator.duration = 0
-                textRotateAnimator.start()
-
-                // Update progress value
-                progress++
-                binding.progressHorizontal.progress = progress
-            }
-        })
-        flipAnimator.start() // start the animation
-    }
-
-
 }
