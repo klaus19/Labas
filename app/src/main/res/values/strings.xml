@@ -8,8 +8,11 @@
     <string name="questions">Questions</string>
     <string name="flashcards">Flashcards Fragment</string>
     <string name="add_item">Flash Cards</string>
-    <string name="questions_tag">Front Side</string>
-    <string name="wh_questions">WH Words and Pronouns</string>
+    <string name="front_side">Front Side</string>
+    <string name="Tap">Tap</string>
     <string name="zero">0</string>
     <string name="to_learn">To Learn</string>
+    <string name="to_save_the_word">to Save and Learn</string>
+    <string name="back_side">Back_side</string>
+    <string name="tap">Tap</string>
 </resources>
