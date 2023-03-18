@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.databinding.FragmentQuestionsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
+import com.example.visuallithuanian.viewModel.ToLearnViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,7 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class QuestionsFragment : Fragment() {
     lateinit var binding: FragmentQuestionsBinding
     lateinit var viewModel: BottomNavigationViewModel
-
+    lateinit var counterviewModel:ToLearnViewModel
     lateinit var bottomNavigationView: BottomNavigationView
 
     private val hashMap = HashMap<String,String>()
@@ -32,7 +33,7 @@ class QuestionsFragment : Fragment() {
     private lateinit var currentPair:Map.Entry<String,String>
 
     var isFront=true
-
+    private val totalPairs = 9 // change the value to the actual number of entries in your hashMap
 
     @SuppressLint("ResourceType")
     override fun onCreateView(
@@ -44,8 +45,17 @@ class QuestionsFragment : Fragment() {
 
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
+        counterviewModel = ViewModelProvider(requireActivity())[ToLearnViewModel::class.java]
 
         bottomNavigationView.visibility = View.GONE
+
+        binding.textCounter.text = counterviewModel.count.toString()
+
+        binding.imageFlashCard.setOnClickListener {
+            counterviewModel.addWordCount()
+            binding.textCounter.text = counterviewModel.count.toString()
+
+        }
 
 
         // setting up listener for back Icon
@@ -75,6 +85,14 @@ class QuestionsFragment : Fragment() {
         hashMap["How"] = "Kaip"
         hashMap["Which"] = "Kuris/kuri"
         hashMap["Whose"] = "Kieno"
+        hashMap["I"] = "aš"
+        hashMap["you (singular)"] = "tu/jūs (informal/formal)"
+        hashMap["he"] = "jis"
+        hashMap["she"] = "ji"
+        hashMap["it "] = "tai"
+        hashMap["we"] = "mes"
+        hashMap["you (plural)"] = "jūs"
+        hashMap["they"] = "jie"
 
        val front_animation = AnimatorInflater.loadAnimator(context, R.anim.front_animator) as AnimatorSet
         val back_animation = AnimatorInflater.loadAnimator(context,R.anim.back_animator)as AnimatorSet
@@ -85,6 +103,9 @@ class QuestionsFragment : Fragment() {
 
         with(binding) {
             btnFlip.setOnClickListener {
+                val progress = ((currentPairIndex + 1) * 100) / totalPairs
+                binding.progressHorizontal.progress = progress
+
                 // initialize currentPairIndex to 0 if it hasn't been initialized yet
                 if (currentPairIndex < 0) {
                     currentPairIndex = 0
@@ -97,12 +118,14 @@ class QuestionsFragment : Fragment() {
                     isFront = false
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.GONE
+                    imageFlashCard.visibility = View.GONE
                     cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.pink))
 
                 } else {
-
+                    currentPairIndex = (currentPairIndex + 1) % hashMap.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.GONE
+                    imageFlashCard.visibility = View.VISIBLE
                     cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue_card))
                     front_animation.setTarget(textCardBack)
                     back_animation.setTarget(textCardFront)
@@ -114,9 +137,6 @@ class QuestionsFragment : Fragment() {
                 currentPair = hashMap.entries.elementAt(currentPairIndex)
                 binding.textCardFront.text = currentPair.key
                 binding.textCardBack.text = hashMap[currentPair.key]
-
-                // increment currentPairIndex for the next flip
-                currentPairIndex = (currentPairIndex + 1) % hashMap.size
             }
         }
 
