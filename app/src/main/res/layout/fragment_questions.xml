@@ -18,11 +18,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:src="@drawable/ic_arrow_back" />
-        <RelativeLayout
+        <LinearLayout
             android:layout_marginLeft="10dp"
             android:id="@+id/relativeFlashcard"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
+            android:orientation="horizontal"
             android:layout_toRightOf="@id/back_icon"
             >
             <TextView
@@ -30,12 +31,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginLeft="10dp"
-                android:text="@string/wh_questions"
+                android:text="@string/Tap"
                 android:textSize="20sp"
-                android:textColor="#FFF" />
-        </RelativeLayout>
+                android:textColor="#FFFF" />
+
+            <ImageView
+                android:layout_marginLeft="5dp"
+                android:layout_width="16dp"
+                android:layout_marginTop="40dp"
+                android:layout_height="16dp"
+                android:src="@drawable/starjunior" />
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:textSize="16sp"
+                android:textColor="#FFFF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="@string/to_save_the_word" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/laugh"
+                android:layout_marginTop="40dp" />
+        </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
 
@@ -120,22 +144,21 @@
                 android:id="@+id/text_card_front"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/questions_tag"
+                android:text="@string/front_side"
                 android:layout_marginTop="35dp"
                 android:textColor="#FFFF"
-                android:textSize="18sp"
-
+                android:textSize="38sp"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
             <TextView
                 android:id="@+id/text_card_back"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Back_side"
+                android:text="@string/back_side"
                 android:visibility="invisible"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="38dp"
                 android:textColor="#FFFF"
-                android:textSize="18sp"
+                android:textSize="38sp"
 
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
@@ -156,7 +179,7 @@
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:indeterminate="false"
         android:max="100"
-        android:progress="10"
+        android:progress="0"
         android:layout_centerHorizontal="true"
         android:id="@+id/progress_horizontal"
         android:layout_width="240dp"
