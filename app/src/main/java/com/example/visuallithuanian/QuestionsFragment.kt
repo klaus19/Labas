@@ -33,7 +33,7 @@ class QuestionsFragment : Fragment() {
     private lateinit var currentPair:Map.Entry<String,String>
 
     var isFront=true
-    private val totalPairs = 9 // change the value to the actual number of entries in your hashMap
+    private val totalPairs = 17 // change the value to the actual number of entries in your hashMap
 
     @SuppressLint("ResourceType")
     override fun onCreateView(
@@ -51,11 +51,6 @@ class QuestionsFragment : Fragment() {
 
         binding.textCounter.text = counterviewModel.count.toString()
 
-        binding.imageFlashCard.setOnClickListener {
-            counterviewModel.addWordCount()
-            binding.textCounter.text = counterviewModel.count.toString()
-
-        }
 
 
         // setting up listener for back Icon
@@ -101,6 +96,25 @@ class QuestionsFragment : Fragment() {
         binding.textCardFront.text = currentPair.key
         binding.textCardBack.text = hashMap[currentPair.key]
 
+        // onclick listener on the image
+        binding.imageFlashCard.setOnClickListener {
+            counterviewModel.addWordCount()
+            binding.textCounter.text = counterviewModel.count.toString()
+            // increment currentPairIndex and get the next pair
+            currentPairIndex++
+            if (currentPairIndex >= hashMap.size) {
+                // if we have reached the end of the hashmap, start again from the beginning
+                currentPairIndex = 0
+            }
+            currentPair = hashMap.entries.elementAt(currentPairIndex)
+
+            // update the UI with the new pair
+            binding.textCardFront.text = currentPair.key
+            binding.textCardBack.text = hashMap[currentPair.key]
+
+        }
+
+        //onclick listener for the Flip button
         with(binding) {
             btnFlip.setOnClickListener {
                 val progress = ((currentPairIndex + 1) * 100) / totalPairs
