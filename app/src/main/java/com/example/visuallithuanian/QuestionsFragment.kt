@@ -96,6 +96,7 @@ class QuestionsFragment : Fragment() {
         binding.textCardFront.text = currentPair.key
         binding.textCardBack.text = hashMap[currentPair.key]
 
+        // onclick listener on the image
         binding.imageFlashCard.setOnClickListener {
             counterviewModel.addWordCount()
             binding.textCounter.text = counterviewModel.count.toString()
@@ -113,7 +114,7 @@ class QuestionsFragment : Fragment() {
 
         }
 
-
+        //onclick listener for the Flip button
         with(binding) {
             btnFlip.setOnClickListener {
                 val progress = ((currentPairIndex + 1) * 100) / totalPairs
