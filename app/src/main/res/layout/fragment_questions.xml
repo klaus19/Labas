@@ -18,12 +18,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:src="@drawable/ic_arrow_back" />
-        <LinearLayout
+        <RelativeLayout
             android:layout_marginLeft="10dp"
             android:id="@+id/relativeFlashcard"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:orientation="horizontal"
             android:layout_toRightOf="@id/back_icon"
             >
             <TextView
@@ -31,35 +30,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginLeft="10dp"
-                android:text="@string/Tap"
+                android:text="@string/wh_questions"
                 android:textSize="20sp"
-                android:textColor="#FFFF" />
-
-            <ImageView
-                android:layout_marginLeft="5dp"
-                android:layout_width="16dp"
-                android:layout_marginTop="40dp"
-                android:layout_height="16dp"
-                android:src="@drawable/starjunior" />
-
-            <TextView
-                android:layout_marginLeft="5dp"
-                android:textSize="16sp"
-                android:textColor="#FFFF"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="@string/to_save_the_word" />
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginLeft="5dp"
-                android:src="@drawable/laugh"
-                android:layout_marginTop="40dp" />
-        </LinearLayout>
+                android:textColor="#FFF" />
+        </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 
 
@@ -160,40 +136,43 @@
                 android:layout_marginTop="35dp"
                 android:textColor="#FFFF"
                 android:textSize="18sp"
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_learning"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/toolbar"
-        android:layout_centerHorizontal="true">
 
-        <LinearLayout
-            android:layout_width="150dp"
-            android:layout_height="70dp"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/text_counter"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/zero"
-                android:textSize="18sp"
-                android:textColor="#f06292"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-
-            <TextView
-                android:id="@+id/text_card_tolearn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/to_learn"
-                android:textSize="18sp"
-                android:textColor="#f06292"
-                android:gravity="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-
         </LinearLayout>
+        <ImageView
+            android:id="@+id/image_flash_card"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="end|top"
+            android:scaleType="fitXY"
+            android:src="@drawable/star" />
+    </androidx.cardview.widget.CardView>
 
+    <ProgressBar
+        android:background="@drawable/progressbar_drawable"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="10"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/progress_horizontal"
+        android:layout_width="240dp"
+        android:layout_height="20dp"
+        android:layout_below="@id/card_view_questions" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="100dp"
+        android:layout_marginTop="10dp"
+        android:text="Flip"
+        android:id="@+id/btnFlip"
+        android:textColor="#FFFF"
+        android:background="@drawable/rounded_button"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progress_horizontal"
+        android:gravity="center"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

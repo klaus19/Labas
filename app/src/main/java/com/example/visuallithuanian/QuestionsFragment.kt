@@ -27,6 +27,15 @@ class QuestionsFragment : Fragment() {
     lateinit var counterviewModel:ToLearnViewModel
     lateinit var bottomNavigationView: BottomNavigationView
 
+    private val hashMap = HashMap<String,String>()
+
+    private var currentPairIndex =0
+    private lateinit var currentPair:Map.Entry<String,String>
+
+    var isFront=true
+    private val totalPairs = 9 // change the value to the actual number of entries in your hashMap
+
+    @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,6 +51,11 @@ class QuestionsFragment : Fragment() {
 
         binding.textCounter.text = counterviewModel.count.toString()
 
+        binding.imageFlashCard.setOnClickListener {
+            counterviewModel.addWordCount()
+            binding.textCounter.text = counterviewModel.count.toString()
+
+        }
 
 
         // setting up listener for back Icon
@@ -82,27 +96,6 @@ class QuestionsFragment : Fragment() {
 
        val front_animation = AnimatorInflater.loadAnimator(context, R.anim.front_animator) as AnimatorSet
         val back_animation = AnimatorInflater.loadAnimator(context,R.anim.back_animator)as AnimatorSet
-
-        currentPair = hashMap.entries.elementAt(currentPairIndex)
-        binding.textCardFront.text = currentPair.key
-        binding.textCardBack.text = hashMap[currentPair.key]
-
-        binding.imageFlashCard.setOnClickListener {
-            counterviewModel.addWordCount()
-            binding.textCounter.text = counterviewModel.count.toString()
-            // increment currentPairIndex and get the next pair
-            currentPairIndex++
-            if (currentPairIndex >= hashMap.size) {
-                // if we have reached the end of the hashmap, start again from the beginning
-                currentPairIndex = 0
-            }
-            currentPair = hashMap.entries.elementAt(currentPairIndex)
-
-            // update the UI with the new pair
-            binding.textCardFront.text = currentPair.key
-            binding.textCardBack.text = hashMap[currentPair.key]
-
-        }
 
         currentPair = hashMap.entries.elementAt(currentPairIndex)
         binding.textCardFront.text = currentPair.key
