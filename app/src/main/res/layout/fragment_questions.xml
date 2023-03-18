@@ -27,10 +27,36 @@
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="@string/tap"
                 android:textColor="#FFFF"
                 android:textStyle="bold"
                 android:textSize="20sp" />
+            <ImageView
+                android:layout_marginStart="5dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:id="@+id/imageStar"
+                android:src="@drawable/starjunior"
+                android:layout_marginTop="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:textColor="#FFF"
+                android:text="@string/to_save_the_word"
+                android:layout_marginStart="5dp"/>
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:id="@+id/imageSmile"
+                android:src="@drawable/laugh"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="25dp" />
+
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
