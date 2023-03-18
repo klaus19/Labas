@@ -18,48 +18,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:src="@drawable/ic_arrow_back" />
-        <LinearLayout
-            android:layout_marginLeft="10dp"
-            android:id="@+id/relativeFlashcard"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:orientation="horizontal"
-            android:layout_toRightOf="@id/back_icon"
-            >
-            <TextView
-                android:id="@+id/title_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_marginTop="40dp"
-                android:layout_marginLeft="10dp"
-                android:text="@string/Tap"
-                android:textSize="20sp"
-                android:textColor="#FFFF" />
-
-            <ImageView
-                android:layout_marginLeft="5dp"
-                android:layout_width="16dp"
-                android:layout_marginTop="40dp"
-                android:layout_height="16dp"
-                android:src="@drawable/starjunior" />
-
-            <TextView
-                android:layout_marginLeft="5dp"
-                android:textSize="16sp"
-                android:textColor="#FFFF"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="@string/to_save_the_word" />
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginLeft="5dp"
-                android:src="@drawable/laugh"
-                android:layout_marginTop="40dp" />
-        </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
 
