@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.databinding.FragmentQuestionsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
@@ -111,6 +112,12 @@ class QuestionsFragment : Fragment() {
             // update the UI with the new pair
             binding.textCardFront.text = currentPair.key
             binding.textCardBack.text = hashMap[currentPair.key]
+
+        }
+
+        binding.cardLearning.setOnClickListener {
+
+            findNavController().navigate(R.id.action_questionsFragment_to_toLearnFlashCards)
 
         }
 

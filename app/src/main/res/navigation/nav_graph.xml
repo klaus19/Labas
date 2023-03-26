@@ -166,5 +166,13 @@
         <action
             android:id="@+id/action_questionsFragment_to_flashCards"
             app:destination="@id/flashCards" />
+        <action
+            android:id="@+id/action_questionsFragment_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
     </fragment>
+    <fragment
+        android:id="@+id/toLearnFlashCards"
+        android:name="com.example.visuallithuanian.ToLearnFlashCards"
+        android:label="fragment_to_learn_flash_cards"
+        tools:layout="@layout/fragment_to_learn_flash_cards" />
 </navigation>
