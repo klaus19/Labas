@@ -47,9 +47,6 @@
                 android:textSize="20sp"
                 android:textColor="#FFF" />
         </RelativeLayout>
-
-
-
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView

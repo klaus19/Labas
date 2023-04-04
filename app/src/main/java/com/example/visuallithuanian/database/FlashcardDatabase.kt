@@ -48,7 +48,6 @@ abstract class FlashcardDatabase : RoomDatabase() {
                     "word_database"
                 )
                     .addCallback(WordDatabaseCallback(scope))
-                    .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 // return instance
