@@ -1,16 +1,16 @@
 package com.example.visuallithuanian.viewModel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 
 class ToLearnViewModel: ViewModel() {
 
-    var count = 0
-    fun addWordCount(){
-        count++
-    }
+    private val _counter = MutableLiveData<Int>(0)
+    val counter: LiveData<Int> = _counter
 
-    override fun onCleared() {
-        super.onCleared()
+    fun incrementCounter(){
+        _counter.value = _counter.value?.plus(1)
     }
 }

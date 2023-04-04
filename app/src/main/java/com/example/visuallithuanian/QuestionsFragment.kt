@@ -9,14 +9,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentQuestionsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
+import com.example.visuallithuanian.viewModel.FlashCardViewmodel
 import com.example.visuallithuanian.viewModel.ToLearnViewModel
+import com.example.visuallithuanian.viewModel.WordViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,8 +31,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class QuestionsFragment : Fragment() {
     lateinit var binding: FragmentQuestionsBinding
     lateinit var viewModel: BottomNavigationViewModel
-    lateinit var counterviewModel:ToLearnViewModel
+
     lateinit var bottomNavigationView: BottomNavigationView
+    private val counterViewModel: ToLearnViewModel by viewModels()
 
     private val hashMap = HashMap<String,String>()
 
@@ -35,6 +42,11 @@ class QuestionsFragment : Fragment() {
 
     var isFront=true
     private val totalPairs = 17 // change the value to the actual number of entries in your hashMap
+
+    // declaring viewmodel
+    private val cardViewModel: FlashCardViewmodel by viewModels {
+        WordViewModelFactory((requireActivity().application as MyApp).repository)
+    }
 
     @SuppressLint("ResourceType")
     override fun onCreateView(
@@ -46,13 +58,9 @@ class QuestionsFragment : Fragment() {
 
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
-        counterviewModel = ViewModelProvider(requireActivity())[ToLearnViewModel::class.java]
+
 
         bottomNavigationView.visibility = View.GONE
-
-        binding.textCounter.text = counterviewModel.count.toString()
-
-
 
         // setting up listener for back Icon
         binding.backIcon?.setOnClickListener {
@@ -90,7 +98,10 @@ class QuestionsFragment : Fragment() {
         hashMap["you (plural)"] = "jūs"
         hashMap["they"] = "jie"
 
-       val front_animation = AnimatorInflater.loadAnimator(context, R.anim.front_animator) as AnimatorSet
+        counterViewModel.counter.observe(requireActivity()){count->
+            binding.textCounter.text = count.toString()
+        }
+        val front_animation = AnimatorInflater.loadAnimator(context, R.anim.front_animator) as AnimatorSet
         val back_animation = AnimatorInflater.loadAnimator(context,R.anim.back_animator)as AnimatorSet
 
         currentPair = hashMap.entries.elementAt(currentPairIndex)
@@ -99,8 +110,8 @@ class QuestionsFragment : Fragment() {
 
         // onclick listener on the image
         binding.imageFlashCard.setOnClickListener {
-            counterviewModel.addWordCount()
-            binding.textCounter.text = counterviewModel.count.toString()
+
+            counterViewModel.incrementCounter()
             // increment currentPairIndex and get the next pair
             currentPairIndex++
             if (currentPairIndex >= hashMap.size) {
@@ -108,6 +119,13 @@ class QuestionsFragment : Fragment() {
                 currentPairIndex = 0
             }
             currentPair = hashMap.entries.elementAt(currentPairIndex)
+
+            val front = binding.textCardFront.text.toString()
+            val back = binding.textCardBack.text.toString()
+
+            val pair = FlashcardPair(front, back)
+            cardViewModel.insertCards(pair)
+            //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
 
             // update the UI with the new pair
             binding.textCardFront.text = currentPair.key
@@ -159,6 +177,10 @@ class QuestionsFragment : Fragment() {
                 binding.textCardFront.text = currentPair.key
                 binding.textCardBack.text = hashMap[currentPair.key]
             }
+        }
+
+        binding.cardLearning.setOnClickListener {
+            findNavController().navigate(R.id.action_questionsFragment_to_toLearnFlashCards)
         }
 
         return binding.root

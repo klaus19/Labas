@@ -59,8 +59,6 @@
 
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
-
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
@@ -123,7 +121,7 @@
         android:layout_below="@id/card_learning"
         android:layout_marginStart="16dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="40dp"
         app:cardCornerRadius="8dp"

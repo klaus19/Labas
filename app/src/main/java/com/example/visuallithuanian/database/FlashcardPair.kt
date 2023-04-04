@@ -4,9 +4,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "flashcards")
-data class Flashcards(
-    @PrimaryKey(autoGenerate = true)
-    val id:Long,
+data class FlashcardPair(
+    @PrimaryKey
     val front:String,
     val back:String,
 )
