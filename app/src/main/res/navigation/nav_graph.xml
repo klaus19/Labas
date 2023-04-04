@@ -157,6 +157,9 @@
         <action
             android:id="@+id/action_birdsFragment_to_flashCards"
             app:destination="@id/flashCards" />
+        <action
+            android:id="@+id/action_birdsFragment_to_userFragment"
+            app:destination="@id/userFragment" />
     </fragment>
     <fragment
         android:id="@+id/questionsFragment"

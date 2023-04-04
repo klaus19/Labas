@@ -92,6 +92,11 @@ class UserFragment : Fragment() {
                  navController.navigate(R.id.action_userFragment_to_animals)
              }
 
+             val birdsPosition = 8
+             if (position==birdsPosition){
+                 navController.navigate(R.id.action_userFragment_to_birdsFragment)
+             }
+
              val sportsPosition =9
              if (position==sportsPosition){
                  navController.navigate(R.id.action_userFragment_to_sportsFragment)
