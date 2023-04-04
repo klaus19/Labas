@@ -174,5 +174,12 @@
         android:id="@+id/toLearnFlashCards"
         android:name="com.example.visuallithuanian.ToLearnFlashCards"
         android:label="fragment_to_learn_flash_cards"
-        tools:layout="@layout/fragment_to_learn_flash_cards" />
+        tools:layout="@layout/fragment_to_learn_flash_cards" >
+        <action
+            android:id="@+id/action_toLearnFlashCards_to_questionsFragment"
+            app:destination="@id/questionsFragment" />
+        <action
+            android:id="@+id/action_toLearnFlashCards_to_flashCards"
+            app:destination="@id/flashCards" />
+    </fragment>
 </navigation>
