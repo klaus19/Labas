@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.LanguageAdapter
 import com.example.visuallithuanian.model.LanguageModel
@@ -100,6 +101,10 @@ class UserFragment : Fragment() {
              val sportsPosition =9
              if (position==sportsPosition){
                  navController.navigate(R.id.action_userFragment_to_sportsFragment)
+             }
+             val colorPosition = 10
+             if (position == colorPosition){
+                 findNavController().navigate(R.id.action_userFragment_to_colorsFragment)
              }
 
 
