@@ -183,14 +183,14 @@
         android:layout_below="@id/card_view_questions" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_marginTop="10dp"
         android:text="Flip"
         android:id="@+id/btnFlip"
         android:textColor="#FFFF"
         android:background="@drawable/rounded_button"
         android:layout_marginBottom="10dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_below="@id/progress_horizontal"
         android:gravity="center"
         android:layout_centerHorizontal="true" />

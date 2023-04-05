@@ -172,6 +172,13 @@ class QuestionsFragment : Fragment() {
                     front_animation.start()
                     isFront = true
                 }
+
+                // add the following code to make the button shake
+                val shake: ObjectAnimator = ObjectAnimator.ofFloat(binding.btnFlip, "translationX", -10f, 10f)
+                shake.duration = 100
+                shake.repeatCount = 5
+                shake.repeatMode = ObjectAnimator.REVERSE
+                shake.start()
                 // retrieve the current pair from the hashMap
                 currentPair = hashMap.entries.elementAt(currentPairIndex)
                 binding.textCardFront.text = currentPair.key
