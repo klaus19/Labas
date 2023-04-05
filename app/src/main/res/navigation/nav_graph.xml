@@ -195,5 +195,9 @@
         android:id="@+id/colorsFragment"
         android:name="com.example.visuallithuanian.ColorsFragment"
         android:label="fragment_colors"
-        tools:layout="@layout/fragment_colors" />
+        tools:layout="@layout/fragment_colors" >
+        <action
+            android:id="@+id/action_colorsFragment_to_flashCards"
+            app:destination="@id/flashCards" />
+    </fragment>
 </navigation>
