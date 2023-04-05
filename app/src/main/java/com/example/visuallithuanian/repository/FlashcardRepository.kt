@@ -3,7 +3,9 @@ package com.example.visuallithuanian.repository
 import androidx.annotation.WorkerThread
 import com.example.visuallithuanian.database.FlashCardDao
 import com.example.visuallithuanian.database.FlashcardPair
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 class FlashcardRepository(private val flashCardDao: FlashCardDao) {
 

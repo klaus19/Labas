@@ -3,7 +3,10 @@ package com.example.visuallithuanian.viewModel
 import androidx.lifecycle.*
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.repository.FlashcardRepository
+import dagger.hilt.android.HiltAndroidApp
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class FlashCardViewmodel(private val repository:FlashcardRepository) : ViewModel() {
 
