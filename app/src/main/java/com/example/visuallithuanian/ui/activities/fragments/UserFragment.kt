@@ -38,7 +38,7 @@ class UserFragment : Fragment() {
         languageModelArrayList.add(LanguageModel("Paukščiai", R.drawable.birds,"Birds"))
         languageModelArrayList.add(LanguageModel("Sporto", R.drawable.sports,"Sports"))
         languageModelArrayList.add(LanguageModel("Spalvos", R.drawable.colors,"Colors"))
-        languageModelArrayList.add(LanguageModel("Kontinentai", R.drawable.continents,"Continents"))
+        languageModelArrayList.add(LanguageModel("Kontinentai ", R.drawable.continents,"Continents"))
         languageModelArrayList.add(LanguageModel("Numeriai", R.drawable.numbers,"Numbers"))
         languageModelArrayList.add(LanguageModel("Mėnesiai", R.drawable.months,"Months"))
         languageModelArrayList.add(LanguageModel("Dienos", R.drawable.days,"Days"))
@@ -105,6 +105,10 @@ class UserFragment : Fragment() {
              val colorPosition = 10
              if (position == colorPosition){
                  findNavController().navigate(R.id.action_userFragment_to_colorsFragment)
+             }
+             val continentPosition = 11
+             if (position == continentPosition){
+                 findNavController().navigate(R.id.action_userFragment_to_continentsFragment)
              }
 
 
