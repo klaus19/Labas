@@ -51,6 +51,9 @@
         <action
             android:id="@+id/action_userFragment_to_continentsFragment"
             app:destination="@id/continentsFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_numbersFragment"
+            app:destination="@id/numbersFragment" />
     </fragment>
     <fragment
         android:id="@+id/practiseFragment"
@@ -210,6 +213,15 @@
         tools:layout="@layout/fragment_continents" >
         <action
             android:id="@+id/action_continentsFragment_to_flashCards"
+            app:destination="@id/flashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/numbersFragment"
+        android:name="com.example.visuallithuanian.NumbersFragment"
+        android:label="fragment_numbers"
+        tools:layout="@layout/fragment_numbers" >
+        <action
+            android:id="@+id/action_numbersFragment_to_flashCards"
             app:destination="@id/flashCards" />
     </fragment>
 </navigation>

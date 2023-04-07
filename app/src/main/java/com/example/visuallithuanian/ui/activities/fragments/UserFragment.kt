@@ -110,7 +110,10 @@ class UserFragment : Fragment() {
              if (position == continentPosition){
                  findNavController().navigate(R.id.action_userFragment_to_continentsFragment)
              }
-
+             val numbersPosition = 12
+             if (position == numbersPosition){
+                 findNavController().navigate(R.id.action_userFragment_to_numbersFragment)
+             }
 
          }
         return view
