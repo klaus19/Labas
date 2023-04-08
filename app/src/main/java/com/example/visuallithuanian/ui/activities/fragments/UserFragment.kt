@@ -114,6 +114,10 @@ class UserFragment : Fragment() {
              if (position == numbersPosition){
                  findNavController().navigate(R.id.action_userFragment_to_numbersFragment)
              }
+             val monthsPosition = 13
+             if (position == monthsPosition){
+                 findNavController().navigate(R.id.action_userFragment_to_monthsFragment)
+             }
 
          }
         return view

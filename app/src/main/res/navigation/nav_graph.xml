@@ -54,6 +54,9 @@
         <action
             android:id="@+id/action_userFragment_to_numbersFragment"
             app:destination="@id/numbersFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_monthsFragment"
+            app:destination="@id/monthsFragment" />
     </fragment>
     <fragment
         android:id="@+id/practiseFragment"
@@ -222,6 +225,15 @@
         tools:layout="@layout/fragment_numbers" >
         <action
             android:id="@+id/action_numbersFragment_to_flashCards"
+            app:destination="@id/flashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/monthsFragment"
+        android:name="com.example.visuallithuanian.MonthsFragment"
+        android:label="fragment_months"
+        tools:layout="@layout/fragment_months" >
+        <action
+            android:id="@+id/action_monthsFragment_to_flashCards"
             app:destination="@id/flashCards" />
     </fragment>
 </navigation>
