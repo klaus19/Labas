@@ -123,6 +123,10 @@ class UserFragment : Fragment() {
                  findNavController().navigate(R.id.action_userFragment_to_weekdaysFragment)
              }
 
+             val timePosition = 15
+             if (position == timePosition){
+                 findNavController().navigate(R.id.action_userFragment_to_timeFragment)
+             }
          }
         return view
     }
