@@ -57,15 +57,6 @@
         <action
             android:id="@+id/action_userFragment_to_monthsFragment"
             app:destination="@id/monthsFragment" />
-        <action
-            android:id="@+id/action_userFragment_to_weekdaysFragment"
-            app:destination="@id/weekdaysFragment" />
-        <action
-            android:id="@+id/action_userFragment_to_weekdaysFragment"
-            app:destination="@id/weekdaysFragment" />
-        <action
-            android:id="@+id/action_userFragment_to_timeFragment"
-            app:destination="@id/timeFragment" />
     </fragment>
     <fragment
         android:id="@+id/practiseFragment"
