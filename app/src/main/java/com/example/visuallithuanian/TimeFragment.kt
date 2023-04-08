@@ -49,11 +49,6 @@ class TimeFragment : Fragment() {
         val adapter = ImageAdapter(timeList)
         recyclerView?.adapter = adapter
 
-
-        fb1?.setOnClickListener {
-            findNavController().navigate(R.id.action_timeFragment_to_flashCards)
-        }
-
         return view
     }
 
