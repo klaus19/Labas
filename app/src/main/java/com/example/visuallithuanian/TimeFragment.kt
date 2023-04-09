@@ -50,7 +50,7 @@ class TimeFragment : Fragment() {
         recyclerView?.adapter = adapter
 
         fb1?.setOnClickListener {
-            findNavController().navigate(R.id.action_userFragment_to_timeFragment)
+            findNavController().navigate(R.id.action_timeFragment_to_flashCards)
         }
 
         return view
