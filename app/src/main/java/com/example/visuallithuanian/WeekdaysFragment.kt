@@ -49,6 +49,9 @@ class WeekdaysFragment : Fragment() {
         val adapter = ImageAdapter(dayList)
         recyclerView?.adapter = adapter
 
+        fb1?.setOnClickListener {
+            findNavController().navigate(R.id.action_weekFragment_to_flashCards)
+        }
         return view
     }
 

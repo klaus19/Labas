@@ -58,6 +58,9 @@
             android:id="@+id/action_userFragment_to_monthsFragment"
             app:destination="@id/monthsFragment" />
         <action
+            android:id="@+id/action_userFragment_to_weekFragment"
+            app:destination="@id/WeekFragment"/>
+        <action
             android:id="@+id/action_userFragment_to_timeFragment"
             app:destination="@id/timeFragment"/>
     </fragment>
@@ -239,6 +242,14 @@
             android:id="@+id/action_monthsFragment_to_flashCards"
             app:destination="@id/flashCards" />
     </fragment>
+    <fragment
+        android:id="@+id/WeekFragment"
+        android:name="com.example.visuallithuanian.WeekdaysFragment"
+        android:label="fragment_week"
+        tools:layout="@layout/fragment_weekdays" />
+        <action
+            android:id="@+id/action_weekFragment_to_flashCards"
+            app:destination="@id/flashCards"/>
     <fragment
         android:id="@+id/timeFragment"
         android:name="com.example.visuallithuanian.TimeFragment"
