@@ -66,6 +66,9 @@
         <action
             android:id="@+id/action_userFragment_to_professionFragment"
             app:destination="@id/professionFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_transportFragment"
+            app:destination="@id/transportFragment" />
     </fragment>
     <fragment
         android:id="@+id/practiseFragment"
@@ -269,6 +272,15 @@
         tools:layout="@layout/fragment_profession" >
         <action
             android:id="@+id/action_professionFragment_to_flashCards"
+            app:destination="@id/flashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/transportFragment"
+        android:name="com.example.visuallithuanian.TransportFragment"
+        android:label="fragment_transport"
+        tools:layout="@layout/fragment_transport" >
+        <action
+            android:id="@+id/action_transportFragment_to_flashCards"
             app:destination="@id/flashCards" />
     </fragment>
 

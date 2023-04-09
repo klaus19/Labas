@@ -131,6 +131,10 @@ class UserFragment : Fragment() {
              if (position==professionPosition){
                  findNavController().navigate(R.id.action_userFragment_to_professionFragment)
              }
+             val transportPosition = 17
+             if (position==transportPosition){
+                 findNavController().navigate(R.id.action_userFragment_to_transportFragment)
+             }
          }
         return view
     }
