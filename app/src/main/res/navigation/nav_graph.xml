@@ -63,6 +63,9 @@
         <action
             android:id="@+id/action_userFragment_to_timeFragment"
             app:destination="@id/timeFragment"/>
+        <action
+            android:id="@+id/action_userFragment_to_professionFragment"
+            app:destination="@id/professionFragment" />
     </fragment>
     <fragment
         android:id="@+id/practiseFragment"
@@ -257,6 +260,15 @@
         tools:layout="@layout/fragment_time" >
         <action
             android:id="@+id/action_timeFragment_to_flashCards"
+            app:destination="@id/flashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/professionFragment"
+        android:name="com.example.visuallithuanian.ProfessionFragment"
+        android:label="fragment_profession"
+        tools:layout="@layout/fragment_profession" >
+        <action
+            android:id="@+id/action_professionFragment_to_flashCards"
             app:destination="@id/flashCards" />
     </fragment>
 

@@ -127,6 +127,10 @@ class UserFragment : Fragment() {
              if (position==timePosition){
                  findNavController().navigate(R.id.action_userFragment_to_timeFragment)
              }
+             val professionPosition = 16
+             if (position==professionPosition){
+                 findNavController().navigate(R.id.action_userFragment_to_professionFragment)
+             }
          }
         return view
     }
