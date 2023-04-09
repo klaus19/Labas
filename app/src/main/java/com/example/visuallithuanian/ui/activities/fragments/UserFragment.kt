@@ -118,6 +118,10 @@ class UserFragment : Fragment() {
              if (position == monthsPosition){
                  findNavController().navigate(R.id.action_userFragment_to_monthsFragment)
              }
+             val timePosition = 15
+             if (position==timePosition){
+                 findNavController().navigate(R.id.action_userFragment_to_timeFragment)
+             }
          }
         return view
     }

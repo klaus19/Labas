@@ -57,6 +57,9 @@
         <action
             android:id="@+id/action_userFragment_to_monthsFragment"
             app:destination="@id/monthsFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_timeFragment"
+            app:destination="@id/timeFragment"/>
     </fragment>
     <fragment
         android:id="@+id/practiseFragment"
@@ -236,4 +239,14 @@
             android:id="@+id/action_monthsFragment_to_flashCards"
             app:destination="@id/flashCards" />
     </fragment>
+    <fragment
+        android:id="@+id/timeFragment"
+        android:name="com.example.visuallithuanian.TimeFragment"
+        android:label="fragment_time"
+        tools:layout="@layout/fragment_time" >
+        <action
+            android:id="@+id/action_timeFragment_to_flashCards"
+            app:destination="@id/flashCards" />
+    </fragment>
+
 </navigation>
