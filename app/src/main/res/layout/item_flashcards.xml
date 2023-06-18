@@ -28,7 +28,7 @@
                     android:id="@+id/imageViewFlashcards"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:layout_gravity="center"
                     android:scaleType="fitXY"
                     android:background="@drawable/circular_flashcardview" />
