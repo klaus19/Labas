@@ -33,9 +33,6 @@ class FlashcardpaiAdapter(private val onDeleteListener:((FlashcardPair)->Unit)) 
         }
         holder.itemView.setBackgroundColor(holder.itemView.context.getColor(colorRes))
 
-        holder.itemView.findViewById<ImageView>(R.id.imageDelete).setOnClickListener {
-            onDeleteListener(getItem(position))
-        }
     }
 
     class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

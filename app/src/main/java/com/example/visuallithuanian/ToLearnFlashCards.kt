@@ -42,6 +42,7 @@ class ToLearnFlashCards : Fragment() {
 
         val adapter = FlashcardpaiAdapter{cardPair->
             cardViewmodel.deleteCards(cardPair)
+
         }
         binding.recyclerview.adapter = adapter
 
@@ -70,12 +71,14 @@ class ToLearnFlashCards : Fragment() {
         //Observe  the data changes for the items added
         cardViewmodel.allWords.observe(requireActivity()) { cardPairs ->
 
-            for (cardpair in cardPairs) {
                 adapter.submitList(cardPairs)
+
+                if (cardPairs.isEmpty()){
+                    binding.emptyImage.visibility = View.VISIBLE
+                }else{
+                    binding.emptyImage.visibility = View.GONE
+                }
             }
-
-        }
-
 
         return binding.root
     }
