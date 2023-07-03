@@ -5,11 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.adapter.FlashcardpaiAdapter
+import com.example.visuallithuanian.custom.OverlappingLayoutManager
 import com.example.visuallithuanian.databinding.FragmentToLearnFlashCardsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.FlashCardViewmodel
@@ -43,7 +44,28 @@ class ToLearnFlashCards : Fragment() {
             cardViewmodel.deleteCards(cardPair)
         }
         binding.recyclerview.adapter = adapter
-        binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
+
+        val itemTouchHelper = ItemTouchHelper(object :ItemTouchHelper.SimpleCallback(
+            0,ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val cardPair = adapter.currentList[position]
+                cardViewmodel.deleteCards(cardPair)
+            }
+        })
+        itemTouchHelper.attachToRecyclerView(binding.recyclerview)
+
+        binding.recyclerview.layoutManager = OverlappingLayoutManager()
+      //  binding.recyclerview.rotation=10f
 
         //Observe  the data changes for the items added
         cardViewmodel.allWords.observe(requireActivity()) { cardPairs ->

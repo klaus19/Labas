@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -125,7 +126,8 @@ class QuestionsFragment : Fragment() {
 
             val pair = FlashcardPair(front, back)
             cardViewModel.insertCards(pair)
-            //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
+            Log.d("Main","$pair")
 
             // update the UI with the new pair
             binding.textCardFront.text = currentPair.key
