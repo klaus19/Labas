@@ -94,5 +94,4 @@ dependencies {
 // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
-
 }

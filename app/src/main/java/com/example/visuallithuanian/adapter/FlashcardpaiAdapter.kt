@@ -1,10 +1,12 @@
 package com.example.visuallithuanian.adapter
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -17,19 +19,25 @@ class FlashcardpaiAdapter(private val onDeleteListener:((FlashcardPair)->Unit)) 
         return WordViewHolder.create(parent)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val current = getItem(position)
         val current1 = getItem(position)
         holder.bind(current.front,current1.back)
 
-        holder.itemView.findViewById<ImageView>(R.id.imageDelete).setOnClickListener {
-            onDeleteListener(getItem(position))
+        // Set different colors for alternate rows
+        val colorRes = if (position % 2 == 0) {
+            R.color.even // Color resource for even rows
+        } else {
+            R.color.pink// Color resource for odd rows
         }
+        holder.itemView.setBackgroundColor(holder.itemView.context.getColor(colorRes))
+
     }
 
     class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val wordItemView: TextView = itemView.findViewById(R.id.textView)
-        private val deftext: TextView = itemView.findViewById(R.id.text1)
+        private val wordItemView: TextView = itemView.findViewById(R.id.textView1)
+        private val deftext: TextView = itemView.findViewById(R.id.text2)
 
         fun bind(text: String?,text1: String?) {
             wordItemView.text = text
