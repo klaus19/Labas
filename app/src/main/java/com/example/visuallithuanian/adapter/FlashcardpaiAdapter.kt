@@ -36,8 +36,8 @@ class FlashcardpaiAdapter(private val onDeleteListener:((FlashcardPair)->Unit)) 
     }
 
     class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val wordItemView: TextView = itemView.findViewById(R.id.textView)
-        private val deftext: TextView = itemView.findViewById(R.id.text1)
+        private val wordItemView: TextView = itemView.findViewById(R.id.textView1)
+        private val deftext: TextView = itemView.findViewById(R.id.text2)
 
         fun bind(text: String?,text1: String?) {
             wordItemView.text = text
