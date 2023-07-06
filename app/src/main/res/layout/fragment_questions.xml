@@ -125,7 +125,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="40dp"
         app:cardCornerRadius="8dp"
-        app:cardBackgroundColor="#0077c2"
+        app:cardBackgroundColor="@color/pink"
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true">
 
@@ -188,7 +188,7 @@
         android:text="Flip"
         android:id="@+id/btnFlip"
         android:textColor="#FFFF"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/rectangle"
         android:layout_marginBottom="10dp"
         android:layout_height="30dp"
         android:layout_below="@id/progress_horizontal"

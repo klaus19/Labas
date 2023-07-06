@@ -5,10 +5,4 @@
         android:startColor="#9575cd"
         android:endColor="#b39ddb"
         android:angle="90" />
-
-    <corners
-        android:topLeftRadius="65dp"
-        android:topRightRadius="65dp"
-        android:bottomLeftRadius="65dp"
-        android:bottomRightRadius="65dp" />
 </shape>

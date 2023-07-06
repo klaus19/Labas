@@ -1,5 +1,6 @@
 package com.example.visuallithuanian.adapter
 
+import android.opengl.Visibility
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
 
-class FlashcardpaiAdapter(private val onDeleteListener:((FlashcardPair)->Unit)) : ListAdapter<FlashcardPair,FlashcardpaiAdapter.WordViewHolder>(WordsComparator()) {
+class FlashcardpaiAdapter(private val onDeleteListener:((FlashcardPair)->Unit),
+                          ) : ListAdapter<FlashcardPair,FlashcardpaiAdapter.WordViewHolder>(WordsComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
         return WordViewHolder.create(parent)
@@ -27,11 +29,18 @@ class FlashcardpaiAdapter(private val onDeleteListener:((FlashcardPair)->Unit)) 
 
         // Set different colors for alternate rows
         val colorRes = if (position % 2 == 0) {
-            R.color.even // Color resource for even rows
+            R.color.card_purple // Color resource for even rows
         } else {
             R.color.pink// Color resource for odd rows
         }
         holder.itemView.setBackgroundColor(holder.itemView.context.getColor(colorRes))
+
+        holder.itemView.setOnClickListener {
+            holder.left.visibility = View.VISIBLE
+            holder.right.visibility = View.VISIBLE
+        }
+
+
 
     }
 
@@ -39,9 +48,14 @@ class FlashcardpaiAdapter(private val onDeleteListener:((FlashcardPair)->Unit)) 
         private val wordItemView: TextView = itemView.findViewById(R.id.textView1)
         private val deftext: TextView = itemView.findViewById(R.id.text2)
 
+        val left = itemView.findViewById<TextView>(R.id.textLeft)
+        val right = itemView.findViewById<TextView>(R.id.textRight)
+
         fun bind(text: String?,text1: String?) {
             wordItemView.text = text
             deftext.text=text1
+
+
         }
 
         companion object {

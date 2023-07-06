@@ -42,11 +42,27 @@ class ToLearnFlashCards : Fragment() {
         bottomNav = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         bottomNav.visibility = View.VISIBLE
 
+        // Bounce animation for emojiBounce view
+        val bounceAnimator = ObjectAnimator.ofFloat(
+            binding.emojiBounce,
+            "translationY",
+            0f,
+            -100f,
+            0f
+        ).apply {
+            duration = 1000 // Set the duration of the animation
+            repeatCount = ObjectAnimator.INFINITE // Set the repeat count for infinite bouncing
+            repeatMode = ObjectAnimator.REVERSE // Reverse the animation after each repeat
+        }
+
+        // Start the bounce animation
+        bounceAnimator.start()
+
         binding.backIcon.setOnClickListener {
            findNavController().navigate(R.id.action_toLearnFlashCards_to_flashCards)
         }
 
-        val adapter = FlashcardpaiAdapter{cardPair->
+        val adapter = FlashcardpaiAdapter { cardPair ->
             cardViewmodel.deleteCards(cardPair)
 
         }

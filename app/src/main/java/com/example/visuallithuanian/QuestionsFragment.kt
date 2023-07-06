@@ -30,7 +30,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class QuestionsFragment : Fragment() {
-    lateinit var binding: FragmentQuestionsBinding
+    lateinit var binding:FragmentQuestionsBinding
     lateinit var viewModel: BottomNavigationViewModel
 
     lateinit var bottomNavigationView: BottomNavigationView
@@ -111,6 +111,8 @@ class QuestionsFragment : Fragment() {
 
         // onclick listener on the image
         binding.imageFlashCard.setOnClickListener {
+            val clickedColor = ContextCompat.getColor(requireContext(), R.color.white)
+            binding.imageFlashCard.setBackgroundColor(clickedColor)
 
             counterViewModel.incrementCounter()
             // increment currentPairIndex and get the next pair
@@ -147,6 +149,9 @@ class QuestionsFragment : Fragment() {
                 val progress = ((currentPairIndex + 1) * 100) / totalPairs
                 binding.progressHorizontal.progress = progress
 
+                val originalColor = ContextCompat.getColor(requireContext(), R.color.pink)
+                binding.imageFlashCard.setBackgroundColor(originalColor)
+
                 // initialize currentPairIndex to 0 if it hasn't been initialized yet
                 if (currentPairIndex < 0) {
                     currentPairIndex = 0
@@ -160,14 +165,14 @@ class QuestionsFragment : Fragment() {
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.GONE
                     imageFlashCard.visibility = View.GONE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.pink))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.card_purple))
 
                 } else {
                     currentPairIndex = (currentPairIndex + 1) % hashMap.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.GONE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue_card))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.pink))
                     front_animation.setTarget(textCardBack)
                     back_animation.setTarget(textCardFront)
                     back_animation.start()
