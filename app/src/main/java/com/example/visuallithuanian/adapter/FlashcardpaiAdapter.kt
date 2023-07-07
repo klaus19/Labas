@@ -27,6 +27,7 @@ class FlashcardpaiAdapter(private val onDeleteListener:((FlashcardPair)->Unit),
         val current1 = getItem(position)
         holder.bind(current.front,current1.back)
 
+
         // Set different colors for alternate rows
         val colorRes = if (position % 2 == 0) {
             R.color.card_purple // Color resource for even rows

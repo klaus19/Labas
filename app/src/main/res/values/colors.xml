@@ -20,5 +20,7 @@
     <color name="pink">#f06292</color>
     <color name="even">#2196f3</color>
     <color name="card_purple">#9575cd</color>
+    <color name="tab_selected">#FF0000</color>
+    <color name="tab_unselected">#CCCCCC</color>
 
 </resources>

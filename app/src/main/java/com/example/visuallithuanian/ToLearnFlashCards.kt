@@ -1,5 +1,6 @@
 package com.example.visuallithuanian
 
+import OverlappingLayoutManager
 import android.animation.ObjectAnimator
 import android.graphics.Canvas
 import android.os.Bundle
@@ -14,8 +15,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.adapter.FlashcardpaiAdapter
-import com.example.visuallithuanian.custom.OverlappingLayoutManager
-import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentToLearnFlashCardsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.FlashCardViewmodel
@@ -45,12 +44,12 @@ class ToLearnFlashCards : Fragment() {
         // Bounce animation for emojiBounce view
         val bounceAnimator = ObjectAnimator.ofFloat(
             binding.emojiBounce,
-            "translationY",
+            "translationX",
             0f,
             -100f,
             0f
         ).apply {
-            duration = 1000 // Set the duration of the animation
+            duration = 2000 // Set the duration of the animation
             repeatCount = ObjectAnimator.INFINITE // Set the repeat count for infinite bouncing
             repeatMode = ObjectAnimator.REVERSE // Reverse the animation after each repeat
         }

@@ -1,11 +1,10 @@
-package com.example.visuallithuanian.custom
-
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-class OverlappingLayoutManager: RecyclerView.LayoutManager() {
+class OverlappingLayoutManager : RecyclerView.LayoutManager() {
 
     private val overlapAmount: Int = 50 // Adjust the overlap amount as needed
+    private val tiltAmount: Float = 0.1f // Adjust the tilt amount as needed
 
     override fun generateDefaultLayoutParams(): RecyclerView.LayoutParams {
         return RecyclerView.LayoutParams(
@@ -37,20 +36,41 @@ class OverlappingLayoutManager: RecyclerView.LayoutManager() {
             val width: Int = getDecoratedMeasuredWidth(view)
             val height: Int = getDecoratedMeasuredHeight(view)
 
-            layoutDecoratedWithMargins(view, left, top, left + width, top + height)
+            layoutDecoratedWithMargins(
+                view,
+                left,
+                top,
+                left + width,
+                top + height
+            )
+
+            applyOverlappingAndTiltEffect(view, position)
 
             left += overlapAmount
             top += overlapAmount
         }
     }
 
+    private fun applyOverlappingAndTiltEffect(view: View, position: Int) {
+        val translationX = position * overlapAmount
+        val translationY = position * overlapAmount
+        val scale = 1 - position * tiltAmount
+
+        view.translationX = translationX.toFloat()
+        view.translationY = translationY.toFloat()
+        view.scaleX = scale
+        view.scaleY = scale
+    }
+
     override fun canScrollVertically(): Boolean {
         return true
     }
 
-
-
-    override fun scrollVerticallyBy(dy: Int, recycler: RecyclerView.Recycler, state: RecyclerView.State): Int {
+    override fun scrollVerticallyBy(
+        dy: Int,
+        recycler: RecyclerView.Recycler,
+        state: RecyclerView.State
+    ): Int {
         if (childCount == 0 || dy == 0) {
             return 0
         }
@@ -61,6 +81,4 @@ class OverlappingLayoutManager: RecyclerView.LayoutManager() {
 
         return scrolled
     }
-
-
 }
