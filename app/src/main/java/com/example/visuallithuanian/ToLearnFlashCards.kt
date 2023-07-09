@@ -1,13 +1,11 @@
 package com.example.visuallithuanian
 
-import OverlappingLayoutManager
+
+import com.example.visuallithuanian.custom.OverlappingLayoutManager
 import android.animation.ObjectAnimator
-import android.graphics.Canvas
 import android.os.Bundle
-import android.view.GestureDetector
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -88,7 +86,7 @@ class ToLearnFlashCards : Fragment() {
         })
         itemTouchHelper.attachToRecyclerView(binding.recyclerview)
 
-        binding.recyclerview.layoutManager = OverlappingLayoutManager()
+        binding.recyclerview.layoutManager = OverlappingLayoutManager(binding.root.context)
       //  binding.recyclerview.rotation=10f
 
         //Observe  the data changes for the items added
