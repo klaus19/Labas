@@ -1,6 +1,8 @@
 package com.example.visuallithuanian.custom
 
 import android.content.Context
+import android.view.ViewGroup
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.LayoutParams
 import com.example.visuallithuanian.R
@@ -11,12 +13,12 @@ class OverlappingLayoutManager(context: Context) : RecyclerView.LayoutManager() 
         context.resources.getDimensionPixelOffset(R.dimen.card_horizontal_overlap)
     private val verticalOverlap =
         context.resources.getDimensionPixelOffset(R.dimen.card_vertical_overlap)
-    private val tiltAngle = 5f // Adjust the tilt angle as needed
+    private val tiltAngle = 2f // Adjust the tilt angle as needed
 
-    override fun generateDefaultLayoutParams(): LayoutParams {
-        return LayoutParams(
-            LayoutParams.WRAP_CONTENT,
-            LayoutParams.WRAP_CONTENT
+    override fun generateDefaultLayoutParams(): RecyclerView.LayoutParams {
+        return RecyclerView.LayoutParams(
+            RecyclerView.LayoutParams.WRAP_CONTENT,
+            RecyclerView.LayoutParams.WRAP_CONTENT
         )
     }
 
@@ -50,12 +52,10 @@ class OverlappingLayoutManager(context: Context) : RecyclerView.LayoutManager() 
                 (centerY + (height / 2)).toInt()
             )
 
-            view.pivotX = centerX
-            view.pivotY = centerY
-            view.rotation = currentTilt
+            val childViewGroup = view.findViewById<ViewGroup>(R.id.card_view)
+            childViewGroup.rotation = currentTilt
 
             currentTilt = if (currentTilt == leftTilt) rightTilt else leftTilt
         }
     }
-
 }

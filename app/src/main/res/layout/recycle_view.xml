@@ -1,61 +1,78 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_margin="20dp"
-    android:gravity="center"
-    android:background="@drawable/rounded_cardview"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="500dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:id="@+id/card_view"
+    android:layout_margin="20dp"
+    android:layout_marginBottom="20dp"
+    android:background="@drawable/card_border"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp">
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp">
+
+            <TextView
+                android:id="@+id/textLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Swipe left"
+                android:textColor="#00e676"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:visibility="gone"
+                android:gravity="center_horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp" />
+
+            <TextView
+                android:id="@+id/textRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Swipe right"
+                android:textColor="#d32f2f"
+                android:visibility="gone"
+                android:layout_centerVertical="true"
+                android:gravity="center_horizontal"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp" />
+
+        </RelativeLayout>
 
         <TextView
-            android:id="@+id/textLeft"
+            android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Swipe left if you learnt word"
-            android:textColor="#00e676"
-            android:layout_alignParentStart="true"
-            android:visibility="gone"
-            android:gravity="center_horizontal"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp" />
+            android:text="@string/word1"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#607d8b" />
 
         <TextView
-            android:id="@+id/textRight"
+            android:id="@+id/text2"
             android:layout_width="wrap_content"
-            android:visibility="gone"
-            android:gravity="center_horizontal"
             android:layout_height="wrap_content"
-            android:text="Swipe right if you haven't"
-            android:textColor="#d32f2f"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp" />
+            android:text="@string/word2"
+            android:textStyle="bold"
+            android:textColor="#607d8b"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/word1"
-        android:textStyle="bold"
-        android:textColor="#FFFF" />
-
-    <TextView
-        android:id="@+id/text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/word2"
-        android:textStyle="bold"
-        android:textColor="#FFFF"
-        android:layout_marginTop="20dp" />
-
-</LinearLayout>
+</androidx.cardview.widget.CardView>

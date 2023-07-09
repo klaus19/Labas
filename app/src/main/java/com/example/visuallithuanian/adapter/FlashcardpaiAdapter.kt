@@ -30,9 +30,9 @@ class FlashcardpaiAdapter(private val onDeleteListener:((FlashcardPair)->Unit),
 
         // Set different colors for alternate rows
         val colorRes = if (position % 2 == 0) {
-            R.color.card_purple // Color resource for even rows
+            R.color.white // Color resource for even rows
         } else {
-            R.color.pink// Color resource for odd rows
+            R.color.white// Color resource for odd rows
         }
         holder.itemView.setBackgroundColor(holder.itemView.context.getColor(colorRes))
 
