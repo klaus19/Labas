@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="default_margin">15dp</dimen>
+    <dimen name="card_horizontal_overlap">26dp</dimen>
+    <dimen name="card_vertical_overlap">26dp</dimen>
 </resources>
