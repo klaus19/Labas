@@ -8,7 +8,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [FlashcardPair::class], version = 3, exportSchema = true)
+@Database(entities = [FlashcardPair::class], version = 5, exportSchema = true)
 abstract class FlashcardDatabase : RoomDatabase() {
 
     abstract fun cardPairDao():FlashCardDao
@@ -48,6 +48,7 @@ abstract class FlashcardDatabase : RoomDatabase() {
                     "word_database"
                 )
                     .addCallback(WordDatabaseCallback(scope))
+                    .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 // return instance

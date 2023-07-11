@@ -1,21 +1,19 @@
 package com.example.visuallithuanian
 
+
+import com.example.visuallithuanian.custom.OverlappingLayoutManager
 import android.animation.ObjectAnimator
-import android.graphics.Canvas
 import android.os.Bundle
-import android.view.GestureDetector
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.adapter.FlashcardpaiAdapter
-import com.example.visuallithuanian.custom.OverlappingLayoutManager
-import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentToLearnFlashCardsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.FlashCardViewmodel
@@ -34,7 +32,7 @@ class ToLearnFlashCards : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentToLearnFlashCardsBinding.inflate(layoutInflater,container,false)
 
@@ -42,14 +40,32 @@ class ToLearnFlashCards : Fragment() {
         bottomNav = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         bottomNav.visibility = View.VISIBLE
 
+        // Bounce animation for emojiBounce view
+        val bounceAnimator = ObjectAnimator.ofFloat(
+            binding.emojiBounce,
+            "translationX",
+            0f,
+            -100f,
+            0f
+        ).apply {
+            duration = 2000 // Set the duration of the animation
+            repeatCount = ObjectAnimator.INFINITE // Set the repeat count for infinite bouncing
+            repeatMode = ObjectAnimator.REVERSE // Reverse the animation after each repeat
+        }
+
+        // Start the bounce animation
+        bounceAnimator.start()
+
         binding.backIcon.setOnClickListener {
            findNavController().navigate(R.id.action_toLearnFlashCards_to_flashCards)
         }
 
-        val adapter = FlashcardpaiAdapter{cardPair->
-            cardViewmodel.deleteCards(cardPair)
+        val adapter = FlashcardpaiAdapter(
+            onDeleteListener = {cardPair->
+                cardViewmodel.insertCards(cardPair)
+            },
+        )
 
-        }
         binding.recyclerview.adapter = adapter
 
         //Swipe Gesture
@@ -73,11 +89,11 @@ class ToLearnFlashCards : Fragment() {
         })
         itemTouchHelper.attachToRecyclerView(binding.recyclerview)
 
-        binding.recyclerview.layoutManager = OverlappingLayoutManager()
+        binding.recyclerview.layoutManager = OverlappingLayoutManager(binding.root.context)
       //  binding.recyclerview.rotation=10f
 
         //Observe  the data changes for the items added
-        cardViewmodel.allWords.observe(requireActivity()) { cardPairs ->
+        cardViewmodel.allWords.observe(viewLifecycleOwner) { cardPairs ->
 
                 adapter.submitList(cardPairs)
 

@@ -10,11 +10,16 @@ import androidx.cardview.widget.CardView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.FlashcardsAdapter
+import com.example.visuallithuanian.adapter.FragmentAdapter
 import com.example.visuallithuanian.data.FlashCardInfo
 import com.example.visuallithuanian.ui.activities.FirstScreen
+import com.example.visuallithuanian.ui.activities.Hard
+import com.example.visuallithuanian.ui.activities.Medium
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -47,7 +52,6 @@ class FlashCards : Fragment() {
         val flashCardList = generateFlashCards()
         val adapter = FlashcardsAdapter(flashCardList,navController)
         recyclerViewCards1.adapter = adapter
-
 
         // setting up listener
         back_icon.setOnClickListener {

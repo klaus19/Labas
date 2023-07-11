@@ -1,66 +1,61 @@
 package com.example.visuallithuanian.custom
 
-import android.view.View
+import android.content.Context
+import android.view.ViewGroup
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.LayoutParams
+import com.example.visuallithuanian.R
 
-class OverlappingLayoutManager: RecyclerView.LayoutManager() {
 
-    private val overlapAmount: Int = 50 // Adjust the overlap amount as needed
+class OverlappingLayoutManager(context: Context) : RecyclerView.LayoutManager() {
+    private val horizontalOverlap =
+        context.resources.getDimensionPixelOffset(R.dimen.card_horizontal_overlap)
+    private val verticalOverlap =
+        context.resources.getDimensionPixelOffset(R.dimen.card_vertical_overlap)
+    private val tiltAngle = 3f // Adjust the tilt angle as needed
 
-    override fun generateDefaultLayoutParams(): RecyclerView.LayoutParams {
-        return RecyclerView.LayoutParams(
-            RecyclerView.LayoutParams.WRAP_CONTENT,
-            RecyclerView.LayoutParams.WRAP_CONTENT
+    override fun generateDefaultLayoutParams(): LayoutParams {
+        return LayoutParams(
+            LayoutParams.WRAP_CONTENT,
+            LayoutParams.WRAP_CONTENT
         )
     }
 
-    override fun onLayoutChildren(recycler: RecyclerView.Recycler, state: RecyclerView.State) {
+    override fun onLayoutChildren(recycler: RecyclerView.Recycler?, state: RecyclerView.State?) {
         if (itemCount == 0) {
-            removeAndRecycleAllViews(recycler)
+            removeAndRecycleAllViews(recycler!!)
             return
         }
 
-        detachAndScrapAttachedViews(recycler)
+        detachAndScrapAttachedViews(recycler!!)
 
-        val parentWidth = width
-        val parentHeight = height
-
-        var left = paddingLeft
-        var top = paddingTop
+        val leftTilt = tiltAngle
+        val rightTilt = -tiltAngle
+        var currentTilt = leftTilt
 
         for (position in 0 until itemCount) {
-            val view: View = recycler.getViewForPosition(position)
+            val view = recycler.getViewForPosition(position)
             addView(view)
-
             measureChildWithMargins(view, 0, 0)
+            val width = getDecoratedMeasuredWidth(view)
+            val height = getDecoratedMeasuredHeight(view)
 
-            val width: Int = getDecoratedMeasuredWidth(view)
-            val height: Int = getDecoratedMeasuredHeight(view)
+            val centerX = width / 2f
+            val centerY = height / 2f
 
-            layoutDecoratedWithMargins(view, left, top, left + width, top + height)
+            layoutDecoratedWithMargins(
+                view,
+                (centerX - (width / 2)).toInt(),
+                (centerY - (height / 2)).toInt(),
+                (centerX + (width / 2)).toInt(),
+                (centerY + (height / 2)).toInt()
+            )
 
-            left += overlapAmount
-            top += overlapAmount
+            val childViewGroup = view.findViewById<ViewGroup>(R.id.card_view)
+            childViewGroup.rotation = currentTilt
+
+            currentTilt = if (currentTilt == leftTilt) rightTilt else leftTilt
         }
     }
-
-    override fun canScrollVertically(): Boolean {
-        return true
-    }
-
-
-
-    override fun scrollVerticallyBy(dy: Int, recycler: RecyclerView.Recycler, state: RecyclerView.State): Int {
-        if (childCount == 0 || dy == 0) {
-            return 0
-        }
-
-        val scrolled = super.scrollVerticallyBy(dy, recycler, state)
-
-        offsetChildrenVertical(-scrolled)
-
-        return scrolled
-    }
-
-
 }

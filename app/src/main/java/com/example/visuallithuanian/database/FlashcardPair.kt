@@ -8,4 +8,5 @@ data class FlashcardPair(
     @PrimaryKey
     val front:String,
     val back:String,
+    val imageSrc:Int
 )

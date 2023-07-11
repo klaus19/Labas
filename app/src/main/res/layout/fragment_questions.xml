@@ -125,7 +125,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="40dp"
         app:cardCornerRadius="8dp"
-        app:cardBackgroundColor="#0077c2"
+        app:cardBackgroundColor="@color/card_purple"
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true">
 
@@ -134,7 +134,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp"
-            android:layout_marginTop="100dp">
+            android:layout_marginTop="80dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/imagecardsHelper" />
 
             <TextView
                 android:id="@+id/text_card_front"
@@ -188,9 +194,9 @@
         android:text="Flip"
         android:id="@+id/btnFlip"
         android:textColor="#FFFF"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/rectangle"
         android:layout_marginBottom="10dp"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         android:layout_below="@id/progress_horizontal"
         android:gravity="center"
         android:layout_centerHorizontal="true" />

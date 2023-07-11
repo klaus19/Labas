@@ -18,4 +18,10 @@
     <string name="word1">word1</string>
     <string name="word2">word2</string>
     <string name="add_word">add</string>
+    <string name="tab_1">Tab 1</string>
+    <string name="tab_2">Tab 2</string>
+    <string name="tab_3">Tab 3</string>
+    <string name="medium">Hello Medium</string>
+    <string name="hard">Hello Hard Screen</string>
+    <string name="empty">empty</string>
 </resources>
