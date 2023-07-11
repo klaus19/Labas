@@ -50,6 +50,7 @@ class ToLearnFlashCards : Fragment() {
             cardViewmodel.deleteCards(cardPair)
 
         }
+
         binding.recyclerview.adapter = adapter
 
         //Swipe Gesture
