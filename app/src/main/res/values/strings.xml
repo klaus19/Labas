@@ -18,4 +18,5 @@
     <string name="word1">word1</string>
     <string name="word2">word2</string>
     <string name="add_word">add</string>
+    <string name="empty">empty</string>
 </resources>

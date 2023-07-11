@@ -73,7 +73,7 @@ class ToLearnFlashCards : Fragment() {
         })
         itemTouchHelper.attachToRecyclerView(binding.recyclerview)
 
-        binding.recyclerview.layoutManager = OverlappingLayoutManager()
+        binding.recyclerview.layoutManager = OverlappingLayoutManager(requireContext())
       //  binding.recyclerview.rotation=10f
 
         //Observe  the data changes for the items added
