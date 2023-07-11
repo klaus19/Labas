@@ -79,6 +79,24 @@ class QuestionsFragment : Fragment() {
         // Hashmap of strings that will shown on cardview front and back side
         hashMap["What"] = Pair("Kas", R.drawable.what)
         hashMap["When"] = Pair("Kai",R.drawable.whennn)
+        hashMap["Where"] = Pair("Kur",R.drawable.whereee)
+        hashMap["Who"] = Pair("Kas",R.drawable.who)
+        hashMap["Whom"] = Pair("Kam",R.drawable.whom)
+        hashMap["Why"] = Pair("Kodėl",R.drawable.why)
+        hashMap["How"] = Pair("Kaip",R.drawable.how)
+        hashMap["Which"] = Pair("Kuris/kuri",R.drawable.which)
+        hashMap["Whose"] = Pair("Kieno",R.drawable.whose)
+        hashMap["I"] = Pair("aš",R.drawable.ii)
+        hashMap["you (singular)"] = Pair("tu/jūs (informal/formal)",R.drawable.you)
+        hashMap["he"] = Pair("jis",R.drawable.he)
+        hashMap["she"] = Pair("ji",R.drawable.she)
+        hashMap["we"] = Pair("mes",R.drawable.we)
+        hashMap["you (plural)"] = Pair("jūs",R.drawable.you)
+        hashMap["they"] = Pair("jie",R.drawable.they)
+
+
+        hashMap["What"] = Pair("Kas", R.drawable.what)
+        hashMap["When"] = Pair("Kai",R.drawable.whennn)
         hashMap["Where"] = Pair("Kur",R.drawable.where)
         hashMap["Who"] = Pair("Kas",R.drawable.who)
         hashMap["Whom"] = Pair("Kam",R.drawable.whom)
@@ -119,21 +137,22 @@ class QuestionsFragment : Fragment() {
                 // if we have reached the end of the hashmap, start again from the beginning
                 currentPairIndex = 0
             }
-            currentPair = hashMap.entries.elementAt(currentPairIndex)
+
 
             val front = binding.textCardFront.text.toString()
             val back = binding.textCardBack.text.toString()
             val imageHelper = currentPair.value.second
 
-            val pair = FlashcardPair(front, back,imageHelper!!)
+            val pair = FlashcardPair(front, back, imageHelper)
             cardViewModel.insertCards(pair)
             //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
             Log.d("Main","$pair")
+            currentPair = hashMap.entries.elementAt(currentPairIndex)
 
             // update the UI with the new pair
             binding.textCardFront.text = currentPair.key
             binding.textCardBack.text =currentPair.value.first
-            binding.imagecardsHelper.setImageResource(currentPair.value.second!!)
+            binding.imagecardsHelper.setImageResource(currentPair.value.second)
 
 
 

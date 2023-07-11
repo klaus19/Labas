@@ -34,10 +34,6 @@ class FlashcardpaiAdapter(
         }
         holder.itemView.setBackgroundColor(holder.itemView.context.getColor(colorRes))
 
-        holder.itemView.setOnClickListener {
-            //holder.left.visibility = View.VISIBLE
-            //holder.right.visibility = View.VISIBLE
-        }
     }
 
     class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -45,10 +41,10 @@ class FlashcardpaiAdapter(
         private val deftextt: TextView = itemView.findViewById(R.id.textView2)
         private val imageHelper = itemView.findViewById<ImageView>(R.id.imageCardHelper)
 
-        fun bind(text: String?, text1: String?, imageSource: Int?) {
+        fun bind(text: String?, text1: String?, imageSource: Int) {
             wordItemView.text = text
             deftextt.text = text1
-            imageHelper.setImageResource(imageSource ?: R.drawable.emoji)
+            imageHelper.setImageResource(imageSource)
         }
 
         companion object {
@@ -61,12 +57,12 @@ class FlashcardpaiAdapter(
     }
 
     class WordsComparator : DiffUtil.ItemCallback<FlashcardPair>() {
-        override fun areItemsTheSame(oldItem: FlashcardPair, newItem: FlashcardPair): Boolean {
+        override fun areItemsTheSame(oldItem:FlashcardPair, newItem:FlashcardPair): Boolean {
             return oldItem === newItem
         }
 
-        override fun areContentsTheSame(oldItem: FlashcardPair, newItem: FlashcardPair): Boolean {
-            return oldItem.front == newItem.front && oldItem.back == newItem.back
+        override fun areContentsTheSame(oldItem:FlashcardPair, newItem:FlashcardPair): Boolean {
+            return oldItem.front == newItem.front && oldItem.back==newItem.back
         }
     }
 }
