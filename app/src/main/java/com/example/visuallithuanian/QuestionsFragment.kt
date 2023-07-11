@@ -95,25 +95,6 @@ class QuestionsFragment : Fragment() {
         hashMap["they"] = Pair("jie",R.drawable.they)
 
 
-        hashMap["What"] = Pair("Kas", R.drawable.what)
-        hashMap["When"] = Pair("Kai",R.drawable.whennn)
-        hashMap["Where"] = Pair("Kur",R.drawable.where)
-        hashMap["Who"] = Pair("Kas",R.drawable.who)
-        hashMap["Whom"] = Pair("Kam",R.drawable.whom)
-        hashMap["Why"] = Pair("Kodėl",R.drawable.why)
-        hashMap["How"] = Pair("Kaip",R.drawable.how)
-        hashMap["Which"] = Pair("Kuris/kuri",R.drawable.which)
-        hashMap["Whose"] = Pair("Kieno",R.drawable.whose)
-        hashMap["I"] = Pair("aš",R.drawable.ii)
-        hashMap["you (singular)"] = Pair("tu/jūs (informal/formal)",R.drawable.you)
-        hashMap["he"] = Pair("jis",R.drawable.he)
-        hashMap["she"] = Pair("ji",R.drawable.she)
-        hashMap["we"] = Pair("mes",R.drawable.we)
-        hashMap["you (plural)"] = Pair("jūs",R.drawable.you)
-        hashMap["they"] = Pair("jie",R.drawable.they)
-
-
-
         counterViewModel.counter.observe(requireActivity()){count->
             binding.textCounter.text = count.toString()
         }
