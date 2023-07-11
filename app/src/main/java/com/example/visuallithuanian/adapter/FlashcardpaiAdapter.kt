@@ -45,10 +45,10 @@ class FlashcardpaiAdapter(
         private val deftextt: TextView = itemView.findViewById(R.id.textView2)
         private val imageHelper = itemView.findViewById<ImageView>(R.id.imageCardHelper)
 
-        fun bind(text: String?, text1: String?, imageSource: Int?) {
+        fun bind(text: String?, text1: String?, imageSource: Int) {
             wordItemView.text = text
             deftextt.text = text1
-            imageHelper.setImageResource(imageSource ?: R.drawable.emoji)
+            imageHelper.setImageResource(imageSource)
         }
 
         companion object {

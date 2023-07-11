@@ -32,18 +32,33 @@ class QuestionsFragment : Fragment() {
     lateinit var bottomNavigationView: BottomNavigationView
     private val counterViewModel: ToLearnViewModel by viewModels()
 
-    private val hashMap = HashMap<String,Pair<String,Int>>()
-
-    private var currentPairIndex =0
-    private lateinit var currentPair:Map.Entry<String,Pair<String,Int>>
-
+    private val flashCardList = listOf<FlashcardPair>(
+        FlashcardPair("What", "Kas", R.drawable.what),
+        FlashcardPair("When", "Kai", R.drawable.whennn),
+        FlashcardPair("Where", "Kur", R.drawable.whereee),
+        FlashcardPair("Who", "Kas", R.drawable.who),
+        FlashcardPair("Whom", "Kam", R.drawable.whom),
+        FlashcardPair("Why", "Kodėl", R.drawable.why),
+        FlashcardPair("How", "Kaip", R.drawable.how),
+        FlashcardPair("Which", "Kuris/kuri", R.drawable.which),
+        FlashcardPair("Whose", "Kieno", R.drawable.whose),
+        FlashcardPair("I", "aš", R.drawable.ii),
+        FlashcardPair("you (singular)", "tu/jūs (informal/formal)", R.drawable.you),
+        FlashcardPair("he", "jis", R.drawable.he),
+        FlashcardPair("she", "ji", R.drawable.she),
+        FlashcardPair("we", "mes", R.drawable.we),
+        FlashcardPair("you (plural)", "jūs", R.drawable.you),
+        FlashcardPair("they", "jie", R.drawable.they)
+    )
     var isFront=true
-    private val totalPairs = 16 // change the value to the actual number of entries in your hashMap
+    private val totalPairs =flashCardList.size // change the value to the actual number of entries in your hashMap
 
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
     }
+    private var currentPairIndex =0
+    private lateinit var currentPair:FlashcardPair
 
     @SuppressLint("ResourceType")
     override fun onCreateView(
@@ -76,24 +91,6 @@ class QuestionsFragment : Fragment() {
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
             R.color.silver))
 
-        // Hashmap of strings that will shown on cardview front and back side
-        hashMap["What"] = Pair("Kas", R.drawable.what)
-        hashMap["When"] = Pair("Kai",R.drawable.whennn)
-        hashMap["Where"] = Pair("Kur",R.drawable.where)
-        hashMap["Who"] = Pair("Kas",R.drawable.who)
-        hashMap["Whom"] = Pair("Kam",R.drawable.whom)
-        hashMap["Why"] = Pair("Kodėl",R.drawable.why)
-        hashMap["How"] = Pair("Kaip",R.drawable.how)
-        hashMap["Which"] = Pair("Kuris/kuri",R.drawable.which)
-        hashMap["Whose"] = Pair("Kieno",R.drawable.whose)
-        hashMap["I"] = Pair("aš",R.drawable.ii)
-        hashMap["you (singular)"] = Pair("tu/jūs (informal/formal)",R.drawable.you)
-        hashMap["he"] = Pair("jis",R.drawable.he)
-        hashMap["she"] = Pair("ji",R.drawable.she)
-        hashMap["we"] = Pair("mes",R.drawable.we)
-        hashMap["you (plural)"] = Pair("jūs",R.drawable.you)
-        hashMap["they"] = Pair("jie",R.drawable.they)
-
 
 
         counterViewModel.counter.observe(requireActivity()){count->
@@ -102,10 +99,10 @@ class QuestionsFragment : Fragment() {
         val front_animation = AnimatorInflater.loadAnimator(context, R.anim.front_animator) as AnimatorSet
         val back_animation = AnimatorInflater.loadAnimator(context,R.anim.back_animator)as AnimatorSet
 
-        currentPair = hashMap.entries.elementAt(currentPairIndex)
-        binding.textCardFront.text = currentPair.key
-        binding.textCardBack.text = currentPair.value.first
-        binding.imagecardsHelper.setImageResource(currentPair.value.second!!)
+        currentPair = flashCardList[currentPairIndex]
+        binding.textCardFront.text = currentPair.front
+        binding.textCardBack.text = currentPair.back
+        binding.imagecardsHelper.setImageResource(currentPair.imageSrc)
 
         // onclick listener on the image
         binding.imageFlashCard.setOnClickListener {
@@ -115,25 +112,23 @@ class QuestionsFragment : Fragment() {
             counterViewModel.incrementCounter()
             // increment currentPairIndex and get the next pair
             currentPairIndex++
-            if (currentPairIndex >= hashMap.size) {
+            if (currentPairIndex >= flashCardList.size) {
                 // if we have reached the end of the hashmap, start again from the beginning
                 currentPairIndex = 0
             }
-            currentPair = hashMap.entries.elementAt(currentPairIndex)
+            currentPair = flashCardList[currentPairIndex]
 
-            val front = binding.textCardFront.text.toString()
-            val back = binding.textCardBack.text.toString()
-            val imageHelper = currentPair.value.second
 
-            val pair = FlashcardPair(front, back,imageHelper!!)
+
+            val pair = FlashcardPair(currentPair.front, currentPair.back,currentPair.imageSrc)
             cardViewModel.insertCards(pair)
             //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
             Log.d("Main","$pair")
 
             // update the UI with the new pair
-            binding.textCardFront.text = currentPair.key
-            binding.textCardBack.text =currentPair.value.first
-            binding.imagecardsHelper.setImageResource(currentPair.value.second!!)
+            binding.textCardFront.text = currentPair.front
+            binding.textCardBack.text =currentPair.back
+            binding.imagecardsHelper.setImageResource(currentPair.imageSrc)
 
 
 
@@ -170,7 +165,7 @@ class QuestionsFragment : Fragment() {
                     cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.card_purple))
 
                 } else {
-                    currentPairIndex = (currentPairIndex + 1) % hashMap.size
+                    currentPairIndex = (currentPairIndex + 1) % flashCardList.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.GONE
                     imageFlashCard.visibility = View.VISIBLE
@@ -189,10 +184,10 @@ class QuestionsFragment : Fragment() {
                 shake.repeatMode = ObjectAnimator.REVERSE
                 shake.start()
                 // retrieve the current pair from the hashMap
-                currentPair = hashMap.entries.elementAt(currentPairIndex)
-                binding.textCardFront.text = currentPair.key
-                binding.textCardBack.text = currentPair.value.first
-                binding.imagecardsHelper.setImageResource(currentPair.value.second!!)
+                currentPair = flashCardList[currentPairIndex]
+                binding.textCardFront.text = currentPair.front
+                binding.textCardBack.text = currentPair.back
+                binding.imagecardsHelper.setImageResource(currentPair.imageSrc)
             }
         }
 
