@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -31,7 +32,7 @@ class ToLearnFlashCards : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentToLearnFlashCardsBinding.inflate(layoutInflater,container,false)
 
@@ -59,10 +60,12 @@ class ToLearnFlashCards : Fragment() {
            findNavController().navigate(R.id.action_toLearnFlashCards_to_flashCards)
         }
 
-        val adapter = FlashcardpaiAdapter { cardPair ->
-            cardViewmodel.deleteCards(cardPair)
+        val adapter = FlashcardpaiAdapter(
+            onDeleteListener = {cardPair->
+                cardViewmodel.insertCards(cardPair)
+            },
+        )
 
-        }
         binding.recyclerview.adapter = adapter
 
         //Swipe Gesture
@@ -90,7 +93,7 @@ class ToLearnFlashCards : Fragment() {
       //  binding.recyclerview.rotation=10f
 
         //Observe  the data changes for the items added
-        cardViewmodel.allWords.observe(requireActivity()) { cardPairs ->
+        cardViewmodel.allWords.observe(viewLifecycleOwner) { cardPairs ->
 
                 adapter.submitList(cardPairs)
 

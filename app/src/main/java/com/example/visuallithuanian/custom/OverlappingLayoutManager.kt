@@ -13,12 +13,12 @@ class OverlappingLayoutManager(context: Context) : RecyclerView.LayoutManager() 
         context.resources.getDimensionPixelOffset(R.dimen.card_horizontal_overlap)
     private val verticalOverlap =
         context.resources.getDimensionPixelOffset(R.dimen.card_vertical_overlap)
-    private val tiltAngle = 2f // Adjust the tilt angle as needed
+    private val tiltAngle = 3f // Adjust the tilt angle as needed
 
-    override fun generateDefaultLayoutParams(): RecyclerView.LayoutParams {
-        return RecyclerView.LayoutParams(
-            RecyclerView.LayoutParams.WRAP_CONTENT,
-            RecyclerView.LayoutParams.WRAP_CONTENT
+    override fun generateDefaultLayoutParams(): LayoutParams {
+        return LayoutParams(
+            LayoutParams.WRAP_CONTENT,
+            LayoutParams.WRAP_CONTENT
         )
     }
 

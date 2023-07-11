@@ -14,6 +14,5 @@ interface FlashCardDao {
     suspend fun insertWord(pair: FlashcardPair)
 
     @Delete
-    suspend fun deleteWord(pair:FlashcardPair)
-
+    suspend fun deleteWord(pair: FlashcardPair)
 }

@@ -8,51 +8,21 @@
     android:id="@+id/card_view"
     android:layout_margin="20dp"
     android:layout_marginBottom="20dp"
-    android:background="@drawable/card_border"
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp">
 
     <LinearLayout
+        android:layout_gravity="center"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp">
-
-            <TextView
-                android:id="@+id/textLeft"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Swipe left"
-                android:textColor="#00e676"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:visibility="gone"
-                android:gravity="center_horizontal"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp" />
-
-            <TextView
-                android:id="@+id/textRight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Swipe right"
-                android:textColor="#d32f2f"
-                android:visibility="gone"
-                android:layout_centerVertical="true"
-                android:gravity="center_horizontal"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp" />
-
-        </RelativeLayout>
+            android:id="@+id/imageCardHelper"
+            android:src="@drawable/emoji" />
 
         <TextView
             android:id="@+id/textView1"
@@ -60,7 +30,6 @@
             android:layout_height="wrap_content"
             android:text="@string/word1"
             android:textStyle="bold"
-            android:layout_gravity="center_horizontal"
             android:textColor="#607d8b" />
 
         <TextView
@@ -70,7 +39,6 @@
             android:text="@string/word2"
             android:textStyle="bold"
             android:textColor="#607d8b"
-            android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp" />
 
     </LinearLayout>
