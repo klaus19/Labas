@@ -56,8 +56,30 @@ class ToLearnFlashCards : Fragment() {
         //Swipe Gesture
 
         val itemTouchHelper = ItemTouchHelper(object :ItemTouchHelper.SimpleCallback(
-            0,ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+            0,ItemTouchHelper.LEFT
         ){
+
+            private val SWIPE_FACTOR=0f
+            override fun onChildDraw(
+                c: Canvas,
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                dX: Float,
+                dY: Float,
+                actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+                val itemView = viewHolder.itemView
+
+                // Calculate rotation angle based on swipe distance
+                val rotation = dX * -0.2f // Adjust this rotation factor as needed
+
+                // Apply rotation transformation to the card view
+                itemView.pivotX = itemView.width.toFloat()
+                itemView.pivotY = itemView.height.toFloat() / 2
+                itemView.rotation = rotation
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+            }
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
