@@ -20,7 +20,8 @@
     <color name="pink">#f06292</color>
     <color name="even">#2196f3</color>
     <color name="card_purple">#9575cd</color>
-    <color name="new_design">#00b8d4</color>
-    <color name="check_this">#84ffff</color>
+    <color name="new_design">#c1e1ed</color>
+    <color name="new_design_text_color">#0b5eab</color>
+    <color name="experimental_color">#fcf0e4</color>
 
 </resources>

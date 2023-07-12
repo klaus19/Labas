@@ -1,14 +1,14 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="500dp"
+    android:layout_height="400dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
+    app:cardBackgroundColor="@color/experimental_color"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:id="@+id/card_view"
     android:layout_margin="20dp"
-    android:layout_marginBottom="20dp"
-    app:cardCornerRadius="8dp"
+    app:cardCornerRadius="15dp"
     app:cardElevation="4dp">
 
     <LinearLayout
@@ -26,11 +26,12 @@
 
         <TextView
             android:id="@+id/textView1"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/word1"
             android:textStyle="bold"
-            android:textColor="#607d8b" />
+            android:textColor="@color/new_design_text_color" />
 
         <TextView
             android:id="@+id/textView2"
@@ -38,7 +39,7 @@
             android:layout_height="wrap_content"
             android:text="@string/word2"
             android:textStyle="bold"
-            android:textColor="#607d8b"
+            android:textColor="@color/new_design_text_color"
             android:layout_marginTop="20dp" />
 
     </LinearLayout>
