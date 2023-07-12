@@ -28,9 +28,9 @@ class FlashcardpaiAdapter(
 
         // Set different colors for alternate rows
         val colorRes = if (position % 2 == 0) {
-            R.color.white // Color resource for even rows
+            R.color.experimental_color // Color resource for even rows
         } else {
-            R.color.white // Color resource for odd rows
+            R.color.experimental_color // Color resource for odd rows
         }
         holder.itemView.setBackgroundColor(holder.itemView.context.getColor(colorRes))
 
