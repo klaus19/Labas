@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
+import com.example.visuallithuanian.`interface`.AdapterCallback
 
 class FlashcardpaiAdapter(
     private val onDeleteListener: (FlashcardPair) -> Unit,
@@ -27,17 +28,19 @@ class FlashcardpaiAdapter(
         holder.bind(current.front, current.back, current.imageSrc)
 
         // Set different colors for alternate rows
-        val colorRes = if (position % 2 == 0) {
-            R.color.experimental_color // Color resource for even rows
-        } else {
-            R.color.experimental_color // Color resource for odd rows
-        }
-        holder.itemView.setBackgroundColor(holder.itemView.context.getColor(colorRes))
+//        val colorRes = if (position % 2 == 0) {
+//            R.color.experimental_color // Color resource for even rows
+//        } else {
+//            R.color.experimental_color // Color resource for odd rows
+//        }
+        holder.itemView.setBackgroundResource(R.drawable.rectangle_card)
 
-        holder.itemView.setOnClickListener {
-            //holder.left.visibility = View.VISIBLE
-            //holder.right.visibility = View.VISIBLE
-        }
+
+//
+//        holder.itemView.setOnClickListener {
+//            //holder.left.visibility = View.VISIBLE
+//            //holder.right.visibility = View.VISIBLE
+//        }
     }
 
     class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
