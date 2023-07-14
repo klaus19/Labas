@@ -57,4 +57,14 @@ class OverlappingLayoutManager(context: Context) : RecyclerView.LayoutManager() 
             currentTilt = if (currentTilt == leftTilt) rightTilt else leftTilt
         }
     }
+
+    fun getTopPosition(): Int? {
+        val topView = getChildAt(0)
+        return if (topView != null) {
+            val topPosition = getPosition(topView)
+            topPosition.takeIf { it != RecyclerView.NO_POSITION }
+        } else {
+            null
+        }
+    }
 }

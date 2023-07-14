@@ -3,12 +3,15 @@ package com.example.visuallithuanian
 import android.animation.ObjectAnimator
 import android.graphics.Canvas
 import android.os.Bundle
+import android.util.Log
 import android.view.GestureDetector
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -26,6 +29,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class ToLearnFlashCards : Fragment() {
 
     private lateinit var binding:FragmentToLearnFlashCardsBinding
+    private lateinit var layoutManager: OverlappingLayoutManager
     lateinit var bottomNav:BottomNavigationView
     val cardViewmodel:  FlashCardViewmodel by viewModels{
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -44,14 +48,36 @@ class ToLearnFlashCards : Fragment() {
 
         binding.backIcon.setOnClickListener {
            findNavController().navigate(R.id.action_toLearnFlashCards_to_flashCards)
+
         }
+
+        binding.recyclerview.layoutManager = OverlappingLayoutManager(requireContext())
+
+        binding.imageSpeech.setOnClickListener {
+
+
+        }
+
+        layoutManager = OverlappingLayoutManager(requireContext())
 
         val adapter = FlashcardpaiAdapter{cardPair->
             cardViewmodel.deleteCards(cardPair)
 
         }
 
+
+        binding.recyclerview.layoutManager = layoutManager
         binding.recyclerview.adapter = adapter
+
+        binding.imageSpeech.setOnClickListener {
+            val lastCard = adapter.currentList.lastOrNull()
+            val text = lastCard?.front
+            if (!text.isNullOrEmpty()) {
+                Toast.makeText(requireContext(), text, Toast.LENGTH_LONG).show()
+                Log.d("Card", "$text")
+            }
+            }
+
 
         //Swipe Gesture
 
@@ -96,7 +122,8 @@ class ToLearnFlashCards : Fragment() {
         })
         itemTouchHelper.attachToRecyclerView(binding.recyclerview)
 
-        binding.recyclerview.layoutManager = OverlappingLayoutManager(requireContext())
+
+
       //  binding.recyclerview.rotation=10f
 
         //Observe  the data changes for the items added
@@ -106,8 +133,12 @@ class ToLearnFlashCards : Fragment() {
 
                 if (cardPairs.isEmpty()){
                     binding.emptyImage.visibility = View.VISIBLE
+                    binding.imageKeyboard.visibility = View.GONE
+                    binding.imageSpeech.visibility = View.GONE
                 }else{
                     binding.emptyImage.visibility = View.GONE
+                    binding.imageSpeech.visibility = View.VISIBLE
+                    binding.imageKeyboard.visibility = View.VISIBLE
                 }
             }
 
