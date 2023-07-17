@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
         android:text="Flashcards"
         android:textSize="40sp"
         android:textColor="#FFF" />
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:layout_below="@id/title_text"
-                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
                 android:text="Pick a set to practice"
                 android:textSize="20sp"
                 android:textColor="#FFF" />
@@ -53,8 +53,8 @@
         android:id="@+id/recyclerViewFlashcards"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="10dp"
         android:layout_below="@id/toolbar"
         android:layout_alignParentBottom="true"
         android:scrollbars="vertical">
