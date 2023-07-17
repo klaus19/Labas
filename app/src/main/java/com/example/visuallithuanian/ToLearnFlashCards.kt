@@ -1,24 +1,29 @@
 package com.example.visuallithuanian
 
+import android.Manifest
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.graphics.Canvas
 import android.os.Bundle
+import android.speech.RecognitionListener
+import android.speech.RecognizerIntent
+import android.speech.SpeechRecognizer
 import android.util.Log
-import android.view.GestureDetector
+
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.adapter.FlashcardpaiAdapter
 import com.example.visuallithuanian.custom.OverlappingLayoutManager
-import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentToLearnFlashCardsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.FlashCardViewmodel
@@ -30,6 +35,13 @@ class ToLearnFlashCards : Fragment() {
 
     private lateinit var binding:FragmentToLearnFlashCardsBinding
     private lateinit var layoutManager: OverlappingLayoutManager
+
+    // for Integrsting Speech Recognation
+    private lateinit var speechRecognizer: SpeechRecognizer
+    private val REQUEST_CODE_SPEECH_PERMISSION=1
+    private val REQUEST_CODE_SPEECH_INPUT=2
+
+
     lateinit var bottomNav:BottomNavigationView
     val cardViewmodel:  FlashCardViewmodel by viewModels{
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -57,6 +69,24 @@ class ToLearnFlashCards : Fragment() {
 
 
         }
+
+        layoutManager = OverlappingLayoutManager(requireContext())
+
+        binding.recyclerview.layoutManager = OverlappingLayoutManager(requireContext())
+
+        // Request necessary permissions
+        requestSpeechPermissions()
+
+        binding.imageSpeech.setOnClickListener {
+
+            startSpeechRecognition()
+        }
+
+        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(requireContext())
+        speechRecognizer.setRecognitionListener(SpeechRecogintionListener())
+
+
+
 
         layoutManager = OverlappingLayoutManager(requireContext())
 
@@ -122,8 +152,7 @@ class ToLearnFlashCards : Fragment() {
         })
         itemTouchHelper.attachToRecyclerView(binding.recyclerview)
 
-
-
+        binding.recyclerview.layoutManager = OverlappingLayoutManager(requireContext())
       //  binding.recyclerview.rotation=10f
 
         //Observe  the data changes for the items added
@@ -143,6 +172,78 @@ class ToLearnFlashCards : Fragment() {
             }
 
         return binding.root
+    }
+
+    private fun requestSpeechPermissions() {
+        val permissions = arrayOf(Manifest.permission.RECORD_AUDIO)
+        ActivityCompat.requestPermissions(requireActivity(),permissions,REQUEST_CODE_SPEECH_PERMISSION)
+    }
+
+    private fun startSpeechRecognition() {
+        val speechIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+        speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        startActivityForResult(speechIntent,REQUEST_CODE_SPEECH_INPUT)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode ==REQUEST_CODE_SPEECH_INPUT && resultCode== AppCompatActivity.RESULT_OK && data!=null){
+            val results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+            val spokenTest = results?.get(0)?:""
+
+            compareSpeech(spokenTest)
+        }
+    }
+
+    private fun compareSpeech(spokenTest: String) {
+        val targetWord = view?.findViewById<TextView>(R.id.textView2)
+
+        if (spokenTest.equals(targetWord)){
+
+            Toast.makeText(requireContext(),"Correct spelling", Toast.LENGTH_SHORT).show()
+
+        }else{
+            Toast.makeText(requireContext(),"InCorrect", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private inner class SpeechRecogintionListener: RecognitionListener {
+        override fun onReadyForSpeech(params: Bundle?) {
+
+        }
+
+        override fun onBeginningOfSpeech() {
+
+        }
+
+        override fun onRmsChanged(rmsdB: Float) {
+
+        }
+
+        override fun onBufferReceived(buffer: ByteArray?) {
+
+        }
+
+        override fun onEndOfSpeech() {
+
+        }
+
+        override fun onError(error: Int) {
+
+        }
+
+        override fun onResults(results: Bundle?) {
+
+        }
+
+        override fun onPartialResults(partialResults: Bundle?) {
+
+        }
+
+        override fun onEvent(eventType: Int, params: Bundle?) {
+
+        }
+
     }
 
 }

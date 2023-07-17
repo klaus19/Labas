@@ -2,24 +2,48 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    tools:context=".ui.activities.fragments.UserFragment">
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
-    <GridView
-        android:id="@+id/mainSpecimens"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:clipToPadding="false"
-        android:horizontalSpacing="6dp"
-        android:paddingBottom="10dp"
-        android:numColumns="3"
-        android:verticalSpacing="6dp" />
-    </androidx.core.widget.NestedScrollView>
+    android:orientation="vertical"
+    android:layout_height="match_parent">
 
+    <!-- Add the Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle"
+        android:title="Lingo"
+        android:titleTextColor="@color/new_design_darker_shade">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFF"
+            android:queryHint="Search..."
+            android:iconifiedByDefault="false" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- NestedScrollView to contain the GridView and make it scrollable -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
+        android:fillViewport="true">
+
+        <!-- Your GridView -->
+        <GridView
+            android:id="@+id/mainSpecimens"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="?android:actionBarSize"
+            android:clipToPadding="false"
+            android:horizontalSpacing="6dp"
+            android:numColumns="3"
+            android:verticalSpacing="6dp" />
+    </androidx.core.widget.NestedScrollView>
 </FrameLayout>
