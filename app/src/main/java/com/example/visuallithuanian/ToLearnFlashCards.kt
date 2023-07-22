@@ -65,10 +65,6 @@ class ToLearnFlashCards : Fragment() {
 
         binding.recyclerview.layoutManager = OverlappingLayoutManager(requireContext())
 
-        binding.imageSpeech.setOnClickListener {
-
-
-        }
 
         layoutManager = OverlappingLayoutManager(requireContext())
 
@@ -99,14 +95,14 @@ class ToLearnFlashCards : Fragment() {
         binding.recyclerview.layoutManager = layoutManager
         binding.recyclerview.adapter = adapter
 
-        binding.imageSpeech.setOnClickListener {
-            val lastCard = adapter.currentList.lastOrNull()
-            val text = lastCard?.front
-            if (!text.isNullOrEmpty()) {
-                Toast.makeText(requireContext(), text, Toast.LENGTH_LONG).show()
-                Log.d("Card", "$text")
-            }
-            }
+//        binding.imageSpeech.setOnClickListener {
+//            val lastCard = adapter.currentList.lastOrNull()
+//            val text = lastCard?.front
+//            if (!text.isNullOrEmpty()) {
+//                Toast.makeText(requireContext(), text, Toast.LENGTH_LONG).show()
+//                Log.d("Card", "$text")
+//            }
+//            }
 
 
         //Swipe Gesture

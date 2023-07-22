@@ -3,20 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="170dp"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_marginLeft="20dp"
     android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
     android:layout_marginRight="20dp"
-    app:cardCornerRadius="15dp"
+    app:cardCornerRadius="10dp"
     android:id="@+id/card_language"
     app:cardElevation="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradient_cardview"
+        android:background="@drawable/rectangle_card"
         android:orientation="vertical">
 
         <ImageView
