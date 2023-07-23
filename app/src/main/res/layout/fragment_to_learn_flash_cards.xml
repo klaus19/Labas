@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/new_design"
+    android:background="@color/nana"
     android:layout_height="match_parent">
 
     <ImageView
