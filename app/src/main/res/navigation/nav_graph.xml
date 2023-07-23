@@ -74,7 +74,11 @@
         android:id="@+id/practiseFragment"
         android:name="com.example.visuallithuanian.ui.activities.fragments.PractiseFragment"
         android:label="fragment_location"
-        tools:layout="@layout/fragment_practise" />
+        tools:layout="@layout/fragment_practise" >
+        <action
+            android:id="@+id/action_practiseFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
     <fragment
         android:id="@+id/animalsFragment"
         android:name="com.example.visuallithuanian.ui.activities.fragments.AnimalsFragment"
