@@ -1,0 +1,20 @@
+<!-- res/values/arrays.xml -->
+<resources>
+    <array name="images_array">
+        <item>@drawable/africa</item>
+        <item>@drawable/antartica</item>
+        <item>@drawable/april</item>
+        <item>@drawable/architect</item>
+        <item>@drawable/banana</item>
+        <!-- Add more drawable resource items as needed -->
+    </array>
+
+    <array name="image_names_array">
+        <item>Africa</item>
+        <item>Antarctica</item>
+        <item>April</item>
+        <item>Architect</item>
+        <item>Banana</item>
+        <!-- Add more image names as needed -->
+    </array>
+</resources>

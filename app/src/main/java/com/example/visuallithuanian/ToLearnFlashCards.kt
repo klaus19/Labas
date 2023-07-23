@@ -82,10 +82,6 @@ class ToLearnFlashCards : Fragment() {
         speechRecognizer.setRecognitionListener(SpeechRecogintionListener())
 
 
-
-
-        layoutManager = OverlappingLayoutManager(requireContext())
-
         val adapter = FlashcardpaiAdapter{cardPair->
             cardViewmodel.deleteCards(cardPair)
 
