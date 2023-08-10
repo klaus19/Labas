@@ -25,5 +25,7 @@
     <color name="new_design_text_color">#0b5eab</color>
     <color name="experimental_color">#fcf0e4</color>
     <color name="nana">#d4f0fc</color>
+    <color name="green">#00FF00</color>
+    <color name="red">#FF0000</color>
 
 </resources>

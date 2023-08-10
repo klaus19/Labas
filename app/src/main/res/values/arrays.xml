@@ -1,6 +1,6 @@
 <!-- res/values/arrays.xml -->
 <resources>
-    <array name="images_array">
+    <array name="image_resources">
         <item>@drawable/africa</item>
         <item>@drawable/antartica</item>
         <item>@drawable/april</item>
@@ -9,7 +9,7 @@
         <!-- Add more drawable resource items as needed -->
     </array>
 
-    <array name="image_names_array">
+    <array name="image_names">
         <item>Africa</item>
         <item>Antarctica</item>
         <item>April</item>
