@@ -21,35 +21,41 @@ class PractiseAdapter(
 
     private var selectedImageResource = -1
     private var selectedImageName = ""
+    private var previousSelectedImageResource = -1
+    private var previousSelectedImageName = ""
 
+    companion object {
+        val GREEN_COLOR = Color.parseColor("#ABEBC6")
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PractiseViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_practise_cards, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_practise_cards, parent, false)
         return PractiseViewHolder(view)
     }
 
     override fun getItemCount(): Int = imageResources.size
 
-    override fun onBindViewHolder(holder: PractiseViewHolder, @SuppressLint("RecyclerView") position: Int) {
-
+    override fun onBindViewHolder(holder: PractiseViewHolder, position: Int) {
         val imageResource = imageResources[position]
         val imageName = imageNames[position]
 
         holder.imageViewPractise.setImageResource(imageResource)
         holder.textViewPractise.text = imageName
 
-        // Set the background color of the image card based on selection
-        holder.cardImagePractise.setCardBackgroundColor(
-            if (selectedImageResource == imageResources[position]) Color.GREEN else Color.WHITE
-        )
-
+     //   val backgroundColor = if (_isCardColorChangeable && selectedImageResource == imageResource) {
+       //     Color.GREEN
+        //} else {
+          //  Color.WHITE
+        //}
+     //   holder.cardImagePractise.setCardBackgroundColor(backgroundColor)
 
         holder.cardImagePractise.setOnClickListener {
-            // Set the selected image position and reset the selected name position
-            selectedImageResource = imageResources[position]
+            selectedImageResource = imageResource
+            previousSelectedImageResource = selectedImageResource
             selectedImageName = ""
             notifyDataSetChanged()
+            holder.cardImagePractise.setCardBackgroundColor(GREEN_COLOR)
         }
 
         holder.cardTextPractise.setOnClickListener {
@@ -61,16 +67,19 @@ class PractiseAdapter(
                 ).show()
             } else {
                 selectedImageName = imageNames[position]
+                previousSelectedImageName = selectedImageName
             }
             notifyDataSetChanged()
         }
-        val nameColor = if (imageNames[position] == selectedImageName) {
-            if (ImageStore.imagesNamesMap[selectedImageResource] == selectedImageName) {
+
+        val nameColor = if(imageNames[position]==selectedImageName){
+            if(ImageStore.imagesNamesMap[selectedImageResource]==selectedImageName){
                 Toast.makeText(
                     holder.itemView.context,
                     "Correct name selected!",
                     Toast.LENGTH_SHORT
                 ).show()
+                holder.cardTextPractise.setBackgroundColor(GREEN_COLOR) // Set green background for the name card
                 Color.GREEN
             } else {
                 Toast.makeText(
@@ -81,7 +90,7 @@ class PractiseAdapter(
                 Color.RED
             }
         } else {
-            Color.WHITE
+              Color.WHITE
         }
         holder.textViewPractise.setBackgroundColor(nameColor)
     }
