@@ -2,18 +2,57 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/nana"
+    android:background="@drawable/background_color"
     xmlns:tools="http://schemas.android.com/tools">
+
+
+
+    <ImageView
+        android:id="@+id/back_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_arrow_back" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textStyle="bold"
+           android:layout_marginStart="80dp"
+           android:text="Select Correct pair"></TextView>
+        
+        <ImageView
+            android:id="@+id/imageCat"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="100dp"
+            android:src="@drawable/cat1"
+            ></ImageView>
+        
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="0"
+               android:id="@+id/textcatCount"
+               android:layout_marginStart="5dp"
+               android:textSize="30dp"></TextView>
+    </LinearLayout>
 
     <!-- RecyclerView to display the image cards -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPractise"
         android:layout_width="match_parent"
         tools:listitem="@layout/item_practise_cards"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="30dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp" />
