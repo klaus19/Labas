@@ -94,4 +94,7 @@ dependencies {
 // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
+    //Material
+    implementation("com.google.android.material:material:1.9.0")
+
 }
