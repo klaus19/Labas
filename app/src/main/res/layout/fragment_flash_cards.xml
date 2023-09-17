@@ -54,58 +54,103 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewFlashcardsEasy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+
+        <TextView
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/toolbar"
-            android:layout_alignParentBottom="true"
-            android:scrollbars="horizontal">
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Sets of Easy Cards"
+            android:textStyle="bold"
+            android:gravity="center_horizontal" />
+
+        <ImageView
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="5dp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/arrow" />
     </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewFlashcardsEasy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/linear1"
+        android:scrollbars="none">
+    </androidx.recyclerview.widget.RecyclerView>
 
 
     <LinearLayout
-        android:layout_below="@id/linear1"
+        android:layout_below="@id/recyclerViewFlashcardsEasy"
         android:id="@+id/linear2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewFlashcardsMedium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <TextView
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/toolbar"
-            android:layout_alignParentBottom="true"
-            android:scrollbars="horizontal">
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Sets of Medium Cards"
+            android:textStyle="bold"
+            android:gravity="center_horizontal" />
+
+        <ImageView
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="5dp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/arrow" />
+
     </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewFlashcardsMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/linear2"
+        android:scrollbars="none">
+    </androidx.recyclerview.widget.RecyclerView>
 
 
     <LinearLayout
         android:id="@+id/linear3"
-        android:layout_below="@id/linear2"
+        android:layout_below="@id/recyclerViewFlashcardsMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewFlashcardsHard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <TextView
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/toolbar"
-            android:layout_alignParentBottom="true"
-            android:scrollbars="horizontal">
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Sets of Hard Cards"
+            android:textStyle="bold"
+            android:gravity="center_horizontal" />
+
+        <ImageView
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="5dp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/arrow" />
+
     </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewFlashcardsHard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/linear3"
+        android:scrollbars="none">
+    </androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>
