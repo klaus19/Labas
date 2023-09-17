@@ -1,14 +1,12 @@
 package com.example.visuallithuanian
 
 import android.Manifest
-import android.animation.ObjectAnimator
 import android.content.Intent
 import android.graphics.Canvas
 import android.os.Bundle
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
-import android.util.Log
 
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,7 +20,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.visuallithuanian.adapter.FlashcardpaiAdapter
+import com.example.visuallithuanian.adapter.ToLearnAdapter
 import com.example.visuallithuanian.custom.OverlappingLayoutManager
 import com.example.visuallithuanian.databinding.FragmentToLearnFlashCardsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
@@ -82,7 +80,7 @@ class ToLearnFlashCards : Fragment() {
         speechRecognizer.setRecognitionListener(SpeechRecogintionListener())
 
 
-        val adapter = FlashcardpaiAdapter{cardPair->
+        val adapter = ToLearnAdapter{ cardPair->
             cardViewmodel.deleteCards(cardPair)
 
         }
