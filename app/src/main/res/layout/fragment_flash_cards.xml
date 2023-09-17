@@ -24,17 +24,16 @@
             android:id="@+id/relativeFlashcard"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:layout_toRightOf="@id/back_icon"
-            >
-        <TextView
-        android:id="@+id/title_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:layout_marginStart="30dp"
-        android:text="Flashcards"
-        android:textSize="40sp"
-        android:textColor="#FFF" />
+            android:layout_toRightOf="@id/back_icon">
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginStart="30dp"
+                android:text="Flashcards"
+                android:textSize="40sp"
+                android:textColor="#FFF" />
             <TextView
                 android:id="@+id/subtext_flash"
                 android:layout_width="wrap_content"
@@ -48,58 +47,65 @@
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_below="@id/toolbar"
-        android:layout_width="300dp"
-        android:paddingEnd="0dp"
-        android:layout_height="300dp"
-        android:rotation="-90">
-       <com.google.android.material.tabs.TabLayout
-           android:id="@+id/tabLayout"
-           android:layout_width="match_parent"
-           android:layout_gravity="center_horizontal"
-           app:tabInlineLabel="true"
-           app:tabBackground="@drawable/flash_tablebar"
-           app:tabIndicatorFullWidth="false"
-           app:tabTextColor="@color/white"
-           app:tabIndicatorColor="@color/blue_card"
-           android:layout_height="wrap_content">
-           <com.google.android.material.tabs.TabItem
-               android:layout_height="wrap_content"
-               android:layout_width="wrap_content"
-               android:id="@+id/tabItemHard"
-               android:text="Hard"
-               />
-           <com.google.android.material.tabs.TabItem
-               android:layout_height="wrap_content"
-               android:layout_width="wrap_content"
-               android:id="@+id/tabItemMedium"
-               android:text="Medium"
-               />
+        android:layout_width="match_parent"
+        android:id="@+id/linear1"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewFlashcardsEasy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/toolbar"
+            android:layout_alignParentBottom="true"
+            android:scrollbars="horizontal">
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
 
 
-           <com.google.android.material.tabs.TabItem
-               android:layout_height="wrap_content"
-               android:layout_width="wrap_content"
-               android:id="@+id/tabItemEasy"
-               android:text="Easy"
-               />
-
-
-       </com.google.android.material.tabs.TabLayout>
-    </FrameLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewFlashcards"
+    <LinearLayout
+        android:layout_below="@id/linear1"
+        android:id="@+id/linear2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/toolbar"
-        android:layout_alignParentBottom="true"
-        android:scrollbars="vertical">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewFlashcardsMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/toolbar"
+            android:layout_alignParentBottom="true"
+            android:scrollbars="horizontal">
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
 
 
+    <LinearLayout
+        android:id="@+id/linear3"
+        android:layout_below="@id/linear2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewFlashcardsHard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/toolbar"
+            android:layout_alignParentBottom="true"
+            android:scrollbars="horizontal">
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
 </RelativeLayout>

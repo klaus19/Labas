@@ -39,11 +39,6 @@ class FlashcardsAdapter(private val imageList: List<FlashCardInfo>
         holder.textViewFlashcards.text = current_item.name
         holder.textViewFlashcardsLithuanian.text = current_item.translation
 
-        val imageFlashcards = holder.itemView.findViewById<ImageView>(com.example.visuallithuanian.R.id.imageViewFlashcards)
-        val textViewFlashCards = holder.itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.textflashCardName)
-        val cardviewFlashcard = holder.itemView.findViewById<CardView>(com.example.visuallithuanian.R.id.cardFlashCards)
-        val textLithuanian = holder.itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.textflashCardLithuanian)
-
         holder.cardviewFlashcard.setOnClickListener {
             val action = when(position){
                     1 ->FlashCardsDirections.actionFlashCardsToQuestionsFragment()

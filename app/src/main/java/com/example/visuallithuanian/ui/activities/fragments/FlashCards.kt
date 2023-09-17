@@ -1,5 +1,6 @@
 package com.example.visuallithuanian.ui.activities.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -23,6 +24,7 @@ class FlashCards : Fragment() {
 
     lateinit var bottomNav:BottomNavigationView
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,9 +38,14 @@ class FlashCards : Fragment() {
         bottomNav.visibility = View.VISIBLE
 
         val back_icon = view.findViewById<ImageView>(R.id.back_icon)
-        val recyclerViewCards1 = view.findViewById<RecyclerView>(R.id.recyclerViewFlashcards)
+        val recyclerViewCardsEasy = view.findViewById<RecyclerView>(R.id.recyclerViewFlashcardsEasy)
+        val recyclerViewCardsMedium = view.findViewById<RecyclerView>(R.id.recyclerViewFlashcardsMedium)
+        val recyclerViewCardsHard = view.findViewById<RecyclerView>(R.id.recyclerViewFlashcardsHard)
 
-        recyclerViewCards1.layoutManager = LinearLayoutManager(context)
+
+        recyclerViewCardsHard.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewCardsMedium.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewCardsEasy.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL, false)
 
         val navController = Navigation.findNavController(requireActivity(),
             R.id.nav_host_fragment
@@ -46,7 +53,16 @@ class FlashCards : Fragment() {
 
         val flashCardList = generateFlashCards()
         val adapter = FlashcardsAdapter(flashCardList,navController)
-        recyclerViewCards1.adapter = adapter
+        recyclerViewCardsHard.adapter = adapter
+
+        val easyFlashCardsList = generateEasyFlashCards()
+        val adapter1 = FlashcardsAdapter(easyFlashCardsList,navController)
+        recyclerViewCardsEasy.adapter = adapter1
+
+        val mediumFlashCardsList = generateMediumFlashCards()
+        val adapter2 = FlashcardsAdapter(mediumFlashCardsList,navController)
+        recyclerViewCardsMedium.adapter = adapter2
+
 
 
         // setting up listener
@@ -57,15 +73,30 @@ class FlashCards : Fragment() {
         return view
     }
 
-    private fun generateFlashCards():List<FlashCardInfo> {
+    private fun generateMediumFlashCards(): List<FlashCardInfo> {
         return listOf(
-            FlashCardInfo(R.drawable.talking,"Daily Conversation",""),
-            FlashCardInfo(R.drawable.doctorvisit,"Questions and Pronouns",""),
-            FlashCardInfo(R.drawable.food,"Food",""),
-            FlashCardInfo(R.drawable.relatives,"Relatives",""),
             FlashCardInfo(R.drawable.clothing,"Clothing",""),
             FlashCardInfo(R.drawable.village,"Towns and Villages",""),
             FlashCardInfo(R.drawable.nature,"Nature",""),
+
+        )
+
+    }
+
+    private fun generateEasyFlashCards(): List<FlashCardInfo> {
+
+        return listOf(
+            FlashCardInfo(R.drawable.talking,"Daily Conversation",""),
+            FlashCardInfo(R.drawable.food,"Food",""),
+            FlashCardInfo(R.drawable.relatives,"Relatives",""),
+        )
+
+    }
+
+    private fun generateFlashCards():List<FlashCardInfo> {
+        return listOf(
+
+            FlashCardInfo(R.drawable.doctorvisit,"Questions and Pronouns",""),
             FlashCardInfo(R.drawable.verbs,"Popular Verbs",""),
         )
 

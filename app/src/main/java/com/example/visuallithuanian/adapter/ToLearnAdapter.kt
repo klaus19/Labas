@@ -12,11 +12,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
-import com.example.visuallithuanian.`interface`.AdapterCallback
 
-class FlashcardpaiAdapter(
+class ToLearnAdapter(
     private val onDeleteListener: (FlashcardPair) -> Unit,
-) : ListAdapter<FlashcardPair, FlashcardpaiAdapter.WordViewHolder>(WordsComparator()) {
+) : ListAdapter<FlashcardPair, ToLearnAdapter.WordViewHolder>(WordsComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
         return WordViewHolder.create(parent)

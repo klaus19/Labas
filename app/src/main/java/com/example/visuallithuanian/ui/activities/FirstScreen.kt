@@ -9,15 +9,25 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.example.visuallithuanian.R
+import com.example.visuallithuanian.adapter.TabLayoutAdapter
 import com.example.visuallithuanian.databinding.FirstScreenBinding
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class FirstScreen:AppCompatActivity() {
+
+    val levels = arrayOf(
+        "Easy",
+        "Medium",
+        "Hard"
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +42,7 @@ class FirstScreen:AppCompatActivity() {
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
+
         bottomNav.setupWithNavController(navController)
         //map the menu items
         bottomNav.setOnNavigationItemSelectedListener{item ->
