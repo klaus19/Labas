@@ -20,7 +20,7 @@ class FlashcardsAdapter(private val imageList: List<FlashCardInfo>
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageViewFlashcards = itemView.findViewById<ImageView>(com.example.visuallithuanian.R.id.imageViewFlashcards)
         val textViewFlashcards = itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.textflashCardName)
-        val textViewFlashcardsLithuanian = itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.textflashCardLithuanian)
+       // val textViewFlashcardsLithuanian = itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.textflashCardLithuanian)
 
         val cardviewFlashcard = itemView.findViewById<CardView>(com.example.visuallithuanian.R.id.cardFlashCards)
 
@@ -37,7 +37,7 @@ class FlashcardsAdapter(private val imageList: List<FlashCardInfo>
 
         holder.imageViewFlashcards.setImageResource(current_item.imageId)
         holder.textViewFlashcards.text = current_item.name
-        holder.textViewFlashcardsLithuanian.text = current_item.translation
+      //  holder.textViewFlashcardsLithuanian.text = current_item.translation
 
         holder.cardviewFlashcard.setOnClickListener {
             val action = when(position){
