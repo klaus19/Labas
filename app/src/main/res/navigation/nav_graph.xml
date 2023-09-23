@@ -99,6 +99,9 @@
         <action
             android:id="@+id/action_flashCards_to_questionsFragment"
             app:destination="@id/questionsFragment" />
+        <action
+            android:id="@+id/action_flashCards_to_dailyBasic"
+            app:destination="@id/dailyBasic" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -287,5 +290,10 @@
             android:id="@+id/action_transportFragment_to_flashCards"
             app:destination="@id/flashCards" />
     </fragment>
+    <fragment
+        android:id="@+id/dailyBasic"
+        android:name="com.example.visuallithuanian.DailyBasic"
+        android:label="fragment_daily_basic"
+        tools:layout="@layout/fragment_daily_basic" />
 
 </navigation>

@@ -33,7 +33,7 @@
                 android:layout_marginStart="30dp"
                 android:text="Flashcards"
                 android:textSize="40sp"
-                android:textColor="#FFF" />
+                android:textColor="@color/textColor" />
             <TextView
                 android:id="@+id/subtext_flash"
                 android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
                 android:layout_marginStart="30dp"
                 android:text="Pick a set to practice"
                 android:textSize="20sp"
-                android:textColor="#FFF" />
+                android:textColor="@color/textColor" />
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 

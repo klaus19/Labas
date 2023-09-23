@@ -7,46 +7,40 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.data.FlashCardInfo
-import com.example.visuallithuanian.ui.activities.fragments.FlashCardsDirections
 
 
-class FlashcardsAdapter(private val imageList: List<FlashCardInfo>
-,  private val navController: NavController
-) :RecyclerView.Adapter<FlashcardsAdapter.ViewHolder>(){
+class FlashcardsMediumAdapter(private val imageList: List<FlashCardInfo>
+                            , private val navController: NavController
+) :RecyclerView.Adapter<FlashcardsMediumAdapter.ViewHolder>(){
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageViewFlashcards = itemView.findViewById<ImageView>(com.example.visuallithuanian.R.id.imageViewFlashcards)
         val textViewFlashcards = itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.textflashCardName)
-       // val textViewFlashcardsLithuanian = itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.textflashCardLithuanian)
+        // val textViewFlashcardsLithuanian = itemView.findViewById<TextView>(com.example.visuallithuanian.R.id.textflashCardLithuanian)
 
         val cardviewFlashcard = itemView.findViewById<CardView>(com.example.visuallithuanian.R.id.cardFlashCards)
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(com.example.visuallithuanian.R.layout.item_flashcards, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_flashcards, parent, false)
         return ViewHolder(view)
 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val current_item = imageList[position]
+        val flashCard = imageList[position]
 
-        holder.imageViewFlashcards.setImageResource(current_item.imageId)
-        holder.textViewFlashcards.text = current_item.name
-      //  holder.textViewFlashcardsLithuanian.text = current_item.translation
+        holder.imageViewFlashcards.setImageResource(flashCard.imageId)
+        holder.textViewFlashcards.text = flashCard.name
+        //  holder.textViewFlashcardsLithuanian.text = current_item.translation
 
         holder.cardviewFlashcard.setOnClickListener {
-            val action = when(position){
-                    1 ->FlashCardsDirections.actionFlashCardsToQuestionsFragment()
-
-                else -> return@setOnClickListener
-            }
-            action.let {
-                navController.navigate(it)
+            when(flashCard.name){
+                "Questions and Pronouns" -> navController.navigate(R.id.action_flashCards_to_questionsFragment)
             }
 
         }

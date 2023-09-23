@@ -7,12 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.cardview.widget.CardView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.R
-import com.example.visuallithuanian.adapter.FlashcardsAdapter
+import com.example.visuallithuanian.adapter.FlashcardsEasyAdapter
+import com.example.visuallithuanian.adapter.FlashcardsHardAdapter
+import com.example.visuallithuanian.adapter.FlashcardsMediumAdapter
 import com.example.visuallithuanian.data.FlashCardInfo
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -52,15 +53,15 @@ class FlashCards : Fragment() {
         )
 
         val hardflashCardList = generateHardFlashCards()
-        val adapter = FlashcardsAdapter(hardflashCardList,navController)
+        val adapter = FlashcardsHardAdapter(hardflashCardList,navController)
         recyclerViewCardsHard.adapter = adapter
 
         val easyFlashCardsList = generateEasyFlashCards()
-        val adapter1 = FlashcardsAdapter(easyFlashCardsList,navController)
+        val adapter1 = FlashcardsEasyAdapter(easyFlashCardsList,navController)
         recyclerViewCardsEasy.adapter = adapter1
 
         val mediumFlashCardsList = generateMediumFlashCards()
-        val adapter2 = FlashcardsAdapter(mediumFlashCardsList,navController)
+        val adapter2 = FlashcardsMediumAdapter(mediumFlashCardsList,navController)
         recyclerViewCardsMedium.adapter = adapter2
 
 
