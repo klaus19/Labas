@@ -51,8 +51,8 @@ class FlashCards : Fragment() {
             R.id.nav_host_fragment
         )
 
-        val flashCardList = generateFlashCards()
-        val adapter = FlashcardsAdapter(flashCardList,navController)
+        val hardflashCardList = generateHardFlashCards()
+        val adapter = FlashcardsAdapter(hardflashCardList,navController)
         recyclerViewCardsHard.adapter = adapter
 
         val easyFlashCardsList = generateEasyFlashCards()
@@ -78,7 +78,23 @@ class FlashCards : Fragment() {
             FlashCardInfo(R.drawable.clothing,"Clothing",""),
             FlashCardInfo(R.drawable.village,"Towns and Villages",""),
             FlashCardInfo(R.drawable.nature,"Nature",""),
-
+            FlashCardInfo(R.drawable.time,"Time",""),
+            FlashCardInfo(R.drawable.cinemascreen,"Cinema",""),
+            FlashCardInfo(R.drawable.numbers,"Numbers",""),
+            FlashCardInfo(R.drawable.business,"Business Language",""),
+            FlashCardInfo(R.drawable.work,"Works",""),
+            FlashCardInfo(R.drawable.activities,"Activities",""),
+            FlashCardInfo(R.drawable.cafe,"Cafe",""),
+            FlashCardInfo(R.drawable.sports,"Sports",""),
+            FlashCardInfo(R.drawable.profession,"Professions",""),
+            FlashCardInfo(R.drawable.weekly,"Weekly basics",""),
+            FlashCardInfo(R.drawable.personality,"Personality",""),
+            FlashCardInfo(R.drawable.household,"Household",""),
+            FlashCardInfo(R.drawable.best,"100 best words",""),
+            FlashCardInfo(R.drawable.animals,"Animals",""),
+            FlashCardInfo(R.drawable.food,"Food & Ingredients",""),
+            FlashCardInfo(R.drawable.travel,"Travel",""),
+            FlashCardInfo(R.drawable.thisss,"This & that",""),
         )
 
     }
@@ -86,18 +102,37 @@ class FlashCards : Fragment() {
     private fun generateEasyFlashCards(): List<FlashCardInfo> {
 
         return listOf(
-            FlashCardInfo(R.drawable.talking,"Daily Conversation",""),
+            FlashCardInfo(R.drawable.doctorvisit,"Questions and Pronouns",""),
+            FlashCardInfo(R.drawable.talking,"Daily Basic",""),
+            FlashCardInfo(R.drawable.computer,"Computer terminology",""),
+            FlashCardInfo(R.drawable.action,"Basic actions",""),
             FlashCardInfo(R.drawable.food,"Food",""),
-            FlashCardInfo(R.drawable.relatives,"Relatives",""),
+            FlashCardInfo(R.drawable.relatives,"Family",""),
+            FlashCardInfo(R.drawable.keyphrase,"Key Phrases",""),
+            FlashCardInfo(R.drawable.days,"Day and Months",""),
+            FlashCardInfo(R.drawable.colors,"Colours and Shapes",""),
+            FlashCardInfo(R.drawable.colors,"I verbs",""),
+            FlashCardInfo(R.drawable.village,"Towns & Villages",""),
         )
 
     }
 
-    private fun generateFlashCards():List<FlashCardInfo> {
+    private fun generateHardFlashCards():List<FlashCardInfo> {
         return listOf(
+            FlashCardInfo(R.drawable.pointers,"Pointers",""),
+            FlashCardInfo(R.drawable.maths,"Maths",""),
+            FlashCardInfo(R.drawable.pointers,"Description",""),
+            FlashCardInfo(R.drawable.maths,"Interface",""),
+            FlashCardInfo(R.drawable.maths,"Animal","Vocabulary"),
+            FlashCardInfo(R.drawable.maths,"Right",""),
+            FlashCardInfo(R.drawable.maths,"Feelings &","Mood"),
+            FlashCardInfo(R.drawable.maths,"Advanced actions",""),
+            FlashCardInfo(R.drawable.maths,"Household Appliances",""),
+            FlashCardInfo(R.drawable.maths,"Adjectives",""),
 
-            FlashCardInfo(R.drawable.doctorvisit,"Questions and Pronouns",""),
-            FlashCardInfo(R.drawable.verbs,"Popular Verbs",""),
+
+
+
         )
 
     }
