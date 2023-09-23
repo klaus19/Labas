@@ -33,7 +33,7 @@
                 android:layout_marginStart="30dp"
                 android:text="Flashcards"
                 android:textSize="40sp"
-                android:textColor="@color/textColor" />
+                android:textColor="@color/white" />
             <TextView
                 android:id="@+id/subtext_flash"
                 android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
                 android:layout_marginStart="30dp"
                 android:text="Pick a set to practice"
                 android:textSize="20sp"
-                android:textColor="@color/textColor" />
+                android:textColor="@color/white" />
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -60,6 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
+            android:textColor="@color/textColor"
             android:text="Sets of Easy Cards"
             android:textStyle="bold"
             android:gravity="center_horizontal" />
@@ -95,6 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
+            android:textColor="@color/textColor"
             android:text="Sets of Medium Cards"
             android:textStyle="bold"
             android:gravity="center_horizontal" />
@@ -131,6 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
+            android:textColor="@color/textColor"
             android:text="Sets of Hard Cards"
             android:textStyle="bold"
             android:gravity="center_horizontal" />

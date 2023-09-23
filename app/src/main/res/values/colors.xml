@@ -6,11 +6,12 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white1">#FFFFFFFF</color>
+    <color name="white">#1565c0</color>
     <color name="silver">#EEEEEE</color>
     <color name="green_card">#0097a7</color>
     <color name="bottomNavigation">#0288d1</color>
-    <color name="textColor">#37474f</color>
+    <color name="textColor">#1565c0</color>
     <color name="card_color">#f0f4c3</color>
     <color name="orange">#b39ddb</color>
     <color name="blue_card">#0288d1</color>
