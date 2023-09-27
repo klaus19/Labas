@@ -195,11 +195,6 @@ class QuestionsFragment : Fragment() {
                 binding.imagecardsHelper.setImageResource(currentPair.value.second!!)
             }
         }
-
-        binding.cardLearning.setOnClickListener {
-            findNavController().navigate(R.id.action_questionsFragment_to_toLearnFlashCards)
-        }
-
         return binding.root
     }
 }
