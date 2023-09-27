@@ -70,7 +70,7 @@ class DailyBasic : Fragment() {
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext()
-            ,R.color.pink))
+            ,R.color.float1))
 
         //changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(
@@ -101,7 +101,7 @@ class DailyBasic : Fragment() {
         hashMap["to cost"] = Pair("kainuoti",R.drawable.cost)
         hashMap["a cup of coffee"] = Pair("puodelis kavos",R.drawable.cupcoffee)
         hashMap["apple"] = Pair("obuolys", R.drawable.apple1)
-        hashMap["a glass"] = Pair("stiklinė",R.drawable.water1)
+        hashMap["a glass"] = Pair("stiklinė",R.drawable.glass1)
         hashMap["What do you buy?"] = Pair("Ką perkate?",R.drawable.buy11)
         hashMap["parents"] = Pair("tėvai",R.drawable.parents1)
         hashMap["classmate"] = Pair("klasiokas", R.drawable.classmate)
@@ -126,12 +126,12 @@ class DailyBasic : Fragment() {
         currentPair = hashMap.entries.elementAt(currentPairIndex)
         binding.textCardFront.text = currentPair.key
         binding.textCardBack.text = currentPair.value.first
-        binding.imagecardsHelper.setImageResource(currentPair.value.second!!)
+        binding.imagecardsHelper.setImageResource(currentPair.value.second)
 
         // onclick listener on the image
         binding.imageFlashCard.setOnClickListener {
-            val clickedColor = ContextCompat.getColor(requireContext(), R.color.white)
-            binding.imageFlashCard.setBackgroundColor(clickedColor)
+            binding.imageFlashCard.visibility = View.GONE
+            binding.imageFlashCardSaveWhite.visibility = View.VISIBLE
 
             counterViewModel.incrementCounter()
             // increment currentPairIndex and get the next pair
@@ -140,8 +140,6 @@ class DailyBasic : Fragment() {
                 // if we have reached the end of the hashmap, start again from the beginning
                 currentPairIndex = 0
             }
-
-
             val front = binding.textCardFront.text.toString()
             val back = binding.textCardBack.text.toString()
             val imageHelper = currentPair.value.second
@@ -152,13 +150,32 @@ class DailyBasic : Fragment() {
             Log.d("Main","$pair")
             currentPair = hashMap.entries.elementAt(currentPairIndex)
 
-            // update the UI with the new pair
-            binding.textCardFront.text = currentPair.key
-            binding.textCardBack.text =currentPair.value.first
-            binding.imagecardsHelper.setImageResource(currentPair.value.second)
+        }
+        //On Event of clicking on the image
+        binding.imageFlashCardSaveWhite.setOnClickListener {
+            with(binding){
+                imageFlashCardSaveWhite.visibility = View.GONE
+                imageFlashCard.visibility = View.VISIBLE
 
+                if (currentPairIndex >= 0 && currentPairIndex < hashMap.size) {
+                    // Remove the item at the current index from your data structure (e.g., HashMap)
+                    val removedPair = hashMap.entries.elementAt(currentPairIndex)
+                    hashMap.remove(removedPair.key)
 
+                    // Decrease the counter
+                    counterViewModel.decrementCounter()
+                    val front = binding.textCardFront.text.toString()
+                    val back = binding.textCardBack.text.toString()
+                    val imageHelper = currentPair.value.second
 
+                    val pair = FlashcardPair(front, back, imageHelper)
+                    cardViewModel.deleteCards(pair)
+                    //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
+                    Log.d("Main","$pair")
+                    currentPair = hashMap.entries.elementAt(currentPairIndex)
+
+                }
+            }
         }
 
         binding.cardLearning.setOnClickListener {
@@ -170,6 +187,10 @@ class DailyBasic : Fragment() {
         //onclick listener for the Flip button
         with(binding) {
             btnFlip.setOnClickListener {
+                    imageFlashCardSaveWhite.visibility = View.GONE
+                    imageFlashCard.visibility = View.VISIBLE
+
+
                 val progress = ((currentPairIndex + 1) * 100) / totalPairs
                 binding.progressHorizontal.progress = progress
 
@@ -189,14 +210,14 @@ class DailyBasic : Fragment() {
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.GONE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.card_purple))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green1))
 
                 } else {
                     currentPairIndex = (currentPairIndex + 1) % hashMap.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.GONE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.pink))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.orange1))
                     front_animation.setTarget(textCardBack)
                     back_animation.setTarget(textCardFront)
                     back_animation.start()

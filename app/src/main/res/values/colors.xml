@@ -7,7 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white1">#FFFFFFFF</color>
-    <color name="white">#1565c0</color>
+    <color name="white">#FFFFFF</color>
     <color name="silver">#EEEEEE</color>
     <color name="green_card">#0097a7</color>
     <color name="bottomNavigation">#0288d1</color>
@@ -29,5 +29,7 @@
     <color name="green">#00FF00</color>
     <color name="red">#FF0000</color>
     <color name="bottomNavi">#ea888a</color>
-
+    <color name="orange1">#fe747d</color>
+    <color name="green1">#55c8a6</color>
+    <color name="float1">#fa867d</color>
 </resources>
