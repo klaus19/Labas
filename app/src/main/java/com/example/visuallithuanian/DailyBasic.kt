@@ -173,8 +173,8 @@ class DailyBasic : Fragment() {
                 val progress = ((currentPairIndex + 1) * 100) / totalPairs
                 binding.progressHorizontal.progress = progress
 
-                val originalColor = ContextCompat.getColor(requireContext(), R.color.pink)
-                binding.imageFlashCard.setBackgroundColor(originalColor)
+               // val originalColor = ContextCompat.getColor(requireContext(), R.color.pink)
+              //  binding.imageFlashCard.setBackgroundColor(originalColor)
 
                 // initialize currentPairIndex to 0 if it hasn't been initialized yet
                 if (currentPairIndex < 0) {
