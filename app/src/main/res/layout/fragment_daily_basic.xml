@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/zero"
                 android:textSize="18sp"
-                android:textColor="#f06292"
+                android:textColor="@color/orange1"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/to_learn"
                 android:textSize="18sp"
-                android:textColor="#f06292"
+                android:textColor="@color/orange1"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
@@ -109,18 +109,17 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="40dp"
         app:cardCornerRadius="8dp"
-        app:cardBackgroundColor="#55c8a6"
+        app:cardBackgroundColor="@color/orange1"
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true">
 
-        <!-- ... (other views) -->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp"
-            android:layout_marginTop="60dp">
+            android:layout_marginTop="40dp">
 
             <ImageView
                 android:layout_width="96dp"
@@ -128,6 +127,7 @@
                 android:layout_gravity="center"
                 android:scaleType="fitXY"
                 android:background="@drawable/circular_flashcardview"
+                android:layout_marginBottom="20dp"
                 android:id="@+id/imagecardsHelper" />
 
             <TextView
@@ -135,9 +135,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/front_side"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="2dp"
                 android:textColor="#FFFF"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
@@ -148,12 +148,19 @@
                 android:text="@string/back_side"
                 android:layout_marginTop="5dp"
                 android:textColor="#FFFF"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-        </LinearLayout>
 
-        <!-- ... (other views) -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_gravity="center"
+                android:id="@+id/btnPlay"
+                android:background="@drawable/play" />
+
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/image_flash_card"
@@ -191,8 +198,8 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="120dp"
-        android:layout_marginTop="10dp"
-        android:text="Flip"
+        android:layout_marginTop="20dp"
+        android:text="@string/flip"
         android:id="@+id/btnFlip"
         android:textColor="#FFFF"
         android:background="@drawable/rectangle"

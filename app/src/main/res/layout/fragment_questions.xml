@@ -7,7 +7,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="120dp"
         android:background="@drawable/flash_tablebar"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
@@ -32,24 +32,7 @@
                 android:layout_marginTop="20dp"
                 android:textColor="#FFFF"
                 android:textStyle="bold"
-                android:textSize="20sp" />
-            <ImageView
-                android:layout_marginStart="5dp"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:id="@+id/imageStar"
-                android:src="@drawable/starjunior"
-                android:layout_marginTop="20dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:layout_marginTop="20dp"
-                android:textStyle="bold"
-                android:textColor="#FFF"
-                android:text="@string/to_save_the_word"
-                android:layout_marginStart="5dp"/>
-
+                android:textSize="30sp" />
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
@@ -74,7 +57,7 @@
         android:contentDescription="@string/add_item"
         android:src="@drawable/baseline_library_add_24"
         android:tint="@android:color/white"
-        app:backgroundTint="#51c6aa"
+        app:backgroundTint="#fa867d"
         app:fabSize="normal" />
     <androidx.cardview.widget.CardView
         android:id="@+id/card_learning"
@@ -96,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/zero"
                 android:textSize="18sp"
-                android:textColor="#f06292"
+                android:textColor="@color/orange1"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
@@ -106,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/to_learn"
                 android:textSize="18sp"
-                android:textColor="#f06292"
+                android:textColor="@color/orange1"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
@@ -126,23 +109,25 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="40dp"
         app:cardCornerRadius="8dp"
-        app:cardBackgroundColor="#51c6aa"
+        app:cardBackgroundColor="@color/orange1"
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp"
-            android:layout_marginTop="80dp">
+            android:layout_marginTop="40dp">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
                 android:layout_gravity="center"
                 android:scaleType="fitXY"
                 android:background="@drawable/circular_flashcardview"
+                android:layout_marginBottom="20dp"
                 android:id="@+id/imagecardsHelper" />
 
             <TextView
@@ -150,24 +135,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/front_side"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="2dp"
                 android:textColor="#FFFF"
-                android:textSize="38sp"
+                android:textSize="16sp"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
             <TextView
                 android:id="@+id/text_card_back"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/back_side"
-                android:visibility="invisible"
-                android:layout_marginTop="38dp"
+                android:layout_marginTop="5dp"
                 android:textColor="#FFFF"
-                android:textSize="38sp"
-
+                android:textSize="16sp"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_gravity="center"
+                android:id="@+id/btnPlay"
+                android:background="@drawable/play" />
+
         </LinearLayout>
+
         <ImageView
             android:id="@+id/image_flash_card"
             android:layout_width="30dp"
@@ -175,8 +169,19 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_gravity="end|top"
+            android:visibility="visible"
             android:scaleType="fitXY"
-            android:src="@drawable/star" />
+            android:src="@drawable/save1" />
+        <ImageView
+            android:id="@+id/image_flash_card_save_white"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="end|top"
+            android:visibility="gone"
+            android:scaleType="fitXY"
+            android:src="@drawable/savewhite" />
     </androidx.cardview.widget.CardView>
 
     <ProgressBar
@@ -193,8 +198,8 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="120dp"
-        android:layout_marginTop="10dp"
-        android:text="Flip"
+        android:layout_marginTop="20dp"
+        android:text="@string/flip"
         android:id="@+id/btnFlip"
         android:textColor="#FFFF"
         android:background="@drawable/rectangle"

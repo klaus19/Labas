@@ -8,7 +8,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [FlashcardPair::class], version = 4, exportSchema = true)
+@Database(entities = [FlashcardPair::class], version = 5, exportSchema = true)
 abstract class FlashcardDatabase : RoomDatabase() {
 
     abstract fun cardPairDao():FlashCardDao
