@@ -126,6 +126,8 @@
                 android:layout_width="96dp"
                 android:layout_height="96dp"
                 android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:background="@drawable/circular_flashcardview"
                 android:id="@+id/imagecardsHelper" />
 
             <TextView
