@@ -32,13 +32,13 @@ class QuestionsFragment : Fragment() {
     lateinit var bottomNavigationView: BottomNavigationView
     private val counterViewModel: ToLearnViewModel by viewModels()
 
-    private val hashMap = HashMap<String,Pair<String,Int>>()
+    private val hashMap = HashMap<String,Triple<String,Int,Int>>()
 
-    private var currentPairIndex =0
-    private lateinit var currentPair:Map.Entry<String,Pair<String,Int>>
+    private var currentTripleIndex =0
+    private lateinit var currentTriple:Map.Entry<String,Triple<String,Int,Int>>
 
     var isFront=true
-    private val totalPairs = 16 // change the value to the actual number of entries in your hashMap
+    private val totalTriples = 16 // change the value to the actual number of entries in your hashMap
 
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
@@ -70,75 +70,98 @@ class QuestionsFragment : Fragment() {
 
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext()
-            ,R.color.blue_card))
+            ,R.color.orange1))
 
         //changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
             R.color.silver))
 
         // Hashmap of strings that will shown on cardview front and back side
-        hashMap["What"] = Pair("Kas", R.drawable.what)
-        hashMap["When"] = Pair("Kai",R.drawable.whennn)
-        hashMap["Where"] = Pair("Kur",R.drawable.whereee)
-        hashMap["Who"] = Pair("Kas",R.drawable.who)
-        hashMap["Whom"] = Pair("Kam",R.drawable.whom)
-        hashMap["Why"] = Pair("Kodėl",R.drawable.why)
-        hashMap["How"] = Pair("Kaip",R.drawable.how)
-        hashMap["Which"] = Pair("Kuris/kuri",R.drawable.which)
-        hashMap["Whose"] = Pair("Kieno",R.drawable.whose)
-        hashMap["I"] = Pair("aš",R.drawable.ii)
-        hashMap["you (singular)"] = Pair("tu/jūs (informal/formal)",R.drawable.you)
-        hashMap["he"] = Pair("jis",R.drawable.he)
-        hashMap["she"] = Pair("ji",R.drawable.she)
-        hashMap["we"] = Pair("mes",R.drawable.we)
-        hashMap["you (plural)"] = Pair("jūs",R.drawable.you)
-        hashMap["they"] = Pair("jie",R.drawable.they)
+        hashMap["What"] = Triple("Kas", R.drawable.what,R.raw.potato)
+        hashMap["When"] = Triple("Kai",R.drawable.whennn,R.raw.potato)
+        hashMap["Where"] = Triple("Kur",R.drawable.whereee,R.raw.potato)
+        hashMap["Who"] = Triple("Kas",R.drawable.who,R.raw.potato)
+        hashMap["Whom"] = Triple("Kam",R.drawable.whom,R.raw.potato)
+        hashMap["Why"] = Triple("Kodėl",R.drawable.why,R.raw.potato)
+        hashMap["How"] = Triple("Kaip",R.drawable.how,R.raw.potato)
+        hashMap["Which"] = Triple("Kuris/kuri",R.drawable.which,R.raw.potato)
+        hashMap["Whose"] = Triple("Kieno",R.drawable.whose,R.raw.potato)
+        hashMap["I"] = Triple("aš",R.drawable.ii,R.raw.potato)
+        hashMap["you (singular)"] = Triple("tu/jūs (informal/formal)",R.drawable.you,R.raw.potato)
+        hashMap["he"] = Triple("jis",R.drawable.he,R.raw.potato)
+        hashMap["she"] = Triple("ji",R.drawable.she,R.raw.potato)
+        hashMap["we"] = Triple("mes",R.drawable.we,R.raw.potato)
+        hashMap["you (plural)"] = Triple("jūs",R.drawable.you,R.raw.potato)
+        hashMap["they"] = Triple("jie",R.drawable.they,R.raw.potato)
 
+
+        binding.btnPlay.setOnClickListener {
+
+        }
 
         counterViewModel.counter.observe(requireActivity()){count->
             binding.textCounter.text = count.toString()
         }
-        val front_animation = AnimatorInflater.loadAnimator(context, R.anim.front_animator) as AnimatorSet
-        val back_animation = AnimatorInflater.loadAnimator(context,R.anim.back_animator)as AnimatorSet
+       // val front_animation = AnimatorInflater.loadAnimator(context, R.anim.front_animator) as AnimatorSet
+       // val back_animation = AnimatorInflater.loadAnimator(context,R.anim.back_animator)as AnimatorSet
 
-        currentPair = hashMap.entries.elementAt(currentPairIndex)
-        binding.textCardFront.text = currentPair.key
-        binding.textCardBack.text = currentPair.value.first
-        binding.imagecardsHelper.setImageResource(currentPair.value.second!!)
+        currentTriple = hashMap.entries.elementAt(currentTripleIndex)
+        binding.textCardFront.text = currentTriple.key
+        binding.textCardBack.text = currentTriple.value.first
+        binding.imagecardsHelper.setImageResource(currentTriple.value.second)
+        binding.btnPlay.setImageResource(currentTriple.value.third)
 
         // onclick listener on the image
         binding.imageFlashCard.setOnClickListener {
-            val clickedColor = ContextCompat.getColor(requireContext(), R.color.white)
-            binding.imageFlashCard.setBackgroundColor(clickedColor)
-
+            binding.imageFlashCard.visibility = View.GONE
+            binding.imageFlashCardSaveWhite.visibility = View.VISIBLE
             counterViewModel.incrementCounter()
-            // increment currentPairIndex and get the next pair
-            currentPairIndex++
-            if (currentPairIndex >= hashMap.size) {
+            // increment currentTripleIndex and get the next Triple
+            currentTripleIndex++
+            if (currentTripleIndex >= hashMap.size) {
                 // if we have reached the end of the hashmap, start again from the beginning
-                currentPairIndex = 0
+                currentTripleIndex = 0
             }
-
-
             val front = binding.textCardFront.text.toString()
             val back = binding.textCardBack.text.toString()
-            val imageHelper = currentPair.value.second
+            val imageHelper = currentTriple.value.second
+            val voiceClip = currentTriple.value.third
 
-            val pair = FlashcardPair(front, back, imageHelper)
-            cardViewModel.insertCards(pair)
+            val Triple = FlashcardPair(front, back, imageHelper,voiceClip)
+            cardViewModel.insertCards(Triple)
             //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
-            Log.d("Main","$pair")
-            currentPair = hashMap.entries.elementAt(currentPairIndex)
+            Log.d("Main","$Triple")
+            currentTriple = hashMap.entries.elementAt(currentTripleIndex)
+        }
+        //On Event of clicking on the image to unsave the image
+        binding.imageFlashCardSaveWhite.setOnClickListener {
+            with(binding){
+                imageFlashCardSaveWhite.visibility = View.GONE
+                imageFlashCard.visibility = View.VISIBLE
 
-            // update the UI with the new pair
-            binding.textCardFront.text = currentPair.key
-            binding.textCardBack.text =currentPair.value.first
-            binding.imagecardsHelper.setImageResource(currentPair.value.second)
+                if (currentTripleIndex >= 0 && currentTripleIndex < hashMap.size) {
+                    // Remove the item at the current index from your data structure (e.g., HashMap)
+                    val removedTriple = hashMap.entries.elementAt(currentTripleIndex)
+                    hashMap.remove(removedTriple.key)
 
+                    // Decrease the counter
+                    counterViewModel.decrementCounter()
+                    val front = binding.textCardFront.text.toString()
+                    val back = binding.textCardBack.text.toString()
+                    val imageHelper = currentTriple.value.second
+                    val voiceClip = currentTriple.value.third
 
+                    val Triple = FlashcardPair(front, back, imageHelper,voiceClip)
+                    cardViewModel.deleteCards(Triple)
+                    //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
+                    Log.d("Main","$Triple")
+                    currentTriple = hashMap.entries.elementAt(currentTripleIndex)
 
+                }
+            }
         }
 
+        //Go to another fragment
         binding.cardLearning.setOnClickListener {
 
             findNavController().navigate(R.id.action_questionsFragment_to_toLearnFlashCards)
@@ -148,37 +171,29 @@ class QuestionsFragment : Fragment() {
         //onclick listener for the Flip button
         with(binding) {
             btnFlip.setOnClickListener {
-                val progress = ((currentPairIndex + 1) * 100) / totalPairs
+                imageFlashCardSaveWhite.visibility = View.GONE
+                imageFlashCard.visibility = View.VISIBLE
+
+                val progress = ((currentTripleIndex + 1) * 100) / totalTriples
                 binding.progressHorizontal.progress = progress
 
-                val originalColor = ContextCompat.getColor(requireContext(), R.color.pink)
-                binding.imageFlashCard.setBackgroundColor(originalColor)
-
-                // initialize currentPairIndex to 0 if it hasn't been initialized yet
-                if (currentPairIndex < 0) {
-                    currentPairIndex = 0
+                // initialize currentTripleIndex to 0 if it hasn't been initialized yet
+                if (currentTripleIndex < 0) {
+                    currentTripleIndex = 0
                 }
                 if (isFront) {
-                    front_animation.setTarget(textCardFront)
-                    back_animation.setTarget(textCardBack)
-                    front_animation.start()
-                    back_animation.start()
                     isFront = false
                     textCardBack.visibility = View.VISIBLE
-                    textCardFront.visibility = View.GONE
-                    imageFlashCard.visibility = View.GONE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.card_purple))
+                    textCardFront.visibility = View.VISIBLE
+                    imageFlashCard.visibility = View.VISIBLE
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green1))
 
                 } else {
-                    currentPairIndex = (currentPairIndex + 1) % hashMap.size
+                    currentTripleIndex = (currentTripleIndex + 1) % hashMap.size
                     textCardFront.visibility = View.VISIBLE
-                    textCardBack.visibility = View.GONE
+                    textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.pink))
-                    front_animation.setTarget(textCardBack)
-                    back_animation.setTarget(textCardFront)
-                    back_animation.start()
-                    front_animation.start()
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.orange1))
                     isFront = true
                 }
 
@@ -188,11 +203,12 @@ class QuestionsFragment : Fragment() {
                 shake.repeatCount = 5
                 shake.repeatMode = ObjectAnimator.REVERSE
                 shake.start()
-                // retrieve the current pair from the hashMap
-                currentPair = hashMap.entries.elementAt(currentPairIndex)
-                binding.textCardFront.text = currentPair.key
-                binding.textCardBack.text = currentPair.value.first
-                binding.imagecardsHelper.setImageResource(currentPair.value.second!!)
+                // retrieve the current Triple from the hashMap
+                currentTriple = hashMap.entries.elementAt(currentTripleIndex)
+                binding.textCardFront.text = currentTriple.key
+                binding.textCardBack.text = currentTriple.value.first
+                binding.imagecardsHelper.setImageResource(currentTriple.value.second)
+                binding.btnPlay.setImageResource(currentTriple.value.third)
             }
         }
         return binding.root
