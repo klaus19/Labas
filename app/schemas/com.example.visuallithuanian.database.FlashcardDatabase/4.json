@@ -1,0 +1,52 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 4,
+    "identityHash": "18446fee2591006774652bbd7f800b01",
+    "entities": [
+      {
+        "tableName": "flashcards",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`front` TEXT NOT NULL, `back` TEXT NOT NULL, `imageSrc` INTEGER NOT NULL, `voiceclip` INTEGER NOT NULL, PRIMARY KEY(`front`))",
+        "fields": [
+          {
+            "fieldPath": "front",
+            "columnName": "front",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "back",
+            "columnName": "back",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "imageSrc",
+            "columnName": "imageSrc",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "voiceclip",
+            "columnName": "voiceclip",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "front"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '18446fee2591006774652bbd7f800b01')"
+    ]
+  }
+}
