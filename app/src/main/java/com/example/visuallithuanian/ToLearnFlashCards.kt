@@ -53,17 +53,10 @@ class ToLearnFlashCards : Fragment() {
 
         binding.recyclerview.layoutManager = OverlappingLayoutManager(requireContext())
 
-        binding.imageSpeech.setOnClickListener {
-
-
-        }
-
         val adapter = ToLearnAdapter { cardPair ->
             cardViewmodel.deleteCards(cardPair)
 
         }
-
-
         binding.recyclerview.layoutManager = layoutManager
         binding.recyclerview.adapter = adapter
 
@@ -130,12 +123,8 @@ class ToLearnFlashCards : Fragment() {
 
             if (cardPairs.isEmpty()) {
                 binding.emptyImage.visibility = View.VISIBLE
-                binding.imageKeyboard.visibility = View.GONE
-                binding.imageSpeech.visibility = View.GONE
             } else {
                 binding.emptyImage.visibility = View.GONE
-                binding.imageSpeech.visibility = View.VISIBLE
-                binding.imageKeyboard.visibility = View.VISIBLE
             }
         }
 

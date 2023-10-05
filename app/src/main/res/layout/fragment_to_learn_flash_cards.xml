@@ -31,9 +31,10 @@
         android:layout_height="wrap_content"
         android:src="@drawable/empty"
         android:visibility="gone"
+        android:layout_centerVertical="true"
         android:layout_below="@id/back_icon"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="180dp"
         android:contentDescription="@string/empty" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -54,21 +55,6 @@
         android:layout_marginStart="140dp"
         android:orientation="horizontal"
         android:layout_marginTop="50dp">
-
-        <ImageView
-            android:id="@+id/imageKeyboard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/keyboard"
-            android:layout_marginEnd="8dp" />
-
-        <ImageView
-            android:id="@+id/imageSpeech"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/speech"
-            android:layout_marginStart="8dp" />
-
     </LinearLayout>
 
 </RelativeLayout>

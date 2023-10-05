@@ -22,6 +22,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageCardHelper"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:background="@drawable/circular_flashcardview"
             android:src="@drawable/emoji" />
 
         <TextView
@@ -41,6 +44,14 @@
             android:textStyle="bold"
             android:textColor="@color/experimental_color"
             android:layout_marginTop="20dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_gravity="center"
+            android:id="@+id/btnPlay"
+            android:background="@drawable/play" />
 
     </LinearLayout>
 

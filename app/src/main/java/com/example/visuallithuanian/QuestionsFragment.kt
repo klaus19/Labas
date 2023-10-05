@@ -3,6 +3,8 @@ package com.example.visuallithuanian
 import android.animation.*
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
+import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -77,25 +79,41 @@ class QuestionsFragment : Fragment() {
             R.color.silver))
 
         // Hashmap of strings that will shown on cardview front and back side
-        hashMap["What"] = Triple("Kas", R.drawable.what,R.raw.potato)
-        hashMap["When"] = Triple("Kai",R.drawable.whennn,R.raw.potato)
-        hashMap["Where"] = Triple("Kur",R.drawable.whereee,R.raw.potato)
-        hashMap["Who"] = Triple("Kas",R.drawable.who,R.raw.potato)
-        hashMap["Whom"] = Triple("Kam",R.drawable.whom,R.raw.potato)
-        hashMap["Why"] = Triple("Kodėl",R.drawable.why,R.raw.potato)
-        hashMap["How"] = Triple("Kaip",R.drawable.how,R.raw.potato)
-        hashMap["Which"] = Triple("Kuris/kuri",R.drawable.which,R.raw.potato)
-        hashMap["Whose"] = Triple("Kieno",R.drawable.whose,R.raw.potato)
-        hashMap["I"] = Triple("aš",R.drawable.ii,R.raw.potato)
-        hashMap["you (singular)"] = Triple("tu/jūs (informal/formal)",R.drawable.you,R.raw.potato)
-        hashMap["he"] = Triple("jis",R.drawable.he,R.raw.potato)
-        hashMap["she"] = Triple("ji",R.drawable.she,R.raw.potato)
-        hashMap["we"] = Triple("mes",R.drawable.we,R.raw.potato)
-        hashMap["you (plural)"] = Triple("jūs",R.drawable.you,R.raw.potato)
-        hashMap["they"] = Triple("jie",R.drawable.they,R.raw.potato)
+        hashMap["What"] = Triple("Kas", R.drawable.what,R.raw.whatkas)
+        hashMap["When"] = Triple("Kada",R.drawable.whennn,R.raw.whenn)
+        hashMap["Where"] = Triple("Kur",R.drawable.whereee,R.raw.where)
+        hashMap["Who"] = Triple("Kas",R.drawable.who,R.raw.who)
+        hashMap["Whom"] = Triple("Kam",R.drawable.whom,R.raw.whom)
+        hashMap["Why"] = Triple("Kodėl",R.drawable.why,R.raw.why)
+        hashMap["How"] = Triple("Kaip",R.drawable.how,R.raw.how)
+        hashMap["Which"] = Triple("Kuris/kuri",R.drawable.which,R.raw.which)
+        hashMap["Whose"] = Triple("Kieno",R.drawable.whose,R.raw.whose)
+        hashMap["I"] = Triple("aš",R.drawable.ii,R.raw.i)
+        hashMap["you"] = Triple("tu",R.drawable.you,R.raw.youtu)
+        hashMap["he"] = Triple("jis",R.drawable.he,R.raw.he)
+        hashMap["she"] = Triple("ji",R.drawable.she,R.raw.she)
+        hashMap["we"] = Triple("mes",R.drawable.we,R.raw.we)
+        hashMap["you (plural)"] = Triple("jūs",R.drawable.you,R.raw.you)
+        hashMap["they"] = Triple("jie",R.drawable.they,R.raw.they)
 
+        // Initialize Media Player
+        val mediaPlayer = MediaPlayer()
 
         binding.btnPlay.setOnClickListener {
+            // get the audio resource ID from currentTriple
+            val audioResource = currentTriple.value.third
+            mediaPlayer.apply {
+                reset()
+                // Set the audio resource using the context and resource ID
+                setDataSource(requireContext(), Uri.parse("android.resource://${requireContext().packageName}/$audioResource"))
+
+                // Prepare the MediaPlayer asynchronously
+                prepareAsync()
+            }
+            // Set an OnPreparedListener to start playing when the media is prepared
+            mediaPlayer.setOnPreparedListener {
+                it.start()
+            }
 
         }
 
