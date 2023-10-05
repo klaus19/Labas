@@ -209,9 +209,6 @@
         <action
             android:id="@+id/action_questionsFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
-        <action
-            android:id="@+id/action_questionsFragment_to_flashCards2"
-            app:destination="@id/flashCards" />
     </fragment>
     <fragment
         android:id="@+id/toLearnFlashCards"
