@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_color"
@@ -14,47 +13,58 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="10dp"
         android:src="@drawable/ic_arrow_back" />
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
         android:orientation="horizontal">
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:textStyle="bold"
-           android:layout_marginStart="80dp"
-           android:text="Select Correct pair"></TextView>
-        
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginStart="100dp"
+            android:text="@string/select_correct_pair" />
+
         <ImageView
             android:id="@+id/imageCat"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="100dp"
-            android:src="@drawable/cat1"
-            ></ImageView>
-        
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="0"
-               android:id="@+id/textcatCount"
-               android:layout_marginStart="5dp"
-               android:textSize="30dp"></TextView>
+            android:layout_marginStart="50dp"
+            android:src="@drawable/cat1" />
     </LinearLayout>
 
-    <!-- RecyclerView to display the image cards -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewPractise"
+    <LinearLayout
         android:layout_width="match_parent"
-        tools:listitem="@layout/item_practise_cards"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="30dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp" />
+        android:layout_height="wrap_content"
+        android:id="@+id/linearRecyclerview"
+        android:orientation="vertical">
+        <!-- RecyclerView to display the image cards -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewPractise"
+            android:layout_width="match_parent"
+            tools:listitem="@layout/item_practise_cards"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp" />
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="120dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/shuffle"
+        android:id="@+id/btnFlip"
+        android:textColor="#FFFF"
+        android:background="@drawable/orangeractangle"
+        android:layout_marginBottom="40dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/linearRecyclerview"
+        android:gravity="center"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

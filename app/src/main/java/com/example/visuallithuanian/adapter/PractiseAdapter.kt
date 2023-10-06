@@ -43,12 +43,6 @@ class PractiseAdapter(
         holder.imageViewPractise.setImageResource(imageResource)
         holder.textViewPractise.text = imageName
 
-     //   val backgroundColor = if (_isCardColorChangeable && selectedImageResource == imageResource) {
-       //     Color.GREEN
-        //} else {
-          //  Color.WHITE
-        //}
-     //   holder.cardImagePractise.setCardBackgroundColor(backgroundColor)
 
         holder.cardImagePractise.setOnClickListener {
             selectedImageResource = imageResource
@@ -92,7 +86,7 @@ class PractiseAdapter(
         } else {
               Color.WHITE
         }
-        holder.textViewPractise.setBackgroundColor(nameColor)
+        holder.cardTextPractise.setBackgroundColor(nameColor)
     }
 
     class PractiseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
