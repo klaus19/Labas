@@ -1,6 +1,5 @@
 package com.example.visuallithuanian.adapter
 
-import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.R
@@ -15,22 +15,46 @@ import com.example.visuallithuanian.constants.ImageStore
 
 
 class PractiseAdapter(
-    private val imageResources: List<Int>,
-    private val imageNames: List<String>
+    private var imageResources: MutableList<Int>,
+    private var imageNames: MutableList<String>,
+    btnShuffle: AppCompatButton,
 ) : RecyclerView.Adapter<PractiseAdapter.PractiseViewHolder>() {
 
+    private var anyCardIsGreen = false
     private var selectedImageResource = -1
     private var selectedImageName = ""
     private var previousSelectedImageResource = -1
     private var previousSelectedImageName = ""
 
+    init {
+        btnShuffle.setOnClickListener {
+            shuffleCards()
+        }
+    }
+
+    private fun shuffleCards() {
+        // Shuffle the card data (images and names)
+        imageResources.shuffle()
+        imageNames.shuffle()
+
+        // Reset the selected image and name
+        selectedImageResource = -1
+        selectedImageName = ""
+        previousSelectedImageResource = -1
+        previousSelectedImageName = ""
+
+        notifyDataSetChanged()
+    }
+
     companion object {
         val GREEN_COLOR = Color.parseColor("#ABEBC6")
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PractiseViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_practise_cards, parent, false)
+
         return PractiseViewHolder(view)
     }
 
@@ -42,7 +66,6 @@ class PractiseAdapter(
 
         holder.imageViewPractise.setImageResource(imageResource)
         holder.textViewPractise.text = imageName
-
 
         holder.cardImagePractise.setOnClickListener {
             selectedImageResource = imageResource
@@ -65,7 +88,6 @@ class PractiseAdapter(
             }
             notifyDataSetChanged()
         }
-
         val nameColor = if(imageNames[position]==selectedImageName){
             if(ImageStore.imagesNamesMap[selectedImageResource]==selectedImageName){
                 Toast.makeText(
@@ -73,6 +95,7 @@ class PractiseAdapter(
                     "Correct name selected!",
                     Toast.LENGTH_SHORT
                 ).show()
+                anyCardIsGreen=true
                 holder.cardTextPractise.setBackgroundColor(GREEN_COLOR) // Set green background for the name card
                 Color.GREEN
             } else {
@@ -84,11 +107,14 @@ class PractiseAdapter(
                 Color.RED
             }
         } else {
+              holder.cardTextPractise.setBackgroundColor(Color.WHITE)
               Color.WHITE
         }
         holder.cardTextPractise.setBackgroundColor(nameColor)
-    }
 
+        // Check if the card is green and set anyCardIsGreen accordingly
+
+    }
     class PractiseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cardImagePractise: CardView = itemView.findViewById(R.id.cardImagePractise)
         val cardTextPractise: CardView = itemView.findViewById(R.id.cardTextPractise)
