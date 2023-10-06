@@ -18,8 +18,10 @@ class PractiseAdapter(
     private var imageResources: MutableList<Int>,
     private var imageNames: MutableList<String>,
     btnShuffle: AppCompatButton,
+    recyclerViewPractise: RecyclerView,
 ) : RecyclerView.Adapter<PractiseAdapter.PractiseViewHolder>() {
 
+    lateinit var recyclerView: RecyclerView
     private var anyCardIsGreen = false
     private var selectedImageResource = -1
     private var selectedImageName = ""
@@ -43,7 +45,24 @@ class PractiseAdapter(
         previousSelectedImageResource = -1
         previousSelectedImageName = ""
 
+        // Reset the background color of cardImage views to white
+        resetCardImageBackgroundToWhite()
+
+
         notifyDataSetChanged()
+    }
+
+    fun initsetRecyclerView(recyclerView: RecyclerView) {
+        this.recyclerView = recyclerView
+    }
+
+    private fun resetCardImageBackgroundToWhite() {
+        // Iterate through the card views and reset the background color of cardImage to white
+        for (position in 0 until imageResources.size) {
+
+            val holder = recyclerView.findViewHolderForAdapterPosition(position) as? PractiseViewHolder
+            holder?.cardImagePractise?.setCardBackgroundColor(Color.WHITE)
+        }
     }
 
     companion object {

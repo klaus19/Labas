@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.Utils.shuffleList
 import com.example.visuallithuanian.constants.ImageStore
 import com.example.visuallithuanian.databinding.FragmentPractiseBinding
@@ -16,6 +17,7 @@ import com.example.visuallithuanian.databinding.FragmentPractiseBinding
 class PractiseFragment : Fragment() {
     lateinit var binding: FragmentPractiseBinding
     lateinit var practiseAdapter: PractiseAdapter
+    lateinit var  recyclerViewPractise: RecyclerView
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
@@ -25,18 +27,23 @@ class PractiseFragment : Fragment() {
         // Inflate the layout for this fragment
 
         binding = FragmentPractiseBinding.inflate(layoutInflater,container,false)
+        recyclerViewPractise = binding.recyclerViewPractise
 
 
         val layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
         binding.recyclerViewPractise.layoutManager = layoutManager
+
 
         // Shuffle the list of image names
         val shuffledImageNames = ImageStore.imagesNamesMap.values.toList().shuffleList()
         val shuffledImageResources = ImageStore.imagesNamesMap.keys.toList().shuffleList()
 
 
-        practiseAdapter = PractiseAdapter(shuffledImageResources.toMutableList(),shuffledImageNames.toMutableList(),binding.btnShuffle)
+        practiseAdapter = PractiseAdapter(shuffledImageResources.toMutableList(),
+            shuffledImageNames.toMutableList(),binding.btnShuffle,recyclerViewPractise)
+
         binding.recyclerViewPractise.adapter = practiseAdapter
+        practiseAdapter.initsetRecyclerView(recyclerViewPractise)
 
         return binding.root
 
