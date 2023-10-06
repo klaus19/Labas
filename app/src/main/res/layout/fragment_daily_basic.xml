@@ -25,22 +25,21 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tap"
                 android:layout_marginTop="20dp"
                 android:textColor="#FFFF"
                 android:textStyle="bold"
-                android:textSize="30sp" />
+                android:textSize="24sp" />
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:id="@+id/imageSmile"
-                android:src="@drawable/laugh"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="25dp" />
-
+                android:id="@+id/imageCat"
+                android:layout_marginTop="20dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="30dp"
+                android:src="@drawable/cat1" />
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
