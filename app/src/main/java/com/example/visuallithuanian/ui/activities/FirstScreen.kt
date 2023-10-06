@@ -23,12 +23,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FirstScreen:AppCompatActivity() {
 
-    val levels = arrayOf(
-        "Easy",
-        "Medium",
-        "Hard"
-    )
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.first_screen)
@@ -60,6 +54,10 @@ class FirstScreen:AppCompatActivity() {
                 }
                 R.id.page_3 ->{
                     // handle item3 selection
+                    navController.navigate(R.id.flashCards)
+                }
+                R.id.page_4 ->{
+                    //handle item4 selection
                     navController.navigate(R.id.settingsFragment)
                 }
             }
