@@ -76,6 +76,7 @@ class FlashCards : Fragment() {
 
     private fun generateMediumFlashCards(): List<FlashCardInfo> {
         return listOf(
+            FlashCardInfo(R.drawable.computer,"Computer terminology",""),
             FlashCardInfo(R.drawable.clothing,"Clothing",""),
             FlashCardInfo(R.drawable.village,"Towns and Villages",""),
             FlashCardInfo(R.drawable.nature,"Nature",""),
@@ -105,7 +106,6 @@ class FlashCards : Fragment() {
         return listOf(
             FlashCardInfo(R.drawable.doctorvisit,"Questions and Pronouns",""),
             FlashCardInfo(R.drawable.talking,"Daily Basic",""),
-            FlashCardInfo(R.drawable.computer,"Computer terminology",""),
             FlashCardInfo(R.drawable.action,"Basic actions",""),
             FlashCardInfo(R.drawable.food,"Food",""),
             FlashCardInfo(R.drawable.relatives,"Family",""),

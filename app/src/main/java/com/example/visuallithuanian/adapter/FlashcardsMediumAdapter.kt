@@ -40,7 +40,8 @@ class FlashcardsMediumAdapter(private val imageList: List<FlashCardInfo>
 
         holder.cardviewFlashcard.setOnClickListener {
             when(flashCard.name){
-                "Questions and Pronouns" -> navController.navigate(R.id.action_flashCards_to_questionsFragment)
+                "Computer terminology" -> navController.navigate(R.id.action_flashCards_to_computerTechnologyFragment)
+
             }
 
         }

@@ -42,7 +42,6 @@ class FlashcardsEasyAdapter(private val imageList: List<FlashCardInfo>
              when(flashCard.name){
                  "Questions and Pronouns" -> navController.navigate(R.id.action_flashCards_to_questionsFragment)
                  "Daily Basic" -> navController.navigate(R.id.action_flashCards_to_dailyBasic)
-                 "Computer terminology" -> navController.navigate(R.id.action_flashCards_to_computerTechnologyFragment)
 
              }
 
