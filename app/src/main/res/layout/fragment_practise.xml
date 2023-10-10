@@ -38,7 +38,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearRecyclerview"
@@ -48,7 +48,6 @@
             android:id="@+id/recyclerViewPractise"
             android:layout_width="match_parent"
             tools:listitem="@layout/item_practise_cards"
-            android:layout_marginTop="30dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_height="match_parent"

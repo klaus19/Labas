@@ -142,18 +142,18 @@ class ComputerTechnologyFragment : Fragment() {
         hashMap["increase"] = Triple("padidinti", R.drawable.increase,R.raw.sleep)
 
 
-        hashMap["relocation"] = Triple("perkėlimas", R.drawable.relocation,R.raw.sleep)
-        hashMap["Voice message"] = Triple("Balso pranešimas", R.drawable.voicemessage,R.raw.sleep)
-        hashMap["microphone"] = Triple("mikrofonas", R.drawable.microphone,R.raw.sleep)
-        hashMap["Printed from"] = Triple("spausdinti", R.drawable.printedfrom,R.raw.sleep)
-        hashMap["reload"] = Triple("perkrauti", R.drawable.reload,R.raw.sleep)
-        hashMap["page"] = Triple("puslapis", R.drawable.page,R.raw.sleep)
-        hashMap["Spam"] = Triple("šlamštas", R.drawable.spam,R.raw.sleep)
-        hashMap["advertising"] = Triple("reklama", R.drawable.advertising,R.raw.sleep)
-        hashMap["unblock"] = Triple("atblokuoti", R.drawable.unblock,R.raw.sleep)
-        hashMap["transmission"] = Triple("užkrato pernešimas", R.drawable.transmission,R.raw.sleep)
-        hashMap["antenna"] = Triple("antena", R.drawable.antenna,R.raw.sleep)
-        hashMap["Controller"] = Triple("valdiklis", R.drawable.controller,R.raw.sleep)
+        hashMap["relocation"] = Triple("perkėlimas", R.drawable.relocation,R.raw.relocation)
+        hashMap["Voice message"] = Triple("Balso pranešimas", R.drawable.voicemessage,R.raw.voicemessage)
+        hashMap["microphone"] = Triple("mikrofonas", R.drawable.microphone,R.raw.microphone)
+        hashMap["Printed from"] = Triple("spausdinti", R.drawable.printedfrom,R.raw.printedfrom)
+        hashMap["reload"] = Triple("perkrauti", R.drawable.reload,R.raw.reload)
+        hashMap["page"] = Triple("puslapis", R.drawable.page,R.raw.page)
+        hashMap["Spam"] = Triple("šlamštas", R.drawable.spam,R.raw.spam)
+        hashMap["advertising"] = Triple("reklama", R.drawable.advertising,R.raw.advertising)
+        hashMap["unblock"] = Triple("atblokuoti", R.drawable.unblock,R.raw.unblock)
+        hashMap["transmission"] = Triple("užkrato pernešimas", R.drawable.transmission,R.raw.transmission)
+        hashMap["antenna"] = Triple("antena", R.drawable.antenna,R.raw.antenna)
+        hashMap["Controller"] = Triple("valdiklis", R.drawable.controller,R.raw.controller)
 
 
 
