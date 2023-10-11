@@ -314,11 +314,11 @@
         android:label="fragment_computer_technology"
         tools:layout="@layout/fragment_computer_technology" >
         <action
-            android:id="@+id/action_computerTechnologyFragment_to_flashCards"
-            app:destination="@id/flashCards" />
-        <action
             android:id="@+id/action_computerTechnologyFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_computerTechnologyFragment_to_flashCards"
+            app:destination="@id/flashCards" />
     </fragment>
 
 </navigation>

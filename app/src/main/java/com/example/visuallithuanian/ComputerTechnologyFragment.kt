@@ -65,9 +65,8 @@ class ComputerTechnologyFragment : Fragment() {
         binding.backIcon?.setOnClickListener {
             activity?.onBackPressed()
         }
-
         binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_dailyBasic_to_flashCards)
+            findNavController().navigate(R.id.action_computerTechnologyFragment_to_flashCards)
         }
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
@@ -120,26 +119,26 @@ class ComputerTechnologyFragment : Fragment() {
         hashMap["antivirus"] = Triple("antivirusas", R.drawable.antivirus,R.raw.sleep)
         hashMap["Connect to the internet"] = Triple("prisijungti prie interneto", R.drawable.connect2internet,R.raw.sleep)
 
-        hashMap["data"] = Triple("duomenis", R.drawable.data,R.raw.sleep)
-        hashMap["Font"] = Triple("šriftas", R.drawable.font,R.raw.sleep)
-        hashMap["Video card"] = Triple("Vaizdo plokštė", R.drawable.videocard,R.raw.sleep)
-        hashMap["hard disk drive"] = Triple("kietasis diskas", R.drawable.harddisk,R.raw.sleep)
-        hashMap["an icon for"] = Triple("piktograma", R.drawable.iconfor,R.raw.sleep)
-        hashMap["internet"] = Triple("internetas", R.drawable.internet,R.raw.sleep)
-        hashMap["Progress"] = Triple("progresas", R.drawable.progress,R.raw.sleep)
-        hashMap["Operating System"] = Triple("Operacinė sistema", R.drawable.operationalsystem,R.raw.sleep)
-        hashMap["Follow"] = Triple("sekite", R.drawable.follow,R.raw.sleep)
-        hashMap["delete"] = Triple("Ištrinti", R.drawable.delete,R.raw.sleep)
-        hashMap["Upload to"] = Triple("įkelti", R.drawable.upload,R.raw.sleep)
-        hashMap["Pixels"] = Triple("pikselių", R.drawable.pixels,R.raw.sleep)
-        hashMap["Programme"] = Triple("Programa", R.drawable.programme,R.raw.sleep)
-        hashMap["send request"] = Triple("siųsti užklausą", R.drawable.sendrequest,R.raw.sleep)
-        hashMap["headphones"] = Triple("ausines", R.drawable.headphones,R.raw.sleep)
-        hashMap["Password"] = Triple("Slaptažodis", R.drawable.password,R.raw.sleep)
-        hashMap["Virus"] = Triple("virusas", R.drawable.virus,R.raw.sleep)
-        hashMap["update"] = Triple("atnaujinti", R.drawable.update,R.raw.sleep)
-        hashMap["reduce"] = Triple("sumažinti", R.drawable.reduce,R.raw.sleep)
-        hashMap["increase"] = Triple("padidinti", R.drawable.increase,R.raw.sleep)
+        hashMap["data"] = Triple("duomenis", R.drawable.data,R.raw.data)
+        hashMap["Font"] = Triple("šriftas", R.drawable.font,R.raw.font)
+        hashMap["Video card"] = Triple("Vaizdo plokštė", R.drawable.videocard,R.raw.videocard)
+        hashMap["hard disk drive"] = Triple("kietasis diskas", R.drawable.harddisk,R.raw.harddiskdrive)
+        hashMap["an icon for"] = Triple("piktograma", R.drawable.iconfor,R.raw.aniconfor)
+        hashMap["internet"] = Triple("internetas", R.drawable.internet,R.raw.internet)
+        hashMap["Progress"] = Triple("progresas", R.drawable.progress,R.raw.progress)
+        hashMap["Operating System"] = Triple("Operacinė sistema", R.drawable.operationalsystem,R.raw.operatingsystem)
+        hashMap["Follow"] = Triple("sekite", R.drawable.follow,R.raw.follow)
+        hashMap["delete"] = Triple("Ištrinti", R.drawable.delete,R.raw.delete)
+        hashMap["Upload to"] = Triple("įkelti", R.drawable.upload,R.raw.upload)
+        hashMap["Pixels"] = Triple("pikselių", R.drawable.pixels,R.raw.pixels)
+        hashMap["Programme"] = Triple("Programa", R.drawable.programme,R.raw.program)
+        hashMap["send request"] = Triple("siųsti užklausą", R.drawable.sendrequest,R.raw.sendrequest)
+        hashMap["headphones"] = Triple("ausines", R.drawable.headphones,R.raw.headphones)
+        hashMap["Password"] = Triple("Slaptažodis", R.drawable.password,R.raw.password)
+        hashMap["Virus"] = Triple("virusas", R.drawable.virus,R.raw.virus)
+        hashMap["update"] = Triple("atnaujinti", R.drawable.update,R.raw.update)
+        hashMap["reduce"] = Triple("sumažinti", R.drawable.reduce,R.raw.reduce)
+        hashMap["increase"] = Triple("padidinti", R.drawable.increase,R.raw.increase)
 
 
         hashMap["relocation"] = Triple("perkėlimas", R.drawable.relocation,R.raw.relocation)
