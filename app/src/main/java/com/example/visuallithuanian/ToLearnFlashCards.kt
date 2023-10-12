@@ -47,8 +47,6 @@ class ToLearnFlashCards : Fragment() {
         }
 
         binding.recyclerview.layoutManager = OverlappingLayoutManager(requireContext())
-
-
         layoutManager = OverlappingLayoutManager(requireContext())
 
         binding.recyclerview.layoutManager = OverlappingLayoutManager(requireContext())
@@ -123,8 +121,10 @@ class ToLearnFlashCards : Fragment() {
 
             if (cardPairs.isEmpty()) {
                 binding.emptyImage.visibility = View.VISIBLE
+                binding.emptyCardText.visibility = View.VISIBLE
             } else {
                 binding.emptyImage.visibility = View.GONE
+                binding.emptyCardText.visibility = View.GONE
             }
         }
 

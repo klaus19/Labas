@@ -60,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:textColor="@color/textColor"
+            android:textColor="@color/textColorTypes"
             android:text="Sets of Easy Cards"
             android:textStyle="bold"
             android:gravity="center_horizontal" />
@@ -96,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:textColor="@color/textColor"
+            android:textColor="@color/textColorTypes"
             android:text="Sets of Medium Cards"
             android:textStyle="bold"
             android:gravity="center_horizontal" />
@@ -133,7 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:textColor="@color/textColor"
+            android:textColor="@color/textColorTypes"
             android:text="Sets of Hard Cards"
             android:textStyle="bold"
             android:gravity="center_horizontal" />

@@ -12,6 +12,7 @@
     <color name="green_card">#0097a7</color>
     <color name="bottomNavigation">#0288d1</color>
     <color name="textColor">#1565c0</color>
+    <color name="textColorTypes">#515357</color>
     <color name="card_color">#f0f4c3</color>
     <color name="orange">#b39ddb</color>
     <color name="blue_card">#0288d1</color>
@@ -32,4 +33,5 @@
     <color name="orange1">#fe747d</color>
     <color name="green1">#55c8a6</color>
     <color name="float1">#fa867d</color>
+    <color name="grey1">#f0eff5</color>
 </resources>

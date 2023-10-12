@@ -23,4 +23,6 @@
     <string name="_0">0</string>
     <string name="select_correct_pair">Select Correct pair</string>
     <string name="shuffle">Shuffle</string>
+    <string name="back">BACK</string>
+    <string name="you_don_t_have_any_cards">You don\'t have any cards</string>
 </resources>

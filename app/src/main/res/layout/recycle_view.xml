@@ -6,6 +6,7 @@
     app:cardBackgroundColor="@color/experimental_color"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
+    android:layout_centerHorizontal="true"
     android:id="@+id/card_view"
     android:layout_margin="20dp"
     app:cardCornerRadius="15dp"

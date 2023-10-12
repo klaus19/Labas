@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/nana"
+    android:background="@color/grey1"
     android:layout_height="match_parent">
 
     <ImageView
@@ -29,13 +29,24 @@
         android:id="@+id/emptyImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/empty"
+        android:src="@drawable/waste"
         android:visibility="gone"
         android:layout_centerVertical="true"
         android:layout_below="@id/back_icon"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="180dp"
         android:contentDescription="@string/empty" />
+    <TextView
+        android:layout_below="@id/emptyImage"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:id="@+id/emptyCardText"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:text="@string/you_don_t_have_any_cards"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
@@ -48,14 +59,5 @@
         tools:listitem="@layout/recycle_view"
         android:layout_below="@id/back_icon"
         android:layout_above="@id/emptyImage" />
-    <LinearLayout
-        android:layout_below="@id/recyclerview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp">
-    </LinearLayout>
 
 </RelativeLayout>
-
