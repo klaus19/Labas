@@ -1,6 +1,5 @@
 package com.example.visuallithuanian
 
-
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.media.MediaPlayer
@@ -17,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentDailyBasicBinding
+import com.example.visuallithuanian.databinding.FragmentDaysMonthsFlashcardsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.example.visuallithuanian.viewModel.FlashCardViewmodel
@@ -24,8 +24,10 @@ import com.example.visuallithuanian.viewModel.ToLearnViewModel
 import com.example.visuallithuanian.viewModel.WordViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class DailyBasic : Fragment() {
-    lateinit var binding: FragmentDailyBasicBinding
+
+class DaysMonthsFlashcards : Fragment() {
+
+    lateinit var binding: FragmentDaysMonthsFlashcardsBinding
     lateinit var viewModel: BottomNavigationViewModel
 
     lateinit var bottomNavigationView: BottomNavigationView
@@ -37,7 +39,7 @@ class DailyBasic : Fragment() {
     private lateinit var currentTriple:Map.Entry<String,Triple<String,Int,Int>>
 
     var isFront=true
-    private val totalTriples = 37 // change the value to the actual number of entries in your hashMap
+    private val totalTriples = 43 // change the value to the actual number of entries in your hashMap
 
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
@@ -50,7 +52,7 @@ class DailyBasic : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDailyBasicBinding.inflate(inflater,container,false)
+        binding = FragmentDaysMonthsFlashcardsBinding.inflate(inflater,container,false)
 
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
@@ -65,7 +67,7 @@ class DailyBasic : Fragment() {
         }
 
         binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_dailyBasic_to_flashCards)
+            findNavController().navigate(R.id.action_daysMonthsFlashcards_to_flashCards)
         }
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
@@ -78,41 +80,55 @@ class DailyBasic : Fragment() {
                 R.color.silver))
 
         // Hashmap of strings that will shown on cardview front and back side
-        hashMap["sleep"] = Triple("miegoti", R.drawable.sleep,R.raw.sleep)
-        hashMap["to shop"] = Triple("apsipirkti",R.drawable.shopping,R.raw.potato)
-        hashMap["to watch a movie"] = Triple("Žiūrėti filmą",R.drawable.cinemascreen,R.raw.towatchamovie)
-        hashMap["I go shopping"] = Triple("aš einu apsipirkti", R.drawable.goshopping,R.raw.igoshopping)
-        hashMap["What is it?"] = Triple("Kas tai?",R.drawable.what1,R.raw.whatisit_)
-        hashMap["this is English newspaper"] = Triple("tai yra angliškas laikraštis",R.drawable.newspaper,R.raw.thisisenglishnewspaper)
-        hashMap["Japanese food"] = Triple("Japonų maistas", R.drawable.japanesefood,R.raw.japanesefood)
-        hashMap["hot coffee"] = Triple("karšta kava",R.drawable.hotcoffee,R.raw.hotcoffee)
-        hashMap["I learn Lithuanian"] = Triple("Aš mokausi lietuvių kalbos",R.drawable.languages,R.raw.ilearnlithuanian)
-        hashMap["to eat"] = Triple("valgyti", R.drawable.eat,R.raw.toeat)
-        hashMap["I eat japanese food"] = Triple("Aš valgau japonišką maistą",R.drawable.eat,R.raw.letsjapanese)
-        hashMap["Would you like some tea?"] = Triple("Ar norėtumete arbatos?",R.drawable.tea1,R.raw.wouldyoulikesometea)
-        hashMap["Can you repeat it again?"] = Triple("Ar galite pakartoti dar kartą?", R.drawable.repeat,R.raw.canyourepeatagain)
-        hashMap["Of course"] = Triple("Žinoma",R.drawable.ofcourse,R.raw.ofcourse)
-        hashMap["rice"] = Triple("ryžiai",R.drawable.rice,R.raw.rice)
-        hashMap["soup"] = Triple("sriuba",R.drawable.soup1,R.raw.soup)
-        hashMap["Bread"] = Triple("Duona", R.drawable.bread1,R.raw.bread1)
-        hashMap["water"] = Triple("vanduo",R.drawable.water1,R.raw.water)
-        hashMap["What are you reading?"] = Triple("Ką skaitote?",R.drawable.whatreading,R.raw.whatareyoureading)
-        hashMap["to cost"] = Triple("kainuoti",R.drawable.cost,R.raw.tocost)
-        hashMap["a cup of coffee"] = Triple("puodelis kavos",R.drawable.cupcoffee,R.raw.cupofcoffee)
-        hashMap["apple"] = Triple("obuolys", R.drawable.apple1,R.raw.apple1)
-        hashMap["She drinks hot coffee"] = Triple("Ji geria karštą kavą",R.drawable.coffee1,R.raw.shedrinkshotcoffee)
-        hashMap["a glass"] = Triple("stiklinė",R.drawable.glass1,R.raw.aglass)
-        hashMap["What do you buy?"] = Triple("Ką perkate?",R.drawable.buy11,R.raw.whatdoyoubuy)
-        hashMap["parents"] = Triple("tėvai",R.drawable.parents1,R.raw.parents)
-        hashMap["classmate"] = Triple("klasiokas", R.drawable.classmate,R.raw.classmate)
-        hashMap["my friends"] = Triple("Mano draugai",R.drawable.friends1,R.raw.myfriends)
-        hashMap["a little"] = Triple("šiek tiek",R.drawable.little,R.raw.little)
-        hashMap["Let's go"] = Triple("eikime!",R.drawable.letsgo,R.raw.letsgo)
-        hashMap["more"] = Triple("daugiau",R.drawable.more,R.raw.more)
-        hashMap["key"] = Triple("raktas",R.drawable.key,R.raw.key11)
-        hashMap["what are you doing?"] = Triple("ką darote?",R.drawable.todo,R.raw.whatareyoudoing)
-        hashMap["hand"] = Triple("ranka",R.drawable.hand,R.raw.hand)
-        hashMap["to stop"] = Triple("nustoti",R.drawable.stopsign,R.raw.tostop)
+        hashMap["Sunday"] = Triple("Sekmadienis", R.drawable.sunday,R.raw.sleep)
+        hashMap["Monday"] = Triple("Pirmadienis", R.drawable.monday,R.raw.sleep)
+        hashMap["Tuesday"] = Triple("Antradienis", R.drawable.tuesday,R.raw.sleep)
+        hashMap["Wednesday"] = Triple("Trečiadienis", R.drawable.wednesday,R.raw.sleep)
+        hashMap["Thursday"] = Triple("Ketvirtadienis", R.drawable.thursday,R.raw.sleep)
+        hashMap["Friday"] = Triple("penktadienis", R.drawable.friday,R.raw.sleep)
+        hashMap["Saturday"] = Triple("Šeštadienis", R.drawable.saturday,R.raw.sleep)
+        hashMap["January"] = Triple("Sausio mėnesi", R.drawable.january,R.raw.sleep)
+        hashMap["February"] = Triple("Vasario mėnesi", R.drawable.february,R.raw.sleep)
+        hashMap["March"] = Triple("Kovas", R.drawable.march,R.raw.sleep)
+
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+        hashMap[""] = Triple("", R.drawable.sleep,R.raw.sleep)
+
+
 
         // Initialize Media Player
         val mediaPlayer = MediaPlayer()
@@ -199,7 +215,7 @@ class DailyBasic : Fragment() {
 
         //Navigating from one fragment to another
         binding.cardLearning.setOnClickListener {
-            findNavController().navigate(R.id.action_dailyBasic_to_toLearnFlashCards)
+            findNavController().navigate(R.id.action_daysMonthsFlashcards_to_toLearnFlashCards)
         }
 
         //onclick listener for the Flip button

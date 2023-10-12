@@ -105,6 +105,9 @@
         <action
             android:id="@+id/action_flashCards_to_computerTechnologyFragment"
             app:destination="@id/computerTechnologyFragment" />
+        <action
+            android:id="@+id/action_flashCards_to_daysMonthsFlashcards"
+            app:destination="@id/daysMonthsFlashcards" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -319,6 +322,18 @@
         <action
             android:id="@+id/action_computerTechnologyFragment_to_flashCards"
             app:destination="@id/flashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/daysMonthsFlashcards"
+        android:name="com.example.visuallithuanian.DaysMonthsFlashcards"
+        android:label="fragment_days_months_flashcards"
+        tools:layout="@layout/fragment_days_months_flashcards" >
+        <action
+            android:id="@+id/action_daysMonthsFlashcards_to_flashCards"
+            app:destination="@id/flashCards" />
+        <action
+            android:id="@+id/action_daysMonthsFlashcards_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
     </fragment>
 
 </navigation>
