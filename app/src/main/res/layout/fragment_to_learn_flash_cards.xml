@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="BACK"
-        android:textColor="@color/new_design_text_color"
+        android:textColor="@color/textColorTypes"
         android:textSize="16sp"
         android:layout_toEndOf="@id/back_icon"
         android:layout_alignTop="@id/back_icon"
@@ -57,7 +57,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         tools:listitem="@layout/recycle_view"
-        android:layout_below="@id/back_icon"
-        android:layout_above="@id/emptyImage" />
+        android:layout_below="@id/back_icon"/>
 
 </RelativeLayout>
