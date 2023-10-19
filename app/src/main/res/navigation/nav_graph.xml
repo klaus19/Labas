@@ -108,6 +108,9 @@
         <action
             android:id="@+id/action_flashCards_to_daysMonthsFlashcards"
             app:destination="@id/daysMonthsFlashcards" />
+        <action
+            android:id="@+id/action_flashCards_to_keyPhrasesFragment"
+            app:destination="@id/keyPhrasesFragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -333,6 +336,15 @@
             app:destination="@id/flashCards" />
         <action
             android:id="@+id/action_daysMonthsFlashcards_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/keyPhrasesFragment"
+        android:name="com.example.visuallithuanian.KeyPhrasesFragment"
+        android:label="fragment_key_phrases"
+        tools:layout="@layout/fragment_key_phrases" >
+        <action
+            android:id="@+id/action_keyPhrasesFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 
