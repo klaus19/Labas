@@ -241,7 +241,7 @@ class ComputerTechnologyFragment : Fragment() {
 
         //Navigating from one fragment to another
         binding.cardLearning.setOnClickListener {
-            findNavController().navigate(R.id.action_dailyBasic_to_toLearnFlashCards)
+            findNavController().navigate(R.id.action_computerTechnologyFragment_to_toLearnFlashCards)
         }
 
         //onclick listener for the Flip button
