@@ -62,9 +62,9 @@ class DaysMonthsFlashcards : Fragment() {
 
 
         // setting up listener for back Icon
-        binding.backIcon?.setOnClickListener {
-            activity?.onBackPressed()
-        }
+//        binding.backIcon?.setOnClickListener {
+//            activity?.onBackPressed()
+//        }
 
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_daysMonthsFlashcards_to_flashCards)
