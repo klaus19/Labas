@@ -44,6 +44,8 @@ class FlashcardsEasyAdapter(private val imageList: List<FlashCardInfo>
                  "Daily Basic" -> navController.navigate(R.id.action_flashCards_to_dailyBasic)
                  "Day and Months" -> navController.navigate(R.id.action_flashCards_to_daysMonthsFlashcards)
                  "Key Phrases" -> navController.navigate(R.id.action_flashCards_to_keyPhrasesFragment)
+                 "Basic actions" -> navController.navigate(R.id.action_flashCards_to_basicActionsFlashcard)
+
              }
 
         }
