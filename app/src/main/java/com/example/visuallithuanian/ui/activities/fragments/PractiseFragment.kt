@@ -35,12 +35,17 @@ class PractiseFragment : Fragment() {
 
 
         // Shuffle the list of image names
-        val shuffledImageNames = ImageStore.imagesNamesMap.values.toList().shuffleList()
-        val shuffledImageResources = ImageStore.imagesNamesMap.keys.toList().shuffleList()
+       //val shuffledImageNames = ImageStore.imagesNamesMap.values.toList().shuffleList()
+        val shuffledImageResources = ImageStore.imagesNamesMap.keys.toList().shuffleList().toMutableList()
+
+        val shuffledImageNames1: List<Pair<String, String>> = shuffledImageResources.mapNotNull { it ->
+            val pair = ImageStore.imagesNamesMap[it]
+            pair?.let { Pair(pair.first,pair.second)}
+        }.shuffleList()
 
 
         practiseAdapter = PractiseAdapter(shuffledImageResources.toMutableList(),
-            shuffledImageNames.toMutableList(),binding.btnShuffle,recyclerViewPractise)
+            shuffledImageNames1.toMutableList(),binding.btnShuffle,recyclerViewPractise)
 
         binding.recyclerViewPractise.adapter = practiseAdapter
         practiseAdapter.initsetRecyclerView(recyclerViewPractise)

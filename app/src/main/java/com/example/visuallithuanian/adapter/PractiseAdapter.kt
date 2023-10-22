@@ -16,7 +16,7 @@ import com.example.visuallithuanian.constants.ImageStore
 
 class PractiseAdapter(
     private var imageResources: MutableList<Int>,
-    private var imageNames: MutableList<String>,
+    private var imageNames1: MutableList<Pair<String,String>>,
     btnShuffle: AppCompatButton,
     recyclerViewPractise: RecyclerView,
 ) : RecyclerView.Adapter<PractiseAdapter.PractiseViewHolder>() {
@@ -37,7 +37,7 @@ class PractiseAdapter(
     private fun shuffleCards() {
         // Shuffle the card data (images and names)
         imageResources.shuffle()
-        imageNames.shuffle()
+        imageNames1.shuffle()
 
         // Reset the selected image and name
         selectedImageResource = -1
@@ -81,10 +81,12 @@ class PractiseAdapter(
 
     override fun onBindViewHolder(holder: PractiseViewHolder, position: Int) {
         val imageResource = imageResources[position]
-        val imageName = imageNames[position]
+        val imageName1 = imageNames1[position]
+
 
         holder.imageViewPractise.setImageResource(imageResource)
-        holder.textViewPractise.text = imageName
+        holder.textViewPractise.text = imageName1.first
+        holder.textViewPractise1.text = imageName1.second
 
         holder.cardImagePractise.setOnClickListener {
             selectedImageResource = imageResource
@@ -93,7 +95,6 @@ class PractiseAdapter(
             notifyDataSetChanged()
             holder.cardImagePractise.setCardBackgroundColor(GREEN_COLOR)
         }
-
         holder.cardTextPractise.setOnClickListener {
             if (selectedImageResource == -1) {
                 Toast.makeText(
@@ -102,13 +103,13 @@ class PractiseAdapter(
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
-                selectedImageName = imageNames[position]
+                selectedImageName = imageNames1[position].first
                 previousSelectedImageName = selectedImageName
             }
             notifyDataSetChanged()
         }
-        val nameColor = if(imageNames[position]==selectedImageName){
-            if(ImageStore.imagesNamesMap[selectedImageResource]==selectedImageName){
+        val nameColor = if(imageNames1[position].first ==selectedImageName){
+            if(ImageStore.imagesNamesMap[selectedImageResource]?.first==selectedImageName){
                 Toast.makeText(
                     holder.itemView.context,
                     "Correct name selected!",
@@ -139,5 +140,7 @@ class PractiseAdapter(
         val cardTextPractise: CardView = itemView.findViewById(R.id.cardTextPractise)
         val imageViewPractise: ImageView = itemView.findViewById(R.id.imageViewPractise)
         val textViewPractise: TextView = itemView.findViewById(R.id.textViewPractise)
+        val textViewPractise1: TextView = itemView.findViewById(R.id.textViewPractise1)
+
     }
 }
