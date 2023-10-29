@@ -51,7 +51,7 @@
                 android:text="Random Name"
                 android:textSize="12sp" />
             <TextView
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:id="@+id/textViewPractise1"
                 android:layout_width="wrap_content"
                 android:gravity="center"

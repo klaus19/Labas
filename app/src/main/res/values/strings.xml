@@ -25,4 +25,5 @@
     <string name="shuffle">Shuffle</string>
     <string name="back">BACK</string>
     <string name="you_don_t_have_any_cards">You don\'t have any cards</string>
+    <string name="zero1">0</string>
 </resources>
