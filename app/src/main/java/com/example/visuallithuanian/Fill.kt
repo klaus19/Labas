@@ -1,3 +1,22 @@
 package com.example.visuallithuanian
 
 //  of strings that will shown on cardview front and back side
+//        R.drawable.key to Pair(),
+//        R.drawable.sleep to Pair(),
+//        R.drawable.key to Pair(),
+//        R.drawable.sleep to Pair(),
+//        R.drawable.key to Pair(),
+//        R.drawable.sleep to Pair(),
+//        R.drawable.key to Pair(),
+//        R.drawable.sleep to Pair(),
+//        R.drawable.key to Pair(),
+//        R.drawable.key to Pair(),
+//        R.drawable.sleep to Pair(),
+//        R.drawable.key to Pair(),
+//        R.drawable.sleep to Pair(),
+//        R.drawable.key to Pair(),
+//        R.drawable.sleep to Pair(),
+//        R.drawable.key to Pair(),
+//        R.drawable.sleep to Pair(),
+//        R.drawable.key to Pair(),
+//        R.drawable.sleep to Pair(),

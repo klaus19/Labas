@@ -127,8 +127,8 @@ class PractiseAdapter(
                 Color.RED
             }
         } else {
-              holder.cardTextPractise.setBackgroundColor(Color.WHITE)
-              Color.WHITE
+            holder.cardTextPractise.setBackgroundColor(Color.WHITE)
+            Color.WHITE
         }
         holder.cardTextPractise.setBackgroundColor(nameColor)
 
