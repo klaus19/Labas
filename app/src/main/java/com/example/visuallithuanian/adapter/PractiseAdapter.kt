@@ -11,6 +11,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.R
+import com.example.visuallithuanian.Utils.shuffleList
 import com.example.visuallithuanian.constants.ImageStore
 
 
