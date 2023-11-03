@@ -36,7 +36,7 @@ class PractiseFragment : Fragment() {
 
         // Shuffle the list of image names
        //val shuffledImageNames = ImageStore.imagesNamesMap.values.toList().shuffleList()
-        val shuffledImageResources = ImageStore.imagesNamesMap.keys.toList().shuffleList().toMutableList()
+        val shuffledImageResources = ImageStore.imagesNamesMap.keys.toList().shuffleList()
 
         val shuffledImageNames1: List<Pair<String, String>> = shuffledImageResources.mapNotNull { it ->
             val pair = ImageStore.imagesNamesMap[it]

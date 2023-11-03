@@ -1,5 +1,6 @@
 package com.example.visuallithuanian.adapter
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -29,21 +30,30 @@ class PractiseAdapter(
     private var previousSelectedImageName = ""
 
     init {
+
         btnShuffle.setOnClickListener {
             shuffleCards()
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun shuffleCards() {
         // Shuffle the card data (images and names)
-        imageResources.shuffle()
-        imageNames1.shuffle()
-
         // Reset the selected image and name
+
+        val shuffledKeys = ImageStore.imagesNamesMap.keys.shuffled()
+
+        val selectedPairs = shuffledKeys.take(4).associateWith { ImageStore.imagesNamesMap[it] }
+
+        imageResources = selectedPairs.keys.toMutableList()
+        imageNames1 = selectedPairs.values.mapNotNull { it }.toMutableList()
+
+
         selectedImageResource = -1
         selectedImageName = ""
         previousSelectedImageResource = -1
         previousSelectedImageName = ""
+
 
         // Reset the background color of cardImage views to white
         resetCardImageBackgroundToWhite()
