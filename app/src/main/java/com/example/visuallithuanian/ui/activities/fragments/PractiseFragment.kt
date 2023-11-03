@@ -41,9 +41,9 @@ class PractiseFragment : Fragment() {
 
         practiseAdapter = PractiseAdapter(shuffledImageResources.toMutableList(),
             shuffledImageNames.toMutableList(),binding.btnShuffle,recyclerViewPractise)
-
-        binding.recyclerViewPractise.adapter = practiseAdapter
         practiseAdapter.initsetRecyclerView(recyclerViewPractise)
+        binding.recyclerViewPractise.adapter = practiseAdapter
+
 
         return binding.root
 

@@ -11,17 +11,17 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.R
+import com.example.visuallithuanian.Utils.shuffleList
 import com.example.visuallithuanian.constants.ImageStore
 
 
 class PractiseAdapter(
-    private var imageResources: MutableList<Int>,
+    private  var imageResources: MutableList<Int>,
     private var imageNames: MutableList<String>,
     btnShuffle: AppCompatButton,
-    recyclerViewPractise: RecyclerView,
+    private var recyclerViewPractise: RecyclerView,
 ) : RecyclerView.Adapter<PractiseAdapter.PractiseViewHolder>() {
 
-    lateinit var recyclerView: RecyclerView
     private var anyCardIsGreen = false
     private var selectedImageResource = -1
     private var selectedImageName = ""
@@ -29,6 +29,8 @@ class PractiseAdapter(
     private var previousSelectedImageName = ""
 
     init {
+
+
         btnShuffle.setOnClickListener {
             shuffleCards()
         }
@@ -36,8 +38,8 @@ class PractiseAdapter(
 
     private fun shuffleCards() {
         // Shuffle the card data (images and names)
-        imageResources.shuffle()
-        imageNames.shuffle()
+       val shuffledresources =  imageResources.toList().shuffled().take(4).toMutableList()
+        val shuffledImageNames = imageNames.toList().shuffled().take(4).toMutableList()
 
         // Reset the selected image and name
         selectedImageResource = -1
@@ -48,19 +50,25 @@ class PractiseAdapter(
         // Reset the background color of cardImage views to white
         resetCardImageBackgroundToWhite()
 
+        imageResources.clear()
+        imageResources.addAll(shuffledresources)
+
+        imageNames.clear()
+        imageNames.addAll(shuffledImageNames)
+
 
         notifyDataSetChanged()
     }
 
     fun initsetRecyclerView(recyclerView: RecyclerView) {
-        this.recyclerView = recyclerView
+        this.recyclerViewPractise = recyclerView
     }
 
     private fun resetCardImageBackgroundToWhite() {
         // Iterate through the card views and reset the background color of cardImage to white
         for (position in 0 until imageResources.size) {
 
-            val holder = recyclerView.findViewHolderForAdapterPosition(position) as? PractiseViewHolder
+            val holder = recyclerViewPractise.findViewHolderForAdapterPosition(position) as? PractiseViewHolder
             holder?.cardImagePractise?.setCardBackgroundColor(Color.WHITE)
         }
     }
