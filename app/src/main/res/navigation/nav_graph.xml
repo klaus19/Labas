@@ -114,6 +114,9 @@
         <action
             android:id="@+id/action_flashCards_to_basicActionsFlashcard"
             app:destination="@id/basicActionsFlashcard" />
+        <action
+            android:id="@+id/action_flashCards_to_familyFlashcards"
+            app:destination="@id/familyFlashcards" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -367,6 +370,15 @@
         <action
             android:id="@+id/action_basicActionsFlashcard_to_flashCards"
             app:destination="@id/flashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/familyFlashcards"
+        android:name="com.example.visuallithuanian.FamilyFlashcards"
+        android:label="fragment_family_flashcards"
+        tools:layout="@layout/fragment_family_flashcards" >
+        <action
+            android:id="@+id/action_familyFlashcards_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
     </fragment>
 
 </navigation>
