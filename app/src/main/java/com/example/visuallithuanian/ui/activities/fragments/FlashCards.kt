@@ -113,6 +113,7 @@ class FlashCards : Fragment() {
             FlashCardInfo(R.drawable.days,"Day and Months",""),
             FlashCardInfo(R.drawable.colors,"Colours and Shapes",""),
             FlashCardInfo(R.drawable.colors,"I verbs",""),
+            FlashCardInfo(R.drawable.workplace,"Workplace language","")
         )
 
     }
