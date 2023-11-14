@@ -49,3 +49,14 @@ package com.example.visuallithuanian
 //"to finish work" = "baigti darbą"
 //"lunch break" = "pietų pertrauka"
 //"to have vacation, vacationing, vacationed" = "atostogauti, atostogauja, atostogavo"
+
+//"holidays, vacation" = "atostogos",
+//"to print, prints, printed what?" = "išspausdinti, išspausdina, išspausdino ką?",
+//"Document" = "dokumentas",
+//"copy" = "kopija",
+//"to inform, informs, informed what? who?" = "perduoti, perduoda, perdavė ką? kam?",
+//"to give/hand, gives/hands, gave what? to whom?" = "paduoti, paduoda, padavė ką? kam?",
+//"to say, says, said what? to whom?" = "pasakyti, pasako, pasakė ką? kam?",
+//"to take, takes, took what? to whom?" = "nunešti, nuneša, nunešė ką? kam?",
+//"to write, writes, wrote what? to whom?" = "rašyti, rašo, raše ką? kam?",
+//"to send, sends, sent what?" = "išsiųsti, išsiunčia, išsiunte ką?",
