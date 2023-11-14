@@ -1,33 +1,26 @@
 package com.example.visuallithuanian
 //
-////  of strings that will shown on cardview front and back side
-//"grandson" = "anūkas"
-//"granddaughter" = "anūkė"
-//"husband's mother" = "anyta"
-//"mother-in-law" = "uošvienė"
-//"widow" = "našlys"
-//"married(m)" = "vedes"
-//"married(w)" = "ištekėjusi"
-//"single" = "nevedęs / netekejusi"
-//"to marry(m)" = "vesti - veda - vedė"
-//"to be born" = "gimti - gimsta - gimė"
+//"Father" = "Tėvas"
+//"Mother" = "Motina",
+//"Brother" = "brolis",
+//"Sister" = "sesuo",
+//"my family" = "Mano šeima",
+//"grandfather" = "senelis"
+//"grandmother" = "močiutė"
+//"friend" = "draugė (-as)",
+//"friends" = "draugai"
+//"Couple" = "pora",
 //
-//"close relative" = "Artimas giminAitis"
-//"distant relative" = "tOlimas giminAitis"
-//"a person" = "asmuo"
-//"my head" = "mano galva"
-//"headache" = "galvos skausmas"
-//"fever" = "karščiavimas"
-//"Tooth" = "dantis"
-//"" = "dantų skausmas"
-//"her hair" = "jos plaukai"
-//"soft skin" = "švelni oda"
-
-//"this baby" = "šis kūdikis"
-//"her legs" = "jos kojos"
-//"own body" = "savo kūnas"
-//"your arm" = "tavo ranka"
-//"Appearance" = "išvaizda"
+//"Uncle" = "dėdė",
+//"Aunt" = "teta",
+//"cousin" = "pusbrolis",
+//"relatives" = "giminaičiai",
+//"son" = "sūnus",
+//"daughter" = "dukra"
+//"child" = "vaikas"
+//"children" = "vaikai"
+//"husband" = "vyras"
+//"wife" = "žmona"
 
 //"work" = "darbas",
 //"rest day / public holiday" = "poilsio / nedarbo diena"
