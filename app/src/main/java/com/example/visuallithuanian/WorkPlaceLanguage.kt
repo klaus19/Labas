@@ -113,41 +113,19 @@ class WorkPlaceLanguage : Fragment() {
         hashMap["to write, writes, wrote what? to whom?"] = Triple("rašyti, rašo, raše ką? kam?", R.drawable.write2,R.raw.sleep)
         hashMap["to send, sends, sent what?"] = Triple("išsiųsti, išsiunčia, išsiunte ką?", R.drawable.send1,R.raw.sleep)
 
-        hashMap[""] = Triple("", R.drawable.dad1,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
+        hashMap["to get/receive, gets, got what?"] = Triple("gauti, gauna, gavo ką?", R.drawable.toreceive,R.raw.sleep)
+        hashMap["email"] = Triple("elektroninis laiškas", R.drawable.email,R.raw.sleep)
+        hashMap["sign, signs, signed what?"] = Triple("pasirašyti, pasirašo, pasirašė ką?", R.drawable.signed,R.raw.sleep)
+        hashMap["Signature"] = Triple("parašas", R.drawable.signature,R.raw.sleep)
+        hashMap["Contract"] = Triple("sutartis", R.drawable.contract,R.raw.sleep)
+        hashMap["to wait, waits, waited for what?"] = Triple("palaukti, palaukia, palaukė ko?", R.drawable.wait1,R.raw.sleep)
+        hashMap["to ask, asks, asked"] = Triple("paklausti, paklausia, paklausė", R.drawable.toask1,R.raw.sleep)
+        hashMap["to call, calls, called who?"] = Triple("paskambinti, paskambina, paskambino kam?", R.drawable.tocall,R.raw.sleep)
+        hashMap["paper"] = Triple("popierius", R.drawable.paper,R.raw.sleep)
+        hashMap["sheet of paper"] = Triple("popieriaus lapas", R.drawable.sheetofpaper,R.raw.sleep)
 
-        hashMap[""] = Triple("", R.drawable.dad1,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-
-        hashMap[""] = Triple("", R.drawable.dad1,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-        hashMap[""] = Triple("", R.drawable.mother,R.raw.sleep)
-
-
-
+        hashMap["computer"] = Triple("kompiuteris", R.drawable.computer1,R.raw.sleep)
+        hashMap["printer"] = Triple("spausdintuvas", R.drawable.printer,R.raw.sleep)
 
 
 

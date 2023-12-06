@@ -1,5 +1,20 @@
 package com.example.visuallithuanian
 //
+
+//"to get/receive, gets, got what?" = "gauti, gauna, gavo ką?"
+//"email" = "elektroninis laiškas"
+//"sign, signs, signed what?" = "pasirašyti, pasirašo, pasirašė ką?"
+//"Signature" = "parašas"
+//"Contract" = "sutartis"
+//"to wait, waits, waited for what?" = "palaukti, palaukia, palaukė ko?"
+//"to ask, asks, asked" = "paklausti, paklausia, paklausė"
+//"to call, calls, called who?" = "paskambinti, paskambina, paskambino kam?"
+//"paper" = "popierius"
+//"sheet of paper" = "popieriaus lapas"
+//
+//"computer" = "kompiuteris"
+//"printer" = "spausdintuvas"
+
 //"Father" = "Tėvas"
 //"Mother" = "Motina",
 //"Brother" = "brolis",
