@@ -117,6 +117,9 @@
         <action
             android:id="@+id/action_flashCards_to_familyFlashcards"
             app:destination="@id/familyFlashcards" />
+        <action
+            android:id="@+id/action_flashCards_to_workPlaceLanguage"
+            app:destination="@id/workPlaceLanguage" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -378,6 +381,15 @@
         tools:layout="@layout/fragment_family_flashcards" >
         <action
             android:id="@+id/action_familyFlashcards_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/workPlaceLanguage"
+        android:name="com.example.visuallithuanian.WorkPlaceLanguage"
+        android:label="fragment_work_place_language"
+        tools:layout="@layout/fragment_work_place_language" >
+        <action
+            android:id="@+id/action_workPlaceLanguage_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 

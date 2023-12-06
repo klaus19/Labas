@@ -21,6 +21,7 @@ class OverlappingLayoutManager(context: Context) : RecyclerView.LayoutManager() 
         )
     }
 
+
     override fun onLayoutChildren(recycler: RecyclerView.Recycler?, state: RecyclerView.State?) {
         if (itemCount == 0) {
             removeAndRecycleAllViews(recycler!!)
