@@ -120,6 +120,9 @@
         <action
             android:id="@+id/action_flashCards_to_workPlaceLanguage"
             app:destination="@id/workPlaceLanguage" />
+        <action
+            android:id="@+id/action_flashCards_to_verbsFragment"
+            app:destination="@id/verbsFragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -390,6 +393,18 @@
         tools:layout="@layout/fragment_work_place_language" >
         <action
             android:id="@+id/action_workPlaceLanguage_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/verbsFragment"
+        android:name="com.example.visuallithuanian.VerbsFragment"
+        android:label="fragment_verbs"
+        tools:layout="@layout/fragment_verbs" >
+        <action
+            android:id="@+id/action_verbsFragment_to_flashCards"
+            app:destination="@id/flashCards" />
+        <action
+            android:id="@+id/action_verbsFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 
