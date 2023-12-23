@@ -47,6 +47,7 @@ class FlashcardsEasyAdapter(private val imageList: List<FlashCardInfo>
                  "Basic actions" -> navController.navigate(R.id.action_flashCards_to_basicActionsFlashcard)
                  "Family" -> navController.navigate(R.id.action_flashCards_to_familyFlashcards)
                  "Workplace language" -> navController.navigate(R.id.action_flashCards_to_workPlaceLanguage)
+                 "I verbs" -> navController.navigate(R.id.action_flashCards_to_verbsFragment)
              }
 
         }

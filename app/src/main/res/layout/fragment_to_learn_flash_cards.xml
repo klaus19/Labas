@@ -52,11 +52,12 @@
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="500dp"
-        android:layout_marginTop="50dp"
+        android:layout_below="@id/back_icon"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        tools:listitem="@layout/recycle_view"
-        android:layout_below="@id/back_icon"/>
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="36dp"
+        tools:listitem="@layout/recycle_view" />
 
 </RelativeLayout>
