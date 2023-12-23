@@ -93,3 +93,74 @@ package com.example.visuallithuanian
 //"to find" = "rasti"
 //"to continue" = "tęsti"
 //"to say" = "pasakyti"
+
+// Food and Ingerdients
+//"egg" = "kiaušinis"
+//"kiwi" = "kivis"
+//"Blue cheese" = "Mėlynasis sūris"
+//"coffee" = "kava"
+//"blueberries" = "mėlynių"
+//"bacon" = "lašiniai"
+//"breakfast" = "pusryčiai"
+//"peach" = "persikas"
+//"forest honey" = "miško medus"
+//"pepper" = "pipirai"
+//
+//"lunch" = "pietūs"
+//"fish" = "žuvis",
+//"raspberry" = "avietė",
+//"vegetables" = "daržovės"
+//"fruit" = "vaisius",
+//"garlic" = "česnakas"
+//"Chocolate" = "Šokoladas"
+//"sparkling water" = "gazuotas vanduo"
+//"mushroom" = "pievagrybis"
+//"steak" = "kepsnys"
+//
+//"snack" = "užkandis"
+//"sausage" = "dešra"
+//"pear" = "kriaušė",
+//"still water" = "Negazuotas vanduo",
+//"Watermelon" = "arbūzas"
+//"Salad" = "salotos"
+//"Carrot" = "morką",
+//"Ham" = "kumpis"
+//"Beef" = "jautiena"
+//"Potato" = "bulvė",
+//
+//"crumbs" = "dribsniai"
+//"Apples" = "obuolių",
+//"marmalade" = "marmeladas"
+//"Pineapple" = "ananasas",
+//"Tea" = "arbata"
+//"Bread" = "duona"
+//"cheese" = "sūris"
+//"yogurt" = "jogurtas"
+//"salt" = "druska"
+//"butter" = "sviestas"
+//
+//"Strawberry" = "Braškė"
+//"Orange" = "apelsinas"
+//"lime" = "kalkės"
+//"lemon" = "citrina"
+//"mustard" = "garstyčios"
+//"avocado" = "avokadas"
+//"Onion" = "svogūnas",
+//"mushroom" = "grybas"
+//"cherry" = "vyšnia"
+//"cauliflower" = "žiediniai kopūstai"
+//
+//"salami" = "saliamis"
+//"juice" = "sultys"
+//"Pasta" = "Makaronai"
+//"Chicken" = "vištiena"
+//"Sauce" = "padažas"
+//"grapes" = "vynuoges"
+//"pork" = "kiauliena"
+//"rice" = "ryžiai"
+//"spaghetti" = "spagečiai"
+//"broccoli" = "brokoliai"
+//
+//"milk" = "pienas"
+//"wine" = "vynas"
+//"meat" = "mėsa"
