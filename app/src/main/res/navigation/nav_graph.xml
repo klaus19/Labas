@@ -123,6 +123,9 @@
         <action
             android:id="@+id/action_flashCards_to_verbsFragment"
             app:destination="@id/verbsFragment" />
+        <action
+            android:id="@+id/action_flashCards_to_foodIngrediants"
+            app:destination="@id/foodIngrediants" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -405,6 +408,15 @@
             app:destination="@id/flashCards" />
         <action
             android:id="@+id/action_verbsFragment_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodIngrediants"
+        android:name="com.example.visuallithuanian.FoodIngrediants"
+        android:label="fragment_food_ingrediants"
+        tools:layout="@layout/fragment_food_ingrediants" >
+        <action
+            android:id="@+id/action_foodIngrediants_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 

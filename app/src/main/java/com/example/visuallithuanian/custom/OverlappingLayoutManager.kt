@@ -6,13 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.LayoutParams
 import com.example.visuallithuanian.R
 
-
 class OverlappingLayoutManager(context: Context) : RecyclerView.LayoutManager() {
     private val horizontalOverlap =
-        context.resources.getDimensionPixelOffset(R.dimen.card_horizontal_overlap)
+        context.resources.getDimensionPixelOffset(R.dimen.card_horizontal_overlap) // Increase this value for more overlap
     private val verticalOverlap =
-        context.resources.getDimensionPixelOffset(R.dimen.card_vertical_overlap)
-    private val tiltAngle = 3f // Adjust the tilt angle as needed
+        context.resources.getDimensionPixelOffset(R.dimen.card_vertical_overlap) // Adjust if needed
+    private val tiltAngle = 5f // Adjust the tilt angle as desired
 
     override fun generateDefaultLayoutParams(): LayoutParams {
         return LayoutParams(
@@ -30,9 +29,7 @@ class OverlappingLayoutManager(context: Context) : RecyclerView.LayoutManager() 
 
         detachAndScrapAttachedViews(recycler!!)
 
-        val leftTilt = tiltAngle
-        val rightTilt = -tiltAngle
-        var currentTilt = leftTilt
+        var currentTilt = tiltAngle
 
         for (position in 0 until itemCount) {
             val view = recycler.getViewForPosition(position)
@@ -41,21 +38,27 @@ class OverlappingLayoutManager(context: Context) : RecyclerView.LayoutManager() 
             val width = getDecoratedMeasuredWidth(view)
             val height = getDecoratedMeasuredHeight(view)
 
-            val centerX = width / 2f
-            val centerY = height / 2f
+            // Calculate scale factor based on position
+            val scaleFactor = 1f - (position * 0.1f) // Adjust the scaling formula as needed
 
-            layoutDecoratedWithMargins(
-                view,
-                (centerX - (width / 2)).toInt(),
-                (centerY - (height / 2)).toInt(),
-                (centerX + (width / 2)).toInt(),
-                (centerY + (height / 2)).toInt()
-            )
+            // Apply scale factor to layout measurements
+            val scaledWidth = (width * scaleFactor).toInt()
+            val scaledHeight = (height * scaleFactor).toInt()
 
+            val centerX = scaledWidth / 2f
+            val centerY = scaledHeight / 2f
+
+            // Adjust layout positioning to account for scaling and overlap
+            val left = (centerX - scaledWidth / 2).toInt() + (position * horizontalOverlap)
+            val top = (centerY - scaledHeight / 2).toInt() + (position * verticalOverlap)
+            val right = left + scaledWidth
+            val bottom = top + scaledHeight
+
+            layoutDecoratedWithMargins(view, left, top, right, bottom)
+
+            // Set alternating tilt based on position
             val childViewGroup = view.findViewById<ViewGroup>(R.id.card_view)
-            childViewGroup.rotation = currentTilt
-
-            currentTilt = if (currentTilt == leftTilt) rightTilt else leftTilt
+            childViewGroup.rotation = if (position % 2 == 0) currentTilt else -currentTilt
         }
     }
 
