@@ -79,7 +79,6 @@ class FlashCards : Fragment() {
             FlashCardInfo(R.drawable.computer,"Computer terminology",""),
             FlashCardInfo(R.drawable.clothing,"Clothing",""),
             FlashCardInfo(R.drawable.village,"Towns and Villages",""),
-            FlashCardInfo(R.drawable.nature,"Nature",""),
             FlashCardInfo(R.drawable.time,"Time",""),
             FlashCardInfo(R.drawable.cinemascreen,"Cinema",""),
             FlashCardInfo(R.drawable.numbers,"Numbers",""),
@@ -113,7 +112,8 @@ class FlashCards : Fragment() {
             FlashCardInfo(R.drawable.days,"Day and Months",""),
             FlashCardInfo(R.drawable.colors,"Colours and Shapes",""),
             FlashCardInfo(R.drawable.colors,"I verbs",""),
-            FlashCardInfo(R.drawable.workplace,"Workplace language","")
+            FlashCardInfo(R.drawable.workplace,"Workplace language",""),
+                    FlashCardInfo(R.drawable.nature,"Nature",""),
         )
 
     }

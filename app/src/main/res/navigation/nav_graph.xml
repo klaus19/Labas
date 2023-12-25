@@ -129,6 +129,9 @@
         <action
             android:id="@+id/action_flashCards_to_holidayCelebrations"
             app:destination="@id/holidayCelebrations" />
+        <action
+            android:id="@+id/action_flashCards_to_natureFragment"
+            app:destination="@id/natureFragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -429,6 +432,15 @@
         tools:layout="@layout/fragment_holiday_celebrations" >
         <action
             android:id="@+id/action_holidayCelebrations_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/natureFragment"
+        android:name="com.example.visuallithuanian.NatureFragment"
+        android:label="fragment_nature"
+        tools:layout="@layout/fragment_nature" >
+        <action
+            android:id="@+id/action_natureFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 
