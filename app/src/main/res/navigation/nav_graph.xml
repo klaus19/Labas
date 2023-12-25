@@ -126,6 +126,9 @@
         <action
             android:id="@+id/action_flashCards_to_foodIngrediants"
             app:destination="@id/foodIngrediants" />
+        <action
+            android:id="@+id/action_flashCards_to_holidayCelebrations"
+            app:destination="@id/holidayCelebrations" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -417,6 +420,15 @@
         tools:layout="@layout/fragment_food_ingrediants" >
         <action
             android:id="@+id/action_foodIngrediants_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/holidayCelebrations"
+        android:name="com.example.visuallithuanian.HolidayCelebrations"
+        android:label="fragment_holiday_celebrations"
+        tools:layout="@layout/fragment_holiday_celebrations" >
+        <action
+            android:id="@+id/action_holidayCelebrations_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 

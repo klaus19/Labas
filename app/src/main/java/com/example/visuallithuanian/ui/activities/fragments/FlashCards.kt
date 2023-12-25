@@ -107,7 +107,7 @@ class FlashCards : Fragment() {
             FlashCardInfo(R.drawable.doctorvisit,"Questions and Pronouns",""),
             FlashCardInfo(R.drawable.talking,"Daily Basic",""),
             FlashCardInfo(R.drawable.action,"Basic actions",""),
-            FlashCardInfo(R.drawable.food,"Food",""),
+            FlashCardInfo(R.drawable.holiday1,"Holidays, Celebration",""),
             FlashCardInfo(R.drawable.relatives,"Family",""),
             FlashCardInfo(R.drawable.keyphrase,"Key Phrases",""),
             FlashCardInfo(R.drawable.days,"Day and Months",""),
