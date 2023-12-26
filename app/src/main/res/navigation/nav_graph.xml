@@ -132,6 +132,9 @@
         <action
             android:id="@+id/action_flashCards_to_natureFragment"
             app:destination="@id/natureFragment" />
+        <action
+            android:id="@+id/action_flashCards_to_colorshapeFragment"
+            app:destination="@id/colorshapeFragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -441,6 +444,15 @@
         tools:layout="@layout/fragment_nature" >
         <action
             android:id="@+id/action_natureFragment_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/colorshapeFragment"
+        android:name="com.example.visuallithuanian.ColorshapeFragment"
+        android:label="fragment_colorshape"
+        tools:layout="@layout/fragment_colorshape" >
+        <action
+            android:id="@+id/action_colorshapeFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 

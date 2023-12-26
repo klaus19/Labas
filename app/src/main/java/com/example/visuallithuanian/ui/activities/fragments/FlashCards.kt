@@ -110,8 +110,8 @@ class FlashCards : Fragment() {
             FlashCardInfo(R.drawable.relatives,"Family",""),
             FlashCardInfo(R.drawable.keyphrase,"Key Phrases",""),
             FlashCardInfo(R.drawable.days,"Day and Months",""),
-            FlashCardInfo(R.drawable.colors,"Colours and Shapes",""),
-            FlashCardInfo(R.drawable.colors,"I verbs",""),
+            FlashCardInfo(R.drawable.colorshape,"Colours and Shapes",""),
+            FlashCardInfo(R.drawable.iverb,"I verbs",""),
             FlashCardInfo(R.drawable.workplace,"Workplace language",""),
                     FlashCardInfo(R.drawable.nature,"Nature",""),
         )
