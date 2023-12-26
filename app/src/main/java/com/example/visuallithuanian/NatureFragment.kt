@@ -110,9 +110,6 @@ class NatureFragment : Fragment() {
 
 
 
-
-
-
         // Initialize Media Player
         val mediaPlayer = MediaPlayer()
         binding.btnPlay.setOnClickListener {
