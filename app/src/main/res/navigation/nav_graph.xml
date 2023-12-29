@@ -135,6 +135,12 @@
         <action
             android:id="@+id/action_flashCards_to_colorshapeFragment"
             app:destination="@id/colorshapeFragment" />
+        <action
+            android:id="@+id/action_flashCards_to_numbersFlashcardFragment"
+            app:destination="@id/numbersFlashcardFragment" />
+        <action
+            android:id="@+id/action_flashCards_to_sportsFlashcardFragment"
+            app:destination="@id/sportsFlashcardFragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -453,6 +459,24 @@
         tools:layout="@layout/fragment_colorshape" >
         <action
             android:id="@+id/action_colorshapeFragment_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/numbersFlashcardFragment"
+        android:name="com.example.visuallithuanian.NumbersFlashcardFragment"
+        android:label="fragment_numbers_flashcard"
+        tools:layout="@layout/fragment_numbers_flashcard" >
+        <action
+            android:id="@+id/action_numbersFlashcardFragment_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/sportsFlashcardFragment"
+        android:name="com.example.visuallithuanian.SportsFlashcardFragment"
+        android:label="fragment_sports_flashcard"
+        tools:layout="@layout/fragment_sports_flashcard" >
+        <action
+            android:id="@+id/action_sportsFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 
