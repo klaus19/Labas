@@ -28,32 +28,28 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class BestWords100Fragment : Fragment() {
 
-
     lateinit var binding: FragmentBestWords100Binding
     lateinit var viewModel: BottomNavigationViewModel
 
     lateinit var bottomNavigationView: BottomNavigationView
     private val counterViewModel: ToLearnViewModel by viewModels()
 
-   // private val hashMapbestwords = hashMapbestwords<String,Triple<String,Int,Int>>()
-
     private var currentTripleIndex =0
     private lateinit var currentTriple:Map.Entry<String,Triple<String,Int,Int>>
 
     var isFront=true
-    private val totalTriples = 37 // change the value to the actual number of entries in your hashMapbestwords
+    private val totalTriples = 100 // change the value to the actual number of entries in your hashMapbestwords
 
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
     }
 
-
     @SuppressLint("ResourceType", "SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentBestWords100Binding.inflate(inflater,container,false)
 
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
@@ -64,7 +60,7 @@ class BestWords100Fragment : Fragment() {
 
 
         // setting up listener for back Icon
-        binding.backIcon?.setOnClickListener {
+        binding.backIcon.setOnClickListener {
             activity?.onBackPressed()
         }
 
@@ -81,8 +77,6 @@ class BestWords100Fragment : Fragment() {
             ContextCompat.getColor(requireContext(),
                 R.color.silver))
 
-//        // hashMapbestwords of strings that will shown on cardview front and back side
-//        hashMapbestwords["sleep"] = Triple("miegoti", R.drawable.sleep,R.raw.sleep)
         // Initialize Media Player
         val mediaPlayer = MediaPlayer()
         binding.btnPlay.setOnClickListener {
