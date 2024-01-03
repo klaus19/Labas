@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.Utils.shuffleList
@@ -33,9 +34,13 @@ class PractiseFragment : Fragment() {
         val layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
         binding.recyclerViewPractise.layoutManager = layoutManager
 
+        binding.backIcon.setOnClickListener {
+            findNavController().navigate(com.example.visuallithuanian.R.id.action_practiseFragment_to_userFragment)
+        }
+
 
         // Shuffle the list of image names
-       //val shuffledImageNames = ImageStore.imagesNamesMap.values.toList().shuffleList()
+
         val shuffledImageResources = ImageStore.imagesNamesMap.keys.toList().shuffleList()
 
         val shuffledImageNames1: List<Pair<String, String>> = shuffledImageResources.mapNotNull { it ->
