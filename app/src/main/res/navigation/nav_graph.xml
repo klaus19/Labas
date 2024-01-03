@@ -141,6 +141,9 @@
         <action
             android:id="@+id/action_flashCards_to_sportsFlashcardFragment"
             app:destination="@id/sportsFlashcardFragment" />
+        <action
+            android:id="@+id/action_flashCards_to_bestWords100Fragment"
+            app:destination="@id/bestWords100Fragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -477,6 +480,15 @@
         tools:layout="@layout/fragment_sports_flashcard" >
         <action
             android:id="@+id/action_sportsFlashcardFragment_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/bestWords100Fragment"
+        android:name="com.example.visuallithuanian.BestWords100Fragment"
+        android:label="fragment_best_words100"
+        tools:layout="@layout/fragment_best_words100" >
+        <action
+            android:id="@+id/action_bestWords100Fragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 
