@@ -103,6 +103,6 @@ object ImageStore {
 //        R.drawable.key to Pair(),
 //        R.drawable.sleep to Pair(),
 
-    ).toList().shuffleList().take(4).toMap()
+    ).toList().take(4).shuffleList().toMap()
 }
 

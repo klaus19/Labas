@@ -41,12 +41,12 @@ class PractiseFragment : Fragment() {
 
         // Shuffle the list of image names
 
-        val shuffledImageResources = ImageStore.imagesNamesMap.keys.toList().shuffleList()
+        val shuffledImageResources = ImageStore.imagesNamesMap.keys.toList().take(4).shuffleList()
 
         val shuffledImageNames1: List<Pair<String, String>> = shuffledImageResources.mapNotNull { it ->
             val pair = ImageStore.imagesNamesMap[it]
             pair?.let { Pair(pair.first,pair.second)}
-        }.shuffleList()
+        }.toList().take(4).shuffleList()
 
 
         practiseAdapter = PractiseAdapter(shuffledImageResources.toMutableList(),
