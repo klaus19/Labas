@@ -144,6 +144,9 @@
         <action
             android:id="@+id/action_flashCards_to_bestWords100Fragment"
             app:destination="@id/bestWords100Fragment" />
+        <action
+            android:id="@+id/action_flashCards_to_thingsFragment"
+            app:destination="@id/thingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -489,6 +492,15 @@
         tools:layout="@layout/fragment_best_words100" >
         <action
             android:id="@+id/action_bestWords100Fragment_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/thingsFragment"
+        android:name="com.example.visuallithuanian.ThingsFragment"
+        android:label="fragment_things"
+        tools:layout="@layout/fragment_things" >
+        <action
+            android:id="@+id/action_thingsFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 

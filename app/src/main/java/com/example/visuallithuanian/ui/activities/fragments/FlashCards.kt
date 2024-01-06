@@ -89,6 +89,7 @@ class FlashCards : Fragment() {
             FlashCardInfo(R.drawable.sports,"Sports",""),
             FlashCardInfo(R.drawable.profession,"Professions",""),
             FlashCardInfo(R.drawable.weekly,"Weekly basics",""),
+            FlashCardInfo(R.drawable.cafe,"Things",""),
             FlashCardInfo(R.drawable.personality,"Personality",""),
             FlashCardInfo(R.drawable.household,"Household",""),
             FlashCardInfo(R.drawable.best,"100 best words",""),
