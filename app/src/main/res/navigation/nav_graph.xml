@@ -147,6 +147,9 @@
         <action
             android:id="@+id/action_flashCards_to_thingsFragment"
             app:destination="@id/thingsFragment" />
+        <action
+            android:id="@+id/action_flashCards_to_personalityFlashcardFragment"
+            app:destination="@id/personalityFlashcardFragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -501,6 +504,15 @@
         tools:layout="@layout/fragment_things" >
         <action
             android:id="@+id/action_thingsFragment_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalityFlashcardFragment"
+        android:name="com.example.visuallithuanian.PersonalityFlashcardFragment"
+        android:label="fragment_personality_flashcard"
+        tools:layout="@layout/fragment_personality_flashcard" >
+        <action
+            android:id="@+id/action_personalityFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 

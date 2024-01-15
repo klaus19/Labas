@@ -14,10 +14,9 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.visuallithuanian.constants.ThingsSingleton
+import com.example.visuallithuanian.constants.PersonalitySingleton
 import com.example.visuallithuanian.database.FlashcardPair
-import com.example.visuallithuanian.databinding.FragmentDailyBasicBinding
-import com.example.visuallithuanian.databinding.FragmentThingsBinding
+import com.example.visuallithuanian.databinding.FragmentPersonalityFlashcardBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.example.visuallithuanian.viewModel.FlashCardViewmodel
@@ -26,9 +25,9 @@ import com.example.visuallithuanian.viewModel.WordViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-class ThingsFragment : Fragment() {
+class PersonalityFlashcardFragment : Fragment() {
 
-    lateinit var binding: FragmentThingsBinding
+    lateinit var binding: FragmentPersonalityFlashcardBinding
     lateinit var viewModel: BottomNavigationViewModel
 
     lateinit var bottomNavigationView: BottomNavigationView
@@ -38,7 +37,7 @@ class ThingsFragment : Fragment() {
     private lateinit var currentTriple:Map.Entry<String,Triple<String,Int,Int>>
 
     var isFront=true
-    private val totalTriples = 31 // change the value to the actual number of entries in your hashMap
+    private val totalTriples = 47 // change the value to the actual number of entries in your hashMap
 
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
@@ -51,7 +50,7 @@ class ThingsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentThingsBinding.inflate(inflater,container,false)
+        binding = FragmentPersonalityFlashcardBinding.inflate(inflater,container,false)
 
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
@@ -106,7 +105,7 @@ class ThingsFragment : Fragment() {
         counterViewModel.counter.observe(requireActivity()){count->
             binding.textCounter.text = count.toString()
         }
-        currentTriple = ThingsSingleton.hashMapThingsWords.entries.elementAt(currentTripleIndex)
+        currentTriple = PersonalitySingleton.hashMapPersonality.entries.elementAt(currentTripleIndex)
         binding.textCardFront.text = currentTriple.key
         binding.textCardBack.text = currentTriple.value.first
         binding.imagecardsHelper.setImageResource(currentTriple.value.second)
@@ -120,7 +119,7 @@ class ThingsFragment : Fragment() {
             counterViewModel.incrementCounter()
             // increment currentTripleIndex and get the next Triple
             currentTripleIndex++
-            if (currentTripleIndex >= ThingsSingleton.hashMapThingsWords.size) {
+            if (currentTripleIndex >= PersonalitySingleton.hashMapPersonality.size) {
                 // if we have reached the end of the hashmap, start again from the beginning
                 currentTripleIndex = 0
             }
@@ -134,7 +133,7 @@ class ThingsFragment : Fragment() {
             cardViewModel.insertCards(Triple)
             //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
             Log.d("Main","$Triple")
-            currentTriple = ThingsSingleton.hashMapThingsWords.entries.elementAt(currentTripleIndex)
+            currentTriple = PersonalitySingleton.hashMapPersonality.entries.elementAt(currentTripleIndex)
 
         }
         //On Event of clicking on the image to unsave the image
@@ -143,10 +142,10 @@ class ThingsFragment : Fragment() {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-                if (currentTripleIndex >= 0 && currentTripleIndex < ThingsSingleton.hashMapThingsWords.size) {
+                if (currentTripleIndex >= 0 && currentTripleIndex < PersonalitySingleton.hashMapPersonality.size) {
                     // Remove the item at the current index from your data structure (e.g., HashMap)
-                    val removedTriple = ThingsSingleton.hashMapThingsWords.entries.elementAt(currentTripleIndex)
-                    ThingsSingleton.hashMapThingsWords.remove(removedTriple.key)
+                    val removedTriple = PersonalitySingleton.hashMapPersonality.entries.elementAt(currentTripleIndex)
+                    PersonalitySingleton.hashMapPersonality.remove(removedTriple.key)
 
                     // Decrease the counter
                     counterViewModel.decrementCounter()
@@ -159,7 +158,7 @@ class ThingsFragment : Fragment() {
                     cardViewModel.deleteCards(Triple)
                     //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
                     Log.d("Main","$Triple")
-                    currentTriple = ThingsSingleton.hashMapThingsWords.entries.elementAt(currentTripleIndex)
+                    currentTriple = PersonalitySingleton.hashMapPersonality.entries.elementAt(currentTripleIndex)
 
                 }
             }
@@ -167,7 +166,7 @@ class ThingsFragment : Fragment() {
 
         //Navigating from one fragment to another
         binding.cardLearning.setOnClickListener {
-            findNavController().navigate(R.id.action_thingsFragment_to_toLearnFlashCards)
+            findNavController().navigate(R.id.action_personalityFlashcardFragment_to_toLearnFlashCards)
         }
 
         //onclick listener for the Flip button
@@ -192,7 +191,7 @@ class ThingsFragment : Fragment() {
                     cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green1))
 
                 } else {
-                    currentTripleIndex = (currentTripleIndex + 1) % ThingsSingleton.hashMapThingsWords.size
+                    currentTripleIndex = (currentTripleIndex + 1) % PersonalitySingleton.hashMapPersonality.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
@@ -200,7 +199,7 @@ class ThingsFragment : Fragment() {
                     isFront = true
                 }
                 // retrieve the current Triple from the hashMap
-                currentTriple = ThingsSingleton.hashMapThingsWords.entries.elementAt(currentTripleIndex)
+                currentTriple = PersonalitySingleton.hashMapPersonality.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
                 binding.textCardBack.text = currentTriple.value.first
                 binding.imagecardsHelper.setImageResource(currentTriple.value.second)
