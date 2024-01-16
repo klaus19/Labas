@@ -114,7 +114,7 @@ class FlashCards : Fragment() {
             FlashCardInfo(R.drawable.colorshape,"Colours and Shapes",""),
             FlashCardInfo(R.drawable.iverb,"I verbs",""),
             FlashCardInfo(R.drawable.workplace,"Workplace language",""),
-                    FlashCardInfo(R.drawable.nature,"Nature",""),
+            FlashCardInfo(R.drawable.nature,"Nature",""),
         )
 
     }
@@ -131,10 +131,6 @@ class FlashCards : Fragment() {
             FlashCardInfo(R.drawable.maths,"Advanced actions",""),
             FlashCardInfo(R.drawable.maths,"Household Appliances",""),
             FlashCardInfo(R.drawable.maths,"Adjectives",""),
-
-
-
-
         )
 
     }
