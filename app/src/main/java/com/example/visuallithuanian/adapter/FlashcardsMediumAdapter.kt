@@ -49,6 +49,7 @@ class FlashcardsMediumAdapter(private val imageList: List<FlashCardInfo>
                 "Personality" -> navController.navigate(R.id.action_flashCards_to_personalityFlashcardFragment)
                 "Household" -> navController.navigate(R.id.action_flashCards_to_householdFlashcardFragment)
                 "Cinema" -> navController.navigate(R.id.action_flashCards_to_cinemaFragment)
+                "Veganism" -> navController.navigate(R.id.action_flashCards_to_veganFlashcardsFragment)
             }
 
         }

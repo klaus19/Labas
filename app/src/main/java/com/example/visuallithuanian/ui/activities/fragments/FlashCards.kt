@@ -97,6 +97,7 @@ class FlashCards : Fragment() {
             FlashCardInfo(R.drawable.food,"Food & Ingredients",""),
             FlashCardInfo(R.drawable.travel,"Travel",""),
             FlashCardInfo(R.drawable.thisss,"This & that",""),
+            FlashCardInfo(R.drawable.vegan,"Veganism",""),
         )
 
     }
