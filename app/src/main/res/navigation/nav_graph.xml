@@ -159,6 +159,9 @@
         <action
             android:id="@+id/action_flashCards_to_veganFlashcardsFragment"
             app:destination="@id/veganFlashcardsFragment" />
+        <action
+            android:id="@+id/action_flashCards_to_romanticPhrasesFragment"
+            app:destination="@id/romanticPhrasesFragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -549,6 +552,15 @@
         tools:layout="@layout/fragment_vegan_flashcards" >
         <action
             android:id="@+id/action_veganFlashcardsFragment_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/romanticPhrasesFragment"
+        android:name="com.example.visuallithuanian.RomanticPhrasesFragment"
+        android:label="fragment_romantic_phrases"
+        tools:layout="@layout/fragment_romantic_phrases" >
+        <action
+            android:id="@+id/action_romanticPhrasesFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 

@@ -51,6 +51,7 @@ class FlashcardsEasyAdapter(private val imageList: List<FlashCardInfo>
                  "Holidays, Celebration" -> navController.navigate(R.id.action_flashCards_to_holidayCelebrations)
                  "Nature"-> navController.navigate(R.id.action_flashCards_to_natureFragment)
                  "Colours and Shapes" -> navController.navigate(R.id.action_flashCards_to_colorshapeFragment)
+                 "Romantic phrases" -> navController.navigate(R.id.action_flashCards_to_romanticPhrasesFragment)
              }
 
         }

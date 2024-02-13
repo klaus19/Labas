@@ -9,5 +9,5 @@ data class FlashcardPair(
     val front:String,
     val back:String,
     val imageSrc:Int,
-    val voiceclip:Int
+    val voiceclip:Int,
 )

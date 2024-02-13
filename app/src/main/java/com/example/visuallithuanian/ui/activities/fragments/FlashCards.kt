@@ -116,6 +116,7 @@ class FlashCards : Fragment() {
             FlashCardInfo(R.drawable.iverb,"I verbs",""),
             FlashCardInfo(R.drawable.workplace,"Workplace language",""),
             FlashCardInfo(R.drawable.nature,"Nature",""),
+            FlashCardInfo(R.drawable.romantic,"Romantic phrases","")
         )
 
     }
