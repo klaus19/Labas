@@ -162,6 +162,9 @@
         <action
             android:id="@+id/action_flashCards_to_romanticPhrasesFragment"
             app:destination="@id/romanticPhrasesFragment" />
+        <action
+            android:id="@+id/action_flashCards_to_cafeFlashcardsFragment"
+            app:destination="@id/cafeFlashcardsFragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -561,6 +564,15 @@
         tools:layout="@layout/fragment_romantic_phrases" >
         <action
             android:id="@+id/action_romanticPhrasesFragment_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/cafeFlashcardsFragment"
+        android:name="com.example.visuallithuanian.CafeFlashcardsFragment"
+        android:label="fragment_cafe_flashcards"
+        tools:layout="@layout/fragment_cafe_flashcards" >
+        <action
+            android:id="@+id/action_cafeFlashcardsFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 
