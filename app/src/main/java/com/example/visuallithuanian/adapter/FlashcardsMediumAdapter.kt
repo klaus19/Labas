@@ -54,8 +54,6 @@ class FlashcardsMediumAdapter(private val imageList: List<FlashCardInfo>
             }
 
         }
-
-
     }
 
 
