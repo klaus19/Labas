@@ -165,6 +165,9 @@
         <action
             android:id="@+id/action_flashCards_to_cafeFlashcardsFragment"
             app:destination="@id/cafeFlashcardsFragment" />
+        <action
+            android:id="@+id/action_flashCards_to_villageFragment"
+            app:destination="@id/villageFragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -573,6 +576,15 @@
         tools:layout="@layout/fragment_cafe_flashcards" >
         <action
             android:id="@+id/action_cafeFlashcardsFragment_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/villageFragment"
+        android:name="com.example.visuallithuanian.VillageFragment"
+        android:label="fragment_village"
+        tools:layout="@layout/fragment_village" >
+        <action
+            android:id="@+id/action_villageFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 
