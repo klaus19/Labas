@@ -14,11 +14,11 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.visuallithuanian.constants.HouseholdSingleton
-import com.example.visuallithuanian.constants.ThingsSingleton
+import com.example.visuallithuanian.constants.CafeSingleton
+import com.example.visuallithuanian.constants.TimeSingleton
 import com.example.visuallithuanian.database.FlashcardPair
-import com.example.visuallithuanian.databinding.FragmentHouseholdFlashcardBinding
-import com.example.visuallithuanian.databinding.FragmentThingsBinding
+import com.example.visuallithuanian.databinding.FragmentCafeFlashcardsBinding
+import com.example.visuallithuanian.databinding.FragmentTimeFlashcardBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.example.visuallithuanian.viewModel.FlashCardViewmodel
@@ -27,9 +27,9 @@ import com.example.visuallithuanian.viewModel.WordViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-class HouseholdFlashcardFragment : Fragment() {
+class TimeFlashcardFragment : Fragment() {
 
-    lateinit var binding: FragmentHouseholdFlashcardBinding
+    lateinit var binding: FragmentTimeFlashcardBinding
     lateinit var viewModel: BottomNavigationViewModel
 
     lateinit var bottomNavigationView: BottomNavigationView
@@ -39,7 +39,7 @@ class HouseholdFlashcardFragment : Fragment() {
     private lateinit var currentTriple:Map.Entry<String,Triple<String,Int,Int>>
 
     var isFront=true
-    private val totalTriples = 38 // change the value to the actual number of entries in your hashMap
+    private val totalTriples = 47 // change the value to the actual number of entries in your hashMap
 
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
@@ -52,7 +52,7 @@ class HouseholdFlashcardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHouseholdFlashcardBinding.inflate(inflater,container,false)
+        binding = FragmentTimeFlashcardBinding.inflate(inflater,container,false)
 
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
@@ -62,7 +62,7 @@ class HouseholdFlashcardFragment : Fragment() {
 
 
         // setting up listener for back Icon
-        binding.backIcon?.setOnClickListener {
+        binding.backIcon.setOnClickListener {
             activity?.onBackPressed()
         }
 
@@ -79,7 +79,7 @@ class HouseholdFlashcardFragment : Fragment() {
             ContextCompat.getColor(requireContext(),
                 R.color.silver))
 
-        
+
         // Initialize Media Player
         val mediaPlayer = MediaPlayer()
         binding.btnPlay.setOnClickListener {
@@ -99,14 +99,10 @@ class HouseholdFlashcardFragment : Fragment() {
             }
 
         }
-
-
-
-
         counterViewModel.counter.observe(requireActivity()){count->
             binding.textCounter.text = count.toString()
         }
-        currentTriple = HouseholdSingleton.hashMapHousehold.entries.elementAt(currentTripleIndex)
+        currentTriple =TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
         binding.textCardFront.text = currentTriple.key
         binding.textCardBack.text = currentTriple.value.first
         binding.imagecardsHelper.setImageResource(currentTriple.value.second)
@@ -120,7 +116,7 @@ class HouseholdFlashcardFragment : Fragment() {
             counterViewModel.incrementCounter()
             // increment currentTripleIndex and get the next Triple
             currentTripleIndex++
-            if (currentTripleIndex >= HouseholdSingleton.hashMapHousehold.size) {
+            if (currentTripleIndex >= TimeSingleton.hashMapTime.size) {
                 // if we have reached the end of the hashmap, start again from the beginning
                 currentTripleIndex = 0
             }
@@ -134,7 +130,7 @@ class HouseholdFlashcardFragment : Fragment() {
             cardViewModel.insertCards(Triple)
             //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
             Log.d("Main","$Triple")
-            currentTriple = HouseholdSingleton.hashMapHousehold.entries.elementAt(currentTripleIndex)
+            currentTriple = TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
 
         }
         //On Event of clicking on the image to unsave the image
@@ -143,10 +139,10 @@ class HouseholdFlashcardFragment : Fragment() {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-                if (currentTripleIndex >= 0 && currentTripleIndex < HouseholdSingleton.hashMapHousehold.size) {
+                if (currentTripleIndex >= 0 && currentTripleIndex < TimeSingleton.hashMapTime.size) {
                     // Remove the item at the current index from your data structure (e.g., HashMap)
-                    val removedTriple = HouseholdSingleton.hashMapHousehold.entries.elementAt(currentTripleIndex)
-                    HouseholdSingleton.hashMapHousehold.remove(removedTriple.key)
+                    val removedTriple = TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
+                    TimeSingleton.hashMapTime.remove(removedTriple.key)
 
                     // Decrease the counter
                     counterViewModel.decrementCounter()
@@ -159,7 +155,7 @@ class HouseholdFlashcardFragment : Fragment() {
                     cardViewModel.deleteCards(Triple)
                     //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
                     Log.d("Main","$Triple")
-                    currentTriple = HouseholdSingleton.hashMapHousehold.entries.elementAt(currentTripleIndex)
+                    currentTriple = TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
 
                 }
             }
@@ -167,7 +163,7 @@ class HouseholdFlashcardFragment : Fragment() {
 
         //Navigating from one fragment to another
         binding.cardLearning.setOnClickListener {
-            findNavController().navigate(R.id.action_householdFlashcardFragment_to_toLearnFlashCards)
+            findNavController().navigate(R.id.action_timeFlashcardFragment_to_toLearnFlashCards)
         }
 
         //onclick listener for the Flip button
@@ -192,7 +188,7 @@ class HouseholdFlashcardFragment : Fragment() {
                     cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green1))
 
                 } else {
-                    currentTripleIndex = (currentTripleIndex + 1) % HouseholdSingleton.hashMapHousehold.size
+                    currentTripleIndex = (currentTripleIndex + 1) % TimeSingleton.hashMapTime.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
@@ -200,7 +196,7 @@ class HouseholdFlashcardFragment : Fragment() {
                     isFront = true
                 }
                 // retrieve the current Triple from the hashMap
-                currentTriple = HouseholdSingleton.hashMapHousehold.entries.elementAt(currentTripleIndex)
+                currentTriple = TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
                 binding.textCardBack.text = currentTriple.value.first
                 binding.imagecardsHelper.setImageResource(currentTriple.value.second)
@@ -210,5 +206,6 @@ class HouseholdFlashcardFragment : Fragment() {
         return binding.root
 
     }
-    
+
+
 }
