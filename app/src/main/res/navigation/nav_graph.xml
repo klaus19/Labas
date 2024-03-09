@@ -171,6 +171,9 @@
         <action
             android:id="@+id/action_flashCards_to_timeFlashcardFragment"
             app:destination="@id/timeFlashcardFragment" />
+        <action
+            android:id="@+id/action_flashCards_to_professionFlashcardFragment"
+            app:destination="@id/professionFlashcardFragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -597,6 +600,15 @@
         tools:layout="@layout/fragment_time_flashcard" >
         <action
             android:id="@+id/action_timeFlashcardFragment_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/professionFlashcardFragment"
+        android:name="com.example.visuallithuanian.ProfessionFlashcardFragment"
+        android:label="fragment_profession_flashcard"
+        tools:layout="@layout/fragment_profession_flashcard" >
+        <action
+            android:id="@+id/action_professionFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 
