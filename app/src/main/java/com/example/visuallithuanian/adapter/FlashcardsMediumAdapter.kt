@@ -41,18 +41,20 @@ class FlashcardsMediumAdapter(private val imageList: List<FlashCardInfo>
         holder.cardviewFlashcard.setOnClickListener {
             when(flashCard.name){
                 "Computer terminology" -> navController.navigate(R.id.action_flashCards_to_computerTechnologyFragment)
-                "Food & Ingredients" -> navController.navigate(R.id.action_flashCards_to_foodIngrediants)
+                "Towns and Villages" -> navController.navigate(R.id.action_flashCards_to_villageFragment)
+                "Time" -> navController.navigate(R.id.action_flashCards_to_timeFlashcardFragment)
+                "Cinema" -> navController.navigate(R.id.action_flashCards_to_cinemaFragment)
                 "Numbers" -> navController.navigate(R.id.action_flashCards_to_numbersFlashcardFragment)
+                "Cafe" -> navController.navigate(R.id.action_flashCards_to_cafeFlashcardsFragment)
                 "Sports" -> navController.navigate(R.id.action_flashCards_to_sportsFlashcardFragment)
-                "100 best words" -> navController.navigate(R.id.action_flashCards_to_bestWords100Fragment)
                 "Things"->navController.navigate(R.id.action_flashCards_to_thingsFragment)
                 "Personality" -> navController.navigate(R.id.action_flashCards_to_personalityFlashcardFragment)
                 "Household" -> navController.navigate(R.id.action_flashCards_to_householdFlashcardFragment)
-                "Cinema" -> navController.navigate(R.id.action_flashCards_to_cinemaFragment)
+                "100 best words" -> navController.navigate(R.id.action_flashCards_to_bestWords100Fragment)
+                "Food & Ingredients" -> navController.navigate(R.id.action_flashCards_to_foodIngrediants)
                 "Veganism" -> navController.navigate(R.id.action_flashCards_to_veganFlashcardsFragment)
-                "Cafe" -> navController.navigate(R.id.action_flashCards_to_cafeFlashcardsFragment)
-                "Towns and Villages" -> navController.navigate(R.id.action_flashCards_to_villageFragment)
-                "Time" -> navController.navigate(R.id.action_flashCards_to_timeFlashcardFragment)
+
+
             }
 
         }
