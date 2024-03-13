@@ -54,6 +54,7 @@ class FlashcardsMediumAdapter(private val imageList: List<FlashCardInfo>
                 "100 best words" -> navController.navigate(R.id.action_flashCards_to_bestWords100Fragment)
                 "Food & Ingredients" -> navController.navigate(R.id.action_flashCards_to_foodIngrediants)
                 "Veganism" -> navController.navigate(R.id.action_flashCards_to_veganFlashcardsFragment)
+                "Animals" -> navController.navigate(R.id.action_flashCards_to_animalFlashcardFragment)
             }
 
         }
