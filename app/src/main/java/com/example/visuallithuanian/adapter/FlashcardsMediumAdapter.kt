@@ -45,6 +45,7 @@ class FlashcardsMediumAdapter(private val imageList: List<FlashCardInfo>
                 "Time" -> navController.navigate(R.id.action_flashCards_to_timeFlashcardFragment)
                 "Cinema" -> navController.navigate(R.id.action_flashCards_to_cinemaFragment)
                 "Numbers" -> navController.navigate(R.id.action_flashCards_to_numbersFlashcardFragment)
+                "Business Language" -> navController.navigate(R.id.action_flashCards_to_businessLanguageFlashcardsFragment)
                 "Cafe" -> navController.navigate(R.id.action_flashCards_to_cafeFlashcardsFragment)
                 "Sports" -> navController.navigate(R.id.action_flashCards_to_sportsFlashcardFragment)
                 "Things"->navController.navigate(R.id.action_flashCards_to_thingsFragment)
