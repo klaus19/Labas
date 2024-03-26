@@ -180,6 +180,12 @@
         <action
             android:id="@+id/action_flashCards_to_businessLanguageFlashcardsFragment"
             app:destination="@id/businessLanguageFlashcardsFragment" />
+        <action
+            android:id="@+id/action_flashCards_self"
+            app:destination="@id/flashCards" />
+        <action
+            android:id="@+id/action_flashCards_to_weeklyBasicFlashcardFragment"
+            app:destination="@id/weeklyBasicFlashcardFragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -633,6 +639,15 @@
         tools:layout="@layout/fragment_business_language_flashcards" >
         <action
             android:id="@+id/action_businessLanguageFlashcardsFragment_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/weeklyBasicFlashcardFragment"
+        android:name="com.example.visuallithuanian.WeeklyBasicFlashcardFragment"
+        android:label="fragment_weekly_basic_flashcard"
+        tools:layout="@layout/fragment_weekly_basic_flashcard" >
+        <action
+            android:id="@+id/action_weeklyBasicFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 
