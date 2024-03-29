@@ -41,6 +41,7 @@ class FlashcardsEasyAdapter(private val imageList: List<FlashCardInfo>
         holder.cardviewFlashcard.setOnClickListener {
              when(flashCard.name){
                  "Questions and Pronouns" -> navController.navigate(R.id.action_flashCards_to_questionsFragment)
+                 "Pointers" -> navController.navigate(R.id.action_flashCards_to_pointersFlashcardFragment)
                  "Daily Basic" -> navController.navigate(R.id.action_flashCards_to_dailyBasic)
                  "Day and Months" -> navController.navigate(R.id.action_flashCards_to_daysMonthsFlashcards)
                  "Key Phrases" -> navController.navigate(R.id.action_flashCards_to_keyPhrasesFragment)

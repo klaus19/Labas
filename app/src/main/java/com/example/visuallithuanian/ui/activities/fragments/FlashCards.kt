@@ -92,8 +92,6 @@ class FlashCards : Fragment() {
             FlashCardInfo(R.drawable.best,"100 best words",""),
             FlashCardInfo(R.drawable.animals,"Animals",""),
             FlashCardInfo(R.drawable.food,"Food & Ingredients",""),
-            FlashCardInfo(R.drawable.travel,"Travel",""),
-            FlashCardInfo(R.drawable.thisss,"This & that",""),
             FlashCardInfo(R.drawable.vegan,"Veganism",""),
         )
 
@@ -103,6 +101,7 @@ class FlashCards : Fragment() {
 
         return listOf(
             FlashCardInfo(R.drawable.doctorvisit,"Questions and Pronouns",""),
+            FlashCardInfo(R.drawable.pointers,"Pointers",""),
             FlashCardInfo(R.drawable.talking,"Daily Basic",""),
             FlashCardInfo(R.drawable.action,"Basic actions",""),
             FlashCardInfo(R.drawable.holiday1,"Holidays, Celebration",""),
@@ -120,7 +119,6 @@ class FlashCards : Fragment() {
 
     private fun generateHardFlashCards():List<FlashCardInfo> {
         return listOf(
-            FlashCardInfo(R.drawable.pointers,"Pointers",""),
             FlashCardInfo(R.drawable.maths,"Maths",""),
             FlashCardInfo(R.drawable.pointers,"Description",""),
             FlashCardInfo(R.drawable.maths,"Interface",""),

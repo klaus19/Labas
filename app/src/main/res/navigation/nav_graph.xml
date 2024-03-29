@@ -186,6 +186,12 @@
         <action
             android:id="@+id/action_flashCards_to_weeklyBasicFlashcardFragment"
             app:destination="@id/weeklyBasicFlashcardFragment" />
+        <action
+            android:id="@+id/action_flashCards_self2"
+            app:destination="@id/flashCards" />
+        <action
+            android:id="@+id/action_flashCards_to_pointersFlashcardFragment"
+            app:destination="@id/pointersFlashcardFragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -648,6 +654,15 @@
         tools:layout="@layout/fragment_weekly_basic_flashcard" >
         <action
             android:id="@+id/action_weeklyBasicFlashcardFragment_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/pointersFlashcardFragment"
+        android:name="com.example.visuallithuanian.PointersFlashcardFragment"
+        android:label="fragment_pointers_flashcard"
+        tools:layout="@layout/fragment_pointers_flashcard" >
+        <action
+            android:id="@+id/action_pointersFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 
