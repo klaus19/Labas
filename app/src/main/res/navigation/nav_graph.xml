@@ -192,6 +192,9 @@
         <action
             android:id="@+id/action_flashCards_to_pointersFlashcardFragment"
             app:destination="@id/pointersFlashcardFragment" />
+        <action
+            android:id="@+id/action_flashCards_to_animalWordsFragment"
+            app:destination="@id/animalWordsFragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -663,6 +666,15 @@
         tools:layout="@layout/fragment_pointers_flashcard" >
         <action
             android:id="@+id/action_pointersFlashcardFragment_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/animalWordsFragment"
+        android:name="com.example.visuallithuanian.AnimalWordsFragment"
+        android:label="fragment_animal_words"
+        tools:layout="@layout/fragment_animal_words" >
+        <action
+            android:id="@+id/action_animalWordsFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 
