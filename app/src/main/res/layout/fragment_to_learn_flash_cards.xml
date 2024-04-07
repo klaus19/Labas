@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/waste"
-        android:visibility="gone"
+        android:visibility="invisible"
         android:layout_centerVertical="true"
         android:layout_below="@id/back_icon"
         android:layout_centerHorizontal="true"
@@ -42,8 +42,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:id="@+id/emptyCardText"
         android:visibility="invisible"
+        android:id="@+id/emptyCardText"
         android:layout_centerHorizontal="true"
         android:text="@string/you_don_t_have_any_cards"
         />
@@ -51,13 +51,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="600dp"
         android:layout_below="@id/back_icon"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="36dp"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="40dp"
         tools:listitem="@layout/recycle_view" />
 
 </RelativeLayout>

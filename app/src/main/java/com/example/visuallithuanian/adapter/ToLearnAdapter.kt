@@ -1,12 +1,15 @@
 package com.example.visuallithuanian.adapter
 
+import android.animation.ObjectAnimator
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -32,7 +35,7 @@ class ToLearnAdapter(
 //        } else {
 //            R.color.experimental_color // Color resource for odd rows
 //        }
-        holder.itemView.setBackgroundResource(R.drawable.rectangle_card)
+        holder.itemView.setBackgroundResource(R.color.white1)
 
 
 //
@@ -46,11 +49,33 @@ class ToLearnAdapter(
         private val wordItemView: TextView = itemView.findViewById(R.id.textView1)
         private val deftextt: TextView = itemView.findViewById(R.id.textView2)
         private val imageHelper = itemView.findViewById<ImageView>(R.id.imageCardHelper)
+        private val relativeLeft = itemView.findViewById<RelativeLayout>(R.id.relativeLeft)
+        private val relativeRight = itemView.findViewById<RelativeLayout>(R.id.relativeRight)
+
+        private var clickCount = 0
 
         fun bind(text: String?, text1: String?, imageSource: Int) {
             wordItemView.text = text
             deftextt.text = text1
             imageHelper.setImageResource(imageSource)
+
+            itemView.findViewById<CardView>(R.id.card_view).setOnClickListener {
+                if (clickCount == 0) {
+
+                    // Rotate the card view slowly
+                    val rotationAnimator = ObjectAnimator.ofFloat(itemView, View.ROTATION, 0f, 360f)
+                    rotationAnimator.apply {
+                        duration = 1000 // Adjust duration as needed
+                        start()
+                    }
+                    imageHelper.visibility = View.VISIBLE
+                    deftextt.visibility = View.VISIBLE
+                } else {
+                    relativeLeft.visibility = View.VISIBLE
+                    relativeRight.visibility = View.VISIBLE
+                }
+                clickCount++
+            }
         }
 
         companion object {

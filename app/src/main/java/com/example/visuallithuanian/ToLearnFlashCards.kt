@@ -61,7 +61,7 @@ class ToLearnFlashCards : Fragment() {
         //Swipe Gesture
 
         val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
-            0, ItemTouchHelper.LEFT
+            0, ItemTouchHelper.RIGHT
         ) {
 
             private val SWIPE_FACTOR = 0f
@@ -77,12 +77,12 @@ class ToLearnFlashCards : Fragment() {
                 val itemView = viewHolder.itemView
 
                 // Calculate rotation angle based on swipe distance
-                val rotation = dX * -0.2f // Adjust this rotation factor as needed
+              //  val rotation = dX * -0.2f // Adjust this rotation factor as needed
 
                 // Apply rotation transformation to the card view
                 itemView.pivotX = itemView.width.toFloat()
                 itemView.pivotY = itemView.height.toFloat() / 2
-                itemView.rotation = rotation
+             //   itemView.rotation = rotation
                 super.onChildDraw(
                     c,
                     recyclerView,
@@ -112,7 +112,69 @@ class ToLearnFlashCards : Fragment() {
         itemTouchHelper.attachToRecyclerView(binding.recyclerview)
 
         binding.recyclerview.layoutManager = OverlappingLayoutManager(requireContext())
-       // binding.recyclerview.rotation=10f
+
+        if (adapter.currentList.size>1){
+            val itemTouchHelperLeft = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
+                0, ItemTouchHelper.LEFT
+            ) {
+
+                override fun onChildDraw(
+                    c: Canvas,
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    dX: Float,
+                    dY: Float,
+                    actionState: Int,
+                    isCurrentlyActive: Boolean
+                ) {
+                    val itemView = viewHolder.itemView
+
+                    // Apply rotation transformation to the card view if needed
+                    // (you can add rotation logic here if required)
+                    // itemView.rotation = rotation
+
+                    super.onChildDraw(
+                        c,
+                        recyclerView,
+                        viewHolder,
+                        dX,
+                        dY,
+                        actionState,
+                        isCurrentlyActive
+                    )
+                }
+
+                override fun onMove(
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    target: RecyclerView.ViewHolder
+                ): Boolean {
+                    return false
+                }
+
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    val position = viewHolder.adapterPosition
+
+                    // Get the swiped card
+                    val swipedCard = adapter.currentList[position]
+
+                    // Remove the swiped card from the list
+                    val mutableList = adapter.currentList.toMutableList()
+                    mutableList.removeAt(position)
+
+                    // Add the swiped card to the bottom of the list
+                    mutableList.add(swipedCard)
+
+                    // Update the adapter with the new list
+                    adapter.submitList(mutableList)
+                }
+            })
+            itemTouchHelperLeft.attachToRecyclerView(binding.recyclerview)
+
+            binding.recyclerview.layoutManager = OverlappingLayoutManager(requireContext())
+        }
+
+
 
 
         //Observe  the data changes for the items added

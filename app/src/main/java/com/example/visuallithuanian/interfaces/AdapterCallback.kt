@@ -1,4 +1,4 @@
-package com.example.visuallithuanian.`interface`
+package com.example.visuallithuanian.interfaces
 
 interface AdapterCallback {
 

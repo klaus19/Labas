@@ -1,4 +1,4 @@
-package com.example.visuallithuanian.`interface`
+package com.example.visuallithuanian.interfaces
 
 import com.example.visuallithuanian.repository.FlashcardRepository
 import dagger.Binds
