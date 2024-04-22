@@ -2,13 +2,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="70dp"
-    android:layout_marginStart="40dp"
-    android:layout_marginEnd="10dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
     android:layout_marginBottom="20dp"
     android:layout_centerInParent="true"
     app:cardUseCompatPadding="true"
     app:strokeColor="@color/black"
     app:strokeWidth="2dp"
+    android:layout_gravity="center"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardBackgroundColor="@color/grey1"
     android:id="@+id/card_view"
@@ -118,7 +119,7 @@
             android:src="@drawable/emoji" />
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/textView1English"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -127,7 +128,7 @@
             android:textColor="@color/new_design_text_color" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView2Lithuanian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/word2"

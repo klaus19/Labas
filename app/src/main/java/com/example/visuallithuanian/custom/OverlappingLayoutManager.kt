@@ -1,11 +1,11 @@
 package com.example.visuallithuanian.custom
 
-import androidx.recyclerview.widget.RecyclerView
 import android.content.Context
+import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.LayoutParams
 import com.example.visuallithuanian.R
-
 
 class OverlappingLayoutManager(context: Context) : RecyclerView.LayoutManager() {
     private val horizontalOverlap =
@@ -21,7 +21,6 @@ class OverlappingLayoutManager(context: Context) : RecyclerView.LayoutManager() 
         )
     }
 
-
     override fun onLayoutChildren(recycler: RecyclerView.Recycler?, state: RecyclerView.State?) {
         if (itemCount == 0) {
             removeAndRecycleAllViews(recycler!!)
@@ -33,10 +32,16 @@ class OverlappingLayoutManager(context: Context) : RecyclerView.LayoutManager() 
         val leftTilt = tiltAngle
         val rightTilt = -tiltAngle
         var currentTilt = leftTilt
+        var zIndex = 0 // Initialize zIndex for the cards
 
         for (position in 0 until itemCount) {
             val view = recycler.getViewForPosition(position)
             addView(view)
+
+            // Set z-index for the view
+            view.elevation = zIndex.toFloat()
+            zIndex++
+
             measureChildWithMargins(view, 0, 0)
             val width = getDecoratedMeasuredWidth(view)
             val height = getDecoratedMeasuredHeight(view)

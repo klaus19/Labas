@@ -1,9 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/grey1"
+    android:background="@drawable/background_color"
     android:layout_height="match_parent">
 
+    <!-- Header -->
     <ImageView
         android:id="@+id/back_icon"
         android:layout_width="wrap_content"
@@ -24,7 +25,7 @@
         android:layout_alignBottom="@id/back_icon"
         android:layout_marginStart="8dp" />
 
-
+    <!-- Empty State -->
     <ImageView
         android:id="@+id/emptyImage"
         android:layout_width="wrap_content"
@@ -36,6 +37,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="180dp"
         android:contentDescription="@string/empty" />
+
     <TextView
         android:layout_below="@id/emptyImage"
         android:textStyle="bold"
@@ -43,18 +45,26 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:visibility="invisible"
+        android:textColor="@color/white"
         android:id="@+id/emptyCardText"
         android:layout_centerHorizontal="true"
-        android:text="@string/you_don_t_have_any_cards"
-        />
+        android:text="@string/you_don_t_have_any_cards" />
 
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="match_parent"
         android:layout_below="@id/back_icon"
-        android:layout_centerVertical="true"
+        android:layout_above="@id/bottom_margin"
         android:layout_marginTop="40dp"
         tools:listitem="@layout/recycle_view" />
 
+    <!-- Bottom Margin to prevent overlap with bottom navigation bar -->
+    <View
+        android:id="@+id/bottom_margin"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent" />
 </RelativeLayout>

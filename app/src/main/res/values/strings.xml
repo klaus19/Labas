@@ -27,7 +27,7 @@
     <string name="you_don_t_have_any_cards">You don\'t have any cards</string>
     <string name="zero1">0</string>
     <string name="if_you_didn_t_know_swipe_left">If you didn\'t know</string>
-    <string name="swipe_left">Swipe Left</string>
+    <string name="swipe_left">Tap</string>
     <string name="if_you_were_right">if you know</string>
     <string name="swipe_right">Swipe Right</string>
 </resources>

@@ -28,26 +28,12 @@ class ToLearnAdapter(
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val current = getItem(position)
         holder.bind(current.front, current.back, current.imageSrc)
-
-        // Set different colors for alternate rows
-//        val colorRes = if (position % 2 == 0) {
-//            R.color.experimental_color // Color resource for even rows
-//        } else {
-//            R.color.experimental_color // Color resource for odd rows
-//        }
         holder.itemView.setBackgroundResource(R.color.white1)
-
-
-//
-//        holder.itemView.setOnClickListener {
-//            //holder.left.visibility = View.VISIBLE
-//            //holder.right.visibility = View.VISIBLE
-//        }
     }
 
     class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val wordItemView: TextView = itemView.findViewById(R.id.textView1)
-        private val deftextt: TextView = itemView.findViewById(R.id.textView2)
+        private val wordEnglish: TextView = itemView.findViewById(R.id.textView1English)
+        private val wordLithuanian: TextView = itemView.findViewById(R.id.textView2Lithuanian)
         private val imageHelper = itemView.findViewById<ImageView>(R.id.imageCardHelper)
         private val relativeLeft = itemView.findViewById<RelativeLayout>(R.id.relativeLeft)
         private val relativeRight = itemView.findViewById<RelativeLayout>(R.id.relativeRight)
@@ -55,13 +41,12 @@ class ToLearnAdapter(
         private var clickCount = 0
 
         fun bind(text: String?, text1: String?, imageSource: Int) {
-            wordItemView.text = text
-            deftextt.text = text1
+            wordEnglish.text = text
+            wordLithuanian.text = text1
             imageHelper.setImageResource(imageSource)
 
             itemView.findViewById<CardView>(R.id.card_view).setOnClickListener {
                 if (clickCount == 0) {
-
                     // Rotate the card view slowly
                     val rotationAnimator = ObjectAnimator.ofFloat(itemView, View.ROTATION, 0f, 360f)
                     rotationAnimator.apply {
@@ -69,12 +54,23 @@ class ToLearnAdapter(
                         start()
                     }
                     imageHelper.visibility = View.VISIBLE
-                    deftextt.visibility = View.VISIBLE
+                    wordLithuanian.visibility = View.VISIBLE
                 } else {
-                    relativeLeft.visibility = View.VISIBLE
-                    relativeRight.visibility = View.VISIBLE
+                    toggleRelativeLayoutVisibility()
                 }
                 clickCount++
+            }
+        }
+
+        private fun toggleRelativeLayoutVisibility() {
+            if (relativeLeft.visibility == View.VISIBLE && relativeRight.visibility == View.VISIBLE) {
+                relativeLeft.visibility = View.INVISIBLE
+                relativeRight.visibility = View.INVISIBLE
+                wordLithuanian.visibility = View.INVISIBLE
+            } else {
+                relativeLeft.visibility = View.VISIBLE
+                relativeRight.visibility = View.VISIBLE
+                wordLithuanian.visibility = View.VISIBLE
             }
         }
 
