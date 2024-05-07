@@ -23,9 +23,9 @@
         android:layout_marginTop="5dp">
         <RelativeLayout
             android:id="@+id/relativeLeft"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="20dp"
             android:layout_width="wrap_content"
-            android:layout_gravity="top|left"
+            android:layout_gravity="top|start"
             android:visibility="invisible"
             android:layout_height="wrap_content">
 
@@ -63,7 +63,7 @@
         <RelativeLayout
             android:id="@+id/relativeRight"
             android:visibility="invisible"
-            android:layout_gravity="top|right"
+            android:layout_gravity="top|end"
             android:layout_marginEnd="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">

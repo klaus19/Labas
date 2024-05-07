@@ -55,6 +55,8 @@ class ToLearnAdapter(
                     }
                     imageHelper.visibility = View.VISIBLE
                     wordLithuanian.visibility = View.VISIBLE
+                    relativeLeft.visibility = View.VISIBLE
+                    relativeRight.visibility = View.VISIBLE
                 } else {
                     toggleRelativeLayoutVisibility()
                 }
