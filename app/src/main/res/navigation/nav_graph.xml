@@ -195,6 +195,9 @@
         <action
             android:id="@+id/action_flashCards_to_animalWordsFragment"
             app:destination="@id/animalWordsFragment" />
+        <action
+            android:id="@+id/action_flashCards_to_interfaceFragment"
+            app:destination="@id/interfaceFragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -675,6 +678,15 @@
         tools:layout="@layout/fragment_animal_words" >
         <action
             android:id="@+id/action_animalWordsFragment_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/interfaceFragment"
+        android:name="com.example.visuallithuanian.InterfaceFragment"
+        android:label="fragment_interface"
+        tools:layout="@layout/fragment_interface" >
+        <action
+            android:id="@+id/action_interfaceFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 

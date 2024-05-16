@@ -15,10 +15,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.constants.AnimalsSingleton
-import com.example.visuallithuanian.constants.CinemaSingleton
+import com.example.visuallithuanian.constants.InterfaceSingleton
 import com.example.visuallithuanian.database.FlashcardPair
-import com.example.visuallithuanian.databinding.FragmentAnimalFlashcardBinding
 import com.example.visuallithuanian.databinding.FragmentCinemaBinding
+import com.example.visuallithuanian.databinding.FragmentInterfaceBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.example.visuallithuanian.viewModel.FlashCardViewmodel
@@ -27,8 +27,8 @@ import com.example.visuallithuanian.viewModel.WordViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-class AnimalFlashcardFragment : Fragment() {
-    lateinit var binding: FragmentAnimalFlashcardBinding
+class InterfaceFragment : Fragment() {
+    lateinit var binding: FragmentInterfaceBinding
     lateinit var viewModel: BottomNavigationViewModel
 
     lateinit var bottomNavigationView: BottomNavigationView
@@ -38,7 +38,7 @@ class AnimalFlashcardFragment : Fragment() {
     private lateinit var currentTriple:Map.Entry<String,Triple<String,Int,Int>>
 
     var isFront=true
-    private val totalTriples = 39 // change the value to the actual number of entries in your hashMap
+    private val totalTriples = 53 // change the value to the actual number of entries in your hashMap
 
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
@@ -51,7 +51,7 @@ class AnimalFlashcardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAnimalFlashcardBinding.inflate(inflater,container,false)
+        binding = FragmentInterfaceBinding.inflate(inflater,container,false)
 
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
@@ -101,7 +101,7 @@ class AnimalFlashcardFragment : Fragment() {
         counterViewModel.counter.observe(requireActivity()){count->
             binding.textCounter.text = count.toString()
         }
-        currentTriple = AnimalsSingleton.hashMapAnimals.entries.elementAt(currentTripleIndex)
+        currentTriple = InterfaceSingleton.hashMapInterface.entries.elementAt(currentTripleIndex)
         binding.textCardFront.text = currentTriple.key
         binding.textCardBack.text = currentTriple.value.first
         binding.imagecardsHelper.setImageResource(currentTriple.value.second)
@@ -115,7 +115,7 @@ class AnimalFlashcardFragment : Fragment() {
             counterViewModel.incrementCounter()
             // increment currentTripleIndex and get the next Triple
             currentTripleIndex++
-            if (currentTripleIndex >= AnimalsSingleton.hashMapAnimals.size) {
+            if (currentTripleIndex >= InterfaceSingleton.hashMapInterface.size) {
                 // if we have reached the end of the hashmap, start again from the beginning
                 currentTripleIndex = 0
             }
@@ -129,7 +129,7 @@ class AnimalFlashcardFragment : Fragment() {
             cardViewModel.insertCards(Triple)
             //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
             Log.d("Main","$Triple")
-            currentTriple = AnimalsSingleton.hashMapAnimals.entries.elementAt(currentTripleIndex)
+            currentTriple = InterfaceSingleton.hashMapInterface.entries.elementAt(currentTripleIndex)
 
         }
         //On Event of clicking on the image to unsave the image
@@ -138,10 +138,10 @@ class AnimalFlashcardFragment : Fragment() {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-                if (currentTripleIndex >= 0 && currentTripleIndex < AnimalsSingleton.hashMapAnimals.size) {
+                if (currentTripleIndex >= 0 && currentTripleIndex < InterfaceSingleton.hashMapInterface.size) {
                     // Remove the item at the current index from your data structure (e.g., HashMap)
-                    val removedTriple = AnimalsSingleton.hashMapAnimals.entries.elementAt(currentTripleIndex)
-                    AnimalsSingleton.hashMapAnimals.remove(removedTriple.key)
+                    val removedTriple = InterfaceSingleton.hashMapInterface.entries.elementAt(currentTripleIndex)
+                    InterfaceSingleton.hashMapInterface.remove(removedTriple.key)
 
                     // Decrease the counter
                     counterViewModel.decrementCounter()
@@ -154,7 +154,7 @@ class AnimalFlashcardFragment : Fragment() {
                     cardViewModel.deleteCards(Triple)
                     //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
                     Log.d("Main","$Triple")
-                    currentTriple = AnimalsSingleton.hashMapAnimals.entries.elementAt(currentTripleIndex)
+                    currentTriple = InterfaceSingleton.hashMapInterface.entries.elementAt(currentTripleIndex)
 
                 }
             }
@@ -162,7 +162,7 @@ class AnimalFlashcardFragment : Fragment() {
 
         //Navigating from one fragment to another
         binding.cardLearning.setOnClickListener {
-            findNavController().navigate(R.id.action_animalFlashcardFragment_to_toLearnFlashCards)
+            findNavController().navigate(R.id.action_interfaceFragment_to_toLearnFlashCards)
         }
 
         //onclick listener for the Flip button
@@ -187,7 +187,7 @@ class AnimalFlashcardFragment : Fragment() {
                     cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green1))
 
                 } else {
-                    currentTripleIndex = (currentTripleIndex + 1) % AnimalsSingleton.hashMapAnimals.size
+                    currentTripleIndex = (currentTripleIndex + 1) % InterfaceSingleton.hashMapInterface.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
@@ -195,7 +195,7 @@ class AnimalFlashcardFragment : Fragment() {
                     isFront = true
                 }
                 // retrieve the current Triple from the hashMap
-                currentTriple = AnimalsSingleton.hashMapAnimals.entries.elementAt(currentTripleIndex)
+                currentTriple = InterfaceSingleton.hashMapInterface.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
                 binding.textCardBack.text = currentTriple.value.first
                 binding.imagecardsHelper.setImageResource(currentTriple.value.second)

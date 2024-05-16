@@ -41,6 +41,7 @@ class FlashcardsHardAdapter(private val imageList: List<FlashCardInfo>
         holder.cardviewFlashcard.setOnClickListener {
             when(flashCard.name){
                 "Animal Words" -> navController.navigate(R.id.action_flashCards_to_animalWordsFragment)
+                "Interface"  -> navController.navigate(R.id.action_flashCards_to_interfaceFragment)
             }
 
         }
