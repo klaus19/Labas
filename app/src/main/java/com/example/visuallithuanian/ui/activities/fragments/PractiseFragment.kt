@@ -33,12 +33,14 @@ class PractiseFragment : Fragment() {
             findNavController().navigate(com.example.visuallithuanian.R.id.action_practiseFragment_to_userFragment)
         }
 
-        val shuffledImageResources = ImageStore.imagesNamesMap.keys.shuffled().take(4).toMutableList()
-        val shuffledImageNames1 = ImageStore.imagesNamesMap.values.shuffled().take(4).toMutableList()
+        val randomPairs = ImageStore.getRandomPairs(4)
+
+        val imageResources = randomPairs.map { it.first }.toMutableList()
+        val imageNames1 = randomPairs.map { it.second }.toMutableList()
 
         practiseAdapter = PractiseAdapter(
-            shuffledImageResources,
-            shuffledImageNames1,
+            imageResources,
+            imageNames1,
             binding.btnShuffle,
             recyclerViewPractise
         )
@@ -49,3 +51,4 @@ class PractiseFragment : Fragment() {
         return binding.root
     }
 }
+

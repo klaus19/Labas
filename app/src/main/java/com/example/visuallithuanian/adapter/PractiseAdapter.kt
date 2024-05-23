@@ -35,14 +35,16 @@ class PractiseAdapter(
 
     @SuppressLint("NotifyDataSetChanged")
     private fun shuffleCards() {
-        val shuffledKeys = ImageStore.imagesNamesMap.keys.shuffled().take(4).toMutableList()
-        val shuffledValues = ImageStore.imagesNamesMap.values.shuffled().take(4).toMutableList()
+        val randomPairs = ImageStore.getRandomPairs(4)
 
         imageResources.clear()
         imageNames1.clear()
 
-        imageResources.addAll(shuffledKeys)
-        imageNames1.addAll(shuffledValues)
+        imageResources.addAll(randomPairs.map { it.first })
+        imageNames1.addAll(randomPairs.map { it.second })
+
+        // Shuffle the names independently of the images to mismatch them
+        imageNames1.shuffle()
 
         selectedImageResource = -1
         selectedImageName = ""
