@@ -13,15 +13,17 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.ImageStore
+import com.example.visuallithuanian.model.PreferencesHelper
 
 class PractiseAdapter(
     private var imageResources: MutableList<Int>,
     private var imageNames1: MutableList<Pair<String, String>>,
     btnShuffle: AppCompatButton,
     recyclerViewPractise: RecyclerView,
+    private val preferencesHelper:PreferencesHelper
 ) : RecyclerView.Adapter<PractiseAdapter.PractiseViewHolder>() {
 
-    lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerView: RecyclerView
     private var selectedImageResource = -1
     private var selectedImageName = ""
     private var previousSelectedImageResource = -1
@@ -116,6 +118,7 @@ class PractiseAdapter(
                     Toast.LENGTH_SHORT
                 ).show()
                 holder.cardTextPractise.setBackgroundColor(GREEN_COLOR)
+                preferencesHelper.incrementCounter() // Increment counter when correct pair is selected
                 Color.GREEN
             } else {
                 Toast.makeText(

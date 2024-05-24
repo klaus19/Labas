@@ -12,11 +12,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.adapter.PractiseAdapter
 import com.example.visuallithuanian.constants.ImageStore
 import com.example.visuallithuanian.databinding.FragmentPractiseBinding
+import com.example.visuallithuanian.model.PreferencesHelper
+
 
 class PractiseFragment : Fragment() {
     lateinit var binding: FragmentPractiseBinding
     lateinit var practiseAdapter: PractiseAdapter
     lateinit var recyclerViewPractise: RecyclerView
+    lateinit var preferencesHelper:PreferencesHelper
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
@@ -25,6 +28,8 @@ class PractiseFragment : Fragment() {
     ): View {
         binding = FragmentPractiseBinding.inflate(layoutInflater, container, false)
         recyclerViewPractise = binding.recyclerViewPractise
+
+        preferencesHelper = PreferencesHelper(requireContext())
 
         val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.recyclerViewPractise.layoutManager = layoutManager
@@ -42,7 +47,8 @@ class PractiseFragment : Fragment() {
             imageResources,
             imageNames1,
             binding.btnShuffle,
-            recyclerViewPractise
+            recyclerViewPractise,
+            preferencesHelper
         )
 
         binding.recyclerViewPractise.adapter = practiseAdapter
@@ -51,4 +57,3 @@ class PractiseFragment : Fragment() {
         return binding.root
     }
 }
-
