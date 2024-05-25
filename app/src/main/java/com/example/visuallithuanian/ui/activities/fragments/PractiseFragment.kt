@@ -14,12 +14,12 @@ import com.example.visuallithuanian.constants.ImageStore
 import com.example.visuallithuanian.databinding.FragmentPractiseBinding
 import com.example.visuallithuanian.model.PreferencesHelper
 
-
 class PractiseFragment : Fragment() {
-    lateinit var binding: FragmentPractiseBinding
-    lateinit var practiseAdapter: PractiseAdapter
-    lateinit var recyclerViewPractise: RecyclerView
-    lateinit var preferencesHelper:PreferencesHelper
+    private lateinit var binding: FragmentPractiseBinding
+    private lateinit var practiseAdapter: PractiseAdapter
+    private lateinit var recyclerViewPractise: RecyclerView
+    private lateinit var preferencesHelper: PreferencesHelper
+    private var counter = 0
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
@@ -49,11 +49,21 @@ class PractiseFragment : Fragment() {
             binding.btnShuffle,
             recyclerViewPractise,
             preferencesHelper
-        )
+        ) {
+            incrementCounter()
+        }
 
         binding.recyclerViewPractise.adapter = practiseAdapter
         practiseAdapter.initsetRecyclerView(recyclerViewPractise)
 
+        // Shuffle cards after the recyclerView has been initialized
+        practiseAdapter.shuffleCards()
+
         return binding.root
+    }
+
+    private fun incrementCounter() {
+        counter++
+        binding.textCounter.text = counter.toString()
     }
 }

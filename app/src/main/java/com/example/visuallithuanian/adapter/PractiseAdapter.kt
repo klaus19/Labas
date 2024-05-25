@@ -20,7 +20,8 @@ class PractiseAdapter(
     private var imageNames1: MutableList<Pair<String, String>>,
     btnShuffle: AppCompatButton,
     recyclerViewPractise: RecyclerView,
-    private val preferencesHelper:PreferencesHelper
+    private val preferencesHelper: PreferencesHelper,
+    private val incrementCounter: () -> Unit
 ) : RecyclerView.Adapter<PractiseAdapter.PractiseViewHolder>() {
 
     private lateinit var recyclerView: RecyclerView
@@ -36,7 +37,7 @@ class PractiseAdapter(
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun shuffleCards() {
+    fun shuffleCards() {
         val randomPairs = ImageStore.getRandomPairs(4)
 
         imageResources.clear()
@@ -45,7 +46,8 @@ class PractiseAdapter(
         imageResources.addAll(randomPairs.map { it.first })
         imageNames1.addAll(randomPairs.map { it.second })
 
-        // Shuffle the names independently of the images to mismatch them
+        // Shuffle both lists independently to mismatch the pairs
+        imageResources.shuffle()
         imageNames1.shuffle()
 
         selectedImageResource = -1
@@ -119,6 +121,7 @@ class PractiseAdapter(
                 ).show()
                 holder.cardTextPractise.setBackgroundColor(GREEN_COLOR)
                 preferencesHelper.incrementCounter() // Increment counter when correct pair is selected
+                incrementCounter() // Call the increment counter callback
                 Color.GREEN
             } else {
                 Toast.makeText(
