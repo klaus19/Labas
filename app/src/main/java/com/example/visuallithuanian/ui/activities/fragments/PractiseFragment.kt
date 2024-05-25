@@ -30,6 +30,8 @@ class PractiseFragment : Fragment() {
         recyclerViewPractise = binding.recyclerViewPractise
 
         preferencesHelper = PreferencesHelper(requireContext())
+        counter = preferencesHelper.getCounter()
+        binding.textCounter.text = counter.toString()
 
         val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.recyclerViewPractise.layoutManager = layoutManager
@@ -64,6 +66,7 @@ class PractiseFragment : Fragment() {
 
     private fun incrementCounter() {
         counter++
+        preferencesHelper.saveCounter(counter)
         binding.textCounter.text = counter.toString()
     }
 }
