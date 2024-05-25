@@ -34,4 +34,5 @@
     <color name="green1">#55c8a6</color>
     <color name="float1">#fa867d</color>
     <color name="grey1">#f0eff5</color>
+    <color name="grey">#333333</color>
 </resources>
