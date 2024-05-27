@@ -124,7 +124,7 @@ class FlashCards : Fragment() {
             FlashCardInfo(R.drawable.maths,"Interface",""),
             FlashCardInfo(R.drawable.animalwords,"Animal Words",""),
             FlashCardInfo(R.drawable.maths,"Right",""),
-            FlashCardInfo(R.drawable.maths,"Feelings &",""),
+            FlashCardInfo(R.drawable.maths,"Feelings",""),
             FlashCardInfo(R.drawable.maths,"Advanced actions",""),
             FlashCardInfo(R.drawable.maths,"Household Appliances",""),
             FlashCardInfo(R.drawable.maths,"Adjectives",""),
