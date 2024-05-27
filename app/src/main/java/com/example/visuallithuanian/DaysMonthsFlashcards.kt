@@ -62,9 +62,8 @@ class DaysMonthsFlashcards : Fragment() {
 
 
         // setting up listener for back Icon
-//        binding.backIcon?.setOnClickListener {
-//            activity?.onBackPressed()
-//        }
+      binding.backIcon?.setOnClickListener {
+           activity?.onBackPressed()     }
 
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_daysMonthsFlashcards_to_flashCards)
@@ -239,7 +238,7 @@ class DaysMonthsFlashcards : Fragment() {
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green1))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.new_design_text_color))
 
                 } else {
                     currentTripleIndex = (currentTripleIndex + 1) % hashMap.size

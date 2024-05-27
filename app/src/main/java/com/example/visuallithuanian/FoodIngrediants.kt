@@ -236,7 +236,7 @@ class FoodIngrediants : Fragment() {
 
         //Navigating from one fragment to another
         binding.cardLearning.setOnClickListener {
-            findNavController().navigate(R.id.action_dailyBasic_to_toLearnFlashCards)
+            findNavController().navigate(R.id.action_foodIngrediants_to_toLearnFlashCards)
         }
 
         //onclick listener for the Flip button
@@ -258,7 +258,7 @@ class FoodIngrediants : Fragment() {
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green1))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.new_design_text_color))
 
                 } else {
                     currentTripleIndex = (currentTripleIndex + 1) % hashMap.size

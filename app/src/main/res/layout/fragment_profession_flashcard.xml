@@ -2,7 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/grey1"
+    android:background="@drawable/background_color"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -188,7 +188,7 @@
         android:text="@string/flip"
         android:id="@+id/btnFlip"
         android:textColor="#FFFF"
-        android:background="@drawable/rectangle"
+        android:background="@drawable/buttoncolor"
         android:layout_marginBottom="10dp"
         android:layout_height="50dp"
         android:layout_below="@id/progress_horizontal"

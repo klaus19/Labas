@@ -184,7 +184,7 @@ class RomanticPhrasesFragment : Fragment() {
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green1))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.new_design_text_color))
 
                 } else {
                     currentTripleIndex = (currentTripleIndex + 1) %RomanticPhrasesSingleton.hashMapRomanticPhrases.size

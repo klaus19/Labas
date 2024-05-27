@@ -120,12 +120,11 @@ class FlashCards : Fragment() {
     private fun generateHardFlashCards():List<FlashCardInfo> {
         return listOf(
             FlashCardInfo(R.drawable.maths,"Maths",""),
-            FlashCardInfo(R.drawable.pointers,"Description",""),
-            FlashCardInfo(R.drawable.maths,"Interface",""),
+            FlashCardInfo(R.drawable.interface2,"Interface",""),
             FlashCardInfo(R.drawable.animalwords,"Animal Words",""),
+            FlashCardInfo(R.drawable.feelings1,"Feelings",""),
             FlashCardInfo(R.drawable.maths,"Right",""),
-            FlashCardInfo(R.drawable.maths,"Feelings",""),
-            FlashCardInfo(R.drawable.maths,"Advanced actions",""),
+            FlashCardInfo(R.drawable.maths,"Actions",""),
             FlashCardInfo(R.drawable.maths,"Household Appliances",""),
             FlashCardInfo(R.drawable.maths,"Adjectives",""),
         )
