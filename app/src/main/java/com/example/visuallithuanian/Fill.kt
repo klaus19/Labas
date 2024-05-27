@@ -923,3 +923,22 @@ package com.example.visuallithuanian
 //"patient" ="pacientas"
 //"Nurse" ="slaugytoja"
 //
+
+// Maths
+
+//"circle" = "apskritimas"
+//"rectangle" = "stačiakampis"
+//"a ball " = "rutulys"
+//"a cube" = "kubas"
+//"high and low" = "aukštas ir žemas"
+//"long or short" = "ilgas arbo trumpas"
+//"thin and thick" = "plonas ir storas"
+//"smooth" = "lygus"
+//"soft cake" = "minkštas tortas"
+//"area" = "plotas"
+//
+//"a class" = "pamoka"
+//"are you ready?" = "Ar tu pasiruošusi?"
+//"homework" = "namų darbas"
+//"a progress" = "pažanga"
+//"more than that ..." = "daugiau negu, kad ..."
