@@ -204,6 +204,9 @@
         <action
             android:id="@+id/action_flashCards_to_feelingsFragment"
             app:destination="@id/feelingsFragment" />
+        <action
+            android:id="@+id/action_flashCards_to_rightsFlashcardFragment"
+            app:destination="@id/rightsFlashcardFragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -711,6 +714,15 @@
         tools:layout="@layout/fragment_feelings" >
         <action
             android:id="@+id/action_feelingsFragment_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/rightsFlashcardFragment"
+        android:name="com.example.visuallithuanian.RightsFlashcardFragment"
+        android:label="fragment_rights_flashcard"
+        tools:layout="@layout/fragment_rights_flashcard" >
+        <action
+            android:id="@+id/action_rightsFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
 
