@@ -725,5 +725,10 @@
             android:id="@+id/action_rightsFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
+    <fragment
+        android:id="@+id/savedSentencesFragment"
+        android:name="com.example.visuallithuanian.SavedSentencesFragment"
+        android:label="fragment_saved_sentences"
+        tools:layout="@layout/fragment_saved_sentences" />
 
 </navigation>
