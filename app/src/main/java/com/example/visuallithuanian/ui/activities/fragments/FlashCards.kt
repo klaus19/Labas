@@ -123,7 +123,7 @@ class FlashCards : Fragment() {
             FlashCardInfo(R.drawable.interface2,"Interface",""),
             FlashCardInfo(R.drawable.animalwords,"Animal Words",""),
             FlashCardInfo(R.drawable.feelings1,"Feelings",""),
-            FlashCardInfo(R.drawable.maths,"Rights",""),
+            FlashCardInfo(R.drawable.rights,"Rights",""),
             FlashCardInfo(R.drawable.maths,"Actions",""),
             FlashCardInfo(R.drawable.maths,"Household Appliances",""),
             FlashCardInfo(R.drawable.maths,"Adjectives",""),
