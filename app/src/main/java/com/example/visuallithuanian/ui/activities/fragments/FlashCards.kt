@@ -122,9 +122,8 @@ class FlashCards : Fragment() {
             FlashCardInfo(R.drawable.animalwords, "Animal Words", ""),
             FlashCardInfo(R.drawable.feelings1, "Feelings", ""),
             FlashCardInfo(R.drawable.rights, "Rights", ""),
-            FlashCardInfo(R.drawable.maths, "Actions", ""),
-            FlashCardInfo(R.drawable.maths, "Household Appliances", ""),
-            FlashCardInfo(R.drawable.maths, "Adjectives", ""),
+            FlashCardInfo(R.drawable.actions, "Actions", ""),
+            FlashCardInfo(R.drawable.adjectives, "Adjectives", ""),
         )
     }
 }
