@@ -207,6 +207,9 @@
         <action
             android:id="@+id/action_flashCards_to_rightsFlashcardFragment"
             app:destination="@id/rightsFlashcardFragment" />
+        <action
+            android:id="@+id/action_flashCards_to_actionsFlashcardFragment"
+            app:destination="@id/actionsFlashcardFragment" />
     </fragment>
     <fragment
         android:id="@+id/fruitsFragment"
@@ -730,5 +733,14 @@
         android:name="com.example.visuallithuanian.SavedSentencesFragment"
         android:label="fragment_saved_sentences"
         tools:layout="@layout/fragment_saved_sentences" />
+    <fragment
+        android:id="@+id/actionsFlashcardFragment"
+        android:name="com.example.visuallithuanian.ActionsFlashcardFragment"
+        android:label="fragment_actions_flashcard"
+        tools:layout="@layout/fragment_actions_flashcard" >
+        <action
+            android:id="@+id/action_actionsFlashcardFragment_to_toLearnFlashCards"
+            app:destination="@id/toLearnFlashCards" />
+    </fragment>
 
 </navigation>

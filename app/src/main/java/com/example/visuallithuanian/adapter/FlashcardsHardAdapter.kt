@@ -45,6 +45,7 @@ class FlashcardsHardAdapter(private val imageList: List<FlashCardInfo>
                 "Maths" -> navController.navigate(R.id.action_flashCards_to_mathsFragment)
                 "Feelings" -> navController.navigate(R.id.action_flashCards_to_feelingsFragment)
                 "Rights" -> navController.navigate(R.id.action_flashCards_to_rightsFlashcardFragment)
+                "Actions" -> navController.navigate(R.id.action_flashCards_to_actionsFlashcardFragment)
             }
 
         }

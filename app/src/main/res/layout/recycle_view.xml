@@ -121,12 +121,12 @@
 
         <TextView
             android:id="@+id/textView1English"
-            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/word1"
-            android:textStyle="bold"
-            android:textColor="@color/new_design_text_color" />
+            android:textColor="@color/new_design_text_color"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView2Lithuanian"
