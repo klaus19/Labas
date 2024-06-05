@@ -676,6 +676,9 @@
         <action
             android:id="@+id/action_weeklyBasicFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_weeklyBasicFlashcardFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/pointersFlashcardFragment"
@@ -754,5 +757,10 @@
             android:id="@+id/action_adjectivesFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
     </fragment>
+    <fragment
+        android:id="@+id/sentenceFragment"
+        android:name="com.example.visuallithuanian.SentenceFragment"
+        android:label="fragment_sentence"
+        tools:layout="@layout/fragment_sentence" />
 
 </navigation>
