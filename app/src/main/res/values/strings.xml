@@ -30,4 +30,8 @@
     <string name="swipe_left">Tap</string>
     <string name="if_you_were_right">if you know</string>
     <string name="swipe_right">Swipe Right</string>
+    <string name="english_word">English Word</string>
+    <string name="lithuanian_word">Lithuanian word</string>
+    <string name="english_phrase">English Phrase</string>
+    <string name="lithuanian_phrase">Lithuanian Phrase</string>
 </resources>
