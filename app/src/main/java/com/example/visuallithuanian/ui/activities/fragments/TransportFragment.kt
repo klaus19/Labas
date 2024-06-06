@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.ImageAdapter
 import com.example.visuallithuanian.data.ImageInfo
 import com.example.visuallithuanian.ui.activities.FirstScreen
@@ -59,34 +60,46 @@ class TransportFragment : Fragment() {
     private fun generateTransportList(): List<ImageInfo> {
 
         return listOf(
-            ImageInfo(R.drawable.car,"Car","Automobilis",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.car,"Car","Automobilis",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.bus,"Bus","Autobusas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.bus,"Bus","Autobusas",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.rail,"Train","Traukinys",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.rail,"Train","Traukinys",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.bicycle,"Bicycle","Dviratis",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.bicycle,"Bicycle","Dviratis",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.motorbike,"Motorcycle","Motociklas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.motorbike,"Motorcycle","Motociklas",listOf(R.drawable.purp),
+                R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.boat,"Boat","Valtis",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.boat,"Boat","Valtis",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.airplane,"Airplane","Lėktuvas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.airplane,"Airplane","Lėktuvas",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.helicopter,"Helicopter","Sraigtasparnis",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.helicopter,"Helicopter","Sraigtasparnis",listOf(R.drawable.purp),
+                R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.truck,"Truck","Sunkvežimis",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.truck,"Truck","Sunkvežimis",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.taxi,"Taxi","Taksi",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.taxi,"Taxi","Taksi",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
         )

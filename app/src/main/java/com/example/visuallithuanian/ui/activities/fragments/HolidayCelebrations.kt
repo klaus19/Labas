@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
@@ -14,8 +14,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
-import com.example.visuallithuanian.databinding.FragmentDailyBasicBinding
 import com.example.visuallithuanian.databinding.FragmentHolidayCelebrationsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -72,60 +72,77 @@ class HolidayCelebrations : Fragment() {
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext()
-                ,R.color.float1))
+                , R.color.float1
+            ))
 
         //changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext(),
-                R.color.silver))
+                R.color.silver
+            ))
 
         // Hashmap of strings that will shown on cardview front and back side
-        hashMap["celebration"] = Triple("švente", R.drawable.celebrations,R.raw.sleep)
-        hashMap["to celebrate, celebrates, celebrated what?"] = Triple("švęsti, švenčia, šventė ką?", R.drawable.tocelebrate,R.raw.sleep)
-        hashMap["birthday"] = Triple("gimtadienis", R.drawable.happybirthday,R.raw.sleep)
-        hashMap["name day"] = Triple("vardadienis", R.drawable.nameday,R.raw.sleep)
-        hashMap["anniversary"] = Triple("jubiliejus", R.drawable.anniversery,R.raw.sleep)
-        hashMap["to invite, invites, invited what?"] = Triple("kviesti, kviečia, kviektė ką?", R.drawable.toinvite,R.raw.sleep)
-        hashMap["party"] = Triple("vakarėlis", R.drawable.party,R.raw.sleep)
-        hashMap["guest"] = Triple("svečias", R.drawable.guests,R.raw.sleep)
-        hashMap["to go visit (as a guest)"] = Triple("eiti į svečius", R.drawable.tovisit,R.raw.sleep)
-        hashMap["to invite guests"] = Triple("kviesti į svečius", R.drawable.toinvite,R.raw.sleep)
+        hashMap["celebration"] = Triple("švente", R.drawable.celebrations, R.raw.sleep)
+        hashMap["to celebrate, celebrates, celebrated what?"] = Triple("švęsti, švenčia, šventė ką?",
+            R.drawable.tocelebrate,
+            R.raw.sleep
+        )
+        hashMap["birthday"] = Triple("gimtadienis", R.drawable.happybirthday, R.raw.sleep)
+        hashMap["name day"] = Triple("vardadienis", R.drawable.nameday, R.raw.sleep)
+        hashMap["anniversary"] = Triple("jubiliejus", R.drawable.anniversery, R.raw.sleep)
+        hashMap["to invite, invites, invited what?"] = Triple("kviesti, kviečia, kviektė ką?",
+            R.drawable.toinvite,
+            R.raw.sleep
+        )
+        hashMap["party"] = Triple("vakarėlis", R.drawable.party, R.raw.sleep)
+        hashMap["guest"] = Triple("svečias", R.drawable.guests, R.raw.sleep)
+        hashMap["to go visit (as a guest)"] = Triple("eiti į svečius",
+            R.drawable.tovisit,
+            R.raw.sleep
+        )
+        hashMap["to invite guests"] = Triple("kviesti į svečius", R.drawable.toinvite, R.raw.sleep)
 
-        hashMap["to be a guest"] = Triple("būti svečiuose", R.drawable.tobeguest,R.raw.sleep)
-        hashMap["to give"] = Triple("dovanoti", R.drawable.togive,R.raw.sleep)
-        hashMap["to get, gets, got what?"] = Triple("gauti, gauna, gavo ką?", R.drawable.toget1,R.raw.sleep)
-        hashMap["gift"] = Triple("dovana", R.drawable.gift,R.raw.sleep)
-        hashMap["flower"] = Triple("gėlė", R.drawable.flowers,R.raw.sleep)
-        hashMap["Postcard"] = Triple("atvirukas", R.drawable.postcard,R.raw.sleep)
-        hashMap["to send"] = Triple("išsiųsti", R.drawable.send1,R.raw.sleep)
-        hashMap["to write, writes, wrote postcard"] = Triple("užrašyti, užrašo, užrašė atvirukas", R.drawable.write,R.raw.sleep)
-        hashMap["cake"] = Triple("tortas", R.drawable.cake,R.raw.sleep)
-        hashMap["candles"] = Triple("žvakutė", R.drawable.candles,R.raw.sleep)
-        hashMap["Christmas Eve"] = Triple("Kūčios", R.drawable.christmaseve,R.raw.sleep)
+        hashMap["to be a guest"] = Triple("būti svečiuose", R.drawable.tobeguest, R.raw.sleep)
+        hashMap["to give"] = Triple("dovanoti", R.drawable.togive, R.raw.sleep)
+        hashMap["to get, gets, got what?"] = Triple("gauti, gauna, gavo ką?",
+            R.drawable.toget1,
+            R.raw.sleep
+        )
+        hashMap["gift"] = Triple("dovana", R.drawable.gift, R.raw.sleep)
+        hashMap["flower"] = Triple("gėlė", R.drawable.flowers, R.raw.sleep)
+        hashMap["Postcard"] = Triple("atvirukas", R.drawable.postcard, R.raw.sleep)
+        hashMap["to send"] = Triple("išsiųsti", R.drawable.send1, R.raw.sleep)
+        hashMap["to write, writes, wrote postcard"] = Triple("užrašyti, užrašo, užrašė atvirukas",
+            R.drawable.write,
+            R.raw.sleep
+        )
+        hashMap["cake"] = Triple("tortas", R.drawable.cake, R.raw.sleep)
+        hashMap["candles"] = Triple("žvakutė", R.drawable.candles, R.raw.sleep)
+        hashMap["Christmas Eve"] = Triple("Kūčios", R.drawable.christmaseve, R.raw.sleep)
 
-        hashMap["to congratulate"] = Triple("sveikinti", R.drawable.tocongratulate,R.raw.sleep)
-        hashMap["to wish"] = Triple("linkėti,", R.drawable.towish1,R.raw.sleep)
-        hashMap["Christmas"] = Triple("Kalėdos", R.drawable.christmas,R.raw.sleep)
-        hashMap["christmas tree"] = Triple("eglutė", R.drawable.christmastree,R.raw.sleep)
-        hashMap["Santa Claus"] = Triple("Kalėdų senelis", R.drawable.santaclaus,R.raw.sleep)
-        hashMap["candle"] = Triple("žvakė", R.drawable.candle,R.raw.sleep)
-        hashMap["New Year"] = Triple("Naujieji Metai", R.drawable.happynewyear,R.raw.sleep)
-        hashMap["to wait"] = Triple("sutikti", R.drawable.towait1,R.raw.sleep)
-        hashMap["fireworks"] = Triple("fejerverkai", R.drawable.fireworks,R.raw.sleep)
-        hashMap["Easter"] = Triple("Velykos", R.drawable.easter,R.raw.sleep)
+        hashMap["to congratulate"] = Triple("sveikinti", R.drawable.tocongratulate, R.raw.sleep)
+        hashMap["to wish"] = Triple("linkėti,", R.drawable.towish1, R.raw.sleep)
+        hashMap["Christmas"] = Triple("Kalėdos", R.drawable.christmas, R.raw.sleep)
+        hashMap["christmas tree"] = Triple("eglutė", R.drawable.christmastree, R.raw.sleep)
+        hashMap["Santa Claus"] = Triple("Kalėdų senelis", R.drawable.santaclaus, R.raw.sleep)
+        hashMap["candle"] = Triple("žvakė", R.drawable.candle, R.raw.sleep)
+        hashMap["New Year"] = Triple("Naujieji Metai", R.drawable.happynewyear, R.raw.sleep)
+        hashMap["to wait"] = Triple("sutikti", R.drawable.towait1, R.raw.sleep)
+        hashMap["fireworks"] = Triple("fejerverkai", R.drawable.fireworks, R.raw.sleep)
+        hashMap["Easter"] = Triple("Velykos", R.drawable.easter, R.raw.sleep)
 
-        hashMap["Easter egg"] = Triple("margutis", R.drawable.easteregg,R.raw.sleep)
-        hashMap["to dye"] = Triple("dažyti", R.drawable.todye,R.raw.sleep)
-        hashMap["public holidays"] = Triple("valstybinės šventes", R.drawable.holiday1,R.raw.sleep)
-        hashMap["flag"] = Triple("vėliava", R.drawable.flag,R.raw.sleep)
-        hashMap["success"] = Triple("sėkme", R.drawable.success,R.raw.sleep)
-        hashMap["happiness"] = Triple("laimė", R.drawable.happiness,R.raw.sleep)
-        hashMap["Joy"] = Triple("džiaugsmas", R.drawable.joy,R.raw.sleep)
-        hashMap["happy"] = Triple("laimingas", R.drawable.happy,R.raw.sleep)
-        hashMap["beloved"] = Triple("mylimas", R.drawable.beloved,R.raw.sleep)
-        hashMap["honourable"] = Triple("gerbiamas,", R.drawable.honorable,R.raw.sleep)
-        hashMap["colourful"] = Triple("spalvingas", R.drawable.colorful,R.raw.sleep)
-        hashMap["Popular"] = Triple("popularus", R.drawable.popular,R.raw.sleep)
+        hashMap["Easter egg"] = Triple("margutis", R.drawable.easteregg, R.raw.sleep)
+        hashMap["to dye"] = Triple("dažyti", R.drawable.todye, R.raw.sleep)
+        hashMap["public holidays"] = Triple("valstybinės šventes", R.drawable.holiday1, R.raw.sleep)
+        hashMap["flag"] = Triple("vėliava", R.drawable.flag, R.raw.sleep)
+        hashMap["success"] = Triple("sėkme", R.drawable.success, R.raw.sleep)
+        hashMap["happiness"] = Triple("laimė", R.drawable.happiness, R.raw.sleep)
+        hashMap["Joy"] = Triple("džiaugsmas", R.drawable.joy, R.raw.sleep)
+        hashMap["happy"] = Triple("laimingas", R.drawable.happy, R.raw.sleep)
+        hashMap["beloved"] = Triple("mylimas", R.drawable.beloved, R.raw.sleep)
+        hashMap["honourable"] = Triple("gerbiamas,", R.drawable.honorable, R.raw.sleep)
+        hashMap["colourful"] = Triple("spalvingas", R.drawable.colorful, R.raw.sleep)
+        hashMap["Popular"] = Triple("popularus", R.drawable.popular, R.raw.sleep)
 
 
 
@@ -236,14 +253,18 @@ class HolidayCelebrations : Fragment() {
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.new_design_text_color))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
+                        R.color.new_design_text_color
+                    ))
 
                 } else {
                     currentTripleIndex = (currentTripleIndex + 1) % hashMap.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.orange1))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
+                        R.color.orange1
+                    ))
                     isFront = true
                 }
                 // retrieve the current Triple from the hashMap

@@ -14,12 +14,11 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.visuallithuanian.constants.CafeSingleton
 import com.example.visuallithuanian.constants.TimeSingleton
 import com.example.visuallithuanian.database.FlashcardPair
-import com.example.visuallithuanian.databinding.FragmentCafeFlashcardsBinding
 import com.example.visuallithuanian.databinding.FragmentTimeFlashcardBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
+import com.example.visuallithuanian.ui.activities.fragments.MyApp
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.example.visuallithuanian.viewModel.FlashCardViewmodel
 import com.example.visuallithuanian.viewModel.ToLearnViewModel

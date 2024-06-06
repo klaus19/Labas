@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
@@ -14,10 +14,9 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.visuallithuanian.constants.CinemaSingleton
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.VeganSingleton
 import com.example.visuallithuanian.database.FlashcardPair
-import com.example.visuallithuanian.databinding.FragmentCinemaBinding
 import com.example.visuallithuanian.databinding.FragmentVeganFlashcardsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -72,12 +71,14 @@ class VeganFlashcardsFragment : Fragment() {
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext()
-                ,R.color.float1))
+                , R.color.float1
+            ))
 
         //changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext(),
-                R.color.silver))
+                R.color.silver
+            ))
 
 
         // Initialize Media Player

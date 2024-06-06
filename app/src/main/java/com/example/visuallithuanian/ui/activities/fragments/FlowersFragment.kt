@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.ImageAdapter
 import com.example.visuallithuanian.data.ImageInfo
 import com.example.visuallithuanian.ui.activities.FirstScreen
@@ -71,22 +72,34 @@ class FlowersFragment : Fragment() {
     private fun generateFlowersList(): List<ImageInfo> {
 
         return listOf(
-            ImageInfo(R.drawable.rose,"Rose","Rožė",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.rose,"Rose","Rožė",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
             ImageInfo(
-                R.drawable.daffodil,"Daffodil","Narcizai",listOf(R.drawable.purp), R.drawable.mic, R.raw.cabbage,
+                R.drawable.daffodil,"Daffodil","Narcizai",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.cabbage,
                 "",""),
-            ImageInfo(R.drawable.sunflower,"Sunflower","Saulėgrąžos",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.sunflower,"Sunflower","Saulėgrąžos",listOf(R.drawable.purp),
+                R.drawable.mic,
                 R.raw.zuccini,
                 "",""),
             ImageInfo(
-                R.drawable.peony,"Peony","Pivonijos",listOf(R.drawable.purp), R.drawable.mic, R.raw.carrot,
-                "",""),
-            ImageInfo(R.drawable.tulips,"Tulip","Tulpė",listOf(R.drawable.purp), R.drawable.mic, R.raw.beet,
+                R.drawable.peony,"Peony","Pivonijos",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.carrot,
                 "",""),
             ImageInfo(
-                R.drawable.daisies,"Daisy","Daisy",listOf(R.drawable.purp), R.drawable.mic, R.raw.onion,
+                R.drawable.tulips,"Tulip","Tulpė",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.beet,
+                "",""),
+            ImageInfo(
+                R.drawable.daisies,"Daisy","Daisy",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.onion,
                 "",""),
         )
 

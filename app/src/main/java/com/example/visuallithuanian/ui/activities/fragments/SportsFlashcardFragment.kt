@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
@@ -14,8 +14,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
-import com.example.visuallithuanian.databinding.FragmentNumbersFlashcardBinding
 import com.example.visuallithuanian.databinding.FragmentSportsFlashcardBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -71,56 +71,70 @@ class SportsFlashcardFragment : Fragment() {
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext()
-                ,R.color.float1))
+                , R.color.float1
+            ))
 
         //changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext(),
-                R.color.silver))
+                R.color.silver
+            ))
 
         // Hashmap of strings that will shown on cardview front and back side
-        hashMap["final"] = Triple("galutinis", R.drawable.tofinal,R.raw.sleep)
-        hashMap["pool"] = Triple("baseinas", R.drawable.pool,R.raw.sleep)
-        hashMap["champion"] = Triple("čempionas", R.drawable.champion,R.raw.sleep)
-        hashMap["Quarterly"] = Triple("ketvirtis", R.drawable.quarterly,R.raw.sleep)
-        hashMap["injured"] = Triple("susižeisti", R.drawable.injured,R.raw.sleep)
-        hashMap["field"] = Triple("laukas", R.drawable.field,R.raw.sleep)
-        hashMap["player"] = Triple("žaidėjas", R.drawable.player,R.raw.sleep)
-        hashMap["decathlon competition"] = Triple("dešimtkovės varžybos", R.drawable.decthalon,R.raw.sleep)
-        hashMap["darts"] = Triple("smiginis", R.drawable.dart,R.raw.sleep)
-        hashMap["whistle"] = Triple("švilpti", R.drawable.whistle,R.raw.sleep)
+        hashMap["final"] = Triple("galutinis", R.drawable.tofinal, R.raw.sleep)
+        hashMap["pool"] = Triple("baseinas", R.drawable.pool, R.raw.sleep)
+        hashMap["champion"] = Triple("čempionas", R.drawable.champion, R.raw.sleep)
+        hashMap["Quarterly"] = Triple("ketvirtis", R.drawable.quarterly, R.raw.sleep)
+        hashMap["injured"] = Triple("susižeisti", R.drawable.injured, R.raw.sleep)
+        hashMap["field"] = Triple("laukas", R.drawable.field, R.raw.sleep)
+        hashMap["player"] = Triple("žaidėjas", R.drawable.player, R.raw.sleep)
+        hashMap["decathlon competition"] = Triple("dešimtkovės varžybos",
+            R.drawable.decthalon,
+            R.raw.sleep
+        )
+        hashMap["darts"] = Triple("smiginis", R.drawable.dart, R.raw.sleep)
+        hashMap["whistle"] = Triple("švilpti", R.drawable.whistle, R.raw.sleep)
 
-        hashMap["Winner"] = Triple("Nugalėtojas", R.drawable.winner,R.raw.sleep)
-        hashMap["captain"] = Triple("kapitonas", R.drawable.captain,R.raw.sleep)
-        hashMap["slide"] = Triple("čiuožykla", R.drawable.slide,R.raw.sleep)
-        hashMap["yoga"] = Triple("joga", R.drawable.yoga,R.raw.sleep)
-        hashMap["team"] = Triple("komanda", R.drawable.team,R.raw.sleep)
-        hashMap["baseball"] = Triple("beisbolas", R.drawable.baseball,R.raw.sleep)
-        hashMap["to play sports"] = Triple("Sportuoti", R.drawable.toplaysports,R.raw.sleep)
-        hashMap["to overcome"] = Triple("įveikti", R.drawable.overcome,R.raw.sleep)
-        hashMap["judge"] = Triple("teisėjas", R.drawable.judge,R.raw.sleep)
+        hashMap["Winner"] = Triple("Nugalėtojas", R.drawable.winner, R.raw.sleep)
+        hashMap["captain"] = Triple("kapitonas", R.drawable.captain, R.raw.sleep)
+        hashMap["slide"] = Triple("čiuožykla", R.drawable.slide, R.raw.sleep)
+        hashMap["yoga"] = Triple("joga", R.drawable.yoga, R.raw.sleep)
+        hashMap["team"] = Triple("komanda", R.drawable.team, R.raw.sleep)
+        hashMap["baseball"] = Triple("beisbolas", R.drawable.baseball, R.raw.sleep)
+        hashMap["to play sports"] = Triple("Sportuoti", R.drawable.toplaysports, R.raw.sleep)
+        hashMap["to overcome"] = Triple("įveikti", R.drawable.overcome, R.raw.sleep)
+        hashMap["judge"] = Triple("teisėjas", R.drawable.judge, R.raw.sleep)
 
-        hashMap["triathlon"] = Triple("triatlonas", R.drawable.triathlon,R.raw.sleep)
-        hashMap["to win"] = Triple("laimėti", R.drawable.towin,R.raw.sleep)
-        hashMap["basketball"] = Triple("krepšinį", R.drawable.basketball,R.raw.sleep)
-        hashMap["trainer"] = Triple("treneris", R.drawable.trainer,R.raw.sleep)
-        hashMap["exercise"] = Triple("pratimas", R.drawable.excersice,R.raw.sleep)
-        hashMap["quarterfinals"] = Triple("ketvirtfinalis", R.drawable.quarterfinals,R.raw.sleep)
-        hashMap["viewer"] = Triple("žiūrovas", R.drawable.viewer,R.raw.sleep)
-        hashMap["trophy"] = Triple("trofėjus", R.drawable.trophy,R.raw.sleep)
-        hashMap["world Championship"] = Triple("pasaulio čempionatas", R.drawable.worldchampionship,R.raw.sleep)
-        hashMap["sports equipment"] = Triple("sporto įranga", R.drawable.sportsequipment,R.raw.sleep)
+        hashMap["triathlon"] = Triple("triatlonas", R.drawable.triathlon, R.raw.sleep)
+        hashMap["to win"] = Triple("laimėti", R.drawable.towin, R.raw.sleep)
+        hashMap["basketball"] = Triple("krepšinį", R.drawable.basketball, R.raw.sleep)
+        hashMap["trainer"] = Triple("treneris", R.drawable.trainer, R.raw.sleep)
+        hashMap["exercise"] = Triple("pratimas", R.drawable.excersice, R.raw.sleep)
+        hashMap["quarterfinals"] = Triple("ketvirtfinalis", R.drawable.quarterfinals, R.raw.sleep)
+        hashMap["viewer"] = Triple("žiūrovas", R.drawable.viewer, R.raw.sleep)
+        hashMap["trophy"] = Triple("trofėjus", R.drawable.trophy, R.raw.sleep)
+        hashMap["world Championship"] = Triple("pasaulio čempionatas",
+            R.drawable.worldchampionship,
+            R.raw.sleep
+        )
+        hashMap["sports equipment"] = Triple("sporto įranga",
+            R.drawable.sportsequipment,
+            R.raw.sleep
+        )
 
-        hashMap["game"] = Triple("žaidimas", R.drawable.game,R.raw.sleep)
-        hashMap["fitness gym"] = Triple("treniruoklių salė", R.drawable.gym,R.raw.sleep)
-        hashMap["stadium"] = Triple("stadionas", R.drawable.stadium,R.raw.sleep)
-        hashMap["manual"] = Triple("rankinis", R.drawable.manual,R.raw.sleep)
-        hashMap["aerobics"] = Triple("aerobika", R.drawable.aerobic,R.raw.sleep)
-        hashMap["weightlifting"] = Triple("sunkiosios atletikos", R.drawable.weightlifting,R.raw.sleep)
-        hashMap["injury"] = Triple("sužalojimas", R.drawable.injury,R.raw.sleep)
-        hashMap["skis"] = Triple("slidės", R.drawable.skis,R.raw.sleep)
-        hashMap["badminton"] = Triple("badmintonas", R.drawable.badminton,R.raw.sleep)
-        hashMap["tennis court"] = Triple("teniso kortas", R.drawable.tenniscourt,R.raw.sleep)
+        hashMap["game"] = Triple("žaidimas", R.drawable.game, R.raw.sleep)
+        hashMap["fitness gym"] = Triple("treniruoklių salė", R.drawable.gym, R.raw.sleep)
+        hashMap["stadium"] = Triple("stadionas", R.drawable.stadium, R.raw.sleep)
+        hashMap["manual"] = Triple("rankinis", R.drawable.manual, R.raw.sleep)
+        hashMap["aerobics"] = Triple("aerobika", R.drawable.aerobic, R.raw.sleep)
+        hashMap["weightlifting"] = Triple("sunkiosios atletikos",
+            R.drawable.weightlifting,
+            R.raw.sleep
+        )
+        hashMap["injury"] = Triple("sužalojimas", R.drawable.injury, R.raw.sleep)
+        hashMap["skis"] = Triple("slidės", R.drawable.skis, R.raw.sleep)
+        hashMap["badminton"] = Triple("badmintonas", R.drawable.badminton, R.raw.sleep)
+        hashMap["tennis court"] = Triple("teniso kortas", R.drawable.tenniscourt, R.raw.sleep)
 
 
 
@@ -234,14 +248,18 @@ class SportsFlashcardFragment : Fragment() {
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.new_design_text_color))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
+                        R.color.new_design_text_color
+                    ))
 
                 } else {
                     currentTripleIndex = (currentTripleIndex + 1) % hashMap.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.orange1))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
+                        R.color.orange1
+                    ))
                     isFront = true
                 }
                 // retrieve the current Triple from the hashMap

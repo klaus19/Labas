@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -11,9 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.ImageAdapter
 import com.example.visuallithuanian.data.ImageInfo
-import com.example.visuallithuanian.databinding.FragmentColorsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -62,31 +62,40 @@ class ColorsFragment : Fragment() {
 
     private fun generateColorsList(): List<ImageInfo> {
        return listOf(
-           ImageInfo(R.drawable.red,"Red","Raudona",listOf(R.drawable.purp), R.drawable.mic,
+           ImageInfo(
+               R.drawable.red,"Red","Raudona",listOf(R.drawable.purp), R.drawable.mic,
                R.raw.potato,
                "",""),
-           ImageInfo(R.drawable.blue,"Blue","Mėlyna",listOf(R.drawable.purp), R.drawable.mic,
+           ImageInfo(
+               R.drawable.blue,"Blue","Mėlyna",listOf(R.drawable.purp), R.drawable.mic,
                R.raw.potato,
                "",""),
-           ImageInfo(R.drawable.yellow,"Yellow","Geltona",listOf(R.drawable.purp), R.drawable.mic,
+           ImageInfo(
+               R.drawable.yellow,"Yellow","Geltona",listOf(R.drawable.purp), R.drawable.mic,
                R.raw.potato,
                "",""),
-           ImageInfo(R.drawable.green,"Green","Žalia",listOf(R.drawable.purp), R.drawable.mic,
+           ImageInfo(
+               R.drawable.green,"Green","Žalia",listOf(R.drawable.purp), R.drawable.mic,
                R.raw.potato,
                "",""),
-           ImageInfo(R.drawable.orange,"Orange","Oranžinė",listOf(R.drawable.purp), R.drawable.mic,
+           ImageInfo(
+               R.drawable.orange,"Orange","Oranžinė",listOf(R.drawable.purp), R.drawable.mic,
                R.raw.potato,
                "",""),
-           ImageInfo(R.drawable.purple,"Purple","Violetinė",listOf(R.drawable.purp), R.drawable.mic,
+           ImageInfo(
+               R.drawable.purple,"Purple","Violetinė",listOf(R.drawable.purp), R.drawable.mic,
                R.raw.potato,
                "",""),
-           ImageInfo(R.drawable.black,"Black","Juoda",listOf(R.drawable.purp), R.drawable.mic,
+           ImageInfo(
+               R.drawable.black,"Black","Juoda",listOf(R.drawable.purp), R.drawable.mic,
                R.raw.potato,
                "",""),
-           ImageInfo(R.drawable.white,"White","Balta",listOf(R.drawable.purp), R.drawable.mic,
+           ImageInfo(
+               R.drawable.white,"White","Balta",listOf(R.drawable.purp), R.drawable.mic,
                R.raw.potato,
                "",""),
-           ImageInfo(R.drawable.gray,"Gray","Pilka",listOf(R.drawable.purp), R.drawable.mic,
+           ImageInfo(
+               R.drawable.gray,"Gray","Pilka",listOf(R.drawable.purp), R.drawable.mic,
                R.raw.potato,
                "",""),
        )

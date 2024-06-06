@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 
 import android.annotation.SuppressLint
@@ -15,8 +15,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.ActionsSingleton
-import com.example.visuallithuanian.constants.AnimalsSingleton
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentAnimalFlashcardBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
@@ -72,12 +72,14 @@ class ActionsFlashcardFragment : Fragment() {
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext()
-                ,R.color.float1))
+                , R.color.float1
+            ))
 
         //changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext(),
-                R.color.silver))
+                R.color.silver
+            ))
 
 
         // Initialize Media Player
@@ -189,14 +191,18 @@ class ActionsFlashcardFragment : Fragment() {
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.new_design_text_color))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
+                        R.color.new_design_text_color
+                    ))
 
                 } else {
                     currentTripleIndex = (currentTripleIndex + 1) % ActionsSingleton.hashMapActions.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.orange1))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
+                        R.color.orange1
+                    ))
                     isFront = true
                 }
                 // retrieve the current Triple from the hashMap

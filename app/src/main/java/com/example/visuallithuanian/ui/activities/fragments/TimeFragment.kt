@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.ImageAdapter
 import com.example.visuallithuanian.data.ImageInfo
 import com.example.visuallithuanian.ui.activities.FirstScreen
@@ -59,34 +60,45 @@ class TimeFragment : Fragment() {
     private fun generateTime(): List<ImageInfo> {
 
         return listOf(
-            ImageInfo(R.drawable.second,"Second","Sekundė",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.second,"Second","Sekundė",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.minute,"Minute","Minutė",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.minute,"Minute","Minutė",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.hour,"Hour","Valanda",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.hour,"Hour","Valanda",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.day,"Day","Diena",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.day,"Day","Diena",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.week,"Week","Savaitė",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.week,"Week","Savaitė",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.month,"Month","Mėnuo",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.month,"Month","Mėnuo",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.year,"Year","Metai",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.year,"Year","Metai",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.decade,"Decade","Dešimtmetis",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.decade,"Decade","Dešimtmetis",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.century,"Century","Amžius",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.century,"Century","Amžius",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.millenium,"Millennium","Tūkstantmetis",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.millenium,"Millennium","Tūkstantmetis",listOf(R.drawable.purp),
+                R.drawable.mic,
                 R.raw.potato,
                 "",""),
         )

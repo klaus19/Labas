@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.app.Application
 import com.example.visuallithuanian.database.FlashcardDatabase

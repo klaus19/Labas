@@ -1,8 +1,9 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*

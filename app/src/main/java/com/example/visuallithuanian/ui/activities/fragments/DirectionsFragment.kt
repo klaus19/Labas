@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.ImageAdapter
 import com.example.visuallithuanian.data.ImageInfo
 import com.example.visuallithuanian.ui.activities.FirstScreen
@@ -17,7 +18,6 @@ import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -69,25 +69,39 @@ class DirectionsFragment : Fragment() {
     private fun generateDirectionsList(): List<ImageInfo> {
 
         return listOf(
-            ImageInfo(R.drawable.north,"North","Šiaurės",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+            ImageInfo(
+                R.drawable.north,"North","Šiaurės",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.south,"South","Pietų",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+            ImageInfo(
+                R.drawable.south,"South","Pietų",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.west,"West","Vakarų",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+            ImageInfo(
+                R.drawable.west,"West","Vakarų",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.east,"East","Rytų",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+            ImageInfo(
+                R.drawable.east,"East","Rytų",listOf(R.drawable.purp), R.drawable.mic, R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.northwest,"North West","Šiaurės vakarai",listOf(R.drawable.purp),
-                R.drawable.mic,R.raw.potato,
+            ImageInfo(
+                R.drawable.northwest,"North West","Šiaurės vakarai",listOf(R.drawable.purp),
+                R.drawable.mic, R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.northeast,"North East","Šiaurės rytai",listOf(R.drawable.purp),
-                R.drawable.mic,R.raw.potato,
+            ImageInfo(
+                R.drawable.northeast,"North East","Šiaurės rytai",listOf(R.drawable.purp),
+                R.drawable.mic, R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.southwest,"South West","Pietvakariai",listOf(R.drawable.purp),
-                R.drawable.mic,R.raw.potato,
+            ImageInfo(
+                R.drawable.southwest,"South West","Pietvakariai",listOf(R.drawable.purp),
+                R.drawable.mic, R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.southeast,"South East","Pietryčiai",listOf(R.drawable.purp),
-                R.drawable.mic,R.raw.potato,
+            ImageInfo(
+                R.drawable.southeast,"South East","Pietryčiai",listOf(R.drawable.purp),
+                R.drawable.mic, R.raw.potato,
                 "",""),
 
 

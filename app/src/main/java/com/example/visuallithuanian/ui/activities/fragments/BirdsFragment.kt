@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,9 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.ImageAdapter
 import com.example.visuallithuanian.data.ImageInfo
-import com.example.visuallithuanian.databinding.FragmentBirdsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -67,23 +67,50 @@ class BirdsFragment : Fragment() {
 
     private fun generateBirdsList(): List<ImageInfo> {
         return listOf(
-            ImageInfo(R.drawable.whitestork,"White Stork","Baltasis gandrovas",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+            ImageInfo(
+                R.drawable.whitestork,"White Stork","Baltasis gandrovas",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.crane,"Common Crane","Paprastasis gegužė",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+            ImageInfo(
+                R.drawable.crane,"Common Crane","Paprastasis gegužė",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.blackgrouse,"Black Grouse","Tetervinas",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+            ImageInfo(
+                R.drawable.blackgrouse,"Black Grouse","Tetervinas",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.greentit,"Great Tit","Didysis Meškažirnis",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+            ImageInfo(
+                R.drawable.greentit,"Great Tit","Didysis Meškažirnis",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.chaff,"Common Chaffinch","Paprastasis šernas",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+            ImageInfo(
+                R.drawable.chaff,"Common Chaffinch","Paprastasis šernas",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.jay,"Eurasian Jay","Žvirblys",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+            ImageInfo(
+                R.drawable.jay,"Eurasian Jay","Žvirblys",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.robin,"European Robin","Raudonkepuraitė",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+            ImageInfo(
+                R.drawable.robin,"European Robin","Raudonkepuraitė",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.blackbird,"Common Blackbird","Juodvarnis",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+            ImageInfo(
+                R.drawable.blackbird,"Common Blackbird","Juodvarnis",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.buzzard,"Common Buzzard"," Paprastasis suopis",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+            ImageInfo(
+                R.drawable.buzzard,"Common Buzzard"," Paprastasis suopis",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.potato,
                 "",""),
 
         )

@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.ImageAdapter
 import com.example.visuallithuanian.data.ImageInfo
 import com.example.visuallithuanian.ui.activities.FirstScreen
@@ -71,27 +72,44 @@ class SportsFragment : Fragment() {
     private fun generateSportsList(): List<ImageInfo> {
 
         return listOf(
-            ImageInfo(R.drawable.football,"Football","Futbolas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.football,"Football","Futbolas",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
             ImageInfo(
-                R.drawable.hockey,"Ice Hockey","Ledo ritulys",listOf(R.drawable.purp), R.drawable.mic, R.raw.cabbage,
+                R.drawable.hockey,"Ice Hockey","Ledo ritulys",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.cabbage,
                 "",""),
-            ImageInfo(R.drawable.basketball,"Basketball","Krepšinis",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.basketball,"Basketball","Krepšinis",listOf(R.drawable.purp),
+                R.drawable.mic,
                 R.raw.zuccini,
                 "",""),
             ImageInfo(
-                R.drawable.chess,"Chess","Šachmatai",listOf(R.drawable.purp), R.drawable.mic, R.raw.carrot,
-                "",""),
-            ImageInfo(R.drawable.cycling,"Cycling","Dviračių sportas",listOf(R.drawable.purp), R.drawable.mic, R.raw.beet,
-                "",""),
-            ImageInfo(
-                R.drawable.swimming,"Swimming","Plaukimas",listOf(R.drawable.purp), R.drawable.mic, R.raw.onion,
-                "",""),
-            ImageInfo(R.drawable.rugby,"Rugby","Regbis",listOf(R.drawable.purp), R.drawable.mic, R.raw.beet,
+                R.drawable.chess,"Chess","Šachmatai",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.carrot,
                 "",""),
             ImageInfo(
-                R.drawable.skating,"Skating","Čiuožimas",listOf(R.drawable.purp), R.drawable.mic, R.raw.onion,
+                R.drawable.cycling,"Cycling","Dviračių sportas",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.beet,
+                "",""),
+            ImageInfo(
+                R.drawable.swimming,"Swimming","Plaukimas",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.onion,
+                "",""),
+            ImageInfo(
+                R.drawable.rugby,"Rugby","Regbis",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.beet,
+                "",""),
+            ImageInfo(
+                R.drawable.skating,"Skating","Čiuožimas",listOf(R.drawable.purp),
+                R.drawable.mic,
+                R.raw.onion,
                 "",""),
         )
 

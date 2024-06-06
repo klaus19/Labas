@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
@@ -14,9 +14,9 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentColorshapeBinding
-import com.example.visuallithuanian.databinding.FragmentDaysMonthsFlashcardsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.example.visuallithuanian.viewModel.FlashCardViewmodel
@@ -70,35 +70,37 @@ class ColorshapeFragment : Fragment() {
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext()
-                ,R.color.float1))
+                , R.color.float1
+            ))
 
         //changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext(),
-                R.color.silver))
+                R.color.silver
+            ))
 
         // Hashmap of strings that will shown on cardview front and back side
-        hashMap["white"] = Triple("baltas", R.drawable.white,R.raw.sunday)
-        hashMap["black"] = Triple("juodas", R.drawable.black,R.raw.sunday)
-        hashMap["red"] = Triple("raudonas", R.drawable.red,R.raw.sunday)
-        hashMap["green"] = Triple("žalias", R.drawable.green,R.raw.sunday)
-        hashMap["orange"] = Triple("oranžinis", R.drawable.orange1,R.raw.sunday)
-        hashMap["yellow"] = Triple("geltonas", R.drawable.yellow,R.raw.sunday)
-        hashMap["blue"] = Triple("mėlynas", R.drawable.blue,R.raw.sunday)
-        hashMap["pink"] = Triple("rožinis", R.drawable.pink,R.raw.sunday)
-        hashMap["stripped"] = Triple("dryžuotas", R.drawable.stripped,R.raw.sunday)
-        hashMap["round"] = Triple("apvalus", R.drawable.round,R.raw.sunday)
+        hashMap["white"] = Triple("baltas", R.drawable.white, R.raw.sunday)
+        hashMap["black"] = Triple("juodas", R.drawable.black, R.raw.sunday)
+        hashMap["red"] = Triple("raudonas", R.drawable.red, R.raw.sunday)
+        hashMap["green"] = Triple("žalias", R.drawable.green, R.raw.sunday)
+        hashMap["orange"] = Triple("oranžinis", R.drawable.orange1, R.raw.sunday)
+        hashMap["yellow"] = Triple("geltonas", R.drawable.yellow, R.raw.sunday)
+        hashMap["blue"] = Triple("mėlynas", R.drawable.blue, R.raw.sunday)
+        hashMap["pink"] = Triple("rožinis", R.drawable.pink, R.raw.sunday)
+        hashMap["stripped"] = Triple("dryžuotas", R.drawable.stripped, R.raw.sunday)
+        hashMap["round"] = Triple("apvalus", R.drawable.round, R.raw.sunday)
 
-        hashMap["squared"] = Triple("kvadratas", R.drawable.square,R.raw.sunday)
-        hashMap["triangular"] = Triple("trikampis", R.drawable.triangular,R.raw.sunday)
-        hashMap["rectangular"] = Triple("stačiakampis", R.drawable.rectangular,R.raw.sunday)
-        hashMap["spheric"] = Triple("sferinis", R.drawable.sphere,R.raw.sunday)
-        hashMap["cubic"] = Triple("kubinis", R.drawable.cubic,R.raw.sunday)
-        hashMap["brown cat"] = Triple("ruda katė", R.drawable.browncat,R.raw.sunday)
-        hashMap["brown eyes"] = Triple("rudas akis", R.drawable.browneyes,R.raw.sunday)
-        hashMap["round face"] = Triple("apvalus veidas", R.drawable.roundface,R.raw.sunday)
-        hashMap["blue eyes"] = Triple("mėlynas akis", R.drawable.blueeyes,R.raw.sunday)
-        hashMap["grey mouse"] = Triple("pilka pelė", R.drawable.greymouse,R.raw.sunday)
+        hashMap["squared"] = Triple("kvadratas", R.drawable.square, R.raw.sunday)
+        hashMap["triangular"] = Triple("trikampis", R.drawable.triangular, R.raw.sunday)
+        hashMap["rectangular"] = Triple("stačiakampis", R.drawable.rectangular, R.raw.sunday)
+        hashMap["spheric"] = Triple("sferinis", R.drawable.sphere, R.raw.sunday)
+        hashMap["cubic"] = Triple("kubinis", R.drawable.cubic, R.raw.sunday)
+        hashMap["brown cat"] = Triple("ruda katė", R.drawable.browncat, R.raw.sunday)
+        hashMap["brown eyes"] = Triple("rudas akis", R.drawable.browneyes, R.raw.sunday)
+        hashMap["round face"] = Triple("apvalus veidas", R.drawable.roundface, R.raw.sunday)
+        hashMap["blue eyes"] = Triple("mėlynas akis", R.drawable.blueeyes, R.raw.sunday)
+        hashMap["grey mouse"] = Triple("pilka pelė", R.drawable.greymouse, R.raw.sunday)
 
 
 
@@ -210,14 +212,18 @@ class ColorshapeFragment : Fragment() {
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.new_design_text_color))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
+                        R.color.new_design_text_color
+                    ))
 
                 } else {
                     currentTripleIndex = (currentTripleIndex + 1) % hashMap.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.orange1))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
+                        R.color.orange1
+                    ))
                     isFront = true
                 }
                 // retrieve the current Triple from the hashMap

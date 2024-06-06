@@ -1,6 +1,5 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
-import android.animation.*
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.media.MediaPlayer
@@ -15,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentQuestionsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
@@ -72,29 +72,31 @@ class QuestionsFragment : Fragment() {
 
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext()
-            ,R.color.orange1))
+            , R.color.orange1
+        ))
 
         //changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
-            R.color.silver))
+            R.color.silver
+        ))
 
         // Hashmap of strings that will shown on cardview front and back side
-        hashMap["What"] = Triple("Kas", R.drawable.what,R.raw.whatkas)
-        hashMap["When"] = Triple("Kada",R.drawable.whennn,R.raw.whenn)
-        hashMap["Where"] = Triple("Kur",R.drawable.whereee,R.raw.where)
-        hashMap["Who"] = Triple("Kas",R.drawable.who,R.raw.who)
-        hashMap["Whom"] = Triple("Kam",R.drawable.whom,R.raw.whom)
-        hashMap["Why"] = Triple("Kodėl",R.drawable.why,R.raw.why)
-        hashMap["How"] = Triple("Kaip",R.drawable.how,R.raw.how)
-        hashMap["Which"] = Triple("Kuris/kuri",R.drawable.which,R.raw.which)
-        hashMap["Whose"] = Triple("Kieno",R.drawable.whose,R.raw.whose)
-        hashMap["I"] = Triple("aš",R.drawable.ii,R.raw.i)
-        hashMap["you"] = Triple("tu",R.drawable.you,R.raw.youtu)
-        hashMap["he"] = Triple("jis",R.drawable.he,R.raw.he)
-        hashMap["she"] = Triple("ji",R.drawable.she,R.raw.she)
-        hashMap["we"] = Triple("mes",R.drawable.we,R.raw.we)
-        hashMap["you (plural)"] = Triple("jūs",R.drawable.you,R.raw.you)
-        hashMap["they"] = Triple("jie",R.drawable.they,R.raw.they)
+        hashMap["What"] = Triple("Kas", R.drawable.what, R.raw.whatkas)
+        hashMap["When"] = Triple("Kada", R.drawable.whennn, R.raw.whenn)
+        hashMap["Where"] = Triple("Kur", R.drawable.whereee, R.raw.where)
+        hashMap["Who"] = Triple("Kas", R.drawable.who, R.raw.who)
+        hashMap["Whom"] = Triple("Kam", R.drawable.whom, R.raw.whom)
+        hashMap["Why"] = Triple("Kodėl", R.drawable.why, R.raw.why)
+        hashMap["How"] = Triple("Kaip", R.drawable.how, R.raw.how)
+        hashMap["Which"] = Triple("Kuris/kuri", R.drawable.which, R.raw.which)
+        hashMap["Whose"] = Triple("Kieno", R.drawable.whose, R.raw.whose)
+        hashMap["I"] = Triple("aš", R.drawable.ii, R.raw.i)
+        hashMap["you"] = Triple("tu", R.drawable.you, R.raw.youtu)
+        hashMap["he"] = Triple("jis", R.drawable.he, R.raw.he)
+        hashMap["she"] = Triple("ji", R.drawable.she, R.raw.she)
+        hashMap["we"] = Triple("mes", R.drawable.we, R.raw.we)
+        hashMap["you (plural)"] = Triple("jūs", R.drawable.you, R.raw.you)
+        hashMap["they"] = Triple("jie", R.drawable.they, R.raw.they)
 
         // Initialize Media Player
         val mediaPlayer = MediaPlayer()
@@ -204,14 +206,18 @@ class QuestionsFragment : Fragment() {
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.new_design_text_color))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
+                        R.color.new_design_text_color
+                    ))
 
                 } else {
                     currentTripleIndex = (currentTripleIndex + 1) % hashMap.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.orange1))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
+                        R.color.orange1
+                    ))
                     isFront = true
                 }
 

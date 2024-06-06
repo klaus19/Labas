@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
@@ -14,8 +14,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
-import com.example.visuallithuanian.databinding.FragmentDailyBasicBinding
 import com.example.visuallithuanian.databinding.FragmentDaysMonthsFlashcardsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -71,63 +71,65 @@ class DaysMonthsFlashcards : Fragment() {
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext()
-                ,R.color.float1))
+                , R.color.float1
+            ))
 
         //changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext(),
-                R.color.silver))
+                R.color.silver
+            ))
 
         // Hashmap of strings that will shown on cardview front and back side
-        hashMap["Sunday"] = Triple("Sekmadienis", R.drawable.sunday,R.raw.sunday)
-        hashMap["Monday"] = Triple("Pirmadienis", R.drawable.monday,R.raw.monday)
-        hashMap["Tuesday"] = Triple("Antradienis", R.drawable.tuesday,R.raw.tuesday)
-        hashMap["Wednesday"] = Triple("Trečiadienis", R.drawable.wednesday,R.raw.wednesday)
-        hashMap["Thursday"] = Triple("Ketvirtadienis", R.drawable.thursday,R.raw.thursday)
-        hashMap["Friday"] = Triple("penktadienis", R.drawable.friday,R.raw.friday)
-        hashMap["Saturday"] = Triple("Šeštadienis", R.drawable.saturday,R.raw.saturday)
-        hashMap["January"] = Triple("Sausis", R.drawable.january,R.raw.january)
-        hashMap["February"] = Triple("Vasaris", R.drawable.february,R.raw.february)
-        hashMap["March"] = Triple("Kovas", R.drawable.march,R.raw.march)
+        hashMap["Sunday"] = Triple("Sekmadienis", R.drawable.sunday, R.raw.sunday)
+        hashMap["Monday"] = Triple("Pirmadienis", R.drawable.monday, R.raw.monday)
+        hashMap["Tuesday"] = Triple("Antradienis", R.drawable.tuesday, R.raw.tuesday)
+        hashMap["Wednesday"] = Triple("Trečiadienis", R.drawable.wednesday, R.raw.wednesday)
+        hashMap["Thursday"] = Triple("Ketvirtadienis", R.drawable.thursday, R.raw.thursday)
+        hashMap["Friday"] = Triple("penktadienis", R.drawable.friday, R.raw.friday)
+        hashMap["Saturday"] = Triple("Šeštadienis", R.drawable.saturday, R.raw.saturday)
+        hashMap["January"] = Triple("Sausis", R.drawable.january, R.raw.january)
+        hashMap["February"] = Triple("Vasaris", R.drawable.february, R.raw.february)
+        hashMap["March"] = Triple("Kovas", R.drawable.march, R.raw.march)
 
-        hashMap["April"] = Triple("Balandis", R.drawable.april,R.raw.april)
-        hashMap["May"] = Triple("Gegužė", R.drawable.may,R.raw.may)
-        hashMap["June"] = Triple("Birželis", R.drawable.june,R.raw.june)
-        hashMap["July"] = Triple("Liepa", R.drawable.july,R.raw.july)
-        hashMap["August"] = Triple("Rugpjūtis", R.drawable.august,R.raw.august)
-        hashMap["September"] = Triple("Rugsėjis", R.drawable.september,R.raw.september)
-        hashMap["October"] = Triple("Spalis", R.drawable.october,R.raw.october)
-        hashMap["November"] = Triple("lapkritis", R.drawable.november,R.raw.november)
-        hashMap["December"] = Triple("Gruodis", R.drawable.december,R.raw.december)
-        hashMap["Spring"] = Triple("pavasaris", R.drawable.sleep,R.raw.spring)
+        hashMap["April"] = Triple("Balandis", R.drawable.april, R.raw.april)
+        hashMap["May"] = Triple("Gegužė", R.drawable.may, R.raw.may)
+        hashMap["June"] = Triple("Birželis", R.drawable.june, R.raw.june)
+        hashMap["July"] = Triple("Liepa", R.drawable.july, R.raw.july)
+        hashMap["August"] = Triple("Rugpjūtis", R.drawable.august, R.raw.august)
+        hashMap["September"] = Triple("Rugsėjis", R.drawable.september, R.raw.september)
+        hashMap["October"] = Triple("Spalis", R.drawable.october, R.raw.october)
+        hashMap["November"] = Triple("lapkritis", R.drawable.november, R.raw.november)
+        hashMap["December"] = Triple("Gruodis", R.drawable.december, R.raw.december)
+        hashMap["Spring"] = Triple("pavasaris", R.drawable.sleep, R.raw.spring)
 
-        hashMap["Summer"] = Triple("vasara", R.drawable.summer,R.raw.vasara)
-        hashMap["autumn"] = Triple("ruduo", R.drawable.autumn,R.raw.ruduo)
-        hashMap["winter"] = Triple("žiema", R.drawable.winter,R.raw.ziema)
-        hashMap["day"] = Triple("diena", R.drawable.day,R.raw.diena)
-        hashMap["Month"] = Triple("Mėnuo", R.drawable.month,R.raw.menuo)
-        hashMap["Year"] = Triple("metai", R.drawable.year,R.raw.metai)
-        hashMap["Season"] = Triple("sezonas", R.drawable.season,R.raw.sezonas)
-        hashMap["decade"] = Triple("dešimtmetį", R.drawable.decade,R.raw.desimtmeti)
-        hashMap["Midnight"] = Triple("vidurnaktis", R.drawable.midnight,R.raw.vidurnaktis)
-        hashMap["half a day"] = Triple("pusę dienos", R.drawable.halfaday,R.raw.pusedienos)
+        hashMap["Summer"] = Triple("vasara", R.drawable.summer, R.raw.vasara)
+        hashMap["autumn"] = Triple("ruduo", R.drawable.autumn, R.raw.ruduo)
+        hashMap["winter"] = Triple("žiema", R.drawable.winter, R.raw.ziema)
+        hashMap["day"] = Triple("diena", R.drawable.day, R.raw.diena)
+        hashMap["Month"] = Triple("Mėnuo", R.drawable.month, R.raw.menuo)
+        hashMap["Year"] = Triple("metai", R.drawable.year, R.raw.metai)
+        hashMap["Season"] = Triple("sezonas", R.drawable.season, R.raw.sezonas)
+        hashMap["decade"] = Triple("dešimtmetį", R.drawable.decade, R.raw.desimtmeti)
+        hashMap["Midnight"] = Triple("vidurnaktis", R.drawable.midnight, R.raw.vidurnaktis)
+        hashMap["half a day"] = Triple("pusę dienos", R.drawable.halfaday, R.raw.pusedienos)
 
-        hashMap["before sleep"] = Triple("prieš miegą", R.drawable.beforesleep,R.raw.priesmiega)
-        hashMap["evening"] = Triple("vakaras", R.drawable.evening,R.raw.vakaras)
-        hashMap["Morning"] = Triple("rytas", R.drawable.morning,R.raw.rytas)
-        hashMap["Noon"] = Triple("vidurdienis", R.drawable.noon,R.raw.vidurdienis)
-        hashMap["late"] = Triple("vėlai", R.drawable.late,R.raw.velai)
-        hashMap["early"] = Triple("anksti", R.drawable.early,R.raw.anksti)
-        hashMap["in the afternoon"] = Triple("po pietų", R.drawable.inafternoon,R.raw.popietu)
-        hashMap["Today"] = Triple("šiandien", R.drawable.today,R.raw.siandien)
-        hashMap["tomorrow"] = Triple("rytoj", R.drawable.tomorrow,R.raw.rytoj)
-        hashMap["week"] = Triple("savaitė", R.drawable.week,R.raw.savaite)
+        hashMap["before sleep"] = Triple("prieš miegą", R.drawable.beforesleep, R.raw.priesmiega)
+        hashMap["evening"] = Triple("vakaras", R.drawable.evening, R.raw.vakaras)
+        hashMap["Morning"] = Triple("rytas", R.drawable.morning, R.raw.rytas)
+        hashMap["Noon"] = Triple("vidurdienis", R.drawable.noon, R.raw.vidurdienis)
+        hashMap["late"] = Triple("vėlai", R.drawable.late, R.raw.velai)
+        hashMap["early"] = Triple("anksti", R.drawable.early, R.raw.anksti)
+        hashMap["in the afternoon"] = Triple("po pietų", R.drawable.inafternoon, R.raw.popietu)
+        hashMap["Today"] = Triple("šiandien", R.drawable.today, R.raw.siandien)
+        hashMap["tomorrow"] = Triple("rytoj", R.drawable.tomorrow, R.raw.rytoj)
+        hashMap["week"] = Triple("savaitė", R.drawable.week, R.raw.savaite)
 
-        hashMap["once"] = Triple("vieną kartą", R.drawable.once,R.raw.vienakarta)
-        hashMap["twice"] = Triple("du kartus", R.drawable.twice,R.raw.dukartus)
-        hashMap["weekend"] = Triple("savaitgalis", R.drawable.weekend,R.raw.savaitgalis)
-        hashMap["workday"] = Triple("darbo diena", R.drawable.workday,R.raw.darbodiena)
-        hashMap["period"] = Triple("laikotarpį", R.drawable.period,R.raw.laikotarpi)
+        hashMap["once"] = Triple("vieną kartą", R.drawable.once, R.raw.vienakarta)
+        hashMap["twice"] = Triple("du kartus", R.drawable.twice, R.raw.dukartus)
+        hashMap["weekend"] = Triple("savaitgalis", R.drawable.weekend, R.raw.savaitgalis)
+        hashMap["workday"] = Triple("darbo diena", R.drawable.workday, R.raw.darbodiena)
+        hashMap["period"] = Triple("laikotarpį", R.drawable.period, R.raw.laikotarpi)
 
 
 
@@ -238,14 +240,18 @@ class DaysMonthsFlashcards : Fragment() {
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.new_design_text_color))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
+                        R.color.new_design_text_color
+                    ))
 
                 } else {
                     currentTripleIndex = (currentTripleIndex + 1) % hashMap.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.orange1))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
+                        R.color.orange1
+                    ))
                     isFront = true
                 }
                 // retrieve the current Triple from the hashMap

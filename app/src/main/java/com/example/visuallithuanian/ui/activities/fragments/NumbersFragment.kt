@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.ImageAdapter
 import com.example.visuallithuanian.data.ImageInfo
 import com.example.visuallithuanian.ui.activities.FirstScreen
@@ -60,38 +61,49 @@ class NumbersFragment : Fragment() {
 
     private fun generateNumbers(): List<ImageInfo> {
         return listOf(
-            ImageInfo(R.drawable.zero,"Zero","nulis",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.zero,"Zero","nulis",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
 
-            ImageInfo(R.drawable.one,"One","vienas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.one,"One","vienas",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.two,"Two","du",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.two,"Two","du",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.three,"Three","trys",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.three,"Three","trys",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.four,"Four","keturi",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.four,"Four","keturi",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.five,"Five","penki",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.five,"Five","penki",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.six,"Six","šeši",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.six,"Six","šeši",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.seven,"Seven","septyni",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.seven,"Seven","septyni",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.eight,"Eight","aštuoni",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.eight,"Eight","aštuoni",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.nine,"Nine","devyni",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.nine,"Nine","devyni",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.ten,"Ten","dešimt",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.ten,"Ten","dešimt",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
         )

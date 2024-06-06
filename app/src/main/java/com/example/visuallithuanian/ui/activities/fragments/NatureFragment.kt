@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
@@ -14,8 +14,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
-import com.example.visuallithuanian.databinding.FragmentFoodIngrediantsBinding
 import com.example.visuallithuanian.databinding.FragmentNatureBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -72,41 +72,46 @@ class NatureFragment : Fragment() {
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext()
-                ,R.color.float1))
+                , R.color.float1
+            ))
 
         //changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext(),
-                R.color.silver))
+                R.color.silver
+            ))
 
         // Hashmap of strings that will shown on cardview front and back side
-        hashMap["tree"] = Triple("medis", R.drawable.tree,R.raw.sleep)
-        hashMap["forest"] = Triple("miškas", R.drawable.forest,R.raw.sleep)
-        hashMap["grass"] = Triple("žolė", R.drawable.grass,R.raw.sleep)
-        hashMap["flower"] = Triple("gėlė", R.drawable.flowers,R.raw.sleep)
-        hashMap["sky"] = Triple("dangus", R.drawable.sky,R.raw.sleep)
-        hashMap["sun"] = Triple("saulė", R.drawable.sun,R.raw.sleep)
-        hashMap["moon"] = Triple("mėnulis", R.drawable.moon,R.raw.sleep)
-        hashMap["star"] = Triple("žvaigždė", R.drawable.star,R.raw.sleep)
-        hashMap["river"] = Triple("upė", R.drawable.river,R.raw.sleep)
-        hashMap["sea"] = Triple("jūra", R.drawable.seach,R.raw.sleep)
+        hashMap["tree"] = Triple("medis", R.drawable.tree, R.raw.sleep)
+        hashMap["forest"] = Triple("miškas", R.drawable.forest, R.raw.sleep)
+        hashMap["grass"] = Triple("žolė", R.drawable.grass, R.raw.sleep)
+        hashMap["flower"] = Triple("gėlė", R.drawable.flowers, R.raw.sleep)
+        hashMap["sky"] = Triple("dangus", R.drawable.sky, R.raw.sleep)
+        hashMap["sun"] = Triple("saulė", R.drawable.sun, R.raw.sleep)
+        hashMap["moon"] = Triple("mėnulis", R.drawable.moon, R.raw.sleep)
+        hashMap["star"] = Triple("žvaigždė", R.drawable.star, R.raw.sleep)
+        hashMap["river"] = Triple("upė", R.drawable.river, R.raw.sleep)
+        hashMap["sea"] = Triple("jūra", R.drawable.seach, R.raw.sleep)
 
-        hashMap["ground"] = Triple("žemės", R.drawable.ground,R.raw.sleep)
-        hashMap["field"] = Triple("srityje", R.drawable.fields,R.raw.sleep)
-        hashMap["bird"] = Triple("paukštis", R.drawable.birds,R.raw.sleep)
-        hashMap["lake"] = Triple("ežeras", R.drawable.lake,R.raw.sleep)
-        hashMap["rain"] = Triple("lietus", R.drawable.rain,R.raw.sleep)
-        hashMap["thunderstorm"] = Triple("perkūnija", R.drawable.thunderstorm,R.raw.sleep)
-        hashMap["mountain"] = Triple("kalnis", R.drawable.mountain,R.raw.sleep)
-        hashMap["camp"] = Triple("stovykla", R.drawable.camp,R.raw.sleep)
-        hashMap["light and darkness"] = Triple("šviesa ir tamsa", R.drawable.halfaday,R.raw.sleep)
-        hashMap["clean water"] = Triple("švarus vanduo", R.drawable.cleanwater,R.raw.sleep)
+        hashMap["ground"] = Triple("žemės", R.drawable.ground, R.raw.sleep)
+        hashMap["field"] = Triple("srityje", R.drawable.fields, R.raw.sleep)
+        hashMap["bird"] = Triple("paukštis", R.drawable.birds, R.raw.sleep)
+        hashMap["lake"] = Triple("ežeras", R.drawable.lake, R.raw.sleep)
+        hashMap["rain"] = Triple("lietus", R.drawable.rain, R.raw.sleep)
+        hashMap["thunderstorm"] = Triple("perkūnija", R.drawable.thunderstorm, R.raw.sleep)
+        hashMap["mountain"] = Triple("kalnis", R.drawable.mountain, R.raw.sleep)
+        hashMap["camp"] = Triple("stovykla", R.drawable.camp, R.raw.sleep)
+        hashMap["light and darkness"] = Triple("šviesa ir tamsa", R.drawable.halfaday, R.raw.sleep)
+        hashMap["clean water"] = Triple("švarus vanduo", R.drawable.cleanwater, R.raw.sleep)
 
-        hashMap["It rains"] = Triple("Lyja lietus", R.drawable.itrains,R.raw.sleep)
-        hashMap["the snow"] = Triple("sniegas", R.drawable.snow,R.raw.sleep)
-        hashMap["a storm"] = Triple("audra", R.drawable.storm,R.raw.sleep)
-        hashMap["a blizzard"] = Triple("pūga", R.drawable.blizzard,R.raw.sleep)
-        hashMap["her bouquet is beautiful"] = Triple("jos puokštė yra graži", R.drawable.bouquet,R.raw.sleep)
+        hashMap["It rains"] = Triple("Lyja lietus", R.drawable.itrains, R.raw.sleep)
+        hashMap["the snow"] = Triple("sniegas", R.drawable.snow, R.raw.sleep)
+        hashMap["a storm"] = Triple("audra", R.drawable.storm, R.raw.sleep)
+        hashMap["a blizzard"] = Triple("pūga", R.drawable.blizzard, R.raw.sleep)
+        hashMap["her bouquet is beautiful"] = Triple("jos puokštė yra graži",
+            R.drawable.bouquet,
+            R.raw.sleep
+        )
 
 
 

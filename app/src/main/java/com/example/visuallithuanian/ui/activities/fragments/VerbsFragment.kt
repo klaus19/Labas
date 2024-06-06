@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
@@ -14,8 +14,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
-import com.example.visuallithuanian.databinding.FragmentQuestionsBinding
 import com.example.visuallithuanian.databinding.FragmentVerbsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -72,88 +72,90 @@ class VerbsFragment : Fragment() {
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext()
-            ,R.color.orange1))
+            , R.color.orange1
+            ))
 
         //changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext(),
-            R.color.silver))
+                R.color.silver
+            ))
 
         // Hashmap of strings that will shown on cardview front and back side
-        hashMap["be"] = Triple("būti", R.drawable.be,R.raw.whatkas)
-        hashMap["to read"] = Triple("skaityti", R.drawable.read1,R.raw.whatkas)
-        hashMap["knock"] = Triple("belsti", R.drawable.kock,R.raw.whatkas)
-        hashMap["to travel"] = Triple("keliauti", R.drawable.totravel1,R.raw.whatkas)
-        hashMap["think about it"] = Triple("pagalvok", R.drawable.thinkabout,R.raw.whatkas)
-        hashMap["go"] = Triple("eik", R.drawable.go,R.raw.whatkas)
-        hashMap["to have"] = Triple("turėti", R.drawable.have,R.raw.whatkas)
-        hashMap["to drink"] = Triple("gerti", R.drawable.drink,R.raw.whatkas)
-        hashMap["to draw"] = Triple("piešti", R.drawable.draw1,R.raw.whatkas)
-        hashMap["to start"] = Triple("pradėti", R.drawable.start1,R.raw.whatkas)
+        hashMap["be"] = Triple("būti", R.drawable.be, R.raw.whatkas)
+        hashMap["to read"] = Triple("skaityti", R.drawable.read1, R.raw.whatkas)
+        hashMap["knock"] = Triple("belsti", R.drawable.kock, R.raw.whatkas)
+        hashMap["to travel"] = Triple("keliauti", R.drawable.totravel1, R.raw.whatkas)
+        hashMap["think about it"] = Triple("pagalvok", R.drawable.thinkabout, R.raw.whatkas)
+        hashMap["go"] = Triple("eik", R.drawable.go, R.raw.whatkas)
+        hashMap["to have"] = Triple("turėti", R.drawable.have, R.raw.whatkas)
+        hashMap["to drink"] = Triple("gerti", R.drawable.drink, R.raw.whatkas)
+        hashMap["to draw"] = Triple("piešti", R.drawable.draw1, R.raw.whatkas)
+        hashMap["to start"] = Triple("pradėti", R.drawable.start1, R.raw.whatkas)
 
-        hashMap["training"] = Triple("mokymo", R.drawable.training1,R.raw.whatkas)
-        hashMap["to speak"] = Triple("kalbėti", R.drawable.speak11,R.raw.whatkas)
-        hashMap["to learn"] = Triple("mokytis", R.drawable.tolearn,R.raw.whatkas)
-        hashMap["to buy"] = Triple("pirkti", R.drawable.tobuy1,R.raw.whatkas)
-        hashMap["to use"] = Triple("naudoti", R.drawable.use1,R.raw.whatkas)
-        hashMap["work"] = Triple("dirbti", R.drawable.work11,R.raw.whatkas)
-        hashMap["to eat"] = Triple("valgyti", R.drawable.eat11,R.raw.whatkas)
-        hashMap["to find"] = Triple("rasti", R.drawable.tofind,R.raw.whatkas)
-        hashMap["to continue"] = Triple("tęsti", R.drawable.continue1,R.raw.whatkas)
-        hashMap["to say"] = Triple("pasakyti", R.drawable.tosay,R.raw.whatkas)
+        hashMap["training"] = Triple("mokymo", R.drawable.training1, R.raw.whatkas)
+        hashMap["to speak"] = Triple("kalbėti", R.drawable.speak11, R.raw.whatkas)
+        hashMap["to learn"] = Triple("mokytis", R.drawable.tolearn, R.raw.whatkas)
+        hashMap["to buy"] = Triple("pirkti", R.drawable.tobuy1, R.raw.whatkas)
+        hashMap["to use"] = Triple("naudoti", R.drawable.use1, R.raw.whatkas)
+        hashMap["work"] = Triple("dirbti", R.drawable.work11, R.raw.whatkas)
+        hashMap["to eat"] = Triple("valgyti", R.drawable.eat11, R.raw.whatkas)
+        hashMap["to find"] = Triple("rasti", R.drawable.tofind, R.raw.whatkas)
+        hashMap["to continue"] = Triple("tęsti", R.drawable.continue1, R.raw.whatkas)
+        hashMap["to say"] = Triple("pasakyti", R.drawable.tosay, R.raw.whatkas)
 
-        hashMap["to clean"] = Triple("valyti", R.drawable.toclean,R.raw.whatkas)
-        hashMap["smoking"] = Triple("rūkyti", R.drawable.smoking,R.raw.whatkas)
-        hashMap["to wait"] = Triple("palaukti", R.drawable.towait1,R.raw.whatkas)
-        hashMap["to ride"] = Triple("važiuoti", R.drawable.toride1,R.raw.whatkas)
-        hashMap["enter"] = Triple("įveskite", R.drawable.entrance,R.raw.whatkas)
-        hashMap["to put"] = Triple("įdėti", R.drawable.toput,R.raw.whatkas)
-        hashMap["to meet"] = Triple("susitikti", R.drawable.meetyou,R.raw.whatkas)
-        hashMap["take it"] = Triple("imk", R.drawable.take,R.raw.whatkas)
-        hashMap["to fly"] = Triple("skristi", R.drawable.fly,R.raw.whatkas)
-        hashMap["Close"] = Triple("Uždaryti", R.drawable.close,R.raw.whatkas)
+        hashMap["to clean"] = Triple("valyti", R.drawable.toclean, R.raw.whatkas)
+        hashMap["smoking"] = Triple("rūkyti", R.drawable.smoking, R.raw.whatkas)
+        hashMap["to wait"] = Triple("palaukti", R.drawable.towait1, R.raw.whatkas)
+        hashMap["to ride"] = Triple("važiuoti", R.drawable.toride1, R.raw.whatkas)
+        hashMap["enter"] = Triple("įveskite", R.drawable.entrance, R.raw.whatkas)
+        hashMap["to put"] = Triple("įdėti", R.drawable.toput, R.raw.whatkas)
+        hashMap["to meet"] = Triple("susitikti", R.drawable.meetyou, R.raw.whatkas)
+        hashMap["take it"] = Triple("imk", R.drawable.take, R.raw.whatkas)
+        hashMap["to fly"] = Triple("skristi", R.drawable.fly, R.raw.whatkas)
+        hashMap["Close"] = Triple("Uždaryti", R.drawable.close, R.raw.whatkas)
 
-        hashMap["to live"] = Triple("gyventi", R.drawable.tolive,R.raw.whatkas)
-        hashMap["say"] = Triple("sakyk", R.drawable.tosay,R.raw.whatkas)
-        hashMap["to stay"] = Triple("pasilikti", R.drawable.tostay,R.raw.whatkas)
-        hashMap["to save"] = Triple("sutaupyti", R.drawable.tosave,R.raw.whatkas)
-        hashMap["to swim"] = Triple("plaukti", R.drawable.toswim1,R.raw.whatkas)
-        hashMap["to run"] = Triple("bėgti", R.drawable.torun,R.raw.whatkas)
-        hashMap["to try"] = Triple("bandyti", R.drawable.totry1,R.raw.whatkas)
-        hashMap["to do"] = Triple("padaryti", R.drawable.todo,R.raw.whatkas)
-        hashMap["boiled"] = Triple("virti", R.drawable.boiled,R.raw.whatkas)
-        hashMap["to create"] = Triple("sukurti", R.drawable.tocreate,R.raw.whatkas)
+        hashMap["to live"] = Triple("gyventi", R.drawable.tolive, R.raw.whatkas)
+        hashMap["say"] = Triple("sakyk", R.drawable.tosay, R.raw.whatkas)
+        hashMap["to stay"] = Triple("pasilikti", R.drawable.tostay, R.raw.whatkas)
+        hashMap["to save"] = Triple("sutaupyti", R.drawable.tosave, R.raw.whatkas)
+        hashMap["to swim"] = Triple("plaukti", R.drawable.toswim1, R.raw.whatkas)
+        hashMap["to run"] = Triple("bėgti", R.drawable.torun, R.raw.whatkas)
+        hashMap["to try"] = Triple("bandyti", R.drawable.totry1, R.raw.whatkas)
+        hashMap["to do"] = Triple("padaryti", R.drawable.todo, R.raw.whatkas)
+        hashMap["boiled"] = Triple("virti", R.drawable.boiled, R.raw.whatkas)
+        hashMap["to create"] = Triple("sukurti", R.drawable.tocreate, R.raw.whatkas)
 
-        hashMap["to invite"] = Triple("pakviesti", R.drawable.toinvite,R.raw.whatkas)
-        hashMap["to hear"] = Triple("girdėti", R.drawable.tohear,R.raw.whatkas)
-        hashMap["see"] = Triple("matyti", R.drawable.tosee,R.raw.whatkas)
-        hashMap["turn"] = Triple("posūkis", R.drawable.turn1,R.raw.whatkas)
-        hashMap["allow"] = Triple("leisti", R.drawable.allow1,R.raw.whatkas)
-        hashMap["prepared"] = Triple("paruošti", R.drawable.prepared1,R.raw.whatkas)
-        hashMap["to finish"] = Triple("baigti", R.drawable.finish1,R.raw.whatkas)
-        hashMap["to lose"] = Triple("prarasti", R.drawable.tolose1,R.raw.whatkas)
-        hashMap["to educate"] = Triple("šviesti", R.drawable.toeducate1,R.raw.whatkas)
-        hashMap["to sit"] = Triple("sėdėti", R.drawable.tosit,R.raw.whatkas)
+        hashMap["to invite"] = Triple("pakviesti", R.drawable.toinvite, R.raw.whatkas)
+        hashMap["to hear"] = Triple("girdėti", R.drawable.tohear, R.raw.whatkas)
+        hashMap["see"] = Triple("matyti", R.drawable.tosee, R.raw.whatkas)
+        hashMap["turn"] = Triple("posūkis", R.drawable.turn1, R.raw.whatkas)
+        hashMap["allow"] = Triple("leisti", R.drawable.allow1, R.raw.whatkas)
+        hashMap["prepared"] = Triple("paruošti", R.drawable.prepared1, R.raw.whatkas)
+        hashMap["to finish"] = Triple("baigti", R.drawable.finish1, R.raw.whatkas)
+        hashMap["to lose"] = Triple("prarasti", R.drawable.tolose1, R.raw.whatkas)
+        hashMap["to educate"] = Triple("šviesti", R.drawable.toeducate1, R.raw.whatkas)
+        hashMap["to sit"] = Triple("sėdėti", R.drawable.tosit, R.raw.whatkas)
 
-        hashMap["to sing"] = Triple("dainuoti", R.drawable.tosing,R.raw.whatkas)
-        hashMap["to dance"] = Triple("šokti", R.drawable.todance1,R.raw.whatkas)
-        hashMap["to paint"] = Triple("tapyti", R.drawable.topaint,R.raw.whatkas)
-        hashMap["laugh"] = Triple("juoktis", R.drawable.laugh,R.raw.whatkas)
-        hashMap["to walk"] = Triple("vaikščioti", R.drawable.walk,R.raw.whatkas)
-        hashMap["to collapse"] = Triple("žlugti", R.drawable.tocollapse,R.raw.whatkas)
-        hashMap["to get"] = Triple("gauti", R.drawable.toget1,R.raw.whatkas)
-        hashMap["to earn"] = Triple("uždirbti", R.drawable.toearn1,R.raw.whatkas)
-        hashMap["wasted"] = Triple("švaistyti", R.drawable.wasted,R.raw.whatkas)
-        hashMap["to sell"] = Triple("parduoti", R.drawable.tosell,R.raw.whatkas)
+        hashMap["to sing"] = Triple("dainuoti", R.drawable.tosing, R.raw.whatkas)
+        hashMap["to dance"] = Triple("šokti", R.drawable.todance1, R.raw.whatkas)
+        hashMap["to paint"] = Triple("tapyti", R.drawable.topaint, R.raw.whatkas)
+        hashMap["laugh"] = Triple("juoktis", R.drawable.laugh, R.raw.whatkas)
+        hashMap["to walk"] = Triple("vaikščioti", R.drawable.walk, R.raw.whatkas)
+        hashMap["to collapse"] = Triple("žlugti", R.drawable.tocollapse, R.raw.whatkas)
+        hashMap["to get"] = Triple("gauti", R.drawable.toget1, R.raw.whatkas)
+        hashMap["to earn"] = Triple("uždirbti", R.drawable.toearn1, R.raw.whatkas)
+        hashMap["wasted"] = Triple("švaistyti", R.drawable.wasted, R.raw.whatkas)
+        hashMap["to sell"] = Triple("parduoti", R.drawable.tosell, R.raw.whatkas)
 
-        hashMap["kick"] = Triple("spardyti", R.drawable.kick,R.raw.whatkas)
-        hashMap["hug"] = Triple("apkabinti", R.drawable.hug,R.raw.whatkas)
-        hashMap["to sink"] = Triple("skęsti", R.drawable.tosink1,R.raw.whatkas)
-        hashMap["send"] = Triple("siųsti", R.drawable.send1,R.raw.whatkas)
-        hashMap["to leave"] = Triple("palikti", R.drawable.leave,R.raw.whatkas)
-        hashMap["write"] = Triple("Rašyti", R.drawable.write,R.raw.whatkas)
-        hashMap["cry"] = Triple("verkti", R.drawable.tocry,R.raw.whatkas)
-        hashMap["to sleep"] = Triple("miegoti", R.drawable.sleep,R.raw.whatkas)
+        hashMap["kick"] = Triple("spardyti", R.drawable.kick, R.raw.whatkas)
+        hashMap["hug"] = Triple("apkabinti", R.drawable.hug, R.raw.whatkas)
+        hashMap["to sink"] = Triple("skęsti", R.drawable.tosink1, R.raw.whatkas)
+        hashMap["send"] = Triple("siųsti", R.drawable.send1, R.raw.whatkas)
+        hashMap["to leave"] = Triple("palikti", R.drawable.leave, R.raw.whatkas)
+        hashMap["write"] = Triple("Rašyti", R.drawable.write, R.raw.whatkas)
+        hashMap["cry"] = Triple("verkti", R.drawable.tocry, R.raw.whatkas)
+        hashMap["to sleep"] = Triple("miegoti", R.drawable.sleep, R.raw.whatkas)
 
         // Initialize Media Player
         val mediaPlayer = MediaPlayer()
@@ -263,14 +265,18 @@ class VerbsFragment : Fragment() {
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.new_design_text_color))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
+                        R.color.new_design_text_color
+                    ))
 
                 } else {
                     currentTripleIndex = (currentTripleIndex + 1) % hashMap.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.orange1))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
+                        R.color.orange1
+                    ))
                     isFront = true
                 }
 

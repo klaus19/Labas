@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.ImageAdapter
 import com.example.visuallithuanian.data.ImageInfo
 import com.example.visuallithuanian.databinding.FragmentInstitutionsBinding
@@ -51,46 +52,64 @@ class InstitutionsFragment : Fragment() {
     private fun generateInstitutionsList(): List<ImageInfo> {
 
         return listOf(
-            ImageInfo(R.drawable.museum,"Museum","Muziejus",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.museum,"Museum","Muziejus",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.hospital,"Hospital","Ligoninė",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.hospital,"Hospital","Ligoninė",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.zoo,"Zoo","Zoologijos sodas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.zoo,"Zoo","Zoologijos sodas",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.park,"Park","Parkas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.park,"Park","Parkas",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.school,"School","Mokykla",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.school,"School","Mokykla",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.university,"University","Universitetas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.university,"University","Universitetas",listOf(R.drawable.purp),
+                R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.church,"Church","Bažnyčia",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.church,"Church","Bažnyčia",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.bank,"Bank","Bankas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.bank,"Bank","Bankas",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.supermarket,"Supermarket","prekybos centras",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.supermarket,"Supermarket","prekybos centras",listOf(R.drawable.purp),
+                R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.resort,"Resort","Kurortas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.resort,"Resort","Kurortas",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.restaurant,"Restaurant","Restoranas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.restaurant,"Restaurant","Restoranas",listOf(R.drawable.purp),
+                R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.aquarium,"Aquarium","Akvariumas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.aquarium,"Aquarium","Akvariumas",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.gymnasium,"Gymnasium","Gimnazijos",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.gymnasium,"Gymnasium","Gimnazijos",listOf(R.drawable.purp),
+                R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.pub,"Pub","Pubas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.pub,"Pub","Pubas",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
 

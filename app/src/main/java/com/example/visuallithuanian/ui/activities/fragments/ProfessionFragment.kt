@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.ImageAdapter
 import com.example.visuallithuanian.data.ImageInfo
 import com.example.visuallithuanian.ui.activities.FirstScreen
@@ -61,34 +62,48 @@ class ProfessionFragment : Fragment() {
     private fun generateProfessionList(): List<ImageInfo> {
 
         return listOf(
-            ImageInfo(R.drawable.doctor,"Doctor","Gydytojas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.doctor,"Doctor","Gydytojas",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.lawyer,"Lawyer","Advokatas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.lawyer,"Lawyer","Advokatas",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.teacher,"Teacher","Mokytojas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.teacher,"Teacher","Mokytojas",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.engineer,"Engineer","Inžinierius",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.engineer,"Engineer","Inžinierius",listOf(R.drawable.purp),
+                R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.accountant,"Accountant","Buhalteris",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.accountant,"Accountant","Buhalteris",listOf(R.drawable.purp),
+                R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.programmer,"Programmer","Programuotojas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.programmer,"Programmer","Programuotojas",listOf(R.drawable.purp),
+                R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.architect,"Architect","Architektas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.architect,"Architect","Architektas",listOf(R.drawable.purp),
+                R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.chef,"Chef","Šefas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.chef,"Chef","Šefas",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.nurse,"Nurse","Slaugytojas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.nurse,"Nurse","Slaugytojas",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.musician,"Musician","Muzikantas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.musician,"Musician","Muzikantas",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
         )

@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.ImageAdapter
 import com.example.visuallithuanian.data.ImageInfo
 import com.example.visuallithuanian.ui.activities.FirstScreen
@@ -59,40 +60,52 @@ class MonthsFragment : Fragment() {
     private fun generateMonths(): List<ImageInfo> {
 
         return listOf(
-            ImageInfo(R.drawable.january,"January","Sausis",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.january,"January","Sausis",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.february,"February","Vasaris",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.february,"February","Vasaris",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.march,"March","Kovas",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.march,"March","Kovas",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.april,"April","Balandis",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.april,"April","Balandis",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.may,"May","Gegužė",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.may,"May","Gegužė",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.june,"June","Birželis",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.june,"June","Birželis",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.july,"July","Liepa",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.july,"July","Liepa",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.august,"August","Rugpjūtis",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.august,"August","Rugpjūtis",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.september,"September","Rugsėjis",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.september,"September","Rugsėjis",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.october,"October","Spalis",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.october,"October","Spalis",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.november,"November","Lapkritis",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.november,"November","Lapkritis",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
-            ImageInfo(R.drawable.december,"December","Gruodis",listOf(R.drawable.purp), R.drawable.mic,
+            ImageInfo(
+                R.drawable.december,"December","Gruodis",listOf(R.drawable.purp), R.drawable.mic,
                 R.raw.potato,
                 "",""),
             )

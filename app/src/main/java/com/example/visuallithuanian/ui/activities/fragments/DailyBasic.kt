@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 
 import android.annotation.SuppressLint
@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentDailyBasicBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
@@ -70,49 +71,87 @@ class DailyBasic : Fragment() {
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext()
-                ,R.color.float1))
+                , R.color.float1
+            ))
 
         //changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext(),
-                R.color.silver))
+                R.color.silver
+            ))
 
         // Hashmap of strings that will shown on cardview front and back side
-        hashMap["sleep"] = Triple("miegoti", R.drawable.sleep,R.raw.sleep)
-        hashMap["to shop"] = Triple("apsipirkti",R.drawable.shopping,R.raw.potato)
-        hashMap["to watch a movie"] = Triple("Žiūrėti filmą",R.drawable.cinemascreen,R.raw.towatchamovie)
-        hashMap["I go shopping"] = Triple("aš einu apsipirkti", R.drawable.goshopping,R.raw.igoshopping)
-        hashMap["What is it?"] = Triple("Kas tai?",R.drawable.what1,R.raw.whatisit_)
-        hashMap["this is English newspaper"] = Triple("tai yra angliškas laikraštis",R.drawable.newspaper,R.raw.thisisenglishnewspaper)
-        hashMap["Japanese food"] = Triple("Japonų maistas", R.drawable.japanesefood,R.raw.japanesefood)
-        hashMap["hot coffee"] = Triple("karšta kava",R.drawable.hotcoffee,R.raw.hotcoffee)
-        hashMap["I learn Lithuanian"] = Triple("Aš mokausi lietuvių kalbos",R.drawable.languages,R.raw.ilearnlithuanian)
-        hashMap["to eat"] = Triple("valgyti", R.drawable.eat,R.raw.toeat)
-        hashMap["I eat japanese food"] = Triple("Aš valgau japonišką maistą",R.drawable.eat,R.raw.letsjapanese)
-        hashMap["Would you like some tea?"] = Triple("Ar norėtumete arbatos?",R.drawable.tea1,R.raw.wouldyoulikesometea)
-        hashMap["Can you repeat it again?"] = Triple("Ar galite pakartoti dar kartą?", R.drawable.repeat,R.raw.canyourepeatagain)
-        hashMap["Of course"] = Triple("Žinoma",R.drawable.ofcourse,R.raw.ofcourse)
-        hashMap["rice"] = Triple("ryžiai",R.drawable.rice,R.raw.rice)
-        hashMap["soup"] = Triple("sriuba",R.drawable.soup1,R.raw.soup)
-        hashMap["Bread"] = Triple("Duona", R.drawable.bread1,R.raw.bread1)
-        hashMap["water"] = Triple("vanduo",R.drawable.water1,R.raw.water)
-        hashMap["What are you reading?"] = Triple("Ką skaitote?",R.drawable.whatreading,R.raw.whatareyoureading)
-        hashMap["to cost"] = Triple("kainuoti",R.drawable.cost,R.raw.tocost)
-        hashMap["a cup of coffee"] = Triple("puodelis kavos",R.drawable.cupcoffee,R.raw.cupofcoffee)
-        hashMap["apple"] = Triple("obuolys", R.drawable.apple1,R.raw.apple1)
-        hashMap["She drinks hot coffee"] = Triple("Ji geria karštą kavą",R.drawable.coffee1,R.raw.shedrinkshotcoffee)
-        hashMap["a glass"] = Triple("stiklinė",R.drawable.glass1,R.raw.aglass)
-        hashMap["What do you buy?"] = Triple("Ką perkate?",R.drawable.buy11,R.raw.whatdoyoubuy)
-        hashMap["parents"] = Triple("tėvai",R.drawable.parents1,R.raw.parents)
-        hashMap["classmate"] = Triple("klasiokas", R.drawable.classmate,R.raw.classmate)
-        hashMap["my friends"] = Triple("Mano draugai",R.drawable.friends1,R.raw.myfriends)
-        hashMap["a little"] = Triple("šiek tiek",R.drawable.little,R.raw.little)
-        hashMap["Let's go"] = Triple("eikime!",R.drawable.letsgo,R.raw.letsgo)
-        hashMap["more"] = Triple("daugiau",R.drawable.more,R.raw.more)
-        hashMap["key"] = Triple("raktas",R.drawable.key,R.raw.key11)
-        hashMap["what are you doing?"] = Triple("ką darote?",R.drawable.todo,R.raw.whatareyoudoing)
-        hashMap["hand"] = Triple("ranka",R.drawable.hand,R.raw.hand)
-        hashMap["to stop"] = Triple("nustoti",R.drawable.stopsign,R.raw.tostop)
+        hashMap["sleep"] = Triple("miegoti", R.drawable.sleep, R.raw.sleep)
+        hashMap["to shop"] = Triple("apsipirkti", R.drawable.shopping, R.raw.potato)
+        hashMap["to watch a movie"] = Triple("Žiūrėti filmą",
+            R.drawable.cinemascreen,
+            R.raw.towatchamovie
+        )
+        hashMap["I go shopping"] = Triple("aš einu apsipirkti",
+            R.drawable.goshopping,
+            R.raw.igoshopping
+        )
+        hashMap["What is it?"] = Triple("Kas tai?", R.drawable.what1, R.raw.whatisit_)
+        hashMap["this is English newspaper"] = Triple("tai yra angliškas laikraštis",
+            R.drawable.newspaper,
+            R.raw.thisisenglishnewspaper
+        )
+        hashMap["Japanese food"] = Triple("Japonų maistas",
+            R.drawable.japanesefood,
+            R.raw.japanesefood
+        )
+        hashMap["hot coffee"] = Triple("karšta kava", R.drawable.hotcoffee, R.raw.hotcoffee)
+        hashMap["I learn Lithuanian"] = Triple("Aš mokausi lietuvių kalbos",
+            R.drawable.languages,
+            R.raw.ilearnlithuanian
+        )
+        hashMap["to eat"] = Triple("valgyti", R.drawable.eat, R.raw.toeat)
+        hashMap["I eat japanese food"] = Triple("Aš valgau japonišką maistą",
+            R.drawable.eat,
+            R.raw.letsjapanese
+        )
+        hashMap["Would you like some tea?"] = Triple("Ar norėtumete arbatos?",
+            R.drawable.tea1,
+            R.raw.wouldyoulikesometea
+        )
+        hashMap["Can you repeat it again?"] = Triple("Ar galite pakartoti dar kartą?",
+            R.drawable.repeat,
+            R.raw.canyourepeatagain
+        )
+        hashMap["Of course"] = Triple("Žinoma", R.drawable.ofcourse, R.raw.ofcourse)
+        hashMap["rice"] = Triple("ryžiai", R.drawable.rice, R.raw.rice)
+        hashMap["soup"] = Triple("sriuba", R.drawable.soup1, R.raw.soup)
+        hashMap["Bread"] = Triple("Duona", R.drawable.bread1, R.raw.bread1)
+        hashMap["water"] = Triple("vanduo", R.drawable.water1, R.raw.water)
+        hashMap["What are you reading?"] = Triple("Ką skaitote?",
+            R.drawable.whatreading,
+            R.raw.whatareyoureading
+        )
+        hashMap["to cost"] = Triple("kainuoti", R.drawable.cost, R.raw.tocost)
+        hashMap["a cup of coffee"] = Triple("puodelis kavos",
+            R.drawable.cupcoffee,
+            R.raw.cupofcoffee
+        )
+        hashMap["apple"] = Triple("obuolys", R.drawable.apple1, R.raw.apple1)
+        hashMap["She drinks hot coffee"] = Triple("Ji geria karštą kavą",
+            R.drawable.coffee1,
+            R.raw.shedrinkshotcoffee
+        )
+        hashMap["a glass"] = Triple("stiklinė", R.drawable.glass1, R.raw.aglass)
+        hashMap["What do you buy?"] = Triple("Ką perkate?", R.drawable.buy11, R.raw.whatdoyoubuy)
+        hashMap["parents"] = Triple("tėvai", R.drawable.parents1, R.raw.parents)
+        hashMap["classmate"] = Triple("klasiokas", R.drawable.classmate, R.raw.classmate)
+        hashMap["my friends"] = Triple("Mano draugai", R.drawable.friends1, R.raw.myfriends)
+        hashMap["a little"] = Triple("šiek tiek", R.drawable.little, R.raw.little)
+        hashMap["Let's go"] = Triple("eikime!", R.drawable.letsgo, R.raw.letsgo)
+        hashMap["more"] = Triple("daugiau", R.drawable.more, R.raw.more)
+        hashMap["key"] = Triple("raktas", R.drawable.key, R.raw.key11)
+        hashMap["what are you doing?"] = Triple("ką darote?",
+            R.drawable.todo,
+            R.raw.whatareyoudoing
+        )
+        hashMap["hand"] = Triple("ranka", R.drawable.hand, R.raw.hand)
+        hashMap["to stop"] = Triple("nustoti", R.drawable.stopsign, R.raw.tostop)
 
         // Initialize Media Player
         val mediaPlayer = MediaPlayer()
@@ -221,14 +260,18 @@ class DailyBasic : Fragment() {
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.new_design_text_color))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
+                        R.color.new_design_text_color
+                    ))
 
                 } else {
                     currentTripleIndex = (currentTripleIndex + 1) % hashMap.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.orange1))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
+                        R.color.orange1
+                    ))
                     isFront = true
                 }
                 // retrieve the current Triple from the hashMap

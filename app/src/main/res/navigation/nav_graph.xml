@@ -225,7 +225,7 @@
     </fragment>
     <fragment
         android:id="@+id/solarsystem"
-        android:name="com.example.visuallithuanian.Solarsystem"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.Solarsystem"
         android:label="fragment_solarsystem"
         tools:layout="@layout/fragment_solarsystem" >
         <action
@@ -234,7 +234,7 @@
     </fragment>
     <fragment
         android:id="@+id/directionsFragment"
-        android:name="com.example.visuallithuanian.DirectionsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.DirectionsFragment"
         android:label="fragment_directions"
         tools:layout="@layout/fragment_directions" >
         <action
@@ -243,7 +243,7 @@
     </fragment>
     <fragment
         android:id="@+id/vegetables_Fragment"
-        android:name="com.example.visuallithuanian.VegetablesFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.VegetablesFragment"
         android:label="fragment_vegetables"
         tools:layout="@layout/fragment_vegetables" >
         <action
@@ -252,7 +252,7 @@
     </fragment>
     <fragment
         android:id="@+id/flowersFragment"
-        android:name="com.example.visuallithuanian.FlowersFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.FlowersFragment"
         android:label="fragment_flowers"
         tools:layout="@layout/fragment_flowers" >
         <action
@@ -261,12 +261,12 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.visuallithuanian.SettingsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/sportsFragment"
-        android:name="com.example.visuallithuanian.SportsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.SportsFragment"
         android:label="fragment_sports"
         tools:layout="@layout/fragment_sports" >
         <action
@@ -275,7 +275,7 @@
     </fragment>
     <fragment
         android:id="@+id/seasonsFragment"
-        android:name="com.example.visuallithuanian.SeasonsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.SeasonsFragment"
         android:label="fragment_seasons"
         tools:layout="@layout/fragment_seasons" >
         <action
@@ -284,7 +284,7 @@
     </fragment>
     <fragment
         android:id="@+id/institutionsFragment"
-        android:name="com.example.visuallithuanian.InstitutionsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.InstitutionsFragment"
         android:label="fragment_institutions"
         tools:layout="@layout/fragment_institutions" >
         <action
@@ -293,7 +293,7 @@
     </fragment>
     <fragment
         android:id="@+id/birdsFragment"
-        android:name="com.example.visuallithuanian.BirdsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.BirdsFragment"
         android:label="fragment_birds"
         tools:layout="@layout/fragment_birds" >
         <action
@@ -308,7 +308,7 @@
     </fragment>
     <fragment
         android:id="@+id/questionsFragment"
-        android:name="com.example.visuallithuanian.QuestionsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.QuestionsFragment"
         android:label="fragment_questions"
         tools:layout="@layout/fragment_questions" >
         <action
@@ -335,7 +335,7 @@
     </fragment>
     <fragment
         android:id="@+id/colorsFragment"
-        android:name="com.example.visuallithuanian.ColorsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.ColorsFragment"
         android:label="fragment_colors"
         tools:layout="@layout/fragment_colors" >
         <action
@@ -344,7 +344,7 @@
     </fragment>
     <fragment
         android:id="@+id/continentsFragment"
-        android:name="com.example.visuallithuanian.ContinentsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.ContinentsFragment"
         android:label="fragment_continents"
         tools:layout="@layout/fragment_continents" >
         <action
@@ -353,7 +353,7 @@
     </fragment>
     <fragment
         android:id="@+id/numbersFragment"
-        android:name="com.example.visuallithuanian.NumbersFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.NumbersFragment"
         android:label="fragment_numbers"
         tools:layout="@layout/fragment_numbers" >
         <action
@@ -362,7 +362,7 @@
     </fragment>
     <fragment
         android:id="@+id/monthsFragment"
-        android:name="com.example.visuallithuanian.MonthsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.MonthsFragment"
         android:label="fragment_months"
         tools:layout="@layout/fragment_months" >
         <action
@@ -371,7 +371,7 @@
     </fragment>
     <fragment
         android:id="@+id/WeekFragment"
-        android:name="com.example.visuallithuanian.WeekdaysFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.WeekdaysFragment"
         android:label="fragment_week"
         tools:layout="@layout/fragment_weekdays" />
         <action
@@ -379,7 +379,7 @@
             app:destination="@id/flashCards"/>
     <fragment
         android:id="@+id/timeFragment"
-        android:name="com.example.visuallithuanian.TimeFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.TimeFragment"
         android:label="fragment_time"
         tools:layout="@layout/fragment_time" >
         <action
@@ -388,7 +388,7 @@
     </fragment>
     <fragment
         android:id="@+id/professionFragment"
-        android:name="com.example.visuallithuanian.ProfessionFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.ProfessionFragment"
         android:label="fragment_profession"
         tools:layout="@layout/fragment_profession" >
         <action
@@ -397,7 +397,7 @@
     </fragment>
     <fragment
         android:id="@+id/transportFragment"
-        android:name="com.example.visuallithuanian.TransportFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.TransportFragment"
         android:label="fragment_transport"
         tools:layout="@layout/fragment_transport" >
         <action
@@ -406,7 +406,7 @@
     </fragment>
     <fragment
         android:id="@+id/dailyBasic"
-        android:name="com.example.visuallithuanian.DailyBasic"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.DailyBasic"
         android:label="fragment_daily_basic"
         tools:layout="@layout/fragment_daily_basic" >
         <action
@@ -418,7 +418,7 @@
     </fragment>
     <fragment
         android:id="@+id/computerTechnologyFragment"
-        android:name="com.example.visuallithuanian.ComputerTechnologyFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.ComputerTechnologyFragment"
         android:label="fragment_computer_technology"
         tools:layout="@layout/fragment_computer_technology" >
         <action
@@ -430,7 +430,7 @@
     </fragment>
     <fragment
         android:id="@+id/daysMonthsFlashcards"
-        android:name="com.example.visuallithuanian.DaysMonthsFlashcards"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.DaysMonthsFlashcards"
         android:label="fragment_days_months_flashcards"
         tools:layout="@layout/fragment_days_months_flashcards" >
         <action
@@ -442,7 +442,7 @@
     </fragment>
     <fragment
         android:id="@+id/keyPhrasesFragment"
-        android:name="com.example.visuallithuanian.KeyPhrasesFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.KeyPhrasesFragment"
         android:label="fragment_key_phrases"
         tools:layout="@layout/fragment_key_phrases" >
         <action
@@ -457,7 +457,7 @@
     </fragment>
     <fragment
         android:id="@+id/basicActionsFlashcard"
-        android:name="com.example.visuallithuanian.BasicActionsFlashcard"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.BasicActionsFlashcard"
         android:label="fragment_basic_actions_flashcard"
         tools:layout="@layout/fragment_basic_actions_flashcard" >
         <action
@@ -469,7 +469,7 @@
     </fragment>
     <fragment
         android:id="@+id/familyFlashcards"
-        android:name="com.example.visuallithuanian.FamilyFlashcards"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.FamilyFlashcards"
         android:label="fragment_family_flashcards"
         tools:layout="@layout/fragment_family_flashcards" >
         <action
@@ -478,7 +478,7 @@
     </fragment>
     <fragment
         android:id="@+id/workPlaceLanguage"
-        android:name="com.example.visuallithuanian.WorkPlaceLanguage"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.WorkPlaceLanguage"
         android:label="fragment_work_place_language"
         tools:layout="@layout/fragment_work_place_language" >
         <action
@@ -487,7 +487,7 @@
     </fragment>
     <fragment
         android:id="@+id/verbsFragment"
-        android:name="com.example.visuallithuanian.VerbsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.VerbsFragment"
         android:label="fragment_verbs"
         tools:layout="@layout/fragment_verbs" >
         <action
@@ -499,7 +499,7 @@
     </fragment>
     <fragment
         android:id="@+id/foodIngrediants"
-        android:name="com.example.visuallithuanian.FoodIngrediants"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.FoodIngrediants"
         android:label="fragment_food_ingrediants"
         tools:layout="@layout/fragment_food_ingrediants" >
         <action
@@ -508,7 +508,7 @@
     </fragment>
     <fragment
         android:id="@+id/holidayCelebrations"
-        android:name="com.example.visuallithuanian.HolidayCelebrations"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.HolidayCelebrations"
         android:label="fragment_holiday_celebrations"
         tools:layout="@layout/fragment_holiday_celebrations" >
         <action
@@ -517,7 +517,7 @@
     </fragment>
     <fragment
         android:id="@+id/natureFragment"
-        android:name="com.example.visuallithuanian.NatureFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.NatureFragment"
         android:label="fragment_nature"
         tools:layout="@layout/fragment_nature" >
         <action
@@ -526,7 +526,7 @@
     </fragment>
     <fragment
         android:id="@+id/colorshapeFragment"
-        android:name="com.example.visuallithuanian.ColorshapeFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.ColorshapeFragment"
         android:label="fragment_colorshape"
         tools:layout="@layout/fragment_colorshape" >
         <action
@@ -535,7 +535,7 @@
     </fragment>
     <fragment
         android:id="@+id/numbersFlashcardFragment"
-        android:name="com.example.visuallithuanian.NumbersFlashcardFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.NumbersFlashcardFragment"
         android:label="fragment_numbers_flashcard"
         tools:layout="@layout/fragment_numbers_flashcard" >
         <action
@@ -544,7 +544,7 @@
     </fragment>
     <fragment
         android:id="@+id/sportsFlashcardFragment"
-        android:name="com.example.visuallithuanian.SportsFlashcardFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.SportsFlashcardFragment"
         android:label="fragment_sports_flashcard"
         tools:layout="@layout/fragment_sports_flashcard" >
         <action
@@ -553,7 +553,7 @@
     </fragment>
     <fragment
         android:id="@+id/bestWords100Fragment"
-        android:name="com.example.visuallithuanian.BestWords100Fragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.BestWords100Fragment"
         android:label="fragment_best_words100"
         tools:layout="@layout/fragment_best_words100" >
         <action
@@ -571,7 +571,7 @@
     </fragment>
     <fragment
         android:id="@+id/personalityFlashcardFragment"
-        android:name="com.example.visuallithuanian.PersonalityFlashcardFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.PersonalityFlashcardFragment"
         android:label="fragment_personality_flashcard"
         tools:layout="@layout/fragment_personality_flashcard" >
         <action
@@ -580,7 +580,7 @@
     </fragment>
     <fragment
         android:id="@+id/householdFlashcardFragment"
-        android:name="com.example.visuallithuanian.HouseholdFlashcardFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.HouseholdFlashcardFragment"
         android:label="fragment_household_flashcard"
         tools:layout="@layout/fragment_household_flashcard" >
         <action
@@ -589,7 +589,7 @@
     </fragment>
     <fragment
         android:id="@+id/cinemaFragment"
-        android:name="com.example.visuallithuanian.CinemaFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.CinemaFragment"
         android:label="fragment_cinema"
         tools:layout="@layout/fragment_cinema" >
         <action
@@ -598,7 +598,7 @@
     </fragment>
     <fragment
         android:id="@+id/veganFlashcardsFragment"
-        android:name="com.example.visuallithuanian.VeganFlashcardsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.VeganFlashcardsFragment"
         android:label="fragment_vegan_flashcards"
         tools:layout="@layout/fragment_vegan_flashcards" >
         <action
@@ -607,7 +607,7 @@
     </fragment>
     <fragment
         android:id="@+id/romanticPhrasesFragment"
-        android:name="com.example.visuallithuanian.RomanticPhrasesFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.RomanticPhrasesFragment"
         android:label="fragment_romantic_phrases"
         tools:layout="@layout/fragment_romantic_phrases" >
         <action
@@ -616,7 +616,7 @@
     </fragment>
     <fragment
         android:id="@+id/cafeFlashcardsFragment"
-        android:name="com.example.visuallithuanian.CafeFlashcardsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.CafeFlashcardsFragment"
         android:label="fragment_cafe_flashcards"
         tools:layout="@layout/fragment_cafe_flashcards" >
         <action
@@ -625,7 +625,7 @@
     </fragment>
     <fragment
         android:id="@+id/villageFragment"
-        android:name="com.example.visuallithuanian.VillageFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.VillageFragment"
         android:label="fragment_village"
         tools:layout="@layout/fragment_village" >
         <action
@@ -643,7 +643,7 @@
     </fragment>
     <fragment
         android:id="@+id/professionFlashcardFragment"
-        android:name="com.example.visuallithuanian.ProfessionFlashcardFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.ProfessionFlashcardFragment"
         android:label="fragment_profession_flashcard"
         tools:layout="@layout/fragment_profession_flashcard" >
         <action
@@ -652,7 +652,7 @@
     </fragment>
     <fragment
         android:id="@+id/animalFlashcardFragment"
-        android:name="com.example.visuallithuanian.AnimalFlashcardFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.AnimalFlashcardFragment"
         android:label="fragment_animal_flashcard"
         tools:layout="@layout/fragment_animal_flashcard" >
         <action
@@ -661,7 +661,7 @@
     </fragment>
     <fragment
         android:id="@+id/businessLanguageFlashcardsFragment"
-        android:name="com.example.visuallithuanian.BusinessLanguageFlashcardsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.BusinessLanguageFlashcardsFragment"
         android:label="fragment_business_language_flashcards"
         tools:layout="@layout/fragment_business_language_flashcards" >
         <action
@@ -670,7 +670,7 @@
     </fragment>
     <fragment
         android:id="@+id/weeklyBasicFlashcardFragment"
-        android:name="com.example.visuallithuanian.WeeklyBasicFlashcardFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.WeeklyBasicFlashcardFragment"
         android:label="fragment_weekly_basic_flashcard"
         tools:layout="@layout/fragment_weekly_basic_flashcard" >
         <action
@@ -682,7 +682,7 @@
     </fragment>
     <fragment
         android:id="@+id/pointersFlashcardFragment"
-        android:name="com.example.visuallithuanian.PointersFlashcardFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.PointersFlashcardFragment"
         android:label="fragment_pointers_flashcard"
         tools:layout="@layout/fragment_pointers_flashcard" >
         <action
@@ -691,7 +691,7 @@
     </fragment>
     <fragment
         android:id="@+id/animalWordsFragment"
-        android:name="com.example.visuallithuanian.AnimalWordsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.AnimalWordsFragment"
         android:label="fragment_animal_words"
         tools:layout="@layout/fragment_animal_words" >
         <action
@@ -700,7 +700,7 @@
     </fragment>
     <fragment
         android:id="@+id/interfaceFragment"
-        android:name="com.example.visuallithuanian.InterfaceFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.InterfaceFragment"
         android:label="fragment_interface"
         tools:layout="@layout/fragment_interface" >
         <action
@@ -709,7 +709,7 @@
     </fragment>
     <fragment
         android:id="@+id/mathsFragment"
-        android:name="com.example.visuallithuanian.MathsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.MathsFragment"
         android:label="fragment_maths"
         tools:layout="@layout/fragment_maths" >
         <action
@@ -718,7 +718,7 @@
     </fragment>
     <fragment
         android:id="@+id/feelingsFragment"
-        android:name="com.example.visuallithuanian.FeelingsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.FeelingsFragment"
         android:label="fragment_feelings"
         tools:layout="@layout/fragment_feelings" >
         <action
@@ -727,7 +727,7 @@
     </fragment>
     <fragment
         android:id="@+id/rightsFlashcardFragment"
-        android:name="com.example.visuallithuanian.RightsFlashcardFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.RightsFlashcardFragment"
         android:label="fragment_rights_flashcard"
         tools:layout="@layout/fragment_rights_flashcard" >
         <action
@@ -736,12 +736,12 @@
     </fragment>
     <fragment
         android:id="@+id/savedSentencesFragment"
-        android:name="com.example.visuallithuanian.SavedSentencesFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.SavedSentencesFragment"
         android:label="fragment_saved_sentences"
         tools:layout="@layout/fragment_saved_sentences" />
     <fragment
         android:id="@+id/actionsFlashcardFragment"
-        android:name="com.example.visuallithuanian.ActionsFlashcardFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.ActionsFlashcardFragment"
         android:label="fragment_actions_flashcard"
         tools:layout="@layout/fragment_actions_flashcard" >
         <action
@@ -750,7 +750,7 @@
     </fragment>
     <fragment
         android:id="@+id/adjectivesFlashcardFragment"
-        android:name="com.example.visuallithuanian.AdjectivesFlashcardFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.AdjectivesFlashcardFragment"
         android:label="fragment_adjectives_flashcard"
         tools:layout="@layout/fragment_adjectives_flashcard" >
         <action

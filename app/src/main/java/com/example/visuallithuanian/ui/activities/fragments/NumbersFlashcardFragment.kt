@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
@@ -14,8 +14,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
-import com.example.visuallithuanian.databinding.FragmentNatureBinding
 import com.example.visuallithuanian.databinding.FragmentNumbersFlashcardBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -71,24 +71,35 @@ class NumbersFlashcardFragment : Fragment() {
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext()
-                ,R.color.float1))
+                , R.color.float1
+            ))
 
         //changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext(),
-                R.color.silver))
+                R.color.silver
+            ))
 
         // Hashmap of strings that will shown on cardview front and back side
-        hashMap["a thousand"] = Triple("tūkstantis", R.drawable.thousand,R.raw.sleep)
-        hashMap["ten"] = Triple("dešimt", R.drawable.ten,R.raw.sleep)
-        hashMap["ten thousand"] = Triple("dešimt tukstancių", R.drawable.tenthousand,R.raw.sleep)
-        hashMap["one hundred"] = Triple("šimtas", R.drawable.onehundred,R.raw.sleep)
-        hashMap["one hundred thousand"] = Triple("šimtas tūkstančių", R.drawable.onehundredthousand,R.raw.sleep)
-        hashMap["million"] = Triple("milijonas", R.drawable.million,R.raw.sleep)
-        hashMap["the first train"] = Triple("pirmasis traukinis", R.drawable.firsttrain1,R.raw.sleep)
-        hashMap["two tickets"] = Triple("du bilietai", R.drawable.twoticket,R.raw.sleep)
-        hashMap["the last train"] = Triple("paskutinis traukinis", R.drawable.lasttrain,R.raw.sleep)
-        hashMap["first aid"] = Triple("pirmosios pagalbos", R.drawable.firstaid,R.raw.sleep)
+        hashMap["a thousand"] = Triple("tūkstantis", R.drawable.thousand, R.raw.sleep)
+        hashMap["ten"] = Triple("dešimt", R.drawable.ten, R.raw.sleep)
+        hashMap["ten thousand"] = Triple("dešimt tukstancių", R.drawable.tenthousand, R.raw.sleep)
+        hashMap["one hundred"] = Triple("šimtas", R.drawable.onehundred, R.raw.sleep)
+        hashMap["one hundred thousand"] = Triple("šimtas tūkstančių",
+            R.drawable.onehundredthousand,
+            R.raw.sleep
+        )
+        hashMap["million"] = Triple("milijonas", R.drawable.million, R.raw.sleep)
+        hashMap["the first train"] = Triple("pirmasis traukinis",
+            R.drawable.firsttrain1,
+            R.raw.sleep
+        )
+        hashMap["two tickets"] = Triple("du bilietai", R.drawable.twoticket, R.raw.sleep)
+        hashMap["the last train"] = Triple("paskutinis traukinis",
+            R.drawable.lasttrain,
+            R.raw.sleep
+        )
+        hashMap["first aid"] = Triple("pirmosios pagalbos", R.drawable.firstaid, R.raw.sleep)
 
 
 
@@ -199,14 +210,18 @@ class NumbersFlashcardFragment : Fragment() {
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.new_design_text_color))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
+                        R.color.new_design_text_color
+                    ))
 
                 } else {
                     currentTripleIndex = (currentTripleIndex + 1) % hashMap.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.orange1))
+                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
+                        R.color.orange1
+                    ))
                     isFront = true
                 }
                 // retrieve the current Triple from the hashMap
