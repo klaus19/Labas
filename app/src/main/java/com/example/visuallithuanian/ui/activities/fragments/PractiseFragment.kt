@@ -1,6 +1,8 @@
 package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +11,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.PractiseAdapter
 import com.example.visuallithuanian.constants.ImageStore
 import com.example.visuallithuanian.databinding.FragmentPractiseBinding
@@ -21,7 +24,7 @@ class PractiseFragment : Fragment() {
     private lateinit var preferencesHelper: PreferencesHelper
     private var counter = 0
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint("ClickableViewAccessibility", "UseCompatLoadingForDrawables")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,7 +63,6 @@ class PractiseFragment : Fragment() {
 
         // Shuffle cards after the recyclerView has been initialized
         practiseAdapter.shuffleCards()
-
         return binding.root
     }
 

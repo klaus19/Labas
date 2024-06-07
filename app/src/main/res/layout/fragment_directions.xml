@@ -2,33 +2,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@drawable/background_color"
     android:layout_height="match_parent">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/flash_tablebar"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        android:layout_alignParentTop="true">
-
+        android:id="@+id/linearDay"
+        android:orientation="horizontal">
         <ImageView
             android:id="@+id/back_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/ic_arrow_back" />
-    </androidx.appcompat.widget.Toolbar>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewAnimals"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_below="@id/toolbar"
-        android:layout_alignParentBottom="true"
-        android:scrollbars="vertical" />
-
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/backbutton" />
+    </LinearLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
@@ -43,7 +32,155 @@
         android:contentDescription="@string/add_item"
         android:src="@drawable/baseline_library_add_24"
         android:tint="@android:color/white"
-        app:backgroundTint="@color/pink"
+        app:backgroundTint="#fa867d"
         app:fabSize="normal" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_learning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/linearDay"
+        android:layout_centerHorizontal="true">
 
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/text_counter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/zero"
+                android:textSize="18sp"
+                android:textColor="@color/orange1"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+            <TextView
+                android:id="@+id/text_card_tolearn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/to_learn"
+                android:textSize="18sp"
+                android:textColor="@color/orange1"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_questions"
+        android:layout_width="240dp"
+        android:layout_height="350dp"
+        android:layout_below="@id/card_learning"
+        android:layout_marginStart="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="40dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@color/orange1"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:background="@drawable/circular_flashcardview"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/imagecardsHelper" />
+
+            <TextView
+                android:id="@+id/text_card_front"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/front_side"
+                android:layout_marginTop="2dp"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+            <TextView
+                android:id="@+id/text_card_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/back_side"
+                android:layout_marginTop="5dp"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:layout_gravity="center"
+                android:id="@+id/btnPlay"
+                android:background="@drawable/play" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/image_flash_card"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="end|top"
+            android:visibility="visible"
+            android:scaleType="fitXY"
+            android:src="@drawable/save1" />
+        <ImageView
+            android:id="@+id/image_flash_card_save_white"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="end|top"
+            android:visibility="gone"
+            android:scaleType="fitXY"
+            android:src="@drawable/savewhite" />
+    </androidx.cardview.widget.CardView>
+
+    <ProgressBar
+        android:background="@drawable/progressbar_drawable"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="0"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/progress_horizontal"
+        android:layout_width="240dp"
+        android:layout_height="20dp"
+        android:layout_below="@id/card_view_questions" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="120dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/flip"
+        android:id="@+id/btnFlip"
+        android:textColor="#FFFF"
+        android:background="@drawable/buttoncolor"
+        android:layout_marginBottom="10dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/progress_horizontal"
+        android:gravity="center"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

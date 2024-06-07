@@ -1,0 +1,16 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+    <item android:drawable="@drawable/f1" android:duration="200" />
+    <item android:drawable="@drawable/f2" android:duration="200" />
+    <item android:drawable="@drawable/f3" android:duration="200" />
+    <item android:drawable="@drawable/f4" android:duration="200" />
+    <item android:drawable="@drawable/f5" android:duration="200" />
+    <item android:drawable="@drawable/f6" android:duration="200" />
+    <item android:drawable="@drawable/f7" android:duration="200" />
+    <item android:drawable="@drawable/f8" android:duration="200" />
+    <item android:drawable="@drawable/f9" android:duration="200" />
+    <item android:drawable="@drawable/f10" android:duration="200" />
+    <item android:drawable="@drawable/f11" android:duration="200" />
+    <item android:drawable="@drawable/f12" android:duration="200" />
+    <item android:drawable="@android:color/transparent" android:duration="0"/>
+</animation-list>

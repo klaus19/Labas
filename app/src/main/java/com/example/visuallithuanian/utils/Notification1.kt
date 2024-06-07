@@ -1,74 +1,50 @@
 package com.example.visuallithuanian.utils
 
-
-import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.BroadcastReceiver
 import android.content.Context
-import android.content.pm.PackageManager
+import android.content.Intent
 import android.os.Build
-import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import androidx.work.Worker
-import androidx.work.WorkerParameters
 import com.example.visuallithuanian.R
+import com.example.visuallithuanian.SentenceFragment
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
-class Notification1(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
+class Notification1: BroadcastReceiver() {
+    override fun onReceive(context: Context?, intent: Intent?) {
+        val sharedPreferences = context?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val json = sharedPreferences?.getString("phrases_list", null)
 
-    override fun doWork(): Result {
-        val sharedPreferences = applicationContext.getSharedPreferences("PhrasesData", Context.MODE_PRIVATE)
+        if (json != null) {
+            val type = object : TypeToken<List<SentenceFragment.Phrase>>() {}.type
+            val phrasesList: List<SentenceFragment.Phrase> = Gson().fromJson(json, type)
 
-        val englishWord = sharedPreferences.getString("englishWord", "No data")
-        val lithuanianWord = sharedPreferences.getString("lithuanianWord", "No data")
-        val englishPhrase = sharedPreferences.getString("englishPhrase", "No data")
-        val lithuanianPhrase = sharedPreferences.getString("lithuanianPhrase", "No data")
+            if (phrasesList.isNotEmpty()) {
+                // Randomly select a phrase
+                val randomPhrase = phrasesList.random()
 
-        val notificationText = "English: $englishWord, Lithuanian: $lithuanianWord, English Phrase: $englishPhrase, Lithuanian Phrase: $lithuanianPhrase"
+                val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                val notificationId = 1
+                val channelId = "default_channel_id"
+                val channelName = "Default Channel"
 
-        sendNotification(notificationText)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    val notificationChannel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_DEFAULT)
+                    notificationManager.createNotificationChannel(notificationChannel)
+                }
 
-        return Result.success()
-    }
+                val notificationBuilder = NotificationCompat.Builder(context, channelId)
+                    .setSmallIcon(R.drawable.cat1)
+                    .setContentTitle("Revision Time")
+                    .setContentText("${randomPhrase.englishPhrase}\n${randomPhrase.lithuanianPhrase}")
+                    .setAutoCancel(true)
+                    .setColor(context.resources.getColor(R.color.orange1)) // Change the color to your desired color
+                    .setStyle(NotificationCompat.BigTextStyle().bigText("${randomPhrase.englishPhrase}\n${randomPhrase.lithuanianPhrase}"))
 
-    private fun sendNotification(notificationText: String) {
-        val channelId = "phrases_channel_id"
-        val notificationId = 1
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "Phrases Channel"
-            val descriptionText = "Channel for phrases notifications"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel(channelId, name, importance).apply {
-                description = descriptionText
+                notificationManager.notify(notificationId, notificationBuilder.build())
             }
-            val notificationManager: NotificationManager =
-                applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
-        }
-
-        val builder = NotificationCompat.Builder(applicationContext, channelId)
-            .setSmallIcon(R.drawable.cat1)
-            .setContentTitle("Learn Lithuanian")
-            .setContentText(notificationText)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-
-        with(NotificationManagerCompat.from(applicationContext)) {
-            if (ActivityCompat.checkSelfPermission(
-                    applicationContext,
-                    Manifest.permission.POST_NOTIFICATIONS
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return
-            }
-            notify(notificationId, builder.build())
         }
     }
 }

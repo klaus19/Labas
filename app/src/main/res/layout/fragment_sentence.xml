@@ -14,18 +14,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/ic_arrow_back" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="BACK"
-            android:textColor="@color/textColorTypes"
-            android:textSize="16sp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="8dp" />
+            android:layout_marginStart="20dp"
+            android:src="@drawable/backbutton" />
     </LinearLayout>
 
     <LinearLayout

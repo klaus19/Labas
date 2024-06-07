@@ -11,20 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginStart="10dp"
-        android:src="@drawable/ic_arrow_back" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BACK"
-        android:textColor="@color/textColorTypes"
-        android:textSize="16sp"
-        android:layout_toEndOf="@id/back_icon"
-        android:layout_alignTop="@id/back_icon"
-        android:layout_alignBottom="@id/back_icon"
-        android:layout_marginStart="8dp" />
-
+        android:src="@drawable/backbutton" />
     <!-- Empty State -->
     <ImageView
         android:id="@+id/emptyImage"
