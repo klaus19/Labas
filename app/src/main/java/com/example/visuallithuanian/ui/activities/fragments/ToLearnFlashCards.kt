@@ -1,4 +1,5 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
+
 
 
 import android.graphics.Canvas
@@ -11,11 +12,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.ToLearnAdapter
 import com.example.visuallithuanian.custom.OverlappingLayoutManager
 import com.example.visuallithuanian.databinding.FragmentToLearnFlashCardsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
-import com.example.visuallithuanian.ui.activities.fragments.MyApp
 import com.example.visuallithuanian.viewModel.FlashCardViewmodel
 import com.example.visuallithuanian.viewModel.WordViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView

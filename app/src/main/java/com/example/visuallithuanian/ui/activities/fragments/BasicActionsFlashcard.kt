@@ -66,7 +66,7 @@ class BasicActionsFlashcard : Fragment() {
         }
 
         binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_basicActionsFlashcard_to_flashCards)
+            findNavController().navigate(R.id.action_basicActionsFlashcard_to_sentenceFragment)
         }
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(

@@ -66,7 +66,7 @@ class FoodIngrediants : Fragment() {
         }
 
         binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_dailyBasic_to_flashCards)
+            findNavController().navigate(R.id.action_foodIngrediants_to_sentenceFragment)
         }
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(

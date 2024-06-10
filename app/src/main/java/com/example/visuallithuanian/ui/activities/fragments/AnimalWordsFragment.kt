@@ -65,9 +65,9 @@ class AnimalWordsFragment : Fragment() {
             activity?.onBackPressed()
         }
 
-//        binding.floatingActionButton.setOnClickListener {
-//            findNavController().navigate(R.id.action_dailyBasic_to_flashCards)
-//        }
+        binding.floatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_animalWordsFragment_to_sentenceFragment)
+        }
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext()

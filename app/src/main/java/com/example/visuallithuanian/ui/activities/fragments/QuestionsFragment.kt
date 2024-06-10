@@ -67,7 +67,7 @@ class QuestionsFragment : Fragment() {
         }
 
         binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_questionsFragment_to_flashCards)
+            findNavController().navigate(R.id.action_questionsFragment_to_sentenceFragment)
         }
 
         //changing color of progress bar progress

@@ -66,7 +66,7 @@ class VerbsFragment : Fragment() {
         }
 
         binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_verbsFragment_to_flashCards)
+            findNavController().navigate(R.id.action_verbsFragment_to_sentenceFragment)
         }
 
         //changing color of progress bar progress
