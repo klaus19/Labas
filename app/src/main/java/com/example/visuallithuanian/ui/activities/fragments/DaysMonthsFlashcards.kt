@@ -66,7 +66,7 @@ class DaysMonthsFlashcards : Fragment() {
            activity?.onBackPressed()     }
 
         binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_daysMonthsFlashcards_to_flashCards)
+            findNavController().navigate(R.id.action_daysMonthsFlashcards_to_sentenceFragment)
         }
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(

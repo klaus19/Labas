@@ -240,6 +240,9 @@
         <action
             android:id="@+id/action_directionsFragment_to_flashCards"
             app:destination="@id/flashCards" />
+        <action
+            android:id="@+id/action_directionsFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/vegetables_Fragment"
@@ -317,10 +320,13 @@
         <action
             android:id="@+id/action_questionsFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_questionsFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/toLearnFlashCards"
-        android:name="com.example.visuallithuanian.ToLearnFlashCards"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.ToLearnFlashCards"
         android:label="fragment_to_learn_flash_cards"
         tools:layout="@layout/fragment_to_learn_flash_cards" >
         <action
@@ -415,6 +421,9 @@
         <action
             android:id="@+id/action_dailyBasic_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_dailyBasic_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/computerTechnologyFragment"
@@ -427,6 +436,9 @@
         <action
             android:id="@+id/action_computerTechnologyFragment_to_flashCards"
             app:destination="@id/flashCards" />
+        <action
+            android:id="@+id/action_computerTechnologyFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/daysMonthsFlashcards"
@@ -439,6 +451,9 @@
         <action
             android:id="@+id/action_daysMonthsFlashcards_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_daysMonthsFlashcards_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/keyPhrasesFragment"
@@ -454,6 +469,9 @@
         <action
             android:id="@+id/action_keyPhrasesFragment_to_flashCards2"
             app:destination="@id/flashCards" />
+        <action
+            android:id="@+id/action_keyPhrasesFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/basicActionsFlashcard"
@@ -466,6 +484,9 @@
         <action
             android:id="@+id/action_basicActionsFlashcard_to_flashCards"
             app:destination="@id/flashCards" />
+        <action
+            android:id="@+id/action_basicActionsFlashcard_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/familyFlashcards"
@@ -475,6 +496,9 @@
         <action
             android:id="@+id/action_familyFlashcards_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_familyFlashcards_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/workPlaceLanguage"
@@ -484,6 +508,9 @@
         <action
             android:id="@+id/action_workPlaceLanguage_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_workPlaceLanguage_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/verbsFragment"
@@ -496,6 +523,9 @@
         <action
             android:id="@+id/action_verbsFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_verbsFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/foodIngrediants"
@@ -505,6 +535,9 @@
         <action
             android:id="@+id/action_foodIngrediants_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_foodIngrediants_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/holidayCelebrations"
@@ -514,6 +547,9 @@
         <action
             android:id="@+id/action_holidayCelebrations_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_holidayCelebrations_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/natureFragment"
@@ -523,6 +559,9 @@
         <action
             android:id="@+id/action_natureFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_natureFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/colorshapeFragment"
@@ -532,6 +571,9 @@
         <action
             android:id="@+id/action_colorshapeFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_colorshapeFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/numbersFlashcardFragment"
@@ -541,6 +583,9 @@
         <action
             android:id="@+id/action_numbersFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_numbersFlashcardFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/sportsFlashcardFragment"
@@ -550,6 +595,9 @@
         <action
             android:id="@+id/action_sportsFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_sportsFlashcardFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/bestWords100Fragment"
@@ -559,6 +607,9 @@
         <action
             android:id="@+id/action_bestWords100Fragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_bestWords100Fragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/thingsFragment"
@@ -568,6 +619,9 @@
         <action
             android:id="@+id/action_thingsFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_thingsFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/personalityFlashcardFragment"
@@ -577,6 +631,9 @@
         <action
             android:id="@+id/action_personalityFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_personalityFlashcardFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/householdFlashcardFragment"
@@ -586,6 +643,9 @@
         <action
             android:id="@+id/action_householdFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_householdFlashcardFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/cinemaFragment"
@@ -595,6 +655,9 @@
         <action
             android:id="@+id/action_cinemaFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_cinemaFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/veganFlashcardsFragment"
@@ -604,6 +667,9 @@
         <action
             android:id="@+id/action_veganFlashcardsFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_veganFlashcardsFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/romanticPhrasesFragment"
@@ -613,6 +679,9 @@
         <action
             android:id="@+id/action_romanticPhrasesFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_romanticPhrasesFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/cafeFlashcardsFragment"
@@ -622,6 +691,9 @@
         <action
             android:id="@+id/action_cafeFlashcardsFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_cafeFlashcardsFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/villageFragment"
@@ -631,6 +703,9 @@
         <action
             android:id="@+id/action_villageFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_villageFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/timeFlashcardFragment"
@@ -640,6 +715,9 @@
         <action
             android:id="@+id/action_timeFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_timeFlashcardFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/professionFlashcardFragment"
@@ -649,6 +727,9 @@
         <action
             android:id="@+id/action_professionFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_professionFlashcardFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/animalFlashcardFragment"
@@ -658,6 +739,9 @@
         <action
             android:id="@+id/action_animalFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_animalFlashcardFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/businessLanguageFlashcardsFragment"
@@ -667,6 +751,9 @@
         <action
             android:id="@+id/action_businessLanguageFlashcardsFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_businessLanguageFlashcardsFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/weeklyBasicFlashcardFragment"
@@ -688,6 +775,9 @@
         <action
             android:id="@+id/action_pointersFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_pointersFlashcardFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/animalWordsFragment"
@@ -697,6 +787,9 @@
         <action
             android:id="@+id/action_animalWordsFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_animalWordsFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/interfaceFragment"
@@ -706,6 +799,9 @@
         <action
             android:id="@+id/action_interfaceFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_interfaceFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/mathsFragment"
@@ -715,6 +811,9 @@
         <action
             android:id="@+id/action_mathsFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_mathsFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/feelingsFragment"
@@ -724,6 +823,9 @@
         <action
             android:id="@+id/action_feelingsFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_feelingsFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/rightsFlashcardFragment"
@@ -733,6 +835,9 @@
         <action
             android:id="@+id/action_rightsFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_rightsFlashcardFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/savedSentencesFragment"
@@ -747,6 +852,9 @@
         <action
             android:id="@+id/action_actionsFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_actionsFlashcardFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/adjectivesFlashcardFragment"
@@ -756,6 +864,12 @@
         <action
             android:id="@+id/action_adjectivesFlashcardFragment_to_toLearnFlashCards"
             app:destination="@id/toLearnFlashCards" />
+        <action
+            android:id="@+id/action_adjectivesFlashcardFragment_to_sentenceFragment"
+            app:destination="@id/sentenceFragment" />
+        <action
+            android:id="@+id/action_adjectivesFlashcardFragment_to_sentenceFragment2"
+            app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
         android:id="@+id/sentenceFragment"

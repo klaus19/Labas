@@ -48,7 +48,7 @@ class ToLearnAdapter(
             itemView.findViewById<CardView>(R.id.card_view).setOnClickListener {
                 if (clickCount == 0) {
                     // Rotate the card view slowly
-                    val rotationAnimator = ObjectAnimator.ofFloat(itemView, View.ROTATION, 0f, 360f)
+                    val rotationAnimator = ObjectAnimator.ofFloat(itemView, View.TRANSLATION_Y, 0f, 360f)
                     rotationAnimator.apply {
                         duration = 1000 // Adjust duration as needed
                         start()

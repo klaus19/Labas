@@ -64,9 +64,9 @@ class ColorshapeFragment : Fragment() {
         binding.backIcon?.setOnClickListener {
             activity?.onBackPressed()
         }
-//        binding.floatingActionButton.setOnClickListener {
-//            findNavController().navigate(R.id.action_daysMonthsFlashcards_to_flashCards)
-//        }
+        binding.floatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_colorshapeFragment_to_sentenceFragment)
+       }
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(requireContext()

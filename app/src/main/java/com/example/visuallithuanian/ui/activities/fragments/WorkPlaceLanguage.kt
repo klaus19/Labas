@@ -68,7 +68,7 @@ class WorkPlaceLanguage : Fragment() {
         }
 
         binding.floatingActionButton.setOnClickListener {
-            //findNavController().navigate(R.id.action_wor)
+            findNavController().navigate(R.id.action_workPlaceLanguage_to_sentenceFragment)
         }
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
