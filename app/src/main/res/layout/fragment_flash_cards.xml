@@ -1,65 +1,36 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@drawable/background_color"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/flash_tablebar"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        android:layout_alignParentTop="true">
-
-        <ImageView
-            android:id="@+id/back_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:src="@drawable/backbutton" />
-
-        <RelativeLayout
-            android:layout_marginStart="20dp"
-            android:id="@+id/relativeFlashcard"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_toEndOf="@id/back_icon">
-            <TextView
-                android:id="@+id/title_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_marginStart="30dp"
-                android:text="Flashcards"
-                android:textSize="40sp"
-                android:textColor="@color/white" />
-            <TextView
-                android:id="@+id/subtext_flash"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_below="@id/title_text"
-                android:layout_marginStart="30dp"
-                android:text="Pick a set to practice"
-                android:textSize="20sp"
-                android:textColor="@color/white" />
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:id="@+id/linearback1">
+       <ImageView
+           android:id="@+id/back_icon"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="20dp"
+           android:layout_marginStart="10dp"
+           android:src="@drawable/backbutton" />
+   </LinearLayout>
 
     <LinearLayout
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/linearback1"
         android:layout_width="match_parent"
         android:id="@+id/linear1"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="20dp">
 
         <TextView
             android:layout_marginStart="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:textColor="@color/textColorTypes"
+            android:textColor="@color/white1"
             android:text="Sets of Easy Cards"
             android:textStyle="bold"
             android:gravity="center_horizontal" />
@@ -75,8 +46,6 @@
         android:id="@+id/recyclerViewFlashcardsEasy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_marginTop="5dp"
         android:layout_below="@id/linear1"
         android:scrollbars="none">
@@ -95,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:textColor="@color/textColorTypes"
+            android:textColor="@color/white1"
             android:text="Sets of Medium Cards"
             android:textStyle="bold"
             android:gravity="center_horizontal" />
@@ -112,8 +81,6 @@
         android:id="@+id/recyclerViewFlashcardsMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_marginTop="5dp"
         android:layout_below="@id/linear2"
         android:scrollbars="none">
@@ -132,7 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:textColor="@color/textColorTypes"
+            android:textColor="@color/white1"
             android:text="Sets of Hard Cards"
             android:textStyle="bold"
             android:gravity="center_horizontal" />
@@ -149,10 +116,7 @@
         android:id="@+id/recyclerViewFlashcardsHard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
         android:layout_below="@id/linear3"
         android:scrollbars="none">
     </androidx.recyclerview.widget.RecyclerView>
