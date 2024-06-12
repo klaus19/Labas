@@ -21,7 +21,8 @@ class PractiseAdapter(
     btnShuffle: AppCompatButton,
     recyclerViewPractise: RecyclerView,
     private val preferencesHelper: PreferencesHelper,
-    private val incrementCounter: () -> Unit
+    private val incrementCounter: () -> Unit,
+    private val onCorrectPair: (Int) -> Unit // Callback to notify correct pair selection
 ) : RecyclerView.Adapter<PractiseAdapter.PractiseViewHolder>() {
 
     private lateinit var recyclerView: RecyclerView
@@ -122,6 +123,7 @@ class PractiseAdapter(
                 holder.cardTextPractise.setBackgroundColor(GREEN_COLOR)
                 preferencesHelper.incrementCounter() // Increment counter when correct pair is selected
                 incrementCounter() // Call the increment counter callback
+                onCorrectPair(selectedImageResource) // Notify correct pair selection
                 Color.GREEN
             } else {
                 Toast.makeText(
