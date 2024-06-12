@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.ToLearnAdapter
+import com.example.visuallithuanian.constants.ImageStore
 import com.example.visuallithuanian.custom.OverlappingLayoutManager
 import com.example.visuallithuanian.databinding.FragmentToLearnFlashCardsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
@@ -105,10 +106,57 @@ class ToLearnFlashCards : Fragment() {
                 val position = viewHolder.adapterPosition
                 val cardPair = adapter.currentList[position]
                 // Handle swipe left to delete the card
+
+//                ImageStore.addImageResource(cardPair.imageSrc,cardPair.front,cardPair.back)
                 cardViewmodel.deleteCards(cardPair)
+
             }
         })
         itemTouchHelper.attachToRecyclerView(binding.recyclerview)
+
+        val itemTouchHelper1 = ItemTouchHelper(object :ItemTouchHelper.SimpleCallback(
+              0,ItemTouchHelper.LEFT
+        ){
+            val SWIPEFACTOR = 0f
+            override fun onChildDraw(
+                c: Canvas,
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                dX: Float,
+                dY: Float,
+                actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+                super.onChildDraw(
+                    c,
+                    recyclerView,
+                    viewHolder,
+                    dX,
+                    dY,
+                    actionState,
+                    isCurrentlyActive
+                )
+            }
+
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val cardPair = adapter.currentList[position]
+
+                ImageStore.addImageResource(cardPair.imageSrc,cardPair.front,cardPair.back)
+                cardViewmodel.deleteCards(cardPair)
+
+
+            }
+        })
+        itemTouchHelper1.attachToRecyclerView(binding.recyclerview)
 
 
 

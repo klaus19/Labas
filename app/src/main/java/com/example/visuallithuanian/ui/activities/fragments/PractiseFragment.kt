@@ -1,8 +1,6 @@
 package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
-import android.graphics.Color
-import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -40,7 +38,7 @@ class PractiseFragment : Fragment() {
         binding.recyclerViewPractise.layoutManager = layoutManager
 
         binding.backIcon.setOnClickListener {
-            findNavController().navigate(com.example.visuallithuanian.R.id.action_practiseFragment_to_userFragment)
+            findNavController().navigate(R.id.action_practiseFragment_to_userFragment)
         }
 
         val randomPairs = ImageStore.getRandomPairs(4)
@@ -53,10 +51,10 @@ class PractiseFragment : Fragment() {
             imageNames1,
             binding.btnShuffle,
             recyclerViewPractise,
-            preferencesHelper
-        ) {
-            incrementCounter()
-        }
+            preferencesHelper,
+            this::incrementCounter,
+            this::removeCorrectPairFromImageStore // Pass the new callback
+        )
 
         binding.recyclerViewPractise.adapter = practiseAdapter
         practiseAdapter.initsetRecyclerView(recyclerViewPractise)
@@ -70,5 +68,9 @@ class PractiseFragment : Fragment() {
         counter++
         preferencesHelper.saveCounter(counter)
         binding.textCounter.text = counter.toString()
+    }
+
+    private fun removeCorrectPairFromImageStore(resId: Int) {
+        ImageStore.removeImageResource(resId)
     }
 }
