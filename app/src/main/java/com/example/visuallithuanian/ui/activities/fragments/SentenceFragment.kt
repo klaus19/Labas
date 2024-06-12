@@ -1,4 +1,4 @@
-package com.example.visuallithuanian
+package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
 import android.app.AlarmManager
@@ -6,6 +6,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import com.example.visuallithuanian.databinding.FragmentSentenceBinding
 import com.example.visuallithuanian.utils.Notification1
 import com.google.gson.Gson
@@ -42,6 +44,8 @@ class SentenceFragment : Fragment() {
         binding.backIcon.setOnClickListener {
             activity?.onBackPressed()
         }
+
+        setupEditTextListeners()
 
         return binding.root
     }
@@ -73,6 +77,11 @@ class SentenceFragment : Fragment() {
         val englishPhrase = binding.englishPhrase.text.toString()
         val lithuanianPhrase = binding.lithuanianPhrase.text.toString()
 
+        if (englishWord.isEmpty() || lithuanianWord.isEmpty() || englishPhrase.isEmpty() || lithuanianPhrase.isEmpty()) {
+            Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val phrase = Phrase(englishWord, lithuanianWord, englishPhrase, lithuanianPhrase)
 
         val phrasesList = getPhrasesListFromSharedPreferences().toMutableList()
@@ -103,6 +112,46 @@ class SentenceFragment : Fragment() {
         } else {
             emptyList()
         }
+    }
+
+    private fun setupEditTextListeners() {
+        binding.editWordLithuanian.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                checkAndPromptLithuanianKeyboard()
+            }
+        }
+
+        binding.lithuanianPhrase.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                checkAndPromptLithuanianKeyboard()
+            }
+        }
+    }
+
+    private fun checkAndPromptLithuanianKeyboard() {
+        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val inputMethodList = imm.enabledInputMethodList
+        val lithuanianKeyboardInstalled = inputMethodList.any { it.packageName.contains("lithuanian", ignoreCase = true) }
+
+        if (!lithuanianKeyboardInstalled) {
+            showKeyboardDownloadDialog()
+        }
+    }
+
+    private fun showKeyboardDownloadDialog() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Lithuanian Keyboard Not Installed")
+        builder.setMessage("It looks like you don't have a Lithuanian keyboard installed. Would you like to download one from the Play Store?")
+        builder.setPositiveButton("Yes") { _, _ ->
+            val appPackageName = "com.google.android.inputmethod.latin" // Example package name for Gboard which supports multiple languages
+            try {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackageName")))
+            } catch (e: android.content.ActivityNotFoundException) {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")))
+            }
+        }
+        builder.setNegativeButton("No") { dialog, _ -> dialog.dismiss() }
+        builder.show()
     }
 
     data class Phrase(

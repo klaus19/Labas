@@ -13,7 +13,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardImagePractise"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_columnWeight="1"
         android:layout_margin="8dp"
         app:cardCornerRadius="10dp"
@@ -30,7 +30,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardTextPractise"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_columnWeight="1"
         android:layout_margin="8dp"
         app:cardCornerRadius="10dp"
@@ -48,7 +48,7 @@
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@color/blue_card"
-                android:text="Random Name"
+                android:text="@string/random_name1"
                 android:textSize="12sp" />
 
             <TextView
@@ -59,7 +59,7 @@
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@color/blue_card"
-                android:text="Random Name"
+                android:text="@string/random_name"
                 android:textSize="12sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

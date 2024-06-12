@@ -1,81 +1,91 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/background_color"
     xmlns:tools="http://schemas.android.com/tools">
+
     <LinearLayout
+        android:id="@+id/linearDay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearDay"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
         <ImageView
             android:id="@+id/back_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
             android:src="@drawable/backbutton" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
         android:gravity="center"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toBottomOf="@id/linearDay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:gravity="center"
+            android:layout_marginEnd="100dp"
             android:textColor="@color/white1"
-            android:layout_marginStart="100dp"
             android:text="@string/select_correct_pair" />
 
         <ImageView
             android:id="@+id/imageCat"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
             android:src="@drawable/cat1" />
 
         <TextView
             android:id="@+id/text_counter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:text="@string/zero1"
             android:textColor="@color/white1"
-           android:textStyle="bold"
+            android:textStyle="bold"
             android:textSize="16sp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearRecyclerview"
-        android:orientation="vertical">
-        <!-- RecyclerView to display the image cards -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewPractise"
-            android:layout_width="match_parent"
-            tools:listitem="@layout/item_practise_cards"
-            android:layout_margin="40dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="16dp" />
-    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPractise"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btnShuffle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearDay"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/item_practise_cards" />
+
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="@string/shuffle"
         android:id="@+id/btnShuffle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/shuffle"
         android:textColor="#FFFF"
         android:background="@drawable/buttoncolor"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linearRecyclerview"
-        android:gravity="center"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginBottom="26dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

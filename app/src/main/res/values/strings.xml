@@ -27,11 +27,13 @@
     <string name="you_don_t_have_any_cards">You don\'t have any cards</string>
     <string name="zero1">0</string>
     <string name="if_you_didn_t_know_swipe_left">If you didn\'t know</string>
-    <string name="swipe_left">Tap</string>
+    <string name="swipe_left">Swipe left</string>
     <string name="if_you_were_right">if you know</string>
     <string name="swipe_right">Swipe Right</string>
     <string name="english_word">English Word</string>
     <string name="lithuanian_word">Lithuanian word</string>
     <string name="english_phrase">English Phrase</string>
     <string name="lithuanian_phrase">Lithuanian Phrase</string>
+    <string name="random_name">Random Name</string>
+    <string name="random_name1">Random Name</string>
 </resources>

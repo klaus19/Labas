@@ -873,7 +873,7 @@
     </fragment>
     <fragment
         android:id="@+id/sentenceFragment"
-        android:name="com.example.visuallithuanian.SentenceFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.SentenceFragment"
         android:label="fragment_sentence"
         tools:layout="@layout/fragment_sentence" />
 

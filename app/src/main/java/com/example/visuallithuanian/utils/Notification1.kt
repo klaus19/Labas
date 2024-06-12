@@ -8,7 +8,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.example.visuallithuanian.R
-import com.example.visuallithuanian.SentenceFragment
+import com.example.visuallithuanian.ui.activities.fragments.SentenceFragment
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
