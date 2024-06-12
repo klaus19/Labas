@@ -1,6 +1,8 @@
 package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
