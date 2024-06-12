@@ -22,7 +22,8 @@ class PractiseAdapter(
     recyclerViewPractise: RecyclerView,
     private val preferencesHelper: PreferencesHelper,
     private val incrementCounter: () -> Unit,
-    private val onCorrectPair: (Int) -> Unit // Callback to notify correct pair selection
+    private val onCorrectPair: (Int) -> Unit, // Callback to notify correct pair selection
+    private val onDataChanged: () -> Unit // Callback to notify data changes
 ) : RecyclerView.Adapter<PractiseAdapter.PractiseViewHolder>() {
 
     private lateinit var recyclerView: RecyclerView
@@ -58,6 +59,7 @@ class PractiseAdapter(
 
         resetCardImageBackgroundToWhite()
         notifyDataSetChanged()
+        onDataChanged() // Notify data changes
     }
 
     fun initsetRecyclerView(recyclerView: RecyclerView) {
@@ -124,6 +126,7 @@ class PractiseAdapter(
                 preferencesHelper.incrementCounter() // Increment counter when correct pair is selected
                 incrementCounter() // Call the increment counter callback
                 onCorrectPair(selectedImageResource) // Notify correct pair selection
+                onDataChanged() // Notify data changes
                 Color.GREEN
             } else {
                 Toast.makeText(

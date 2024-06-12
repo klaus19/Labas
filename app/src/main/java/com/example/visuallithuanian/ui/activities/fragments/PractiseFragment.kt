@@ -1,8 +1,6 @@
 package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
-import android.graphics.Color
-import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -55,14 +53,19 @@ class PractiseFragment : Fragment() {
             recyclerViewPractise,
             preferencesHelper,
             this::incrementCounter,
-            this::removeCorrectPairFromImageStore // Pass the new callback
+            this::removeCorrectPairFromImageStore,
+            this::handleNoCardsVisibility // Ensure the callback is properly referenced
         )
 
         binding.recyclerViewPractise.adapter = practiseAdapter
         practiseAdapter.initsetRecyclerView(recyclerViewPractise)
 
+        // Initial visibility check
+        handleNoCardsVisibility()
+
         // Shuffle cards after the recyclerView has been initialized
         practiseAdapter.shuffleCards()
+
         return binding.root
     }
 
@@ -74,5 +77,13 @@ class PractiseFragment : Fragment() {
 
     private fun removeCorrectPairFromImageStore(resId: Int) {
         ImageStore.removeImageResource(resId)
+    }
+
+    private fun handleNoCardsVisibility() {
+        if (practiseAdapter.itemCount == 0) {
+            binding.noCardsLayout.visibility = View.VISIBLE
+        } else {
+            binding.noCardsLayout.visibility = View.GONE
+        }
     }
 }

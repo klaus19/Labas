@@ -36,4 +36,6 @@
     <string name="lithuanian_phrase">Lithuanian Phrase</string>
     <string name="random_name">Random Name</string>
     <string name="random_name1">Random Name</string>
+    <string name="no_cards">No Cards to practise</string>
+    <string name="you_have_no_cards">No Cards to learn</string>
 </resources>

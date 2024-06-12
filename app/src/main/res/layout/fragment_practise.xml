@@ -88,4 +88,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center" />
 
+    <LinearLayout
+        android:id="@+id/noCardsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/trashImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/waste" />
+
+        <TextView
+            android:id="@+id/noCardsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/you_have_no_cards"
+            android:textColor="@color/white1"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
