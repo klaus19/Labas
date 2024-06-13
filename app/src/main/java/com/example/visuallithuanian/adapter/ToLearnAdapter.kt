@@ -1,6 +1,8 @@
 package com.example.visuallithuanian.adapter
 
 import android.animation.ObjectAnimator
+import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +11,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.appcompat.widget.AppCompatButton
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -27,7 +30,7 @@ class ToLearnAdapter(
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.front, current.back, current.imageSrc)
+        holder.bind(current.front, current.back, current.imageSrc,current.voiceclip)
         holder.itemView.setBackgroundResource(R.color.white1)
     }
 
@@ -37,13 +40,26 @@ class ToLearnAdapter(
         private val imageHelper = itemView.findViewById<ImageView>(R.id.imageCardHelper)
         private val relativeLeft = itemView.findViewById<RelativeLayout>(R.id.relativeLeft)
         private val relativeRight = itemView.findViewById<RelativeLayout>(R.id.relativeRight)
+        private val btnPlay = itemView.findViewById<ImageView>(R.id.btnPlay)
+        private val mediaPlayer = MediaPlayer()
 
         private var clickCount = 0
 
-        fun bind(text: String?, text1: String?, imageSource: Int) {
+        fun bind(text: String?, text1: String?, imageSource: Int,audioSrc:Int) {
             wordEnglish.text = text
             wordLithuanian.text = text1
             imageHelper.setImageResource(imageSource)
+
+            btnPlay.setOnClickListener {
+                mediaPlayer.apply {
+                           reset()
+                    setDataSource(itemView.context, Uri.parse("android.resource://${itemView.context.packageName}/$audioSrc"))
+                    prepareAsync()
+                }
+                mediaPlayer.setOnPreparedListener {
+                    it.start()
+                }
+            }
 
             itemView.findViewById<CardView>(R.id.card_view).setOnClickListener {
                 if (clickCount == 0) {

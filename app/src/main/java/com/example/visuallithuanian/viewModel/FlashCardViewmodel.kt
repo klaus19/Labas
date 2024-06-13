@@ -1,6 +1,7 @@
 package com.example.visuallithuanian.viewModel
 
 import androidx.lifecycle.*
+import com.example.visuallithuanian.data.FlashCardInfo
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.repository.FlashcardRepository
 import dagger.hilt.android.HiltAndroidApp
