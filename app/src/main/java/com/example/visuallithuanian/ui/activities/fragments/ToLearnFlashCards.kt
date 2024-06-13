@@ -86,7 +86,7 @@ class ToLearnFlashCards : Fragment() {
                 // Apply rotation transformation to the card view
                 itemView.pivotX = itemView.width.toFloat()
                 itemView.pivotY = itemView.height.toFloat() / 2
-             //   itemView.rotation = rotation
+                //   itemView.rotation = rotation
                 super.onChildDraw(
                     c,
                     recyclerView,
@@ -119,7 +119,7 @@ class ToLearnFlashCards : Fragment() {
         itemTouchHelper.attachToRecyclerView(binding.recyclerview)
 
         val itemTouchHelper1 = ItemTouchHelper(object :ItemTouchHelper.SimpleCallback(
-              0,ItemTouchHelper.LEFT
+            0,ItemTouchHelper.LEFT
         ){
             val SWIPEFACTOR = 0f
             override fun onChildDraw(
