@@ -2,6 +2,8 @@ package com.example.visuallithuanian.ui.activities.fragments
 
 
 
+import OverlappingLayoutManager
+import ToLearnAdapter
 import android.graphics.Canvas
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,10 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.R
-import com.example.visuallithuanian.adapter.ToLearnAdapter
 import com.example.visuallithuanian.constants.ImageStore
-import com.example.visuallithuanian.custom.OverlappingLayoutManager
-import com.example.visuallithuanian.data.FlashCardInfo
 import com.example.visuallithuanian.databinding.FragmentToLearnFlashCardsBinding
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
@@ -56,7 +55,7 @@ class ToLearnFlashCards : Fragment() {
         binding.recyclerview.layoutManager = OverlappingLayoutManager(requireContext())
         layoutManager = OverlappingLayoutManager(requireContext())
 
-        binding.recyclerview.layoutManager = OverlappingLayoutManager(requireContext())
+
 
         val adapter = ToLearnAdapter { cardPair ->
             cardViewmodel.deleteCards(cardPair)
@@ -64,6 +63,7 @@ class ToLearnFlashCards : Fragment() {
         }
         binding.recyclerview.layoutManager = layoutManager
         binding.recyclerview.adapter = adapter
+        binding.recyclerview.itemAnimator = null
 
         //Swipe Gesture
 
@@ -111,7 +111,6 @@ class ToLearnFlashCards : Fragment() {
                 val cardPair = adapter.currentList[position]
                 // Handle swipe left to delete the card
 
-//                ImageStore.addImageResource(cardPair.imageSrc,cardPair.front,cardPair.back)
                 cardViewmodel.deleteCards(cardPair)
 
             }
@@ -154,12 +153,8 @@ class ToLearnFlashCards : Fragment() {
                 val position = viewHolder.adapterPosition
                 val cardPair = adapter.currentList[position]
 
-               ImageStore.addImageResource(cardPair.imageSrc,cardPair.front,cardPair.back)
-
+                ImageStore.addImageResource(cardPair.imageSrc,cardPair.front,cardPair.back,cardPair.voiceclip)
                 cardViewmodel.deleteCards(cardPair)
-
-
-
             }
         })
         itemTouchHelper1.attachToRecyclerView(binding.recyclerview)
@@ -168,7 +163,7 @@ class ToLearnFlashCards : Fragment() {
 
 
         //Observe  the data changes for the items added
-        cardViewmodel.allWords.observe(requireActivity()) { cardPairs ->
+        cardViewmodel.allWords.observe(viewLifecycleOwner) { cardPairs ->
 
             adapter.submitList(cardPairs)
 

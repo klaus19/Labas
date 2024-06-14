@@ -1,76 +1,90 @@
-package com.example.visuallithuanian.custom
-
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Interpolator
+import android.view.animation.LinearInterpolator
+import androidx.annotation.Dimension
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutParams
 import com.example.visuallithuanian.R
 
 class OverlappingLayoutManager(context: Context) : RecyclerView.LayoutManager() {
-    private val horizontalOverlap =
-        context.resources.getDimensionPixelOffset(R.dimen.card_horizontal_overlap)
-    private val verticalOverlap =
-        context.resources.getDimensionPixelOffset(R.dimen.card_vertical_overlap)
-    private val tiltAngle = 2f // Adjust the tilt angle as needed
 
-    override fun generateDefaultLayoutParams(): LayoutParams {
-        return LayoutParams(
-            LayoutParams.WRAP_CONTENT,
-            LayoutParams.WRAP_CONTENT
+    private val horizontalOverlap: Float =
+        context.resources.getDimension(R.dimen.card_horizontal_overlap)
+    private val verticalOverlap: Float =
+        context.resources.getDimension(R.dimen.card_vertical_overlap)
+    @get:Dimension
+    private val tiltAngle: Float =
+        context.resources.getDimension(R.dimen.card_tilt_angle)
+    private var interpolator: Interpolator = LinearInterpolator() // Use an interpolator for smooth tilting
+
+    override fun generateDefaultLayoutParams(): RecyclerView.LayoutParams {
+        return RecyclerView.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
         )
     }
 
-    override fun onLayoutChildren(recycler: RecyclerView.Recycler?, state: RecyclerView.State?) {
+    override fun onLayoutChildren(recycler: RecyclerView.Recycler, state: RecyclerView.State?) {
         if (itemCount == 0) {
-            removeAndRecycleAllViews(recycler!!)
+            removeAndRecycleAllViews(recycler)
             return
         }
 
-        detachAndScrapAttachedViews(recycler!!)
+        detachAndScrapAttachedViews(recycler)
 
-        val leftTilt = tiltAngle
-        val rightTilt = -tiltAngle
-        var currentTilt = leftTilt
-        var zIndex = 0 // Initialize zIndex for the cards
+        val parentWidth = width
+        val parentHeight = height
+
+        var zIndex = 0
 
         for (position in 0 until itemCount) {
             val view = recycler.getViewForPosition(position)
             addView(view)
 
             // Set z-index for the view
-            view.elevation = zIndex.toFloat()
+            val elevation = zIndex.toFloat()
+            ViewCompat.setElevation(view, elevation)
             zIndex++
 
             measureChildWithMargins(view, 0, 0)
             val width = getDecoratedMeasuredWidth(view)
             val height = getDecoratedMeasuredHeight(view)
 
-            val centerX = width / 2f
-            val centerY = height / 2f
+            val centerX = parentWidth / 2f
+            val centerY = parentHeight / 2f
 
-            layoutDecoratedWithMargins(
-                view,
-                (centerX - (width / 2)).toInt(),
-                (centerY - (height / 2)).toInt(),
-                (centerX + (width / 2)).toInt(),
-                (centerY + (height / 2)).toInt()
-            )
+            val itemOffset = calculateItemOffset(position)
+            val newCenterX = centerX + itemOffset * horizontalOverlap
 
-            val childViewGroup = view.findViewById<ViewGroup>(R.id.card_view)
-            childViewGroup.rotation = currentTilt
+            val left = (newCenterX - (width / 2)).toInt()
+            val top = (centerY - (height / 2)).toInt()
+            val right = (newCenterX + (width / 2)).toInt()
+            val bottom = (centerY + (height / 2)).toInt()
 
-            currentTilt = if (currentTilt == leftTilt) rightTilt else leftTilt
+            layoutDecoratedWithMargins(view, left, top, right, bottom)
+
+            applyTilt(view, position)
         }
     }
 
-    fun getTopPosition(): Int? {
-        val topView = getChildAt(0)
-        return if (topView != null) {
-            val topPosition = getPosition(topView)
-            topPosition.takeIf { it != RecyclerView.NO_POSITION }
-        } else {
-            null
-        }
+    private fun applyTilt(view: View, position: Int) {
+        val tilt = calculateTilt(position) * tiltAngle
+        view.pivotX = (view.width / 2).toFloat()
+        view.pivotY = (view.height / 2).toFloat()
+        view.rotation = tilt
+    }
+
+    protected open fun calculateItemOffset(position: Int): Float {
+        return if (position % 2 == 0) -1f else 1f
+    }
+
+    protected open fun calculateTilt(position: Int): Float {
+        return if (position % 2 == 0) -1f else 1f
+    }
+
+    fun setInterpolator(interpolator: Interpolator) {
+        this.interpolator = interpolator
     }
 }

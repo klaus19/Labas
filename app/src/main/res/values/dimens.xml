@@ -4,4 +4,5 @@
     <dimen name="card_horizontal_overlap">26dp</dimen>
     <dimen name="card_vertical_overlap">26dp</dimen>
     <dimen name="card_view_height">100dp</dimen>
+    <dimen name="card_tilt_angle">0.5dp</dimen>
 </resources>

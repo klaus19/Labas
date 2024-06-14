@@ -17,7 +17,7 @@ import com.example.visuallithuanian.model.PreferencesHelper
 
 class PractiseAdapter(
     private var imageResources: MutableList<Int>,
-    private var imageNames1: MutableList<Pair<String, String>>,
+    private var imageNames1: MutableList<Triple<String, String,Int>>,
     btnShuffle: AppCompatButton,
     recyclerViewPractise: RecyclerView,
     private val preferencesHelper: PreferencesHelper,
@@ -47,6 +47,7 @@ class PractiseAdapter(
 
         imageResources.addAll(randomPairs.map { it.first })
         imageNames1.addAll(randomPairs.map { it.second })
+
 
         // Shuffle both lists independently to mismatch the pairs
         imageResources.shuffle()

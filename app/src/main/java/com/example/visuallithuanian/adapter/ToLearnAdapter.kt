@@ -1,18 +1,12 @@
-package com.example.visuallithuanian.adapter
-
 import android.animation.ObjectAnimator
 import android.media.MediaPlayer
 import android.net.Uri
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.annotation.RequiresApi
-import androidx.appcompat.widget.AppCompatButton
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -20,94 +14,107 @@ import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
 
 class ToLearnAdapter(
-    private val onDeleteListener: (FlashcardPair) -> Unit,
+    private val onDeleteListener: (FlashcardPair) -> Unit
 ) : ListAdapter<FlashcardPair, ToLearnAdapter.WordViewHolder>(WordsComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
-        return WordViewHolder.create(parent)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycle_view, parent, false)
+        return WordViewHolder(view)
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.front, current.back, current.imageSrc,current.voiceclip)
-        holder.itemView.setBackgroundResource(R.color.white1)
+        holder.bind(current)
     }
 
-    class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val wordEnglish: TextView = itemView.findViewById(R.id.textView1English)
         private val wordLithuanian: TextView = itemView.findViewById(R.id.textView2Lithuanian)
-        private val imageHelper = itemView.findViewById<ImageView>(R.id.imageCardHelper)
-        private val relativeLeft = itemView.findViewById<RelativeLayout>(R.id.relativeLeft)
-        private val relativeRight = itemView.findViewById<RelativeLayout>(R.id.relativeRight)
-        private val btnPlay = itemView.findViewById<ImageView>(R.id.btnPlay)
-        private val mediaPlayer = MediaPlayer()
+        private val imageHelper: ImageView = itemView.findViewById(R.id.imageCardHelper)
+        private val relativeLeft: RelativeLayout = itemView.findViewById(R.id.relativeLeft)
+        private val relativeRight: RelativeLayout = itemView.findViewById(R.id.relativeRight)
+        private val btnPlay: ImageView = itemView.findViewById(R.id.btnPlay)
+        private val mediaPlayer: MediaPlayer = MediaPlayer()
 
         private var clickCount = 0
 
-        fun bind(text: String?, text1: String?, imageSource: Int,audioSrc:Int) {
-            wordEnglish.text = text
-            wordLithuanian.text = text1
-            imageHelper.setImageResource(imageSource)
+        init {
+            // Initially hide additional views
+            wordLithuanian.visibility = View.GONE
+            relativeLeft.visibility = View.GONE
+            relativeRight.visibility = View.GONE
 
             btnPlay.setOnClickListener {
-                mediaPlayer.apply {
-                           reset()
-                    setDataSource(itemView.context, Uri.parse("android.resource://${itemView.context.packageName}/$audioSrc"))
-                    prepareAsync()
-                }
-                mediaPlayer.setOnPreparedListener {
-                    it.start()
-                }
+                val audioSrc = getItem(adapterPosition).voiceclip
+                playAudio(audioSrc)
             }
 
-            itemView.findViewById<CardView>(R.id.card_view).setOnClickListener {
-                if (clickCount == 0) {
-                    // Rotate the card view slowly
-                    val rotationAnimator = ObjectAnimator.ofFloat(itemView, View.TRANSLATION_Y, 0f, 360f)
-                    rotationAnimator.apply {
-                        duration = 1000 // Adjust duration as needed
-                        start()
-                    }
-                    imageHelper.visibility = View.VISIBLE
-                    wordLithuanian.visibility = View.VISIBLE
-                    relativeLeft.visibility = View.VISIBLE
-                    relativeRight.visibility = View.VISIBLE
-                } else {
-                    toggleRelativeLayoutVisibility()
-                }
-                clickCount++
+            itemView.setOnClickListener {
+                toggleDetailsVisibility()
             }
         }
 
-        private fun toggleRelativeLayoutVisibility() {
-            if (relativeLeft.visibility == View.VISIBLE && relativeRight.visibility == View.VISIBLE) {
-                relativeLeft.visibility = View.INVISIBLE
-                relativeRight.visibility = View.INVISIBLE
-                wordLithuanian.visibility = View.INVISIBLE
+        private fun playAudio(audioSrc: Int) {
+            mediaPlayer.apply {
+                reset()
+                setDataSource(itemView.context, Uri.parse("android.resource://${itemView.context.packageName}/$audioSrc"))
+                prepareAsync()
+            }
+            mediaPlayer.setOnPreparedListener {
+                it.start()
+            }
+        }
+
+        fun bind(item: FlashcardPair) {
+            wordEnglish.text = item.front
+            wordLithuanian.text = item.back
+            imageHelper.setImageResource(item.imageSrc)
+            resetViewState()
+        }
+
+        private fun toggleDetailsVisibility() {
+            if (clickCount % 2 == 0) {
+                // First click or odd clicks
+                rotateCard()
+                showDetails()
             } else {
-                relativeLeft.visibility = View.VISIBLE
-                relativeRight.visibility = View.VISIBLE
-                wordLithuanian.visibility = View.VISIBLE
+                // Even clicks
+                hideDetails()
             }
+            clickCount++
         }
 
-        companion object {
-            fun create(parent: ViewGroup): WordViewHolder {
-                val view: View = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.recycle_view, parent, false)
-                return WordViewHolder(view)
-            }
+        private fun rotateCard() {
+            val rotationAnimator = ObjectAnimator.ofFloat(itemView, View.ROTATION_Y, 0f, 360f)
+            rotationAnimator.duration = 1000
+            rotationAnimator.start()
+        }
+
+        private fun showDetails() {
+            wordLithuanian.visibility = View.VISIBLE
+            relativeLeft.visibility = View.VISIBLE
+            relativeRight.visibility = View.VISIBLE
+        }
+
+        private fun hideDetails() {
+            wordLithuanian.visibility = View.GONE
+            relativeLeft.visibility = View.GONE
+            relativeRight.visibility = View.GONE
+        }
+
+        private fun resetViewState() {
+            // Initially hide details view
+            hideDetails()
         }
     }
 
     class WordsComparator : DiffUtil.ItemCallback<FlashcardPair>() {
-        override fun areItemsTheSame(oldItem:FlashcardPair, newItem:FlashcardPair): Boolean {
+        override fun areItemsTheSame(oldItem: FlashcardPair, newItem: FlashcardPair): Boolean {
             return oldItem === newItem
         }
 
-        override fun areContentsTheSame(oldItem:FlashcardPair, newItem:FlashcardPair): Boolean {
-            return oldItem.front == newItem.front && oldItem.back==newItem.back
+        override fun areContentsTheSame(oldItem: FlashcardPair, newItem: FlashcardPair): Boolean {
+            return oldItem.front == newItem.front && oldItem.back == newItem.back
         }
     }
 }
