@@ -34,6 +34,8 @@ class PractiseFragment : Fragment() {
         counter = preferencesHelper.getCounter()
         binding.textCounter.text = counter.toString()
 
+        ImageStore.loadFromPreferences(requireContext())
+
         val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.recyclerViewPractise.layoutManager = layoutManager
 
@@ -77,6 +79,7 @@ class PractiseFragment : Fragment() {
 
     private fun removeCorrectPairFromImageStore(resId: Int) {
         ImageStore.removeImageResource(resId)
+        ImageStore.saveToPreferences(requireContext())
     }
 
     private fun handleNoCardsVisibility() {

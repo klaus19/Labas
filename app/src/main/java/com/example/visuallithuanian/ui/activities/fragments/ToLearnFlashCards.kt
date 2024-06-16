@@ -154,6 +154,7 @@ class ToLearnFlashCards : Fragment() {
                 val cardPair = adapter.currentList[position]
 
                 ImageStore.addImageResource(cardPair.imageSrc,cardPair.front,cardPair.back,cardPair.voiceclip)
+                ImageStore.saveToPreferences(requireContext())
                 cardViewmodel.deleteCards(cardPair)
             }
         })

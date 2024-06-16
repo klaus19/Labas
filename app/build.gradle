@@ -78,9 +78,9 @@ dependencies {
 
 // The default implementations
     //noinspection GradleDependency
-    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     //noinspection GradleDependency
-    implementation "androidx.navigation:navigation-ui:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
 // The Kotlin ones
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
