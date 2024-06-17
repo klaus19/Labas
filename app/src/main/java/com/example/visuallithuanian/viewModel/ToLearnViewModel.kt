@@ -14,6 +14,10 @@ class ToLearnViewModel: ViewModel() {
         _counter.value = _counter.value?.plus(1)
     }
 
+    fun setCounter(value:Int){
+        _counter.value = value
+    }
+
     fun decrementCounter() {
         val currentValue = _counter.value ?: 0
         if (currentValue > 0) {

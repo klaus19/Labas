@@ -122,8 +122,8 @@ class QuestionsFragment : Fragment() {
         counterViewModel.counter.observe(requireActivity()){count->
             binding.textCounter.text = count.toString()
         }
-       // val front_animation = AnimatorInflater.loadAnimator(context, R.anim.front_animator) as AnimatorSet
-       // val back_animation = AnimatorInflater.loadAnimator(context,R.anim.back_animator)as AnimatorSet
+        // val front_animation = AnimatorInflater.loadAnimator(context, R.anim.front_animator) as AnimatorSet
+        // val back_animation = AnimatorInflater.loadAnimator(context,R.anim.back_animator)as AnimatorSet
 
         currentTriple = hashMap.entries.elementAt(currentTripleIndex)
         binding.textCardFront.text = currentTriple.key

@@ -82,7 +82,7 @@ class PractiseFragment : Fragment() {
         binding.textCounter.text = counter.toString()
 
         // Check if counter reaches a multiple of 50
-        if (counter % 50 == 0) {
+        if (counter % 20 == 0) {
             counterDiamond += 2
             preferencesHelper.saveDiamondCounter(counterDiamond)
             binding.textCounterDiamond.text = counterDiamond.toString()
