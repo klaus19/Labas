@@ -10,6 +10,7 @@ class PreferencesHelper(context: Context) {
 
     companion object {
         private const val COUNTER_KEY = "counter_key"
+        private const val DIAMOND_COUNTER_KEY = "diamond_counter_key"
     }
 
     fun incrementCounter() {
@@ -26,5 +27,16 @@ class PreferencesHelper(context: Context) {
 
     fun getCounter(): Int {
         return sharedPreferences.getInt(COUNTER_KEY, 0)
+    }
+
+    fun saveDiamondCounter(diamondCounter: Int) {
+        with(sharedPreferences.edit()) {
+            putInt(DIAMOND_COUNTER_KEY, diamondCounter)
+            apply()
+        }
+    }
+
+    fun getDiamondCounter(): Int {
+        return sharedPreferences.getInt(DIAMOND_COUNTER_KEY, 0)
     }
 }

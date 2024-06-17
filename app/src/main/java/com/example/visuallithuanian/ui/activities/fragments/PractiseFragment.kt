@@ -21,6 +21,8 @@ class PractiseFragment : Fragment() {
     private lateinit var recyclerViewPractise: RecyclerView
     private lateinit var preferencesHelper: PreferencesHelper
     private var counter = 0
+    private var counterDiamond = 0
+    private var counterGem = 0
 
     @SuppressLint("ClickableViewAccessibility", "UseCompatLoadingForDrawables")
     override fun onCreateView(
@@ -32,7 +34,10 @@ class PractiseFragment : Fragment() {
 
         preferencesHelper = PreferencesHelper(requireContext())
         counter = preferencesHelper.getCounter()
+        counterDiamond = preferencesHelper.getDiamondCounter()
         binding.textCounter.text = counter.toString()
+        binding.textCounterDiamond.text = counterDiamond.toString()
+        binding.textCounterGem.text = counterGem.toString()
 
         ImageStore.loadFromPreferences(requireContext())
 
@@ -75,6 +80,19 @@ class PractiseFragment : Fragment() {
         counter++
         preferencesHelper.saveCounter(counter)
         binding.textCounter.text = counter.toString()
+
+        // Check if counter reaches a multiple of 50
+        if (counter % 50 == 0) {
+            counterDiamond += 2
+            preferencesHelper.saveDiamondCounter(counterDiamond)
+            binding.textCounterDiamond.text = counterDiamond.toString()
+
+            // Check if counterDiamond reaches a multiple of 10
+            if (counterDiamond % 10 == 0) {
+                counterGem++
+                binding.textCounterGem.text = counterGem.toString()
+            }
+        }
     }
 
     private fun removeCorrectPairFromImageStore(resId: Int) {

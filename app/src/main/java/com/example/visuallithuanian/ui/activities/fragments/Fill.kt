@@ -69,31 +69,6 @@ package com.example.visuallithuanian
 //"to write, writes, wrote what? to whom?" = "rašyti, rašo, raše ką? kam?",
 //"to send, sends, sent what?" = "išsiųsti, išsiunčia, išsiunte ką?",
 
-
-// I verbs wordss
-
-//"be" = "būti"
-//"to read" = "skaityti"
-//"knock" = "belsti"
-//"to travel" = "keliauti"
-//"think about it" = "pagalvok"
-//"go" = "eik"
-//"to have" = "turėti"
-//"to drink" = "gerti"
-//"to draw" = "piešti"
-//"to start" = "pradėti"
-//
-//"training" = "mokymo"
-//"to speak" = "kalbėti"
-//"to learn" = "mokytis"
-//"to buy" = "pirkti"
-//"to use" = "naudoti"
-//"work" = "dirbti"
-//"to eat" = "valgyti"
-//"to find" = "rasti"
-//"to continue" = "tęsti"
-//"to say" = "pasakyti"
-
 // Food and Ingerdients
 //"egg" = "kiaušinis"
 //"kiwi" = "kivis"
