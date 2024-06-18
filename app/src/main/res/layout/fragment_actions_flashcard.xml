@@ -32,7 +32,7 @@
         android:contentDescription="@string/add_item"
         android:src="@drawable/baseline_library_add_24"
         android:tint="@android:color/white"
-        app:backgroundTint="#fa867d"
+        app:backgroundTint="@color/orange1"
         app:fabSize="normal" />
     <androidx.cardview.widget.CardView
         android:id="@+id/card_learning"
@@ -49,7 +49,7 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/text_counter"
+                android:id="@+id/text_counter_learn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/zero"
