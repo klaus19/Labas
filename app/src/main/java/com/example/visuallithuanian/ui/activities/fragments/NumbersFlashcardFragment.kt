@@ -125,7 +125,7 @@ class NumbersFlashcardFragment : Fragment() {
 
 
         counterViewModel.counter.observe(requireActivity()){count->
-            binding.textCounter.text = count.toString()
+            binding.textCounterLearn.text = count.toString()
         }
         currentTriple = hashMap.entries.elementAt(currentTripleIndex)
         binding.textCardFront.text = currentTriple.key

@@ -1,3 +1,5 @@
+package com.example.visuallithuanian.adapter
+
 import android.animation.ObjectAnimator
 import android.media.MediaPlayer
 import android.net.Uri

@@ -179,7 +179,7 @@ class VerbsFragment : Fragment() {
         }
 
         counterViewModel.counter.observe(requireActivity()){count->
-            binding.textCounter.text = count.toString()
+            binding.textCounterLearn.text = count.toString()
         }
         // val front_animation = AnimatorInflater.loadAnimator(context, R.anim.front_animator) as AnimatorSet
         // val back_animation = AnimatorInflater.loadAnimator(context,R.anim.back_animator)as AnimatorSet

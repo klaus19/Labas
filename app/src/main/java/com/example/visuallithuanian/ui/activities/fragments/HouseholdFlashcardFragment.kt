@@ -104,7 +104,7 @@ class HouseholdFlashcardFragment : Fragment() {
 
 
         counterViewModel.counter.observe(requireActivity()){count->
-            binding.textCounter.text = count.toString()
+            binding.textCounterLearn.text = count.toString()
         }
         currentTriple = HouseholdSingleton.hashMapHousehold.entries.elementAt(currentTripleIndex)
         binding.textCardFront.text = currentTriple.key

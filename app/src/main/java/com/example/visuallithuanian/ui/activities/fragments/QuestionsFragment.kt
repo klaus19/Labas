@@ -61,7 +61,6 @@ class QuestionsFragment : Fragment() {
 
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
-
         bottomNavigationView.visibility = View.GONE
 
         // setting up listener for back Icon

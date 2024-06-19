@@ -1,9 +1,5 @@
 package com.example.visuallithuanian.ui.activities.fragments
 
-
-
-import OverlappingLayoutManager
-import ToLearnAdapter
 import android.graphics.Canvas
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -15,7 +11,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.R
+import com.example.visuallithuanian.adapter.ToLearnAdapter
 import com.example.visuallithuanian.constants.ImageStore
+import com.example.visuallithuanian.custom.OverlappingLayoutManager
 import com.example.visuallithuanian.databinding.FragmentToLearnFlashCardsBinding
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
