@@ -1,5 +1,5 @@
-package com.example.visuallithuanian.ui.activities.fragments
 
+package com.example.visuallithuanian.ui.activities.fragments
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.media.MediaPlayer
@@ -24,7 +24,6 @@ import com.example.visuallithuanian.viewModel.FlashCardViewmodel
 import com.example.visuallithuanian.viewModel.ToLearnViewModel
 import com.example.visuallithuanian.viewModel.WordViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import dagger.hilt.android.AndroidEntryPoint
 
 
 class QuestionsFragment : Fragment() {
@@ -156,8 +155,7 @@ class QuestionsFragment : Fragment() {
 
             if (!preferencesHelper.isItemSaved(tripleIdentifier)) {
                 preferencesHelper.addSavedItem(tripleIdentifier)
-                counterViewModel.incrementCounter()
-
+                counterViewModel.incrementCounter() // Increment counter
                 val Triple = FlashcardPair(front, back, imageHelper, voiceClip)
                 cardViewModel.insertCards(Triple)
                 Log.d("Main", "$Triple")

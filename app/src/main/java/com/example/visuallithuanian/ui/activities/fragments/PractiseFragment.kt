@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,8 @@ import com.example.visuallithuanian.adapter.PractiseAdapter
 import com.example.visuallithuanian.constants.ImageStore
 import com.example.visuallithuanian.databinding.FragmentPractiseBinding
 import com.example.visuallithuanian.model.PreferencesHelper
+import com.example.visuallithuanian.viewModel.CounterViewmodel
+import com.example.visuallithuanian.viewModel.ToLearnViewModel
 
 class PractiseFragment : Fragment() {
     private lateinit var binding: FragmentPractiseBinding
@@ -23,6 +26,9 @@ class PractiseFragment : Fragment() {
     private var counter = 0
     private var counterDiamond = 0
     private var counterGem = 0
+    private var counterLearn = 0 // Counter for items to learn
+    private var counterLearnt = 0 // Counter for learnt items
+    private lateinit var counterViewModel: CounterViewmodel
 
     @SuppressLint("ClickableViewAccessibility", "UseCompatLoadingForDrawables")
     override fun onCreateView(
@@ -35,9 +41,11 @@ class PractiseFragment : Fragment() {
         preferencesHelper = PreferencesHelper(requireContext())
         counter = preferencesHelper.getCounter()
         counterDiamond = preferencesHelper.getDiamondCounter()
+
         binding.textCounter.text = counter.toString()
         binding.textCounterDiamond.text = counterDiamond.toString()
         binding.textCounterGem.text = counterGem.toString()
+
 
         ImageStore.loadFromPreferences(requireContext())
 

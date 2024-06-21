@@ -9,6 +9,8 @@ class PreferencesHelper(private val context: Context) {
         context.getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
 
     companion object {
+        private const val LEARN_COUNTER_KEY = "learn_counter"
+        private const val LEARNT_COUNTER_KEY = "learnt_counter"
         private const val COUNTER_KEY = "counter_key"
         private const val DIAMOND_COUNTER_KEY = "diamond_counter_key"
         private const val PROGRESS_KEY = "progress_key"
@@ -140,5 +142,23 @@ class PreferencesHelper(private val context: Context) {
             putStringSet(SAVED_ITEMS_KEY, items)
             apply()
         }
+    }
+
+    // New methods for Learn Counter
+    fun getLearnCounter(): Int {
+        return sharedPreferences.getInt(LEARN_COUNTER_KEY, 0)
+    }
+
+    fun saveLearnCounter(counter: Int) {
+        sharedPreferences.edit().putInt(LEARN_COUNTER_KEY, counter).apply()
+    }
+
+    // New methods for Learnt Counter
+    fun getLearntCounter(): Int {
+        return sharedPreferences.getInt(LEARNT_COUNTER_KEY, 0)
+    }
+
+    fun saveLearntCounter(counter: Int) {
+        sharedPreferences.edit().putInt(LEARNT_COUNTER_KEY, counter).apply()
     }
 }
