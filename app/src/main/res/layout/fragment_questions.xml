@@ -183,20 +183,20 @@
         android:id="@+id/linearButtons"
         android:layout_below="@id/progress_horizontal"
         android:gravity="center"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/imageLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="50dp"
             android:src="@drawable/leftarrow" />
 
         <ImageView
             android:id="@+id/imageRight"
+            android:layout_marginStart="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="50dp"
             android:src="@drawable/rightarrow" />
     </LinearLayout>
 
