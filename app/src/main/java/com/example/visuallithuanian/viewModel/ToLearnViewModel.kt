@@ -7,11 +7,17 @@ import androidx.lifecycle.ViewModel
 
 class ToLearnViewModel: ViewModel() {
 
-    private val _counter = MutableLiveData<Int>(0)
+    private val _counter = MutableLiveData<Int>()
     val counter: LiveData<Int> = _counter
 
     private val _learnedCounter = MutableLiveData<Int>()
     val learnedCounter: LiveData<Int> = _learnedCounter
+
+
+    init {
+        _counter.value=0
+        _learnedCounter.value=0
+    }
 
     fun incrementCounter(){
         _counter.value = _counter.value?.plus(1)
@@ -28,21 +34,20 @@ class ToLearnViewModel: ViewModel() {
         }
     }
 
-    // MutableLiveData for decrement counter and increment learned counter
-    private val _decrementCounter = MutableLiveData<Int>()
-    val decrementCounter: LiveData<Int> get() = _decrementCounter
-
-    private val _incrementLearnedCounter = MutableLiveData<Int>()
-    val incrementLearnedCounter: LiveData<Int> get() = _incrementLearnedCounter
-    fun setLearnedCounter(value: Int) {
+      // for learned count
+    fun incrementLearnedCounter() {
+        _learnedCounter.value = _learnedCounter.value?.plus(1)
+    }
+    fun setCounterLearned(value: Int){
         _learnedCounter.value = value
     }
 
-    fun incrementLearnedCounter() {
-        _learnedCounter.value = (_learnedCounter.value ?: 0) + 1
+    fun decrementCounterLearned(){
+          val currentValue = _learnedCounter.value?:0
+         if(currentValue>0){
+             _learnedCounter.value = currentValue-1
+         }
     }
 
-    fun decrementLearnedCounter() {
-        _learnedCounter.value = (_learnedCounter.value ?: 0) - 1
-    }
+
 }

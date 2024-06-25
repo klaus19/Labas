@@ -9,15 +9,11 @@ class PreferencesHelper(private val context: Context) {
         context.getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
 
     companion object {
-        private const val LEARN_COUNTER_KEY = "learn_counter"
-        private const val LEARNT_COUNTER_KEY = "learnt_counter"
         private const val COUNTER_KEY = "counter_key"
         private const val DIAMOND_COUNTER_KEY = "diamond_counter_key"
         private const val PROGRESS_KEY = "progress_key"
-        private const val CURRENT_TRIPLE_INDEX_KEY = "current_triple_index_key"
-        private const val SAVED_FLASHCARDS_KEY = "saved_flashcards_key"
-        private const val QUESTIONS_COUNTER_KEY = "questions_counter_key" // New key for QuestionsFragment counter
         private const val SAVED_ITEMS_KEY = "saved_items_key" // Key for saved items set
+        private const val LEARNED_COUNTER_KEY = "learned_counter_key"
     }
 
     fun incrementCounter() {
@@ -65,55 +61,16 @@ class PreferencesHelper(private val context: Context) {
         return sharedPreferences.getInt(PROGRESS_KEY, 0)
     }
 
-    fun saveCurrentTripleIndex(index: Int) {
-        with(sharedPreferences.edit()) {
-            putInt(CURRENT_TRIPLE_INDEX_KEY, index)
-            apply()
-        }
-    }
-
-    fun getCurrentTripleIndex(): Int {
-        return sharedPreferences.getInt(CURRENT_TRIPLE_INDEX_KEY, 0)
-    }
-
-    fun saveSavedFlashcards(savedFlashcards: Set<String>) {
-        with(sharedPreferences.edit()) {
-            putStringSet(SAVED_FLASHCARDS_KEY, savedFlashcards)
-            apply()
-        }
-    }
-
-    fun getSavedFlashcards(): Set<String> {
-        return sharedPreferences.getStringSet(SAVED_FLASHCARDS_KEY, setOf()) ?: setOf()
-    }
-
-    // New methods for QuestionsFragment counter
-    fun incrementQuestionsCounter() {
-        val currentCounter = getQuestionsCounter()
-        saveQuestionsCounter(currentCounter + 1)
-    }
-
-    fun decrementQuestionsCounter() {
-        val currentCounter = getQuestionsCounter()
-        if (currentCounter > 0) {
-            saveQuestionsCounter(currentCounter - 1)
-        }
-    }
-
-    fun saveQuestionsCounter(counter: Int) {
-        with(sharedPreferences.edit()) {
-            putInt(QUESTIONS_COUNTER_KEY, counter)
-            apply()
-        }
-    }
-
-    fun getQuestionsCounter(): Int {
-        return sharedPreferences.getInt(QUESTIONS_COUNTER_KEY, 0)
-    }
-
     fun saveCounterValue(value: Int) {
         with(sharedPreferences.edit()) {
             putInt("counter_value", value)
+            apply()
+        }
+    }
+
+    fun saveCounterValueLearned(value: Int) {
+        with(sharedPreferences.edit()) {
+            putInt("learned_value", value)
             apply()
         }
     }
@@ -133,32 +90,25 @@ class PreferencesHelper(private val context: Context) {
         return getSavedItems().contains(item)
     }
 
-    private fun getSavedItems(): Set<String> {
+    fun getSavedItems(): Set<String> {
         return sharedPreferences.getStringSet(SAVED_ITEMS_KEY, setOf()) ?: setOf()
     }
 
-    private fun saveSavedItems(items: Set<String>) {
+    fun saveSavedItems(items: Set<String>) {
         with(sharedPreferences.edit()) {
             putStringSet(SAVED_ITEMS_KEY, items)
             apply()
         }
     }
 
-    // New methods for Learn Counter
-    fun getLearnCounter(): Int {
-        return sharedPreferences.getInt(LEARN_COUNTER_KEY, 0)
+    fun saveLearnedCounter(value: Int) {
+        with(sharedPreferences.edit()) {
+            putInt(LEARNED_COUNTER_KEY, value)
+            apply()
+        }
     }
 
-    fun saveLearnCounter(counter: Int) {
-        sharedPreferences.edit().putInt(LEARN_COUNTER_KEY, counter).apply()
-    }
-
-    // New methods for Learnt Counter
-    fun getLearntCounter(): Int {
-        return sharedPreferences.getInt(LEARNT_COUNTER_KEY, 0)
-    }
-
-    fun saveLearntCounter(counter: Int) {
-        sharedPreferences.edit().putInt(LEARNT_COUNTER_KEY, counter).apply()
+    fun loadLearnedCounter(): Int {
+        return sharedPreferences.getInt(LEARNED_COUNTER_KEY, 0)
     }
 }

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +19,7 @@ import com.example.visuallithuanian.databinding.FragmentToLearnFlashCardsBinding
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.FlashCardViewmodel
+import com.example.visuallithuanian.viewModel.ToLearnViewModel
 import com.example.visuallithuanian.viewModel.WordViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -27,11 +29,16 @@ class ToLearnFlashCards : Fragment() {
     private lateinit var binding: FragmentToLearnFlashCardsBinding
     private lateinit var layoutManager: OverlappingLayoutManager
     private lateinit var preferencesHelper: PreferencesHelper
+    private val counterViewModel: ToLearnViewModel by viewModels()
 
     lateinit var bottomNav: BottomNavigationView
     val cardViewmodel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
     }
+
+    // added a new one
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,8 +46,17 @@ class ToLearnFlashCards : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentToLearnFlashCardsBinding.inflate(layoutInflater, container, false)
-        preferencesHelper = PreferencesHelper(requireContext())
 
+
+        preferencesHelper = PreferencesHelper(requireContext())
+        counterViewModel.setCounterLearned(preferencesHelper.loadLearnedCounter())
+
+
+        counterViewModel.learnedCounter.observe(viewLifecycleOwner){count->
+            binding.textCounterLearned.text = count.toString()
+            preferencesHelper.saveLearnedCounter(count)
+
+        }
         //Taking the bOTTOMNavigation view instance from Activity into Fragment
         bottomNav = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         bottomNav.visibility = View.VISIBLE
@@ -49,6 +65,7 @@ class ToLearnFlashCards : Fragment() {
             findNavController().navigate(R.id.action_toLearnFlashCards_to_flashCards)
 
         }
+
 
         binding.recyclerview.layoutManager = OverlappingLayoutManager(requireContext())
         layoutManager = OverlappingLayoutManager(requireContext())
@@ -110,6 +127,8 @@ class ToLearnFlashCards : Fragment() {
                 // Handle swipe left to delete the card
 
                 cardViewmodel.deleteCards(cardPair)
+                preferencesHelper.addSavedItem(position.toString())
+               counterViewModel.incrementLearnedCounter()
 
             }
         })

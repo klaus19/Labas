@@ -31,6 +31,7 @@ class QuestionsFragment : Fragment() {
     lateinit var viewModel: BottomNavigationViewModel
 
     lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var preferencesHelper: PreferencesHelper
     private val counterViewModel: ToLearnViewModel by viewModels()
 
     private val hashMap = HashMap<String, Triple<String, Int, Int>>()
@@ -46,7 +47,7 @@ class QuestionsFragment : Fragment() {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
     }
 
-    private lateinit var preferencesHelper: PreferencesHelper
+
 
     @SuppressLint("ResourceType")
     override fun onCreateView(
@@ -56,11 +57,22 @@ class QuestionsFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentQuestionsBinding.inflate(inflater, container, false)
 
-        preferencesHelper = PreferencesHelper(requireContext()) // Initialize PreferencesHelper
+
 
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
         bottomNavigationView.visibility = View.GONE
+
+        preferencesHelper = PreferencesHelper(requireContext()) // Initialize PreferencesHelper
+
+        // Load saved counter value
+        counterViewModel.setCounter(preferencesHelper.loadCounterValue())
+
+        counterViewModel.counter.observe(viewLifecycleOwner) { count ->
+            binding.textCounterLearn.text = count.toString()
+            //  binding.textCounterLearned.text
+            preferencesHelper.saveCounterValue(count) // Save counter value
+        }
 
         // setting up listener for back Icon
         binding.backIcon?.setOnClickListener {
@@ -126,14 +138,6 @@ class QuestionsFragment : Fragment() {
 
         }
 
-        // Load saved counter value
-        counterViewModel.setCounter(preferencesHelper.loadCounterValue())
-
-        counterViewModel.counter.observe(requireActivity()) { count ->
-            binding.textCounterLearn.text = count.toString()
-            preferencesHelper.saveCounterValue(count) // Save counter value
-        }
-
         currentTriple = hashMap.entries.elementAt(currentTripleIndex)
         binding.textCardFront.text = currentTriple.key
         binding.textCardBack.text = currentTriple.value.first
@@ -156,6 +160,7 @@ class QuestionsFragment : Fragment() {
             if (!preferencesHelper.isItemSaved(tripleIdentifier)) {
                 preferencesHelper.addSavedItem(tripleIdentifier)
                 counterViewModel.incrementCounter() // Increment counter
+               // counterViewModel.incrementLearnedCounter()
                 val Triple = FlashcardPair(front, back, imageHelper, voiceClip)
                 cardViewModel.insertCards(Triple)
                 Log.d("Main", "$Triple")
