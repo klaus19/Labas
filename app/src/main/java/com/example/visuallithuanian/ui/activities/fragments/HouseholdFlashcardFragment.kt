@@ -172,7 +172,7 @@ class HouseholdFlashcardFragment : Fragment() {
 
         //onclick listener for the Flip button
         with(binding) {
-            btnFlip.setOnClickListener {
+            imageLeft.setOnClickListener {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 

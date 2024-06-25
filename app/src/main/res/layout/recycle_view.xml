@@ -6,6 +6,7 @@
     android:layout_centerInParent="true"
     app:cardUseCompatPadding="true"
     android:id="@+id/card_view"
+    app:cardBackgroundColor="@color/lime_green"
     android:background="@drawable/card_border"
     app:cardCornerRadius="15dp"
     app:cardElevation="4dp">

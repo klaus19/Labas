@@ -37,4 +37,5 @@
     <color name="cardcolor">#eeeeee</color>
     <color name="grey">#333333</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="lime_green">#dbf5f4</color>
 </resources>

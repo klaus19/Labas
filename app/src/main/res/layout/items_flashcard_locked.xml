@@ -4,6 +4,7 @@
     android:id="@+id/cardFlashCards"
     android:layout_width="220dp"
     android:layout_height="wrap_content"
+    app:cardBackgroundColor="#dbf5f4"
     android:layout_margin="10dp"
     app:cardCornerRadius="10dp"
     app:cardElevation="2dp">

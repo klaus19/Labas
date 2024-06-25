@@ -163,7 +163,7 @@ class PointersFlashcardFragment : Fragment() {
         }
 
         with(binding) {
-            btnFlip.setOnClickListener {
+            imageLeft.setOnClickListener {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
