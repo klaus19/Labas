@@ -36,7 +36,7 @@ class ToLearnAdapter(
         private val relativeLeft: RelativeLayout = itemView.findViewById(R.id.relativeLeft)
         private val relativeRight: RelativeLayout = itemView.findViewById(R.id.relativeRight)
         private val btnPlay: ImageView = itemView.findViewById(R.id.btnPlay)
-        private val mediaPlayer: MediaPlayer = MediaPlayer()
+        private var mediaPlayer: MediaPlayer? = null
 
         private var clickCount = 0
 
@@ -57,13 +57,13 @@ class ToLearnAdapter(
         }
 
         private fun playAudio(audioSrc: Int) {
-            mediaPlayer.apply {
-                reset()
+            mediaPlayer?.release() // Release any previously set MediaPlayer instance
+            mediaPlayer = MediaPlayer().apply {
                 setDataSource(itemView.context, Uri.parse("android.resource://${itemView.context.packageName}/$audioSrc"))
                 prepareAsync()
-            }
-            mediaPlayer.setOnPreparedListener {
-                it.start()
+                setOnPreparedListener {
+                    it.start()
+                }
             }
         }
 
@@ -107,6 +107,7 @@ class ToLearnAdapter(
         private fun resetViewState() {
             // Initially hide details view
             hideDetails()
+            clickCount = 0 // Reset click count
         }
     }
 

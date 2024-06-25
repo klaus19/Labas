@@ -1,5 +1,5 @@
-
 package com.example.visuallithuanian.ui.activities.fragments
+
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.media.MediaPlayer
@@ -25,7 +25,6 @@ import com.example.visuallithuanian.viewModel.ToLearnViewModel
 import com.example.visuallithuanian.viewModel.WordViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-
 class QuestionsFragment : Fragment() {
     lateinit var binding: FragmentQuestionsBinding
     lateinit var viewModel: BottomNavigationViewModel
@@ -47,8 +46,6 @@ class QuestionsFragment : Fragment() {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
     }
 
-
-
     @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,8 +53,6 @@ class QuestionsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentQuestionsBinding.inflate(inflater, container, false)
-
-
 
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
@@ -160,7 +155,7 @@ class QuestionsFragment : Fragment() {
             if (!preferencesHelper.isItemSaved(tripleIdentifier)) {
                 preferencesHelper.addSavedItem(tripleIdentifier)
                 counterViewModel.incrementCounter() // Increment counter
-               // counterViewModel.incrementLearnedCounter()
+                // counterViewModel.incrementLearnedCounter()
                 val Triple = FlashcardPair(front, back, imageHelper, voiceClip)
                 cardViewModel.insertCards(Triple)
                 Log.d("Main", "$Triple")
@@ -199,7 +194,7 @@ class QuestionsFragment : Fragment() {
         }
 
         with(binding) {
-            btnFlip.setOnClickListener {
+            imageRight.setOnClickListener {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
@@ -209,7 +204,53 @@ class QuestionsFragment : Fragment() {
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
                 } else {
-                    currentTripleIndex = (currentTripleIndex + 1) % hashMap.size
+                    if (currentTripleIndex < hashMap.size - 1) {
+                        currentTripleIndex++
+                    }
+                    textCardFront.visibility = View.VISIBLE
+                    textCardBack.visibility = View.VISIBLE
+                    imageFlashCard.visibility = View.VISIBLE
+                }
+
+                if (currentTripleIndex % 2 == 0) {
+                    cardViewQuestions.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.orange1
+                        )
+                    )
+                } else {
+                    cardViewQuestions.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.new_design_text_color
+                        )
+                    )
+                }
+
+                val progress = ((currentTripleIndex + 1) * 100) / totalTriples
+                binding.progressHorizontal.progress = progress
+
+                currentTriple = hashMap.entries.elementAt(currentTripleIndex)
+                binding.textCardFront.text = currentTriple.key
+                binding.textCardBack.text = currentTriple.value.first
+                binding.imagecardsHelper.setImageResource(currentTriple.value.second)
+                binding.btnPlay.setImageResource(currentTriple.value.third)
+            }
+
+            imageLeft.setOnClickListener {
+                imageFlashCardSaveWhite.visibility = View.GONE
+                imageFlashCard.visibility = View.VISIBLE
+
+                if (isFront) {
+                    isFront = false
+                    textCardBack.visibility = View.VISIBLE
+                    textCardFront.visibility = View.VISIBLE
+                    imageFlashCard.visibility = View.VISIBLE
+                } else {
+                    if (currentTripleIndex > 0) {
+                        currentTripleIndex--
+                    }
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
