@@ -42,7 +42,7 @@ class ToLearnViewModel: ViewModel() {
         _learnedCounter.value = value
     }
 
-    fun decrementCounterLearned(){
+    fun decrementCounterLearn(){
           val currentValue = _learnedCounter.value?:0
          if(currentValue>0){
              _learnedCounter.value = currentValue-1

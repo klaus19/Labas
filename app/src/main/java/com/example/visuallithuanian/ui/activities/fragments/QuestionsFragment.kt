@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -32,6 +34,10 @@ class QuestionsFragment : Fragment() {
     lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var preferencesHelper: PreferencesHelper
     private val counterViewModel: ToLearnViewModel by viewModels()
+
+    private val sharedPrefFile = "com.example.visuallithuanian.PREFERENCE_FILE_KEY"
+    private val counterKey = "counter"
+
 
     private val hashMap = HashMap<String, Triple<String, Int, Int>>()
 
@@ -59,6 +65,9 @@ class QuestionsFragment : Fragment() {
         bottomNavigationView.visibility = View.GONE
 
         preferencesHelper = PreferencesHelper(requireContext()) // Initialize PreferencesHelper
+
+       // val savedCounterValue = preferencesHelper.loadCounterValue()
+
 
         // Load saved counter value
         counterViewModel.setCounter(preferencesHelper.loadCounterValue())
@@ -282,6 +291,14 @@ class QuestionsFragment : Fragment() {
                 binding.btnPlay.setImageResource(currentTriple.value.third)
             }
         }
+
+        updateCounterTextView()
         return binding.root
+    }
+
+    private fun updateCounterTextView() {
+        val sharedPreferences = requireContext().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
+        val counter = sharedPreferences.getInt(counterKey, 0)
+        binding.textCounterLearned.text = counter.toString()
     }
 }

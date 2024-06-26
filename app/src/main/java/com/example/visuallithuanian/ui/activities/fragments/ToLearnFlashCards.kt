@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -23,7 +23,6 @@ import com.example.visuallithuanian.viewModel.ToLearnViewModel
 import com.example.visuallithuanian.viewModel.WordViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-
 class ToLearnFlashCards : Fragment() {
 
     private lateinit var binding: FragmentToLearnFlashCardsBinding
@@ -31,14 +30,13 @@ class ToLearnFlashCards : Fragment() {
     private lateinit var preferencesHelper: PreferencesHelper
     private val counterViewModel: ToLearnViewModel by viewModels()
 
+    private val sharedPrefFile = "com.example.visuallithuanian.PREFERENCE_FILE_KEY"
+    private val counterKey = "counter"
+
     lateinit var bottomNav: BottomNavigationView
     val cardViewmodel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
     }
-
-    // added a new one
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,46 +45,35 @@ class ToLearnFlashCards : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentToLearnFlashCardsBinding.inflate(layoutInflater, container, false)
 
-
         preferencesHelper = PreferencesHelper(requireContext())
         counterViewModel.setCounterLearned(preferencesHelper.loadLearnedCounter())
 
-
-        counterViewModel.learnedCounter.observe(viewLifecycleOwner){count->
-            binding.textCounterLearned.text = count.toString()
+        counterViewModel.learnedCounter.observe(viewLifecycleOwner) { count ->
             preferencesHelper.saveLearnedCounter(count)
-
         }
-        //Taking the bOTTOMNavigation view instance from Activity into Fragment
+
+        // Taking the BottomNavigationView instance from Activity into Fragment
         bottomNav = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         bottomNav.visibility = View.VISIBLE
 
         binding.backIcon.setOnClickListener {
             findNavController().navigate(R.id.action_toLearnFlashCards_to_flashCards)
-
         }
-
 
         binding.recyclerview.layoutManager = OverlappingLayoutManager(requireContext())
         layoutManager = OverlappingLayoutManager(requireContext())
 
-
-
         val adapter = ToLearnAdapter { cardPair ->
             cardViewmodel.deleteCards(cardPair)
-
         }
         binding.recyclerview.layoutManager = layoutManager
         binding.recyclerview.adapter = adapter
         binding.recyclerview.itemAnimator = null
 
-        //Swipe Gesture
-
+        // Swipe Gesture
         val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
             0, ItemTouchHelper.RIGHT
         ) {
-
-            private val SWIPE_FACTOR = 0f
             override fun onChildDraw(
                 c: Canvas,
                 recyclerView: RecyclerView,
@@ -97,20 +84,9 @@ class ToLearnFlashCards : Fragment() {
                 isCurrentlyActive: Boolean
             ) {
                 val itemView = viewHolder.itemView
-
-                // Apply rotation transformation to the card view
                 itemView.pivotX = itemView.width.toFloat()
                 itemView.pivotY = itemView.height.toFloat() / 2
-                //   itemView.rotation = rotation
-                super.onChildDraw(
-                    c,
-                    recyclerView,
-                    viewHolder,
-                    dX,
-                    dY,
-                    actionState,
-                    isCurrentlyActive
-                )
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
             }
 
             override fun onMove(
@@ -124,20 +100,17 @@ class ToLearnFlashCards : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val cardPair = adapter.currentList[position]
-                // Handle swipe left to delete the card
-
                 cardViewmodel.deleteCards(cardPair)
                 preferencesHelper.addSavedItem(position.toString())
-               counterViewModel.incrementLearnedCounter()
-
+                counterViewModel.incrementCounter()
+                incrementCounter()
             }
         })
         itemTouchHelper.attachToRecyclerView(binding.recyclerview)
 
-        val itemTouchHelper1 = ItemTouchHelper(object :ItemTouchHelper.SimpleCallback(
-            0,ItemTouchHelper.LEFT
-        ){
-            val SWIPEFACTOR = 0f
+        val itemTouchHelper1 = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
+            0, ItemTouchHelper.LEFT
+        ) {
             override fun onChildDraw(
                 c: Canvas,
                 recyclerView: RecyclerView,
@@ -147,15 +120,7 @@ class ToLearnFlashCards : Fragment() {
                 actionState: Int,
                 isCurrentlyActive: Boolean
             ) {
-                super.onChildDraw(
-                    c,
-                    recyclerView,
-                    viewHolder,
-                    dX,
-                    dY,
-                    actionState,
-                    isCurrentlyActive
-                )
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
             }
 
             override fun onMove(
@@ -169,22 +134,16 @@ class ToLearnFlashCards : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val cardPair = adapter.currentList[position]
-
-                ImageStore.addImageResource(cardPair.imageSrc,cardPair.front,cardPair.back,cardPair.voiceclip)
+                ImageStore.addImageResource(cardPair.imageSrc, cardPair.front, cardPair.back, cardPair.voiceclip)
                 ImageStore.saveToPreferences(requireContext())
                 cardViewmodel.deleteCards(cardPair)
             }
         })
         itemTouchHelper1.attachToRecyclerView(binding.recyclerview)
 
-
-
-
-        //Observe  the data changes for the items added
+        // Observe data changes for the items added
         cardViewmodel.allWords.observe(viewLifecycleOwner) { cardPairs ->
-
             adapter.submitList(cardPairs)
-
             if (cardPairs.isEmpty()) {
                 binding.emptyImage.visibility = View.VISIBLE
                 binding.emptyCardText.visibility = View.VISIBLE
@@ -195,5 +154,15 @@ class ToLearnFlashCards : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun incrementCounter() {
+        val sharedPreferences = requireContext().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
+        val currentCounter = sharedPreferences.getInt(counterKey, 0)
+        val newCounter = currentCounter + 1
+        with(sharedPreferences.edit()) {
+            putInt(counterKey, newCounter)
+            apply()
+        }
     }
 }
