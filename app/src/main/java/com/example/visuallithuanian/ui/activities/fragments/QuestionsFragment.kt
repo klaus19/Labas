@@ -12,7 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -36,8 +35,6 @@ class QuestionsFragment : Fragment() {
     private val counterViewModel: ToLearnViewModel by viewModels()
 
     private val sharedPrefFile = "com.example.visuallithuanian.PREFERENCE_FILE_KEY"
-    private val counterKey = "counter"
-
 
     private val hashMap = HashMap<String, Triple<String, Int, Int>>()
 
@@ -66,18 +63,6 @@ class QuestionsFragment : Fragment() {
 
         preferencesHelper = PreferencesHelper(requireContext()) // Initialize PreferencesHelper
 
-       // val savedCounterValue = preferencesHelper.loadCounterValue()
-
-
-        // Load saved counter value
-        counterViewModel.setCounter(preferencesHelper.loadCounterValue())
-
-        counterViewModel.counter.observe(viewLifecycleOwner) { count ->
-            binding.textCounterLearn.text = count.toString()
-            //  binding.textCounterLearned.text
-            preferencesHelper.saveCounterValue(count) // Save counter value
-        }
-
         // setting up listener for back Icon
         binding.backIcon?.setOnClickListener {
             activity?.onBackPressed()
@@ -102,6 +87,9 @@ class QuestionsFragment : Fragment() {
                 R.color.silver
             )
         )
+
+        // Load saved progress
+        binding.progressHorizontal.progress = getSavedProgress()
 
         // Hashmap of strings that will be shown on cardview front and back side
         hashMap["What"] = Triple("Kas", R.drawable.what, R.raw.whatkas)
@@ -139,7 +127,6 @@ class QuestionsFragment : Fragment() {
             mediaPlayer.setOnPreparedListener {
                 it.start()
             }
-
         }
 
         currentTriple = hashMap.entries.elementAt(currentTripleIndex)
@@ -165,9 +152,9 @@ class QuestionsFragment : Fragment() {
                 preferencesHelper.addSavedItem(tripleIdentifier)
                 counterViewModel.incrementCounter() // Increment counter
                 // counterViewModel.incrementLearnedCounter()
-                val Triple = FlashcardPair(front, back, imageHelper, voiceClip)
-                cardViewModel.insertCards(Triple)
-                Log.d("Main", "$Triple")
+                val triple = FlashcardPair(front, back, imageHelper, voiceClip)
+                cardViewModel.insertCards(triple)
+                Log.d("Main", "$triple")
             } else {
                 Log.d("Main", "Item already saved: $tripleIdentifier")
             }
@@ -190,9 +177,9 @@ class QuestionsFragment : Fragment() {
                     val imageHelper = currentTriple.value.second
                     val voiceClip = currentTriple.value.third
 
-                    val Triple = FlashcardPair(front, back, imageHelper, voiceClip)
-                    cardViewModel.deleteCards(Triple)
-                    Log.d("Main", "$Triple")
+                    val triple = FlashcardPair(front, back, imageHelper, voiceClip)
+                    cardViewModel.deleteCards(triple)
+                    Log.d("Main", "$triple")
                     currentTriple = hashMap.entries.elementAt(currentTripleIndex)
                 }
             }
@@ -232,13 +219,14 @@ class QuestionsFragment : Fragment() {
                     cardViewQuestions.setCardBackgroundColor(
                         ContextCompat.getColor(
                             requireContext(),
-                            R.color.new_design_text_color
+                            R.color.orange1
                         )
                     )
                 }
 
                 val progress = ((currentTripleIndex + 1) * 100) / totalTriples
                 binding.progressHorizontal.progress = progress
+                saveProgress(progress) // Save progress
 
                 currentTriple = hashMap.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
@@ -276,13 +264,14 @@ class QuestionsFragment : Fragment() {
                     cardViewQuestions.setCardBackgroundColor(
                         ContextCompat.getColor(
                             requireContext(),
-                            R.color.new_design_text_color
+                            R.color.orange1
                         )
                     )
                 }
 
                 val progress = ((currentTripleIndex + 1) * 100) / totalTriples
                 binding.progressHorizontal.progress = progress
+                saveProgress(progress) // Save progress
 
                 currentTriple = hashMap.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
@@ -292,13 +281,18 @@ class QuestionsFragment : Fragment() {
             }
         }
 
-        updateCounterTextView()
         return binding.root
     }
 
-    private fun updateCounterTextView() {
-        val sharedPreferences = requireContext().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
-        val counter = sharedPreferences.getInt(counterKey, 0)
-        binding.textCounterLearned.text = counter.toString()
+    private fun saveProgress(progress: Int) {
+        val sharedPreferences = requireActivity().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putInt("progress", progress)
+        editor.apply()
+    }
+
+    private fun getSavedProgress(): Int {
+        val sharedPreferences = requireActivity().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
+        return sharedPreferences.getInt("progress", 0)
     }
 }

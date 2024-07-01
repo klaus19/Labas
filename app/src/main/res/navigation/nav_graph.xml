@@ -338,6 +338,9 @@
         <action
             android:id="@+id/action_toLearnFlashCards_to_dailyBasic"
             app:destination="@id/dailyBasic" />
+        <action
+            android:id="@+id/action_toLearnFlashCards_to_practiseFragment"
+            app:destination="@id/practiseFragment" />
     </fragment>
     <fragment
         android:id="@+id/colorsFragment"
@@ -840,11 +843,6 @@
             app:destination="@id/sentenceFragment" />
     </fragment>
     <fragment
-        android:id="@+id/savedSentencesFragment"
-        android:name="com.example.visuallithuanian.ui.activities.fragments.SavedSentencesFragment"
-        android:label="fragment_saved_sentences"
-        tools:layout="@layout/fragment_saved_sentences" />
-    <fragment
         android:id="@+id/actionsFlashcardFragment"
         android:name="com.example.visuallithuanian.ui.activities.fragments.ActionsFlashcardFragment"
         android:label="fragment_actions_flashcard"
@@ -855,6 +853,9 @@
         <action
             android:id="@+id/action_actionsFlashcardFragment_to_sentenceFragment"
             app:destination="@id/sentenceFragment" />
+        <action
+            android:id="@+id/action_toLearnFlashcards"
+            app:destination="@id/practiseFragment" />
     </fragment>
     <fragment
         android:id="@+id/adjectivesFlashcardFragment"

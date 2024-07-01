@@ -29,8 +29,8 @@
     <color name="nana">#d4f0fc</color>
     <color name="green">#00FF00</color>
     <color name="red">#FF0000</color>
-    <color name="bottomNavi">#ea888a</color>
-    <color name="orange1">#fe747d</color>
+    <color name="bottomNavi">#ff7043</color>
+    <color name="orange1">#ff7043</color>
     <color name="green1">#55c8a6</color>
     <color name="float1">#fa867d</color>
     <color name="grey1">#f0eff5</color>
@@ -38,4 +38,5 @@
     <color name="grey">#333333</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="lime_green">#dbf5f4</color>
+    <color name="blue_cardview">#0277BD</color>
 </resources>

@@ -79,6 +79,11 @@ class PreferencesHelper(private val context: Context) {
         return sharedPreferences.getInt("counter_value", 0)
     }
 
+    fun loadCounterValueLearned():Int{
+        return sharedPreferences.getInt("learned_value",0)
+    }
+
+
     // New methods for managing saved items
     fun addSavedItem(item: String) {
         val savedItems = getSavedItems().toMutableSet()
@@ -99,16 +104,5 @@ class PreferencesHelper(private val context: Context) {
             putStringSet(SAVED_ITEMS_KEY, items)
             apply()
         }
-    }
-
-    fun saveLearnedCounter(value: Int) {
-        with(sharedPreferences.edit()) {
-            putInt(LEARNED_COUNTER_KEY, value)
-            apply()
-        }
-    }
-
-    fun loadLearnedCounter(): Int {
-        return sharedPreferences.getInt(LEARNED_COUNTER_KEY, 0)
     }
 }
