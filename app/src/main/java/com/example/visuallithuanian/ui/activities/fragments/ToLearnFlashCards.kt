@@ -48,19 +48,7 @@ class ToLearnFlashCards : Fragment() {
 
         preferencesHelper = PreferencesHelper(requireContext())
 
-        counterViewModel.counter.observe(viewLifecycleOwner){cnt->
-              binding.textCounterLearn.text = cnt.toString()
-            preferencesHelper.saveCounterValue(cnt)
-        }
-        counterViewModel.setCounter(preferencesHelper.loadCounterValue())
 
-        counterViewModel.learnedCounter.observe(viewLifecycleOwner) { count ->
-            binding.textCounterLearned.text = count.toString()
-            //  binding.textCounterLearned.text
-            preferencesHelper.saveCounterValueLearned(count) // Save counter value
-        }
-        // Load saved counter value
-        counterViewModel.setCounterLearned(preferencesHelper.loadCounterValueLearned())
 
         // Taking the BottomNavigationView instance from Activity into Fragment
         bottomNav = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
@@ -70,15 +58,15 @@ class ToLearnFlashCards : Fragment() {
             findNavController().navigate(R.id.action_toLearnFlashCards_to_flashCards)
         }
 
-        binding.recyclerview.layoutManager = OverlappingLayoutManager(requireContext())
-        layoutManager = OverlappingLayoutManager(requireContext())
+        val layoutManager = OverlappingLayoutManager(requireContext())
+        binding.recyclerview.layoutManager = layoutManager
 
         val adapter = ToLearnAdapter { cardPair ->
             cardViewmodel.deleteCards(cardPair)
         }
-        binding.recyclerview.layoutManager = layoutManager
         binding.recyclerview.adapter = adapter
         binding.recyclerview.itemAnimator = null
+
 
         // Swipe Gesture
         val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
@@ -112,7 +100,6 @@ class ToLearnFlashCards : Fragment() {
                 val cardPair = adapter.currentList[position]
                 cardViewmodel.deleteCards(cardPair)
                 preferencesHelper.addSavedItem(position.toString())
-                counterViewModel.incrementLearnedCounter()
                 incrementCounterLearned()
             }
         })
@@ -166,10 +153,10 @@ class ToLearnFlashCards : Fragment() {
             }
         }
 
-
-        binding.cardLearning.setOnClickListener {
-            findNavController().navigate(R.id.action_toLearnFlashCards_to_practiseFragment)
-        }
+//
+//        binding.cardLearning.setOnClickListener {
+//            findNavController().navigate(R.id.action_toLearnFlashCards_to_practiseFragment)
+//        }
 
         return binding.root
     }

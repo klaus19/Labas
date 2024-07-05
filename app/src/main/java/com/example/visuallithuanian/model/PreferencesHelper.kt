@@ -13,7 +13,6 @@ class PreferencesHelper(private val context: Context) {
         private const val DIAMOND_COUNTER_KEY = "diamond_counter_key"
         private const val PROGRESS_KEY = "progress_key"
         private const val SAVED_ITEMS_KEY = "saved_items_key" // Key for saved items set
-        private const val LEARNED_COUNTER_KEY = "learned_counter_key"
     }
 
     fun incrementCounter() {
@@ -79,10 +78,9 @@ class PreferencesHelper(private val context: Context) {
         return sharedPreferences.getInt("counter_value", 0)
     }
 
-    fun loadCounterValueLearned():Int{
-        return sharedPreferences.getInt("learned_value",0)
+    fun loadCounterValueLearned(): Int {
+        return sharedPreferences.getInt("learned_value", 0)
     }
-
 
     // New methods for managing saved items
     fun addSavedItem(item: String) {

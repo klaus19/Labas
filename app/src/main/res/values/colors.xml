@@ -39,4 +39,5 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="lime_green">#dbf5f4</color>
     <color name="blue_cardview">#0277BD</color>
+    <color name="text_color">#437fff</color>
 </resources>

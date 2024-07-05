@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
@@ -63,6 +64,10 @@ class QuestionsFragment : Fragment() {
 
         preferencesHelper = PreferencesHelper(requireContext()) // Initialize PreferencesHelper
 
+        counterViewModel.counter.observe(viewLifecycleOwner, Observer { count ->
+            binding.textCardTolearn.text = count.toString()
+        })
+
         // setting up listener for back Icon
         binding.backIcon?.setOnClickListener {
             activity?.onBackPressed()
@@ -87,9 +92,6 @@ class QuestionsFragment : Fragment() {
                 R.color.silver
             )
         )
-
-        // Load saved progress
-        binding.progressHorizontal.progress = getSavedProgress()
 
         // Hashmap of strings that will be shown on cardview front and back side
         hashMap["What"] = Triple("Kas", R.drawable.what, R.raw.whatkas)
@@ -129,6 +131,10 @@ class QuestionsFragment : Fragment() {
             }
         }
 
+        // Load saved progress and calculate the currentTripleIndex
+        val savedProgress = getSavedProgress()
+        currentTripleIndex = (savedProgress * totalTriples) / 100
+
         currentTriple = hashMap.entries.elementAt(currentTripleIndex)
         binding.textCardFront.text = currentTriple.key
         binding.textCardBack.text = currentTriple.value.first
@@ -150,8 +156,6 @@ class QuestionsFragment : Fragment() {
 
             if (!preferencesHelper.isItemSaved(tripleIdentifier)) {
                 preferencesHelper.addSavedItem(tripleIdentifier)
-                counterViewModel.incrementCounter() // Increment counter
-                // counterViewModel.incrementLearnedCounter()
                 val triple = FlashcardPair(front, back, imageHelper, voiceClip)
                 cardViewModel.insertCards(triple)
                 Log.d("Main", "$triple")
@@ -159,6 +163,8 @@ class QuestionsFragment : Fragment() {
                 Log.d("Main", "Item already saved: $tripleIdentifier")
             }
 
+            counterViewModel.incrementCounter()
+            binding.textCardTolearn.text = counterViewModel.counter.value.toString()
             currentTriple = hashMap.entries.elementAt(currentTripleIndex)
         }
 
@@ -190,7 +196,7 @@ class QuestionsFragment : Fragment() {
         }
 
         with(binding) {
-            imageRight.setOnClickListener {
+            btnFlip.setOnClickListener {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
@@ -200,9 +206,7 @@ class QuestionsFragment : Fragment() {
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
                 } else {
-                    if (currentTripleIndex < hashMap.size - 1) {
-                        currentTripleIndex++
-                    }
+                    currentTripleIndex = (currentTripleIndex + 1) % hashMap.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
@@ -219,52 +223,7 @@ class QuestionsFragment : Fragment() {
                     cardViewQuestions.setCardBackgroundColor(
                         ContextCompat.getColor(
                             requireContext(),
-                            R.color.orange1
-                        )
-                    )
-                }
-
-                val progress = ((currentTripleIndex + 1) * 100) / totalTriples
-                binding.progressHorizontal.progress = progress
-                saveProgress(progress) // Save progress
-
-                currentTriple = hashMap.entries.elementAt(currentTripleIndex)
-                binding.textCardFront.text = currentTriple.key
-                binding.textCardBack.text = currentTriple.value.first
-                binding.imagecardsHelper.setImageResource(currentTriple.value.second)
-                binding.btnPlay.setImageResource(currentTriple.value.third)
-            }
-
-            imageLeft.setOnClickListener {
-                imageFlashCardSaveWhite.visibility = View.GONE
-                imageFlashCard.visibility = View.VISIBLE
-
-                if (isFront) {
-                    isFront = false
-                    textCardBack.visibility = View.VISIBLE
-                    textCardFront.visibility = View.VISIBLE
-                    imageFlashCard.visibility = View.VISIBLE
-                } else {
-                    if (currentTripleIndex > 0) {
-                        currentTripleIndex--
-                    }
-                    textCardFront.visibility = View.VISIBLE
-                    textCardBack.visibility = View.VISIBLE
-                    imageFlashCard.visibility = View.VISIBLE
-                }
-
-                if (currentTripleIndex % 2 == 0) {
-                    cardViewQuestions.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.orange1
-                        )
-                    )
-                } else {
-                    cardViewQuestions.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.orange1
+                            R.color.new_design_text_color
                         )
                     )
                 }
@@ -280,6 +239,9 @@ class QuestionsFragment : Fragment() {
                 binding.btnPlay.setImageResource(currentTriple.value.third)
             }
         }
+
+        // Set initial progress
+        binding.progressHorizontal.progress = savedProgress
 
         return binding.root
     }

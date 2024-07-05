@@ -37,7 +37,7 @@ class PractiseFragment : Fragment() {
         counter = preferencesHelper.getCounter()
         counterDiamond = preferencesHelper.getDiamondCounter()
 
-        binding.textCounter.text = counter.toString()
+        binding.textCounterFire.text = counter.toString()
         binding.textCounterDiamond.text = counterDiamond.toString()
         binding.textCounterGem.text = counterGem.toString()
 
@@ -82,7 +82,7 @@ class PractiseFragment : Fragment() {
     private fun incrementCounter() {
         counter++
         preferencesHelper.saveCounter(counter)
-        binding.textCounter.text = counter.toString()
+        binding.textCounterFire.text = counter.toString()
 
         // Check if counter reaches a multiple of 50
         if (counter % 20 == 0) {
