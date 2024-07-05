@@ -41,7 +41,6 @@ class ToLearnAdapter(
         private var clickCount = 0
 
         init {
-            // Initially hide additional views
             wordLithuanian.visibility = View.GONE
             relativeLeft.visibility = View.GONE
             relativeRight.visibility = View.GONE
@@ -57,7 +56,7 @@ class ToLearnAdapter(
         }
 
         private fun playAudio(audioSrc: Int) {
-            mediaPlayer?.release() // Release any previously set MediaPlayer instance
+            mediaPlayer?.release()
             mediaPlayer = MediaPlayer().apply {
                 setDataSource(itemView.context, Uri.parse("android.resource://${itemView.context.packageName}/$audioSrc"))
                 prepareAsync()
@@ -76,11 +75,9 @@ class ToLearnAdapter(
 
         private fun toggleDetailsVisibility() {
             if (clickCount % 2 == 0) {
-                // First click or odd clicks
                 rotateCard()
                 showDetails()
             } else {
-                // Even clicks
                 hideDetails()
             }
             clickCount++
@@ -105,10 +102,16 @@ class ToLearnAdapter(
         }
 
         private fun resetViewState() {
-            // Initially hide details view
             hideDetails()
-            clickCount = 0 // Reset click count
+            clickCount = 0
         }
+    }
+
+    fun moveItemToEnd(position: Int) {
+        val currentList = currentList.toMutableList()
+        val item = currentList.removeAt(position)
+        currentList.add(item)
+        submitList(currentList)
     }
 
     class WordsComparator : DiffUtil.ItemCallback<FlashcardPair>() {

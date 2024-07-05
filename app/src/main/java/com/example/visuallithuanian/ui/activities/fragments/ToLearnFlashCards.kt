@@ -26,7 +26,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class ToLearnFlashCards : Fragment() {
 
     private lateinit var binding: FragmentToLearnFlashCardsBinding
-    private lateinit var layoutManager: OverlappingLayoutManager
     private lateinit var preferencesHelper: PreferencesHelper
     private val counterViewModel: ToLearnViewModel by viewModels()
 
@@ -110,6 +109,7 @@ class ToLearnFlashCards : Fragment() {
                     ItemTouchHelper.LEFT -> {
                         ImageStore.addImageResource(cardPair.imageSrc, cardPair.front, cardPair.back, cardPair.voiceclip)
                         ImageStore.saveToPreferences(requireContext())
+                        adapter.moveItemToEnd(position)
                         cardViewmodel.deleteCards(cardPair)
                         preferencesHelper.addSavedItem(position.toString())
                         counterViewModel.incrementCounter()
