@@ -70,7 +70,7 @@ class ToLearnFlashCards : Fragment() {
 
         // Swipe Gesture
         val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
-            0, ItemTouchHelper.RIGHT
+            0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
         ) {
             override fun onChildDraw(
                 c: Canvas,
@@ -82,8 +82,10 @@ class ToLearnFlashCards : Fragment() {
                 isCurrentlyActive: Boolean
             ) {
                 val itemView = viewHolder.itemView
-                itemView.pivotX = itemView.width.toFloat()
-                itemView.pivotY = itemView.height.toFloat() / 2
+                if (dX > 0) {
+                    itemView.pivotX = itemView.width.toFloat()
+                    itemView.pivotY = itemView.height.toFloat() / 2
+                }
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
             }
 
@@ -98,48 +100,26 @@ class ToLearnFlashCards : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val cardPair = adapter.currentList[position]
-                cardViewmodel.deleteCards(cardPair)
-                preferencesHelper.addSavedItem(position.toString())
-                incrementCounterLearned()
+
+                when (direction) {
+                    ItemTouchHelper.RIGHT -> {
+                        cardViewmodel.deleteCards(cardPair)
+                        preferencesHelper.addSavedItem(position.toString())
+                        incrementCounterLearned()
+                    }
+                    ItemTouchHelper.LEFT -> {
+                        ImageStore.addImageResource(cardPair.imageSrc, cardPair.front, cardPair.back, cardPair.voiceclip)
+                        ImageStore.saveToPreferences(requireContext())
+                        cardViewmodel.deleteCards(cardPair)
+                        preferencesHelper.addSavedItem(position.toString())
+                        counterViewModel.incrementCounter()
+                        incrementCounter()
+                    }
+                }
             }
         })
         itemTouchHelper.attachToRecyclerView(binding.recyclerview)
 
-        val itemTouchHelper1 = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
-            0, ItemTouchHelper.LEFT
-        ) {
-            override fun onChildDraw(
-                c: Canvas,
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                dX: Float,
-                dY: Float,
-                actionState: Int,
-                isCurrentlyActive: Boolean
-            ) {
-                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-            }
-
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                return false
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-                val cardPair = adapter.currentList[position]
-                ImageStore.addImageResource(cardPair.imageSrc, cardPair.front, cardPair.back, cardPair.voiceclip)
-                ImageStore.saveToPreferences(requireContext())
-                cardViewmodel.deleteCards(cardPair)
-                preferencesHelper.addSavedItem(position.toString())
-                counterViewModel.incrementCounter()
-                incrementCounter()
-            }
-        })
-        itemTouchHelper1.attachToRecyclerView(binding.recyclerview)
 
         // Observe data changes for the items added
         cardViewmodel.allWords.observe(viewLifecycleOwner) { cardPairs ->
