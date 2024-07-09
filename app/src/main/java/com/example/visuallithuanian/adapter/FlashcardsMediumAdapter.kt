@@ -15,7 +15,8 @@ import com.example.visuallithuanian.data.FlashCardInfo
 class FlashcardsMediumAdapter(
     private val imageList: List<FlashCardInfo>,
     private val navController: NavController,
-    private val unlockedItem: String = "Questions and Pronouns"
+    private val unlockedItem: MutableList<String> = mutableListOf( "Computer terminology","Towns and Villages",
+        "Time","Cinema","Numbers", "Business Language","Cafe")
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -36,7 +37,7 @@ class FlashcardsMediumAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (imageList[position].name == unlockedItem) VIEW_TYPE_UNLOCKED else VIEW_TYPE_LOCKED
+        return if (imageList[position].name == unlockedItem[5]) VIEW_TYPE_UNLOCKED else VIEW_TYPE_LOCKED
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

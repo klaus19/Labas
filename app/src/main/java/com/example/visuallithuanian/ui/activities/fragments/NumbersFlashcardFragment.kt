@@ -40,7 +40,7 @@ class NumbersFlashcardFragment : Fragment() {
     private lateinit var currentTriple: Map.Entry<String, Triple<String, Int, Int>>
 
     var isFront = true
-    private val totalTriples = 16 // change the value to the actual number of entries in your hashMap
+    private val totalTriples = 10 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {

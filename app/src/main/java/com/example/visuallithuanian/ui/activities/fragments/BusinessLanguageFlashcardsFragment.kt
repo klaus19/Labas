@@ -44,7 +44,7 @@ class BusinessLanguageFlashcardsFragment : Fragment() {
     private lateinit var currentTriple: Map.Entry<String, Triple<String, Int, Int>>
 
     var isFront = true
-    private val totalTriples = 61 // change the value to the actual number of entries in your hashMap
+    private val totalTriples = 60 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
@@ -189,48 +189,46 @@ class BusinessLanguageFlashcardsFragment : Fragment() {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-                val progress = ((currentTripleIndex + 1) * 100) / totalTriples
-                binding.progressHorizontal.progress = progress
-                // Save the updated progress
-                preferencesHelper.saveProgress(progress)
-
-                // initialize currentTripleIndex to 0 if it hasn't been initialized yet
-                if (currentTripleIndex < 0) {
-                    currentTripleIndex = 0
-                }
                 if (isFront) {
                     isFront = false
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.new_design_text_color
-                        )
-                    )
-
                 } else {
-                    currentTripleIndex = (currentTripleIndex + 1) %BusinessLanguageSingleton.hashMapBusiness.size
+                    currentTripleIndex = (currentTripleIndex + 1) % BusinessLanguageSingleton.hashMapBusiness.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
+                }
+
+                if (currentTripleIndex % 2 == 0) {
                     cardViewQuestions.setCardBackgroundColor(
                         ContextCompat.getColor(
                             requireContext(),
                             R.color.orange1
                         )
                     )
-                    isFront = true
+                } else {
+                    cardViewQuestions.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.new_design_text_color
+                        )
+                    )
                 }
-                // retrieve the current Triple from the hashMap
-                currentTriple =BusinessLanguageSingleton.hashMapBusiness.entries.elementAt(currentTripleIndex)
+
+                val progress = ((currentTripleIndex + 1) * 100) / totalTriples
+                binding.progressHorizontal.progress = progress
+
+
+                currentTriple = BusinessLanguageSingleton.hashMapBusiness.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
                 binding.textCardBack.text = currentTriple.value.first
                 binding.imagecardsHelper.setImageResource(currentTriple.value.second)
                 binding.btnPlay.setImageResource(currentTriple.value.third)
             }
         }
+
         return binding.root
     }
 }
