@@ -12,10 +12,9 @@
         android:orientation="horizontal">
         <ImageView
             android:id="@+id/back_icon"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:src="@drawable/backbutton" />
     </LinearLayout>
 
@@ -29,7 +28,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="26dp"
         android:contentDescription="@string/add_item"
         android:src="@drawable/baseline_library_add_24"
         android:tint="@android:color/white"
@@ -38,12 +37,12 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:id="@+id/linearLearning"
-        android:layout_marginTop="40dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:layout_margin="20dp"
+        android:orientation="horizontal"
 
+        android:id="@+id/linearGo">
         <androidx.cardview.widget.CardView
             android:id="@+id/card_learning"
             android:layout_width="wrap_content"
@@ -55,36 +54,39 @@
                 android:layout_height="70dp"
                 android:orientation="vertical"
                 android:gravity="center">
-
-                <TextView
-                    android:id="@+id/text_counter_learn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/zero"
-                    android:textSize="18sp"
-                    android:textColor="@color/orange1"
-                    android:gravity="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-
                 <TextView
                     android:id="@+id/text_card_tolearn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/to_learn"
+                    android:text="@string/zero"
                     android:textSize="18sp"
-                    android:textColor="@color/orange1"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_color"
                     android:gravity="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
+                <TextView
+                    android:id="@+id/text_to_learn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/to_learn"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_color"
+                    android:gravity="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-    </LinearLayout>
 
+    </LinearLayout>
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view_questions"
         android:layout_width="240dp"
-        android:layout_height="400dp"
-        android:layout_below="@id/linearLearning"
+        android:layout_height="350dp"
+        android:layout_below="@id/linearGo"
         android:layout_marginStart="16dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
@@ -183,21 +185,16 @@
         android:id="@+id/linearButtons"
         android:layout_below="@id/progress_horizontal"
         android:gravity="center"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/imageLeft"
+        <Button
+            android:id="@+id/btnFlip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="50dp"
-            android:src="@drawable/leftarrow" />
-
-        <ImageView
-            android:id="@+id/imageRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="50dp"
-            android:src="@drawable/rightarrow" />
+            android:textColor="@color/white"
+            android:background="@drawable/buttoncolor"
+            android:text="Flip" />
     </LinearLayout>
 
 </RelativeLayout>

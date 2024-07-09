@@ -61,7 +61,14 @@ class PointersFlashcardFragment : Fragment() {
 
         bottomNavigationView.visibility = View.GONE
 
-        binding.backIcon.setOnClickListener {
+        preferencesHelper = PreferencesHelper(requireContext())
+        // Restore saved progress and counter
+        val savedCounter = preferencesHelper.getCounter()
+        val savedProgress = preferencesHelper.getProgress()
+        counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
+
+        // setting up listener for back Icon
+        binding.backIcon?.setOnClickListener {
             activity?.onBackPressed()
         }
 
@@ -69,77 +76,92 @@ class PointersFlashcardFragment : Fragment() {
             findNavController().navigate(R.id.action_pointersFlashcardFragment_to_sentenceFragment)
         }
 
+        // changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
-            ContextCompat.getColor(requireContext(), R.color.float1)
+            ContextCompat.getColor(
+                requireContext(), R.color.float1
+            )
         )
 
+        // changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(
-            ContextCompat.getColor(requireContext(), R.color.silver)
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.silver
+            )
         )
 
+        // Restore progress bar progress
+        binding.progressHorizontal.progress = savedProgress
+
+        // Initialize Media Player
         val mediaPlayer = MediaPlayer()
         binding.btnPlay.setOnClickListener {
+            // get the audio resource ID from currentTriple
             val audioResource = currentTriple.value.third
             mediaPlayer.apply {
                 reset()
+                // Set the audio resource using the context and resource ID
                 setDataSource(
                     requireContext(),
                     Uri.parse("android.resource://${requireContext().packageName}/$audioResource")
                 )
+
+                // Prepare the MediaPlayer asynchronously
                 prepareAsync()
             }
+            // Set an OnPreparedListener to start playing when the media is prepared
             mediaPlayer.setOnPreparedListener {
                 it.start()
             }
         }
-
-        counterViewModel.setCounter(preferencesHelper.loadCounterValue())
         counterViewModel.counter.observe(requireActivity()) { count ->
-            binding.textCounterLearn.text = count.toString()
+            binding.textCardTolearn.text = count.toString()
             preferencesHelper.saveCounterValue(count)
         }
-
-        // Initialize hashMap from PointersSingleton
-        hashMap.putAll(PointersSingleton.hashMapPointers)
-        totalTriples = hashMap.size // Update totalTriples to the actual size
-
-        currentTriple = hashMap.entries.elementAt(currentTripleIndex)
+        currentTriple = PointersSingleton.hashMapPointers.entries.elementAt(currentTripleIndex)
         binding.textCardFront.text = currentTriple.key
         binding.textCardBack.text = currentTriple.value.first
         binding.imagecardsHelper.setImageResource(currentTriple.value.second)
         binding.btnPlay.setImageResource(currentTriple.value.third)
 
+        // onclick listener on the image to save the image for learning
         binding.imageFlashCard.setOnClickListener {
             binding.imageFlashCard.visibility = View.GONE
             binding.imageFlashCardSaveWhite.visibility = View.VISIBLE
 
+            counterViewModel.incrementCounter()
+            // Save the updated counter
+            preferencesHelper.saveCounter(counterViewModel.counter.value ?: 0)
+
+            // increment currentTripleIndex and get the next Triple
+            currentTripleIndex++
+            if (currentTripleIndex >= PointersSingleton.hashMapPointers.size) {
+                // if we have reached the end of the hashmap, start again from the beginning
+                currentTripleIndex = 0
+            }
             val front = binding.textCardFront.text.toString()
             val back = binding.textCardBack.text.toString()
             val imageHelper = currentTriple.value.second
             val voiceClip = currentTriple.value.third
 
-            val tripleIdentifier = "$front-$back-$imageHelper-$voiceClip"
+            val Triple = FlashcardPair(front, back, imageHelper, voiceClip)
+            cardViewModel.insertCards(Triple)
+            //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
+            Log.d("Main","$Triple")
+            currentTriple = PointersSingleton.hashMapPointers.entries.elementAt(currentTripleIndex)
 
-            if (!preferencesHelper.isItemSaved(tripleIdentifier)) {
-                preferencesHelper.addSavedItem(tripleIdentifier)
-                counterViewModel.incrementCounter()
-
-                val triple = FlashcardPair(front, back, imageHelper, voiceClip)
-                cardViewModel.insertCards(triple)
-                Log.d("Main", "$triple")
-            } else {
-                Log.d("Main", "Item already saved: $tripleIdentifier")
-            }
         }
-
+        // On Event of clicking on the image to unsave the image
         binding.imageFlashCardSaveWhite.setOnClickListener {
             with(binding) {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-                if (currentTripleIndex >= 0 && currentTripleIndex < hashMap.size) {
-                    val removedTriple = hashMap.entries.elementAt(currentTripleIndex)
-                    hashMap.remove(removedTriple.key)
+                if (currentTripleIndex >= 0 && currentTripleIndex < PointersSingleton.hashMapPointers.size) {
+                    // Remove the item at the current index from your data structure (e.g., HashMap)
+                    val removedTriple = PointersSingleton.hashMapPointers.entries.elementAt(currentTripleIndex)
+                    PointersSingleton.hashMapPointers.remove(removedTriple.key)
 
                     counterViewModel.decrementCounter()
                     val front = binding.textCardFront.text.toString()
@@ -147,13 +169,12 @@ class PointersFlashcardFragment : Fragment() {
                     val imageHelper = currentTriple.value.second
                     val voiceClip = currentTriple.value.third
 
-                    val triple = FlashcardPair(front, back, imageHelper, voiceClip)
-                    cardViewModel.deleteCards(triple)
-                    Log.d("Main", "$triple")
+                    val Triple = FlashcardPair(front, back, imageHelper,voiceClip)
+                    cardViewModel.deleteCards(Triple)
+                    //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
+                    Log.d("Main","$Triple")
+                    currentTriple = PointersSingleton.hashMapPointers.entries.elementAt(currentTripleIndex)
 
-                    if (hashMap.isNotEmpty()) {
-                        currentTriple = hashMap.entries.elementAt(currentTripleIndex % hashMap.size)
-                    }
                 }
             }
         }
@@ -162,42 +183,48 @@ class PointersFlashcardFragment : Fragment() {
             findNavController().navigate(R.id.action_pointersFlashcardFragment_to_toLearnFlashCards)
         }
 
+        // onclick listener for the Flip button
         with(binding) {
-            imageLeft.setOnClickListener {
+            btnFlip.setOnClickListener {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
+                val progress = ((currentTripleIndex + 1) * 100) / totalTriples
+                binding.progressHorizontal.progress = progress
+                // Save the updated progress
+                preferencesHelper.saveProgress(progress)
+
+                // initialize currentTripleIndex to 0 if it hasn't been initialized yet
+                if (currentTripleIndex < 0) {
+                    currentTripleIndex = 0
+                }
                 if (isFront) {
                     isFront = false
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
+                    cardViewQuestions.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.new_design_text_color
+                        )
+                    )
+
                 } else {
-                    currentTripleIndex = (currentTripleIndex + 1) % hashMap.size
+                    currentTripleIndex = (currentTripleIndex + 1) % PointersSingleton.hashMapPointers.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                }
-
-                if (currentTripleIndex % 2 == 0) {
                     cardViewQuestions.setCardBackgroundColor(
-                        ContextCompat.getColor(requireContext(), R.color.orange1)
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.orange1
+                        )
                     )
-                } else {
-                    cardViewQuestions.setCardBackgroundColor(
-                        ContextCompat.getColor(requireContext(), R.color.new_design_text_color)
-                    )
+                    isFront = true
                 }
-
-                // Check to avoid division by zero
-                if (totalTriples > 0) {
-                    val progress = ((currentTripleIndex + 1) * 100) / totalTriples
-                    binding.progressHorizontal.progress = progress
-                } else {
-                    binding.progressHorizontal.progress = 0
-                }
-
-                currentTriple = hashMap.entries.elementAt(currentTripleIndex)
+                // retrieve the current Triple from the hashMap
+                currentTriple = PointersSingleton.hashMapPointers.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
                 binding.textCardBack.text = currentTriple.value.first
                 binding.imagecardsHelper.setImageResource(currentTriple.value.second)

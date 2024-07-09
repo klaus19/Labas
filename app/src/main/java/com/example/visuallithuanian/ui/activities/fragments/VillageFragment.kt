@@ -18,6 +18,7 @@ import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.VillageSingleton
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentVillageBinding
+import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.example.visuallithuanian.viewModel.FlashCardViewmodel
@@ -39,7 +40,7 @@ class VillageFragment : Fragment() {
 
     var isFront=true
     private val totalTriples = 47 // change the value to the actual number of entries in your hashMap
-
+    private lateinit var preferencesHelper: PreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -98,10 +99,9 @@ class VillageFragment : Fragment() {
             mediaPlayer.setOnPreparedListener {
                 it.start()
             }
-
         }
-        counterViewModel.counter.observe(requireActivity()){count->
-            binding.textCounterLearn.text = count.toString()
+        counterViewModel.counter.observe(requireActivity()) { count ->
+            binding.textCardTolearn.text = count.toString()
         }
         currentTriple = VillageSingleton.hashMapVillageWords.entries.elementAt(currentTripleIndex)
         binding.textCardFront.text = currentTriple.key
@@ -115,6 +115,9 @@ class VillageFragment : Fragment() {
             binding.imageFlashCardSaveWhite.visibility = View.VISIBLE
 
             counterViewModel.incrementCounter()
+            // Save the updated counter
+            preferencesHelper.saveCounter(counterViewModel.counter.value ?: 0)
+
             // increment currentTripleIndex and get the next Triple
             currentTripleIndex++
             if (currentTripleIndex >= VillageSingleton.hashMapVillageWords.size) {
@@ -126,17 +129,16 @@ class VillageFragment : Fragment() {
             val imageHelper = currentTriple.value.second
             val voiceClip = currentTriple.value.third
 
-
-            val Triple = FlashcardPair(front, back, imageHelper,voiceClip)
+            val Triple = FlashcardPair(front, back, imageHelper, voiceClip)
             cardViewModel.insertCards(Triple)
             //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
             Log.d("Main","$Triple")
             currentTriple = VillageSingleton.hashMapVillageWords.entries.elementAt(currentTripleIndex)
 
         }
-        //On Event of clicking on the image to unsave the image
+        // On Event of clicking on the image to unsave the image
         binding.imageFlashCardSaveWhite.setOnClickListener {
-            with(binding){
+            with(binding) {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
@@ -167,15 +169,16 @@ class VillageFragment : Fragment() {
             findNavController().navigate(R.id.action_villageFragment_to_toLearnFlashCards)
         }
 
-        //onclick listener for the Flip button
+        // onclick listener for the Flip button
         with(binding) {
-            imageLeft.setOnClickListener {
+            btnFlip.setOnClickListener {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-
                 val progress = ((currentTripleIndex + 1) * 100) / totalTriples
                 binding.progressHorizontal.progress = progress
+                // Save the updated progress
+                preferencesHelper.saveProgress(progress)
 
                 // initialize currentTripleIndex to 0 if it hasn't been initialized yet
                 if (currentTripleIndex < 0) {
@@ -186,18 +189,24 @@ class VillageFragment : Fragment() {
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
-                        R.color.new_design_text_color
-                    ))
+                    cardViewQuestions.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.new_design_text_color
+                        )
+                    )
 
                 } else {
                     currentTripleIndex = (currentTripleIndex + 1) % VillageSingleton.hashMapVillageWords.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
-                        R.color.orange1
-                    ))
+                    cardViewQuestions.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.orange1
+                        )
+                    )
                     isFront = true
                 }
                 // retrieve the current Triple from the hashMap
@@ -209,7 +218,5 @@ class VillageFragment : Fragment() {
             }
         }
         return binding.root
-
     }
-
 }

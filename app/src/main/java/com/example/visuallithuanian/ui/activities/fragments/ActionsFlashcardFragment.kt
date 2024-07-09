@@ -1,18 +1,19 @@
 package com.example.visuallithuanian.ui.activities.fragments
 
-
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
@@ -40,15 +41,13 @@ class ActionsFlashcardFragment : Fragment() {
 
     var isFront = true
     private val totalTriples = 39 // change the value to the actual number of entries in your hashMap
-
+    private lateinit var preferencesHelper: PreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
     }
 
-    private lateinit var preferencesHelper: PreferencesHelper
-
-    @SuppressLint("ResourceType", "SuspiciousIndentation")
+    @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -67,13 +66,14 @@ class ActionsFlashcardFragment : Fragment() {
         counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
 
         // setting up listener for back Icon
-        binding.backIcon.setOnClickListener {
+        binding.backIcon?.setOnClickListener {
             activity?.onBackPressed()
         }
 
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_actionsFlashcardFragment_to_sentenceFragment)
         }
+
         // changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(
@@ -114,7 +114,7 @@ class ActionsFlashcardFragment : Fragment() {
             }
         }
         counterViewModel.counter.observe(requireActivity()) { count ->
-            binding.textCounterLearn.text = count.toString()
+            binding.textToLearn.text = count.toString()
         }
         currentTriple = ActionsSingleton.hashMapActions.entries.elementAt(currentTripleIndex)
         binding.textCardFront.text = currentTriple.key
@@ -160,21 +160,16 @@ class ActionsFlashcardFragment : Fragment() {
                     val removedTriple = ActionsSingleton.hashMapActions.entries.elementAt(currentTripleIndex)
                     ActionsSingleton.hashMapActions.remove(removedTriple.key)
 
-                    // Decrease the counter
                     counterViewModel.decrementCounter()
-                    preferencesHelper.saveCounter(counterViewModel.counter.value ?: 0)
-
                     val front = binding.textCardFront.text.toString()
                     val back = binding.textCardBack.text.toString()
                     val imageHelper = currentTriple.value.second
                     val voiceClip = currentTriple.value.third
 
-                    val Triple = FlashcardPair(front, back, imageHelper, voiceClip)
-                    cardViewModel.deleteCards(Triple)
-                    // Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
-                    Log.d("Main", "$Triple")
+                    val triple = FlashcardPair(front, back, imageHelper, voiceClip)
+                    cardViewModel.deleteCards(triple)
+                    Log.d("Main", "$triple")
                     currentTriple = ActionsSingleton.hashMapActions.entries.elementAt(currentTripleIndex)
-
                 }
             }
         }
@@ -186,7 +181,7 @@ class ActionsFlashcardFragment : Fragment() {
 
         // onclick listener for the Flip button
         with(binding) {
-            imageLeft.setOnClickListener {
+            btnFlip.setOnClickListener {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 

@@ -13,7 +13,6 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
@@ -31,12 +30,9 @@ class QuestionsFragment : Fragment() {
     lateinit var binding: FragmentQuestionsBinding
     lateinit var viewModel: BottomNavigationViewModel
 
-    lateinit var bottomNavigationView: BottomNavigationView
-    private lateinit var preferencesHelper: PreferencesHelper
-    private val counterViewModel: ToLearnViewModel by viewModels()
-
     private val sharedPrefFile = "com.example.visuallithuanian.PREFERENCE_FILE_KEY"
-
+    lateinit var bottomNavigationView: BottomNavigationView
+    private val counterViewModel: ToLearnViewModel by viewModels()
     private val hashMap = HashMap<String, Triple<String, Int, Int>>()
 
     private var currentTripleIndex = 0
@@ -44,7 +40,7 @@ class QuestionsFragment : Fragment() {
 
     var isFront = true
     private val totalTriples = 16 // change the value to the actual number of entries in your hashMap
-
+    private lateinit var preferencesHelper: PreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -60,13 +56,14 @@ class QuestionsFragment : Fragment() {
 
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
+
         bottomNavigationView.visibility = View.GONE
 
-        preferencesHelper = PreferencesHelper(requireContext()) // Initialize PreferencesHelper
-
-        counterViewModel.counter.observe(viewLifecycleOwner, Observer { count ->
-            binding.textCardTolearn.text = count.toString()
-        })
+        preferencesHelper = PreferencesHelper(requireContext())
+        // Restore saved progress and counter
+        val savedCounter = preferencesHelper.getCounter()
+        val savedProgress = preferencesHelper.getProgress()
+        counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
 
         // setting up listener for back Icon
         binding.backIcon?.setOnClickListener {
@@ -114,6 +111,8 @@ class QuestionsFragment : Fragment() {
         // Initialize Media Player
         val mediaPlayer = MediaPlayer()
 
+        // Restore progress bar progress
+        binding.progressHorizontal.progress = savedProgress
         binding.btnPlay.setOnClickListener {
             // get the audio resource ID from currentTriple
             val audioResource = currentTriple.value.third
@@ -131,8 +130,6 @@ class QuestionsFragment : Fragment() {
             }
         }
 
-        // Load saved progress and calculate the currentTripleIndex
-        val savedProgress = getSavedProgress()
         currentTripleIndex = (savedProgress * totalTriples) / 100
 
         currentTriple = hashMap.entries.elementAt(currentTripleIndex)
@@ -194,6 +191,9 @@ class QuestionsFragment : Fragment() {
         binding.cardLearning.setOnClickListener {
             findNavController().navigate(R.id.action_questionsFragment_to_toLearnFlashCards)
         }
+
+        // Restore progress bar progress
+        binding.progressHorizontal.progress = savedProgress
 
         with(binding) {
             btnFlip.setOnClickListener {

@@ -15,6 +15,7 @@ package com.example.visuallithuanian
 //"computer" = "kompiuteris"
 //"printer" = "spausdintuvas"
 
+//Family Flashcards
 //"Father" = "Tėvas"
 //"Mother" = "Motina",
 //"Brother" = "brolis",
@@ -90,7 +91,7 @@ package com.example.visuallithuanian
 //"Chocolate" = "Šokoladas"
 //"sparkling water" = "gazuotas vanduo"
 //"mushroom" = "pievagrybis"
-//"steak" = "kepsnys"
+//"steak" = "kepsnys"  ///given to record
 //
 //"snack" = "užkandis"
 //"sausage" = "dešra"

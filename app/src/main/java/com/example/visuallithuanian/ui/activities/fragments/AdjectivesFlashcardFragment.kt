@@ -10,14 +10,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
+import com.example.visuallithuanian.constants.ActionsSingleton
 import com.example.visuallithuanian.constants.AdjectivesSingleton
 import com.example.visuallithuanian.database.FlashcardPair
-import com.example.visuallithuanian.databinding.FragmentRomanticPhrasesBinding
+import com.example.visuallithuanian.databinding.FragmentAdjectivesFlashcardBinding
+import com.example.visuallithuanian.databinding.FragmentAnimalFlashcardBinding
+import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.example.visuallithuanian.viewModel.FlashCardViewmodel
@@ -25,61 +30,69 @@ import com.example.visuallithuanian.viewModel.ToLearnViewModel
 import com.example.visuallithuanian.viewModel.WordViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-
 class AdjectivesFlashcardFragment : Fragment() {
 
-    lateinit var binding: FragmentRomanticPhrasesBinding
+    lateinit var binding: FragmentAdjectivesFlashcardBinding
     lateinit var viewModel: BottomNavigationViewModel
 
     lateinit var bottomNavigationView: BottomNavigationView
     private val counterViewModel: ToLearnViewModel by viewModels()
 
-    private var currentTripleIndex =0
-    private lateinit var currentTriple:Map.Entry<String,Triple<String,Int,Int>>
+    private var currentTripleIndex = 0
+    private lateinit var currentTriple: Map.Entry<String, Triple<String, Int, Int>>
 
-    var isFront=true
-    private val totalTriples = 47 // change the value to the actual number of entries in your hashMap
-
+    var isFront = true
+    private val totalTriples = 39 // change the value to the actual number of entries in your hashMap
+    private lateinit var preferencesHelper: PreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
     }
 
-
-    @SuppressLint("ResourceType", "SuspiciousIndentation")
+    @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRomanticPhrasesBinding.inflate(inflater,container,false)
+        binding = FragmentAdjectivesFlashcardBinding.inflate(inflater, container, false)
 
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
 
-
         bottomNavigationView.visibility = View.GONE
 
+        preferencesHelper = PreferencesHelper(requireContext())
+        // Restore saved progress and counter
+        val savedCounter = preferencesHelper.getCounter()
+        val savedProgress = preferencesHelper.getProgress()
+        counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
 
         // setting up listener for back Icon
-        binding.backIcon.setOnClickListener {
+        binding.backIcon?.setOnClickListener {
             activity?.onBackPressed()
         }
 
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_adjectivesFlashcardFragment_to_sentenceFragment)
         }
-        //changing color of progress bar progress
+
+        // changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
-            ContextCompat.getColor(requireContext()
-                , R.color.float1
-            ))
+            ContextCompat.getColor(
+                requireContext(), R.color.float1
+            )
+        )
 
-        //changing color of background color of progress bar
+        // changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(
-            ContextCompat.getColor(requireContext(),
+            ContextCompat.getColor(
+                requireContext(),
                 R.color.silver
-            ))
+            )
+        )
 
+        // Restore progress bar progress
+        binding.progressHorizontal.progress = savedProgress
 
         // Initialize Media Player
         val mediaPlayer = MediaPlayer()
@@ -89,7 +102,10 @@ class AdjectivesFlashcardFragment : Fragment() {
             mediaPlayer.apply {
                 reset()
                 // Set the audio resource using the context and resource ID
-                setDataSource(requireContext(), Uri.parse("android.resource://${requireContext().packageName}/$audioResource"))
+                setDataSource(
+                    requireContext(),
+                    Uri.parse("android.resource://${requireContext().packageName}/$audioResource")
+                )
 
                 // Prepare the MediaPlayer asynchronously
                 prepareAsync()
@@ -98,10 +114,9 @@ class AdjectivesFlashcardFragment : Fragment() {
             mediaPlayer.setOnPreparedListener {
                 it.start()
             }
-
         }
-        counterViewModel.counter.observe(requireActivity()){count->
-            binding.textCounterLearn.text = count.toString()
+        counterViewModel.counter.observe(requireActivity()) { count ->
+            binding.textCardTolearn.text = count.toString()
         }
         currentTriple = AdjectivesSingleton.hashMapAdjectives.entries.elementAt(currentTripleIndex)
         binding.textCardFront.text = currentTriple.key
@@ -115,9 +130,12 @@ class AdjectivesFlashcardFragment : Fragment() {
             binding.imageFlashCardSaveWhite.visibility = View.VISIBLE
 
             counterViewModel.incrementCounter()
+            // Save the updated counter
+            preferencesHelper.saveCounter(counterViewModel.counter.value ?: 0)
+
             // increment currentTripleIndex and get the next Triple
             currentTripleIndex++
-            if (currentTripleIndex >=AdjectivesSingleton.hashMapAdjectives.size) {
+            if (currentTripleIndex >= AdjectivesSingleton.hashMapAdjectives.size) {
                 // if we have reached the end of the hashmap, start again from the beginning
                 currentTripleIndex = 0
             }
@@ -126,56 +144,53 @@ class AdjectivesFlashcardFragment : Fragment() {
             val imageHelper = currentTriple.value.second
             val voiceClip = currentTriple.value.third
 
-
-            val Triple = FlashcardPair(front, back, imageHelper,voiceClip)
+            val Triple = FlashcardPair(front, back, imageHelper, voiceClip)
             cardViewModel.insertCards(Triple)
-            //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
-            Log.d("Main","$Triple")
-            currentTriple =AdjectivesSingleton.hashMapAdjectives.entries.elementAt(currentTripleIndex)
+            // Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
+            Log.d("Main", "$Triple")
+            currentTriple = AdjectivesSingleton.hashMapAdjectives.entries.elementAt(currentTripleIndex)
 
         }
-        //On Event of clicking on the image to unsave the image
+        // On Event of clicking on the image to unsave the image
         binding.imageFlashCardSaveWhite.setOnClickListener {
-            with(binding){
+            with(binding) {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-                if (currentTripleIndex >= 0 && currentTripleIndex <AdjectivesSingleton.hashMapAdjectives.size) {
+                if (currentTripleIndex >= 0 && currentTripleIndex < AdjectivesSingleton.hashMapAdjectives.size) {
                     // Remove the item at the current index from your data structure (e.g., HashMap)
-                    val removedTriple =AdjectivesSingleton.hashMapAdjectives.entries.elementAt(currentTripleIndex)
-                   AdjectivesSingleton.hashMapAdjectives.remove(removedTriple.key)
+                    val removedTriple = AdjectivesSingleton.hashMapAdjectives.entries.elementAt(currentTripleIndex)
+                    AdjectivesSingleton.hashMapAdjectives.remove(removedTriple.key)
 
-                    // Decrease the counter
                     counterViewModel.decrementCounter()
                     val front = binding.textCardFront.text.toString()
                     val back = binding.textCardBack.text.toString()
                     val imageHelper = currentTriple.value.second
                     val voiceClip = currentTriple.value.third
 
-                    val Triple = FlashcardPair(front, back, imageHelper,voiceClip)
-                    cardViewModel.deleteCards(Triple)
-                    //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
-                    Log.d("Main","$Triple")
-                    currentTriple =AdjectivesSingleton.hashMapAdjectives.entries.elementAt(currentTripleIndex)
-
+                    val triple = FlashcardPair(front, back, imageHelper, voiceClip)
+                    cardViewModel.deleteCards(triple)
+                    Log.d("Main", "$triple")
+                    currentTriple = AdjectivesSingleton.hashMapAdjectives.entries.elementAt(currentTripleIndex)
                 }
             }
         }
 
-        //Navigating from one fragment to another
+        // Navigating from one fragment to another ToLearn Fragment
         binding.cardLearning.setOnClickListener {
             findNavController().navigate(R.id.action_adjectivesFlashcardFragment_to_toLearnFlashCards)
         }
 
-        //onclick listener for the Flip button
+        // onclick listener for the Flip button
         with(binding) {
-            imageLeft.setOnClickListener {
+            btnFlip.setOnClickListener {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-
                 val progress = ((currentTripleIndex + 1) * 100) / totalTriples
                 binding.progressHorizontal.progress = progress
+                // Save the updated progress
+                preferencesHelper.saveProgress(progress)
 
                 // initialize currentTripleIndex to 0 if it hasn't been initialized yet
                 if (currentTripleIndex < 0) {
@@ -186,22 +201,28 @@ class AdjectivesFlashcardFragment : Fragment() {
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
-                        R.color.new_design_text_color
-                    ))
+                    cardViewQuestions.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.new_design_text_color
+                        )
+                    )
 
                 } else {
-                    currentTripleIndex = (currentTripleIndex + 1) %AdjectivesSingleton.hashMapAdjectives.size
+                    currentTripleIndex = (currentTripleIndex + 1) % AdjectivesSingleton.hashMapAdjectives.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(ContextCompat.getColor(requireContext(),
-                        R.color.orange1
-                    ))
+                    cardViewQuestions.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.orange1
+                        )
+                    )
                     isFront = true
                 }
                 // retrieve the current Triple from the hashMap
-                currentTriple =AdjectivesSingleton.hashMapAdjectives.entries.elementAt(currentTripleIndex)
+                currentTriple = AdjectivesSingleton.hashMapAdjectives.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
                 binding.textCardBack.text = currentTriple.value.first
                 binding.imagecardsHelper.setImageResource(currentTriple.value.second)
@@ -209,8 +230,5 @@ class AdjectivesFlashcardFragment : Fragment() {
             }
         }
         return binding.root
-
     }
-
-
 }

@@ -616,7 +616,7 @@
     </fragment>
     <fragment
         android:id="@+id/thingsFragment"
-        android:name="com.example.visuallithuanian.ThingsFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.ThingsFragment"
         android:label="fragment_things"
         tools:layout="@layout/fragment_things" >
         <action
@@ -712,7 +712,7 @@
     </fragment>
     <fragment
         android:id="@+id/timeFlashcardFragment"
-        android:name="com.example.visuallithuanian.TimeFlashcardFragment"
+        android:name="com.example.visuallithuanian.ui.activities.fragments.TimeFlashcardFragment"
         android:label="fragment_time_flashcard"
         tools:layout="@layout/fragment_time_flashcard" >
         <action
