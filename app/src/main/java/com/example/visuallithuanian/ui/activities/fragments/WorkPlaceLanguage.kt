@@ -94,87 +94,87 @@ class WorkPlaceLanguage : Fragment() {
         )
         hashMap["colleague"] = Triple("kolega / kolegė", R.drawable.colleague1, R.raw.sleep)
         hashMap["employee"] = Triple("darbuotojas / darbotoja", R.drawable.employee1, R.raw.sleep)
-        hashMap["client / customer"] = Triple("klientas / klientė", R.drawable.client, R.raw.sleep)
+        hashMap["client"] = Triple("klientas / klientė", R.drawable.client, R.raw.sleep)
         hashMap["busy"] = Triple("užsiemęs (m) / užsiemusi (f)", R.drawable.busy1, R.raw.sleep)
         hashMap["business trip"] = Triple("komandiruotė", R.drawable.businesstrip, R.raw.sleep)
 
         hashMap["meeting"] = Triple("susirinkimas/susitinkimas", R.drawable.meeting1, R.raw.sleep)
         hashMap["cabinet"] = Triple("kabinetas", R.drawable.cabinet, R.raw.sleep)
-        hashMap["to begin, begins, began"] = Triple("prasidėti, prasideda, prasidėjo",
+        hashMap["to begin"] = Triple("prasidėti",
             R.drawable.begin,
             R.raw.sleep
         )
-        hashMap["to finish/to come to an end, finishes, finished"] = Triple("pasibaigti, pasibaiga, pasibaigė",
+        hashMap["to finish"] = Triple("pasibaigti",
             R.drawable.end,
             R.raw.sleep
         )
-        hashMap["to start, starts, started what?"] = Triple("pradėti, pradeda, pradėjo ką?",
+        hashMap["to start"] = Triple("pradėti",
             R.drawable.start1,
             R.raw.sleep
         )
-        hashMap["to finish, finishes, finished what?"] = Triple("baigti, baigia, baigė ką?",
+        hashMap["to finish"] = Triple("baigti",
             R.drawable.finish1,
             R.raw.sleep
         )
         hashMap["to finish work"] = Triple("baigti darbą", R.drawable.finishwork, R.raw.sleep)
         hashMap["lunch break"] = Triple("pietų pertrauka", R.drawable.lunchbreak, R.raw.sleep)
-        hashMap["to have vacation, vacationing, vacationed"] = Triple("atostogauti, atostogauja, atostogavo",
+        hashMap["to have vacation"] = Triple("atostogauti",
             R.drawable.vacation1,
             R.raw.sleep
         )
 
-        hashMap["holidays, vacation"] = Triple("atostogos", R.drawable.vacation1, R.raw.sleep)
-        hashMap["to print, prints, printed what?"] = Triple("išspausdinti, išspausdina, išspausdino ką?",
+        hashMap["holidays"] = Triple("atostogos", R.drawable.vacation1, R.raw.sleep)
+        hashMap["to print"] = Triple("išspausdinti",
             R.drawable.print,
             R.raw.sleep
         )
         hashMap["Document"] = Triple("dokumentas", R.drawable.document, R.raw.sleep)
         hashMap["copy"] = Triple("kopija", R.drawable.copy, R.raw.sleep)
-        hashMap["to inform, informs, informed what? who?"] = Triple("perduoti, perduoda, perdavė ką? kam?",
+        hashMap["to inform"] = Triple("perduoti",
             R.drawable.inform,
             R.raw.sleep
         )
-        hashMap["to give/hand, gives/hands, gave what? to whom?"] = Triple("paduoti, paduoda, padavė ką? kam?",
+        hashMap["to give"] = Triple("paduoti",
             R.drawable.togive,
             R.raw.sleep
         )
-        hashMap["to say, says, said what? to whom?"] = Triple("pasakyti, pasako, pasakė ką? kam?",
+        hashMap["to say"] = Triple("pasakyti",
             R.drawable.say1,
             R.raw.sleep
         )
-        hashMap["to take, takes, took what? to whom?"] = Triple("nunešti, nuneša, nunešė ką? kam?",
+        hashMap["to take"] = Triple("nunešti",
             R.drawable.take,
             R.raw.sleep
         )
-        hashMap["to write, writes, wrote what? to whom?"] = Triple("rašyti, rašo, raše ką? kam?",
+        hashMap["to write"] = Triple("rašyti",
             R.drawable.write2,
             R.raw.sleep
         )
-        hashMap["to send, sends, sent what?"] = Triple("išsiųsti, išsiunčia, išsiunte ką?",
+        hashMap["to send"] = Triple("išsiųsti",
             R.drawable.send1,
             R.raw.sleep
         )
 
-        hashMap["to get/receive, gets, got what?"] = Triple("gauti, gauna, gavo ką?",
+        hashMap["to get/receive"] = Triple("gauti",
             R.drawable.toreceive,
             R.raw.sleep
         )
         hashMap["email"] = Triple("elektroninis laiškas", R.drawable.email, R.raw.sleep)
-        hashMap["sign, signs, signed what?"] = Triple("pasirašyti, pasirašo, pasirašė ką?",
+        hashMap["sign"] = Triple("pasirašyti",
             R.drawable.signed,
             R.raw.sleep
         )
         hashMap["Signature"] = Triple("parašas", R.drawable.signature, R.raw.sleep)
         hashMap["Contract"] = Triple("sutartis", R.drawable.contract, R.raw.sleep)
-        hashMap["to wait, waits, waited for what?"] = Triple("palaukti, palaukia, palaukė ko?",
+        hashMap["to wait"] = Triple("palaukti",
             R.drawable.wait1,
             R.raw.sleep
         )
-        hashMap["to ask, asks, asked"] = Triple("paklausti, paklausia, paklausė",
+        hashMap["to ask, asks, asked"] = Triple("paklausti",
             R.drawable.toask1,
             R.raw.sleep
         )
-        hashMap["to call, calls, called who?"] = Triple("paskambinti, paskambina, paskambino kam?",
+        hashMap["to call"] = Triple("paskambinti",
             R.drawable.tocall,
             R.raw.sleep
         )
