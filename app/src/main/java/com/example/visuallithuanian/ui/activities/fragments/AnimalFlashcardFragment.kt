@@ -19,6 +19,7 @@ import com.example.visuallithuanian.constants.AnimalsSingleton
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentAnimalFlashcardBinding
 import com.example.visuallithuanian.model.PreferencesHelper
+import com.example.visuallithuanian.model.MediumProgressPreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
 import com.example.visuallithuanian.viewModel.FlashCardViewmodel
@@ -39,6 +40,7 @@ class AnimalFlashcardFragment : Fragment() {
     var isFront = true
     private val totalTriples = 39 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
+    private lateinit var flashPreferencesHelper: MediumProgressPreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -57,9 +59,11 @@ class AnimalFlashcardFragment : Fragment() {
         bottomNavigationView.visibility = View.GONE
 
         preferencesHelper = PreferencesHelper(requireContext())
+        flashPreferencesHelper = MediumProgressPreferencesHelper(requireContext())
+
         // Restore saved progress and counter
         val savedCounter = preferencesHelper.getCounter()
-        val savedProgress = preferencesHelper.getProgress()
+        val savedProgress = flashPreferencesHelper.getProgressAnimalsFlash()
         counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
 
         // Set initial progress based on savedProgress
@@ -209,7 +213,7 @@ class AnimalFlashcardFragment : Fragment() {
                 binding.progressHorizontal.progress = progress
 
                 // Save the updated progress
-                preferencesHelper.saveProgress(progress)
+                flashPreferencesHelper.saveProgressAnimalsFlash(progress)
 
                 currentTriple = AnimalsSingleton.hashMapAnimals.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key

@@ -18,6 +18,7 @@ import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.BestWords100Singleton
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentBestWords100Binding
+import com.example.visuallithuanian.model.MediumProgressPreferencesHelper
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -40,6 +41,7 @@ class BestWords100Fragment : Fragment() {
     var isFront = true
     private val totalTriples = 117 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
+    private lateinit var mediumProgressPreferencesHelper: MediumProgressPreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -58,9 +60,10 @@ class BestWords100Fragment : Fragment() {
         bottomNavigationView.visibility = View.GONE
 
         preferencesHelper = PreferencesHelper(requireContext())
+        mediumProgressPreferencesHelper = MediumProgressPreferencesHelper(requireContext())
         // Restore saved progress and counter
         val savedCounter = preferencesHelper.getCounter()
-        val savedProgress = preferencesHelper.getProgress()
+        val savedProgress = mediumProgressPreferencesHelper.getProgress100BestWords()
         counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
 
         // Restore progress bar progress and set the currentTripleIndex based on saved progress
@@ -185,7 +188,7 @@ class BestWords100Fragment : Fragment() {
     private fun updateProgress() {
         val progress = ((currentTripleIndex + 1) * 100) / totalTriples
         binding.progressHorizontal.progress = progress
-        preferencesHelper.saveProgress(progress)
+        mediumProgressPreferencesHelper.saveProgress100BestWords(progress)
     }
 
     private fun createFlashcardFromCurrentTriple(): FlashcardPair {
