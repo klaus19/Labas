@@ -10,6 +10,8 @@ class MediumProgressPreferencesHelper(private val context: Context) {
     companion object{
         private const val ANIMALS_FLASHCARD ="animals_words"
         private const val BEST_100_FLASH = "100_best_words"
+        private const val FOOD = "food_ingredients"
+        private const val VEGAN = "vegan_foods"
     }
 
     fun saveProgressAnimalsFlash(progress:Int){
@@ -32,6 +34,31 @@ class MediumProgressPreferencesHelper(private val context: Context) {
     fun getProgress100BestWords():Int{
         return sharedPreferences.getInt(BEST_100_FLASH,0)
     }
+
+
+    fun saveProgressFood(progress: Int){
+        with(sharedPreferences.edit()){
+            putInt(FOOD,progress)
+            apply()
+        }
+    }
+    fun getProgressFood():Int{
+        return sharedPreferences.getInt(FOOD,0)
+    }
+
+    // Vegan Flash card
+
+    fun savedProgressVegan(progress: Int){
+        with(sharedPreferences.edit()){
+            putInt(VEGAN,progress)
+            apply()
+        }
+    }
+
+    fun getProgressvegan():Int{
+        return sharedPreferences.getInt(VEGAN,0)
+    }
+
 
 
 

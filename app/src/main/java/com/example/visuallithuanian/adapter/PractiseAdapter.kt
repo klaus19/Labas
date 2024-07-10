@@ -120,7 +120,7 @@ class PractiseAdapter(
             if (ImageStore.imagesNamesMap[selectedImageResource]?.first == selectedImageName) {
                 Toast.makeText(
                     holder.itemView.context,
-                    "Correct name selected!",
+                    "",
                     Toast.LENGTH_SHORT
                 ).show()
                 holder.cardTextPractise.setBackgroundColor(GREEN_COLOR)
@@ -132,7 +132,7 @@ class PractiseAdapter(
             } else {
                 Toast.makeText(
                     holder.itemView.context,
-                    "Wrong name selected!",
+                    "",
                     Toast.LENGTH_SHORT
                 ).show()
                 Color.RED
