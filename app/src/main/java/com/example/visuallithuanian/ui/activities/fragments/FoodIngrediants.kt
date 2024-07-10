@@ -40,7 +40,7 @@ class FoodIngrediants : Fragment() {
     private lateinit var currentTriple: Map.Entry<String, Triple<String, Int, Int>>
 
     var isFront = true
-    private val totalTriples = 16 // change the value to the actual number of entries in your hashMap
+    private val totalTriples = 45 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
@@ -91,7 +91,6 @@ class FoodIngrediants : Fragment() {
         )
         hashMap["mushroom"] = Triple("pievagrybis", R.drawable.mushrooms, R.raw.sleep)
         hashMap["steak"] = Triple("kepsnys", R.drawable.steak, R.raw.sleep)
-
         hashMap["snack"] = Triple("užkandis", R.drawable.snack, R.raw.sleep)
         hashMap["sausage"] = Triple("dešra", R.drawable.sausages, R.raw.sleep)
         hashMap["pear"] = Triple("kriaušė", R.drawable.pear, R.raw.sleep)
@@ -102,7 +101,6 @@ class FoodIngrediants : Fragment() {
         hashMap["Ham"] = Triple("kumpis", R.drawable.ham, R.raw.sleep)
         hashMap["Beef"] = Triple("jautiena", R.drawable.beef, R.raw.sleep)
         hashMap["Potato"] = Triple("bulvė", R.drawable.potato, R.raw.sleep)
-
         hashMap["crumbs"] = Triple("dribsniai", R.drawable.crumbs, R.raw.sleep)
         hashMap["Apples"] = Triple("obuolių", R.drawable.apple1, R.raw.sleep)
         hashMap["marmalade"] = Triple("marmeladas", R.drawable.marmalade, R.raw.sleep)
@@ -113,7 +111,6 @@ class FoodIngrediants : Fragment() {
         hashMap["yogurt"] = Triple("jogurtas", R.drawable.yogurt, R.raw.sleep)
         hashMap["salt"] = Triple("druska", R.drawable.salt, R.raw.sleep)
         hashMap["butter"] = Triple("sviestas", R.drawable.butter, R.raw.sleep)
-
         hashMap["Strawberry"] = Triple("Braškė", R.drawable.strawberry, R.raw.sleep)
         hashMap["Orange"] = Triple("apelsinas", R.drawable.orange, R.raw.sleep)
         hashMap["lime"] = Triple("kalkės", R.drawable.lime, R.raw.sleep)
@@ -124,7 +121,6 @@ class FoodIngrediants : Fragment() {
         hashMap["mushroom"] = Triple("grybas", R.drawable.mushrooms, R.raw.sleep)
         hashMap["cherry"] = Triple("vyšnia", R.drawable.cherry, R.raw.sleep)
         hashMap["cauliflower"] = Triple("žiediniai kopūstai", R.drawable.cauliflower, R.raw.sleep)
-
         hashMap["salami"] = Triple("saliamis", R.drawable.salami, R.raw.sleep)
         hashMap["juice"] = Triple("sultys", R.drawable.juices, R.raw.sleep)
         hashMap["Pasta"] = Triple("Makaronai", R.drawable.pasta, R.raw.sleep)
@@ -135,7 +131,6 @@ class FoodIngrediants : Fragment() {
         hashMap["rice"] = Triple("ryžiai", R.drawable.rice, R.raw.sleep)
         hashMap["spaghetti"] = Triple("spagečiai", R.drawable.spaghetti, R.raw.sleep)
         hashMap["broccoli"] = Triple("brokoliai", R.drawable.broccoli, R.raw.sleep)
-
         hashMap["milk"] = Triple("pienas", R.drawable.milk, R.raw.sleep)
         hashMap["wine"] = Triple("vynas", R.drawable.wine, R.raw.sleep)
         hashMap["meat"] = Triple("mėsa", R.drawable.meat, R.raw.sleep)

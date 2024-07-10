@@ -26,7 +26,6 @@ import com.example.visuallithuanian.viewModel.ToLearnViewModel
 import com.example.visuallithuanian.viewModel.WordViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-
 class VeganFlashcardsFragment : Fragment() {
 
     lateinit var binding: FragmentVeganFlashcardsBinding
@@ -35,10 +34,10 @@ class VeganFlashcardsFragment : Fragment() {
     lateinit var bottomNavigationView: BottomNavigationView
     private val counterViewModel: ToLearnViewModel by viewModels()
 
-    private var currentTripleIndex =0
-    private lateinit var currentTriple:Map.Entry<String,Triple<String,Int,Int>>
+    private var currentTripleIndex = 0
+    private lateinit var currentTriple: Map.Entry<String, Triple<String, Int, Int>>
 
-    var isFront=true
+    var isFront = true
     private val totalTriples = 22 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
     // declaring viewmodel
@@ -46,20 +45,20 @@ class VeganFlashcardsFragment : Fragment() {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
     }
 
-
     @SuppressLint("ResourceType", "SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentVeganFlashcardsBinding.inflate(inflater,container,false)
+        binding = FragmentVeganFlashcardsBinding.inflate(inflater, container, false)
 
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
 
-
         bottomNavigationView.visibility = View.GONE
 
+        // Initialize preferencesHelper
+        preferencesHelper = PreferencesHelper(requireContext())
 
         // setting up listener for back Icon
         binding.backIcon.setOnClickListener {
@@ -71,16 +70,13 @@ class VeganFlashcardsFragment : Fragment() {
         }
         //changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
-            ContextCompat.getColor(requireContext()
-                , R.color.float1
-            ))
+            ContextCompat.getColor(requireContext(), R.color.float1)
+        )
 
         //changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(
-            ContextCompat.getColor(requireContext(),
-                R.color.silver
-            ))
-
+            ContextCompat.getColor(requireContext(), R.color.silver)
+        )
 
         // Initialize Media Player
         val mediaPlayer = MediaPlayer()
@@ -120,7 +116,7 @@ class VeganFlashcardsFragment : Fragment() {
 
             // increment currentTripleIndex and get the next Triple
             currentTripleIndex++
-            if (currentTripleIndex >=  VeganSingleton.hashMapVegan.size) {
+            if (currentTripleIndex >= VeganSingleton.hashMapVegan.size) {
                 // if we have reached the end of the hashmap, start again from the beginning
                 currentTripleIndex = 0
             }
@@ -132,9 +128,8 @@ class VeganFlashcardsFragment : Fragment() {
             val Triple = FlashcardPair(front, back, imageHelper, voiceClip)
             cardViewModel.insertCards(Triple)
             //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
-            Log.d("Main","$Triple")
-            currentTriple =  VeganSingleton.hashMapVegan.entries.elementAt(currentTripleIndex)
-
+            Log.d("Main", "$Triple")
+            currentTriple = VeganSingleton.hashMapVegan.entries.elementAt(currentTripleIndex)
         }
         // On Event of clicking on the image to unsave the image
         binding.imageFlashCardSaveWhite.setOnClickListener {
@@ -142,10 +137,10 @@ class VeganFlashcardsFragment : Fragment() {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-                if (currentTripleIndex >= 0 && currentTripleIndex <  VeganSingleton.hashMapVegan.size) {
+                if (currentTripleIndex >= 0 && currentTripleIndex < VeganSingleton.hashMapVegan.size) {
                     // Remove the item at the current index from your data structure (e.g., HashMap)
-                    val removedTriple =  VeganSingleton.hashMapVegan.entries.elementAt(currentTripleIndex)
-                     VeganSingleton.hashMapVegan.remove(removedTriple.key)
+                    val removedTriple = VeganSingleton.hashMapVegan.entries.elementAt(currentTripleIndex)
+                    VeganSingleton.hashMapVegan.remove(removedTriple.key)
 
                     // Decrease the counter
                     counterViewModel.decrementCounter()
@@ -154,12 +149,11 @@ class VeganFlashcardsFragment : Fragment() {
                     val imageHelper = currentTriple.value.second
                     val voiceClip = currentTriple.value.third
 
-                    val Triple = FlashcardPair(front, back, imageHelper,voiceClip)
+                    val Triple = FlashcardPair(front, back, imageHelper, voiceClip)
                     cardViewModel.deleteCards(Triple)
                     //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
-                    Log.d("Main","$Triple")
-                    currentTriple =  VeganSingleton.hashMapVegan.entries.elementAt(currentTripleIndex)
-
+                    Log.d("Main", "$Triple")
+                    currentTriple = VeganSingleton.hashMapVegan.entries.elementAt(currentTripleIndex)
                 }
             }
         }
@@ -175,48 +169,46 @@ class VeganFlashcardsFragment : Fragment() {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-                val progress = ((currentTripleIndex + 1) * 100) / totalTriples
-                binding.progressHorizontal.progress = progress
-                // Save the updated progress
-                preferencesHelper.saveProgress(progress)
-
-                // initialize currentTripleIndex to 0 if it hasn't been initialized yet
-                if (currentTripleIndex < 0) {
-                    currentTripleIndex = 0
-                }
                 if (isFront) {
                     isFront = false
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.new_design_text_color
-                        )
-                    )
-
                 } else {
-                    currentTripleIndex = (currentTripleIndex + 1) %  VeganSingleton.hashMapVegan.size
+                    currentTripleIndex = (currentTripleIndex + 1) % VeganSingleton.hashMapVegan.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
+                }
+
+                if (currentTripleIndex % 2 == 0) {
                     cardViewQuestions.setCardBackgroundColor(
                         ContextCompat.getColor(
                             requireContext(),
                             R.color.orange1
                         )
                     )
-                    isFront = true
+                } else {
+                    cardViewQuestions.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.new_design_text_color
+                        )
+                    )
                 }
-                // retrieve the current Triple from the hashMap
-                currentTriple =  VeganSingleton.hashMapVegan.entries.elementAt(currentTripleIndex)
+
+                val progress = ((currentTripleIndex + 1) * 100) / totalTriples
+                binding.progressHorizontal.progress = progress
+
+
+                currentTriple =VeganSingleton.hashMapVegan.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
                 binding.textCardBack.text = currentTriple.value.first
                 binding.imagecardsHelper.setImageResource(currentTriple.value.second)
                 binding.btnPlay.setImageResource(currentTriple.value.third)
             }
         }
+
         return binding.root
     }
 }

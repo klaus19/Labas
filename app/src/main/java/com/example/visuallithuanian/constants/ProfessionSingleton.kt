@@ -17,7 +17,6 @@ object ProfessionSingleton {
         hashMapProfession["pensioner"] = Triple("pensininkas", R.drawable.pensioner, R.raw.computer)
         hashMapProfession["millionaire"] = Triple("milijonierius", R.drawable.millionaire, R.raw.computer)
         hashMapProfession["unemployed"] = Triple("bedarbiu", R.drawable.unemployed, R.raw.computer)
-
         hashMapProfession["farmer"] = Triple("ūkininkas", R.drawable.farmer, R.raw.computer)
         hashMapProfession["builder"] = Triple("statybininkas", R.drawable.builder, R.raw.computer)
         hashMapProfession["manager"] = Triple("vadybininkas/vadovas", R.drawable.manager, R.raw.computer)
@@ -28,7 +27,6 @@ object ProfessionSingleton {
         hashMapProfession["guard"] = Triple("apsauga", R.drawable.guard, R.raw.computer)
         hashMapProfession["plumber"] = Triple("santechnikas", R.drawable.plumber, R.raw.computer)
         hashMapProfession["hairdresser"] = Triple("kirpykla", R.drawable.hairdresser, R.raw.computer)
-
         hashMapProfession["banker"] = Triple("bankininkas", R.drawable.banker, R.raw.computer)
         hashMapProfession["politician"] = Triple("politikas", R.drawable.politician1, R.raw.computer)
         hashMapProfession["soldier"] = Triple("karys", R.drawable.soldier, R.raw.computer)
@@ -39,7 +37,6 @@ object ProfessionSingleton {
         hashMapProfession["analyst"] = Triple("analitikas", R.drawable.analyst, R.raw.computer)
         hashMapProfession["founder"] = Triple("įkūrėjas", R.drawable.founder, R.raw.computer)
         hashMapProfession["storyteller"] = Triple("pasakotojas", R.drawable.storyteller, R.raw.computer)
-
         hashMapProfession["translator"] = Triple("vertėjas", R.drawable.translator, R.raw.computer)
         hashMapProfession["magician"] = Triple("magas", R.drawable.magician, R.raw.computer)
         hashMapProfession["artist"] = Triple("menininkas", R.drawable.artist, R.raw.computer)
@@ -50,7 +47,6 @@ object ProfessionSingleton {
         hashMapProfession["gardener"] = Triple("sodininkas", R.drawable.gardener, R.raw.computer)
         hashMapProfession["scientist"] = Triple("mokslininkas", R.drawable.scientist, R.raw.computer)
         hashMapProfession["surgeon"] = Triple("chirurgas", R.drawable.surgeon, R.raw.computer)
-
         hashMapProfession["dentist"] = Triple("odontologas", R.drawable.dentist, R.raw.computer)
         hashMapProfession["student"] = Triple("studentas", R.drawable.student, R.raw.computer)
         hashMapProfession["professor"] = Triple("profesorius", R.drawable.professor, R.raw.computer)
@@ -60,7 +56,6 @@ object ProfessionSingleton {
         hashMapProfession["to teach"] = Triple("mokyti", R.drawable.toteach, R.raw.computer)
         hashMapProfession["a company"] = Triple("įmonė", R.drawable.company, R.raw.computer)
         hashMapProfession["businessman"] = Triple("verslininkas", R.drawable.businessman, R.raw.computer)
-
         hashMapProfession["a broker"] = Triple("tarpininkas", R.drawable.broker, R.raw.computer)
         hashMapProfession["a maid"] = Triple("kambarinė", R.drawable.maid, R.raw.computer)
         hashMapProfession["patient"] = Triple("pacientas", R.drawable.patient, R.raw.computer)

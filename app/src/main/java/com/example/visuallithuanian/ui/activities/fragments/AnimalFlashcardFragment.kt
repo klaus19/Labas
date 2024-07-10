@@ -10,10 +10,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
@@ -27,7 +25,6 @@ import com.example.visuallithuanian.viewModel.FlashCardViewmodel
 import com.example.visuallithuanian.viewModel.ToLearnViewModel
 import com.example.visuallithuanian.viewModel.WordViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
 
 class AnimalFlashcardFragment : Fragment() {
     lateinit var binding: FragmentAnimalFlashcardBinding
@@ -47,13 +44,12 @@ class AnimalFlashcardFragment : Fragment() {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
     }
 
-
     @SuppressLint("ResourceType", "SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAnimalFlashcardBinding.inflate(inflater,container,false)
+        binding = FragmentAnimalFlashcardBinding.inflate(inflater, container, false)
 
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
@@ -65,6 +61,9 @@ class AnimalFlashcardFragment : Fragment() {
         val savedCounter = preferencesHelper.getCounter()
         val savedProgress = preferencesHelper.getProgress()
         counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
+
+        // Set initial progress based on savedProgress
+        currentTripleIndex = (savedProgress * totalTriples) / 100
 
         // setting up listener for back Icon
         binding.backIcon.setOnClickListener {
@@ -187,41 +186,31 @@ class AnimalFlashcardFragment : Fragment() {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-                val progress = ((currentTripleIndex + 1) * 100) / totalTriples
-                binding.progressHorizontal.progress = progress
-                // Save the updated progress
-                preferencesHelper.saveProgress(progress)
+                // Update currentTripleIndex first
+                currentTripleIndex = (currentTripleIndex + 1) % AnimalsSingleton.hashMapAnimals.size
 
-                // initialize currentTripleIndex to 0 if it hasn't been initialized yet
-                if (currentTripleIndex < 0) {
-                    currentTripleIndex = 0
-                }
-                if (isFront) {
-                    isFront = false
-                    textCardBack.visibility = View.VISIBLE
-                    textCardFront.visibility = View.VISIBLE
-                    imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.new_design_text_color
-                        )
-                    )
-
-                } else {
-                    currentTripleIndex = (currentTripleIndex + 1) % AnimalsSingleton.hashMapAnimals.size
-                    textCardFront.visibility = View.VISIBLE
-                    textCardBack.visibility = View.VISIBLE
-                    imageFlashCard.visibility = View.VISIBLE
+                if (currentTripleIndex % 2 == 0) {
                     cardViewQuestions.setCardBackgroundColor(
                         ContextCompat.getColor(
                             requireContext(),
                             R.color.orange1
                         )
                     )
-                    isFront = true
+                } else {
+                    cardViewQuestions.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.new_design_text_color
+                        )
+                    )
                 }
-                // retrieve the current Triple from the hashMap
+
+                val progress = ((currentTripleIndex + 1) * 100) / totalTriples
+                binding.progressHorizontal.progress = progress
+
+                // Save the updated progress
+                preferencesHelper.saveProgress(progress)
+
                 currentTriple = AnimalsSingleton.hashMapAnimals.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
                 binding.textCardBack.text = currentTriple.value.first
@@ -229,7 +218,9 @@ class AnimalFlashcardFragment : Fragment() {
                 binding.btnPlay.setImageResource(currentTriple.value.third)
             }
         }
-        return binding.root
 
+
+
+        return binding.root
     }
 }

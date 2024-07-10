@@ -16,7 +16,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.BestWords100Singleton
-import com.example.visuallithuanian.constants.BestWords100Singleton.hashMapbestwords
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentBestWords100Binding
 import com.example.visuallithuanian.model.PreferencesHelper
@@ -26,7 +25,6 @@ import com.example.visuallithuanian.viewModel.FlashCardViewmodel
 import com.example.visuallithuanian.viewModel.ToLearnViewModel
 import com.example.visuallithuanian.viewModel.WordViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
 
 class BestWords100Fragment : Fragment() {
 
@@ -40,7 +38,7 @@ class BestWords100Fragment : Fragment() {
     private lateinit var currentTriple: Map.Entry<String, Triple<String, Int, Int>>
 
     var isFront = true
-    private val totalTriples = 113 // change the value to the actual number of entries in your hashMap
+    private val totalTriples = 117 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
@@ -52,7 +50,7 @@ class BestWords100Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentBestWords100Binding.inflate(inflater,container,false)
+        binding = FragmentBestWords100Binding.inflate(inflater, container, false)
 
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
@@ -64,6 +62,13 @@ class BestWords100Fragment : Fragment() {
         val savedCounter = preferencesHelper.getCounter()
         val savedProgress = preferencesHelper.getProgress()
         counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
+
+        // Restore progress bar progress and set the currentTripleIndex based on saved progress
+        binding.progressHorizontal.progress = savedProgress
+        currentTripleIndex = (savedProgress * totalTriples) / 100
+        if (currentTripleIndex >= BestWords100Singleton.hashMapbestwords.size) {
+            currentTripleIndex = 0
+        }
 
         // setting up listener for back Icon
         binding.backIcon?.setOnClickListener {
@@ -89,9 +94,6 @@ class BestWords100Fragment : Fragment() {
             )
         )
 
-        // Restore progress bar progress
-        binding.progressHorizontal.progress = savedProgress
-
         // Initialize Media Player
         val mediaPlayer = MediaPlayer()
         binding.btnPlay.setOnClickListener {
@@ -113,120 +115,94 @@ class BestWords100Fragment : Fragment() {
                 it.start()
             }
         }
+
         counterViewModel.counter.observe(requireActivity()) { count ->
             binding.textCardTolearn.text = count.toString()
         }
-        currentTriple = hashMapbestwords.entries.elementAt(currentTripleIndex)
-        binding.textCardFront.text = currentTriple.key
-        binding.textCardBack.text = currentTriple.value.first
-        binding.imagecardsHelper.setImageResource(currentTriple.value.second)
-        binding.btnPlay.setImageResource(currentTriple.value.third)
+
+        // Initialize currentTriple with the entry based on the saved progress
+        currentTriple = BestWords100Singleton.hashMapbestwords.entries.elementAt(currentTripleIndex)
+        updateCardViews(currentTriple)
 
         // onclick listener on the image to save the image for learning
         binding.imageFlashCard.setOnClickListener {
-            binding.imageFlashCard.visibility = View.GONE
-            binding.imageFlashCardSaveWhite.visibility = View.VISIBLE
-
-            counterViewModel.incrementCounter()
-            // Save the updated counter
-            preferencesHelper.saveCounter(counterViewModel.counter.value ?: 0)
-
-            // increment currentTripleIndex and get the next Triple
-            currentTripleIndex++
-            if (currentTripleIndex >= BestWords100Singleton.hashMapbestwords.size) {
-                // if we have reached the end of the hashmap, start again from the beginning
-                currentTripleIndex = 0
-            }
-            val front = binding.textCardFront.text.toString()
-            val back = binding.textCardBack.text.toString()
-            val imageHelper = currentTriple.value.second
-            val voiceClip = currentTriple.value.third
-
-            val Triple = FlashcardPair(front, back, imageHelper, voiceClip)
-            cardViewModel.insertCards(Triple)
-            // Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
-            Log.d("Main", "$Triple")
-            currentTriple = BestWords100Singleton.hashMapbestwords.entries.elementAt(currentTripleIndex)
-
+            handleFlashCardClick(true)
         }
+
         // On Event of clicking on the image to unsave the image
         binding.imageFlashCardSaveWhite.setOnClickListener {
-            with(binding) {
-                imageFlashCardSaveWhite.visibility = View.GONE
-                imageFlashCard.visibility = View.VISIBLE
-
-                if (currentTripleIndex >= 0 && currentTripleIndex < BestWords100Singleton.hashMapbestwords.size) {
-                    // Remove the item at the current index from your data structure (e.g., HashMap)
-                    val removedTriple = BestWords100Singleton.hashMapbestwords.entries.elementAt(currentTripleIndex)
-                    BestWords100Singleton.hashMapbestwords.remove(removedTriple.key)
-
-                    counterViewModel.decrementCounter()
-                    val front = binding.textCardFront.text.toString()
-                    val back = binding.textCardBack.text.toString()
-                    val imageHelper = currentTriple.value.second
-                    val voiceClip = currentTriple.value.third
-
-                    val triple = FlashcardPair(front, back, imageHelper, voiceClip)
-                    cardViewModel.deleteCards(triple)
-                    Log.d("Main", "$triple")
-                    currentTriple = BestWords100Singleton.hashMapbestwords.entries.elementAt(currentTripleIndex)
-                }
-            }
+            handleFlashCardClick(false)
         }
 
-        //Navigating from one fragment to another
+        // Navigating from one fragment to another
         binding.cardLearning.setOnClickListener {
             findNavController().navigate(R.id.action_bestWords100Fragment_to_toLearnFlashCards)
         }
 
         // onclick listener for the Flip button
+        binding.btnFlip.setOnClickListener {
+            handleFlipButtonClick()
+        }
+
+        return binding.root
+    }
+
+    private fun handleFlashCardClick(isSave: Boolean) {
         with(binding) {
-            btnFlip.setOnClickListener {
+            if (isSave) {
+                imageFlashCard.visibility = View.GONE
+                imageFlashCardSaveWhite.visibility = View.VISIBLE
+                counterViewModel.incrementCounter()
+                preferencesHelper.saveCounter(counterViewModel.counter.value ?: 0)
+                cardViewModel.insertCards(createFlashcardFromCurrentTriple())
+            } else {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
-
-                val progress = ((currentTripleIndex + 1) * 100) / totalTriples
-                binding.progressHorizontal.progress = progress
-                // Save the updated progress
-                preferencesHelper.saveProgress(progress)
-
-                // initialize currentTripleIndex to 0 if it hasn't been initialized yet
-                if (currentTripleIndex < 0) {
-                    currentTripleIndex = 0
-                }
-                if (isFront) {
-                    isFront = false
-                    textCardBack.visibility = View.VISIBLE
-                    textCardFront.visibility = View.VISIBLE
-                    imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.new_design_text_color
-                        )
-                    )
-
-                } else {
-                    currentTripleIndex = (currentTripleIndex + 1) % BestWords100Singleton.hashMapbestwords.size
-                    textCardFront.visibility = View.VISIBLE
-                    textCardBack.visibility = View.VISIBLE
-                    imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.orange1
-                        )
-                    )
-                    isFront = true
-                }
-                // retrieve the current Triple from the hashMap
-                currentTriple = BestWords100Singleton.hashMapbestwords.entries.elementAt(currentTripleIndex)
-                binding.textCardFront.text = currentTriple.key
-                binding.textCardBack.text = currentTriple.value.first
-                binding.imagecardsHelper.setImageResource(currentTriple.value.second)
-                binding.btnPlay.setImageResource(currentTriple.value.third)
+                counterViewModel.decrementCounter()
+                preferencesHelper.saveCounter(counterViewModel.counter.value ?: 0)
+                cardViewModel.deleteCards(createFlashcardFromCurrentTriple())
             }
+            currentTripleIndex++
+            if (currentTripleIndex >= BestWords100Singleton.hashMapbestwords.size) {
+                currentTripleIndex = 0
+            }
+            currentTriple = BestWords100Singleton.hashMapbestwords.entries.elementAt(currentTripleIndex)
+            updateCardViews(currentTriple)
         }
-        return binding.root
+    }
+
+    private fun handleFlipButtonClick() {
+        with(binding) {
+            imageFlashCardSaveWhite.visibility = View.GONE
+            imageFlashCard.visibility = View.VISIBLE
+            currentTripleIndex = (currentTripleIndex + 1) % BestWords100Singleton.hashMapbestwords.size
+            updateProgress()
+            currentTriple = BestWords100Singleton.hashMapbestwords.entries.elementAt(currentTripleIndex)
+            updateCardViews(currentTriple)
+        }
+    }
+
+    private fun updateProgress() {
+        val progress = ((currentTripleIndex + 1) * 100) / totalTriples
+        binding.progressHorizontal.progress = progress
+        preferencesHelper.saveProgress(progress)
+    }
+
+    private fun createFlashcardFromCurrentTriple(): FlashcardPair {
+        return FlashcardPair(
+            binding.textCardFront.text.toString(),
+            binding.textCardBack.text.toString(),
+            currentTriple.value.second,
+            currentTriple.value.third
+        )
+    }
+
+    private fun updateCardViews(triple: Map.Entry<String, Triple<String, Int, Int>>) {
+        with(binding) {
+            textCardFront.text = triple.key
+            textCardBack.text = triple.value.first
+            imagecardsHelper.setImageResource(triple.value.second)
+            btnPlay.setImageResource(triple.value.third)
+        }
     }
 }

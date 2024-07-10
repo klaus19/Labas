@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.ThingsSingleton
+import com.example.visuallithuanian.constants.TimeSingleton
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentThingsBinding
 import com.example.visuallithuanian.model.PreferencesHelper
@@ -167,12 +168,10 @@ class ThingsFragment : Fragment() {
                     val imageHelper = currentTriple.value.second
                     val voiceClip = currentTriple.value.third
 
-                    val Triple = FlashcardPair(front, back, imageHelper,voiceClip)
-                    cardViewModel.deleteCards(Triple)
-                    //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
-                    Log.d("Main","$Triple")
-                    currentTriple = ThingsSingleton.hashMapThingsWords.entries.elementAt(currentTripleIndex)
-
+                    val triple = FlashcardPair(front, back, imageHelper, voiceClip)
+                    cardViewModel.deleteCards(triple)
+                    Log.d("Main", "$triple")
+                    currentTriple =TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
                 }
             }
         }
@@ -188,48 +187,46 @@ class ThingsFragment : Fragment() {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-                val progress = ((currentTripleIndex + 1) * 100) / totalTriples
-                binding.progressHorizontal.progress = progress
-                // Save the updated progress
-                preferencesHelper.saveProgress(progress)
-
-                // initialize currentTripleIndex to 0 if it hasn't been initialized yet
-                if (currentTripleIndex < 0) {
-                    currentTripleIndex = 0
-                }
                 if (isFront) {
                     isFront = false
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.new_design_text_color
-                        )
-                    )
-
                 } else {
-                    currentTripleIndex = (currentTripleIndex + 1) % ThingsSingleton.hashMapThingsWords.size
+                    currentTripleIndex = (currentTripleIndex + 1) % TimeSingleton.hashMapTime.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
+                }
+
+                if (currentTripleIndex % 2 == 0) {
                     cardViewQuestions.setCardBackgroundColor(
                         ContextCompat.getColor(
                             requireContext(),
                             R.color.orange1
                         )
                     )
-                    isFront = true
+                } else {
+                    cardViewQuestions.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.new_design_text_color
+                        )
+                    )
                 }
-                // retrieve the current Triple from the hashMap
-                currentTriple = ThingsSingleton.hashMapThingsWords.entries.elementAt(currentTripleIndex)
+
+                val progress = ((currentTripleIndex + 1) * 100) / totalTriples
+                binding.progressHorizontal.progress = progress
+
+
+                currentTriple = TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
                 binding.textCardBack.text = currentTriple.value.first
                 binding.imagecardsHelper.setImageResource(currentTriple.value.second)
                 binding.btnPlay.setImageResource(currentTriple.value.third)
             }
         }
+
         return binding.root
     }
 }

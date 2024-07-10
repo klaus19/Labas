@@ -17,7 +17,6 @@ object VeganSingleton {
         hashMapVegan["Ethical vegan"] = Triple("Etinis veganas", R.drawable.ethicalvegan, R.raw.computer)
         hashMapVegan["Of animal origin"] = Triple("Gyvūninės kilmės", R.drawable.animalorigin, R.raw.computer)
         hashMapVegan["With soy milk"] = Triple("Su sojų pienu", R.drawable.soymilk, R.raw.computer)
-
         hashMapVegan["Coconut milk"] = Triple("Kokosų pienas", R.drawable.coconutmilk, R.raw.computer)
         hashMapVegan["A farm"] = Triple("Ferma", R.drawable.farm, R.raw.computer)
         hashMapVegan["Activism"] = Triple("Aktyvizmas", R.drawable.activism, R.raw.computer)
@@ -28,7 +27,6 @@ object VeganSingleton {
         hashMapVegan["An alternative"] = Triple("Alternatyva", R.drawable.alternative, R.raw.computer)
         hashMapVegan["Uninhabited island"] = Triple("Negyvenama sala", R.drawable.unhabitatedisland, R.raw.computer)
         hashMapVegan["Protein"] = Triple("Baltymai", R.drawable.protein, R.raw.computer)
-
         hashMapVegan["I love animals"] = Triple("Myliu gyvūnus", R.drawable.iloveanimals, R.raw.computer)
         hashMapVegan["Cube of Truth"] = Triple("Tiesos kubas", R.drawable.cubetruth, R.raw.computer)
     }

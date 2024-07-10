@@ -32,7 +32,7 @@
         android:contentDescription="@string/add_item"
         android:src="@drawable/baseline_library_add_24"
         android:tint="@android:color/white"
-        app:backgroundTint="@color/orange1"
+        app:backgroundTint="@color/float1"
         app:fabSize="normal" />
 
     <LinearLayout

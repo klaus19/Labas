@@ -41,7 +41,7 @@ class HouseholdFlashcardFragment : Fragment() {
     private lateinit var currentTriple:Map.Entry<String,Triple<String,Int,Int>>
 
     var isFront=true
-    private val totalTriples = 38 // change the value to the actual number of entries in your hashMap
+    private val totalTriples = 37 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
@@ -168,12 +168,10 @@ class HouseholdFlashcardFragment : Fragment() {
                     val imageHelper = currentTriple.value.second
                     val voiceClip = currentTriple.value.third
 
-                    val Triple = FlashcardPair(front, back, imageHelper,voiceClip)
-                    cardViewModel.deleteCards(Triple)
-                    //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
-                    Log.d("Main","$Triple")
-                    currentTriple = HouseholdSingleton.hashMapHousehold.entries.elementAt(currentTripleIndex)
-
+                    val triple = FlashcardPair(front, back, imageHelper, voiceClip)
+                    cardViewModel.deleteCards(triple)
+                    Log.d("Main", "$triple")
+                    currentTriple =HouseholdSingleton.hashMapHousehold.entries.elementAt(currentTripleIndex)
                 }
             }
         }
@@ -189,41 +187,38 @@ class HouseholdFlashcardFragment : Fragment() {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-                val progress = ((currentTripleIndex + 1) * 100) / totalTriples
-                binding.progressHorizontal.progress = progress
-                // Save the updated progress
-                preferencesHelper.saveProgress(progress)
-
-                // initialize currentTripleIndex to 0 if it hasn't been initialized yet
-                if (currentTripleIndex < 0) {
-                    currentTripleIndex = 0
-                }
                 if (isFront) {
                     isFront = false
                     textCardBack.visibility = View.VISIBLE
                     textCardFront.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.new_design_text_color
-                        )
-                    )
-
                 } else {
                     currentTripleIndex = (currentTripleIndex + 1) % HouseholdSingleton.hashMapHousehold.size
                     textCardFront.visibility = View.VISIBLE
                     textCardBack.visibility = View.VISIBLE
                     imageFlashCard.visibility = View.VISIBLE
+                }
+
+                if (currentTripleIndex % 2 == 0) {
                     cardViewQuestions.setCardBackgroundColor(
                         ContextCompat.getColor(
                             requireContext(),
                             R.color.orange1
                         )
                     )
-                    isFront = true
+                } else {
+                    cardViewQuestions.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.new_design_text_color
+                        )
+                    )
                 }
-                // retrieve the current Triple from the hashMap
+
+                val progress = ((currentTripleIndex + 1) * 100) / totalTriples
+                binding.progressHorizontal.progress = progress
+
+
                 currentTriple = HouseholdSingleton.hashMapHousehold.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
                 binding.textCardBack.text = currentTriple.value.first
@@ -231,6 +226,7 @@ class HouseholdFlashcardFragment : Fragment() {
                 binding.btnPlay.setImageResource(currentTriple.value.third)
             }
         }
+
         return binding.root
     }
 }

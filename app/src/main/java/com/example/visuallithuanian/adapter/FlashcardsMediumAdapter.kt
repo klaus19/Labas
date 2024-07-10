@@ -16,7 +16,9 @@ class FlashcardsMediumAdapter(
     private val imageList: List<FlashCardInfo>,
     private val navController: NavController,
     private val unlockedItem: MutableList<String> = mutableListOf( "Computer terminology","Towns and Villages",
-        "Time","Cinema","Numbers", "Business Language","Cafe")
+        "Time","Cinema","Numbers", "Business Language","Cafe",
+        "Sports", "Things", "Personality", "Professions","Household", "Weekly Basics",
+        "100 best words","Animals","Food & Ingredients", "Veganism")
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -37,7 +39,7 @@ class FlashcardsMediumAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (imageList[position].name == unlockedItem[5]) VIEW_TYPE_UNLOCKED else VIEW_TYPE_LOCKED
+        return if (imageList[position].name == unlockedItem[position]) VIEW_TYPE_UNLOCKED else VIEW_TYPE_LOCKED
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

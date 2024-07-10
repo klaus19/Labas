@@ -39,8 +39,6 @@ object BestWords100Singleton {
         hashMapbestwords["butterfly"] = Triple("drugelis", R.drawable.butterfly, R.raw.computer)
         hashMapbestwords["insurance"] = Triple("draudimas", R.drawable.insurance, R.raw.computer)
         hashMapbestwords["by accident"] = Triple("atsitiktinai", R.drawable.byaccident, R.raw.computer)
-
-
         hashMapbestwords["nose"] = Triple("triukšmas", R.drawable.nose, R.raw.computer)
         hashMapbestwords["transport"] = Triple("transportas", R.drawable.transportation, R.raw.computer)
         hashMapbestwords["Shop"] = Triple("Parduotuvė", R.drawable.shop, R.raw.computer)
@@ -70,7 +68,6 @@ object BestWords100Singleton {
         hashMapbestwords["knowledge"] = Triple("žinių", R.drawable.knowledge, R.raw.computer)
         hashMapbestwords["rarely"] = Triple("retai", R.drawable.rare, R.raw.computer)
         hashMapbestwords["event"] = Triple("renginys", R.drawable.event1, R.raw.computer)
-
         hashMapbestwords["surprise"] = Triple("staigmena", R.drawable.surprise1, R.raw.computer)
         hashMapbestwords["The church"] = Triple("Bažnyčia", R.drawable.church, R.raw.computer)
         hashMapbestwords["always"] = Triple("visada", R.drawable.ic_launcher_background, R.raw.computer)
@@ -101,7 +98,6 @@ object BestWords100Singleton {
         hashMapbestwords["in line"] = Triple("eilėje", R.drawable.ic_launcher_background, R.raw.computer)
         hashMapbestwords["test"] = Triple("bandymas", R.drawable.test, R.raw.computer)
         hashMapbestwords["opinion"] = Triple("nuomonę", R.drawable.opinion, R.raw.computer)
-
         hashMapbestwords["league"] = Triple("liga", R.drawable.league, R.raw.computer)
         hashMapbestwords["with caution"] = Triple("atsargiai", R.drawable.caution, R.raw.computer)
         hashMapbestwords["increase"] = Triple("padidinti", R.drawable.increase, R.raw.computer)
