@@ -27,7 +27,7 @@ object PersonalitySingleton {
         hashMapPersonality["emotional"] = Triple("emocinis", R.drawable.emotional, R.raw.computer)
         hashMapPersonality["lazy"] = Triple("tinginys", R.drawable.lazy1, R.raw.computer)
         hashMapPersonality["dishonest"] = Triple("nesąžiningas", R.drawable.dishonest, R.raw.computer)
-        hashMapPersonality["domineering"] = Triple("valdingas", R.drawable.ic_launcher_background, R.raw.computer)
+        hashMapPersonality["domineering"] = Triple("valdingas", R.drawable.emptyimage, R.raw.computer)
 
         hashMapPersonality["generous"] = Triple("dosnus", R.drawable.generous, R.raw.computer)
         hashMapPersonality["patient"] = Triple("pacientas", R.drawable.patient, R.raw.computer)
