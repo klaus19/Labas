@@ -250,28 +250,6 @@ package com.example.visuallithuanian
 //"a blizzard" = "pūga"
 //"her bouquet is beautiful" = "jos puokštė yra graži"
 
-// Colors and shapes
-
-//"white" ="baltas"
-//"black" ="juodas"
-//"red" ="raudonas"
-//"green" ="žalias"
-//"orange" ="oranžinis"
-//"yellow" ="geltonas"
-//"blue" ="mėlynas"
-//"pink" ="rožinis"
-//"stripped" ="dryžuotas"
-//"round" ="apvalus"
-//"squared" ="kvadratas"
-//"triangular" ="trikampis"
-//"rectangular" ="stačiakampis"
-//"spheric" ="sferinis"
-//"cubic" ="kubinis"
-//"brown cat" ="ruda katė"
-//"brown eyes" ="rudas akis"
-//"round face" ="apvalus veidas"
-//"blue eyes" ="mėlynas akis"
-//"grey mouse" ="pilka pelė"
 
 //Sports Flashcards
 
