@@ -20,7 +20,7 @@ object CinemaSingleton {
 
         hashMapCinemawords["The star"] = Triple("žvaigždė", R.drawable.star, R.raw.computer)
         hashMapCinemawords["orchestra"] = Triple("orkestras", R.drawable.orchestra, R.raw.computer)
-        hashMapCinemawords["Behind the scenes"] = Triple("užkulisiuose", R.drawable.ic_launcher_background, R.raw.computer)
+        hashMapCinemawords["Behind the scenes"] = Triple("užkulisiuose", R.drawable.emptyimage, R.raw.computer)
         hashMapCinemawords["rehearsal"] = Triple("repeticija", R.drawable.rehearsel, R.raw.computer)
         hashMapCinemawords["science fiction"] = Triple("mokslinė fantastika", R.drawable.sciencefiction, R.raw.computer)
         hashMapCinemawords["western film"] = Triple("vakarietiškas filmas", R.drawable.westernfilm, R.raw.computer)

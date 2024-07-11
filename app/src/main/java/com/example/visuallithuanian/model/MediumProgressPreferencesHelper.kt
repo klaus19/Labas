@@ -3,7 +3,7 @@ package com.example.visuallithuanian.model
 import android.content.Context
 import android.content.SharedPreferences
 
-class MediumProgressPreferencesHelper(private val context: Context) {
+class MediumProgressPreferencesHelper(context: Context) {
 
     val sharedPreferences:SharedPreferences = context.getSharedPreferences("app_names",Context.MODE_PRIVATE)
 
@@ -12,6 +12,7 @@ class MediumProgressPreferencesHelper(private val context: Context) {
         private const val BEST_100_FLASH = "100_best_words"
         private const val FOOD = "food_ingredients"
         private const val VEGAN = "vegan_foods"
+        private const val POINTERS = "pointers"
     }
 
     fun saveProgressAnimalsFlash(progress:Int){
@@ -59,6 +60,18 @@ class MediumProgressPreferencesHelper(private val context: Context) {
         return sharedPreferences.getInt(VEGAN,0)
     }
 
+    // Pointers Flashcard
+
+    fun saveProgressPointers(progress: Int){
+        with(sharedPreferences.edit()){
+            putInt(POINTERS,progress)
+            apply()
+        }
+    }
+
+    fun getProgressPointer():Int{
+        return sharedPreferences.getInt(POINTERS,0)
+    }
 
 
 
