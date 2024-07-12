@@ -18,6 +18,7 @@ import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.VillageSingleton
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentVillageBinding
+import com.example.visuallithuanian.model.MediumProgressPreferencesHelper
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -29,16 +30,16 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class VillageFragment : Fragment() {
     lateinit var binding: FragmentVillageBinding
     lateinit var viewModel: BottomNavigationViewModel
-    private val sharedPrefFile = "com.example.visuallithuanian.PREFERENCE_FILE_KEY"
+
     lateinit var bottomNavigationView: BottomNavigationView
     private val counterViewModel: ToLearnViewModel by viewModels()
 
     private var currentTripleIndex = 0
     private lateinit var currentTriple: Map.Entry<String, Triple<String, Int, Int>>
     private var isFront = true
-    private val totalTriples = 47 // change the value to the actual number of entries in your hashMap
+    private val totalTriples = 43 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
-
+    private lateinit var flashPreferencesHelper: MediumProgressPreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -57,13 +58,18 @@ class VillageFragment : Fragment() {
         bottomNavigationView.visibility = View.GONE
 
         preferencesHelper = PreferencesHelper(requireContext())
+        flashPreferencesHelper = MediumProgressPreferencesHelper(requireContext())
+
         // Restore saved progress and counter
         val savedCounter = preferencesHelper.getCounter()
-        val savedProgress = preferencesHelper.getProgress()
+        val savedProgress = flashPreferencesHelper.getProgressVillage()
         counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
 
+        // Set initial progress based on savedProgress
+        currentTripleIndex = (savedProgress * totalTriples) / 100
+
         // setting up listener for back Icon
-        binding.backIcon?.setOnClickListener {
+        binding.backIcon.setOnClickListener {
             activity?.onBackPressed()
         }
 
@@ -74,18 +80,18 @@ class VillageFragment : Fragment() {
         // changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(
-                requireContext(),
-                R.color.float1
+                requireContext(), R.color.float1
             )
         )
 
         // changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(
-            ContextCompat.getColor(
-                requireContext(),
+            ContextCompat.getColor(requireContext(),
                 R.color.silver
-            )
-        )
+            ))
+
+        // Restore progress bar progress
+        binding.progressHorizontal.progress = savedProgress
 
         // Initialize Media Player
         val mediaPlayer = MediaPlayer()
@@ -95,7 +101,11 @@ class VillageFragment : Fragment() {
             mediaPlayer.apply {
                 reset()
                 // Set the audio resource using the context and resource ID
-                setDataSource(requireContext(), Uri.parse("android.resource://${requireContext().packageName}/$audioResource"))
+                setDataSource(
+                    requireContext(),
+                    Uri.parse("android.resource://${requireContext().packageName}/$audioResource")
+                )
+
                 // Prepare the MediaPlayer asynchronously
                 prepareAsync()
             }
@@ -104,7 +114,6 @@ class VillageFragment : Fragment() {
                 it.start()
             }
         }
-
         counterViewModel.counter.observe(requireActivity()) { count ->
             binding.textCardTolearn.text = count.toString()
         }
@@ -135,10 +144,12 @@ class VillageFragment : Fragment() {
             val imageHelper = currentTriple.value.second
             val voiceClip = currentTriple.value.third
 
-            val triple = FlashcardPair(front, back, imageHelper, voiceClip)
-            cardViewModel.insertCards(triple)
-            Log.d("Main", "$triple")
+            val Triple = FlashcardPair(front, back, imageHelper, voiceClip)
+            cardViewModel.insertCards(Triple)
+            //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
+            Log.d("Main","$Triple")
             currentTriple = VillageSingleton.hashMapVillageWords.entries.elementAt(currentTripleIndex)
+
         }
 
         // On Event of clicking on the image to unsave the image
@@ -172,23 +183,18 @@ class VillageFragment : Fragment() {
             findNavController().navigate(R.id.action_villageFragment_to_toLearnFlashCards)
         }
 
+        binding.floatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_villageFragment_to_sentenceFragment)
+        }
+
         // onclick listener for the Flip button
         with(binding) {
             btnFlip.setOnClickListener {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-                if (isFront) {
-                    isFront = false
-                    textCardBack.visibility = View.VISIBLE
-                    textCardFront.visibility = View.VISIBLE
-                    imageFlashCard.visibility = View.VISIBLE
-                } else {
-                    currentTripleIndex = (currentTripleIndex + 1) % VillageSingleton.hashMapVillageWords.size
-                    textCardFront.visibility = View.VISIBLE
-                    textCardBack.visibility = View.VISIBLE
-                    imageFlashCard.visibility = View.VISIBLE
-                }
+                // Update currentTripleIndex first
+                currentTripleIndex = (currentTripleIndex + 1) % VillageSingleton.hashMapVillageWords.size
 
                 if (currentTripleIndex % 2 == 0) {
                     cardViewQuestions.setCardBackgroundColor(
@@ -209,6 +215,8 @@ class VillageFragment : Fragment() {
                 val progress = ((currentTripleIndex + 1) * 100) / totalTriples
                 binding.progressHorizontal.progress = progress
 
+                // Save the updated progress
+                flashPreferencesHelper.savedProgressVillage(progress)
 
                 currentTriple = VillageSingleton.hashMapVillageWords.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
@@ -217,6 +225,9 @@ class VillageFragment : Fragment() {
                 binding.btnPlay.setImageResource(currentTriple.value.third)
             }
         }
+
+
+
         return binding.root
     }
 }

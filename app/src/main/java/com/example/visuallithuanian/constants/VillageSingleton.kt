@@ -17,7 +17,6 @@ object VillageSingleton {
         hashMapVillageWords["castle"] = Triple("pilis", R.drawable.castle11, R.raw.computer)
         hashMapVillageWords["boring"] = Triple("nuobodu", R.drawable.boring11, R.raw.computer)
         hashMapVillageWords["overcrowded"] = Triple("per daug apgyvendinta", R.drawable.overcrowded11, R.raw.computer)
-
         hashMapVillageWords["cathedral"] = Triple("katedra", R.drawable.cathedral, R.raw.computer)
         hashMapVillageWords["press"] = Triple("spaudos kioskas", R.drawable.press, R.raw.computer)
         hashMapVillageWords["police department"] = Triple("policijos departamentas", R.drawable.policedepartment, R.raw.computer)
@@ -28,7 +27,6 @@ object VillageSingleton {
         hashMapVillageWords["City"] = Triple("Miestas", R.drawable.city, R.raw.computer)
         hashMapVillageWords["noisy"] = Triple("triukšminga", R.drawable.noisy, R.raw.computer)
         hashMapVillageWords["theater"] = Triple("kino teatras", R.drawable.theater, R.raw.computer)
-
         hashMapVillageWords["Bank"] = Triple("bankas", R.drawable.bank, R.raw.computer)
         hashMapVillageWords["restaurant"] = Triple("restoranas", R.drawable.restaurant, R.raw.computer)
         hashMapVillageWords["silent"] = Triple("tylu", R.drawable.silent, R.raw.computer)
@@ -39,7 +37,6 @@ object VillageSingleton {
         hashMapVillageWords["pharmacy"] = Triple("vaistinė", R.drawable.pharmacy, R.raw.computer)
         hashMapVillageWords["safe"] = Triple("saugus", R.drawable.fruitjuice, R.raw.computer)
         hashMapVillageWords["The Church"] = Triple("Bažnyčia", R.drawable.church, R.raw.computer)
-
         hashMapVillageWords["house"] = Triple("namas", R.drawable.house11, R.raw.computer)
         hashMapVillageWords["village"] = Triple("kaimas", R.drawable.village, R.raw.computer)
         hashMapVillageWords["isolated"] = Triple("izoliuotas", R.drawable.isolated11, R.raw.computer)
@@ -50,7 +47,6 @@ object VillageSingleton {
         hashMapVillageWords["mosque"] = Triple("mečetę", R.drawable.mosque, R.raw.computer)
         hashMapVillageWords["old"] = Triple("senas", R.drawable.old, R.raw.computer)
         hashMapVillageWords["empty"] = Triple("tuščia", R.drawable.empty11, R.raw.computer)
-
         hashMapVillageWords["Air pollution"] = Triple("oro tarša", R.drawable.airpollution, R.raw.computer)
         hashMapVillageWords["road"] = Triple("kelias", R.drawable.road, R.raw.computer)
         hashMapVillageWords["drug store"] = Triple("narkotikų parduotuvė", R.drawable.drugstore1, R.raw.computer)

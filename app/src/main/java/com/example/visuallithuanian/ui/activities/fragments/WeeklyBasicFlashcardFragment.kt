@@ -18,6 +18,7 @@ import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.WeeklyBasicSingleton
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentWeeklyBasicFlashcardBinding
+import com.example.visuallithuanian.model.MediumProgressPreferencesHelper
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -29,13 +30,16 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class WeeklyBasicFlashcardFragment : Fragment() {
     lateinit var binding: FragmentWeeklyBasicFlashcardBinding
     lateinit var viewModel: BottomNavigationViewModel
+
     lateinit var bottomNavigationView: BottomNavigationView
     private val counterViewModel: ToLearnViewModel by viewModels()
+
     private var currentTripleIndex = 0
     private lateinit var currentTriple: Map.Entry<String, Triple<String, Int, Int>>
     var isFront = true
     private val totalTriples = 13 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
+    private lateinit var flashPreferencesHelper: MediumProgressPreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -49,10 +53,19 @@ class WeeklyBasicFlashcardFragment : Fragment() {
         binding = FragmentWeeklyBasicFlashcardBinding.inflate(inflater, container, false)
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
+
         bottomNavigationView.visibility = View.GONE
 
-        // Initialize PreferencesHelper
         preferencesHelper = PreferencesHelper(requireContext())
+        flashPreferencesHelper = MediumProgressPreferencesHelper(requireContext())
+
+        // Restore saved progress and counter
+        val savedCounter = preferencesHelper.getCounter()
+        val savedProgress = flashPreferencesHelper.getProgressWeeklyBasics()
+        counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
+
+        // Set initial progress based on savedProgress
+        currentTripleIndex = (savedProgress * totalTriples) / 100
 
         // setting up listener for back Icon
         binding.backIcon.setOnClickListener {
@@ -63,15 +76,21 @@ class WeeklyBasicFlashcardFragment : Fragment() {
             findNavController().navigate(R.id.action_weeklyBasicFlashcardFragment_to_sentenceFragment)
         }
 
-        //changing color of progress bar progress
+        // changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
-            ContextCompat.getColor(requireContext(), R.color.float1)
+            ContextCompat.getColor(
+                requireContext(), R.color.float1
+            )
         )
 
-        //changing color of background color of progress bar
+        // changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(
-            ContextCompat.getColor(requireContext(), R.color.silver)
-        )
+            ContextCompat.getColor(requireContext(),
+                R.color.silver
+            ))
+
+        // Restore progress bar progress
+        binding.progressHorizontal.progress = savedProgress
 
         // Initialize Media Player
         val mediaPlayer = MediaPlayer()
@@ -81,7 +100,11 @@ class WeeklyBasicFlashcardFragment : Fragment() {
             mediaPlayer.apply {
                 reset()
                 // Set the audio resource using the context and resource ID
-                setDataSource(requireContext(), Uri.parse("android.resource://${requireContext().packageName}/$audioResource"))
+                setDataSource(
+                    requireContext(),
+                    Uri.parse("android.resource://${requireContext().packageName}/$audioResource")
+                )
+
                 // Prepare the MediaPlayer asynchronously
                 prepareAsync()
             }
@@ -168,17 +191,8 @@ class WeeklyBasicFlashcardFragment : Fragment() {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-                if (isFront) {
-                    isFront = false
-                    textCardBack.visibility = View.VISIBLE
-                    textCardFront.visibility = View.VISIBLE
-                    imageFlashCard.visibility = View.VISIBLE
-                } else {
-                    currentTripleIndex = (currentTripleIndex + 1) % WeeklyBasicSingleton.hashMapWeeklyBasics.size
-                    textCardFront.visibility = View.VISIBLE
-                    textCardBack.visibility = View.VISIBLE
-                    imageFlashCard.visibility = View.VISIBLE
-                }
+                // Update currentTripleIndex first
+                currentTripleIndex = (currentTripleIndex + 1) % WeeklyBasicSingleton.hashMapWeeklyBasics.size
 
                 if (currentTripleIndex % 2 == 0) {
                     cardViewQuestions.setCardBackgroundColor(
@@ -199,6 +213,8 @@ class WeeklyBasicFlashcardFragment : Fragment() {
                 val progress = ((currentTripleIndex + 1) * 100) / totalTriples
                 binding.progressHorizontal.progress = progress
 
+                // Save the updated progress
+                flashPreferencesHelper.savedProgressWeeklyBasics(progress)
 
                 currentTriple = WeeklyBasicSingleton.hashMapWeeklyBasics.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
@@ -207,6 +223,8 @@ class WeeklyBasicFlashcardFragment : Fragment() {
                 binding.btnPlay.setImageResource(currentTriple.value.third)
             }
         }
+
+
 
         return binding.root
     }

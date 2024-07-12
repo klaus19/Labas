@@ -18,6 +18,7 @@ import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.TimeSingleton
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentTimeFlashcardBinding
+import com.example.visuallithuanian.model.MediumProgressPreferencesHelper
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -30,16 +31,19 @@ class TimeFlashcardFragment : Fragment() {
 
     lateinit var binding: FragmentTimeFlashcardBinding
     lateinit var viewModel: BottomNavigationViewModel
-    private val sharedPrefFile = "com.example.visuallithuanian.PREFERENCE_FILE_KEY"
+
     lateinit var bottomNavigationView: BottomNavigationView
     private val counterViewModel: ToLearnViewModel by viewModels()
 
     private var currentTripleIndex = 0
     private lateinit var currentTriple: Map.Entry<String, Triple<String, Int, Int>>
 
+    private lateinit var flashPreferencesHelper: MediumProgressPreferencesHelper
+
     var isFront = true
     private val totalTriples = 36 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
+
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -58,10 +62,15 @@ class TimeFlashcardFragment : Fragment() {
         bottomNavigationView.visibility = View.GONE
 
         preferencesHelper = PreferencesHelper(requireContext())
+        flashPreferencesHelper = MediumProgressPreferencesHelper(requireContext())
+
         // Restore saved progress and counter
         val savedCounter = preferencesHelper.getCounter()
-        val savedProgress = preferencesHelper.getProgress()
+        val savedProgress = flashPreferencesHelper.getProgressTime()
         counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
+
+        // Set initial progress based on savedProgress
+        currentTripleIndex = (savedProgress * totalTriples) / 100
 
         // setting up listener for back Icon
         binding.backIcon.setOnClickListener {
@@ -73,7 +82,9 @@ class TimeFlashcardFragment : Fragment() {
         }
         // changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
-            ContextCompat.getColor(requireContext(), R.color.float1)
+            ContextCompat.getColor(
+                requireContext(), R.color.float1
+            )
         )
 
         // changing color of background color of progress bar
@@ -89,7 +100,11 @@ class TimeFlashcardFragment : Fragment() {
             mediaPlayer.apply {
                 reset()
                 // Set the audio resource using the context and resource ID
-                setDataSource(requireContext(), Uri.parse("android.resource://${requireContext().packageName}/$audioResource"))
+                setDataSource(
+                    requireContext(),
+                    Uri.parse("android.resource://${requireContext().packageName}/$audioResource")
+                )
+
                 // Prepare the MediaPlayer asynchronously
                 prepareAsync()
             }
@@ -98,11 +113,9 @@ class TimeFlashcardFragment : Fragment() {
                 it.start()
             }
         }
-
         counterViewModel.counter.observe(requireActivity()) { count ->
             binding.textCardTolearn.text = count.toString()
         }
-
         currentTriple = TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
         binding.textCardFront.text = currentTriple.key
         binding.textCardBack.text = currentTriple.value.first
@@ -129,22 +142,23 @@ class TimeFlashcardFragment : Fragment() {
             val imageHelper = currentTriple.value.second
             val voiceClip = currentTriple.value.third
 
-            val triple = FlashcardPair(front, back, imageHelper, voiceClip)
-            cardViewModel.insertCards(triple)
-            Log.d("Main", "$triple")
-            currentTriple = TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
-        }
+            val Triple = FlashcardPair(front, back, imageHelper, voiceClip)
+            cardViewModel.insertCards(Triple)
+            //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
+            Log.d("Main","$Triple")
+            currentTriple =TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
 
+        }
         // On Event of clicking on the image to unsave the image
         binding.imageFlashCardSaveWhite.setOnClickListener {
             with(binding) {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-                if (currentTripleIndex >= 0 && currentTripleIndex < TimeSingleton.hashMapTime.size) {
+                if (currentTripleIndex >= 0 && currentTripleIndex <TimeSingleton.hashMapTime.size) {
                     // Remove the item at the current index from your data structure (e.g., HashMap)
-                    val removedTriple = TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
-                    TimeSingleton.hashMapTime.remove(removedTriple.key)
+                    val removedTriple =TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
+                   TimeSingleton.hashMapTime.remove(removedTriple.key)
 
                     // Decrease the counter
                     counterViewModel.decrementCounter()
@@ -153,10 +167,12 @@ class TimeFlashcardFragment : Fragment() {
                     val imageHelper = currentTriple.value.second
                     val voiceClip = currentTriple.value.third
 
-                    val triple = FlashcardPair(front, back, imageHelper, voiceClip)
-                    cardViewModel.deleteCards(triple)
-                    Log.d("Main", "$triple")
-                    currentTriple = TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
+                    val Triple = FlashcardPair(front, back, imageHelper,voiceClip)
+                    cardViewModel.deleteCards(Triple)
+                    //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
+                    Log.d("Main","$Triple")
+                    currentTriple =TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
+
                 }
             }
         }
@@ -172,17 +188,8 @@ class TimeFlashcardFragment : Fragment() {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-                if (isFront) {
-                    isFront = false
-                    textCardBack.visibility = View.VISIBLE
-                    textCardFront.visibility = View.VISIBLE
-                    imageFlashCard.visibility = View.VISIBLE
-                } else {
-                    currentTripleIndex = (currentTripleIndex + 1) % TimeSingleton.hashMapTime.size
-                    textCardFront.visibility = View.VISIBLE
-                    textCardBack.visibility = View.VISIBLE
-                    imageFlashCard.visibility = View.VISIBLE
-                }
+                // Update currentTripleIndex first
+                currentTripleIndex = (currentTripleIndex + 1) %TimeSingleton.hashMapTime.size
 
                 if (currentTripleIndex % 2 == 0) {
                     cardViewQuestions.setCardBackgroundColor(
@@ -203,14 +210,18 @@ class TimeFlashcardFragment : Fragment() {
                 val progress = ((currentTripleIndex + 1) * 100) / totalTriples
                 binding.progressHorizontal.progress = progress
 
+                // Save the updated progress
+                flashPreferencesHelper.savedProgressTime(progress)
 
-                currentTriple = TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
+                currentTriple =TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
                 binding.textCardBack.text = currentTriple.value.first
                 binding.imagecardsHelper.setImageResource(currentTriple.value.second)
                 binding.btnPlay.setImageResource(currentTriple.value.third)
             }
         }
+
+
 
         return binding.root
     }

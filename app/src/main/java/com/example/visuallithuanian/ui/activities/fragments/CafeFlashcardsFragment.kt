@@ -24,6 +24,7 @@ import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentAdjectivesFlashcardBinding
 import com.example.visuallithuanian.databinding.FragmentAnimalFlashcardBinding
 import com.example.visuallithuanian.databinding.FragmentCafeFlashcardsBinding
+import com.example.visuallithuanian.model.MediumProgressPreferencesHelper
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -46,6 +47,7 @@ class CafeFlashcardsFragment : Fragment() {
     var isFront = true
     private val totalTriples = 29 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
+    private lateinit var flashPreferencesHelper: MediumProgressPreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -64,10 +66,15 @@ class CafeFlashcardsFragment : Fragment() {
         bottomNavigationView.visibility = View.GONE
 
         preferencesHelper = PreferencesHelper(requireContext())
+        flashPreferencesHelper = MediumProgressPreferencesHelper(requireContext())
+
         // Restore saved progress and counter
         val savedCounter = preferencesHelper.getCounter()
-        val savedProgress = preferencesHelper.getProgress()
+        val savedProgress = flashPreferencesHelper.getProgressCafe()
         counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
+
+        // Set initial progress based on savedProgress
+        currentTripleIndex = (savedProgress * totalTriples) / 100
 
         // setting up listener for back Icon
         binding.backIcon?.setOnClickListener {
@@ -189,41 +196,31 @@ class CafeFlashcardsFragment : Fragment() {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-                val progress = ((currentTripleIndex + 1) * 100) / totalTriples
-                binding.progressHorizontal.progress = progress
-                // Save the updated progress
-                preferencesHelper.saveProgress(progress)
+                // Update currentTripleIndex first
+                currentTripleIndex = (currentTripleIndex + 1) % CafeSingleton.hashMapCafeWords.size
 
-                // initialize currentTripleIndex to 0 if it hasn't been initialized yet
-                if (currentTripleIndex < 0) {
-                    currentTripleIndex = 0
-                }
-                if (isFront) {
-                    isFront = false
-                    textCardBack.visibility = View.VISIBLE
-                    textCardFront.visibility = View.VISIBLE
-                    imageFlashCard.visibility = View.VISIBLE
-                    cardViewQuestions.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.new_design_text_color
-                        )
-                    )
-
-                } else {
-                    currentTripleIndex = (currentTripleIndex + 1) % CafeSingleton.hashMapCafeWords.size
-                    textCardFront.visibility = View.VISIBLE
-                    textCardBack.visibility = View.VISIBLE
-                    imageFlashCard.visibility = View.VISIBLE
+                if (currentTripleIndex % 2 == 0) {
                     cardViewQuestions.setCardBackgroundColor(
                         ContextCompat.getColor(
                             requireContext(),
                             R.color.orange1
                         )
                     )
-                    isFront = true
+                } else {
+                    cardViewQuestions.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.new_design_text_color
+                        )
+                    )
                 }
-                // retrieve the current Triple from the hashMap
+
+                val progress = ((currentTripleIndex + 1) * 100) / totalTriples
+                binding.progressHorizontal.progress = progress
+
+                // Save the updated progress
+                flashPreferencesHelper.savedProgressCafe(progress)
+
                 currentTriple = CafeSingleton.hashMapCafeWords.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
                 binding.textCardBack.text = currentTriple.value.first
@@ -231,6 +228,9 @@ class CafeFlashcardsFragment : Fragment() {
                 binding.btnPlay.setImageResource(currentTriple.value.third)
             }
         }
+
+
+
         return binding.root
     }
 }

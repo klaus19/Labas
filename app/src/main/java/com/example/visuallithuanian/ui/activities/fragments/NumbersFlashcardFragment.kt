@@ -13,11 +13,13 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentNumbersFlashcardBinding
+import com.example.visuallithuanian.model.MediumProgressPreferencesHelper
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -40,8 +42,9 @@ class NumbersFlashcardFragment : Fragment() {
     private lateinit var currentTriple: Map.Entry<String, Triple<String, Int, Int>>
 
     var isFront = true
-    private val totalTriples = 10 // change the value to the actual number of entries in your hashMap
+    private val totalTriples = 21 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
+    private lateinit var mediumProgressPreferencesHelper: MediumProgressPreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -60,9 +63,10 @@ class NumbersFlashcardFragment : Fragment() {
         bottomNavigationView.visibility = View.GONE
 
         preferencesHelper = PreferencesHelper(requireContext())
+        mediumProgressPreferencesHelper = MediumProgressPreferencesHelper(requireContext())
         // Restore saved progress and counter
         val savedCounter = preferencesHelper.getCounter()
-        val savedProgress = preferencesHelper.getProgress()
+        val savedProgress = mediumProgressPreferencesHelper.getProgressNumbers()
         counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
 
         // setting up listener for back Icon
@@ -78,7 +82,7 @@ class NumbersFlashcardFragment : Fragment() {
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(
                 requireContext(),
-                R.color.orange1
+                R.color.float1
             )
         )
 
@@ -90,26 +94,27 @@ class NumbersFlashcardFragment : Fragment() {
             ))
 
         // Hashmap of strings that will shown on cardview front and back side
+        hashMap["first aid"] = Triple("pirmosios pagalbos", R.drawable.firstaid, R.raw.sleep)
+        hashMap["zero"] = Triple("nulis", R.drawable.zero, R.raw.potato)
+        hashMap["one"] = Triple("vienas", R.drawable.one, R.raw.potato)
+        hashMap["two"] = Triple("du", R.drawable.two, R.raw.potato)
+        hashMap["three"] = Triple("trys", R.drawable.three, R.raw.potato)
+        hashMap["four"] = Triple("keturi", R.drawable.four, R.raw.potato)
+        hashMap["five"] = Triple("penki", R.drawable.five, R.raw.potato)
+        hashMap["six"] = Triple("šeši", R.drawable.six, R.raw.potato)
+        hashMap["seven"] = Triple("septyni", R.drawable.seven, R.raw.potato)
+        hashMap["eight"] = Triple("aštuoni", R.drawable.eight, R.raw.potato)
+        hashMap["nine"] = Triple("devyni", R.drawable.nine, R.raw.potato)
+        hashMap["ten"] = Triple("dešimt", R.drawable.ten, R.raw.potato)
         hashMap["a thousand"] = Triple("tūkstantis", R.drawable.thousand, R.raw.sleep)
         hashMap["ten"] = Triple("dešimt", R.drawable.ten, R.raw.sleep)
         hashMap["ten thousand"] = Triple("dešimt tukstancių", R.drawable.tenthousand, R.raw.sleep)
         hashMap["one hundred"] = Triple("šimtas", R.drawable.onehundred, R.raw.sleep)
-        hashMap["one hundred thousand"] = Triple("šimtas tūkstančių",
-            R.drawable.onehundredthousand,
-            R.raw.sleep
-        )
+        hashMap["one hundred thousand"] = Triple("šimtas tūkstančių", R.drawable.onehundredthousand, R.raw.sleep)
         hashMap["million"] = Triple("milijonas", R.drawable.million, R.raw.sleep)
-        hashMap["the first train"] = Triple("pirmasis traukinis",
-            R.drawable.firsttrain1,
-            R.raw.sleep
-        )
+        hashMap["the first train"] = Triple("pirmasis traukinis", R.drawable.firsttrain1, R.raw.sleep)
         hashMap["two tickets"] = Triple("du bilietai", R.drawable.twoticket, R.raw.sleep)
-        hashMap["the last train"] = Triple("paskutinis traukinis",
-            R.drawable.lasttrain,
-            R.raw.sleep
-        )
-        hashMap["first aid"] = Triple("pirmosios pagalbos", R.drawable.firstaid, R.raw.sleep)
-
+        hashMap["the last train"] = Triple("paskutinis traukinis",R.drawable.lasttrain,R.raw.sleep)
 
 
         // Initialize Media Player
@@ -235,7 +240,7 @@ class NumbersFlashcardFragment : Fragment() {
 
                 val progress = ((currentTripleIndex + 1) * 100) / totalTriples
                 binding.progressHorizontal.progress = progress
-                saveProgress(progress) // Save progress
+                mediumProgressPreferencesHelper.savedProgressNumbers(progress) // Save progress
 
                 currentTriple = hashMap.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
@@ -249,17 +254,5 @@ class NumbersFlashcardFragment : Fragment() {
         binding.progressHorizontal.progress = savedProgress
 
         return binding.root
-    }
-
-    private fun saveProgress(progress: Int) {
-        val sharedPreferences = requireActivity().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putInt("progress", progress)
-        editor.apply()
-    }
-
-    private fun getSavedProgress(): Int {
-        val sharedPreferences = requireActivity().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
-        return sharedPreferences.getInt("progress", 0)
     }
 }

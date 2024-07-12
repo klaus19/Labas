@@ -16,9 +16,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.ThingsSingleton
-import com.example.visuallithuanian.constants.TimeSingleton
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentThingsBinding
+import com.example.visuallithuanian.model.MediumProgressPreferencesHelper
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -42,6 +42,7 @@ class ThingsFragment : Fragment() {
     var isFront=true
     private val totalTriples = 31 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
+    private lateinit var flashPreferencesHelper: MediumProgressPreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -61,13 +62,18 @@ class ThingsFragment : Fragment() {
         bottomNavigationView.visibility = View.GONE
 
         preferencesHelper = PreferencesHelper(requireContext())
+        flashPreferencesHelper = MediumProgressPreferencesHelper(requireContext())
+
         // Restore saved progress and counter
         val savedCounter = preferencesHelper.getCounter()
-        val savedProgress = preferencesHelper.getProgress()
+        val savedProgress = flashPreferencesHelper.getProgressThings()
         counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
 
+        // Set initial progress based on savedProgress
+        currentTripleIndex = (savedProgress * totalTriples) / 100
+
         // setting up listener for back Icon
-        binding.backIcon?.setOnClickListener {
+        binding.backIcon.setOnClickListener {
             activity?.onBackPressed()
         }
 
@@ -84,11 +90,9 @@ class ThingsFragment : Fragment() {
 
         // changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(
-            ContextCompat.getColor(
-                requireContext(),
+            ContextCompat.getColor(requireContext(),
                 R.color.silver
-            )
-        )
+            ))
 
         // Restore progress bar progress
         binding.progressHorizontal.progress = savedProgress
@@ -171,7 +175,7 @@ class ThingsFragment : Fragment() {
                     val triple = FlashcardPair(front, back, imageHelper, voiceClip)
                     cardViewModel.deleteCards(triple)
                     Log.d("Main", "$triple")
-                    currentTriple =TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
+                    currentTriple =ThingsSingleton.hashMapThingsWords.entries.elementAt(currentTripleIndex)
                 }
             }
         }
@@ -187,17 +191,8 @@ class ThingsFragment : Fragment() {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-                if (isFront) {
-                    isFront = false
-                    textCardBack.visibility = View.VISIBLE
-                    textCardFront.visibility = View.VISIBLE
-                    imageFlashCard.visibility = View.VISIBLE
-                } else {
-                    currentTripleIndex = (currentTripleIndex + 1) % TimeSingleton.hashMapTime.size
-                    textCardFront.visibility = View.VISIBLE
-                    textCardBack.visibility = View.VISIBLE
-                    imageFlashCard.visibility = View.VISIBLE
-                }
+                // Update currentTripleIndex first
+                currentTripleIndex = (currentTripleIndex + 1) % ThingsSingleton.hashMapThingsWords.size
 
                 if (currentTripleIndex % 2 == 0) {
                     cardViewQuestions.setCardBackgroundColor(
@@ -218,14 +213,18 @@ class ThingsFragment : Fragment() {
                 val progress = ((currentTripleIndex + 1) * 100) / totalTriples
                 binding.progressHorizontal.progress = progress
 
+                // Save the updated progress
+                flashPreferencesHelper.savedProgressThings(progress)
 
-                currentTriple = TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
+                currentTriple = ThingsSingleton.hashMapThingsWords.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
                 binding.textCardBack.text = currentTriple.value.first
                 binding.imagecardsHelper.setImageResource(currentTriple.value.second)
                 binding.btnPlay.setImageResource(currentTriple.value.third)
             }
         }
+
+
 
         return binding.root
     }

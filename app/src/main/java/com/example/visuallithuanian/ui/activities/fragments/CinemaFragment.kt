@@ -10,16 +10,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.CinemaSingleton
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentCinemaBinding
+import com.example.visuallithuanian.model.MediumProgressPreferencesHelper
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -32,16 +31,16 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class CinemaFragment : Fragment() {
     lateinit var binding: FragmentCinemaBinding
     lateinit var viewModel: BottomNavigationViewModel
-    private val sharedPrefFile = "com.example.visuallithuanian.PREFERENCE_FILE_KEY"
+
     lateinit var bottomNavigationView: BottomNavigationView
     private val counterViewModel: ToLearnViewModel by viewModels()
 
     private var currentTripleIndex = 0
     private lateinit var currentTriple: Map.Entry<String, Triple<String, Int, Int>>
-
-    var isFront = true
-    private val totalTriples = 47 // change the value to the actual number of entries in your hashMap
+    private var isFront = true
+    private val totalTriples = 43 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
+    private lateinit var flashPreferencesHelper: MediumProgressPreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -61,13 +60,18 @@ class CinemaFragment : Fragment() {
         bottomNavigationView.visibility = View.GONE
 
         preferencesHelper = PreferencesHelper(requireContext())
+        flashPreferencesHelper = MediumProgressPreferencesHelper(requireContext())
+
         // Restore saved progress and counter
         val savedCounter = preferencesHelper.getCounter()
-        val savedProgress = preferencesHelper.getProgress()
+        val savedProgress = flashPreferencesHelper.getProgressCinema()
         counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
 
+        // Set initial progress based on savedProgress
+        currentTripleIndex = (savedProgress * totalTriples) / 100
+
         // setting up listener for back Icon
-        binding.backIcon?.setOnClickListener {
+        binding.backIcon.setOnClickListener {
             activity?.onBackPressed()
         }
 
@@ -84,11 +88,9 @@ class CinemaFragment : Fragment() {
 
         // changing color of background color of progress bar
         binding.progressHorizontal.progressBackgroundTintList = ColorStateList.valueOf(
-            ContextCompat.getColor(
-                requireContext(),
+            ContextCompat.getColor(requireContext(),
                 R.color.silver
-            )
-        )
+            ))
 
         // Restore progress bar progress
         binding.progressHorizontal.progress = savedProgress
@@ -117,6 +119,7 @@ class CinemaFragment : Fragment() {
         counterViewModel.counter.observe(requireActivity()) { count ->
             binding.textCardTolearn.text = count.toString()
         }
+
         currentTriple = CinemaSingleton.hashMapCinemawords.entries.elementAt(currentTripleIndex)
         binding.textCardFront.text = currentTriple.key
         binding.textCardBack.text = currentTriple.value.first
@@ -145,11 +148,12 @@ class CinemaFragment : Fragment() {
 
             val Triple = FlashcardPair(front, back, imageHelper, voiceClip)
             cardViewModel.insertCards(Triple)
-            // Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
-            Log.d("Main", "$Triple")
+            //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
+            Log.d("Main","$Triple")
             currentTriple = CinemaSingleton.hashMapCinemawords.entries.elementAt(currentTripleIndex)
 
         }
+
         // On Event of clicking on the image to unsave the image
         binding.imageFlashCardSaveWhite.setOnClickListener {
             with(binding) {
@@ -161,23 +165,22 @@ class CinemaFragment : Fragment() {
                     val removedTriple = CinemaSingleton.hashMapCinemawords.entries.elementAt(currentTripleIndex)
                     CinemaSingleton.hashMapCinemawords.remove(removedTriple.key)
 
+                    // Decrease the counter
                     counterViewModel.decrementCounter()
                     val front = binding.textCardFront.text.toString()
                     val back = binding.textCardBack.text.toString()
                     val imageHelper = currentTriple.value.second
                     val voiceClip = currentTriple.value.third
 
-                    val Triple = FlashcardPair(front, back, imageHelper,voiceClip)
-                    cardViewModel.deleteCards(Triple)
-                    //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
-                    Log.d("Main","$Triple")
+                    val triple = FlashcardPair(front, back, imageHelper, voiceClip)
+                    cardViewModel.deleteCards(triple)
+                    Log.d("Main", "$triple")
                     currentTriple = CinemaSingleton.hashMapCinemawords.entries.elementAt(currentTripleIndex)
-
                 }
             }
         }
 
-        //Navigating from one fragment to another
+        // Navigating from one fragment to another
         binding.cardLearning.setOnClickListener {
             findNavController().navigate(R.id.action_cinemaFragment_to_toLearnFlashCards)
         }
@@ -188,17 +191,8 @@ class CinemaFragment : Fragment() {
                 imageFlashCardSaveWhite.visibility = View.GONE
                 imageFlashCard.visibility = View.VISIBLE
 
-                if (isFront) {
-                    isFront = false
-                    textCardBack.visibility = View.VISIBLE
-                    textCardFront.visibility = View.VISIBLE
-                    imageFlashCard.visibility = View.VISIBLE
-                } else {
-                    currentTripleIndex = (currentTripleIndex + 1) % CinemaSingleton.hashMapCinemawords.size
-                    textCardFront.visibility = View.VISIBLE
-                    textCardBack.visibility = View.VISIBLE
-                    imageFlashCard.visibility = View.VISIBLE
-                }
+                // Update currentTripleIndex first
+                currentTripleIndex = (currentTripleIndex + 1) % CinemaSingleton.hashMapCinemawords.size
 
                 if (currentTripleIndex % 2 == 0) {
                     cardViewQuestions.setCardBackgroundColor(
@@ -219,6 +213,8 @@ class CinemaFragment : Fragment() {
                 val progress = ((currentTripleIndex + 1) * 100) / totalTriples
                 binding.progressHorizontal.progress = progress
 
+                // Save the updated progress
+                flashPreferencesHelper.savedProgressCinema(progress)
 
                 currentTriple = CinemaSingleton.hashMapCinemawords.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
