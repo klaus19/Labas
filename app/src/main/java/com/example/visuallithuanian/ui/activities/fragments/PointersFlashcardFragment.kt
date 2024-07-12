@@ -18,6 +18,7 @@ import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.PointersSingleton
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentPointersFlashcardBinding
+import com.example.visuallithuanian.model.EasyPreferencesHelper
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.model.MediumProgressPreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
@@ -41,7 +42,7 @@ class PointersFlashcardFragment : Fragment() {
     var isFront = true
     private val totalTriples = 34 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
-    private lateinit var flashPreferencesHelper: MediumProgressPreferencesHelper
+    private lateinit var flashPreferencesHelper: EasyPreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -56,14 +57,12 @@ class PointersFlashcardFragment : Fragment() {
     ): View? {
         binding = FragmentPointersFlashcardBinding.inflate(inflater, container, false)
         preferencesHelper = PreferencesHelper(requireContext())
+        flashPreferencesHelper = EasyPreferencesHelper(requireContext())
 
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
 
         bottomNavigationView.visibility = View.GONE
-
-        preferencesHelper = PreferencesHelper(requireContext())
-        flashPreferencesHelper = MediumProgressPreferencesHelper(requireContext())
 
         // Restore saved progress and counter
         val savedCounter = preferencesHelper.getCounter()

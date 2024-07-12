@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -18,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentFamilyFlashcardsBinding
+import com.example.visuallithuanian.model.EasyPreferencesHelper
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -32,7 +32,6 @@ class FamilyFlashcards : Fragment() {
     lateinit var binding:FragmentFamilyFlashcardsBinding
     lateinit var viewModel: BottomNavigationViewModel
 
-    private val sharedPrefFile = "com.example.visuallithuanian.PREFERENCE_FILE_KEY"
     lateinit var bottomNavigationView: BottomNavigationView
     private val counterViewModel: ToLearnViewModel by viewModels()
     private val hashMap = HashMap<String, Triple<String, Int, Int>>()
@@ -43,6 +42,7 @@ class FamilyFlashcards : Fragment() {
     var isFront=true
     private val totalTriples = 37 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
+    private lateinit var easyPreferencesHelper: EasyPreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -62,9 +62,10 @@ class FamilyFlashcards : Fragment() {
         bottomNavigationView.visibility = View.GONE
 
         preferencesHelper = PreferencesHelper(requireContext())
+        easyPreferencesHelper = EasyPreferencesHelper(requireContext())
         // Restore saved progress and counter
         val savedCounter = preferencesHelper.getCounter()
-        val savedProgress = preferencesHelper.getProgress()
+        val savedProgress = easyPreferencesHelper.getProgressFamily()
         counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
 
         // setting up listener for back Icon
@@ -80,7 +81,7 @@ class FamilyFlashcards : Fragment() {
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(
                 requireContext(),
-                R.color.orange1
+                R.color.float1
             )
         )
 
@@ -277,7 +278,7 @@ class FamilyFlashcards : Fragment() {
 
                 val progress = ((currentTripleIndex + 1) * 100) / totalTriples
                 binding.progressHorizontal.progress = progress
-                saveProgress(progress) // Save progress
+               easyPreferencesHelper.saveProgressFamily(progress)// Save progress
 
                 currentTriple = hashMap.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
@@ -291,17 +292,5 @@ class FamilyFlashcards : Fragment() {
         binding.progressHorizontal.progress = savedProgress
 
         return binding.root
-    }
-
-    private fun saveProgress(progress: Int) {
-        val sharedPreferences = requireActivity().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putInt("progress", progress)
-        editor.apply()
-    }
-
-    private fun getSavedProgress(): Int {
-        val sharedPreferences = requireActivity().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
-        return sharedPreferences.getInt("progress", 0)
     }
 }

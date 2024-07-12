@@ -18,6 +18,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentDaysMonthsFlashcardsBinding
+import com.example.visuallithuanian.model.EasyPreferencesHelper
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -32,7 +33,6 @@ class DaysMonthsFlashcards : Fragment() {
     lateinit var binding: FragmentDaysMonthsFlashcardsBinding
     lateinit var viewModel: BottomNavigationViewModel
 
-    private val sharedPrefFile = "com.example.visuallithuanian.PREFERENCE_FILE_KEY"
     lateinit var bottomNavigationView: BottomNavigationView
     private val counterViewModel: ToLearnViewModel by viewModels()
     private val hashMap = HashMap<String, Triple<String, Int, Int>>()
@@ -41,8 +41,9 @@ class DaysMonthsFlashcards : Fragment() {
     private lateinit var currentTriple: Map.Entry<String, Triple<String, Int, Int>>
 
     var isFront=true
-    private val totalTriples = 37 // change the value to the actual number of entries in your hashMap
+    private val totalTriples = 45 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
+    private lateinit var easyPreferencesHelper: EasyPreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -61,9 +62,10 @@ class DaysMonthsFlashcards : Fragment() {
         bottomNavigationView.visibility = View.GONE
 
         preferencesHelper = PreferencesHelper(requireContext())
+        easyPreferencesHelper = EasyPreferencesHelper(requireContext())
         // Restore saved progress and counter
         val savedCounter = preferencesHelper.getCounter()
-        val savedProgress = preferencesHelper.getProgress()
+        val savedProgress = easyPreferencesHelper.getProgressDaysMonths()
         counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
 
         // setting up listener for back Icon
@@ -79,7 +81,7 @@ class DaysMonthsFlashcards : Fragment() {
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(
                 requireContext(),
-                R.color.orange1
+                R.color.float1
             )
         )
 
@@ -101,7 +103,6 @@ class DaysMonthsFlashcards : Fragment() {
         hashMap["January"] = Triple("Sausis", R.drawable.january, R.raw.january)
         hashMap["February"] = Triple("Vasaris", R.drawable.february, R.raw.february)
         hashMap["March"] = Triple("Kovas", R.drawable.march, R.raw.march)
-
         hashMap["April"] = Triple("Balandis", R.drawable.april, R.raw.april)
         hashMap["May"] = Triple("Gegužė", R.drawable.may, R.raw.may)
         hashMap["June"] = Triple("Birželis", R.drawable.june, R.raw.june)
@@ -112,7 +113,6 @@ class DaysMonthsFlashcards : Fragment() {
         hashMap["November"] = Triple("lapkritis", R.drawable.november, R.raw.november)
         hashMap["December"] = Triple("Gruodis", R.drawable.december, R.raw.december)
         hashMap["Spring"] = Triple("pavasaris", R.drawable.sleep, R.raw.spring)
-
         hashMap["Summer"] = Triple("vasara", R.drawable.summer, R.raw.vasara)
         hashMap["autumn"] = Triple("ruduo", R.drawable.autumn, R.raw.ruduo)
         hashMap["winter"] = Triple("žiema", R.drawable.winter, R.raw.ziema)
@@ -123,7 +123,6 @@ class DaysMonthsFlashcards : Fragment() {
         hashMap["decade"] = Triple("dešimtmetį", R.drawable.decade, R.raw.desimtmeti)
         hashMap["Midnight"] = Triple("vidurnaktis", R.drawable.midnight, R.raw.vidurnaktis)
         hashMap["half a day"] = Triple("pusę dienos", R.drawable.halfaday, R.raw.pusedienos)
-
         hashMap["before sleep"] = Triple("prieš miegą", R.drawable.beforesleep, R.raw.priesmiega)
         hashMap["evening"] = Triple("vakaras", R.drawable.evening, R.raw.vakaras)
         hashMap["Morning"] = Triple("rytas", R.drawable.morning, R.raw.rytas)
@@ -134,7 +133,6 @@ class DaysMonthsFlashcards : Fragment() {
         hashMap["Today"] = Triple("šiandien", R.drawable.today, R.raw.siandien)
         hashMap["tomorrow"] = Triple("rytoj", R.drawable.tomorrow, R.raw.rytoj)
         hashMap["week"] = Triple("savaitė", R.drawable.week, R.raw.savaite)
-
         hashMap["once"] = Triple("vieną kartą", R.drawable.once, R.raw.vienakarta)
         hashMap["twice"] = Triple("du kartus", R.drawable.twice, R.raw.dukartus)
         hashMap["weekend"] = Triple("savaitgalis", R.drawable.weekend, R.raw.savaitgalis)
@@ -263,7 +261,7 @@ class DaysMonthsFlashcards : Fragment() {
 
                 val progress = ((currentTripleIndex + 1) * 100) / totalTriples
                 binding.progressHorizontal.progress = progress
-                saveProgress(progress) // Save progress
+               easyPreferencesHelper.saveProgressDaysMonths(progress)// Save progress
 
                 currentTriple = hashMap.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
@@ -277,17 +275,5 @@ class DaysMonthsFlashcards : Fragment() {
         binding.progressHorizontal.progress = savedProgress
 
         return binding.root
-    }
-
-    private fun saveProgress(progress: Int) {
-        val sharedPreferences = requireActivity().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putInt("progress", progress)
-        editor.apply()
-    }
-
-    private fun getSavedProgress(): Int {
-        val sharedPreferences = requireActivity().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
-        return sharedPreferences.getInt("progress", 0)
     }
 }

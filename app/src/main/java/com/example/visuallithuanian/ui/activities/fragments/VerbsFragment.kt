@@ -18,6 +18,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentVerbsBinding
+import com.example.visuallithuanian.model.EasyPreferencesHelper
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -32,18 +33,17 @@ class VerbsFragment : Fragment() {
     lateinit var binding: FragmentVerbsBinding
     lateinit var viewModel: BottomNavigationViewModel
 
-    private val sharedPrefFile = "com.example.visuallithuanian.PREFERENCE_FILE_KEY"
     lateinit var bottomNavigationView: BottomNavigationView
     private val counterViewModel: ToLearnViewModel by viewModels()
-
-    private val hashMap = HashMap<String,Triple<String,Int,Int>>()
+    private val hashMap = HashMap<String, Triple<String, Int, Int>>()
 
     private var currentTripleIndex =0
     private lateinit var currentTriple:Map.Entry<String,Triple<String,Int,Int>>
 
     var isFront=true
-    private val totalTriples = 37 // change the value to the actual number of entries in your hashMap
+    private val totalTriples = 68 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
+    private lateinit var easyPreferencesHelper: EasyPreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -63,9 +63,10 @@ class VerbsFragment : Fragment() {
         bottomNavigationView.visibility = View.GONE
 
         preferencesHelper = PreferencesHelper(requireContext())
+        easyPreferencesHelper = EasyPreferencesHelper(requireContext())
         // Restore saved progress and counter
         val savedCounter = preferencesHelper.getCounter()
-        val savedProgress = preferencesHelper.getProgress()
+        val savedProgress = easyPreferencesHelper.getProgressVerbs()
         counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
 
         // setting up listener for back Icon
@@ -81,7 +82,7 @@ class VerbsFragment : Fragment() {
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(
                 requireContext(),
-                R.color.orange1
+                R.color.float1
             )
         )
 
@@ -103,7 +104,6 @@ class VerbsFragment : Fragment() {
         hashMap["to drink"] = Triple("gerti", R.drawable.drink, R.raw.whatkas)
         hashMap["to draw"] = Triple("piešti", R.drawable.draw1, R.raw.whatkas)
         hashMap["to start"] = Triple("pradėti", R.drawable.start1, R.raw.whatkas)
-
         hashMap["training"] = Triple("mokymo", R.drawable.training1, R.raw.whatkas)
         hashMap["to speak"] = Triple("kalbėti", R.drawable.speak11, R.raw.whatkas)
         hashMap["to learn"] = Triple("mokytis", R.drawable.tolearn, R.raw.whatkas)
@@ -114,7 +114,6 @@ class VerbsFragment : Fragment() {
         hashMap["to find"] = Triple("rasti", R.drawable.tofind, R.raw.whatkas)
         hashMap["to continue"] = Triple("tęsti", R.drawable.continue1, R.raw.whatkas)
         hashMap["to say"] = Triple("pasakyti", R.drawable.tosay, R.raw.whatkas)
-
         hashMap["to clean"] = Triple("valyti", R.drawable.toclean, R.raw.whatkas)
         hashMap["smoking"] = Triple("rūkyti", R.drawable.smoking, R.raw.whatkas)
         hashMap["to wait"] = Triple("palaukti", R.drawable.towait1, R.raw.whatkas)
@@ -125,7 +124,6 @@ class VerbsFragment : Fragment() {
         hashMap["take it"] = Triple("imk", R.drawable.take, R.raw.whatkas)
         hashMap["to fly"] = Triple("skristi", R.drawable.fly, R.raw.whatkas)
         hashMap["Close"] = Triple("Uždaryti", R.drawable.close, R.raw.whatkas)
-
         hashMap["to live"] = Triple("gyventi", R.drawable.tolive, R.raw.whatkas)
         hashMap["say"] = Triple("sakyk", R.drawable.tosay, R.raw.whatkas)
         hashMap["to stay"] = Triple("pasilikti", R.drawable.tostay, R.raw.whatkas)
@@ -136,7 +134,6 @@ class VerbsFragment : Fragment() {
         hashMap["to do"] = Triple("padaryti", R.drawable.todo, R.raw.whatkas)
         hashMap["boiled"] = Triple("virti", R.drawable.boiled, R.raw.whatkas)
         hashMap["to create"] = Triple("sukurti", R.drawable.tocreate, R.raw.whatkas)
-
         hashMap["to invite"] = Triple("pakviesti", R.drawable.toinvite, R.raw.whatkas)
         hashMap["to hear"] = Triple("girdėti", R.drawable.tohear, R.raw.whatkas)
         hashMap["see"] = Triple("matyti", R.drawable.tosee, R.raw.whatkas)
@@ -147,7 +144,6 @@ class VerbsFragment : Fragment() {
         hashMap["to lose"] = Triple("prarasti", R.drawable.tolose1, R.raw.whatkas)
         hashMap["to educate"] = Triple("šviesti", R.drawable.toeducate1, R.raw.whatkas)
         hashMap["to sit"] = Triple("sėdėti", R.drawable.tosit, R.raw.whatkas)
-
         hashMap["to sing"] = Triple("dainuoti", R.drawable.tosing, R.raw.whatkas)
         hashMap["to dance"] = Triple("šokti", R.drawable.todance1, R.raw.whatkas)
         hashMap["to paint"] = Triple("tapyti", R.drawable.topaint, R.raw.whatkas)
@@ -158,7 +154,6 @@ class VerbsFragment : Fragment() {
         hashMap["to earn"] = Triple("uždirbti", R.drawable.toearn1, R.raw.whatkas)
         hashMap["wasted"] = Triple("švaistyti", R.drawable.wasted, R.raw.whatkas)
         hashMap["to sell"] = Triple("parduoti", R.drawable.tosell, R.raw.whatkas)
-
         hashMap["kick"] = Triple("spardyti", R.drawable.kick, R.raw.whatkas)
         hashMap["hug"] = Triple("apkabinti", R.drawable.hug, R.raw.whatkas)
         hashMap["to sink"] = Triple("skęsti", R.drawable.tosink1, R.raw.whatkas)
@@ -293,7 +288,7 @@ class VerbsFragment : Fragment() {
 
                 val progress = ((currentTripleIndex + 1) * 100) / totalTriples
                 binding.progressHorizontal.progress = progress
-                saveProgress(progress) // Save progress
+               easyPreferencesHelper.saveProgressVerbs(progress)// Save progress
 
                 currentTriple = hashMap.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
@@ -307,17 +302,5 @@ class VerbsFragment : Fragment() {
         binding.progressHorizontal.progress = savedProgress
 
         return binding.root
-    }
-
-    private fun saveProgress(progress: Int) {
-        val sharedPreferences = requireActivity().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putInt("progress", progress)
-        editor.apply()
-    }
-
-    private fun getSavedProgress(): Int {
-        val sharedPreferences = requireActivity().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
-        return sharedPreferences.getInt("progress", 0)
     }
 }

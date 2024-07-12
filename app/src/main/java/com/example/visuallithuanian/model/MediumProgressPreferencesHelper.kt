@@ -12,9 +12,9 @@ class MediumProgressPreferencesHelper(context: Context) {
         private const val BEST_100_FLASH = "100_best_words"
         private const val FOOD = "food_ingredients"
         private const val VEGAN = "vegan_foods"
-        private const val POINTERS = "pointers"
     }
 
+    // Animals Flashcard
     fun saveProgressAnimalsFlash(progress:Int){
         with(sharedPreferences.edit()){
             putInt(ANIMALS_FLASHCARD,progress)
@@ -26,6 +26,7 @@ class MediumProgressPreferencesHelper(context: Context) {
         return sharedPreferences.getInt(ANIMALS_FLASHCARD,0)
     }
 
+    //Best 100 words flashcard
     fun saveProgress100BestWords(progress: Int){
         with(sharedPreferences.edit()){
             putInt(BEST_100_FLASH,progress)
@@ -37,6 +38,7 @@ class MediumProgressPreferencesHelper(context: Context) {
     }
 
 
+     // Food and Ingredients
     fun saveProgressFood(progress: Int){
         with(sharedPreferences.edit()){
             putInt(FOOD,progress)
@@ -48,7 +50,6 @@ class MediumProgressPreferencesHelper(context: Context) {
     }
 
     // Vegan Flash card
-
     fun savedProgressVegan(progress: Int){
         with(sharedPreferences.edit()){
             putInt(VEGAN,progress)
@@ -59,21 +60,6 @@ class MediumProgressPreferencesHelper(context: Context) {
     fun getProgressvegan():Int{
         return sharedPreferences.getInt(VEGAN,0)
     }
-
-    // Pointers Flashcard
-
-    fun saveProgressPointers(progress: Int){
-        with(sharedPreferences.edit()){
-            putInt(POINTERS,progress)
-            apply()
-        }
-    }
-
-    fun getProgressPointer():Int{
-        return sharedPreferences.getInt(POINTERS,0)
-    }
-
-
 
 
 

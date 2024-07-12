@@ -18,6 +18,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentNatureBinding
+import com.example.visuallithuanian.model.EasyPreferencesHelper
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -32,7 +33,6 @@ class NatureFragment : Fragment() {
     lateinit var binding: FragmentNatureBinding
     lateinit var viewModel: BottomNavigationViewModel
 
-    private val sharedPrefFile = "com.example.visuallithuanian.PREFERENCE_FILE_KEY"
     lateinit var bottomNavigationView: BottomNavigationView
     private val counterViewModel: ToLearnViewModel by viewModels()
     private val hashMap = HashMap<String, Triple<String, Int, Int>>()
@@ -43,6 +43,7 @@ class NatureFragment : Fragment() {
     var isFront=true
     private val totalTriples = 25 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
+    private lateinit var easyPreferencesHelper: EasyPreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -61,9 +62,10 @@ class NatureFragment : Fragment() {
         bottomNavigationView.visibility = View.GONE
 
         preferencesHelper = PreferencesHelper(requireContext())
+        easyPreferencesHelper = EasyPreferencesHelper(requireContext())
         // Restore saved progress and counter
         val savedCounter = preferencesHelper.getCounter()
-        val savedProgress = preferencesHelper.getProgress()
+        val savedProgress = easyPreferencesHelper.getProgressNature()
         counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
 
         // setting up listener for back Icon
@@ -79,7 +81,7 @@ class NatureFragment : Fragment() {
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(
                 requireContext(),
-                R.color.orange1
+                R.color.float1
             )
         )
 
@@ -101,7 +103,6 @@ class NatureFragment : Fragment() {
         hashMap["star"] = Triple("žvaigždė", R.drawable.star, R.raw.sleep)
         hashMap["river"] = Triple("upė", R.drawable.river, R.raw.sleep)
         hashMap["sea"] = Triple("jūra", R.drawable.seach, R.raw.sleep)
-
         hashMap["ground"] = Triple("žemės", R.drawable.ground, R.raw.sleep)
         hashMap["field"] = Triple("srityje", R.drawable.fields, R.raw.sleep)
         hashMap["bird"] = Triple("paukštis", R.drawable.birds, R.raw.sleep)
@@ -112,7 +113,6 @@ class NatureFragment : Fragment() {
         hashMap["camp"] = Triple("stovykla", R.drawable.camp, R.raw.sleep)
         hashMap["light and darkness"] = Triple("šviesa ir tamsa", R.drawable.halfaday, R.raw.sleep)
         hashMap["clean water"] = Triple("švarus vanduo", R.drawable.cleanwater, R.raw.sleep)
-
         hashMap["It rains"] = Triple("Lyja lietus", R.drawable.itrains, R.raw.sleep)
         hashMap["the snow"] = Triple("sniegas", R.drawable.snow, R.raw.sleep)
         hashMap["a storm"] = Triple("audra", R.drawable.storm, R.raw.sleep)
@@ -247,7 +247,7 @@ class NatureFragment : Fragment() {
 
                 val progress = ((currentTripleIndex + 1) * 100) / totalTriples
                 binding.progressHorizontal.progress = progress
-                saveProgress(progress) // Save progress
+               easyPreferencesHelper.saveProgressNature(progress)// Save progress
 
                 currentTriple = hashMap.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
@@ -261,17 +261,5 @@ class NatureFragment : Fragment() {
         binding.progressHorizontal.progress = savedProgress
 
         return binding.root
-    }
-
-    private fun saveProgress(progress: Int) {
-        val sharedPreferences = requireActivity().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putInt("progress", progress)
-        editor.apply()
-    }
-
-    private fun getSavedProgress(): Int {
-        val sharedPreferences = requireActivity().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
-        return sharedPreferences.getInt("progress", 0)
     }
 }

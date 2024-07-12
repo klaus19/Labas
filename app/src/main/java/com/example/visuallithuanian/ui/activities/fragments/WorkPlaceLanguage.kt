@@ -18,6 +18,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentWorkPlaceLanguageBinding
+import com.example.visuallithuanian.model.EasyPreferencesHelper
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -33,7 +34,6 @@ class WorkPlaceLanguage : Fragment() {
     lateinit var binding: FragmentWorkPlaceLanguageBinding
     lateinit var viewModel: BottomNavigationViewModel
 
-    private val sharedPrefFile = "com.example.visuallithuanian.PREFERENCE_FILE_KEY"
     lateinit var bottomNavigationView: BottomNavigationView
     private val counterViewModel: ToLearnViewModel by viewModels()
     private val hashMap = HashMap<String, Triple<String, Int, Int>>()
@@ -42,8 +42,9 @@ class WorkPlaceLanguage : Fragment() {
     private lateinit var currentTriple: Map.Entry<String, Triple<String, Int, Int>>
 
     var isFront=true
-    private val totalTriples = 42 // change the value to the actual number of entries in your hashMap
+    private val totalTriples = 36 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
+    private lateinit var easyPreferencesHelper: EasyPreferencesHelper
     // declaring viewmodel
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -63,9 +64,10 @@ class WorkPlaceLanguage : Fragment() {
         bottomNavigationView.visibility = View.GONE
 
         preferencesHelper = PreferencesHelper(requireContext())
+        easyPreferencesHelper = EasyPreferencesHelper(requireContext())
         // Restore saved progress and counter
         val savedCounter = preferencesHelper.getCounter()
-        val savedProgress = preferencesHelper.getProgress()
+        val savedProgress = easyPreferencesHelper.getProgressWorkplacelanaguage()
         counterViewModel.setCounter(savedCounter) // Assuming ToLearnViewModel has a method to set counter
 
         // setting up listener for back Icon
@@ -81,7 +83,7 @@ class WorkPlaceLanguage : Fragment() {
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(
                 requireContext(),
-                R.color.orange1
+                R.color.float1
             )
         )
 
@@ -97,94 +99,37 @@ class WorkPlaceLanguage : Fragment() {
         hashMap["client"] = Triple("klientas / klientė", R.drawable.client, R.raw.sleep)
         hashMap["busy"] = Triple("užsiemęs (m) / užsiemusi (f)", R.drawable.busy1, R.raw.sleep)
         hashMap["business trip"] = Triple("komandiruotė", R.drawable.businesstrip, R.raw.sleep)
-
         hashMap["meeting"] = Triple("susirinkimas/susitinkimas", R.drawable.meeting1, R.raw.sleep)
         hashMap["cabinet"] = Triple("kabinetas", R.drawable.cabinet, R.raw.sleep)
-        hashMap["to begin"] = Triple("prasidėti",
-            R.drawable.begin,
-            R.raw.sleep
-        )
-        hashMap["to finish"] = Triple("pasibaigti",
-            R.drawable.end,
-            R.raw.sleep
-        )
-        hashMap["to start"] = Triple("pradėti",
-            R.drawable.start1,
-            R.raw.sleep
-        )
-        hashMap["to finish"] = Triple("baigti",
-            R.drawable.finish1,
-            R.raw.sleep
-        )
+        hashMap["to begin"] = Triple("prasidėti", R.drawable.begin,R.raw.sleep)
+        hashMap["to finish"] = Triple("pasibaigti",R.drawable.end,R.raw.sleep)
+        hashMap["to start"] = Triple("pradėti",R.drawable.start1, R.raw.sleep)
+        hashMap["to finish"] = Triple("baigti",R.drawable.finish1,R.raw.sleep)
         hashMap["to finish work"] = Triple("baigti darbą", R.drawable.finishwork, R.raw.sleep)
         hashMap["lunch break"] = Triple("pietų pertrauka", R.drawable.lunchbreak, R.raw.sleep)
-        hashMap["to have vacation"] = Triple("atostogauti",
-            R.drawable.vacation1,
-            R.raw.sleep
-        )
-
+        hashMap["to have vacation"] = Triple("atostogauti", R.drawable.vacation1,R.raw.sleep)
         hashMap["holidays"] = Triple("atostogos", R.drawable.vacation1, R.raw.sleep)
-        hashMap["to print"] = Triple("išspausdinti",
-            R.drawable.print,
-            R.raw.sleep
-        )
+        hashMap["to print"] = Triple("išspausdinti",R.drawable.print,R.raw.sleep)
         hashMap["Document"] = Triple("dokumentas", R.drawable.document, R.raw.sleep)
         hashMap["copy"] = Triple("kopija", R.drawable.copy, R.raw.sleep)
-        hashMap["to inform"] = Triple("perduoti",
-            R.drawable.inform,
-            R.raw.sleep
-        )
-        hashMap["to give"] = Triple("paduoti",
-            R.drawable.togive,
-            R.raw.sleep
-        )
-        hashMap["to say"] = Triple("pasakyti",
-            R.drawable.say1,
-            R.raw.sleep
-        )
-        hashMap["to take"] = Triple("nunešti",
-            R.drawable.take,
-            R.raw.sleep
-        )
-        hashMap["to write"] = Triple("rašyti",
-            R.drawable.write2,
-            R.raw.sleep
-        )
-        hashMap["to send"] = Triple("išsiųsti",
-            R.drawable.send1,
-            R.raw.sleep
-        )
-
-        hashMap["to get/receive"] = Triple("gauti",
-            R.drawable.toreceive,
-            R.raw.sleep
-        )
+        hashMap["to inform"] = Triple("perduoti", R.drawable.inform, R.raw.sleep)
+        hashMap["to give"] = Triple("paduoti",R.drawable.togive,R.raw.sleep)
+        hashMap["to say"] = Triple("pasakyti",R.drawable.say1,R.raw.sleep)
+        hashMap["to take"] = Triple("nunešti",R.drawable.take,R.raw.sleep)
+        hashMap["to write"] = Triple("rašyti",R.drawable.write2,R.raw.sleep)
+        hashMap["to send"] = Triple("išsiųsti",R.drawable.send1,R.raw.sleep)
+        hashMap["to get/receive"] = Triple("gauti",R.drawable.toreceive,R.raw.sleep)
         hashMap["email"] = Triple("elektroninis laiškas", R.drawable.email, R.raw.sleep)
-        hashMap["sign"] = Triple("pasirašyti",
-            R.drawable.signed,
-            R.raw.sleep
-        )
+        hashMap["sign"] = Triple("pasirašyti",R.drawable.signed,R.raw.sleep)
         hashMap["Signature"] = Triple("parašas", R.drawable.signature, R.raw.sleep)
         hashMap["Contract"] = Triple("sutartis", R.drawable.contract, R.raw.sleep)
-        hashMap["to wait"] = Triple("palaukti",
-            R.drawable.wait1,
-            R.raw.sleep
-        )
-        hashMap["to ask, asks, asked"] = Triple("paklausti",
-            R.drawable.toask1,
-            R.raw.sleep
-        )
-        hashMap["to call"] = Triple("paskambinti",
-            R.drawable.tocall,
-            R.raw.sleep
-        )
+        hashMap["to wait"] = Triple("palaukti", R.drawable.wait1, R.raw.sleep)
+        hashMap["to ask, asks, asked"] = Triple("paklausti",R.drawable.toask1, R.raw.sleep)
+        hashMap["to call"] = Triple("paskambinti", R.drawable.tocall,R.raw.sleep)
         hashMap["paper"] = Triple("popierius", R.drawable.paper, R.raw.sleep)
         hashMap["sheet of paper"] = Triple("popieriaus lapas", R.drawable.sheetofpaper, R.raw.sleep)
-
         hashMap["computer"] = Triple("kompiuteris", R.drawable.computer1, R.raw.sleep)
         hashMap["printer"] = Triple("spausdintuvas", R.drawable.printer, R.raw.sleep)
-
-
 
 
         // Initialize Media Player
@@ -310,7 +255,7 @@ class WorkPlaceLanguage : Fragment() {
 
                 val progress = ((currentTripleIndex + 1) * 100) / totalTriples
                 binding.progressHorizontal.progress = progress
-                saveProgress(progress) // Save progress
+               easyPreferencesHelper.saveProgressWorkplacelanguage(progress)// Save progress
 
                 currentTriple = hashMap.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
@@ -324,17 +269,5 @@ class WorkPlaceLanguage : Fragment() {
         binding.progressHorizontal.progress = savedProgress
 
         return binding.root
-    }
-
-    private fun saveProgress(progress: Int) {
-        val sharedPreferences = requireActivity().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putInt("progress", progress)
-        editor.apply()
-    }
-
-    private fun getSavedProgress(): Int {
-        val sharedPreferences = requireActivity().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
-        return sharedPreferences.getInt("progress", 0)
     }
 }

@@ -489,7 +489,7 @@ package com.example.visuallithuanian
 //"emotional" = "emocinis"
 //"lazy" = "tinginys"
 //"dishonest" = "nesąžiningas"
-//"domineering" = "valdingas"
+//"domineering" = "valdingas"  // given to record
 //
 //"generous" = "dosnus"
 //"patient" = "pacientas"
