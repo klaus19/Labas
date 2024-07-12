@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -19,7 +18,6 @@ import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentDailyBasicBinding
 import com.example.visuallithuanian.model.EasyPreferencesHelper
-import com.example.visuallithuanian.model.MediumProgressPreferencesHelper
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -143,7 +141,7 @@ class DailyBasic : Fragment() {
         hashMap["classmate"] = Triple("klasiokas", R.drawable.classmate, R.raw.classmate)
         hashMap["my friends"] = Triple("Mano draugai", R.drawable.friends1, R.raw.myfriends)
         hashMap["a little"] = Triple("šiek tiek", R.drawable.little, R.raw.little)
-        hashMap["Let's go"] = Triple("eikime!", R.drawable.letsgo, R.raw.letsgo)
+        hashMap["Let's go"] = Triple("eikime!", R.drawable.letsgo1, R.raw.letsgo)
         hashMap["more"] = Triple("daugiau", R.drawable.more, R.raw.more)
         hashMap["key"] = Triple("raktas", R.drawable.key, R.raw.key11)
         hashMap["what are you doing?"] = Triple("ką darote?",

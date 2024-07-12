@@ -10,16 +10,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.ActionsSingleton
 import com.example.visuallithuanian.database.FlashcardPair
-import com.example.visuallithuanian.databinding.FragmentAnimalFlashcardBinding
+import com.example.visuallithuanian.databinding.FragmentActionsFlashcardBinding
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.BottomNavigationViewModel
@@ -30,7 +29,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ActionsFlashcardFragment : Fragment() {
 
-    lateinit var binding: FragmentAnimalFlashcardBinding
+    lateinit var binding: FragmentActionsFlashcardBinding
     lateinit var viewModel: BottomNavigationViewModel
 
     lateinit var bottomNavigationView: BottomNavigationView
@@ -52,7 +51,7 @@ class ActionsFlashcardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAnimalFlashcardBinding.inflate(inflater, container, false)
+        binding = FragmentActionsFlashcardBinding.inflate(inflater, container, false)
 
         bottomNavigationView = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         viewModel = ViewModelProvider(requireActivity())[BottomNavigationViewModel::class.java]
@@ -113,9 +112,7 @@ class ActionsFlashcardFragment : Fragment() {
                 it.start()
             }
         }
-        counterViewModel.counter.observe(requireActivity()) { count ->
-            binding.textToLearn.text = count.toString()
-        }
+
         currentTriple = ActionsSingleton.hashMapActions.entries.elementAt(currentTripleIndex)
         binding.textCardFront.text = currentTriple.key
         binding.textCardBack.text = currentTriple.value.first
@@ -174,8 +171,10 @@ class ActionsFlashcardFragment : Fragment() {
             }
         }
 
+        Glide.with(this).asGif().load(R.drawable.finger1).into(binding.gifImageView)
+
         // Navigating from one fragment to another
-        binding.cardLearning.setOnClickListener {
+        binding.gifImageView.setOnClickListener {
             findNavController().navigate(R.id.action_actionsFlashcardFragment_to_toLearnFlashCards)
         }
 

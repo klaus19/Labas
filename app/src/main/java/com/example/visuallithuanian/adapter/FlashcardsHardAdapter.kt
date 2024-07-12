@@ -15,7 +15,7 @@ import com.example.visuallithuanian.data.FlashCardInfo
 class FlashcardsHardAdapter(
     private val imageList: List<FlashCardInfo>,
     private val navController: NavController,
-    private val unlockedItem: String = "Questions and Pronouns"
+    private val unlockedItem: String = "Actions"
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
