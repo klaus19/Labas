@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.BestWords100Singleton
 import com.example.visuallithuanian.database.FlashcardPair
@@ -115,9 +116,7 @@ class BestWords100Fragment: Fragment() {
                 it.start()
             }
         }
-        counterViewModel.counter.observe(requireActivity()) { count ->
-            binding.textCardTolearn.text = count.toString()
-        }
+
         currentTriple = BestWords100Singleton.hashMapbestwords.entries.elementAt(currentTripleIndex)
         binding.textCardFront.text = currentTriple.key
         binding.textCardBack.text = currentTriple.value.first
@@ -179,10 +178,14 @@ class BestWords100Fragment: Fragment() {
             }
         }
 
-        //Navigating from one fragment to another
-        binding.cardLearning.setOnClickListener {
+        //Displaying GIF image on the screen
+        Glide.with(this).asGif().load(R.drawable.finger1).into(binding.gifImageView)
+
+        // Action that happens when clicked on the Gif
+        binding.gifImageView.setOnClickListener {
             findNavController().navigate(R.id.action_bestWords100Fragment_to_toLearnFlashCards)
         }
+
 
         // onclick listener for the Flip button
         with(binding) {

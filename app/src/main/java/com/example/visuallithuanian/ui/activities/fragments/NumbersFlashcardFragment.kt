@@ -16,6 +16,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentNumbersFlashcardBinding
@@ -168,9 +169,6 @@ class NumbersFlashcardFragment : Fragment() {
             } else {
                 Log.d("Main", "Item already saved: $tripleIdentifier")
             }
-
-            counterViewModel.incrementCounter()
-            binding.textCardTolearn.text = counterViewModel.counter.value.toString()
             currentTriple = hashMap.entries.elementAt(currentTripleIndex)
         }
 
@@ -196,9 +194,11 @@ class NumbersFlashcardFragment : Fragment() {
                 }
             }
         }
+        //Displaying GIF image on the screen
+        Glide.with(this).asGif().load(R.drawable.finger1).into(binding.gifImageView)
 
         //Navigating from one fragment to another
-        binding.cardLearning.setOnClickListener {
+        binding.gifImageView.setOnClickListener {
             findNavController().navigate(R.id.action_numbersFlashcardFragment_to_toLearnFlashCards)
         }
 

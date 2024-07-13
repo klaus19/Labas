@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.InterfaceSingleton
 import com.example.visuallithuanian.database.FlashcardPair
@@ -112,9 +113,6 @@ class InterfaceFragment : Fragment() {
                 it.start()
             }
         }
-        counterViewModel.counter.observe(requireActivity()) { count ->
-            binding.textCardTolearn.text = count.toString()
-        }
         currentTriple = InterfaceSingleton.hashMapInterface.entries.elementAt(currentTripleIndex)
         binding.textCardFront.text = currentTriple.key
         binding.textCardBack.text = currentTriple.value.first
@@ -175,9 +173,11 @@ class InterfaceFragment : Fragment() {
                 }
             }
         }
+        //Displaying GIF image on the screen
+        Glide.with(this).asGif().load(R.drawable.finger1).into(binding.gifImageView)
 
         //Navigating from one fragment to another
-        binding.cardLearning.setOnClickListener {
+        binding.gifImageView.setOnClickListener {
             findNavController().navigate(R.id.action_interfaceFragment_to_toLearnFlashCards)
         }
 

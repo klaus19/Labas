@@ -39,47 +39,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:layout_margin="20dp"
+        android:layout_marginTop="40dp"
         android:orientation="horizontal"
         android:id="@+id/linearGo">
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_learning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp">
-
-            <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="70dp"
-                android:orientation="vertical"
-                android:gravity="center">
-                <TextView
-                    android:id="@+id/text_card_tolearn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/zero"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_color"
-                    android:gravity="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-
-                <TextView
-                    android:id="@+id/text_to_learn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/to_learn"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_color"
-                    android:gravity="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-
-
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
+        <ImageView
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/gifImageView"
+            android:layout_width="96dp"
+            android:layout_height="96dp" />
     </LinearLayout>
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view_questions"

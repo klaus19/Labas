@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.ToLearnAdapter
 import com.example.visuallithuanian.constants.ImageStore
@@ -63,6 +64,8 @@ class ToLearnFlashCards : Fragment() {
         val adapter = ToLearnAdapter { cardPair ->
             cardViewmodel.deleteCards(cardPair)
         }
+
+        Glide.with(this).asGif().load(R.drawable.happyface).into(binding.gifImageView)
         binding.recyclerview.adapter = adapter
         binding.recyclerview.itemAnimator = null
 

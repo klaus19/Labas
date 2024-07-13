@@ -16,6 +16,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.AnimalWordsSingleton
 import com.example.visuallithuanian.database.FlashcardPair
@@ -113,9 +114,6 @@ class AnimalWordsFragment : Fragment() {
                 it.start()
             }
         }
-        counterViewModel.counter.observe(requireActivity()) { count ->
-            binding.textCardTolearn.text = count.toString()
-        }
         currentTriple = AnimalWordsSingleton.hashMapAnimalWords.entries.elementAt(currentTripleIndex)
 
         binding.textCardFront.text = currentTriple.key
@@ -178,8 +176,11 @@ class AnimalWordsFragment : Fragment() {
             }
         }
 
+        //Displaying GIF image on the screen
+        Glide.with(this).asGif().load(R.drawable.finger1).into(binding.gifImageView)
+
         //Navigating from one fragment to another
-        binding.cardLearning.setOnClickListener {
+        binding.gifImageView.setOnClickListener {
             findNavController().navigate(R.id.action_animalWordsFragment_to_toLearnFlashCards)
         }
 
