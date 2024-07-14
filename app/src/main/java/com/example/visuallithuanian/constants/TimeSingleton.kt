@@ -31,8 +31,8 @@ object TimeSingleton {
 
         hashMapTime["a quarter past 9."] = Triple("penkiolika po 9.", R.drawable.past9, R.raw.computer)
         hashMapTime["Half"] = Triple("pusė", R.drawable.half, R.raw.computer)
-        hashMapTime["before 8 a.m."] = Triple("prieš 8 (aštuntą) val.", R.drawable.ic_launcher_background, R.raw.computer)
-        hashMapTime["after 5 mins"] = Triple("po 5 min", R.drawable.ic_launcher_background, R.raw.computer)
+        hashMapTime["before 8 a.m."] = Triple("prieš 8 (aštuntą) val.", R.drawable.emptyimage, R.raw.computer)
+        hashMapTime["after 5 mins"] = Triple("po 5 min", R.drawable.emptyimage, R.raw.computer)
         hashMapTime["to start"] = Triple("pradėti", R.drawable.start1, R.raw.computer)
         hashMapTime["to finish"] = Triple("pabaigti", R.drawable.finish1, R.raw.computer)
         hashMapTime["a break"] = Triple("poilsis", R.drawable.abreak1, R.raw.computer)
