@@ -41,4 +41,9 @@
     <string name="learned">Learned</string>
     <string name="go">GO!</string>
     <string name="tap_on_cards">Tap on Cards</string>
+    <string name="progress_track">Progress Track</string>
+    <string name="notifications">Notifications</string>
+    <string name="select_your_avatar">SELECT YOUR AVATAR</string>
+    <string name="feature_request">Feature Request</string>
+    <string name="image_flag">Image flag</string>
 </resources>
