@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+    <resources>
     <string name="app_name">VisualLithuanian</string>
     <string name="english" translatable="false">English</string>
     <string name="lithuanian" translatable="false">Lithuanian</string>
@@ -42,12 +42,12 @@
     <string name="learned" translatable="false">Learned</string>
     <string name="go" translatable="false">GO!</string>
     <string name="tap_on_cards" translatable="false">Tap on Cards</string>
-    <string name="select_your_avatar">SELECT YOUR AVATAR</string>
-    <string name="notifications">Notifications</string>
-    <string name="progress_track">Progress Track</string>
-    <string name="feature_request">Feature Request</string>
+        <string name="select_your_avatar">Pasirinkite Savo Avatarą</string>
+        <string name="notifications">Pranešimai</string>
+        <string name="progress_track">Progreso Stebėjimas</string>
+        <string name="feature_request">Funkcijų Užklausa</string>
     <string name="image_flag" translatable="false">Image flag</string>
-    <string name="delete_data">Delete Data</string>
-    <string name="about">About</string>
-    <string name="help_desk">Help Desk</string>
-</resources>
+        <string name="delete_data">Ištrinti Duomenis</string>
+        <string name="about">Apie</string>
+        <string name="help_desk">Pagalbos Stalas</string>
+    </resources>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textAvatarSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Avatars"
+        android:textSize="18sp"
+        android:textColor="@color/blue_card"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="16dp" />
+
+    <GridLayout
+        android:layout_below="@id/textAvatarSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:columnCount="2"
+        android:rowCount="2"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/avatar1"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/fox1"
+            android:layout_margin="8dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <ImageView
+            android:id="@+id/avatar2"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/unicorn1"
+            android:layout_margin="8dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <ImageView
+            android:id="@+id/avatar3"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/girl1"
+            android:layout_margin="8dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <ImageView
+            android:id="@+id/avatar4"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/boy1"
+            android:layout_margin="8dp"
+            android:clickable="true"
+            android:focusable="true" />
+    </GridLayout>
+</RelativeLayout>
