@@ -489,7 +489,7 @@ package com.example.visuallithuanian
 //"emotional" = "emocinis"
 //"lazy" = "tinginys"
 //"dishonest" = "nesąžiningas"
-//"domineering" = "valdingas"  // given to record
+//"domineering" = "valdingas"  // completed
 //
 //"generous" = "dosnus"
 //"patient" = "pacientas"
@@ -511,7 +511,7 @@ package com.example.visuallithuanian
 //"irresponsible" = "neatsakinga"
 //"competitive" = "konkurencinga"
 //"insensitive" = "nejautrus"
-//"extrovert" = "ekstravertas"
+//"extrovert" = "ekstravertas"  //give to record
 //
 //"ambitious" = "ambicingas"
 //"rebellious" = "maištingas"
@@ -896,3 +896,4 @@ package com.example.visuallithuanian
 //"homework" = "namų darbas"
 //"a progress" = "pažanga"
 //"more than that ..." = "daugiau negu, kad ..."
+

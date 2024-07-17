@@ -266,7 +266,11 @@
         android:id="@+id/settingsFragment"
         android:name="com.example.visuallithuanian.ui.activities.fragments.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_notificationsFragment"
+            app:destination="@id/notificationsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/sportsFragment"
         android:name="com.example.visuallithuanian.ui.activities.fragments.SportsFragment"
@@ -877,5 +881,10 @@
         android:name="com.example.visuallithuanian.ui.activities.fragments.SentenceFragment"
         android:label="fragment_sentence"
         tools:layout="@layout/fragment_sentence" />
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.example.visuallithuanian.NotificationsFragment"
+        android:label="fragment_notifications"
+        tools:layout="@layout/fragment_notifications" />
 
 </navigation>

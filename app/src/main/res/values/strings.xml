@@ -50,4 +50,11 @@
     <string name="delete_data">Delete Data</string>
     <string name="about">About</string>
     <string name="help_desk">Help Desk</string>
+    <string name="daily_streak_notification" translatable="false">Daily Streak Notification</string>
+    <string name="select_time" translatable="false">Select time</string>
+    <string-array name="time_options">
+        <item>12:00</item>
+        <item>14:00</item>
+        <item>16:00</item>
+    </string-array>
 </resources>

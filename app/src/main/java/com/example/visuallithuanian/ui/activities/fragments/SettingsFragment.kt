@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.annotation.RequiresApi
+import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.SpinnerAdapter
 import com.example.visuallithuanian.custom.AvatarDialogFragment
@@ -46,6 +47,11 @@ class SettingsFragment : Fragment(),AvatarDialogFragment.AvatarSelectionListener
         val sharedPreferences = requireActivity().getSharedPreferences("settings_prefs", Context.MODE_PRIVATE)
         val avatarResId = sharedPreferences.getInt("selected_avatar", R.drawable.avatar) // default avatar if none is selected
         binding.imageAvatar.setImageResource(avatarResId)
+
+
+        binding.cardviewNotify.setOnClickListener {
+            findNavController().navigate(R.id.action_settingsFragment_to_notificationsFragment)
+        }
 
 
         return binding.root
