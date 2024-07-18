@@ -511,7 +511,7 @@ package com.example.visuallithuanian
 //"irresponsible" = "neatsakinga"
 //"competitive" = "konkurencinga"
 //"insensitive" = "nejautrus"
-//"extrovert" = "ekstravertas"  //give to record
+//"extrovert" = "ekstravertas"  //given to record
 //
 //"ambitious" = "ambicingas"
 //"rebellious" = "maištingas"
