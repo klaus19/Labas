@@ -1,15 +1,13 @@
 package com.example.visuallithuanian.ui.activities.fragments
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Canvas
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -29,26 +27,34 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class ToLearnFlashCards : Fragment() {
 
     private lateinit var binding: FragmentToLearnFlashCardsBinding
+    private lateinit var preferencesHelper: PreferencesHelper
+    private lateinit var sharedPreferences: SharedPreferences
     private var learnedCounter = 0
     private var toLearnCounter = 0
 
-    private lateinit var preferencesHelper:PreferencesHelper
-
-    lateinit var bottomNav: BottomNavigationView
-    val cardViewmodel: FlashCardViewmodel by viewModels {
+    private lateinit var bottomNav: BottomNavigationView
+    private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentToLearnFlashCardsBinding.inflate(inflater, container, false)
+        initView()
+        setupRecyclerView()
+        observeViewModel()
+        return binding.root
+    }
 
+    private fun initView() {
         preferencesHelper = PreferencesHelper(requireContext())
+        sharedPreferences = requireActivity().getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
 
-        // Step1
-        val sharedPreferences = requireActivity().getSharedPreferences("my_prefs",Context.MODE_PRIVATE)
+        // Load counters from SharedPreferences
+        learnedCounter = sharedPreferences.getInt("counterLearned", 0)
+        toLearnCounter = sharedPreferences.getInt("counterToLearn", 0)
 
         bottomNav = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         bottomNav.visibility = View.VISIBLE
@@ -57,20 +63,33 @@ class ToLearnFlashCards : Fragment() {
             findNavController().navigate(R.id.action_toLearnFlashCards_to_flashCards)
         }
 
+        Glide.with(this).asGif().load(R.drawable.happyface).into(binding.gifImageView)
+    }
+
+    private fun setupRecyclerView() {
         val layoutManager = OverlappingLayoutManager(requireContext())
         binding.recyclerview.layoutManager = layoutManager
 
         val adapter = ToLearnAdapter { cardPair ->
-            cardViewmodel.deleteCards(cardPair)
+            cardViewModel.deleteCards(cardPair)
         }
 
-        Glide.with(this).asGif().load(R.drawable.happyface).into(binding.gifImageView)
         binding.recyclerview.adapter = adapter
         binding.recyclerview.itemAnimator = null
 
         val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
             0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
         ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean = false
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                handleSwipe(viewHolder.adapterPosition, direction, adapter)
+            }
+
             override fun onChildDraw(
                 c: Canvas,
                 recyclerView: RecyclerView,
@@ -87,60 +106,44 @@ class ToLearnFlashCards : Fragment() {
                 }
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
             }
-
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                return false
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-                val cardPair = adapter.currentList[position]
-
-                when (direction) {
-                    ItemTouchHelper.RIGHT -> {
-                        cardViewmodel.deleteCards(cardPair)
-                        preferencesHelper.addSavedItem(position.toString())
-                        learnedCounter++
-                        with(sharedPreferences.edit()){
-                            putInt("counterLearned",learnedCounter)
-                            apply()
-                        }
-
-                    }
-                    ItemTouchHelper.LEFT -> {
-                        ImageStore.addImageResource(cardPair.imageSrc, cardPair.front, cardPair.back, cardPair.voiceclip)
-                        ImageStore.saveToPreferences(requireContext())
-                        adapter.moveItemToEnd(position)
-                        cardViewmodel.deleteCards(cardPair)
-                        preferencesHelper.addSavedItem(position.toString())
-                        toLearnCounter++
-                        with(sharedPreferences.edit()){
-                            putInt("counterToLearn",toLearnCounter)
-                            apply()
-                        }
-                    }
-                }
-            }
         })
         itemTouchHelper.attachToRecyclerView(binding.recyclerview)
-
-        cardViewmodel.allWords.observe(viewLifecycleOwner) { cardPairs ->
-            adapter.submitList(cardPairs)
-            if (cardPairs.isEmpty()) {
-                binding.emptyImage.visibility = View.VISIBLE
-                binding.emptyCardText.visibility = View.VISIBLE
-            } else {
-                binding.emptyImage.visibility = View.GONE
-                binding.emptyCardText.visibility = View.GONE
-            }
-        }
-
-        return binding.root
     }
 
+    private fun handleSwipe(position: Int, direction: Int, adapter: ToLearnAdapter) {
+        val cardPair = adapter.currentList[position]
 
+        when (direction) {
+            ItemTouchHelper.RIGHT -> {
+                cardViewModel.deleteCards(cardPair)
+                preferencesHelper.addSavedItem(position.toString())
+                learnedCounter++
+                saveCounter("counterLearned", learnedCounter)
+            }
+            ItemTouchHelper.LEFT -> {
+                ImageStore.addImageResource(cardPair.imageSrc, cardPair.front, cardPair.back, cardPair.voiceclip)
+                ImageStore.saveToPreferences(requireContext())
+                adapter.moveItemToEnd(position)
+                cardViewModel.deleteCards(cardPair)
+                preferencesHelper.addSavedItem(position.toString())
+                toLearnCounter++
+                saveCounter("counterToLearn", toLearnCounter)
+            }
+        }
+    }
+
+    private fun saveCounter(key: String, value: Int) {
+        sharedPreferences.edit().apply {
+            putInt(key, value)
+            apply()
+        }
+    }
+
+    private fun observeViewModel() {
+        cardViewModel.allWords.observe(viewLifecycleOwner) { cardPairs ->
+            (binding.recyclerview.adapter as? ToLearnAdapter)?.submitList(cardPairs)
+            binding.emptyImage.visibility = if (cardPairs.isEmpty()) View.VISIBLE else View.GONE
+            binding.emptyCardText.visibility = if (cardPairs.isEmpty()) View.VISIBLE else View.GONE
+        }
+    }
 }

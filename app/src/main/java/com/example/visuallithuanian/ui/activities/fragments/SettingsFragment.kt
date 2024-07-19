@@ -72,9 +72,9 @@ class SettingsFragment : Fragment(),AvatarDialogFragment.AvatarSelectionListener
             val counterLearned = sharedPreferences1.getInt("counterLearned", 0)
 
             // create a dialog
-           val dialog = ProgressDialog.newInstance(counterToLearn,counterLearned)
+            val dialog = ProgressDialog.newInstance(counterToLearn,counterLearned)
 
-          dialog.show(childFragmentManager, "ProgressDialog")
+            dialog.show(childFragmentManager, "ProgressDialog")
         }
 
 
