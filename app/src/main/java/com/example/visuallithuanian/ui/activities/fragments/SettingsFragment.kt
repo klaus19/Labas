@@ -2,6 +2,7 @@ package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
@@ -17,10 +18,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.SpinnerAdapter
 import com.example.visuallithuanian.custom.AvatarDialogFragment
+import com.example.visuallithuanian.custom.ProgressDialog
 import com.example.visuallithuanian.databinding.FragmentSettingsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -31,6 +34,8 @@ class SettingsFragment : Fragment(),AvatarDialogFragment.AvatarSelectionListener
 
     private lateinit var binding:FragmentSettingsBinding
     lateinit var bottomNav: BottomNavigationView
+
+   private lateinit var sharedPreferences1: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,43 +64,23 @@ class SettingsFragment : Fragment(),AvatarDialogFragment.AvatarSelectionListener
             findNavController().navigate(R.id.action_settingsFragment_to_notificationsFragment)
         }
 
+        sharedPreferences1 = requireActivity().getSharedPreferences("my_prefs",Context.MODE_PRIVATE)
+
         binding.cardviewProgress.setOnClickListener {
-            showProgressDialog()
+            // Retrieve counters from SharedPreferences
+            val counterToLearn = sharedPreferences1.getInt("counterToLearn", 0)
+            val counterLearned = sharedPreferences1.getInt("counterLearned", 0)
+
+            // create a dialog
+           val dialog = ProgressDialog.newInstance(counterToLearn,counterLearned)
+
+          dialog.show(childFragmentManager, "ProgressDialog")
         }
 
 
         return binding.root
     }
 
-    @SuppressLint("SetTextI18n")
-    private fun showProgressDialog() {
-        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_custom_buttons, null)
-
-        val builder = AlertDialog.Builder(requireContext())
-            .setView(dialogView)
-            .create()
-
-        val buttonToLearn = dialogView.findViewById<LinearLayout>(R.id.buttonToLearn)
-        val buttonLearnt = dialogView.findViewById<LinearLayout>(R.id.buttonLearnt)
-        val textToLearnCount = dialogView.findViewById<TextView>(R.id.textToLearnCount)
-        val textLearntCount = dialogView.findViewById<TextView>(R.id.textLearntCount)
-
-        // Set your actual counts here
-        textToLearnCount.text = "0" // Replace with actual count
-        textLearntCount.text = "0" // Replace with actual count
-
-        buttonToLearn.setOnClickListener {
-            Toast.makeText(requireContext(), "ToLearn clicked", Toast.LENGTH_SHORT).show()
-            builder.dismiss()
-        }
-
-        buttonLearnt.setOnClickListener {
-            Toast.makeText(requireContext(), "Learnt clicked", Toast.LENGTH_SHORT).show()
-            builder.dismiss()
-        }
-
-        builder.show()
-    }
 
     override fun onAvatarSelected(avatarResId: Int) {
                binding.imageAvatar.setImageResource(avatarResId)

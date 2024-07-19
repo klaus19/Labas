@@ -2,78 +2,90 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:background="@color/lime_green"
     android:padding="16dp">
 
-    <LinearLayout
-        android:layout_margin="10dp"
-        android:id="@+id/buttonToLearn"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/textWords"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:background="@color/orange1"
-        android:clickable="true"
-        android:focusable="true"
-        android:padding="16dp">
-
-        <TextView
-            android:id="@+id/textToLearn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="To Learn"
-            android:textSize="16sp"
-            android:textColor="@color/green1"
-            android:textStyle="bold"
-            android:gravity="center"/>
-
-        <TextView
-            android:id="@+id/textToLearnCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/green1"
-            android:layout_marginTop="5dp"
-            android:text="0"
-            android:textSize="14sp"
-            android:gravity="center"/>
-    </LinearLayout>
-
-    <View
-        android:layout_width="16dp"
-        android:layout_height="match_parent" />
+        android:textColor="@color/blue_card"
+        android:layout_gravity="center_horizontal"
+        android:text="Words" />
 
     <LinearLayout
-        android:id="@+id/buttonLearnt"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:background="?attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true"
-        android:padding="16dp">
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
 
-        <TextView
-            android:id="@+id/textLearnt"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:id="@+id/buttonToLearn"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Learnt"
-            android:textColor="@color/orange1"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@color/orange1"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="16dp">
 
-        <TextView
-            android:layout_marginTop="5dp"
-            android:id="@+id/textLearntCount"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textToLearn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To Learn"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/textToLearnCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginTop="5dp"
+                android:text="0"
+                android:textSize="14sp"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:id="@+id/buttonLearnt"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/orange1"
-            android:text="0"
-            android:textSize="14sp"
-            android:gravity="center"/>
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@color/green1"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textLearnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Learnt"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/textLearntCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="0"
+                android:textSize="14sp"
+                android:gravity="center"/>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

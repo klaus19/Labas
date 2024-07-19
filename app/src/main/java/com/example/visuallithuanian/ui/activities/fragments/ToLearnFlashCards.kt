@@ -1,5 +1,8 @@
 package com.example.visuallithuanian.ui.activities.fragments
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.graphics.Canvas
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -20,19 +23,16 @@ import com.example.visuallithuanian.databinding.FragmentToLearnFlashCardsBinding
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.example.visuallithuanian.viewModel.FlashCardViewmodel
-import com.example.visuallithuanian.viewModel.ToLearnViewModel
 import com.example.visuallithuanian.viewModel.WordViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ToLearnFlashCards : Fragment() {
 
     private lateinit var binding: FragmentToLearnFlashCardsBinding
-    private lateinit var preferencesHelper: PreferencesHelper
-    private val counterViewModel: ToLearnViewModel by viewModels()
+    private var learnedCounter = 0
+    private var toLearnCounter = 0
 
-    private val sharedPrefFile = "com.example.visuallithuanian.PREFERENCE_FILE_KEY"
-    private val counterKey = "counter"
-    private val learnedCounterKey = "learned_counter"
+    private lateinit var preferencesHelper:PreferencesHelper
 
     lateinit var bottomNav: BottomNavigationView
     val cardViewmodel: FlashCardViewmodel by viewModels {
@@ -43,14 +43,13 @@ class ToLearnFlashCards : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentToLearnFlashCardsBinding.inflate(layoutInflater, container, false)
+        binding = FragmentToLearnFlashCardsBinding.inflate(inflater, container, false)
 
         preferencesHelper = PreferencesHelper(requireContext())
 
+        // Step1
+        val sharedPreferences = requireActivity().getSharedPreferences("my_prefs",Context.MODE_PRIVATE)
 
-
-        // Taking the BottomNavigationView instance from Activity into Fragment
         bottomNav = (activity as? FirstScreen)?.findViewById(R.id.bottomNavigationView)!!
         bottomNav.visibility = View.VISIBLE
 
@@ -69,8 +68,6 @@ class ToLearnFlashCards : Fragment() {
         binding.recyclerview.adapter = adapter
         binding.recyclerview.itemAnimator = null
 
-
-        // Swipe Gesture
         val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
             0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
         ) {
@@ -107,7 +104,12 @@ class ToLearnFlashCards : Fragment() {
                     ItemTouchHelper.RIGHT -> {
                         cardViewmodel.deleteCards(cardPair)
                         preferencesHelper.addSavedItem(position.toString())
-                        incrementCounterLearned()
+                        learnedCounter++
+                        with(sharedPreferences.edit()){
+                            putInt("counterLearned",learnedCounter)
+                            apply()
+                        }
+
                     }
                     ItemTouchHelper.LEFT -> {
                         ImageStore.addImageResource(cardPair.imageSrc, cardPair.front, cardPair.back, cardPair.voiceclip)
@@ -115,16 +117,17 @@ class ToLearnFlashCards : Fragment() {
                         adapter.moveItemToEnd(position)
                         cardViewmodel.deleteCards(cardPair)
                         preferencesHelper.addSavedItem(position.toString())
-                        counterViewModel.incrementCounter()
-                        incrementCounter()
+                        toLearnCounter++
+                        with(sharedPreferences.edit()){
+                            putInt("counterToLearn",toLearnCounter)
+                            apply()
+                        }
                     }
                 }
             }
         })
         itemTouchHelper.attachToRecyclerView(binding.recyclerview)
 
-
-        // Observe data changes for the items added
         cardViewmodel.allWords.observe(viewLifecycleOwner) { cardPairs ->
             adapter.submitList(cardPairs)
             if (cardPairs.isEmpty()) {
@@ -136,41 +139,7 @@ class ToLearnFlashCards : Fragment() {
             }
         }
 
-//
-//        binding.cardLearning.setOnClickListener {
-//            findNavController().navigate(R.id.action_toLearnFlashCards_to_practiseFragment)
-//        }
-
         return binding.root
-    }
-
-    private fun incrementCounterLearned() {
-        val sharedPreferences = requireContext().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
-        val currentCounter = sharedPreferences.getInt(learnedCounterKey, 0)
-        val newCounter = currentCounter + 1
-        with(sharedPreferences.edit()) {
-            putInt(learnedCounterKey, newCounter)
-            apply()
-        }
-    }
-
-    private fun decrementLearnCounter() {
-        val sharedPreferences = requireContext().getSharedPreferences(sharedPrefFile,AppCompatActivity.MODE_PRIVATE)
-        val currentCounter = sharedPreferences.getInt(learnedCounterKey,0)
-        val newCounter = currentCounter-1
-        with(sharedPreferences.edit()){
-            putInt(learnedCounterKey,newCounter).apply()
-        }
-    }
-
-    private fun incrementCounter() {
-        val sharedPreferences = requireContext().getSharedPreferences(sharedPrefFile, AppCompatActivity.MODE_PRIVATE)
-        val currentCounter = sharedPreferences.getInt(counterKey, 0)
-        val newCounter = currentCounter + 1
-        with(sharedPreferences.edit()) {
-            putInt(counterKey, newCounter)
-            apply()
-        }
     }
 
 
