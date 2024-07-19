@@ -1,60 +1,47 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/background_color"
-    xmlns:tools="http://schemas.android.com/tools">
+    tools:context=".ui.activities.fragments.ToLearnFlashCards">
 
-    <LinearLayout
-        android:id="@+id/linearDay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/back_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/backbutton" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearCorrectPairs"
+    <ImageView
+        android:id="@+id/back_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/linearDay"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/backbutton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/white1"
-            android:text="@string/select_correct_pair" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/text_correct_pairs"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="25dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="@string/select_correct_pair"
+        android:textColor="@color/white1"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/back_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
         android:layout_marginStart="20dp"
-        app:layout_constraintTop_toBottomOf="@id/linearCorrectPairs"
+        app:layout_constraintTop_toBottomOf="@id/text_correct_pairs"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-            android:id="@+id/imageCat"
+            android:id="@+id/image_fire"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginBottom="10dp"
@@ -64,14 +51,15 @@
             android:id="@+id/text_counter_fire"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_margin="5dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/zero1"
             android:textColor="@color/white1"
             android:textStyle="bold"
             android:textSize="26sp" />
+
         <ImageView
-            android:id="@+id/imageDiamond"
+            android:id="@+id/image_diamond"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginBottom="10dp"
@@ -81,14 +69,15 @@
             android:id="@+id/text_counter_diamond"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_margin="5dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/zero1"
             android:textColor="@color/white1"
             android:textStyle="bold"
             android:textSize="26sp" />
+
         <ImageView
-            android:id="@+id/imageCatGem"
+            android:id="@+id/image_gem"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginBottom="10dp"
@@ -98,8 +87,8 @@
             android:id="@+id/text_counter_gem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_margin="5dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/zero1"
             android:textColor="@color/white1"
             android:textStyle="bold"
@@ -107,51 +96,48 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewPractise"
+        android:id="@+id/recycler_view_practise"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical"
         android:padding="16dp"
-        app:layout_constraintBottom_toTopOf="@id/btnShuffle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/text_correct_pairs"
+        app:layout_constraintBottom_toTopOf="@id/btn_shuffle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearCorrectPairs"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:listitem="@layout/item_practise_cards" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnShuffle"
+        android:id="@+id/btn_shuffle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/shuffle"
-        android:textColor="#FFFF"
-        android:background="@drawable/buttoncolor"
-        android:layout_marginBottom="36dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="center" />
+        android:layout_marginTop="20dp"
+    android:layout_marginBottom="36dp"
+    android:text="@string/shuffle"
+    android:textColor="@android:color/white"
+    android:background="@drawable/buttoncolor"
+    android:gravity="center"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
 
     <LinearLayout
-        android:id="@+id/noCardsLayout"
+        android:id="@+id/no_cards_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:visibility="gone">
 
         <ImageView
-            android:id="@+id/trashImage"
+            android:id="@+id/image_trash"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/waste" />
 
         <TextView
-            android:id="@+id/noCardsText"
+            android:id="@+id/text_no_cards"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
