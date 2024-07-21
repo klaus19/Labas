@@ -1,6 +1,7 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:scrollbars="vertical"
     android:background="@color/lime_green">
 
@@ -47,8 +48,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/cardViewAvatar"
-            android:background="@color/white"
+            android:background="@drawable/card_border"
             android:layout_marginTop="40dp"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
             android:id="@+id/cardviewNotify">
 
             <LinearLayout
@@ -84,7 +88,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/cardviewNotify"
-            android:background="@color/white"
+            android:background="@drawable/card_border"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
             android:id="@+id/cardviewProgress">
 
             <LinearLayout
@@ -120,7 +127,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/cardviewProgress"
-            android:background="@color/white"
+            android:background="@drawable/card_border"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
             android:id="@+id/cardviewShare">
 
             <LinearLayout
@@ -156,7 +166,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/cardviewShare"
-            android:background="@color/white"
+            android:background="@drawable/card_border"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
             android:id="@+id/cardviewSupport">
 
             <LinearLayout
@@ -192,7 +205,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/cardviewSupport"
-            android:background="@color/white"
+            android:background="@drawable/card_border"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
             android:id="@+id/cardviewFeature">
 
             <LinearLayout
@@ -228,7 +244,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/cardviewFeature"
-            android:background="@color/white"
+            android:background="@drawable/card_border"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
             android:id="@+id/cardviewAbout">
 
             <LinearLayout
@@ -264,8 +283,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/cardviewAbout"
-            android:layout_marginTop="50dp"
-            android:background="@color/white"
+            android:background="@drawable/card_border"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
             android:id="@+id/cardviewDelete">
 
             <LinearLayout

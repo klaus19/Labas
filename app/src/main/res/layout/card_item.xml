@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!-- XML implementation of Card Layout -->
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,7 +9,7 @@
     android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
     android:layout_marginRight="20dp"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="0dp"
     android:id="@+id/card_language"
     app:cardElevation="5dp">
 
@@ -28,22 +28,15 @@
             android:src="@mipmap/ic_launcher" />
 
         <TextView
-            android:id="@+id/text_Lithuanian"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/lithuanian"
-            android:textSize="15sp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textAlignment="center" />
-        <TextView
             android:id="@+id/text_English"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/english"
+            android:layout_marginTop="10dp"
             android:textSize="15sp"
             android:textColor="@color/white"
             android:textStyle="bold"
+            android:layout_marginBottom="20dp"
             android:textAlignment="center" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

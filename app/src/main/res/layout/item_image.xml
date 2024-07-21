@@ -61,13 +61,12 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_gravity="end|top"
-            android:scaleType="fitXY"
-            android:src="@drawable/purp" />
+            android:scaleType="fitXY"/>
         <ImageView
             android:id="@+id/imageAudio"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/mic"
+            android:src="@drawable/play"
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="20dp"
             android:layout_gravity="bottom|start" />

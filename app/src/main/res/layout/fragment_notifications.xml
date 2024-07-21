@@ -46,6 +46,7 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:drawablePadding="8dp"
+                        android:textColor="@color/blue_card"
                         android:padding="8dp"
                         android:layout_gravity="center_vertical" />
                 </LinearLayout>
@@ -61,7 +62,7 @@
             android:layout_marginBottom="10dp"
             android:textStyle="bold"
             android:text="How do you want to study?"
-            android:textColor="@color/black"
+            android:textColor="@color/blue_card"
             android:layout_below="@id/cardviewNotifications" />
 
         <androidx.cardview.widget.CardView
@@ -94,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
+                    android:textColor="@color/blue_card"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="40dp"
                     android:text="Turn off Notifications" />
@@ -104,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:textStyle="italic"
-                    android:textColor="@color/black"
+                    android:textColor="@color/blue_card"
                     android:layout_marginTop="5dp"
                     android:layout_marginStart="40dp"
                     android:text="I have my style" />
@@ -140,7 +141,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
+                    android:textColor="@color/blue_card"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="40dp"
                     android:text="Not Much" />
@@ -150,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:textStyle="italic"
-                    android:textColor="@color/black"
+                    android:textColor="@color/blue_card"
                     android:layout_marginTop="5dp"
                     android:layout_marginStart="40dp"
                     android:text="Notify me after 2 days of inactivity" />
@@ -186,7 +187,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
+                    android:textColor="@color/blue_card"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="40dp"
                     android:text="Regularly" />
@@ -196,7 +197,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:textStyle="italic"
-                    android:textColor="@color/black"
+                    android:textColor="@color/blue_card"
                     android:layout_marginTop="5dp"
                     android:layout_marginStart="40dp"
                     android:text="Notify me after 1 day of inactivity" />
@@ -213,7 +214,7 @@
             android:layout_marginBottom="10dp"
             android:textStyle="bold"
             android:text="@string/daily_streak_notification"
-            android:textColor="@color/black"
+            android:textColor="@color/blue_card"
             android:layout_below="@id/cardviewRegular" />
 
         <androidx.cardview.widget.CardView
@@ -237,6 +238,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/checkBoxNotify"
                     android:text="Notify me at"
+                    android:textColor="@color/blue_card"
                     android:textStyle="italic"
                     android:textSize="20sp" />
 
@@ -254,6 +256,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:textStyle="italic"
+                    android:textColor="@color/blue_card"
                     android:text="If you won't have" />
                 <FrameLayout
                     android:layout_width="wrap_content"

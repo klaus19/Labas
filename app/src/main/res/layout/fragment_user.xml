@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/lime_green"
     android:orientation="vertical">
 
     <!-- Add the Toolbar -->
@@ -11,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/flash_tablebar"
-        android:title="Lingo"
+        android:title="Sveiki"
         android:titleTextColor="@color/new_design_darker_shade">
 
         <androidx.appcompat.widget.SearchView
@@ -22,9 +23,9 @@
             android:layout_marginEnd="40dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:background="#FFFF"
+            android:background="@color/lime_green"
             app:queryHint="Search..."
-            android:textColorHint="@android:color/black"
+            android:textColorHint="@color/lime_green"
             app:iconifiedByDefault = "false"/>
     </androidx.appcompat.widget.Toolbar>
 

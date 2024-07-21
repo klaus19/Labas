@@ -39,7 +39,7 @@
         android:layout_alignParentEnd="true"
         android:layout_margin="16dp"
         app:fabSize="normal"
-        app:backgroundTint="@color/pink"
+        app:backgroundTint="@color/orange1"
         android:contentDescription="@string/add_item"
         android:layout_alignParentBottom="true" />
 
