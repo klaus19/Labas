@@ -270,6 +270,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_notificationsFragment"
             app:destination="@id/notificationsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_userFragment"
+            app:destination="@id/userFragment" />
     </fragment>
     <fragment
         android:id="@+id/sportsFragment"
