@@ -15,10 +15,7 @@ import com.example.visuallithuanian.data.FlashCardInfo
 class FlashcardsMediumAdapter(
     private val imageList: List<FlashCardInfo>,
     private val navController: NavController,
-    private val unlockedItem: MutableList<String> = mutableListOf( "Computer terminology","Towns and Villages",
-        "Time","Cinema","Numbers", "Business Language","Cafe",
-        "Sports", "Things", "Personality", "Professions","Household", "Weekly Basics",
-        "100 best words","Animals","Food & Ingredients", "Veganism")
+    private val unlockedItem: String = ""
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -36,15 +33,17 @@ class FlashcardsMediumAdapter(
         val cardviewFlashcard = itemView.findViewById<CardView>(R.id.cardFlashCards)
         val textLock = itemView.findViewById<TextView>(R.id.textflashCardName)
         val imageLock = itemView.findViewById<ImageView>(R.id.imageViewLock)
+        val purpleCountTextView = itemView.findViewById<TextView>(R.id.purpleTextView)
+        val purpleImageview = itemView.findViewById<ImageView>(R.id.topRightImageView)
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (imageList[position].name == unlockedItem[position]) VIEW_TYPE_UNLOCKED else VIEW_TYPE_LOCKED
+        return if (imageList[position].name == unlockedItem) VIEW_TYPE_UNLOCKED else VIEW_TYPE_LOCKED
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view: View = if (viewType == VIEW_TYPE_LOCKED) {
-            LayoutInflater.from(parent.context).inflate(R.layout.items_flashcard_locked, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.items_flashcard_lockedpurplegem, parent, false)
         } else {
             LayoutInflater.from(parent.context).inflate(R.layout.item_flashcards, parent, false)
         }
@@ -80,7 +79,8 @@ class FlashcardsMediumAdapter(
         } else if (holder is LockedViewHolder) {
             holder.textLock.text = flashCard.name
             holder.imageLock.setImageResource(R.drawable.lockpic)
-
+            holder.purpleCountTextView.text = flashCard.topRightValue.toString()
+//            holder.purpleImageview.setImageResource(R.drawable.purplegemicon)
             holder.cardviewFlashcard.setOnClickListener {
                 Toast.makeText(holder.itemView.context, "This set is locked", Toast.LENGTH_SHORT).show()
             }

@@ -51,15 +51,15 @@ class FlashCards : Fragment() {
         val navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
 
         val hardFlashCardList = generateHardFlashCards()
-        val adapter = FlashcardsHardAdapter(hardFlashCardList, navController)
+        val adapter = FlashcardsHardAdapter(hardFlashCardList, navController,"")
         recyclerViewCardsHard.adapter = adapter
 
         val easyFlashCardsList = generateEasyFlashCards()
-        val adapter1 = FlashcardsEasyAdapter(easyFlashCardsList, navController)
+        val adapter1 = FlashcardsEasyAdapter(easyFlashCardsList, navController,"Questions and Pronouns")
         recyclerViewCardsEasy.adapter = adapter1
 
         val mediumFlashCardsList = generateMediumFlashCards()
-        val adapter2 = FlashcardsMediumAdapter(mediumFlashCardsList, navController)
+        val adapter2 = FlashcardsMediumAdapter(mediumFlashCardsList, navController,"")
         recyclerViewCardsMedium.adapter = adapter2
 
         // Add the custom ItemDecoration for fading effect
@@ -77,53 +77,53 @@ class FlashCards : Fragment() {
 
     private fun generateMediumFlashCards(): List<FlashCardInfo> {
         return listOf(
-            FlashCardInfo(R.drawable.computer, "Computer terminology", ""),
-            FlashCardInfo(R.drawable.village, "Towns and Villages", ""),
-            FlashCardInfo(R.drawable.time, "Time", ""),
-            FlashCardInfo(R.drawable.cinemascreen, "Cinema", ""),
-            FlashCardInfo(R.drawable.numbers, "Numbers", ""),
-            FlashCardInfo(R.drawable.business, "Business Language", ""),
-            FlashCardInfo(R.drawable.cafe, "Cafe", ""),
-            FlashCardInfo(R.drawable.sports, "Sports", ""),
-            FlashCardInfo(R.drawable.things1, "Things", ""),
-            FlashCardInfo(R.drawable.personality, "Personality", ""),
-            FlashCardInfo(R.drawable.profession, "Professions", ""),
-            FlashCardInfo(R.drawable.household, "Household", ""),
-            FlashCardInfo(R.drawable.weekly, "Weekly Basics", ""),
-            FlashCardInfo(R.drawable.best, "100 best words", ""),
-            FlashCardInfo(R.drawable.animals, "Animals", ""),
-            FlashCardInfo(R.drawable.food, "Food & Ingredients", ""),
-            FlashCardInfo(R.drawable.vegan, "Veganism", ""),
+            FlashCardInfo(R.drawable.computer, "Computer terminology", "",2,R.drawable.purplegemicon),
+            FlashCardInfo(R.drawable.village, "Towns and Villages", "",6,R.drawable.purplegemicon),
+            FlashCardInfo(R.drawable.time, "Time", "",8,R.drawable.purplegemicon),
+            FlashCardInfo(R.drawable.cinemascreen, "Cinema", "",10,R.drawable.purplegemicon),
+            FlashCardInfo(R.drawable.numbers, "Numbers", "",14,R.drawable.purplegemicon),
+            FlashCardInfo(R.drawable.business, "Business Language", "",16,R.drawable.purplegemicon),
+            FlashCardInfo(R.drawable.cafe, "Cafe", "",18,R.drawable.purplegemicon),
+            FlashCardInfo(R.drawable.sports, "Sports", "",20,R.drawable.purplegemicon),
+            FlashCardInfo(R.drawable.things1, "Things", "",24,R.drawable.purplegemicon),
+            FlashCardInfo(R.drawable.personality, "Personality", "",26,R.drawable.purplegemicon),
+            FlashCardInfo(R.drawable.profession, "Professions", "",30,R.drawable.purplegemicon),
+            FlashCardInfo(R.drawable.household, "Household", "",32,R.drawable.purplegemicon),
+            FlashCardInfo(R.drawable.weekly, "Weekly Basics", "",34,R.drawable.purplegemicon),
+            FlashCardInfo(R.drawable.best, "100 best words", "",36,R.drawable.purplegemicon),
+            FlashCardInfo(R.drawable.animals, "Animals", "",40,R.drawable.purplegemicon),
+            FlashCardInfo(R.drawable.food, "Food & Ingredients", "",44,R.drawable.purplegemicon),
+            FlashCardInfo(R.drawable.vegan, "Veganism", "",46,R.drawable.purplegemicon),
         )
     }
 
     private fun generateEasyFlashCards(): List<FlashCardInfo> {
         return listOf(
-            FlashCardInfo(R.drawable.doctorvisit, "Questions and Pronouns", ""),
-            FlashCardInfo(R.drawable.pointers, "Pointers", ""),
-            FlashCardInfo(R.drawable.talking, "Daily Basic", ""),
-            FlashCardInfo(R.drawable.action, "Basic actions", ""),
-            FlashCardInfo(R.drawable.holiday1, "Holidays, Celebration", ""),
-            FlashCardInfo(R.drawable.relatives, "Family", ""),
-            FlashCardInfo(R.drawable.keyphrase, "Key Phrases", ""),
-            FlashCardInfo(R.drawable.days, "Day and Months", ""),
-            FlashCardInfo(R.drawable.colorshape, "Colours and Shapes", ""),
-            FlashCardInfo(R.drawable.iverb, "I verbs", ""),
-            FlashCardInfo(R.drawable.workplace, "Workplace language", ""),
-            FlashCardInfo(R.drawable.nature, "Nature", ""),
-            FlashCardInfo(R.drawable.romantic, "Romantic phrases", "")
+            FlashCardInfo(R.drawable.doctorvisit, "Questions and Pronouns", "",0,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.pointers, "Pointers", "",10,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.talking, "Daily Basic", "",30,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.action, "Basic actions", "",40,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.holiday1, "Holidays, Celebration", "",50,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.relatives, "Family", "",65,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.keyphrase, "Key Phrases", "",70,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.days, "Day and Months", "",75,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.colorshape, "Colours and Shapes", "",80,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.iverb, "I verbs", "",85,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.workplace, "Workplace language", "",90,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.nature, "Nature", "",95,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.romantic, "Romantic phrases", "",100,R.drawable.fireicon)
         )
     }
 
     private fun generateHardFlashCards(): List<FlashCardInfo> {
         return listOf(
-            FlashCardInfo(R.drawable.maths, "Maths", ""),
-            FlashCardInfo(R.drawable.interface2, "Interface", ""),
-            FlashCardInfo(R.drawable.animalwords, "Animal Words", ""),
-            FlashCardInfo(R.drawable.feelings1, "Feelings", ""),
-            FlashCardInfo(R.drawable.rights, "Rights", ""),
-            FlashCardInfo(R.drawable.actions, "Actions", ""),
-            FlashCardInfo(R.drawable.adjectives, "Adjectives", ""),
+            FlashCardInfo(R.drawable.maths, "Maths", "",4,R.drawable.redgemicon),
+            FlashCardInfo(R.drawable.interface2, "Interface", "",8,R.drawable.redgemicon),
+            FlashCardInfo(R.drawable.animalwords, "Animal Words", "",12,R.drawable.redgemicon),
+            FlashCardInfo(R.drawable.feelings1, "Feelings", "",16,R.drawable.redgemicon),
+            FlashCardInfo(R.drawable.rights, "Rights", "",18,R.drawable.redgemicon),
+            FlashCardInfo(R.drawable.actions, "Actions", "",20,R.drawable.redgemicon),
+            FlashCardInfo(R.drawable.adjectives, "Adjectives", "",24,R.drawable.redgemicon),
         )
     }
 }

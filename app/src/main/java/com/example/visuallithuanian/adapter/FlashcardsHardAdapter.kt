@@ -15,7 +15,7 @@ import com.example.visuallithuanian.data.FlashCardInfo
 class FlashcardsHardAdapter(
     private val imageList: List<FlashCardInfo>,
     private val navController: NavController,
-    private val unlockedItem: List<String> = listOf("Maths","Interface","Animal Words","Feelings","Rights","Actions","Adjectives")
+    private val unlockedItem: String = "Maths"
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -33,15 +33,17 @@ class FlashcardsHardAdapter(
         val cardviewFlashcard = itemView.findViewById<CardView>(R.id.cardFlashCards)
         val textLock = itemView.findViewById<TextView>(R.id.textflashCardName)
         val imageLock = itemView.findViewById<ImageView>(R.id.imageViewLock)
+        val redGemTextView = itemView.findViewById<TextView>(R.id.redTextView)
+        val redGemImageView = itemView.findViewById<ImageView>(R.id.redImageView)
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (imageList[position].name == unlockedItem[position]) VIEW_TYPE_UNLOCKED else VIEW_TYPE_LOCKED
+        return if (imageList[position].name == unlockedItem) VIEW_TYPE_UNLOCKED else VIEW_TYPE_LOCKED
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view: View = if (viewType == VIEW_TYPE_LOCKED) {
-            LayoutInflater.from(parent.context).inflate(R.layout.items_flashcard_locked, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.items_flashcard_lockedredgem, parent, false)
         } else {
             LayoutInflater.from(parent.context).inflate(R.layout.item_flashcards, parent, false)
         }
@@ -67,6 +69,8 @@ class FlashcardsHardAdapter(
         } else if (holder is LockedViewHolder) {
             holder.textLock.text = flashCard.name
             holder.imageLock.setImageResource(R.drawable.lockpic)
+            holder.redGemTextView.text = flashCard.topRightValue.toString()
+          //  holder.redGemImageView.setImageResource(R.drawable.redgemicon)
 
             holder.cardviewFlashcard.setOnClickListener {
                 Toast.makeText(holder.itemView.context, "This set is locked", Toast.LENGTH_SHORT).show()

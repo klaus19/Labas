@@ -233,7 +233,7 @@ class QuestionsFragment : Fragment() {
 
                 val progress = ((currentTripleIndex + 1) * 100) / totalTriples
                 binding.progressHorizontal.progress = progress
-               easyPreferencesHelper.saveProgressQuestions(progress)// Save progress
+                easyPreferencesHelper.saveProgressQuestions(progress)// Save progress
 
                 currentTriple = hashMap.entries.elementAt(currentTripleIndex)
                 binding.textCardFront.text = currentTriple.key
