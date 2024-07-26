@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/background_color"
     android:layout_height="match_parent">
 
@@ -17,12 +18,79 @@
    </LinearLayout>
 
     <LinearLayout
-        android:layout_below="@id/linearback1"
+        android:id="@+id/linearGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/image_fire_flashcard"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/fire" />
+
+        <TextView
+            android:id="@+id/text_counter_fire_flashcard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/zero1"
+            android:textColor="@color/white1"
+            android:textStyle="bold"
+            android:textSize="26sp" />
+
+        <ImageView
+            android:id="@+id/image_diamond_flashcard"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/diamond11" />
+
+        <TextView
+            android:id="@+id/text_counter_diamond_flashcard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/zero1"
+            android:textColor="@color/white1"
+            android:textStyle="bold"
+            android:textSize="26sp" />
+
+        <ImageView
+            android:id="@+id/image_gem_flashcard"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/gem11" />
+
+        <TextView
+            android:id="@+id/text_counter_gem_flashcard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/zero1"
+            android:textColor="@color/white1"
+            android:textStyle="bold"
+            android:textSize="26sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/linearGame"
         android:layout_width="match_parent"
         android:id="@+id/linear1"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="20dp">
 
         <TextView
             android:layout_marginStart="10dp"

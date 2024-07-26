@@ -1,12 +1,16 @@
 package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +29,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class FlashCards : Fragment() {
 
     lateinit var bottomNav: BottomNavigationView
+    private lateinit var textCounterFire:TextView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -43,6 +48,11 @@ class FlashCards : Fragment() {
         val recyclerViewCardsEasy = view.findViewById<RecyclerView>(R.id.recyclerViewFlashcardsEasy)
         val recyclerViewCardsMedium = view.findViewById<RecyclerView>(R.id.recyclerViewFlashcardsMedium)
         val recyclerViewCardsHard = view.findViewById<RecyclerView>(R.id.recyclerViewFlashcardsHard)
+
+        textCounterFire = view.findViewById(R.id.text_counter_fire_flashcard)
+
+        loadTextCountFire()
+
 
         recyclerViewCardsHard.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewCardsMedium.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -67,12 +77,32 @@ class FlashCards : Fragment() {
         recyclerViewCardsMedium.addItemDecoration(FadeEdgeItemDecoration(requireContext()))
         recyclerViewCardsHard.addItemDecoration(FadeEdgeItemDecoration(requireContext()))
 
+        loadSharedPreferences()
+
         // Setting up listener
         back_icon.setOnClickListener {
             activity?.onBackPressed()
         }
 
         return view
+    }
+
+    private fun loadTextCountFire() {
+        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val savedCount = sharedPreferences.getInt("textCount", 0)
+        textCounterFire.text = savedCount.toString()
+    }
+
+    private fun loadSharedPreferences() {
+        val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val counter = sharedPreferences.getInt("counter", 0)
+        val counterDiamond = sharedPreferences.getInt("counterDiamond", 0)
+        val counterGem = sharedPreferences.getInt("counterGem", 0)
+
+        // Update UI with retrieved values
+        view?.findViewById<TextView>(R.id.text_counter_fire_flashcard)?.text = counter.toString()
+        view?.findViewById<TextView>(R.id.text_counter_diamond_flashcard)?.text = counterDiamond.toString()
+        view?.findViewById<TextView>(R.id.text_counter_gem_flashcard)?.text = counterGem.toString()
     }
 
     private fun generateMediumFlashCards(): List<FlashCardInfo> {
