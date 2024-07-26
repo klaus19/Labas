@@ -1,12 +1,17 @@
 package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Context.MODE_PRIVATE
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,8 +30,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class FlashCards : Fragment() {
 
     lateinit var bottomNav: BottomNavigationView
+    private lateinit var textCounterFire:TextView
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId", "SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,6 +50,14 @@ class FlashCards : Fragment() {
         val recyclerViewCardsMedium = view.findViewById<RecyclerView>(R.id.recyclerViewFlashcardsMedium)
         val recyclerViewCardsHard = view.findViewById<RecyclerView>(R.id.recyclerViewFlashcardsHard)
 
+        textCounterFire = view.findViewById(R.id.text_counter_fire_flashcard)
+
+        loadTextCountFire()
+
+        val navList:MutableList<String> = mutableListOf()
+          navList.add("Questions and Pronouns")
+
+
         recyclerViewCardsHard.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewCardsMedium.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewCardsEasy.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -55,7 +69,7 @@ class FlashCards : Fragment() {
         recyclerViewCardsHard.adapter = adapter
 
         val easyFlashCardsList = generateEasyFlashCards()
-        val adapter1 = FlashcardsEasyAdapter(easyFlashCardsList, navController,"Questions and Pronouns")
+        val adapter1 = FlashcardsEasyAdapter(requireContext(),easyFlashCardsList.toMutableList(), navController,navList,textCounterFire)
         recyclerViewCardsEasy.adapter = adapter1
 
         val mediumFlashCardsList = generateMediumFlashCards()
@@ -63,16 +77,58 @@ class FlashCards : Fragment() {
         recyclerViewCardsMedium.adapter = adapter2
 
         // Add the custom ItemDecoration for fading effect
-        recyclerViewCardsEasy.addItemDecoration(FadeEdgeItemDecoration(requireContext()))
-        recyclerViewCardsMedium.addItemDecoration(FadeEdgeItemDecoration(requireContext()))
-        recyclerViewCardsHard.addItemDecoration(FadeEdgeItemDecoration(requireContext()))
+      //  recyclerViewCardsEasy.addItemDecoration(FadeEdgeItemDecoration(requireContext()))
+      //  recyclerViewCardsMedium.addItemDecoration(FadeEdgeItemDecoration(requireContext()))
+       // recyclerViewCardsHard.addItemDecoration(FadeEdgeItemDecoration(requireContext()))
+
+
+        loadSharedPreferences()
+
 
         // Setting up listener
         back_icon.setOnClickListener {
             activity?.onBackPressed()
         }
 
+        sendData()
         return view
+    }
+
+    private fun sendData() {
+        val newCount = textCounterFire.text.toString().toIntOrNull() ?: 0
+
+        val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        with(sharedPreferences.edit()) {
+            putInt("textCount", newCount)
+            apply()
+        }
+
+        sendUpdateBroadcast(newCount)
+
+    }
+
+    private fun sendUpdateBroadcast(newCount: Int) {
+        val intent = Intent("com.example.UPDATE_TEXT_COUNT")
+        intent.putExtra("textCount", newCount)
+        requireContext().sendBroadcast(intent)
+    }
+
+    private fun loadTextCountFire() {
+        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val savedCount = sharedPreferences.getInt("textCount", 0)
+        textCounterFire.text = savedCount.toString()
+    }
+
+    private fun loadSharedPreferences() {
+        val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val counter = sharedPreferences.getInt("counter", 0)
+        val counterDiamond = sharedPreferences.getInt("counterDiamond", 0)
+        val counterGem = sharedPreferences.getInt("counterGem", 0)
+
+        // Update UI with retrieved values
+        view?.findViewById<TextView>(R.id.text_counter_fire_flashcard)?.text = counter.toString()
+        view?.findViewById<TextView>(R.id.text_counter_diamond_flashcard)?.text = counterDiamond.toString()
+        view?.findViewById<TextView>(R.id.text_counter_gem_flashcard)?.text = counterGem.toString()
     }
 
     private fun generateMediumFlashCards(): List<FlashCardInfo> {
@@ -100,7 +156,7 @@ class FlashCards : Fragment() {
     private fun generateEasyFlashCards(): List<FlashCardInfo> {
         return listOf(
             FlashCardInfo(R.drawable.doctorvisit, "Questions and Pronouns", "",0,R.drawable.fireicon),
-            FlashCardInfo(R.drawable.pointers, "Pointers", "",10,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.pointers, "Pointers", "",5,R.drawable.fireicon),
             FlashCardInfo(R.drawable.talking, "Daily Basic", "",30,R.drawable.fireicon),
             FlashCardInfo(R.drawable.action, "Basic actions", "",40,R.drawable.fireicon),
             FlashCardInfo(R.drawable.holiday1, "Holidays, Celebration", "",50,R.drawable.fireicon),

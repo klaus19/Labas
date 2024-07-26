@@ -81,9 +81,9 @@ class FlashcardsMediumAdapter(
             holder.imageLock.setImageResource(R.drawable.lockpic)
             holder.purpleCountTextView.text = flashCard.topRightValue.toString()
 //            holder.purpleImageview.setImageResource(R.drawable.purplegemicon)
-            holder.cardviewFlashcard.setOnClickListener {
-                Toast.makeText(holder.itemView.context, "This set is locked", Toast.LENGTH_SHORT).show()
-            }
+//            holder.cardviewFlashcard.setOnClickListener {
+//                Toast.makeText(holder.itemView.context, "This set is locked", Toast.LENGTH_SHORT).show()
+//            }
         }
     }
 

@@ -1,7 +1,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardFlashCards"
+    android:id="@+id/cardFlashCardsFire"
     android:layout_width="250dp"
     android:layout_height="wrap_content"
     app:cardBackgroundColor="#dbf5f4"

@@ -1,5 +1,7 @@
 package com.example.visuallithuanian.adapter
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,20 +12,30 @@ import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.data.FlashCardInfo
 
-
-class FlashcardsEasyAdapter(private val imageList: List<FlashCardInfo>
-                            , private val navController: NavController,
-                            private val unlockedItem:String="Questions and Pronouns"
-
-
-) :RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class FlashcardsEasyAdapter(
+    private val context: Context,
+    private val imageList: MutableList<FlashCardInfo>,  // Mutable list to allow updates
+    private val navController: NavController,
+    private val unlockedItem: MutableList<String>,
+    private val textCounterFire: TextView
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
         private const val VIEW_TYPE_UNLOCKED = 0
         private const val VIEW_TYPE_LOCKED = 1
+    }
+
+    init {
+        // Load unlocked state from SharedPreferences
+        val sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val unlockedSet = sharedPreferences.getStringSet("unlockedItems", mutableSetOf())
+        if (unlockedSet != null) {
+            unlockedItem.addAll(unlockedSet)
+        }
     }
 
     inner class UnlockedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -33,15 +45,15 @@ class FlashcardsEasyAdapter(private val imageList: List<FlashCardInfo>
     }
 
     inner class LockedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val cardviewFlashcard = itemView.findViewById<CardView>(R.id.cardFlashCards)
-        val textLock = itemView.findViewById<TextView>(R.id.textflashCardName)
-        val imageLock = itemView.findViewById<ImageView>(R.id.imageViewLock)
-        val fireCountTextView = itemView.findViewById<TextView>(R.id.topRightTextView)
-        val fireImageview = itemView.findViewById<ImageView>(R.id.topRightImageView)
+        val cardviewFlashcardFire: CardView = itemView.findViewById(R.id.cardFlashCardsFire)
+        val textLock: TextView = itemView.findViewById(R.id.textflashCardName)
+        val imageLock: ImageView = itemView.findViewById(R.id.imageViewLock)
+        val fireCountTextView: TextView = itemView.findViewById(R.id.topRightTextView)
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (imageList[position].name == unlockedItem) VIEW_TYPE_UNLOCKED else VIEW_TYPE_LOCKED
+        val flashCard = imageList[position]
+        return if (unlockedItem.contains(flashCard.name)) VIEW_TYPE_UNLOCKED else VIEW_TYPE_LOCKED
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -53,6 +65,7 @@ class FlashcardsEasyAdapter(private val imageList: List<FlashCardInfo>
         return if (viewType == VIEW_TYPE_LOCKED) LockedViewHolder(view) else UnlockedViewHolder(view)
     }
 
+    @SuppressLint("NotifyDataSetChanged", "MissingInflatedId")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val flashCard = imageList[position]
         if (holder is UnlockedViewHolder) {
@@ -79,43 +92,95 @@ class FlashcardsEasyAdapter(private val imageList: List<FlashCardInfo>
             holder.textLock.text = flashCard.name
             holder.imageLock.setImageResource(R.drawable.lockpic)
             holder.fireCountTextView.text = flashCard.topRightValue.toString()
-            //holder.fireImageview.setImageResource(R.drawable.fireicon)
 
-            holder.cardviewFlashcard.setOnClickListener {
+            holder.cardviewFlashcardFire.setOnClickListener {
                 if (flashCard.name != "Questions and Pronouns") {
-                    // Inflate the custom layout for the dialog
                     val dialogView = LayoutInflater.from(holder.itemView.context)
                         .inflate(R.layout.dialog_custom_message, null)
 
-                    // Set up the message and image
                     val messageTextView: TextView = dialogView.findViewById(R.id.dialogMessage)
                     val imageView: ImageView = dialogView.findViewById(R.id.dialogImage)
 
-                    // Set the message text and image resource dynamically
-                    messageTextView.text = when (flashCard.name) {
-                        "Pointers" -> "Do you have ${flashCard.topRightValue}"
-                        "Daily Basic" -> "Do you have ${flashCard.topRightValue}"
-                        "Day and Months" -> "Do you have ${flashCard.topRightValue}"
-                        "Key Phrases" -> "Do you have ${flashCard.topRightValue}"
-                        "Basic actions" -> "Do you have ${flashCard.topRightValue}"
-                        "Family" -> "Do you have ${flashCard.topRightValue}"
-                        "Workplace language" -> "Do you have ${flashCard.topRightValue}"
-                        "I verbs" -> "Do you have ${flashCard.topRightValue}"
-                        "Holidays, Celebration" -> "Do you have ${flashCard.topRightValue}"
-                        "Nature" -> "Do you have ${flashCard.topRightValue}"
-                        "Colours and Shapes" -> "Do you have ${flashCard.topRightValue}"
-                        "Romantic phrases" -> "Do you have ${flashCard.topRightValue}"
-                        else -> "Do you have ${flashCard.topRightValue}"
-                    }
-
-                    // Optionally set a specific image for the category
+                    messageTextView.text = "Do you have ${flashCard.topRightValue}"
                     imageView.setImageResource(R.drawable.fireicon)
 
                     AlertDialog.Builder(holder.itemView.context)
                         .setTitle("Category Locked")
                         .setView(dialogView)
-                        .setNegativeButton("NO",){dialog,_->dialog.cancel()}
-                        .setPositiveButton("YES") { dialog, _ -> dialog.dismiss() }
+                        .setNegativeButton("NO") { dialog, _ -> dialog.cancel() }
+                        .setPositiveButton("YES") { _, _ ->
+                            try {
+                                val currentCount = textCounterFire.text.toString().toInt()
+                                val fireCount = flashCard.topRightValue
+                                if (currentCount >= fireCount) {
+                                    val newCount = currentCount - fireCount
+                                    textCounterFire.text = newCount.toString()
+
+                                    // Save the new value to SharedPreferences
+                                    val sharedPreferences = holder.itemView.context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                                    val editor = sharedPreferences.edit()
+                                    editor.putInt("textCount", newCount)
+                                    editor.apply()
+
+                                    // Update the unlocked state and save to SharedPreferences
+                                    if (flashCard.topRightValue == 5) {
+                                        unlockedItem.add("Pointers")
+                                        val updatedUnlockedSet = unlockedItem.toSet()
+                                        val editor1 = sharedPreferences.edit()
+                                        editor1.putStringSet("unlockedItems", updatedUnlockedSet)
+                                        editor1.apply()
+
+                                        // Create a success dialog
+                                        val successDialogView = LayoutInflater.from(holder.itemView.context)
+                                            .inflate(R.layout.dialog_card_unlocked, null)
+
+                                        val successMessageTextView: TextView = successDialogView.findViewById(R.id.successDialogMessage)
+                                        val successImageView: ImageView = successDialogView.findViewById(R.id.successDialogImage)
+
+                                        successMessageTextView.text = "Yay,Card Unlocked!"
+                                        Glide.with(holder.itemView.context).asGif()
+                                            .load(R.drawable.happyunlocked)
+                                            .into(successImageView)
+
+                                        AlertDialog.Builder(holder.itemView.context)
+                                            .setView(successDialogView)
+                                            .show()
+
+                                        // Update the view to reflect the unlocked state
+                                        notifyDataSetChanged()
+
+                                        holder.cardviewFlashcardFire.setOnClickListener {
+                                            if (flashCard.name == "Pointers") {
+                                                navController.navigate(R.id.action_flashCards_to_pointersFlashcardFragment)
+                                            }
+                                        }
+                                    }
+                                } else {
+                                           // create a failure dialog
+                                    val failureDialogView = LayoutInflater.from(holder.itemView.context)
+                                        .inflate(R.layout.card_locked, null)
+
+                                    val failureMessageTextView: TextView = failureDialogView.findViewById(R.id.notEnoughPointsMessage)
+                                    val failureImageView: ImageView = failureDialogView.findViewById(R.id.notEnoughPointsImage)
+                                    failureMessageTextView.text = "You don't have enough points"
+
+                                    Glide.with(holder.itemView.context)
+                                        .asGif().load(R.drawable.sadlock)
+                                        .into(failureImageView)
+
+                                    AlertDialog.Builder(holder.itemView.context)
+                                        .setTitle("")
+                                        .setView(failureDialogView)
+                                        .show()
+
+                                    // Update the view to reflect the unlocked state
+                                    notifyDataSetChanged()
+
+                                }
+                            } catch (e: NumberFormatException) {
+                                e.printStackTrace()
+                            }
+                        }
                         .show()
                 }
             }

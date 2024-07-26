@@ -14,16 +14,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.ImageStore
 import com.example.visuallithuanian.model.PreferencesHelper
+import kotlin.properties.Delegates
 
 class PractiseAdapter(
     private var imageResources: MutableList<Int>,
-    private var imageNames1: MutableList<Triple<String, String,Int>>,
+    private var imageNames1: MutableList<Triple<String, String, Int>>,
     btnShuffle: AppCompatButton,
     recyclerViewPractise: RecyclerView,
     private val preferencesHelper: PreferencesHelper,
     private val incrementCounter: () -> Unit,
     private val onCorrectPair: (Int) -> Unit, // Callback to notify correct pair selection
-    private val onDataChanged: () -> Unit // Callback to notify data changes
+    private val onDataChanged: () -> Unit, // Callback to notify data changes
+    private val textCounterFire: TextView,
+    private val updateTextCountCallback: (Int) -> Unit
 ) : RecyclerView.Adapter<PractiseAdapter.PractiseViewHolder>() {
 
     private lateinit var recyclerView: RecyclerView
@@ -31,6 +34,7 @@ class PractiseAdapter(
     private var selectedImageName = ""
     private var previousSelectedImageResource = -1
     private var previousSelectedImageName = ""
+    private var currentCount by Delegates.notNull<Int>()
 
     init {
         btnShuffle.setOnClickListener {
@@ -125,9 +129,12 @@ class PractiseAdapter(
                 ).show()
                 holder.cardTextPractise.setBackgroundColor(GREEN_COLOR)
                 preferencesHelper.incrementCounter() // Increment counter when correct pair is selected
-                incrementCounter() // Call the increment counter callback
+           //    incrementCounter() // Call the increment counter callback
                 onCorrectPair(selectedImageResource) // Notify correct pair selection
                 onDataChanged() // Notify data changes
+                currentCount = textCounterFire.text.toString().toIntOrNull()?:0
+                val newCount = currentCount+1
+                 updateTextCountCallback(newCount)
                 Color.GREEN
             } else {
                 Toast.makeText(

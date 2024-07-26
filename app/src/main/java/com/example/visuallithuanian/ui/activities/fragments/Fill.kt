@@ -248,7 +248,7 @@ package com.example.visuallithuanian
 //"the snow" = "sniegas"
 //"a storm" = "audra"
 //"a blizzard" = "pūga"
-//"her bouquet is beautiful" = "jos puokštė yra graži"
+//"her bouquet is beautiful" = "jos puokštė yra graži" //Given for voice clip recording
 
 
 //Sports Flashcards

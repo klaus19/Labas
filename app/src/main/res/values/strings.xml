@@ -53,6 +53,8 @@
     <string name="daily_streak_notification" translatable="false">Daily Streak Notification</string>
     <string name="select_time" translatable="false">Select time</string>
     <string name="fire_icon_desc">fire icon image</string>
+    <string name="happlocked">happy unocked emoji</string>
+    <string name="not_enough_points_image">Not enough points</string>
     <string-array name="time_options">
         <item>12:00</item>
         <item>14:00</item>

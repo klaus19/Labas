@@ -1,7 +1,12 @@
 package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Context.MODE_PRIVATE
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -64,7 +69,10 @@ class PractiseFragment : Fragment() {
             preferencesHelper,
             this::incrementCounter,
             this::removeCorrectPairFromImageStore,
-            this::handleNoCardsVisibility // Ensure the callback is properly referenced
+            this::handleNoCardsVisibility,  // Ensure the callback is properly referenced,
+            binding.textCounterFire,
+            this::updateTextCountFire
+
         )
 
         binding.recyclerViewPractise.adapter = practiseAdapter
@@ -73,10 +81,52 @@ class PractiseFragment : Fragment() {
         // Initial visibility check
         handleNoCardsVisibility()
 
+        updateSharedPreferences()
+
         // Shuffle cards after the recyclerView has been initialized
         practiseAdapter.shuffleCards()
 
+        loadTextCountFire()
+
         return binding.root
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        loadTextCountFire()
+    }
+
+    private fun loadTextCountFire() {
+        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val savedCount = sharedPreferences.getInt("textCount", 0)
+        binding.textCounterFire.text = savedCount.toString()
+    }
+
+    private fun updateSharedPreferences() {
+        val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putInt("counter", counter)
+        editor.putInt("counterDiamond", counterDiamond)
+        editor.putInt("counterGem", counterGem)
+        editor.apply()
+    }
+
+    // updating fire counter
+    fun updateTextCountFire(newValue:Int){
+        binding.textCounterFire.text = newValue.toString()
+        saveTextCount(newValue)
+        val intent = Intent("com.example.UPDATE_TEXT_COUNT")
+        intent.putExtra("textCount", newValue)
+        requireContext().sendBroadcast(intent)
+    }
+
+    // saving fire text
+    private fun saveTextCount(newValue: Int) {
+        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putInt("textCount", newValue)
+        editor.apply()
     }
 
     private fun incrementCounter() {
@@ -96,6 +146,8 @@ class PractiseFragment : Fragment() {
                 binding.textCounterGem.text = counterGem.toString()
             }
         }
+        updateSharedPreferences()
+        Log.d("PractiseFragment", "Counters updated: counter=$counter, counterDiamond=$counterDiamond, counterGem=$counterGem")
     }
 
     private fun removeCorrectPairFromImageStore(resId: Int) {
@@ -110,4 +162,6 @@ class PractiseFragment : Fragment() {
             binding.noCardsLayout.visibility = View.GONE
         }
     }
+
+
 }
