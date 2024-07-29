@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import androidx.navigation.NavController
@@ -17,7 +16,7 @@ import com.example.visuallithuanian.R
 import com.example.visuallithuanian.data.FlashCardInfo
 
 class FlashcardsEasyAdapter(
-    private val context: Context,
+    context: Context,
     private val imageList: MutableList<FlashCardInfo>,  // Mutable list to allow updates
     private val navController: NavController,
     private val unlockedItem: MutableList<String>,
