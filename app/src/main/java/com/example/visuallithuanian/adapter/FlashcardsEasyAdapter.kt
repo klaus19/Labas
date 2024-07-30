@@ -2,6 +2,7 @@ package com.example.visuallithuanian.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.data.FlashCardInfo
@@ -22,6 +24,7 @@ class FlashcardsEasyAdapter(
     private val unlockedItem: MutableList<String>,
     private val textCounterFire: TextView
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private lateinit var sharedPreferences: SharedPreferences
 
     companion object {
         private const val VIEW_TYPE_UNLOCKED = 0
@@ -116,98 +119,58 @@ class FlashcardsEasyAdapter(
                                     textCounterFire.text = newCount.toString()
 
                                     // Save the new value to SharedPreferences
-                                    val sharedPreferences = holder.itemView.context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                                    sharedPreferences = holder.itemView.context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
                                     val editor = sharedPreferences.edit()
                                     editor.putInt("textCount", newCount)
                                     editor.apply()
 
                                     // Update the unlocked state and save to SharedPreferences
-                                    if (flashCard.topRightValue == 5) {
+                                    if (flashCard.topRightValue == 10) {
                                         unlockedItem.add("Pointers")
-                                        val updatedUnlockedSet = unlockedItem.toSet()
-                                        val editor1 = sharedPreferences.edit()
-                                        editor1.putStringSet("unlockedItems", updatedUnlockedSet)
-                                        editor1.apply()
-
-                                        // Create a success dialog
-                                        val successDialogView = LayoutInflater.from(holder.itemView.context)
-                                            .inflate(R.layout.dialog_card_unlocked, null)
-
-                                        val successMessageTextView: TextView = successDialogView.findViewById(R.id.successDialogMessage)
-                                        val successImageView: ImageView = successDialogView.findViewById(R.id.successDialogImage)
-
-                                        successMessageTextView.text = "Yay,Card Unlocked!"
-                                        Glide.with(holder.itemView.context).asGif()
-                                            .load(R.drawable.happyunlocked)
-                                            .into(successImageView)
-
-                                        AlertDialog.Builder(holder.itemView.context)
-                                            .setView(successDialogView)
-                                            .show()
-
+                                        commonPrefrences()
+                                        someRepeatingCode(holder)
                                         // Update the view to reflect the unlocked state
                                         notifyDataSetChanged()
-
                                         holder.cardviewFlashcardFire.setOnClickListener {
                                             if (flashCard.name == "Pointers") {
                                                 navController.navigate(R.id.action_flashCards_to_pointersFlashcardFragment)
                                             }
                                         }
                                     }
-
-                                    if (flashCard.topRightValue ==30){
+                                    if (flashCard.topRightValue ==12){
                                         unlockedItem.add("Daily Basic")
-                                        val updatedUnlockedSet = unlockedItem.toSet()
-                                        val editor1 = sharedPreferences.edit()
-                                        editor1.putStringSet("unlockedItems", updatedUnlockedSet)
-                                        editor1.apply()
-
-                                        // Create a success dialog
-                                        val successDialogView = LayoutInflater.from(holder.itemView.context)
-                                            .inflate(R.layout.dialog_card_unlocked, null)
-
-                                        val successMessageTextView: TextView = successDialogView.findViewById(R.id.successDialogMessage)
-                                        val successImageView: ImageView = successDialogView.findViewById(R.id.successDialogImage)
-
-                                        successMessageTextView.text = "Yay,Card Unlocked!"
-                                        Glide.with(holder.itemView.context).asGif()
-                                            .load(R.drawable.happyunlocked)
-                                            .into(successImageView)
-
-                                        AlertDialog.Builder(holder.itemView.context)
-                                            .setView(successDialogView)
-                                            .show()
-
+                                        commonPrefrences()
+                                        someRepeatingCode(holder)
                                         // Update the view to reflect the unlocked state
                                         notifyDataSetChanged()
-
                                         holder.cardviewFlashcardFire.setOnClickListener {
                                             if (flashCard.name == "Daily Basic") {
                                                 navController.navigate(R.id.action_flashCards_to_dailyBasic)
                                             }
                                         }
                                     }
+                                    if (flashCard.topRightValue==20){
+                                        unlockedItem.add("Basic actions")
+                                        commonPrefrences()
+                                        someRepeatingCode(holder)
+                                        notifyDataSetChanged()
+                                        holder.cardviewFlashcardFire.setOnClickListener {
+                                            navController.navigate(R.id.action_flashCards_to_basicActionsFlashcard)
+                                        }
+                                    }
+                                    if (flashCard.topRightValue==25){
+                                        unlockedItem.add("Holidays, Celebration")
+                                        commonPrefrences()
+                                        someRepeatingCode(holder)
+                                        notifyDataSetChanged()
+                                        holder.cardviewFlashcardFire.setOnClickListener {
+                                            navController.navigate(R.id.action_flashCards_to_holidayCelebrations)
+                                        }
+                                    }
                                 } else {
-                                           // create a failure dialog
-                                    val failureDialogView = LayoutInflater.from(holder.itemView.context)
-                                        .inflate(R.layout.card_locked, null)
-
-                                    val failureMessageTextView: TextView = failureDialogView.findViewById(R.id.notEnoughPointsMessage)
-                                    val failureImageView: ImageView = failureDialogView.findViewById(R.id.notEnoughPointsImage)
-                                    failureMessageTextView.text = "You don't have enough points!"
-
-                                    Glide.with(holder.itemView.context)
-                                        .asGif().load(R.drawable.sadlock)
-                                        .into(failureImageView)
-
-                                    AlertDialog.Builder(holder.itemView.context)
-                                        .setTitle("")
-                                        .setView(failureDialogView)
-                                        .show()
-
+                                    unlockFailure(holder)
                                     // Update the view to reflect the unlocked state
                                     notifyDataSetChanged()
-
                                 }
                             } catch (e: NumberFormatException) {
                                 e.printStackTrace()
@@ -217,6 +180,52 @@ class FlashcardsEasyAdapter(
                 }
             }
         }
+    }
+
+    private fun commonPrefrences() {
+        val updatedUnlockedSet = unlockedItem.toSet()
+        val editor1 = sharedPreferences.edit()
+        editor1.putStringSet("unlockedItems", updatedUnlockedSet)
+        editor1.apply()
+    }
+
+    private fun unlockFailure(holder: LockedViewHolder) {
+        // create a failure dialog
+        val failureDialogView = LayoutInflater.from(holder.itemView.context)
+            .inflate(R.layout.card_locked, null)
+
+        val failureMessageTextView: TextView = failureDialogView.findViewById(R.id.notEnoughPointsMessage)
+        val failureImageView: ImageView = failureDialogView.findViewById(R.id.notEnoughPointsImage)
+        failureMessageTextView.text = "You don't have enough points!"
+
+        Glide.with(holder.itemView.context)
+            .asGif().load(R.drawable.sadlock)
+            .into(failureImageView)
+
+        AlertDialog.Builder(holder.itemView.context)
+            .setTitle("")
+            .setView(failureDialogView)
+            .show()
+    }
+
+
+    private fun someRepeatingCode(holder: LockedViewHolder) {
+        // Create a success dialog
+        val successDialogView = LayoutInflater.from(holder.itemView.context)
+            .inflate(R.layout.dialog_card_unlocked, null)
+
+        val successMessageTextView: TextView = successDialogView.findViewById(R.id.successDialogMessage)
+        val successImageView: ImageView = successDialogView.findViewById(R.id.successDialogImage)
+
+        successMessageTextView.text = "Yay,Card Unlocked!"
+        Glide.with(holder.itemView.context).asGif()
+            .load(R.drawable.happyunlocked)
+            .into(successImageView)
+
+        AlertDialog.Builder(holder.itemView.context)
+            .setView(successDialogView)
+            .show()
+
     }
 
     override fun getItemCount(): Int {

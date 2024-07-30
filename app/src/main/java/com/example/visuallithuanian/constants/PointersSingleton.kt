@@ -13,7 +13,7 @@ object PointersSingleton {
           hashMapPointers["He"] = Triple("Jis", R.drawable.he, R.raw.computer)
           hashMapPointers["She"] = Triple("Ji", R.drawable.she, R.raw.computer)
           hashMapPointers["We"] = Triple("Mes", R.drawable.we, R.raw.computer)
-          hashMapPointers["You(many)"] = Triple("Jūs", R.drawable.you, R.raw.computer)
+          hashMapPointers["You(many)"] = Triple("Jūs", R.drawable.youplural, R.raw.computer)
           hashMapPointers["they"] = Triple("jie", R.drawable.they, R.raw.computer)
           hashMapPointers["they(girls)"] = Triple("jos", R.drawable.theygirls, R.raw.computer)
           hashMapPointers["my"] = Triple("mano", R.drawable.my, R.raw.computer)

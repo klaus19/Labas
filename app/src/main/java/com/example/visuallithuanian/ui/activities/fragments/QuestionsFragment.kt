@@ -109,7 +109,7 @@ class QuestionsFragment : Fragment() {
         hashMap["he"] = Triple("jis", R.drawable.he, R.raw.he)
         hashMap["she"] = Triple("ji", R.drawable.she, R.raw.she)
         hashMap["we"] = Triple("mes", R.drawable.we, R.raw.we)
-        hashMap["you (plural)"] = Triple("jūs", R.drawable.you, R.raw.you)
+        hashMap["you (plural)"] = Triple("jūs", R.drawable.youplural, R.raw.you)
         hashMap["they"] = Triple("jie", R.drawable.they, R.raw.they)
 
         // Initialize Media Player

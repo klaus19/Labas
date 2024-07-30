@@ -157,17 +157,17 @@ class FlashCards : Fragment() {
         return listOf(
             FlashCardInfo(R.drawable.doctorvisit, "Questions and Pronouns", "",0,R.drawable.fireicon),
             FlashCardInfo(R.drawable.pointers, "Pointers", "",10,R.drawable.fireicon),
-            FlashCardInfo(R.drawable.talking, "Daily Basic", "",30,R.drawable.fireicon),
-            FlashCardInfo(R.drawable.action, "Basic actions", "",40,R.drawable.fireicon),
-            FlashCardInfo(R.drawable.holiday1, "Holidays, Celebration", "",50,R.drawable.fireicon),
-            FlashCardInfo(R.drawable.relatives, "Family", "",65,R.drawable.fireicon),
-            FlashCardInfo(R.drawable.keyphrase, "Key Phrases", "",70,R.drawable.fireicon),
-            FlashCardInfo(R.drawable.days, "Day and Months", "",75,R.drawable.fireicon),
-            FlashCardInfo(R.drawable.colorshape, "Colours and Shapes", "",80,R.drawable.fireicon),
-            FlashCardInfo(R.drawable.iverb, "I verbs", "",85,R.drawable.fireicon),
-            FlashCardInfo(R.drawable.workplace, "Workplace language", "",90,R.drawable.fireicon),
-            FlashCardInfo(R.drawable.nature, "Nature", "",95,R.drawable.fireicon),
-            FlashCardInfo(R.drawable.romantic, "Romantic phrases", "",100,R.drawable.fireicon)
+            FlashCardInfo(R.drawable.talking, "Daily Basic", "",12,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.action, "Basic actions", "",20,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.holiday1, "Holidays, Celebration", "",25,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.relatives, "Family", "",30,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.keyphrase, "Key Phrases", "",35,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.days, "Day and Months", "",40,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.colorshape, "Colours and Shapes", "",45,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.iverb, "I verbs", "",50,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.workplace, "Workplace language", "",60,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.nature, "Nature", "",65,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.romantic, "Romantic phrases", "",70,R.drawable.fireicon)
         )
     }
 
