@@ -154,6 +154,39 @@ class FlashcardsEasyAdapter(
                                             }
                                         }
                                     }
+
+                                    if (flashCard.topRightValue ==30){
+                                        unlockedItem.add("Daily Basic")
+                                        val updatedUnlockedSet = unlockedItem.toSet()
+                                        val editor1 = sharedPreferences.edit()
+                                        editor1.putStringSet("unlockedItems", updatedUnlockedSet)
+                                        editor1.apply()
+
+                                        // Create a success dialog
+                                        val successDialogView = LayoutInflater.from(holder.itemView.context)
+                                            .inflate(R.layout.dialog_card_unlocked, null)
+
+                                        val successMessageTextView: TextView = successDialogView.findViewById(R.id.successDialogMessage)
+                                        val successImageView: ImageView = successDialogView.findViewById(R.id.successDialogImage)
+
+                                        successMessageTextView.text = "Yay,Card Unlocked!"
+                                        Glide.with(holder.itemView.context).asGif()
+                                            .load(R.drawable.happyunlocked)
+                                            .into(successImageView)
+
+                                        AlertDialog.Builder(holder.itemView.context)
+                                            .setView(successDialogView)
+                                            .show()
+
+                                        // Update the view to reflect the unlocked state
+                                        notifyDataSetChanged()
+
+                                        holder.cardviewFlashcardFire.setOnClickListener {
+                                            if (flashCard.name == "Daily Basic") {
+                                                navController.navigate(R.id.action_flashCards_to_dailyBasic)
+                                            }
+                                        }
+                                    }
                                 } else {
                                            // create a failure dialog
                                     val failureDialogView = LayoutInflater.from(holder.itemView.context)
