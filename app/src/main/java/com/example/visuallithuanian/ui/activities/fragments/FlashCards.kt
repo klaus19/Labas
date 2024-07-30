@@ -156,7 +156,7 @@ class FlashCards : Fragment() {
     private fun generateEasyFlashCards(): List<FlashCardInfo> {
         return listOf(
             FlashCardInfo(R.drawable.doctorvisit, "Questions and Pronouns", "",0,R.drawable.fireicon),
-            FlashCardInfo(R.drawable.pointers, "Pointers", "",10,R.drawable.fireicon),
+            FlashCardInfo(R.drawable.pointers, "Pointers", "",5,R.drawable.fireicon),
             FlashCardInfo(R.drawable.talking, "Daily Basic", "",30,R.drawable.fireicon),
             FlashCardInfo(R.drawable.action, "Basic actions", "",40,R.drawable.fireicon),
             FlashCardInfo(R.drawable.holiday1, "Holidays, Celebration", "",50,R.drawable.fireicon),

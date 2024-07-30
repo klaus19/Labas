@@ -3,6 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@color/lime_green"
     android:padding="16dp">
     <ImageView
         android:id="@+id/successDialogImage"
@@ -12,7 +13,7 @@
         android:contentDescription="@string/happlocked"
         android:src="@drawable/happyunlocked" />
     <TextView
-        android:textColor="@color/new_design_text_color"
+        android:textColor="@color/blue_card"
         android:textStyle="bold"
         android:id="@+id/successDialogMessage"
         android:layout_width="match_parent"

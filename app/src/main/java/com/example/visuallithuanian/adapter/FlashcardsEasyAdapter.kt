@@ -64,7 +64,7 @@ class FlashcardsEasyAdapter(
         return if (viewType == VIEW_TYPE_LOCKED) LockedViewHolder(view) else UnlockedViewHolder(view)
     }
 
-    @SuppressLint("NotifyDataSetChanged", "MissingInflatedId")
+    @SuppressLint("NotifyDataSetChanged", "MissingInflatedId", "ResourceType")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val flashCard = imageList[position]
         if (holder is UnlockedViewHolder) {
@@ -103,8 +103,8 @@ class FlashcardsEasyAdapter(
                     messageTextView.text = "Do you have ${flashCard.topRightValue}"
                     imageView.setImageResource(R.drawable.fireicon)
 
+
                     AlertDialog.Builder(holder.itemView.context)
-                        .setTitle("Category Locked")
                         .setView(dialogView)
                         .setNegativeButton("NO") { dialog, _ -> dialog.cancel() }
                         .setPositiveButton("YES") { _, _ ->
@@ -161,7 +161,7 @@ class FlashcardsEasyAdapter(
 
                                     val failureMessageTextView: TextView = failureDialogView.findViewById(R.id.notEnoughPointsMessage)
                                     val failureImageView: ImageView = failureDialogView.findViewById(R.id.notEnoughPointsImage)
-                                    failureMessageTextView.text = "You don't have enough points"
+                                    failureMessageTextView.text = "You don't have enough points!"
 
                                     Glide.with(holder.itemView.context)
                                         .asGif().load(R.drawable.sadlock)
