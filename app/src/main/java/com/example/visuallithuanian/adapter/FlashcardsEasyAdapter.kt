@@ -137,7 +137,7 @@ class FlashcardsEasyAdapter(
                                             }
                                         }
                                     }
-                                    if (flashCard.topRightValue ==12){
+                                    if (flashCard.topRightValue ==15){
                                         unlockedItem.add("Daily Basic")
                                         commonPrefrences()
                                         someRepeatingCode(holder)
@@ -149,7 +149,7 @@ class FlashcardsEasyAdapter(
                                             }
                                         }
                                     }
-                                    if (flashCard.topRightValue==20){
+                                    if (flashCard.topRightValue==2){
                                         unlockedItem.add("Basic actions")
                                         commonPrefrences()
                                         someRepeatingCode(holder)
@@ -158,7 +158,7 @@ class FlashcardsEasyAdapter(
                                             navController.navigate(R.id.action_flashCards_to_basicActionsFlashcard)
                                         }
                                     }
-                                    if (flashCard.topRightValue==25){
+                                    if (flashCard.topRightValue==2){
                                         unlockedItem.add("Holidays, Celebration")
                                         commonPrefrences()
                                         someRepeatingCode(holder)
@@ -167,6 +167,79 @@ class FlashcardsEasyAdapter(
                                             navController.navigate(R.id.action_flashCards_to_holidayCelebrations)
                                         }
                                     }
+                                    if(flashCard.topRightValue ==2){
+                                        unlockedItem.add("Family")
+                                        commonPrefrences()
+                                        someRepeatingCode(holder)
+                                        notifyDataSetChanged()
+                                        holder.cardviewFlashcardFire.setOnClickListener {
+                                            navController.navigate(R.id.action_flashCards_to_familyFlashcards)
+                                        }
+                                    }
+                                    if (flashCard.topRightValue == 2){
+                                        unlockedItem.add("Key Phrases")
+                                        commonPrefrences()
+                                        someRepeatingCode(holder)
+                                        notifyDataSetChanged()
+                                        holder.cardviewFlashcardFire.setOnClickListener {
+                                            navController.navigate(R.id.action_flashCards_to_keyPhrasesFragment)
+                                        }
+                                    }
+                                    if (flashCard.topRightValue == 2){
+                                        unlockedItem.add("Day and Months")
+                                        commonPrefrences()
+                                        someRepeatingCode(holder)
+                                        notifyDataSetChanged()
+                                        holder.cardviewFlashcardFire.setOnClickListener {
+                                            navController.navigate(R.id.action_flashCards_to_daysMonthsFlashcards)
+                                        }
+                                    }
+                                    if (flashCard.topRightValue == 2){
+                                        unlockedItem.add("Colours and Shapes")
+                                        commonPrefrences()
+                                        someRepeatingCode(holder)
+                                        notifyDataSetChanged()
+                                        holder.cardviewFlashcardFire.setOnClickListener {
+                                            navController.navigate(R.id.action_flashCards_to_colorshapeFragment)
+                                        }
+                                    }
+                                    if (flashCard.topRightValue == 2){
+                                        unlockedItem.add("I verbs")
+                                        commonPrefrences()
+                                        someRepeatingCode(holder)
+                                        notifyDataSetChanged()
+                                        holder.cardviewFlashcardFire.setOnClickListener {
+                                            navController.navigate(R.id.action_flashCards_to_verbsFragment)
+                                        }
+                                    }
+                                    if (flashCard.topRightValue == 2){
+                                        unlockedItem.add("Workplace language")
+                                        commonPrefrences()
+                                        someRepeatingCode(holder)
+                                        notifyDataSetChanged()
+                                        holder.cardviewFlashcardFire.setOnClickListener {
+                                            navController.navigate(R.id.action_flashCards_to_workPlaceLanguage)
+                                        }
+                                    }
+                                    if (flashCard.topRightValue == 2){
+                                        unlockedItem.add("Nature")
+                                        commonPrefrences()
+                                        someRepeatingCode(holder)
+                                        notifyDataSetChanged()
+                                        holder.cardviewFlashcardFire.setOnClickListener {
+                                            navController.navigate(R.id.action_flashCards_to_natureFragment)
+                                        }
+                                    }
+                                    if (flashCard.topRightValue == 2){
+                                        unlockedItem.add("Romantic phrases")
+                                        commonPrefrences()
+                                        someRepeatingCode(holder)
+                                        notifyDataSetChanged()
+                                        holder.cardviewFlashcardFire.setOnClickListener {
+                                            navController.navigate(R.id.action_flashCards_to_romanticPhrasesFragment)
+                                        }
+                                    }
+
                                 } else {
                                     unlockFailure(holder)
                                     // Update the view to reflect the unlocked state

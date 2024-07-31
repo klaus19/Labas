@@ -39,7 +39,7 @@ class DailyBasic : Fragment() {
     private lateinit var currentTriple: Map.Entry<String, Triple<String, Int, Int>>
 
     var isFront=true
-    private val totalTriples = 37 // change the value to the actual number of entries in your hashMap
+    private val totalTriples = 31 // change the value to the actual number of entries in your hashMap
     private lateinit var preferencesHelper: PreferencesHelper
     private lateinit var easyPreferencesHelper: EasyPreferencesHelper
     // declaring viewmodel
@@ -91,51 +91,24 @@ class DailyBasic : Fragment() {
             )
         )
         hashMap["What is it?"] = Triple("Kas tai?", R.drawable.what1, R.raw.whatisit_)
-        hashMap["this is English newspaper"] = Triple("tai yra angliškas laikraštis",
-            R.drawable.newspaper,
-            R.raw.thisisenglishnewspaper
-        )
-        hashMap["Japanese food"] = Triple("Japonų maistas",
-            R.drawable.japanesefood,
-            R.raw.japanesefood
-        )
+        hashMap["this is English newspaper"] = Triple("tai yra angliškas laikraštis", R.drawable.newspaper,R.raw.thisisenglishnewspaper)
+        hashMap["Japanese food"] = Triple("Japonų maistas",R.drawable.japanesefood,R.raw.japanesefood)
         hashMap["hot coffee"] = Triple("karšta kava", R.drawable.hotcoffee, R.raw.hotcoffee)
-        hashMap["I learn Lithuanian"] = Triple("Aš mokausi lietuvių kalbos",
-            R.drawable.languages,
-            R.raw.ilearnlithuanian
-        )
-        hashMap["to eat"] = Triple("valgyti", R.drawable.eat, R.raw.toeat)
-        hashMap["I eat japanese food"] = Triple("Aš valgau japonišką maistą",
-            R.drawable.eat,
-            R.raw.letsjapanese
-        )
-        hashMap["Would you like some tea?"] = Triple("Ar norėtumete arbatos?",
-            R.drawable.tea1,
-            R.raw.wouldyoulikesometea
-        )
-        hashMap["Can you repeat it again?"] = Triple("Ar galite pakartoti dar kartą?",
-            R.drawable.repeat,
-            R.raw.canyourepeatagain
-        )
+        hashMap["I learn Lithuanian"] = Triple("Aš mokausi lietuvių kalbos",R.drawable.languages,R.raw.ilearnlithuanian)
+        hashMap["to eat"] = Triple("valgyti", R.drawable.toeat, R.raw.toeat)
+        hashMap["I eat japanese food"] = Triple("Aš valgau japonišką maistą",R.drawable.japanesefood,R.raw.letsjapanese)
+        hashMap["Would you like some tea?"] = Triple("Ar norėtumete arbatos?",R.drawable.tea1,R.raw.wouldyoulikesometea)
+        hashMap["Can you repeat it again?"] = Triple("Ar galite pakartoti dar kartą?",R.drawable.repeat,R.raw.canyourepeatagain)
         hashMap["Of course"] = Triple("Žinoma", R.drawable.ofcourse, R.raw.ofcourse)
         hashMap["rice"] = Triple("ryžiai", R.drawable.rice, R.raw.rice)
         hashMap["soup"] = Triple("sriuba", R.drawable.soup1, R.raw.soup)
         hashMap["Bread"] = Triple("Duona", R.drawable.bread1, R.raw.bread1)
         hashMap["water"] = Triple("vanduo", R.drawable.water1, R.raw.water)
-        hashMap["What are you reading?"] = Triple("Ką skaitote?",
-            R.drawable.whatreading,
-            R.raw.whatareyoureading
-        )
+        hashMap["What are you reading?"] = Triple("Ką skaitote?",R.drawable.whatreading,R.raw.whatareyoureading)
         hashMap["to cost"] = Triple("kainuoti", R.drawable.cost, R.raw.tocost)
-        hashMap["a cup of coffee"] = Triple("puodelis kavos",
-            R.drawable.cupcoffee,
-            R.raw.cupofcoffee
-        )
+        hashMap["a cup of coffee"] = Triple("puodelis kavos",R.drawable.cupcoffee,R.raw.cupofcoffee)
         hashMap["apple"] = Triple("obuolys", R.drawable.apple1, R.raw.apple1)
-        hashMap["She drinks hot coffee"] = Triple("Ji geria karštą kavą",
-            R.drawable.coffee1,
-            R.raw.shedrinkshotcoffee
-        )
+        hashMap["She drinks hot coffee"] = Triple("Ji geria karštą kavą",R.drawable.coffee1,R.raw.shedrinkshotcoffee)
         hashMap["a glass"] = Triple("stiklinė", R.drawable.glass1, R.raw.aglass)
         hashMap["What do you buy?"] = Triple("Ką perkate?", R.drawable.buy11, R.raw.whatdoyoubuy)
         hashMap["parents"] = Triple("tėvai", R.drawable.parents1, R.raw.parents)
@@ -145,10 +118,7 @@ class DailyBasic : Fragment() {
         hashMap["Let's go"] = Triple("eikime!", R.drawable.letsgo1, R.raw.letsgo)
         hashMap["more"] = Triple("daugiau", R.drawable.more, R.raw.more)
         hashMap["key"] = Triple("raktas", R.drawable.key, R.raw.key11)
-        hashMap["what are you doing?"] = Triple("ką darote?",
-            R.drawable.todo,
-            R.raw.whatareyoudoing
-        )
+        hashMap["what are you doing?"] = Triple("ką darote?",R.drawable.todo,R.raw.whatareyoudoing)
         hashMap["hand"] = Triple("ranka", R.drawable.hand, R.raw.hand)
         hashMap["to stop"] = Triple("nustoti", R.drawable.stopsign, R.raw.tostop)
 

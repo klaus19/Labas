@@ -10,7 +10,8 @@ class PreferencesHelper(private val context: Context) {
 
     companion object {
         private const val COUNTER_KEY = "counter_key"
-        private const val DIAMOND_COUNTER_KEY = "diamond_counter_key"
+        private const val PURPLE_COUNTER_KEY = "purple_counter_key"
+        private const val RED_COUNTER_KEY = "red_counter_key"
         private const val BEST_WORDS = "progress_key"
         private const val SAVED_ITEMS_KEY = "saved_items_key" // Key for saved items set
     }
@@ -18,6 +19,11 @@ class PreferencesHelper(private val context: Context) {
     fun incrementCounter() {
         val currentCounter = getCounter()
         saveCounter(currentCounter + 1)
+    }
+
+    fun incrementPurpleCount(){
+        val currentCounter = getPurpleCounter()
+        savePurpleCounter(currentCounter+1)
     }
 
     fun decrementCounter() {
@@ -38,34 +44,29 @@ class PreferencesHelper(private val context: Context) {
         return sharedPreferences.getInt(COUNTER_KEY, 0)
     }
 
-    fun saveDiamondCounter(diamondCounter: Int) {
+
+    private fun savePurpleCounter(diamondCounter: Int) {
         with(sharedPreferences.edit()) {
-            putInt(DIAMOND_COUNTER_KEY, diamondCounter)
+            putInt(PURPLE_COUNTER_KEY, diamondCounter)
             apply()
         }
     }
 
-    fun getDiamondCounter(): Int {
-        return sharedPreferences.getInt(DIAMOND_COUNTER_KEY, 0)
+    fun getPurpleCounter(): Int {
+        return sharedPreferences.getInt(PURPLE_COUNTER_KEY, 0)
     }
 
-    fun saveProgress(progress: Int) {
+    fun saveRedCounter(redCounter:Int){
         with(sharedPreferences.edit()) {
-            putInt(BEST_WORDS, progress)
+            putInt(RED_COUNTER_KEY, redCounter)
             apply()
         }
     }
 
-    fun getProgress(): Int {
-        return sharedPreferences.getInt(BEST_WORDS, 0)
+    fun getRedCounter(): Int {
+        return sharedPreferences.getInt(RED_COUNTER_KEY, 0)
     }
 
-    fun saveCounterValue(value: Int) {
-        with(sharedPreferences.edit()) {
-            putInt("counter_value", value)
-            apply()
-        }
-    }
 
     // New methods for managing saved items
     fun addSavedItem(item: String) {

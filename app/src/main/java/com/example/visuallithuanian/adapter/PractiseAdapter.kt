@@ -20,21 +20,22 @@ class PractiseAdapter(
     private var imageResources: MutableList<Int>,
     private var imageNames1: MutableList<Triple<String, String, Int>>,
     btnShuffle: AppCompatButton,
-    recyclerViewPractise: RecyclerView,
+    private var recyclerView1: RecyclerView,
     private val preferencesHelper: PreferencesHelper,
-    private val incrementCounter: () -> Unit,
-    private val onCorrectPair: (Int) -> Unit, // Callback to notify correct pair selection
-    private val onDataChanged: () -> Unit, // Callback to notify data changes
+    private val onCorrectPair: (Int) -> Unit,
+    private val onDataChanged: () -> Unit,
     private val textCounterFire: TextView,
-    private val updateTextCountCallback: (Int) -> Unit
+    private val textCounterPurpleDiamond: TextView,
+    private val updateTextCountCallback: (Int) -> Unit,
+    private val updateTextCountPurple: (Int) -> Unit
 ) : RecyclerView.Adapter<PractiseAdapter.PractiseViewHolder>() {
 
-    private lateinit var recyclerView: RecyclerView
     private var selectedImageResource = -1
     private var selectedImageName = ""
     private var previousSelectedImageResource = -1
     private var previousSelectedImageName = ""
-    private var currentCount by Delegates.notNull<Int>()
+    private var currentCount = 0
+    private var currentCountPurple = 0
 
     init {
         btnShuffle.setOnClickListener {
@@ -52,8 +53,6 @@ class PractiseAdapter(
         imageResources.addAll(randomPairs.map { it.first })
         imageNames1.addAll(randomPairs.map { it.second })
 
-
-        // Shuffle both lists independently to mismatch the pairs
         imageResources.shuffle()
         imageNames1.shuffle()
 
@@ -64,16 +63,16 @@ class PractiseAdapter(
 
         resetCardImageBackgroundToWhite()
         notifyDataSetChanged()
-        onDataChanged() // Notify data changes
+        onDataChanged()
     }
 
     fun initsetRecyclerView(recyclerView: RecyclerView) {
-        this.recyclerView = recyclerView
+        this.recyclerView1 = recyclerView
     }
 
     private fun resetCardImageBackgroundToWhite() {
         for (position in 0 until imageResources.size) {
-            val holder = recyclerView.findViewHolderForAdapterPosition(position) as? PractiseViewHolder
+            val holder = recyclerView1.findViewHolderForAdapterPosition(position) as? PractiseViewHolder
             holder?.cardImagePractise?.setCardBackgroundColor(Color.WHITE)
         }
     }
@@ -122,26 +121,25 @@ class PractiseAdapter(
 
         val nameColor = if (imageNames1[position].first == selectedImageName) {
             if (ImageStore.imagesNamesMap[selectedImageResource]?.first == selectedImageName) {
-                Toast.makeText(
-                    holder.itemView.context,
-                    "",
-                    Toast.LENGTH_SHORT
-                ).show()
                 holder.cardTextPractise.setBackgroundColor(GREEN_COLOR)
-                preferencesHelper.incrementCounter() // Increment counter when correct pair is selected
-           //    incrementCounter() // Call the increment counter callback
-                onCorrectPair(selectedImageResource) // Notify correct pair selection
-                onDataChanged() // Notify data changes
-                currentCount = textCounterFire.text.toString().toIntOrNull()?:0
-                val newCount = currentCount+1
-                 updateTextCountCallback(newCount)
+                preferencesHelper.incrementCounter()
+                preferencesHelper.incrementPurpleCount()
+                onCorrectPair(selectedImageResource)
+                onDataChanged()
+
+                currentCount = textCounterFire.text.toString().toIntOrNull() ?: 0
+                val newCount = currentCount + 1
+                updateTextCountCallback(newCount)
+
+                // Check if the currentCount is a multiple of 10
+                if (newCount % 10 == 0) {
+                    currentCountPurple = textCounterPurpleDiamond.text.toString().toIntOrNull() ?: 0
+                    val newPurpleCount = currentCountPurple + 2
+                    updateTextCountPurple(newPurpleCount)
+                }
+
                 Color.GREEN
             } else {
-                Toast.makeText(
-                    holder.itemView.context,
-                    "",
-                    Toast.LENGTH_SHORT
-                ).show()
                 Color.RED
             }
         } else {
