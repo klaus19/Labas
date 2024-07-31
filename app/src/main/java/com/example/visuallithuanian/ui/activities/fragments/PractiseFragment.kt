@@ -40,11 +40,12 @@ class PractiseFragment : Fragment() {
 
         preferencesHelper = PreferencesHelper(requireContext())
         counter = preferencesHelper.getCounter()
-        counterDiamond = preferencesHelper.getDiamondCounter()
+        counterDiamond = preferencesHelper.getPurpleCounter()
+        counterGem = preferencesHelper.getRedCounter()
 
         binding.textCounterFire.text = counter.toString()
-        binding.textCounterDiamond.text = counterDiamond.toString()
-        binding.textCounterGem.text = counterGem.toString()
+        binding.textCounterPurple.text = counterDiamond.toString()
+        binding.textCounterRed.text = counterGem.toString()
 
 
         ImageStore.loadFromPreferences(requireContext())
@@ -65,14 +66,14 @@ class PractiseFragment : Fragment() {
             imageResources,
             imageNames1,
             binding.btnShuffle,
-            recyclerViewPractise,
+            binding.recyclerViewPractise,
             preferencesHelper,
-            this::incrementCounter,
             this::removeCorrectPairFromImageStore,
             this::handleNoCardsVisibility,  // Ensure the callback is properly referenced,
             binding.textCounterFire,
-            this::updateTextCountFire
-
+            binding.textCounterPurple,
+            this::updateTextCountFire,
+            this::updateTextCountPurple,
         )
 
         binding.recyclerViewPractise.adapter = practiseAdapter
@@ -87,6 +88,7 @@ class PractiseFragment : Fragment() {
         practiseAdapter.shuffleCards()
 
         loadTextCountFire()
+        loadTextCountPurple()
 
         return binding.root
     }
@@ -95,12 +97,19 @@ class PractiseFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         loadTextCountFire()
+        loadTextCountPurple()
     }
 
     private fun loadTextCountFire() {
         val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
         val savedCount = sharedPreferences.getInt("textCount", 0)
         binding.textCounterFire.text = savedCount.toString()
+    }
+
+    private fun loadTextCountPurple(){
+        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val saveCount = sharedPreferences.getInt("textCountPurple",0)
+        binding.textCounterPurple.text = saveCount.toString()
     }
 
     private fun updateSharedPreferences() {
@@ -113,12 +122,20 @@ class PractiseFragment : Fragment() {
     }
 
     // updating fire counter
-    fun updateTextCountFire(newValue:Int){
+    private fun updateTextCountFire(newValue:Int){
         binding.textCounterFire.text = newValue.toString()
         saveTextCount(newValue)
         val intent = Intent("com.example.UPDATE_TEXT_COUNT")
         intent.putExtra("textCount", newValue)
         requireContext().sendBroadcast(intent)
+    }
+    private fun updateTextCountPurple(newValue: Int){
+        binding.textCounterPurple.text = newValue.toString()
+        saveTextCountPurple(newValue)
+        val intent = Intent(
+            "com.example.UPDATE_TEXT_COUNT")
+        intent.putExtra("textCountPurple",newValue)
+
     }
 
     // saving fire text
@@ -129,25 +146,12 @@ class PractiseFragment : Fragment() {
         editor.apply()
     }
 
-    private fun incrementCounter() {
-        counter++
-        preferencesHelper.saveCounter(counter)
-        binding.textCounterFire.text = counter.toString()
-
-        // Check if counter reaches a multiple of 50
-        if (counter % 20 == 0) {
-            counterDiamond += 2
-            preferencesHelper.saveDiamondCounter(counterDiamond)
-            binding.textCounterDiamond.text = counterDiamond.toString()
-
-            // Check if counterDiamond reaches a multiple of 10
-            if (counterDiamond % 10 == 0) {
-                counterGem++
-                binding.textCounterGem.text = counterGem.toString()
-            }
-        }
-        updateSharedPreferences()
-        Log.d("PractiseFragment", "Counters updated: counter=$counter, counterDiamond=$counterDiamond, counterGem=$counterGem")
+    // saving Purple Diamond
+    private fun saveTextCountPurple(newValue: Int){
+        val sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putInt("textCountPurple",newValue)
+        editor.apply()
     }
 
     private fun removeCorrectPairFromImageStore(resId: Int) {
