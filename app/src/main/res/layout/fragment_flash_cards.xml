@@ -48,14 +48,14 @@
             android:textSize="26sp" />
 
         <ImageView
-            android:id="@+id/image_diamond_flashcard"
+            android:id="@+id/image_purple_flashcard"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginBottom="10dp"
             android:src="@drawable/diamond11" />
 
         <TextView
-            android:id="@+id/text_counter_diamond_flashcard"
+            android:id="@+id/text_counter_purple_flashcard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -66,14 +66,14 @@
             android:textSize="26sp" />
 
         <ImageView
-            android:id="@+id/image_gem_flashcard"
+            android:id="@+id/image_red_flashcard"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginBottom="10dp"
             android:src="@drawable/gem11" />
 
         <TextView
-            android:id="@+id/text_counter_gem_flashcard"
+            android:id="@+id/text_counter_red_flashcard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"

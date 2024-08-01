@@ -31,6 +31,7 @@ class FlashCards : Fragment() {
 
     lateinit var bottomNav: BottomNavigationView
     private lateinit var textCounterFire:TextView
+    private lateinit var textCounterPurple:TextView
 
     @SuppressLint("MissingInflatedId", "SuspiciousIndentation")
     override fun onCreateView(
@@ -51,6 +52,7 @@ class FlashCards : Fragment() {
         val recyclerViewCardsHard = view.findViewById<RecyclerView>(R.id.recyclerViewFlashcardsHard)
 
         textCounterFire = view.findViewById(R.id.text_counter_fire_flashcard)
+        textCounterPurple = view.findViewById(R.id.text_counter_purple_flashcard)
 
         loadTextCountFire()
 
@@ -92,19 +94,24 @@ class FlashCards : Fragment() {
     }
 
     private fun loadTextCountPurpleGem() {
-
+        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val savedCount = sharedPreferences.getInt("textCountPurple",0)
+        textCounterPurple.text = savedCount.toString()
     }
 
     private fun sendData() {
         val newCount = textCounterFire.text.toString().toIntOrNull() ?: 0
+        val newCountPurple = textCounterPurple.text.toString().toIntOrNull()?:0
 
         val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", MODE_PRIVATE)
         with(sharedPreferences.edit()) {
             putInt("textCount", newCount)
+            putInt("textCountPurple",newCountPurple)
             apply()
         }
 
         sendUpdateBroadcast(newCount)
+        senUpdateBroadcastPurple(newCountPurple)
 
     }
 
@@ -114,11 +121,19 @@ class FlashCards : Fragment() {
         requireContext().sendBroadcast(intent)
     }
 
+    private fun senUpdateBroadcastPurple(newCountPurple:Int){
+        val intent = Intent("com.example.UPDATE_TEXT_COUNT")
+        intent.putExtra("textCountPurple",newCountPurple)
+        requireContext().sendBroadcast(intent)
+    }
+
     private fun loadTextCountFire() {
         val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
         val savedCount = sharedPreferences.getInt("textCount", 0)
         textCounterFire.text = savedCount.toString()
     }
+
+
 
     private fun loadSharedPreferences() {
         val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
@@ -128,8 +143,8 @@ class FlashCards : Fragment() {
 
         // Update UI with retrieved values
         view?.findViewById<TextView>(R.id.text_counter_fire_flashcard)?.text = counter.toString()
-        view?.findViewById<TextView>(R.id.text_counter_diamond_flashcard)?.text = counterDiamond.toString()
-        view?.findViewById<TextView>(R.id.text_counter_gem_flashcard)?.text = counterGem.toString()
+        view?.findViewById<TextView>(R.id.text_counter_purple_flashcard)?.text = counterDiamond.toString()
+        view?.findViewById<TextView>(R.id.text_counter_red_flashcard)?.text = counterGem.toString()
     }
 
     private fun generateMediumFlashCards(): List<FlashCardInfo> {

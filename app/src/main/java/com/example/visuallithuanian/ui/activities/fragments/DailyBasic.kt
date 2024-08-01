@@ -118,7 +118,7 @@ class DailyBasic : Fragment() {
         hashMap["Let's go"] = Triple("eikime!", R.drawable.letsgo1, R.raw.letsgo)
         hashMap["more"] = Triple("daugiau", R.drawable.more, R.raw.more)
         hashMap["key"] = Triple("raktas", R.drawable.key, R.raw.key11)
-        hashMap["what are you doing?"] = Triple("ką darote?",R.drawable.todo,R.raw.whatareyoudoing)
+        hashMap["what are you doing?"] = Triple("ką darote?",R.drawable.whatdoing,R.raw.whatareyoudoing)
         hashMap["hand"] = Triple("ranka", R.drawable.hand, R.raw.hand)
         hashMap["to stop"] = Triple("nustoti", R.drawable.stopsign, R.raw.tostop)
 
