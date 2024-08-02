@@ -6,6 +6,7 @@
     android:background="@drawable/background_color"
     tools:context=".ui.activities.fragments.ToLearnFlashCards">
 
+    <!-- Back Icon -->
     <ImageView
         android:id="@+id/back_icon"
         android:layout_width="wrap_content"
@@ -15,6 +16,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Title Text -->
+
+    <!-- Counters Layout -->
     <TextView
         android:id="@+id/text_correct_pairs"
         android:layout_width="wrap_content"
@@ -30,12 +34,13 @@
         app:layout_constraintTop_toBottomOf="@id/back_icon" />
 
     <LinearLayout
+        android:id="@+id/counters_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_horizontal"
         android:layout_marginBottom="30dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@id/text_correct_pairs"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -95,40 +100,47 @@
             android:textSize="26sp" />
     </LinearLayout>
 
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_practise"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        android:orientation="vertical"
         android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@id/text_correct_pairs"
+        app:layout_constraintTop_toBottomOf="@id/counters_layout"
         app:layout_constraintBottom_toTopOf="@id/btn_shuffle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.5"
         tools:listitem="@layout/item_practise_cards" />
 
+    <!-- Shuffle Button -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_shuffle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-    android:layout_marginBottom="36dp"
-    android:text="@string/shuffle"
-    android:textColor="@android:color/white"
-    android:background="@drawable/buttoncolor"
-    android:gravity="center"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_marginBottom="36dp"
+        android:text="@string/shuffle"
+        android:textColor="@android:color/white"
+        android:background="@drawable/buttoncolor"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- No Cards Layout -->
     <LinearLayout
         android:id="@+id/no_cards_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:visibility="gone">
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
             android:id="@+id/image_trash"
