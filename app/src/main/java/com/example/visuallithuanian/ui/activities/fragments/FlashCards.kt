@@ -61,6 +61,8 @@ class FlashCards : Fragment() {
         val navList:MutableList<String> = mutableListOf()
           navList.add("Questions and Pronouns")
 
+        val mediumnavList:MutableList<String> = mutableListOf()
+
 
         recyclerViewCardsHard.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewCardsMedium.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -77,7 +79,7 @@ class FlashCards : Fragment() {
         recyclerViewCardsEasy.adapter = adapter1
 
         val mediumFlashCardsList = generateMediumFlashCards()
-        val adapter2 = FlashcardsMediumAdapter(mediumFlashCardsList, navController,"")
+        val adapter2 = FlashcardsMediumAdapter(requireContext(),mediumFlashCardsList.toMutableList(), navController,mediumnavList,textCounterPurple)
         recyclerViewCardsMedium.adapter = adapter2
 
 
@@ -156,8 +158,8 @@ class FlashCards : Fragment() {
             FlashCardInfo(R.drawable.numbers, "Numbers", "",8,R.drawable.purplegemicon),
             FlashCardInfo(R.drawable.business, "Business Language", "",10,R.drawable.purplegemicon),
             FlashCardInfo(R.drawable.cafe, "Cafe", "",12,R.drawable.purplegemicon),
-            FlashCardInfo(R.drawable.sports, "Sports", "",16,R.drawable.purplegemicon),
-            FlashCardInfo(R.drawable.things1, "Things", "",18,R.drawable.purplegemicon),
+            FlashCardInfo(R.drawable.sports, "Sports", "",14,R.drawable.purplegemicon),
+            FlashCardInfo(R.drawable.things1, "Things", "",16,R.drawable.purplegemicon),
             FlashCardInfo(R.drawable.personality, "Personality", "",20,R.drawable.purplegemicon),
             FlashCardInfo(R.drawable.profession, "Professions", "",22,R.drawable.purplegemicon),
             FlashCardInfo(R.drawable.household, "Household", "",24,R.drawable.purplegemicon),

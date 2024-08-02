@@ -35,7 +35,6 @@ object VillageSingleton {
         hashMapVillageWords["hospital"] = Triple("ligoninė", R.drawable.hospital, R.raw.computer)
         hashMapVillageWords["primary school"] = Triple("pradinė mokykla", R.drawable.school, R.raw.computer)
         hashMapVillageWords["pharmacy"] = Triple("vaistinė", R.drawable.pharmacy, R.raw.computer)
-        hashMapVillageWords["safe"] = Triple("saugus", R.drawable.fruitjuice, R.raw.computer)
         hashMapVillageWords["The Church"] = Triple("Bažnyčia", R.drawable.church, R.raw.computer)
         hashMapVillageWords["house"] = Triple("namas", R.drawable.house11, R.raw.computer)
         hashMapVillageWords["village"] = Triple("kaimas", R.drawable.village, R.raw.computer)

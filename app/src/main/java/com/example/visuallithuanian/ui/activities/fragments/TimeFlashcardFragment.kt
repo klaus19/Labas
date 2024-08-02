@@ -38,7 +38,6 @@ class TimeFlashcardFragment : Fragment() {
 
     private var currentTripleIndex = 0
     private lateinit var currentTriple: Map.Entry<String, Triple<String, Int, Int>>
-
     private lateinit var flashPreferencesHelper: MediumProgressPreferencesHelper
 
     var isFront = true
@@ -73,6 +72,9 @@ class TimeFlashcardFragment : Fragment() {
         // Set initial progress based on savedProgress
         currentTripleIndex = (savedProgress * totalTriples) / 100
 
+        // Update ProgressBar
+        binding.progressHorizontal.progress = savedProgress
+
         // setting up listener for back Icon
         binding.backIcon.setOnClickListener {
             activity?.onBackPressed()
@@ -81,6 +83,7 @@ class TimeFlashcardFragment : Fragment() {
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_timeFlashcardFragment_to_sentenceFragment)
         }
+
         // changing color of progress bar progress
         binding.progressHorizontal.progressTintList = ColorStateList.valueOf(
             ContextCompat.getColor(
@@ -114,67 +117,47 @@ class TimeFlashcardFragment : Fragment() {
                 it.start()
             }
         }
+
+        // Initialize the first triple
         currentTriple = TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
-        binding.textCardFront.text = currentTriple.key
-        binding.textCardBack.text = currentTriple.value.first
-        binding.imagecardsHelper.setImageResource(currentTriple.value.second)
-        binding.btnPlay.setImageResource(currentTriple.value.third)
+        updateUIWithCurrentTriple()
 
         // onclick listener on the image to save the image for learning
         binding.imageFlashCard.setOnClickListener {
             binding.imageFlashCard.visibility = View.GONE
             binding.imageFlashCardSaveWhite.visibility = View.VISIBLE
 
+            // Save the current flashcard pair without moving to the next pair
             counterViewModel.incrementCounter()
             // Save the updated counter
             preferencesHelper.saveCounter(counterViewModel.counter.value ?: 0)
 
-            // increment currentTripleIndex and get the next Triple
-            currentTripleIndex++
-            if (currentTripleIndex >= TimeSingleton.hashMapTime.size) {
-                // if we have reached the end of the hashmap, start again from the beginning
-                currentTripleIndex = 0
-            }
-            val front = binding.textCardFront.text.toString()
-            val back = binding.textCardBack.text.toString()
-            val imageHelper = currentTriple.value.second
-            val voiceClip = currentTriple.value.third
+            // Save the flashcard pair
+            saveFlashcardPair()
 
-            val Triple = FlashcardPair(front, back, imageHelper, voiceClip)
-            cardViewModel.insertCards(Triple)
-            //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
-            Log.d("Main","$Triple")
-            currentTriple =TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
-
+            // Log the saved flashcard pair for debugging purposes
+            Log.d("Main", "Saved flashcard pair: $currentTriple")
         }
+
         // On Event of clicking on the image to unsave the image
         binding.imageFlashCardSaveWhite.setOnClickListener {
-            with(binding) {
-                imageFlashCardSaveWhite.visibility = View.GONE
-                imageFlashCard.visibility = View.VISIBLE
+            binding.imageFlashCardSaveWhite.visibility = View.GONE
+            binding.imageFlashCard.visibility = View.VISIBLE
 
-                if (currentTripleIndex >= 0 && currentTripleIndex <TimeSingleton.hashMapTime.size) {
-                    // Remove the item at the current index from your data structure (e.g., HashMap)
-                    val removedTriple =TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
-                   TimeSingleton.hashMapTime.remove(removedTriple.key)
+            if (currentTripleIndex >= 0 && currentTripleIndex < TimeSingleton.hashMapTime.size) {
+                // Remove the item at the current index from your data structure (e.g., HashMap)
+                val removedTriple = TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
+                TimeSingleton.hashMapTime.remove(removedTriple.key)
 
-                    // Decrease the counter
-                    counterViewModel.decrementCounter()
-                    val front = binding.textCardFront.text.toString()
-                    val back = binding.textCardBack.text.toString()
-                    val imageHelper = currentTriple.value.second
-                    val voiceClip = currentTriple.value.third
-
-                    val Triple = FlashcardPair(front, back, imageHelper,voiceClip)
-                    cardViewModel.deleteCards(Triple)
-                    //Toast.makeText(requireContext(),"saved data", Toast.LENGTH_SHORT).show()
-                    Log.d("Main","$Triple")
-                    currentTriple =TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
-
-                }
+                // Decrease the counter
+                counterViewModel.decrementCounter()
+                deleteFlashcardPair()
+                currentTriple = TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
+                updateUIWithCurrentTriple()
             }
         }
-        //Displaying GIF image on the screen
+
+        // Displaying GIF image on the screen
         Glide.with(this).asGif().load(R.drawable.finger1).into(binding.gifImageView)
 
         // Navigating from one fragment to another
@@ -183,46 +166,59 @@ class TimeFlashcardFragment : Fragment() {
         }
 
         // onclick listener for the Flip button
-        with(binding) {
-            btnFlip.setOnClickListener {
-                imageFlashCardSaveWhite.visibility = View.GONE
-                imageFlashCard.visibility = View.VISIBLE
+        binding.btnFlip.setOnClickListener {
+            binding.imageFlashCardSaveWhite.visibility = View.GONE
+            binding.imageFlashCard.visibility = View.VISIBLE
 
-                // Update currentTripleIndex first
-                currentTripleIndex = (currentTripleIndex + 1) %TimeSingleton.hashMapTime.size
+            // Update currentTripleIndex first
+            currentTripleIndex = (currentTripleIndex + 1) % TimeSingleton.hashMapTime.size
 
-                if (currentTripleIndex % 2 == 0) {
-                    cardViewQuestions.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.orange1
-                        )
-                    )
-                } else {
-                    cardViewQuestions.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.new_design_text_color
-                        )
-                    )
-                }
-
-                val progress = ((currentTripleIndex + 1) * 100) / totalTriples
-                binding.progressHorizontal.progress = progress
-
-                // Save the updated progress
-                flashPreferencesHelper.savedProgressTime(progress)
-
-                currentTriple =TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
-                binding.textCardFront.text = currentTriple.key
-                binding.textCardBack.text = currentTriple.value.first
-                binding.imagecardsHelper.setImageResource(currentTriple.value.second)
-                binding.btnPlay.setImageResource(currentTriple.value.third)
+            // Update card background color based on index
+            val cardColor = if (currentTripleIndex % 2 == 0) {
+                ContextCompat.getColor(requireContext(), R.color.orange1)
+            } else {
+                ContextCompat.getColor(requireContext(), R.color.new_design_text_color)
             }
+            binding.cardViewQuestions.setCardBackgroundColor(cardColor)
+
+            // Update progress bar
+            val progress = ((currentTripleIndex + 1) * 100) / totalTriples
+            binding.progressHorizontal.progress = progress
+
+            // Save the updated progress
+            flashPreferencesHelper.savedProgressTime(progress)
+
+            currentTriple = TimeSingleton.hashMapTime.entries.elementAt(currentTripleIndex)
+            updateUIWithCurrentTriple()
         }
 
-
-
         return binding.root
+    }
+
+    private fun updateUIWithCurrentTriple() {
+        binding.textCardFront.text = currentTriple.key
+        binding.textCardBack.text = currentTriple.value.first
+        binding.imagecardsHelper.setImageResource(currentTriple.value.second)
+        binding.btnPlay.setImageResource(currentTriple.value.third)
+    }
+
+    private fun saveFlashcardPair() {
+        val front = binding.textCardFront.text.toString()
+        val back = binding.textCardBack.text.toString()
+        val imageHelper = currentTriple.value.second
+        val voiceClip = currentTriple.value.third
+        val flashcardPair = FlashcardPair(front, back, imageHelper, voiceClip)
+        cardViewModel.insertCards(flashcardPair)
+        Log.d("Main", "$flashcardPair")
+    }
+
+    private fun deleteFlashcardPair() {
+        val front = binding.textCardFront.text.toString()
+        val back = binding.textCardBack.text.toString()
+        val imageHelper = currentTriple.value.second
+        val voiceClip = currentTriple.value.third
+        val flashcardPair = FlashcardPair(front, back, imageHelper, voiceClip)
+        cardViewModel.deleteCards(flashcardPair)
+        Log.d("Main", "$flashcardPair")
     }
 }
