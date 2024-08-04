@@ -15,28 +15,7 @@ package com.example.visuallithuanian
 //"computer" = "kompiuteris"
 //"printer" = "spausdintuvas"
 
-//Family Flashcards
-//"Father" = "Tėvas"
-//"Mother" = "Motina",
-//"Brother" = "brolis",
-//"Sister" = "sesuo",
-//"my family" = "Mano šeima",
-//"grandfather" = "senelis"
-//"grandmother" = "močiutė"
-//"friend" = "draugė (-as)",
-//"friends" = "draugai"
-//"Couple" = "pora",
-//
-//"Uncle" = "dėdė",
-//"Aunt" = "teta",
-//"cousin" = "pusbrolis",
-//"relatives" = "giminaičiai",
-//"son" = "sūnus",
-//"daughter" = "dukra"
-//"child" = "vaikas"
-//"children" = "vaikai"
-//"husband" = "vyras"
-//"wife" = "žmona"
+
 
 //"work" = "darbas",
 //"rest day / public holiday" = "poilsio / nedarbo diena"
@@ -469,28 +448,6 @@ package com.example.visuallithuanian
 
 // Personality Fragment
 
-//"aggresive" = "agresyvus"
-//"reliable" = "patikimas"
-//"unfriendly" = "nedraugiškas"
-//"not good" = "negeras"
-//"depressed" = "prislėgtas"
-//"charming" = "žavus"
-//"unsafe" = "nesaugus"
-//"anxious person" = "nerimastingas žmogus"
-//"childish" = "vaikiška"
-//"immature" = "nesubrendęs"
-//
-//"sensitive" = "jautrus"
-//"introverted" = "intravertas"
-//"Certainty" = "tikrumas"
-//"stubborn" = "užsispyręs"
-//"dependent" = "priklausomas"
-//"impatient" = "nekantrus"
-//"emotional" = "emocinis"
-//"lazy" = "tinginys"
-//"dishonest" = "nesąžiningas"
-//"domineering" = "valdingas"  // completed
-//
 //"generous" = "dosnus"
 //"patient" = "pacientas"
 //"attractive" = "patrauklus"
@@ -645,7 +602,7 @@ package com.example.visuallithuanian
 //"Protein" = "Baltymai"
 //
 //"I love animals" = "Myliu gyvūnus"
-//"Cube of Truth" = "Tiesos kubas"
+//"Cube of Truth" = "Tiesos kubas"  //Giving to record
 
 // Romantic words 
 

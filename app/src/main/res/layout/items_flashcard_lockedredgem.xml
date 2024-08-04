@@ -1,7 +1,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardFlashCards"
+    android:id="@+id/cardFlashCardsRed"
     android:layout_width="250dp"
     android:layout_height="wrap_content"
     app:cardBackgroundColor="#5f77ff"
@@ -46,7 +46,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageViewLock"
+                android:id="@+id/imageViewLockRed"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
@@ -55,7 +55,7 @@
                 android:src="@drawable/lockpic" />
 
             <TextView
-                android:id="@+id/textflashCardName"
+                android:id="@+id/textflashCardNameRed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

@@ -26,6 +26,11 @@ class PreferencesHelper(private val context: Context) {
         savePurpleCounter(currentCounter+1)
     }
 
+    fun incrementRedCount(){
+        val currentCounter= getRedCounter()
+        saveRedCounter(currentCounter+1)
+    }
+
     fun decrementCounter() {
         val currentCounter = getCounter()
         if (currentCounter > 0) {
@@ -56,7 +61,7 @@ class PreferencesHelper(private val context: Context) {
         return sharedPreferences.getInt(PURPLE_COUNTER_KEY, 0)
     }
 
-    fun saveRedCounter(redCounter:Int){
+    private fun saveRedCounter(redCounter:Int){
         with(sharedPreferences.edit()) {
             putInt(RED_COUNTER_KEY, redCounter)
             apply()
@@ -79,11 +84,11 @@ class PreferencesHelper(private val context: Context) {
         return getSavedItems().contains(item)
     }
 
-    fun getSavedItems(): Set<String> {
+    private fun getSavedItems(): Set<String> {
         return sharedPreferences.getStringSet(SAVED_ITEMS_KEY, setOf()) ?: setOf()
     }
 
-    fun saveSavedItems(items: Set<String>) {
+    private fun saveSavedItems(items: Set<String>) {
         with(sharedPreferences.edit()) {
             putStringSet(SAVED_ITEMS_KEY, items)
             apply()
