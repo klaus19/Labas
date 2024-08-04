@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.constants.ImageStore
 import com.example.visuallithuanian.model.PreferencesHelper
-import kotlin.properties.Delegates
 
 class PractiseAdapter(
     private var imageResources: MutableList<Int>,
@@ -26,8 +25,10 @@ class PractiseAdapter(
     private val onDataChanged: () -> Unit,
     private val textCounterFire: TextView,
     private val textCounterPurpleDiamond: TextView,
+    private val textCounterRed: TextView,
     private val updateTextCountCallback: (Int) -> Unit,
-    private val updateTextCountPurple: (Int) -> Unit
+    private val updateTextCountPurple: (Int) -> Unit,
+    private val updateTextCountRed: (Int) -> Unit
 ) : RecyclerView.Adapter<PractiseAdapter.PractiseViewHolder>() {
 
     private var selectedImageResource = -1
@@ -36,6 +37,7 @@ class PractiseAdapter(
     private var previousSelectedImageName = ""
     private var currentCount = 0
     private var currentCountPurple = 0
+    private var currentCountRed = 0
 
     init {
         btnShuffle.setOnClickListener {
@@ -124,6 +126,7 @@ class PractiseAdapter(
                 holder.cardTextPractise.setBackgroundColor(GREEN_COLOR)
                 preferencesHelper.incrementCounter()
                 preferencesHelper.incrementPurpleCount()
+                preferencesHelper.incrementRedCount()
                 onCorrectPair(selectedImageResource)
                 onDataChanged()
 
@@ -136,6 +139,13 @@ class PractiseAdapter(
                     currentCountPurple = textCounterPurpleDiamond.text.toString().toIntOrNull() ?: 0
                     val newPurpleCount = currentCountPurple + 2
                     updateTextCountPurple(newPurpleCount)
+
+                    // Check if newPurpleCount is a multiple of 4
+                    if (newPurpleCount % 4 == 0) {
+                        currentCountRed = textCounterRed.text.toString().toIntOrNull() ?: 0
+                        val newRedCount = currentCountRed+2
+                        updateTextCountRed(newRedCount)
+                    }
                 }
 
                 Color.GREEN

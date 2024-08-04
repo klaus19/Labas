@@ -18,6 +18,7 @@ package com.example.visuallithuanian
 
 
 
+
 //"work" = "darbas",
 //"rest day / public holiday" = "poilsio / nedarbo diena"
 //"Workplace" = "darbovietė"
@@ -449,6 +450,28 @@ package com.example.visuallithuanian
 
 // Personality Fragment
 
+//"aggresive" = "agresyvus"
+//"reliable" = "patikimas"
+//"unfriendly" = "nedraugiškas"
+//"not good" = "negeras"
+//"depressed" = "prislėgtas"
+//"charming" = "žavus"
+//"unsafe" = "nesaugus"
+//"anxious person" = "nerimastingas žmogus"
+//"childish" = "vaikiška"
+//"immature" = "nesubrendęs"
+//
+//"sensitive" = "jautrus"
+//"introverted" = "intravertas"
+//"Certainty" = "tikrumas"
+//"stubborn" = "užsispyręs"
+//"dependent" = "priklausomas"
+//"impatient" = "nekantrus"
+//"emotional" = "emocinis"
+//"lazy" = "tinginys"
+//"dishonest" = "nesąžiningas"
+//"domineering" = "valdingas"  // completed
+//
 //"generous" = "dosnus"
 //"patient" = "pacientas"
 //"attractive" = "patrauklus"
@@ -603,7 +626,7 @@ package com.example.visuallithuanian
 //"Protein" = "Baltymai"
 //
 //"I love animals" = "Myliu gyvūnus"
-//"Cube of Truth" = "Tiesos kubas"  //Giving to record
+//"Cube of Truth" = "Tiesos kubas"
 
 // Romantic words 
 

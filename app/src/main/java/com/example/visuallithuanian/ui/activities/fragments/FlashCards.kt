@@ -24,6 +24,7 @@ import com.example.visuallithuanian.data.FlashCardInfo
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
+import org.w3c.dom.Text
 
 
 @AndroidEntryPoint
@@ -32,6 +33,7 @@ class FlashCards : Fragment() {
     lateinit var bottomNav: BottomNavigationView
     private lateinit var textCounterFire:TextView
     private lateinit var textCounterPurple:TextView
+    private lateinit var textCounterRed:TextView
 
     @SuppressLint("MissingInflatedId", "SuspiciousIndentation")
     override fun onCreateView(
@@ -53,15 +55,20 @@ class FlashCards : Fragment() {
 
         textCounterFire = view.findViewById(R.id.text_counter_fire_flashcard)
         textCounterPurple = view.findViewById(R.id.text_counter_purple_flashcard)
+        textCounterRed = view.findViewById(R.id.text_counter_red_flashcard)
 
         loadTextCountFire()
 
         loadTextCountPurpleGem()
 
+        loadTextCountRedGem()
+
         val navList:MutableList<String> = mutableListOf()
           navList.add("Questions and Pronouns")
 
         val mediumnavList:MutableList<String> = mutableListOf()
+
+        val hardnavList:MutableList<String> = mutableListOf()
 
 
         recyclerViewCardsHard.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -71,7 +78,7 @@ class FlashCards : Fragment() {
         val navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
 
         val hardFlashCardList = generateHardFlashCards()
-        val adapter = FlashcardsHardAdapter(hardFlashCardList, navController,"")
+        val adapter = FlashcardsHardAdapter(requireContext(),hardFlashCardList.toMutableList(), navController,hardnavList,textCounterRed)
         recyclerViewCardsHard.adapter = adapter
 
         val easyFlashCardsList = generateEasyFlashCards()
@@ -95,6 +102,18 @@ class FlashCards : Fragment() {
         return view
     }
 
+    private fun loadTextCountFire() {
+        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val savedCount = sharedPreferences.getInt("textCount", 0)
+        textCounterFire.text = savedCount.toString()
+    }
+
+    private fun loadTextCountRedGem() {
+        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val savedCount = sharedPreferences.getInt("textCountRed",0)
+        textCounterRed.text = savedCount.toString()
+    }
+
     private fun loadTextCountPurpleGem() {
         val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
         val savedCount = sharedPreferences.getInt("textCountPurple",0)
@@ -104,17 +123,26 @@ class FlashCards : Fragment() {
     private fun sendData() {
         val newCount = textCounterFire.text.toString().toIntOrNull() ?: 0
         val newCountPurple = textCounterPurple.text.toString().toIntOrNull()?:0
+        val newCountRed = textCounterRed.text.toString().toIntOrNull()?:0
 
         val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", MODE_PRIVATE)
         with(sharedPreferences.edit()) {
             putInt("textCount", newCount)
             putInt("textCountPurple",newCountPurple)
+            putInt("textCountRed",newCountRed)
             apply()
         }
 
         sendUpdateBroadcast(newCount)
         senUpdateBroadcastPurple(newCountPurple)
+        sendUpdateBroadcastRed(newCountRed)
 
+    }
+
+    private fun sendUpdateBroadcastRed(newCountRed: Int) {
+        val intent = Intent("com.example.UPDATE_TEXT_COUNT")
+        intent.putExtra("textCountRed",newCountRed)
+        requireContext().sendBroadcast(intent)
     }
 
     private fun sendUpdateBroadcast(newCount: Int) {
@@ -128,13 +156,6 @@ class FlashCards : Fragment() {
         intent.putExtra("textCountPurple",newCountPurple)
         requireContext().sendBroadcast(intent)
     }
-
-    private fun loadTextCountFire() {
-        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
-        val savedCount = sharedPreferences.getInt("textCount", 0)
-        textCounterFire.text = savedCount.toString()
-    }
-
 
 
     private fun loadSharedPreferences() {

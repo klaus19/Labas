@@ -72,8 +72,10 @@ class PractiseFragment : Fragment() {
             this::handleNoCardsVisibility,  // Ensure the callback is properly referenced,
             binding.textCounterFire,
             binding.textCounterPurple,
+            binding.textCounterRed,
             this::updateTextCountFire,
             this::updateTextCountPurple,
+            this::updateTextCountRed,
         )
 
         binding.recyclerViewPractise.adapter = practiseAdapter
@@ -89,6 +91,8 @@ class PractiseFragment : Fragment() {
 
         loadTextCountFire()
         loadTextCountPurple()
+        loadTextCountRed()
+
 
         return binding.root
     }
@@ -98,6 +102,7 @@ class PractiseFragment : Fragment() {
         super.onResume()
         loadTextCountFire()
         loadTextCountPurple()
+        loadTextCountRed()
     }
 
     private fun loadTextCountFire() {
@@ -110,6 +115,12 @@ class PractiseFragment : Fragment() {
         val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
         val saveCount = sharedPreferences.getInt("textCountPurple",0)
         binding.textCounterPurple.text = saveCount.toString()
+    }
+
+    private fun loadTextCountRed(){
+        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val saveCount = sharedPreferences.getInt("textCountRed",0)
+        binding.textCounterRed.text = saveCount.toString()
     }
 
     private fun updateSharedPreferences() {
@@ -138,6 +149,17 @@ class PractiseFragment : Fragment() {
 
     }
 
+    private fun updateTextCountRed(newValue: Int){
+        binding.textCounterRed.text = newValue.toString()
+        saveTextCountRed(newValue)
+        val intent = Intent(
+            "com.example.UPDATE_TEXT_COUNT")
+        intent.putExtra("textCountRed",newValue)
+
+    }
+
+
+
     // saving fire text
     private fun saveTextCount(newValue: Int) {
         val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
@@ -151,6 +173,13 @@ class PractiseFragment : Fragment() {
         val sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putInt("textCountPurple",newValue)
+        editor.apply()
+    }
+
+    private fun saveTextCountRed(newValue: Int){
+        val sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putInt("textCountRed",newValue)
         editor.apply()
     }
 
