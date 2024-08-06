@@ -33,6 +33,7 @@ class CinemaFragment : Fragment() {
     lateinit var binding: FragmentCinemaBinding
     lateinit var viewModel: BottomNavigationViewModel
 
+
     lateinit var bottomNavigationView: BottomNavigationView
     private val counterViewModel: ToLearnViewModel by viewModels()
 

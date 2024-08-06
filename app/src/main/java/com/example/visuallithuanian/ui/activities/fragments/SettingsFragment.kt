@@ -63,8 +63,19 @@ class SettingsFragment : Fragment(), AvatarDialogFragment.AvatarSelectionListene
             val counterToLearn = sharedPreferences1.getInt("counterToLearn", 0)
             val counterLearned = sharedPreferences1.getInt("counterLearned", 0)
 
-            // Create a dialog
-            val dialog = ProgressDialog.newInstance(counterToLearn, counterLearned)
+            // Create a dialog with both click listeners
+            val dialog = ProgressDialog.newInstance(
+                counterToLearn,
+                counterLearned,
+                onButtonLearntClick = {
+                    // Handle the buttonLearnt click here
+                    findNavController().navigate(R.id.action_settingsFragment_to_fragmentLearnedWords)
+                },
+                onButtonToLearnClick = {
+                    // Handle the buttonToLearn click here
+                    findNavController().navigate(R.id.action_settingsFragment_to_fragmentToLearnWords)
+                }
+            )
             dialog.show(childFragmentManager, "ProgressDialog")
         }
 

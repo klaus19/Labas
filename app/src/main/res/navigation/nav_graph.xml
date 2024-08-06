@@ -273,6 +273,12 @@
         <action
             android:id="@+id/action_settingsFragment_to_userFragment"
             app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_fragmentLearnedWords"
+            app:destination="@id/fragmentLearnedWords" />
+        <action
+            android:id="@+id/action_settingsFragment_to_fragmentToLearnWords"
+            app:destination="@id/fragmentToLearnWords" />
     </fragment>
     <fragment
         android:id="@+id/sportsFragment"
@@ -889,5 +895,15 @@
         android:name="com.example.visuallithuanian.NotificationsFragment"
         android:label="fragment_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/fragmentLearnedWords"
+        android:name="com.example.visuallithuanian.FragmentLearnedWords"
+        android:label="fragment_learned_words"
+        tools:layout="@layout/fragment_learned_words" />
+    <fragment
+        android:id="@+id/fragmentToLearnWords"
+        android:name="com.example.visuallithuanian.FragmentToLearnWords"
+        android:label="fragment_to_learn_words"
+        tools:layout="@layout/fragment_to_learn_words" />
 
 </navigation>
