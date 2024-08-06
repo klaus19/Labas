@@ -16,7 +16,7 @@ import com.example.visuallithuanian.utils.NotificationWorker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.concurrent.TimeUnit
 
-class NotificationsFragment : Fragment() {
+class  NotificationsFragment : Fragment() {
 
     private lateinit var binding: FragmentNotificationsBinding
     lateinit var bottomNav: BottomNavigationView

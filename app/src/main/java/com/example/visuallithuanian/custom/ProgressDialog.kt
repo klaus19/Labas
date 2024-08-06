@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.databinding.DialogCustomButtonsBinding
 
-class ProgressDialog:DialogFragment() {
+class ProgressDialog : DialogFragment() {
 
     private lateinit var binding: DialogCustomButtonsBinding
+    private var onButtonLearntClick: (() -> Unit)? = null
+    private var onButtonToLearnClick: (() -> Unit)? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +32,15 @@ class ProgressDialog:DialogFragment() {
         // Set text values
         binding.textToLearnCount.text = counterToLearn.toString()
         binding.textLearntCount.text = counterLearned.toString()
+
+        binding.buttonLearnt.setOnClickListener {
+            onButtonLearntClick?.invoke()
+            dismiss() // Optionally dismiss the dialog
+        }
+        binding.buttonToLearn.setOnClickListener {
+            onButtonToLearnClick?.invoke()
+            dismiss() // Optionally dismiss the dialog
+        }
     }
 
     override fun onStart() {
@@ -40,13 +52,20 @@ class ProgressDialog:DialogFragment() {
     }
 
     companion object {
-        fun newInstance(counterToLearn: Int, counterLearned: Int): ProgressDialog {
+        fun newInstance(
+            counterToLearn: Int,
+            counterLearned: Int,
+            onButtonLearntClick: () -> Unit,
+            onButtonToLearnClick: () -> Unit
+        ): ProgressDialog {
             val dialog = ProgressDialog()
             val args = Bundle().apply {
                 putInt("counterToLearn", counterToLearn)
                 putInt("counterLearned", counterLearned)
             }
             dialog.arguments = args
+            dialog.onButtonLearntClick = onButtonLearntClick
+            dialog.onButtonToLearnClick = onButtonToLearnClick
             return dialog
         }
     }
