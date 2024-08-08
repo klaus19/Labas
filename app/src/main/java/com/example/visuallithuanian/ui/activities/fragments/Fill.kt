@@ -201,33 +201,6 @@ package com.example.visuallithuanian
 //"colourful" = "spalvingas"
 //"Popular" = "popularus"
 
-//Nature Fragament
-//
-//"tree" = "medis"
-//"forest" = "miškas"
-//"grass" = "žolė"
-//"flower" = "gėlė"
-//"sky" = "dangus"
-//"sun" = "saulė"
-//"moon" = "mėnulis"
-//"star" = "žvaigždė"
-//"river" = "upė"
-//"sea" = "jūra"
-//"ground" = "žemės"
-//"field" = "srityje"
-//"bird" = "paukštis"
-//"lake" = "ežeras"
-//"rain" = "lietus"
-//"thunderstorm" = "perkūnija"
-//"mountain" = "kalnis"
-//"camp" = "stovykla"
-//"light and darkness" = "šviesa ir tamsa"
-//"clean water" = "švarus vanduo"
-//"It rains" = "Lyja lietus"
-//"the snow" = "sniegas"
-//"a storm" = "audra"
-//"a blizzard" = "pūga"
-//"her bouquet is beautiful" = "jos puokštė yra graži" //Given for voice clip recording
 
 
 //Sports Flashcards
@@ -447,36 +420,13 @@ package com.example.visuallithuanian
 
 
 // Personality Fragment
-
-//"generous" = "dosnus"
-//"patient" = "pacientas"
-//"attractive" = "patrauklus"
-//"selfish" = "savanaudis"
-//"smart" = "protingas"
-//"conversations" = "šnekus"
-//"creative" = "kūrybingi"
-//"friendly" = "draugiškas"
-//"imagination" = "vaizduotės"
-//"calm person" = "ramus žmogus"
-//
-//"shy" = "drovus"
-//"organized" = "organizuotas"
-//"grumpy" = "paniuręs"
-//"love" = "meilus"
-//"sincere" = "nuoširdus"
-//"jealous" = "pavydus"
-//"irresponsible" = "neatsakinga"
-//"competitive" = "konkurencinga"
-//"insensitive" = "nejautrus"
-//"extrovert" = "ekstravertas"  //given to record
-//
 //"ambitious" = "ambicingas"
 //"rebellious" = "maištingas"
 //"responsible" = "atsakingas"
 //"smart" = "protinga"
 //"independent" = "nepriklausomas"
 //"stupid" = "kvailas"
-//"socialus" = "socialus"
+//"socialus" = "socialus"  //given to record
 
 // Household flashcards
 
