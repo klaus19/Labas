@@ -56,6 +56,8 @@
     <string name="happlocked">happy unocked emoji</string>
     <string name="not_enough_points_image">Not enough points</string>
     <string name="purple_icon_image">Purple Icon</string>
+    <string name="play_voice">playing voice</string>
+    <string name="image_desc">content description</string>
     <string-array name="time_options">
         <item>12:00</item>
         <item>14:00</item>

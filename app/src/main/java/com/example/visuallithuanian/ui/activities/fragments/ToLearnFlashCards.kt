@@ -115,8 +115,10 @@ class ToLearnFlashCards : Fragment() {
 
         when (direction) {
             ItemTouchHelper.RIGHT -> {
+                ImageStore.addImageResource(cardPair.imageSrc,cardPair.front,cardPair.back,cardPair.voiceclip)
+                ImageStore.saveToPreferences(requireContext())
+                preferencesHelper.addSavedItemCard(cardPair)
                 cardViewModel.deleteCards(cardPair)
-                preferencesHelper.addSavedItem(position.toString())
                 learnedCounter++
                 saveCounter("counterLearned", learnedCounter)
             }
@@ -124,7 +126,6 @@ class ToLearnFlashCards : Fragment() {
                 ImageStore.addImageResource(cardPair.imageSrc, cardPair.front, cardPair.back, cardPair.voiceclip)
                 ImageStore.saveToPreferences(requireContext())
                 adapter.moveItemToEnd(position)
-                cardViewModel.deleteCards(cardPair)
                 preferencesHelper.addSavedItem(position.toString())
                 toLearnCounter++
                 saveCounter("counterToLearn", toLearnCounter)

@@ -1,7 +1,10 @@
 package com.example.visuallithuanian.model
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.visuallithuanian.database.FlashcardPair
+import com.google.gson.Gson
 
 class PreferencesHelper(private val context: Context) {
 
@@ -95,5 +98,32 @@ class PreferencesHelper(private val context: Context) {
         }
     }
 
+
+    fun addSavedItemCard(item: FlashcardPair) {
+        val sharedPrefs = context.getSharedPreferences("learned_items_prefs", Context.MODE_PRIVATE)
+        val editor = sharedPrefs.edit()
+
+        // Convert the FlashcardPair object to a suitable format for storing
+        val json = Gson().toJson(item)
+        val savedItems = sharedPrefs.getStringSet("saved_items", mutableSetOf())?.toMutableSet() ?: mutableSetOf()
+
+        // Add the new item
+        savedItems.add(json)
+
+        // Save the updated set
+        editor.putStringSet("saved_items", savedItems)
+        editor.apply()
+    }
+
+
+    // Get saved items
+    fun getSavedItemsCardPair(): List<FlashcardPair> {
+        val sharedPrefs = context.getSharedPreferences("learned_items_prefs", Context.MODE_PRIVATE)
+        val savedItems = sharedPrefs.getStringSet("saved_items", mutableSetOf()) ?: setOf()
+        return savedItems.mapNotNull {
+            // Convert JSON back to FlashcardPair object
+            Gson().fromJson(it, FlashcardPair::class.java)
+        }
+    }
 
 }
