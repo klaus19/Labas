@@ -64,6 +64,7 @@ class ToLearnFlashCards : Fragment() {
         }
 
         Glide.with(this).asGif().load(R.drawable.happyface).into(binding.gifImageView)
+        Glide.with(this).asGif().load(R.drawable.dumpster).into(binding.emptyImage)
     }
 
     private fun setupRecyclerView() {
@@ -115,8 +116,9 @@ class ToLearnFlashCards : Fragment() {
 
         when (direction) {
             ItemTouchHelper.RIGHT -> {
+                ImageStore.saveToPreferences(requireContext())
+                preferencesHelper.addSavedItemCard(cardPair)
                 cardViewModel.deleteCards(cardPair)
-                preferencesHelper.addSavedItem(position.toString())
                 learnedCounter++
                 saveCounter("counterLearned", learnedCounter)
             }
@@ -124,8 +126,8 @@ class ToLearnFlashCards : Fragment() {
                 ImageStore.addImageResource(cardPair.imageSrc, cardPair.front, cardPair.back, cardPair.voiceclip)
                 ImageStore.saveToPreferences(requireContext())
                 adapter.moveItemToEnd(position)
-                cardViewModel.deleteCards(cardPair)
                 preferencesHelper.addSavedItem(position.toString())
+                cardViewModel.deleteCards(cardPair)
                 toLearnCounter++
                 saveCounter("counterToLearn", toLearnCounter)
             }
