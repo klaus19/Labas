@@ -14,9 +14,8 @@
     <!-- Empty State -->
     <ImageView
         android:id="@+id/emptyImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/waste"
+        android:layout_width="148dp"
+        android:layout_height="148dp"
         android:visibility="invisible"
         android:layout_centerVertical="true"
         android:layout_below="@id/back_icon"

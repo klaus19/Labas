@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.PractiseAdapter
 import com.example.visuallithuanian.constants.ImageStore
@@ -92,6 +93,8 @@ class PractiseFragment : Fragment() {
         loadTextCountFire()
         loadTextCountPurple()
         loadTextCountRed()
+
+        Glide.with(this).asGif().load(R.drawable.dumpster).into(binding.imageTrash)
 
 
         return binding.root

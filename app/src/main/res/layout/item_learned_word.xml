@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:layout_margin="16dp"
+    android:layout_marginBottom="10dp"
     app:cardCornerRadius="8dp"
     app:cardBackgroundColor="@color/lime_green"
     app:cardElevation="4dp">
@@ -44,7 +45,7 @@
                 android:id="@+id/textView2LithuanianWord"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/blue_card"
                 android:text="Text2" />

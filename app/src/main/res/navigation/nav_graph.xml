@@ -899,7 +899,11 @@
         android:id="@+id/fragmentLearnedWords"
         android:name="com.example.visuallithuanian.FragmentLearnedWords"
         android:label="fragment_learned_words"
-        tools:layout="@layout/fragment_learned_words" />
+        tools:layout="@layout/fragment_learned_words" >
+        <action
+            android:id="@+id/action_fragmentLearnedWords_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentToLearnWords"
         android:name="com.example.visuallithuanian.FragmentToLearnWords"
