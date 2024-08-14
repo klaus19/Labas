@@ -908,6 +908,10 @@
         android:id="@+id/fragmentToLearnWords"
         android:name="com.example.visuallithuanian.FragmentToLearnWords"
         android:label="fragment_to_learn_words"
-        tools:layout="@layout/fragment_to_learn_words" />
+        tools:layout="@layout/fragment_to_learn_words" >
+        <action
+            android:id="@+id/action_fragmentToLearnWords_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
 
 </navigation>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/dialog_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cards_to_learn"
+        android:textStyle="bold"
+        android:textColor="@color/blue_card"
+        android:layout_gravity="center_horizontal"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:id="@+id/foxgif"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Spaced-repetition algorithm"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/blue_card" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="@color/blue_card"
+        android:text="Hello, this is Mr. Fox. I will keep track of every single card, and at the right time, I will show it to you again. This way, you won't forget it and will retain it in your memory. If you swipe right, I will show the words after a longer period of time. If you swipe left, I will show them sooner. So, stay tuned and enjoy the learning!" />
+
+    <Button
+        android:id="@+id/dialog_button"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/buttoncolor"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="START LEARNING"
+
+        android:layout_gravity="center_horizontal"/>
+</LinearLayout>
