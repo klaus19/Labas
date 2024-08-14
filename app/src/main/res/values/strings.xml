@@ -58,6 +58,7 @@
     <string name="purple_icon_image">Purple Icon</string>
     <string name="play_voice">playing voice</string>
     <string name="image_desc">content description</string>
+    <string name="cards_to_learn">Cards To Learn</string>
     <string-array name="time_options">
         <item>12:00</item>
         <item>14:00</item>

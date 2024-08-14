@@ -194,8 +194,10 @@ class PractiseFragment : Fragment() {
     private fun handleNoCardsVisibility() {
         if (practiseAdapter.itemCount == 0) {
             binding.noCardsLayout.visibility = View.VISIBLE
+            binding.btnShuffle.visibility=View.GONE
         } else {
             binding.noCardsLayout.visibility = View.GONE
+            binding.btnShuffle.visibility=View.VISIBLE
         }
     }
 

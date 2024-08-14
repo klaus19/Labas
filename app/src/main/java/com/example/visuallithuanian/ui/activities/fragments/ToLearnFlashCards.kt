@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -45,7 +47,28 @@ class ToLearnFlashCards : Fragment() {
         initView()
         setupRecyclerView()
         observeViewModel()
+        showDialog()
         return binding.root
+    }
+
+    private fun showDialog() {
+        // Inflate the dialog layout
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_algorithm, null)
+
+        // Create the AlertDialog
+        val alertDialog = AlertDialog.Builder(requireContext())
+            .setView(dialogView)
+            .create()
+
+        // Find and set the button click listener
+        dialogView.findViewById<Button>(R.id.dialog_button).setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        Glide.with(this).asGif().load(R.drawable.foxanimated).into(dialogView.findViewById(R.id.foxgif))
+
+        // Show the dialog
+        alertDialog.show()
     }
 
     private fun initView() {
@@ -126,7 +149,7 @@ class ToLearnFlashCards : Fragment() {
                 ImageStore.addImageResource(cardPair.imageSrc, cardPair.front, cardPair.back, cardPair.voiceclip)
                 ImageStore.saveToPreferences(requireContext())
                 adapter.moveItemToEnd(position)
-                preferencesHelper.addSavedItem(position.toString())
+                preferencesHelper.addSavedItemCardToLearn(cardPair)
                 cardViewModel.deleteCards(cardPair)
                 toLearnCounter++
                 saveCounter("counterToLearn", toLearnCounter)
@@ -144,8 +167,13 @@ class ToLearnFlashCards : Fragment() {
     private fun observeViewModel() {
         cardViewModel.allWords.observe(viewLifecycleOwner) { cardPairs ->
             (binding.recyclerview.adapter as? ToLearnAdapter)?.submitList(cardPairs)
+
+            // Update visibility of empty state views
             binding.emptyImage.visibility = if (cardPairs.isEmpty()) View.VISIBLE else View.GONE
             binding.emptyCardText.visibility = if (cardPairs.isEmpty()) View.VISIBLE else View.GONE
+
+            // Update visibility of linearGo based on the presence of cards
+            binding.linearGo.visibility = if (cardPairs.isEmpty()) View.GONE else View.VISIBLE
         }
     }
 }

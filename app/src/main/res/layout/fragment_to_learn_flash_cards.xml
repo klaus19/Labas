@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:src="@drawable/backbutton" />
+
     <!-- Empty State -->
     <ImageView
         android:id="@+id/emptyImage"
@@ -35,14 +36,15 @@
         android:layout_centerHorizontal="true"
         android:text="@string/you_don_t_have_any_cards" />
 
-    <!-- RecyclerView -->
+    <!-- Linear Layout that should appear when there are cards -->
     <LinearLayout
+        android:id="@+id/linearGo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:orientation="vertical"
-        android:id="@+id/linearGo">
+        android:visibility="gone">
         <ImageView
             android:layout_gravity="center_horizontal"
             android:id="@+id/gifImageView"
@@ -61,6 +63,7 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
