@@ -140,32 +140,33 @@ class ToLearnFlashCards : Fragment(){
         val cardPair = adapter.currentList[position]
         val newList = mutableListOf<FlashcardPair>() // Temporary list to hold modified cards
 
+        val currentTime = System.currentTimeMillis()
+        val reDisplayTime: Long
+
         when (direction) {
-            ItemTouchHelper.RIGHT-> {
-                // Swipe right: Re-add card for display after 20 seconds
-                val currentTime = System.currentTimeMillis()
-                val reDisplayTime = currentTime + (20 * 1000) // 20 seconds in milliseconds
+            ItemTouchHelper.RIGHT -> {
+                // Swipe right: Re-add card for display after 16 hours
+                reDisplayTime = currentTime + (16 * 60 * 60 * 1000) // 16 hours in milliseconds
+                cardPair.nextDisplayTime = reDisplayTime
                 ImageStore.addImageResource(cardPair.imageSrc, cardPair.front, cardPair.back, cardPair.voiceclip)
                 ImageStore.saveToPreferences(requireContext())
                 preferencesHelper.addSavedItemCardToLearn(cardPair)
-                cardPair.nextDisplayTime = reDisplayTime
                 newList.add(cardPair)
                 toLearnCounter++
-                saveCounter("counterToLearn",toLearnCounter)
+                saveCounter("counterToLearn", toLearnCounter)
             }
-            ItemTouchHelper.LEFT-> {
-                // Swipe left: Re-add card for display after 10 seconds
-                val currentTime = System.currentTimeMillis()
-                val reDisplayTime = currentTime + (10 * 1000) // 10 seconds in milliseconds
+            ItemTouchHelper.LEFT -> {
+                // Swipe left: Re-add card for display after 12 hours
+                reDisplayTime = currentTime + (12 * 60 * 60 * 1000) // 12 hours in milliseconds
                 cardPair.nextDisplayTime = reDisplayTime
                 ImageStore.addImageResource(cardPair.imageSrc, cardPair.front, cardPair.back, cardPair.voiceclip)
                 ImageStore.saveToPreferences(requireContext())
                 preferencesHelper.addSavedItemCardToLearn(cardPair)
                 newList.add(cardPair) // Add modified card to temporary list
                 toLearnCounter++
-                saveCounter("counterToLearn",toLearnCounter)
+                saveCounter("counterToLearn", toLearnCounter)
             }
-            ItemTouchHelper.DOWN-> {
+            ItemTouchHelper.DOWN -> {
                 ImageStore.saveToPreferences(requireContext())
                 preferencesHelper.addSavedItemCard(cardPair)
                 cardViewModel.deleteCards(cardPair) // Still delete on swipe down
@@ -182,7 +183,6 @@ class ToLearnFlashCards : Fragment(){
             showEmptyState()
         }
     }
-
 
     private fun saveCounter(key: String, value: Int) {
         sharedPreferences.edit().apply {
