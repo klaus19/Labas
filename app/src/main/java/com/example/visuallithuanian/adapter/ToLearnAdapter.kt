@@ -3,6 +3,7 @@ package com.example.visuallithuanian.adapter
 import android.animation.ObjectAnimator
 import android.media.MediaPlayer
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,10 +15,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visuallithuanian.R
 import com.example.visuallithuanian.database.FlashcardPair
+import com.example.visuallithuanian.interfaces.RelativeCallback
 
 class ToLearnAdapter(
-    private val onDeleteListener: (FlashcardPair) -> Unit
+    private val onDeleteListener: (FlashcardPair) -> Unit,
+
 ) : ListAdapter<FlashcardPair, ToLearnAdapter.WordViewHolder>(WordsComparator()) {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycle_view, parent, false)
@@ -27,6 +31,7 @@ class ToLearnAdapter(
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val current = getItem(position)
         holder.bind(current)
+
     }
 
     inner class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -70,8 +75,11 @@ class ToLearnAdapter(
             wordEnglish.text = item.front
             wordLithuanian.text = item.back
             imageHelper.setImageResource(item.imageSrc)
+
+
             resetViewState()
         }
+
 
         private fun toggleDetailsVisibility() {
             if (clickCount % 2 == 0) {
@@ -107,13 +115,6 @@ class ToLearnAdapter(
         }
     }
 
-    fun moveItemToEnd(position: Int) {
-        val currentList = currentList.toMutableList()
-        val item = currentList.removeAt(position)
-        currentList.add(item)
-        submitList(currentList)
-    }
-
     class WordsComparator : DiffUtil.ItemCallback<FlashcardPair>() {
         override fun areItemsTheSame(oldItem: FlashcardPair, newItem: FlashcardPair): Boolean {
             return oldItem === newItem
@@ -123,4 +124,8 @@ class ToLearnAdapter(
             return oldItem.front == newItem.front && oldItem.back == newItem.back
         }
     }
+
+
+
+
 }

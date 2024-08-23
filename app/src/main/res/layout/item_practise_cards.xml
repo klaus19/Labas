@@ -12,12 +12,11 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardImagePractise"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_columnWeight="1"
         app:cardBackgroundColor="@color/lime_green"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="10dp"
-        android:foreground="?android:attr/selectableItemBackground">
+        android:layout_margin="5dp"
+        app:cardCornerRadius="10dp">
 
         <ImageView
             android:id="@+id/imageViewPractise"
@@ -30,12 +29,11 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardTextPractise"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_columnWeight="1"
-        android:layout_margin="8dp"
         app:cardCornerRadius="10dp"
-        app:cardBackgroundColor="#dbf5f4"
-        android:foreground="?android:attr/selectableItemBackground">
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@color/lime_green">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,6 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@color/blue_card"
