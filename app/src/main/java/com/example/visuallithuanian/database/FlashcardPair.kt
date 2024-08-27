@@ -10,4 +10,5 @@ data class FlashcardPair(
     val back:String,
     val imageSrc:Int,
     val voiceclip:Int,
+    var nextDisplayTime: Long = 0L
 )

@@ -4,12 +4,12 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Canvas
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -19,6 +19,7 @@ import com.example.visuallithuanian.R
 import com.example.visuallithuanian.adapter.ToLearnAdapter
 import com.example.visuallithuanian.constants.ImageStore
 import com.example.visuallithuanian.custom.OverlappingLayoutManager
+import com.example.visuallithuanian.database.FlashcardPair
 import com.example.visuallithuanian.databinding.FragmentToLearnFlashCardsBinding
 import com.example.visuallithuanian.model.PreferencesHelper
 import com.example.visuallithuanian.ui.activities.FirstScreen
@@ -26,14 +27,14 @@ import com.example.visuallithuanian.viewModel.FlashCardViewmodel
 import com.example.visuallithuanian.viewModel.WordViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class ToLearnFlashCards : Fragment() {
+class ToLearnFlashCards : Fragment(){
 
     private lateinit var binding: FragmentToLearnFlashCardsBinding
     private lateinit var preferencesHelper: PreferencesHelper
     private lateinit var sharedPreferences: SharedPreferences
     private var learnedCounter = 0
     private var toLearnCounter = 0
-
+    private lateinit var adapter: ToLearnAdapter
     private lateinit var bottomNav: BottomNavigationView
     private val cardViewModel: FlashCardViewmodel by viewModels {
         WordViewModelFactory((requireActivity().application as MyApp).repository)
@@ -48,6 +49,7 @@ class ToLearnFlashCards : Fragment() {
         setupRecyclerView()
         observeViewModel()
         showDialog()
+
         return binding.root
     }
 
@@ -94,15 +96,15 @@ class ToLearnFlashCards : Fragment() {
         val layoutManager = OverlappingLayoutManager(requireContext())
         binding.recyclerview.layoutManager = layoutManager
 
-        val adapter = ToLearnAdapter { cardPair ->
-            cardViewModel.deleteCards(cardPair)
-        }
+        adapter = ToLearnAdapter(
+            onDeleteListener = { cardPair -> cardViewModel.deleteCards(cardPair) },
+        )
 
         binding.recyclerview.adapter = adapter
         binding.recyclerview.itemAnimator = null
 
         val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
-            0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+            0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT or ItemTouchHelper.DOWN
         ) {
             override fun onMove(
                 recyclerView: RecyclerView,
@@ -136,24 +138,49 @@ class ToLearnFlashCards : Fragment() {
 
     private fun handleSwipe(position: Int, direction: Int, adapter: ToLearnAdapter) {
         val cardPair = adapter.currentList[position]
+        val newList = mutableListOf<FlashcardPair>() // Temporary list to hold modified cards
+
+        val currentTime = System.currentTimeMillis()
+        val reDisplayTime: Long
 
         when (direction) {
             ItemTouchHelper.RIGHT -> {
-                ImageStore.saveToPreferences(requireContext())
-                preferencesHelper.addSavedItemCard(cardPair)
-                cardViewModel.deleteCards(cardPair)
-                learnedCounter++
-                saveCounter("counterLearned", learnedCounter)
-            }
-            ItemTouchHelper.LEFT -> {
+                // Swipe right: Re-add card for display after 16 hours
+                reDisplayTime = currentTime + (16 * 60 * 60 * 1000) // 16 hours in milliseconds
+                cardPair.nextDisplayTime = reDisplayTime
                 ImageStore.addImageResource(cardPair.imageSrc, cardPair.front, cardPair.back, cardPair.voiceclip)
                 ImageStore.saveToPreferences(requireContext())
-                adapter.moveItemToEnd(position)
                 preferencesHelper.addSavedItemCardToLearn(cardPair)
-                cardViewModel.deleteCards(cardPair)
+                newList.add(cardPair)
                 toLearnCounter++
                 saveCounter("counterToLearn", toLearnCounter)
             }
+            ItemTouchHelper.LEFT -> {
+                // Swipe left: Re-add card for display after 12 hours
+                reDisplayTime = currentTime + (12 * 60 * 60 * 1000) // 12 hours in milliseconds
+                cardPair.nextDisplayTime = reDisplayTime
+                ImageStore.addImageResource(cardPair.imageSrc, cardPair.front, cardPair.back, cardPair.voiceclip)
+                ImageStore.saveToPreferences(requireContext())
+                preferencesHelper.addSavedItemCardToLearn(cardPair)
+                newList.add(cardPair) // Add modified card to temporary list
+                toLearnCounter++
+                saveCounter("counterToLearn", toLearnCounter)
+            }
+            ItemTouchHelper.DOWN -> {
+                ImageStore.saveToPreferences(requireContext())
+                preferencesHelper.addSavedItemCard(cardPair)
+                cardViewModel.deleteCards(cardPair) // Still delete on swipe down
+                learnedCounter++
+                saveCounter("counterLearned", learnedCounter)
+            }
+        }
+
+        // Update adapter with the entire list including the modified cards
+        adapter.submitList(newList.toList() + adapter.currentList.filter { it != cardPair })
+
+        // Check if all cards are swiped and update UI accordingly
+        if (adapter.currentList.isEmpty()) {
+            showEmptyState()
         }
     }
 
@@ -169,11 +196,15 @@ class ToLearnFlashCards : Fragment() {
             (binding.recyclerview.adapter as? ToLearnAdapter)?.submitList(cardPairs)
 
             // Update visibility of empty state views
-            binding.emptyImage.visibility = if (cardPairs.isEmpty()) View.VISIBLE else View.GONE
-            binding.emptyCardText.visibility = if (cardPairs.isEmpty()) View.VISIBLE else View.GONE
-
-            // Update visibility of linearGo based on the presence of cards
-            binding.linearGo.visibility = if (cardPairs.isEmpty()) View.GONE else View.VISIBLE
+            if (cardPairs.isEmpty()) {
+                showEmptyState()
+            } else {
+                binding.linearGo.visibility = View.VISIBLE
+            }
         }
+    }
+
+    private fun showEmptyState() {
+        binding.linearGo.visibility = View.GONE
     }
 }

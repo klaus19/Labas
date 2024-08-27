@@ -50,11 +50,11 @@ object PersonalitySingleton {
         hashMapPersonality["insensitive"] = Triple("nejautrus", R.drawable.insensitive, R.raw.insensitive)
         hashMapPersonality["extrovert"] = Triple("ekstravertas", R.drawable.extrovert, R.raw.extrovert)
 
-        hashMapPersonality["ambitious"] = Triple("ambicingas", R.drawable.ambitious, R.raw.computer)
-        hashMapPersonality["rebellious"] = Triple("maištingas", R.drawable.rebellious, R.raw.computer)
-        hashMapPersonality["responsible"] = Triple("atsakingas", R.drawable.responsible, R.raw.computer)
-        hashMapPersonality["smart"] = Triple("protinga", R.drawable.smart, R.raw.computer)
-        hashMapPersonality["independent"] = Triple("nepriklausomas", R.drawable.independent, R.raw.computer)
-        hashMapPersonality["stupid"] = Triple("kvailas", R.drawable.stupid, R.raw.computer)
+        hashMapPersonality["ambitious"] = Triple("ambicingas", R.drawable.ambitious, R.raw.ambitious)
+        hashMapPersonality["rebellious"] = Triple("maištingas", R.drawable.rebellious, R.raw.rebellious)
+        hashMapPersonality["responsible"] = Triple("atsakingas", R.drawable.responsible, R.raw.responsible)
+        hashMapPersonality["smart"] = Triple("protinga", R.drawable.smart, R.raw.smart)
+        hashMapPersonality["independent"] = Triple("nepriklausomas", R.drawable.independent, R.raw.independent)
+        hashMapPersonality["stupid"] = Triple("kvailas", R.drawable.stupid, R.raw.stupid)
     }
 }

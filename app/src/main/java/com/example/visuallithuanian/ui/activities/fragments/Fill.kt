@@ -804,4 +804,3 @@ package com.example.visuallithuanian
 //"a progress" = "pažanga"
 //"more than that ..." = "daugiau negu, kad ..."
 
-

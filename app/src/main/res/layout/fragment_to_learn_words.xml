@@ -27,7 +27,7 @@
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="To Learn Words"
+        android:text="Learnt Words"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:gravity="center"
@@ -47,7 +47,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_to_learn_word" />
+        tools:listitem="@layout/item_learned_word" />
 
     <!-- No Cards Layout -->
     <LinearLayout
