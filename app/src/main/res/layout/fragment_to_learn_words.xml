@@ -64,8 +64,8 @@
 
         <ImageView
             android:id="@+id/image_trash"
-            android:layout_width="148dp"
-            android:layout_height="148dp" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/text_no_cards"
