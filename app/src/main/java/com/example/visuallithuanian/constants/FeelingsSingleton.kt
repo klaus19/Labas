@@ -18,8 +18,8 @@ object FeelingsSingleton {
         hashMapFeelings["very nice"] = Triple("labai malonu", R.drawable.verynice, R.raw.computer)
         hashMapFeelings["cute"] = Triple("mielas", R.drawable.cute, R.raw.computer)
 
-        hashMapFeelings["to like"] = Triple("mėgti", R.drawable.tolike, R.raw.computer)
-        hashMapFeelings["to love"] = Triple("mylėti", R.drawable.tolove, R.raw.computer)
+        hashMapFeelings["to like"] = Triple("mėgti", R.drawable.tolike, R.raw.tolike)
+        hashMapFeelings["to love"] = Triple("mylėti", R.drawable.tolove, R.raw.love)
         hashMapFeelings["happiness"] = Triple("laimė", R.drawable.happiness, R.raw.computer)
         hashMapFeelings["sadness"] = Triple("liūdesys", R.drawable.sadness, R.raw.computer)
         hashMapFeelings["peace"] = Triple("ramybė", R.drawable.peace, R.raw.computer)
