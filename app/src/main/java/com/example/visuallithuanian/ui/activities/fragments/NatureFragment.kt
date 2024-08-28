@@ -105,7 +105,7 @@ class NatureFragment : Fragment() {
         hashMap["river"] = Triple("upė", R.drawable.river, R.raw.river)
         hashMap["sea"] = Triple("jūra", R.drawable.seach, R.raw.sea)
         hashMap["ground"] = Triple("žemė", R.drawable.ground, R.raw.ground)
-        hashMap["field"] = Triple("laukas", R.drawable.fields, R.raw.field)
+        hashMap["field"] = Triple("laukas", R.drawable.field, R.raw.field)
         hashMap["bird"] = Triple("paukštis", R.drawable.birds, R.raw.bird)
         hashMap["lake"] = Triple("ežeras", R.drawable.lake, R.raw.lake)
         hashMap["rain"] = Triple("lietus", R.drawable.rain, R.raw.rain)
