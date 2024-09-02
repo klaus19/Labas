@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-09-02T15:30:18.375147Z">
+        <DropdownSelection timestamp="2024-09-02T15:28:30.909191Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=/Users/tejas/.android/avd/Pixel_8_Pro_API_33.avd" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=/Users/tejas/.android/avd/Small_Phone_API_33_1.avd" />
             </handle>
           </Target>
         </DropdownSelection>
