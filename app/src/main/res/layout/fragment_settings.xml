@@ -1,27 +1,33 @@
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:scrollbars="vertical"
-    android:background="@color/lime_green">
+    android:background="@color/lime_green"
+    android:scrollbars="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewAvatar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:background="@color/white">
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/white"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center_horizontal">
+                android:gravity="center_horizontal"
+                android:padding="16dp">
 
                 <ImageView
                     android:id="@+id/imageAvatar"
@@ -45,165 +51,167 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardviewNotify"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/cardViewAvatar"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/card_border"
-            android:layout_marginTop="40dp"
             app:cardUseCompatPadding="true"
             app:cardCornerRadius="15dp"
-            app:cardElevation="4dp"
-            android:id="@+id/cardviewNotify">
+            app:cardElevation="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="12dp">
 
                 <ImageView
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_width="match_parent"
+                    android:id="@+id/imageNotify"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/notification"
-                    android:id="@+id/imageNotify" />
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/notification" />
 
                 <TextView
                     android:id="@+id/textNotify"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     android:textColor="@color/blue_card"
-                    android:layout_gravity="center"
                     android:text="@string/notifications" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardviewProgress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/cardviewNotify"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/card_border"
             app:cardUseCompatPadding="true"
             app:cardCornerRadius="15dp"
-            app:cardElevation="4dp"
-            android:id="@+id/cardviewProgress">
+            app:cardElevation="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="16dp">
 
                 <ImageView
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_width="match_parent"
+                    android:id="@+id/imageProgress"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:src="@drawable/progresstrack"
-                    android:scaleType="centerCrop"
-                    android:id="@+id/imageProgress" />
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/progresstrack" />
 
                 <TextView
                     android:id="@+id/textProgress"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_gravity="center"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     android:textColor="@color/blue_card"
                     android:text="@string/progress_track" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardviewAbout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/cardviewProgress"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/card_border"
             app:cardUseCompatPadding="true"
             app:cardCornerRadius="15dp"
-            app:cardElevation="4dp"
-            android:id="@+id/cardviewAbout">
+            app:cardElevation="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="16dp">
 
                 <ImageView
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:id="@+id/imageAbout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:src="@drawable/aboutapp"
-                    android:id="@+id/imageAbout" />
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/aboutapp" />
 
                 <TextView
                     android:id="@+id/textAboutApp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_gravity="center"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     android:textColor="@color/blue_card"
                     android:text="About" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardviewDelete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/cardviewAbout"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/card_border"
             app:cardUseCompatPadding="true"
             app:cardCornerRadius="15dp"
-            app:cardElevation="4dp"
-            android:id="@+id/cardviewDelete">
+            app:cardElevation="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="16dp">
 
                 <ImageView
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_width="match_parent"
-                    android:scaleType="centerCrop"
+                    android:id="@+id/imageDelete"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:src="@drawable/deletedata"
-                    android:id="@+id/imageDelete" />
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/deletedata" />
 
                 <TextView
                     android:id="@+id/textDeleteData"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_gravity="center"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     android:textColor="@color/blue_card"
                     android:text="Delete Data" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>
