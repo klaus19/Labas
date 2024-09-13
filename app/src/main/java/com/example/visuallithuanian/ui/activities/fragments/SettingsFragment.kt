@@ -4,12 +4,16 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.text.Html
+import android.text.method.LinkMovementMethod
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
 import com.example.visuallithuanian.R
@@ -19,6 +23,8 @@ import com.example.visuallithuanian.databinding.FragmentSettingsBinding
 import com.example.visuallithuanian.ui.activities.FirstScreen
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.core.text.method.LinkMovementMethodCompat
 
 class SettingsFragment : Fragment(), AvatarDialogFragment.AvatarSelectionListener {
 
@@ -26,6 +32,7 @@ class SettingsFragment : Fragment(), AvatarDialogFragment.AvatarSelectionListene
     lateinit var bottomNav: BottomNavigationView
     private lateinit var sharedPreferences1: SharedPreferences
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -86,14 +93,32 @@ class SettingsFragment : Fragment(), AvatarDialogFragment.AvatarSelectionListene
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun showAboutDialog() {
+        // Inflate the custom layout
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_about, null)
+
+        // Create the AlertDialog
         val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("About the App")
-        builder.setMessage("This app helps you learn Lithuanian vocabulary. Developed by Tejas Khartude.")
-        builder.setPositiveButton("OK", null)
+            .setTitle("About the App")
+            .setView(dialogView)
+            .setPositiveButton("OK", null)
+
+        // Set the message with links (using HTML)
+        val messageTextView: TextView = dialogView.findViewById(R.id.textViewMessage)
+        val messageHtml = """
+            My name is Tejas khartude.This App is about learning Lithuanian words visually.
+        Follow me on <a href="https://github.com/klaus19">GitHub</a> and 
+        <a href="https://www.linkedin.com/in/tejas-khartude-7601b640/">LinkedIn</a>.
+    """.trimIndent()
+        messageTextView.text = Html.fromHtml(messageHtml, Html.FROM_HTML_MODE_LEGACY)
+        messageTextView.movementMethod = LinkMovementMethodCompat.getInstance()
+
+        // Show the dialog
         val dialog = builder.create()
         dialog.show()
     }
+
 
     private fun showDeleteConfirmationDialog() {
         val builder = AlertDialog.Builder(requireContext())
