@@ -59,6 +59,7 @@
     <string name="play_voice">playing voice</string>
     <string name="image_desc">content description</string>
     <string name="cards_to_learn">Cards To Learn</string>
+    <string name="spaceedalgo">Hello, this is Mr. Fox. I will keep track of every single card, and at the right time, I will show it to you again. This way, you won\'t forget it and will retain it in your memory. If you swipe right, I will show the words after a longer period of time. If you swipe left, I will show them sooner.If you have learnt the word you can Swipe Down So, stay tuned and enjoy the learning!</string>
     <string-array name="time_options">
         <item>12:00</item>
         <item>14:00</item>

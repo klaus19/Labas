@@ -19,6 +19,17 @@ class PreferencesHelper(private val context: Context) {
         private const val SAVED_ITEMS_KEY = "saved_items_key" // Key for saved items set
     }
 
+    fun saveNextDisplayTime(cardPair: FlashcardPair, nextDisplayTime: Long) {
+        sharedPreferences.edit().apply {
+            putLong("${cardPair.front}_nextDisplayTime", nextDisplayTime)
+            apply()
+        }
+    }
+
+    fun getNextDisplayTime(cardPair: FlashcardPair): Long {
+        return sharedPreferences.getLong("${cardPair.front}_nextDisplayTime", 0)
+    }
+
     fun incrementCounter() {
         val currentCounter = getCounter()
         saveCounter(currentCounter + 1)

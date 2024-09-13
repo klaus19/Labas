@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:textColor="@color/blue_card"
-        android:text="Hello, this is Mr. Fox. I will keep track of every single card, and at the right time, I will show it to you again. This way, you won't forget it and will retain it in your memory. If you swipe right, I will show the words after a longer period of time. If you swipe left, I will show them sooner. So, stay tuned and enjoy the learning!" />
+        android:text="@string/spaceedalgo" />
 
     <Button
         android:id="@+id/dialog_button"
