@@ -597,26 +597,6 @@ package com.example.visuallithuanian
 //"A (night) dream" = "Sapnas"
 
 // Cafe
-
-//"fruit juice" = "vaisių sultys"
-//"apple juice" = "obuolių sultys"
-//"soft drink" = "gaivus gerimas"
-//"a pot" = "puodas"
-//"hot or cold" = "karštas arbo šaltas"
-//"small, medium or large" = "mažas, vidutinis arbo didelis"
-//"ice" = "ledas"
-//"beer" = "alaus"
-//"What would you like to drink?" = "Ko norėtumėte išgerti?"
-//"What size?" = "Kokio dydžio?"
-//
-//"how much does it cost?" = "kiek tai kainuoja?"
-//"green tea" = "žalioji arbata"
-//"a bottle" = "butelis"
-//"please come in" = "prašAu užEiti"
-//"please sit here" = "prašAu sedĖti čia"
-//"to order" = "užsakYti"
-//"please wait!" = "prašau palaukti!"
-//"Welcome" = "sveiki atvYkę!"
 //"I am very hungry" = "aš esu labai alkAna"
 //"She is a vegetarian" = "Ji yra vegetarė"
 //
@@ -785,23 +765,9 @@ package com.example.visuallithuanian
 //"Nurse" ="slaugytoja"
 //
 
-// Maths
 
-//"circle" = "apskritimas"
-//"rectangle" = "stačiakampis"
-//"a ball " = "rutulys"
-//"a cube" = "kubas"
-//"high and low" = "aukštas ir žemas"
-//"long or short" = "ilgas arbo trumpas"
-//"thin and thick" = "plonas ir storas"
-//"smooth" = "lygus"
-//"soft cake" = "minkštas tortas"
-//"area" = "plotas"
-//
-//"a class" = "pamoka"
-//"are you ready?" = "Ar tu pasiruošusi?"
-//"homework" = "namų darbas"
-//"a progress" = "pažanga"
-//"more than that ..." = "daugiau negu, kad ..."
+
+
+
 
 
