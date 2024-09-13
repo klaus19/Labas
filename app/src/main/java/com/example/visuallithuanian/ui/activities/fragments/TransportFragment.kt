@@ -61,47 +61,49 @@ class TransportFragment : Fragment() {
 
         return listOf(
             ImageInfo(
-                R.drawable.car,"Car","Automobilis",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.car,"Car","Automobilis",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The car is fast",
+                "Automobilis yra greitas"),
             ImageInfo(
-                R.drawable.bus,"Bus","Autobusas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.bus,"Bus","Autobusas",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The bus is late.",
+                "Autobusas vėluoja"),
             ImageInfo(
-                R.drawable.rail,"Train","Traukinys",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.rail,"Train","Traukinys",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The train arrives soon","Traukinys atvyksta netrukus"),
             ImageInfo(
-                R.drawable.bicycle,"Bicycle","Dviratis",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.bicycle,"Bicycle","Dviratis",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "I ride a bicycle.","Aš važiuoju dviračiu"),
             ImageInfo(
-                R.drawable.motorbike,"Motorcycle","Motociklas",listOf(R.drawable.purp),
+                R.drawable.motorbike,"Motorcycle","Motociklas",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The motorcycle is loud.","Motociklas yra garsus."),
             ImageInfo(
-                R.drawable.boat,"Boat","Valtis",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.boat,"Boat","Valtis",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The boat is on the water.","Valtis yra ant vandens"),
             ImageInfo(
-                R.drawable.airplane,"Airplane","Lėktuvas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.airplane,"Airplane","Lėktuvas",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The airplane is flying","Lėktuvas skrenda"),
             ImageInfo(
-                R.drawable.helicopter,"Helicopter","Sraigtasparnis",listOf(R.drawable.purp),
+                R.drawable.helicopter,"Helicopter","Sraigtasparnis",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The helicopter is in the sky","Sraigtasparnis yra danguje"),
             ImageInfo(
-                R.drawable.truck,"Truck","Sunkvežimis",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.truck,"Truck","Sunkvežimis",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The truck is carrying cargo","Vilkikas veža krovin"),
             ImageInfo(
-                R.drawable.taxi,"Taxi","Taksi",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.taxi,"Taxi","Taksi",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The taxi is waiting outside.","Taksas laukia lauke"),
         )
 
     }

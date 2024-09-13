@@ -73,34 +73,34 @@ class FlowersFragment : Fragment() {
 
         return listOf(
             ImageInfo(
-                R.drawable.rose,"Rose","Rožė",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.rose,"Rose","Rožė",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "Rose is a beautiful flower","Rožė yra graži gėlė"),
             ImageInfo(
-                R.drawable.daffodil,"Daffodil","Narcizai",listOf(R.drawable.purp),
+                R.drawable.daffodil,"Daffodil","Narcizai",emptyList(),
                 R.drawable.mic,
                 R.raw.cabbage,
-                "",""),
+                "The daffodil blooms brightly in the spring","Narcizas ryškiai žydi pavasarį."),
             ImageInfo(
-                R.drawable.sunflower,"Sunflower","Saulėgrąžos",listOf(R.drawable.purp),
+                R.drawable.sunflower,"Sunflower","Saulėgrąžos",emptyList(),
                 R.drawable.mic,
                 R.raw.zuccini,
-                "",""),
+                "The sunflower always turns towards the sun.","Saulėgrąža visada atsisuka į saulę"),
             ImageInfo(
-                R.drawable.peony,"Peony","Pivonijos",listOf(R.drawable.purp),
+                R.drawable.peony,"Peony","bijūnas",emptyList(),
                 R.drawable.mic,
                 R.raw.carrot,
-                "",""),
+                "The peony is blooming in the garden.","Bijūnas žydi sode"),
             ImageInfo(
-                R.drawable.tulips,"Tulip","Tulpė",listOf(R.drawable.purp),
+                R.drawable.tulips,"Tulip","Tulpė",emptyList(),
                 R.drawable.mic,
                 R.raw.beet,
-                "",""),
+                "The tulip petals are vibrant and colorful.","Tulpės žiedlapiai yra ryškūs ir spalvoti"),
             ImageInfo(
-                R.drawable.daisies,"Daisy","Daisy",listOf(R.drawable.purp),
+                R.drawable.daisies,"Daisy","ramunė",emptyList(),
                 R.drawable.mic,
                 R.raw.onion,
-                "",""),
+                "The daisy's simplicity is its true beauty.","Ramunės paprastumas yra jos tikrasis grožis."),
         )
 
     }

@@ -73,48 +73,52 @@ class SportsFragment : Fragment() {
 
         return listOf(
             ImageInfo(
-                R.drawable.football,"Football","Futbolas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.football,"Football","Futbolas",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "Football is a popular sport worldwide",
+                "Futbolas yra populiarus sportas visame pasaulyje"),
             ImageInfo(
-                R.drawable.hockey,"Ice Hockey","Ledo ritulys",listOf(R.drawable.purp),
+                R.drawable.hockey,"Ice Hockey","Ledo ritulys",emptyList(),
                 R.drawable.mic,
                 R.raw.cabbage,
-                "",""),
+                "Ice hockey is played on a frozen rink",
+                "Ledo ritulys žaidžiamas ant užšalusio ledo"),
             ImageInfo(
-                R.drawable.basketball,"Basketball","Krepšinis",listOf(R.drawable.purp),
+                R.drawable.basketball,"Basketball","Krepšinis",emptyList(),
                 R.drawable.mic,
                 R.raw.zuccini,
-                "",""),
+                "Basketball is a team sport with a hoop",
+                "Krepšinis yra komandinė sporto šaka su lanku"),
             ImageInfo(
-                R.drawable.chess,"Chess","Šachmatai",listOf(R.drawable.purp),
+                R.drawable.chess,"Chess","Šachmatai",emptyList(),
                 R.drawable.mic,
                 R.raw.carrot,
-                "",""),
+                "Chess is a game of strategy.",
+                "Šachmatai yra strategijos žaidimas"),
             ImageInfo(
-                R.drawable.cycling,"Cycling","Dviračių sportas",listOf(R.drawable.purp),
+                R.drawable.cycling,"Cycling","Dviračių sportas",emptyList(),
                 R.drawable.mic,
                 R.raw.beet,
-                "",""),
+                "Cycling is a great way to stay fit",
+                "Dviračių sportas yra puikus būdas išlikti fiziškai aktyviam"),
             ImageInfo(
-                R.drawable.swimming,"Swimming","Plaukimas",listOf(R.drawable.purp),
+                R.drawable.swimming,"Swimming","Plaukimas",emptyList(),
                 R.drawable.mic,
                 R.raw.onion,
-                "",""),
+                "Swimming is a relaxing exercise.",
+                "Plaukimas yra atpalaiduojantis pratimas"),
             ImageInfo(
-                R.drawable.rugby,"Rugby","Regbis",listOf(R.drawable.purp),
+                R.drawable.rugby,"Rugby","Regbis",emptyList(),
                 R.drawable.mic,
                 R.raw.beet,
-                "",""),
+                "Rugby is a fast and physical sport",
+                "Regbis yra greitas ir fiziniškas sportas"),
             ImageInfo(
-                R.drawable.skating,"Skating","Čiuožimas",listOf(R.drawable.purp),
+                R.drawable.skating,"Skating","slidinėjimas",emptyList(),
                 R.drawable.mic,
                 R.raw.onion,
-                "",""),
+                "Skating on ice is a fun winter activity.",
+                "Slidinėjimas ledu yra smagus žiemos užsiėmimas"),
         )
-
-
     }
-
-
 }

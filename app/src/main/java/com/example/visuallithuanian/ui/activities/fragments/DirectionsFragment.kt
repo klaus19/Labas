@@ -70,39 +70,47 @@ class DirectionsFragment : Fragment() {
 
         return listOf(
             ImageInfo(
-                R.drawable.north,"North","Šiaurės",listOf(R.drawable.purp),
+                R.drawable.north,"North","Šiaurės",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The north is often cold",
+                "Šiaurė dažnai būna šalta."),
             ImageInfo(
-                R.drawable.south,"South","Pietų",listOf(R.drawable.purp),
+                R.drawable.south,"South","Pietų",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The south is usually warmer",
+                "Pietūs paprastai būna šiltesni"),
             ImageInfo(
-                R.drawable.west,"West","Vakarų",listOf(R.drawable.purp),
+                R.drawable.west,"West","Vakarų",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "West is where the sun goes down",
+                "Vakarai yra ten, kur saulė nusileidžia"),
             ImageInfo(
-                R.drawable.east,"East","Rytų",listOf(R.drawable.purp), R.drawable.mic, R.raw.potato,
-                "",""),
+                R.drawable.east,"East","Rytų",emptyList(), R.drawable.mic, R.raw.potato,
+                "The east is where the sun rises",
+                "Rytai yra ten, kur saulė kyla"),
             ImageInfo(
-                R.drawable.northwest,"North West","Šiaurės vakarai",listOf(R.drawable.purp),
+                R.drawable.northwest,"North West","Šiaurės vakarai",emptyList(),
                 R.drawable.mic, R.raw.potato,
-                "",""),
+                "Northwest is a direction between north and west",
+                "Šiaurės vakarų kryptis yra tarp šiaurės ir vakarų."),
             ImageInfo(
-                R.drawable.northeast,"North East","Šiaurės rytai",listOf(R.drawable.purp),
+                R.drawable.northeast,"North East","Šiaurės rytai",emptyList(),
                 R.drawable.mic, R.raw.potato,
-                "",""),
+                "Northwest is a direction between north and east.",
+                "Šiaurės rytai yra kryptis tarp šiaurės ir rytų."),
             ImageInfo(
-                R.drawable.southwest,"South West","Pietvakariai",listOf(R.drawable.purp),
+                R.drawable.southwest,"South West","Pietvakariai",emptyList(),
                 R.drawable.mic, R.raw.potato,
-                "",""),
+                "Southwest is between south and west.",
+                "Pietvakariai yra tarp pietų ir vakarų."),
             ImageInfo(
-                R.drawable.southeast,"South East","Pietryčiai",listOf(R.drawable.purp),
+                R.drawable.southeast,"South East","Pietryčiai",emptyList(),
                 R.drawable.mic, R.raw.potato,
-                "",""),
+                "Southeast is between south and east",
+                "Pietryčiai yra tarp pietų ir rytų."),
 
 
 

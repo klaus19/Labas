@@ -77,57 +77,68 @@ class Solarsystem : Fragment() {
 
         return listOf(
             ImageInfo(
-                R.drawable.sun,"Sun","Saulė",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.sun,"Sun","Saulė",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The sun is bright","Saulė yra ryški"),
             ImageInfo(
-                R.drawable.star,"Star","Žvaigždė",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.star,"Star","Žvaigždė",emptyList(), R.drawable.mic,
                 R.raw.cabbage,
-                "",""),
+                "The star shines in the night sky.",
+                "Žvaigždė šviečia nakties danguje."),
             ImageInfo(
-                R.drawable.meteor,"Meteor","Meteoras",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.meteor,"Meteor","Meteoras",emptyList(), R.drawable.mic,
                 R.raw.carrot,
-                "",""),
+                "The meteor moves quickly across the sky",
+                "Meteoritas greitai juda per dangų"),
             ImageInfo(
-                R.drawable.comet,"Comet","Kometa",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.comet,"Comet","Kometa",emptyList(), R.drawable.mic,
                 R.raw.beet,
-                "",""),
+                "The comet has a bright tail",
+                "Kometa turi ryškią uodegą"),
             ImageInfo(
-                R.drawable.mercury,"Mercury","Merkurijus",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.mercury,"Mercury","Merkurijus",emptyList(), R.drawable.mic,
                 R.raw.radish,
-                "",""),
+                "Mercury is the closest planet to the sun",
+                "Merkurijus yra arčiausia planeta prie saulės"),
             ImageInfo(
-                R.drawable.venus,"Venus","Venera",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.venus,"Venus","Venera",emptyList(), R.drawable.mic,
                 R.raw.cucumber,
-                "",""),
+                "Venus is known as the hottest planet",
+                "Venera yra žinoma kaip karščiausia planeta"),
             ImageInfo(
-                R.drawable.earth,"Earth","Žemė",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.earth,"Earth","Žemė",emptyList(), R.drawable.mic,
                 R.raw.zuccini,
-                "",""),
+                "Earth is our home planet",
+                "Žemė yra mūsų namų planeta."),
             ImageInfo(
-                R.drawable.mars,"Mars","Marsas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.mars,"Mars","Marsas",emptyList(), R.drawable.mic,
                 R.raw.tomato,
-                "",""),
+                "Mars is called the red planet",
+                "Marsas vadinamas raudonąja planeta"),
             ImageInfo(
-                R.drawable.jupiter,"Jupiter","Jupiteris",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.jupiter,"Jupiter","Jupiteris",emptyList(), R.drawable.mic,
                 R.raw.onion,
-                "",""),
+                "Jupiter is the largest planet in the solar system.",
+                "Jupiteris yra didžiausia planeta saulės sistemoje"),
             ImageInfo(
-                R.drawable.saturn,"Saturn","Saturnas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.saturn,"Saturn","Saturnas",emptyList(), R.drawable.mic,
                 R.raw.pepper,
-                "",""),
+                "Saturn has beautiful rings around it.",
+                "Saturnas turi gražius žiedus aplink save"),
             ImageInfo(
-                R.drawable.uranus,"Uranus","Uranas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.uranus,"Uranus","Uranas",emptyList(), R.drawable.mic,
                 R.raw.zuccini,
-                "",""),
+                "Uranus rotates on its side","Uranas sukasi ant šono"),
             ImageInfo(
-                R.drawable.moon,"Moon","Mėnulis",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.moon,"Moon","Mėnulis",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The moon shines at night",
+                "Mėnulis šviečia naktį."),
             ImageInfo(
-                R.drawable.planets,"Planets","Planetos",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.planets,"Planets","Planetos",emptyList(), R.drawable.mic,
                 R.raw.radish,
-                "",""),
+                "The planets orbit the sun.",
+                "Planetos sukasi aplink saulę"),
 
         )
 
