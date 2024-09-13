@@ -53,67 +53,72 @@ class InstitutionsFragment : Fragment() {
 
         return listOf(
             ImageInfo(
-                R.drawable.museum,"Museum","Muziejus",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.museum,"Museum","Muziejus",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The museum displays many interesting exhibits",
+                "Muziejus rodo daug įdomių eksponatų."),
             ImageInfo(
-                R.drawable.hospital,"Hospital","Ligoninė",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.hospital,"Hospital","Ligoninė",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The hospital provides excellent care for its patients",
+                "Ligoniai gauna puikią priežiūrą ligoninėje"),
             ImageInfo(
-                R.drawable.zoo,"Zoo","Zoologijos sodas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.zoo,"Zoo","Zoo",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The zoo is home to many exotic animals",
+                "Zoo yra namai daugeliui egzotinių gyvūnų"),
             ImageInfo(
-                R.drawable.park,"Park","Parkas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.park,"Park","Parkas",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The park is full of green trees","Parke yra daug žalių medžių"),
             ImageInfo(
-                R.drawable.school,"School","Mokykla",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.school,"School","Mokykla",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The school has many classrooms.","Mokykloje yra daug klasių"),
             ImageInfo(
-                R.drawable.university,"University","Universitetas",listOf(R.drawable.purp),
+                R.drawable.university,"University","Universitetas",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The university offers various courses.","Universitetas siūlo įvairius kursus"),
             ImageInfo(
-                R.drawable.church,"Church","Bažnyčia",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.church,"Church","Bažnyčia",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The church is quiet and peaceful.","Bažnyčia yra tylu ir ramų"),
             ImageInfo(
-                R.drawable.bank,"Bank","Bankas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.bank,"Bank","Bankas",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The bank is open from 9 to 5","Bankas dirba nuo 9 iki 17 valandos"),
             ImageInfo(
-                R.drawable.supermarket,"Supermarket","prekybos centras",listOf(R.drawable.purp),
+                R.drawable.supermarket,"Supermarket","prekybos centras",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The supermarket has a wide selection of products.","Prekybos centras turi platų prekių pasirinkimą."),
             ImageInfo(
-                R.drawable.resort,"Resort","Kurortas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.resort,"Resort","Kurortas",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The resort offers beautiful views and relaxation",
+                "Kurortas siūlo gražius vaizdus ir poilsį"),
             ImageInfo(
-                R.drawable.restaurant,"Restaurant","Restoranas",listOf(R.drawable.purp),
+                R.drawable.restaurant,"Restaurant","Restoranas",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The restaurant serves delicious meals.",
+                "Restoranas pateikia skanius patiekalus."),
             ImageInfo(
-                R.drawable.aquarium,"Aquarium","Akvariumas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.aquarium,"Aquarium","Akvariumas",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The aquarium has many colorful fish.","Akvariumas turi daug spalvingų žuvų."),
             ImageInfo(
-                R.drawable.gymnasium,"Gymnasium","Gimnazijos",listOf(R.drawable.purp),
+                R.drawable.gymnasium,"Gymnasium","sporto salė",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The gymnasium has exercise equipment",
+                "Sporto salėje yra treniruoklių"),
             ImageInfo(
-                R.drawable.pub,"Pub","Pubas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.pub,"Pub","Pubas",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
-
-
+                "The pub is a great place to meet friends",
+                "Pubas yra puiki vieta susitikti su draugais"),
 
         )
     }

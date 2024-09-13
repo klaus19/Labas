@@ -63,49 +63,57 @@ class ProfessionFragment : Fragment() {
 
         return listOf(
             ImageInfo(
-                R.drawable.doctor,"Doctor","Gydytojas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.doctor,"Doctor","Gydytojas",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The doctor helps people stay healthy",
+                "Gydytojas padeda žmonėms išlikti sveikiems."),
             ImageInfo(
-                R.drawable.lawyer,"Lawyer","Advokatas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.lawyer,"Lawyer","Advokatas",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The lawyer provides legal advice.",
+                "Advokatas teikia teisines konsultacijas"),
             ImageInfo(
-                R.drawable.teacher,"Teacher","Mokytojas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.teacher,"Teacher","Mokytojas",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The teacher is in the classroom.",
+                "Mokytojas (mokytoja) yra klasėje"),
             ImageInfo(
-                R.drawable.engineer,"Engineer","Inžinierius",listOf(R.drawable.purp),
+                R.drawable.engineer,"Engineer","Inžinierius",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The engineer designs buildings.",
+                "Inžinierius projektuoja pastatus."),
             ImageInfo(
-                R.drawable.accountant,"Accountant","Buhalteris",listOf(R.drawable.purp),
+                R.drawable.accountant,"Accountant","Buhalteris",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The accountant manages finances",
+                "Apskaitininkas (buhalteris) tvarko finansus"),
             ImageInfo(
-                R.drawable.programmer,"Programmer","Programuotojas",listOf(R.drawable.purp),
+                R.drawable.programmer,"Programmer","Programuotojas",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The programmer writes code.","Programuotojas rašo kodą"),
             ImageInfo(
-                R.drawable.architect,"Architect","Architektas",listOf(R.drawable.purp),
+                R.drawable.architect,"Architect","Architektas",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The architect designs buildings","Architektas projektuoja pastatus"),
             ImageInfo(
-                R.drawable.chef,"Chef","Šefas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.chef,"Chef","Šefas",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The chef cooks delicious meals.",
+                "Virėjas gamina skanius patiekalus"),
             ImageInfo(
-                R.drawable.nurse,"Nurse","Slaugytojas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.nurse,"Nurse","Slaugytojas",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The nurse cares for patients.",
+                "Slaugytoja rūpinasi pacientais"),
             ImageInfo(
-                R.drawable.musician,"Musician","Muzikantas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.musician,"Musician","Muzikantas",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The musician plays the piano",
+                "Muzikantas groja pianinu."),
         )
     }
 

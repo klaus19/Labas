@@ -61,46 +61,56 @@ class TimeFragment : Fragment() {
 
         return listOf(
             ImageInfo(
-                R.drawable.second,"Second","Sekundė",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.second,"Second","Sekundė",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "A minute has sixty seconds",
+                "Minutė turi šešiasdešimt sekundžių"),
             ImageInfo(
-                R.drawable.minute,"Minute","Minutė",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.minute,"Minute","Minutė",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "A minute has sixty seconds",
+                "Minutė turi šešiasdešimt sekundžių"),
             ImageInfo(
-                R.drawable.hour,"Hour","Valanda",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.hour,"Hour","Valanda",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The meeting is in one hour",
+                "Susitikimas bus per valandą"),
             ImageInfo(
-                R.drawable.day,"Day","Diena",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.day,"Day","Diena",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "Today is a sunny day",
+                "Šiandien yra saulėta diena"),
             ImageInfo(
-                R.drawable.week,"Week","Savaitė",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.week,"Week","Savaitė",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "This week is very busy",
+                "Ši savaitė yra labai užimta"),
             ImageInfo(
-                R.drawable.month,"Month","Mėnuo",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.month,"Month","Mėnuo",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "March is the third month of the year",
+                "Kovas yra trečiasis mėnuo metų."),
             ImageInfo(
-                R.drawable.year,"Year","Metai",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.year,"Year","Metai",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "This year is going by quickly.",
+                "Šie metai praeina greitai"),
             ImageInfo(
-                R.drawable.decade,"Decade","Dešimtmetis",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.decade,"Decade","Dešimtmetis",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The 1990s was an interesting decade.",
+                "1990-ieji buvo įdomus dešimtmetis"),
             ImageInfo(
-                R.drawable.century,"Century","Amžius",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.century,"Century","Amžius",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "The 21st century has brought many changes.",
+                "21 amžius atnešė daug pokyčių"),
             ImageInfo(
-                R.drawable.millenium,"Millennium","Tūkstantmetis",listOf(R.drawable.purp),
+                R.drawable.millenium,"Millennium","Tūkstantmetis",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "We entered the new millennium in 2000",
+                "Įžengėme į naują tūkstantmetį 2000 metais"),
         )
     }
 

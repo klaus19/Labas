@@ -71,21 +71,25 @@ class SeasonsFragment : Fragment() {
 
         return listOf(
             ImageInfo(
-                R.drawable.summer,"Summer","Vasara",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.summer,"Summer","Vasara",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "Summer is warm and sunny",
+                "Vasara yra šilta ir saulėta"),
             ImageInfo(
-                R.drawable.autumn,"Autumn","Ruduo",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.autumn,"Autumn","Ruduo",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "Autumn leaves turn colorful",
+                "Rudens lapai tampa spalvingi"),
             ImageInfo(
-                R.drawable.winter,"Winter","Žiema",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.winter,"Winter","Žiema",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "Winter is cold and snowy",
+                "Žiema yra šalta ir snieginga"),
             ImageInfo(
-                R.drawable.spring,"Spring","Pavasaris",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.spring,"Spring","Pavasaris",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "Spring brings new flowers.",
+                "Pavasaris atneša naujų gėlių."),
         )
 
     }

@@ -62,50 +62,60 @@ class NumbersFragment : Fragment() {
     private fun generateNumbers(): List<ImageInfo> {
         return listOf(
             ImageInfo(
-                R.drawable.zero,"Zero","nulis",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.zero,"Zero","nulis",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "Zero means nothing",
+                "Nulis reiškia nieką"),
 
             ImageInfo(
-                R.drawable.one,"One","vienas",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.one,"One","vienas",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "I have one apple",
+                "Mano turi vieną obuolį"),
             ImageInfo(
-                R.drawable.two,"Two","du",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.two,"Two","du",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "I have two books",
+                "Mano turi du knygas"),
             ImageInfo(
-                R.drawable.three,"Three","trys",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.three,"Three","trys",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "I have three pencils",
+                "Mano turi tris pieštukus"),
             ImageInfo(
-                R.drawable.four,"Four","keturi",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.four,"Four","keturi",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "I have four chairs.",
+                "Mano turi keturias kėdes"),
             ImageInfo(
-                R.drawable.five,"Five","penki",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.five,"Five","penki",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "I have five coins",
+                "Mano turi penkis monetas"),
             ImageInfo(
-                R.drawable.six,"Six","šeši",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.six,"Six","šeši",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "I have six apples",
+                "Mano turi šešis obuolius"),
             ImageInfo(
-                R.drawable.seven,"Seven","septyni",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.seven,"Seven","septyni",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "I have seven books",
+                "Mano turi septynias knygas"),
             ImageInfo(
-                R.drawable.eight,"Eight","aštuoni",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.eight,"Eight","aštuoni",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "I have eight pencils",
+                "Mano turi aštuonius pieštukus"),
             ImageInfo(
-                R.drawable.nine,"Nine","devyni",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.nine,"Nine","devyni",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "I have nine apples","Mano turi devynis obuolius."),
             ImageInfo(
-                R.drawable.ten,"Ten","dešimt",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.ten,"Ten","dešimt",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "I have ten pens",
+                "Mano turi dešimt rašiklių"),
         )
     }
 

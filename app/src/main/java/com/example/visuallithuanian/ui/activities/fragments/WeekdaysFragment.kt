@@ -60,36 +60,43 @@ class WeekdaysFragment : Fragment() {
 
         return listOf(
             ImageInfo(
-                R.drawable.sunday,"Sunday","Sekmadienis",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.sunday,"Sunday","Sekmadienis",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "Sunday is a day for rest",
+                "Sekmadienis yra poilsio diena"),
             ImageInfo(
-                R.drawable.monday,"Monday","Pirmadienis",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.monday,"Monday","Pirmadienis",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "Monday is the first day of the week.",
+                "Pirmadienis yra pirmoji savaitės diena"),
             ImageInfo(
-                R.drawable.tuesday,"Tuesday","Antradienis",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.tuesday,"Tuesday","Antradienis",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "Tuesday comes after Monday",
+                "Antradienis ateina po pirmadienio"),
             ImageInfo(
-                R.drawable.wednesday,"Wednesday","Trečiadienis",listOf(R.drawable.purp),
+                R.drawable.wednesday,"Wednesday","Trečiadienis",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "Wednesday is in the middle of the week",
+                "Trečiadienis yra savaitės viduryje"),
             ImageInfo(
-                R.drawable.thursday,"Thursday","Ketvirtadienis",listOf(R.drawable.purp),
+                R.drawable.thursday,"Thursday","Ketvirtadienis",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "Thursday is the day before Friday",
+                "Ketvirtadienis yra diena prieš penktadien"),
             ImageInfo(
-                R.drawable.friday,"Friday","Penktadienis",listOf(R.drawable.purp), R.drawable.mic,
+                R.drawable.friday,"Friday","Penktadienis",emptyList(), R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "Friday is the end of the workweek.",
+                "Penktadienis yra darbo savaitės pabaiga"),
             ImageInfo(
-                R.drawable.saturday,"Saturday","Šeštadienis",listOf(R.drawable.purp),
+                R.drawable.saturday,"Saturday","Šeštadienis",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
-                "",""),
+                "Saturday is a popular day for relaxing.",
+                "Šeštadienis yra populiari diena atsipalaiduoti"),
         )
     }
 
