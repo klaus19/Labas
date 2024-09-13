@@ -138,51 +138,49 @@ class ToLearnFlashCards : Fragment(){
 
     private fun handleSwipe(position: Int, direction: Int, adapter: ToLearnAdapter) {
         val cardPair = adapter.currentList[position]
-        val newList = mutableListOf<FlashcardPair>() // Temporary list to hold modified cards
-
         val currentTime = System.currentTimeMillis()
         val reDisplayTime: Long
 
         when (direction) {
             ItemTouchHelper.RIGHT -> {
-                // Swipe right: Re-add card for display after 16 hours
-                reDisplayTime = currentTime + (16 * 60 * 60 * 1000) // 16 hours in milliseconds
-                cardPair.nextDisplayTime = reDisplayTime
-                ImageStore.addImageResource(cardPair.imageSrc, cardPair.front, cardPair.back, cardPair.voiceclip)
-                ImageStore.saveToPreferences(requireContext())
-                preferencesHelper.addSavedItemCardToLearn(cardPair)
-                newList.add(cardPair)
-                toLearnCounter++
-                saveCounter("counterToLearn", toLearnCounter)
+                // Swipe right: Re-add card for display after 12 hours
+                reDisplayTime = currentTime + (12 * 60 * 60 * 1000) // 12 hours in milliseconds
             }
             ItemTouchHelper.LEFT -> {
-                // Swipe left: Re-add card for display after 12 hours
-                reDisplayTime = currentTime + (12 * 60 * 60 * 1000) // 12 hours in milliseconds
-                cardPair.nextDisplayTime = reDisplayTime
-                ImageStore.addImageResource(cardPair.imageSrc, cardPair.front, cardPair.back, cardPair.voiceclip)
-                ImageStore.saveToPreferences(requireContext())
-                preferencesHelper.addSavedItemCardToLearn(cardPair)
-                newList.add(cardPair) // Add modified card to temporary list
-                toLearnCounter++
-                saveCounter("counterToLearn", toLearnCounter)
+                // Swipe left: Re-add card for display after 6 hours
+                reDisplayTime = currentTime + (6 * 60 * 60 * 1000) // 6 hours in milliseconds
             }
             ItemTouchHelper.DOWN -> {
-                ImageStore.saveToPreferences(requireContext())
-                preferencesHelper.addSavedItemCard(cardPair)
+                // Swipe down: Immediately delete card
                 cardViewModel.deleteCards(cardPair) // Still delete on swipe down
                 learnedCounter++
                 saveCounter("counterLearned", learnedCounter)
+                return
             }
+            else -> return
         }
 
+        // Save the next display time to SharedPreferences
+        preferencesHelper.saveNextDisplayTime(cardPair, reDisplayTime)
+
+        // Update the adapter and counters
+        ImageStore.addImageResource(cardPair.imageSrc, cardPair.front, cardPair.back, cardPair.voiceclip)
+        ImageStore.saveToPreferences(requireContext())
+        preferencesHelper.addSavedItemCardToLearn(cardPair)
+        toLearnCounter++
+        saveCounter("counterToLearn", toLearnCounter)
+
         // Update adapter with the entire list including the modified cards
-        adapter.submitList(newList.toList() + adapter.currentList.filter { it != cardPair })
+        adapter.submitList(adapter.currentList.filter { it != cardPair } + cardPair)
 
         // Check if all cards are swiped and update UI accordingly
         if (adapter.currentList.isEmpty()) {
             showEmptyState()
         }
     }
+
+
+
 
     private fun saveCounter(key: String, value: Int) {
         sharedPreferences.edit().apply {
@@ -193,16 +191,27 @@ class ToLearnFlashCards : Fragment(){
 
     private fun observeViewModel() {
         cardViewModel.allWords.observe(viewLifecycleOwner) { cardPairs ->
-            (binding.recyclerview.adapter as? ToLearnAdapter)?.submitList(cardPairs)
+            val currentTime = System.currentTimeMillis()
+
+            // Filter cards that are not due for display yet
+            val filteredCardPairs = cardPairs.filter { cardPair ->
+                val nextDisplayTime = preferencesHelper.getNextDisplayTime(cardPair)
+                nextDisplayTime <= currentTime
+            }
+
+            (binding.recyclerview.adapter as? ToLearnAdapter)?.submitList(filteredCardPairs)
 
             // Update visibility of empty state views
-            if (cardPairs.isEmpty()) {
+            if (filteredCardPairs.isEmpty()) {
                 showEmptyState()
             } else {
                 binding.linearGo.visibility = View.VISIBLE
             }
         }
     }
+
+
+
 
     private fun showEmptyState() {
         binding.linearGo.visibility = View.GONE
