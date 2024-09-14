@@ -39,6 +39,7 @@
     <string name="random_name1" translatable="false">Random Name</string>
     <string name="no_cards" translatable="false">No Cards to practise</string>
     <string name="you_have_no_cards" translatable="false">No Cards to learn</string>
+    <string name="no_cards_learned" translatable="false">No Cards Learned</string>
     <string name="learned" translatable="false">Learned</string>
     <string name="go" translatable="false">GO!</string>
     <string name="tap_on_cards" translatable="false">Tap on Cards</string>
