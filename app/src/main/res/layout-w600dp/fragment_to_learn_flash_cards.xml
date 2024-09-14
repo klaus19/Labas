@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background_color"
+    android:layout_height="match_parent">
+
+    <!-- Header -->
+    <ImageView
+        android:id="@+id/back_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/backbutton" />
+
+    <!-- Empty State -->
+    <ImageView
+        android:id="@+id/emptyImage"
+        android:layout_width="148dp"
+        android:layout_height="148dp"
+        android:visibility="visible"
+        android:layout_centerVertical="true"
+        android:layout_below="@id/back_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="180dp"
+        android:contentDescription="@string/empty" />
+
+    <TextView
+        android:layout_below="@id/emptyImage"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:visibility="visible"
+        android:textColor="@color/white"
+        android:id="@+id/emptyCardText"
+        android:layout_centerHorizontal="true"
+        android:text="@string/you_don_t_have_any_cards" />
+
+    <!-- Linear Layout that should appear when there are cards -->
+    <LinearLayout
+        android:id="@+id/linearGo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <ImageView
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/gifImageView"
+            android:layout_width="96dp"
+            android:layout_height="96dp" />
+        <TextView
+            android:id="@+id/textTap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tap_on_cards"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/back_icon"
+        android:layout_above="@id/bottom_margin"
+        android:layout_marginTop="60dp"
+        tools:listitem="@layout/recycle_view" />
+
+    <!-- Bottom Margin to prevent overlap with bottom navigation bar -->
+    <View
+        android:id="@+id/bottom_margin"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent" />
+</RelativeLayout>
