@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lime_green">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/cardviewNotifications"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/imageNotifyBack"
+                android:contentDescription="a back icon"
+                android:layout_width="64dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/leftarrow1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/notification"
+                        android:layout_gravity="center_vertical" />
+
+                    <TextView
+                        android:id="@+id/textViewHeader"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Notifications"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:drawablePadding="8dp"
+                        android:textColor="@color/black"
+                        android:padding="8dp"
+                        android:layout_gravity="center_vertical" />
+                </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textHow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="24sp"
+            android:layout_marginBottom="10dp"
+            android:textStyle="bold"
+            android:text="How do you want to study?"
+            android:textColor="@color/black"
+            android:layout_below="@id/cardviewNotifications" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardviewTurnOffNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/card_border"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
+            android:layout_below="@id/textHow">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:id="@+id/imageNotificationsoff"
+                android:src="@drawable/offnotifications"
+                android:layout_gravity="center_vertical" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textviewTurnOff1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="40dp"
+                    android:text="Turn off Notifications" />
+                <TextView
+                    android:id="@+id/textviewTurnOff2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="italic"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="40dp"
+                    android:text="I have my style" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardviewNotMuch"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/card_border"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
+            android:layout_below="@id/cardviewTurnOffNotifications">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:id="@+id/imageNotMuch"
+                android:src="@drawable/notification11"
+                android:layout_gravity="center_vertical" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textviewnotmuch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="40dp"
+                    android:text="Not Much" />
+                <TextView
+                    android:id="@+id/textviewnotmuch2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="italic"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="40dp"
+                    android:text="Notify me after 2 days of inactivity" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardviewRegular"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/card_border"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
+            android:layout_below="@id/cardviewNotMuch">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:id="@+id/imageNotificonRegular"
+                android:src="@drawable/notificationregular"
+                android:layout_gravity="center_vertical" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textviewRegular1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="40dp"
+                    android:text="Regularly" />
+                <TextView
+                    android:id="@+id/textviewRegular2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="italic"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="40dp"
+                    android:text="Notify me after 1 day of inactivity" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textStreak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="24sp"
+            android:layout_marginBottom="10dp"
+            android:textStyle="bold"
+            android:text="@string/daily_streak_notification"
+            android:textColor="@color/black"
+            android:layout_below="@id/cardviewRegular" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardviewStreak"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/card_border"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="4dp"
+            android:layout_below="@id/textStreak">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/checkBoxNotify"
+                    android:text="Notify me at"
+                    android:textColor="@color/black"
+                    android:textStyle="italic"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/spinnerTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:entries="@array/time_options"
+                    android:spinnerMode="dropdown"
+                    android:background="@drawable/spinner_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    android:textColor="@color/black"
+                    android:text="If you won't have" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imageFirestreak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/fire11" />
+
+                    <TextView
+                        android:id="@+id/textCountOverlay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="16sp"
+                        android:textColor="#FFFFFF"
+                        android:padding="4dp"
+                        android:text="5" /> <!-- initial value -->
+
+                </FrameLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</ScrollView>

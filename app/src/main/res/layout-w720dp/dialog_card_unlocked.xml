@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/lime_green"
+    android:padding="16dp">
+    <ImageView
+        android:id="@+id/successDialogImage"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/happlocked"
+        android:src="@drawable/happyunlocked" />
+    <TextView
+        android:textColor="@color/blue_card"
+        android:textStyle="bold"
+        android:id="@+id/successDialogMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text=""
+        android:textSize="18sp"
+        android:textAlignment="center" />
+</LinearLayout>
