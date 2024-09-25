@@ -153,8 +153,23 @@ class ToLearnFlashCards : Fragment(){
             ItemTouchHelper.DOWN -> {
                 // Swipe down: Immediately delete card
                 cardViewModel.deleteCards(cardPair) // Still delete on swipe down
+                preferencesHelper.addSavedItemCard(cardPair)
                 learnedCounter++
                 saveCounter("counterLearned", learnedCounter)
+
+                // Remove the card from the "to-learn" list
+                preferencesHelper.removeSavedItemCardToLearn(cardPair)
+
+                // Update adapter by removing the card
+                val updatedList = adapter.currentList.toMutableList().apply {
+                    remove(cardPair)
+                }
+                adapter.submitList(updatedList)
+
+                // Check if all cards are swiped and update UI accordingly
+                if (updatedList.isEmpty()) {
+                    showEmptyState()
+                }
                 return
             }
             else -> return
@@ -169,6 +184,7 @@ class ToLearnFlashCards : Fragment(){
         preferencesHelper.addSavedItemCardToLearn(cardPair)
         toLearnCounter++
         saveCounter("counterToLearn", toLearnCounter)
+
 
         // Update adapter with the entire list including the modified cards
         adapter.submitList(adapter.currentList.filter { it != cardPair } + cardPair)

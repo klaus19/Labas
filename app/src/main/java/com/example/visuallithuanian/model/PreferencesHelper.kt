@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.example.visuallithuanian.database.FlashcardPair
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class PreferencesHelper(private val context: Context) {
 
@@ -161,5 +162,33 @@ class PreferencesHelper(private val context: Context) {
             Gson().fromJson(it, FlashcardPair::class.java)
         }
     }
+
+    fun saveCardListToLearn(cards: List<FlashcardPair>) {
+        val json = Gson().toJson(cards) // Convert the list to a JSON string
+        sharedPreferences.edit().putString("toLearnCards", json).apply() // Save the JSON string
+    }
+
+    fun getSavedItemCardPairToLearn1(): List<FlashcardPair> {
+        val json = sharedPreferences.getString("toLearnCards", null)
+        return if (json != null) {
+            val type = object : TypeToken<List<FlashcardPair>>() {}.type // Define the list type
+            Gson().fromJson(json, type) // Convert the JSON string back to a List of FlashcardPair
+        } else {
+            emptyList() // Return an empty list if there's no saved data
+        }
+    }
+
+    fun removeSavedItemCardToLearn(card: FlashcardPair) {
+        // Retrieve the current list
+        val savedItems = getSavedItemCardPairToLearn().toMutableList()
+
+        // Remove the specified card
+        savedItems.remove(card)
+
+        // Save the updated list back to SharedPreferences
+        saveCardListToLearn(savedItems)
+    }
+
+
 
 }
