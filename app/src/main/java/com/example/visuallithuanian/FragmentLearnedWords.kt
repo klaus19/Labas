@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.visuallithuanian.adapter.LearnedWordsAdapter
+ import com.example.visuallithuanian.adapter.LearnedWordsAdapter
 import com.example.visuallithuanian.databinding.FragmentLearnedWordsBinding
 import com.example.visuallithuanian.model.PreferencesHelper
 
