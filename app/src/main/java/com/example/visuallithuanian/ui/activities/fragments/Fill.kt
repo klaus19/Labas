@@ -628,5 +628,3 @@ package com.example.visuallithuanian
 
 
 
-
-
