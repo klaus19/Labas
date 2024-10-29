@@ -428,51 +428,6 @@ package com.example.visuallithuanian
 //"stupid" = "kvailas"
 //"socialus" = "socialus"  //given to record
 
-// Household flashcards
-
-//"private" = "privatus"
-//"light-colored" = "šviesUs"
-//"dark" = "tamsUs"
-//"quiet" = "tylUs"
-//"noisy" = "triukšmingas"
-//"to have" = "turėti - turi - turejo"
-//"to buy" = "pirkti - perka - pirko"
-//"roof" = "stOgas"
-//"window" = "langas"
-//"doors" = "durys"
-//
-//"yard" = "kiemas"
-//"balcony" = "balkonas"
-//"stairs" = "laiptai"
-//"postbox" = "pašto dėžUtė"
-//"ceiling" = "lubos"
-//"floor" = "grindys"
-//"wall" = "siena"
-//"kitchen" = "virtuve"
-//"dinner room" = "svetAinė"
-//"boiler-room" = "katilinė"
-//
-//"anteroom" = "prieškambarys"
-//"bath-room" = "voniA"
-//"arm-chair" = "fOtelis"
-//"chair" = "kedė"
-//"table" = "stAlas"
-//"double bed" = "dvigulė lova"
-//"single bed" = "viengulė lova"
-//"shelf" = "lentyna"
-//"furniture" = "baldai"
-//"plants" = "augalas"
-//
-//"sink" = "kriauklė"
-//"stove" = "viryklė"
-//"curtains" = "užuolaidos"
-//"fabrics" = "audiniai"
-//"extra bed" = "papildoma lova"
-//"a room key" = "kambario raktas"
-//"storage" = "saugykla"
-//"heating" = "šildymas"
-//"additional premises" = "papildomas patalpos"
-//"fire" = "ugnis"
 
 //Cinema Flashcards
 
@@ -554,7 +509,47 @@ package com.example.visuallithuanian
 //"I love animals" = "Myliu gyvūnus"
 //"Cube of Truth" = "Tiesos kubas"  //Giving to record
 
+// Romantic words 
 
+//"Your smile" = "Tavo šypsena"
+//"Your eyes" = "Tavo akys"
+//"You're my cookie" = "Tu mano sausainiukas"
+//"I want to hug you " = "Noriu tave apkabinti"
+//"My dear(to address a girl)" = "Mano brangioji"
+//"My dear(to address a man)" = "Mano brangusis"
+//"I appreciate you very much" = "Aš labai tave vertinu"
+//"I want to be with you" = "Noriu būti su tavimi"
+//"Forever" = "Amžinai"
+//"Our connection is very strong" = "Mūsų ryšys labai stiprus"
+//
+//"You are very important to me" = "Tu man labai svarbus / svarbi"
+//"To kiss" = "Bučiuoti"
+//"You're amazing" = "Tu nuostabus"
+//"You are amazing" = "Tu nuostabi"
+//"Stars" = "Žvaigždės"
+//"Little things" = "Maži dalykai"
+//"It feels good to be with you" = "Man gera būti su tavimi"
+//"To make love" = "Mylėtis"
+//"Hot (when answers a question how?)" = "Karštai"
+//"Close" = "Artimas / artima"
+//
+//"To be yourself" = "Būti savimi"
+//"To make someone laugh" = "Prajuokinti"
+//"It's fun with you" = "Linksma su tavimi"
+//"You are very good (kind)" = "Tu labai geras / gera"
+//"Always" = "Visada"
+//"You inspire me " = "Tu mane įkvepi"
+//"To meet" = "Susitikti"
+//"To drive one crazy" = "Vesti iš proto"
+//"To trust" = "Pasitikėti"
+//"To promise" = "Pažadėti"
+//
+//"Heart" = "Širdis"
+//"To stay silent" = "Tylėti"
+//"A dream" = "Svajonė"
+//"To dream (in a sleep)" = "Sapnuoti"
+//"To dream (not in a sleep)" = "Svajoti"
+//"A (night) dream" = "Sapnas"
 
 // Cafe
 //"I am very hungry" = "aš esu labai alkAna"
@@ -620,7 +615,47 @@ package com.example.visuallithuanian
 //"road" = "kelias"
 //"drug store" = "narkotikų parduotuvė"
 
+//Time flashcards 
 
+//"time" = "laikas"
+//"morning" = "rytas"
+//"day" = "diena"
+//"evening" = "vakaras"
+//"night" = "naktis"
+//"hour" = "valanda"
+//"today" = "šiandien"
+//"tomorrow" = "rytoj"
+//"yesterday" = "vakar"
+//"month" = "mėnesį"
+//
+//"year" = "metus"
+//"week" = "savaite"
+//"every day" = "kiekvieną dieną"
+//"What are you doing on Saturdays?" = "Ką tu veiki šeštadieniais?"
+//"usually" = "paprastai"
+//"in the afternoon" = "po pietų"
+//"a week day" = "savaitės diena"
+//"holiday" = "šventė"
+//"What time is it now?" = "kiek dabar valandų?"
+//"a quarter to 7." = "be penkiolika 7."
+//
+//"a quarter past 9." = "penkiolika po 9."
+//"Half" = "pusė"
+//"before 8 a.m." = "prieš 8 (aštuntą) val."
+//"after 5 mins" = "po 5 min"
+//"to start" = "pradėti"
+//"to finish" = "pabaigti"
+//"a break" = "poilsis"
+//"one hour has 60 minutes" = "viena valanda turi 60 (šešiadešimt) minučiu"
+//"a timetable" = "tvarkaraštis"
+//"happy hours" = "laimės valandos"
+//
+//"an event" = "renginis"
+//"Future" = "ateitis"
+//"last year" = "praeitais metais"
+//"last month" = "praeitą mėnesį"
+//"vacation" = "atostogos"
+//"registration time" = "registracijos laikas"
 
 
 
