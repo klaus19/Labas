@@ -428,51 +428,6 @@ package com.example.visuallithuanian
 //"stupid" = "kvailas"
 //"socialus" = "socialus"  //given to record
 
-// Household flashcards
-
-//"private" = "privatus"
-//"light-colored" = "šviesUs"
-//"dark" = "tamsUs"
-//"quiet" = "tylUs"
-//"noisy" = "triukšmingas"
-//"to have" = "turėti - turi - turejo"
-//"to buy" = "pirkti - perka - pirko"
-//"roof" = "stOgas"
-//"window" = "langas"
-//"doors" = "durys"
-//
-//"yard" = "kiemas"
-//"balcony" = "balkonas"
-//"stairs" = "laiptai"
-//"postbox" = "pašto dėžUtė"
-//"ceiling" = "lubos"
-//"floor" = "grindys"
-//"wall" = "siena"
-//"kitchen" = "virtuve"
-//"dinner room" = "svetAinė"
-//"boiler-room" = "katilinė"
-//
-//"anteroom" = "prieškambarys"
-//"bath-room" = "voniA"
-//"arm-chair" = "fOtelis"
-//"chair" = "kedė"
-//"table" = "stAlas"
-//"double bed" = "dvigulė lova"
-//"single bed" = "viengulė lova"
-//"shelf" = "lentyna"
-//"furniture" = "baldai"
-//"plants" = "augalas"
-//
-//"sink" = "kriauklė"
-//"stove" = "viryklė"
-//"curtains" = "užuolaidos"
-//"fabrics" = "audiniai"
-//"extra bed" = "papildoma lova"
-//"a room key" = "kambario raktas"
-//"storage" = "saugykla"
-//"heating" = "šildymas"
-//"additional premises" = "papildomas patalpos"
-//"fire" = "ugnis"
 
 //Cinema Flashcards
 
