@@ -418,113 +418,6 @@ package com.example.visuallithuanian
 //"drugs" = "vaistai"
 //"tavo dovana" = "tavo dovana"
 
-
-// Personality Fragment
-//"ambitious" = "ambicingas"
-//"rebellious" = "maištingas"
-//"responsible" = "atsakingas"
-//"smart" = "protinga"
-//"independent" = "nepriklausomas"
-//"stupid" = "kvailas"
-//"socialus" = "socialus"  //given to record
-
-
-//Cinema Flashcards
-
-//"stage" = "scena"
-//"playwright" = "dramaturgas"
-//"the villain" = "piktadarys"
-//"Critic" = "kritikas"
-//"dialogue" = "dialogą"
-//"actor" = "aktorius"
-//"special effects" = "specialieji efektai"
-//"mask" = "kaukė"
-//"scary" = "baugus"
-//"operator" = "operatorius"
-//
-//"The star" = "žvaigždė"
-//"orchestra" = "orkestras"
-//"Behind the scenes" = "užkulisiuose"
-//"rehearsal" = "repeticija"
-//"science fiction" = "mokslinė fantastika"
-//"western film" = "vakarietiškas filmas"
-//"cloakroom" = "rūbinė"
-//"choreographer" = "choreografas"
-//"drama" = "drama"
-//"historical film" = "istorinis filmas"
-//
-//"theater" = "kino teatras"
-//"based on the book" = "remiantis knyga"
-//"The Musical" = "miuziklas"
-//"translator" = "vertėjas"
-//"location" = "vieta"
-//"Duplicate" = "dubliuoti"
-//"costume" = "kostiumai"
-//"Auditorium" = "auditorija"
-//"subtitles" = "subtitrai"
-//"Studio" = "studija"
-//
-//"actress" = "aktorė"
-//"Genre" = "žanras"
-//"thriller" = "trileris"
-//"violence" = "smurtas"
-//"horror film" = "siaubo filmas"
-//"war film" = "karo filmas"
-//"romantic comedy" = "romantinė komedija"
-//"Main character" = "Pagrindinis veikėjas"
-//"action film" = "veiksmo filmas"
-//"film" = "filmas"
-//
-//"checkout" = "kasą"
-//"mesmerising film" = "įtaigus filmas"
-//"comedy" = "komedija"
-//"Movie" = "Filmas"
-//"stuntman" = "kaskadininkas"
-//"Producer" = "prodiuseris"
-//"Listening" = "klausymas"
-
-//Vegans
-//"A vegan (male/female)" = "Veganas / veganė"
-//"An Animal" = "Gyvūnas"
-//"A cage" = "Narvas"
-//"Animal rights" = "Gyvūnų teisės"
-//"Diet" = "Dieta"
-//"Plant-based diet (nutrition)" = "Augalinė mityba"
-//"Cow's milk" = "Karvės pienas"
-//"Ethical vegan" = "Etinis veganas"
-//"Of animal origin" = "Gyvūninės kilmės"
-//"With soy milk" = "Su sojų pienu"
-//
-//"Coconut milk" = "Kokosų pienas"
-//"A farm" = "Ferma"
-//"Activism" = "Aktyvizmas"
-//"An activist (male/female)" = "Aktyvistas / aktyvistė"
-//"Pain" = "Skausmas"
-//"A reason" = "Priežastis"
-//"A taste" = "Skonis"
-//"An alternative" = "Alternatyva"
-//"Uninhabited island" = "Negyvenama sala"
-//"Protein" = "Baltymai"
-//
-//"I love animals" = "Myliu gyvūnus"
-//"Cube of Truth" = "Tiesos kubas"  //Giving to record
-
-
-
-// Cafe
-//"I am very hungry" = "aš esu labai alkAna"
-//"She is a vegetarian" = "Ji yra vegetarė"
-//
-//"dessert" = "desertas"
-//"beverage" = "gėrimas"
-//"ice cream" = "ledai"
-//"one piece" = "vieno gabalėlio"
-//"a bill" = "sąskaita"
-//"a receipt" = "kvitas"
-//"knife" = "peilis"
-//"hard biscuit" = "kietas sausainis"
-//"taste and smell" = "skonis ir kvapas"
-
 // Tow and villages 
 
 //"Grocery Store" = "maisto prekių parduotuvė"
@@ -537,7 +430,6 @@ package com.example.visuallithuanian
 //"castle" = "pilis"
 //"boring" = "nuobodu"
 //"overcrowded" = "per daug apgyvendinta"
-//
 //"cathedral" = "katedra"
 //"press" = "spaudos kioskas"
 //"police department" = "policijos departamentas"
@@ -548,7 +440,6 @@ package com.example.visuallithuanian
 //"City" = "Miestas"
 //"noisy" = "triukšminga"
 //"theater" = "kino teatras"
-//
 //"Bank" = "bankas"
 //"restaurant" = "restoranas"
 //"silent" = "tylu"
@@ -559,7 +450,6 @@ package com.example.visuallithuanian
 //"pharmacy" = "vaistinė"
 //"safe" = "saugus"
 //"The Church" = "Bažnyčia"
-//
 //"house" = "namas"
 //"village" = "kaimas"
 //"isolated" = "izoliuotas"
@@ -570,10 +460,9 @@ package com.example.visuallithuanian
 //"mosque" = "mečetę"
 //"old" = "senas"
 //"empty" = "tuščia"
-//
 //"Air pollution" = "oro tarša"
 //"road" = "kelias"
-//"drug store" = "narkotikų parduotuvė"
+//"drug store" = "narkotikų parduotuvė"  //given to record
 
 
 
