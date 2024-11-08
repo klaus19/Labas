@@ -509,7 +509,7 @@ package com.example.visuallithuanian
 //"I love animals" = "Myliu gyvūnus"
 //"Cube of Truth" = "Tiesos kubas"  //Giving to record
 
-// Romantic words 
+// Romantic words
 
 //"Your smile" = "Tavo šypsena"
 //"Your eyes" = "Tavo akys"
@@ -614,48 +614,6 @@ package com.example.visuallithuanian
 //"Air pollution" = "oro tarša"
 //"road" = "kelias"
 //"drug store" = "narkotikų parduotuvė"
-
-//Time flashcards 
-
-//"time" = "laikas"
-//"morning" = "rytas"
-//"day" = "diena"
-//"evening" = "vakaras"
-//"night" = "naktis"
-//"hour" = "valanda"
-//"today" = "šiandien"
-//"tomorrow" = "rytoj"
-//"yesterday" = "vakar"
-//"month" = "mėnesį"
-//
-//"year" = "metus"
-//"week" = "savaite"
-//"every day" = "kiekvieną dieną"
-//"What are you doing on Saturdays?" = "Ką tu veiki šeštadieniais?"
-//"usually" = "paprastai"
-//"in the afternoon" = "po pietų"
-//"a week day" = "savaitės diena"
-//"holiday" = "šventė"
-//"What time is it now?" = "kiek dabar valandų?"
-//"a quarter to 7." = "be penkiolika 7."
-//
-//"a quarter past 9." = "penkiolika po 9."
-//"Half" = "pusė"
-//"before 8 a.m." = "prieš 8 (aštuntą) val."
-//"after 5 mins" = "po 5 min"
-//"to start" = "pradėti"
-//"to finish" = "pabaigti"
-//"a break" = "poilsis"
-//"one hour has 60 minutes" = "viena valanda turi 60 (šešiadešimt) minučiu"
-//"a timetable" = "tvarkaraštis"
-//"happy hours" = "laimės valandos"
-//
-//"an event" = "renginis"
-//"Future" = "ateitis"
-//"last year" = "praeitais metais"
-//"last month" = "praeitą mėnesį"
-//"vacation" = "atostogos"
-//"registration time" = "registracijos laikas"
 
 
 
