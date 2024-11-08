@@ -17,7 +17,6 @@ object RightsSingleton {
         hashMapRights["counterfeiting"] = Triple("klastotė", R.drawable.counterfeiting, R.raw.computer)
         hashMapRights["convicted"] = Triple("nuteistasis", R.drawable.convicted, R.raw.computer)
         hashMapRights["contract"] = Triple("sutartis", R.drawable.contract, R.raw.computer)
-
         hashMapRights["judicial court"] = Triple("teisminis teismas", R.drawable.judicialcourt, R.raw.computer)
         hashMapRights["defendant"] = Triple("atsakovas", R.drawable.defendent, R.raw.computer)
         hashMapRights["guilty"] = Triple("kaltas", R.drawable.guilty, R.raw.computer)
@@ -28,7 +27,6 @@ object RightsSingleton {
         hashMapRights["arson"] = Triple("padegimas", R.drawable.arson, R.raw.computer)
         hashMapRights["parole"] = Triple("lygtinis paleidimas", R.drawable.parole, R.raw.computer)
         hashMapRights["prosecutor"] = Triple("prokuroras", R.drawable.prosecutor, R.raw.computer)
-
         hashMapRights["to summarize"] = Triple("apibendrinti", R.drawable.summarize, R.raw.computer)
         hashMapRights["sentence"] = Triple("nuosprendis", R.drawable.sentence, R.raw.computer)
         hashMapRights["mortgage"] = Triple("hipoteka", R.drawable.mortgage, R.raw.computer)
@@ -39,7 +37,6 @@ object RightsSingleton {
         hashMapRights["illegal"] = Triple("neteisėtas", R.drawable.illegal, R.raw.computer)
         hashMapRights["innocent"] = Triple("nekaltas", R.drawable.innocent, R.raw.computer)
         hashMapRights["crime"] = Triple("nusikaltimas", R.drawable.crime, R.raw.computer)
-
         hashMapRights["to testify"] = Triple("liudyti", R.drawable.totestify, R.raw.computer)
         hashMapRights["murder"] = Triple("žmogžudystė", R.drawable.murder, R.raw.computer)
         hashMapRights["coercion"] = Triple("prievarta", R.drawable.coercion, R.raw.computer)
@@ -48,10 +45,10 @@ object RightsSingleton {
         hashMapRights["vandalism"] = Triple("vandalizmas", R.drawable.vandalism, R.raw.computer)
         hashMapRights["to fulfill"] = Triple("įvykdyti", R.drawable.tofulfill, R.raw.computer)
         hashMapRights["legally"] = Triple("legaliai", R.drawable.legally, R.raw.computer)
-
         hashMapRights["amnesty"] = Triple("amnestija", R.drawable.amnesty, R.raw.computer)
         hashMapRights["to appeal"] = Triple("apskųsti", R.drawable.toappeal, R.raw.computer)
         hashMapRights["without laws"] = Triple("be įstatymų", R.drawable.withoutlaws, R.raw.computer)
+
         hashMapRights["rape"] = Triple("išžaginimas", R.drawable.rape, R.raw.computer)
         hashMapRights["attack"] = Triple("užpuolimas", R.drawable.attack, R.raw.computer)
         hashMapRights["to confirm"] = Triple("patvirtinti", R.drawable.confirm, R.raw.computer)
@@ -59,7 +56,6 @@ object RightsSingleton {
         hashMapRights["be under house arrest"] = Triple("būti namų arešte", R.drawable.housearrest, R.raw.computer)
         hashMapRights["bankruptcy"] = Triple("bankrotas", R.drawable.bankruptcy, R.raw.computer)
         hashMapRights["corruption"] = Triple("korupcija", R.drawable.corruption, R.raw.computer)
-
         hashMapRights["expense account"] = Triple("išlaidų sąskaita", R.drawable.expenseaccount, R.raw.computer)
         hashMapRights["bonds"] = Triple("obligacijos", R.drawable.bonds, R.raw.computer)
         hashMapRights["tax"] = Triple("mokesčio", R.drawable.tax, R.raw.computer)
