@@ -1,14 +1,14 @@
 package com.example.visuallithuanian
 //
 
-//"to get/receive, gets, got what?" = "gauti, gauna, gavo ką?"
+//"to get/receive gets got what?" = "gauti gauna gavo ką?"
 //"email" = "elektroninis laiškas"
-//"sign, signs, signed what?" = "pasirašyti, pasirašo, pasirašė ką?"
+//"sign signs signed what?" = "pasirašyti pasirašo pasirašė ką?"
 //"Signature" = "parašas"
 //"Contract" = "sutartis"
-//"to wait, waits, waited for what?" = "palaukti, palaukia, palaukė ko?"
-//"to ask, asks, asked" = "paklausti, paklausia, paklausė"
-//"to call, calls, called who?" = "paskambinti, paskambina, paskambino kam?"
+//"to wait waits waited for what?" = "palaukti palaukia palaukė ko?"
+//"to ask asks asked" = "paklausti paklausia paklausė"
+//"to call calls called who?" = "paskambinti paskambina paskambino kam?"
 //"paper" = "popierius"
 //"sheet of paper" = "popieriaus lapas"
 //
@@ -17,7 +17,7 @@ package com.example.visuallithuanian
 
 
 
-//"work" = "darbas",
+//"work" = "darbas"
 //"rest day / public holiday" = "poilsio / nedarbo diena"
 //"Workplace" = "darbovietė"
 //"firm/company" = "įmonė"
@@ -30,24 +30,24 @@ package com.example.visuallithuanian
 //
 //"meeting" = "susirinkimas/susitinkimas"
 //"cabinet" = "kabinetas"
-//"to begin, begins, began" = "prasidėti, prasideda, prasidėjo"
-//"to finish/to come to an end, finishes, finished" = "pasibaigti, pasibaiga, pasibaigė"
-//"to start, starts, started what?" = "pradėti, pradeda, pradėjo ką?"
-//"to finish, finishes, finished what?" = "baigti, baigia, baigė ką?"
+//"to begin begins began" = "prasidėti prasideda prasidėjo"
+//"to finish/to come to an end finishes finished" = "pasibaigti pasibaiga pasibaigė"
+//"to start starts started what?" = "pradėti pradeda pradėjo ką?"
+//"to finish finishes finished what?" = "baigti baigia baigė ką?"
 //"to finish work" = "baigti darbą"
 //"lunch break" = "pietų pertrauka"
-//"to have vacation, vacationing, vacationed" = "atostogauti, atostogauja, atostogavo"
+//"to have vacation vacationing vacationed" = "atostogauti atostogauja atostogavo"
 
-//"holidays, vacation" = "atostogos",
-//"to print, prints, printed what?" = "išspausdinti, išspausdina, išspausdino ką?",
-//"Document" = "dokumentas",
-//"copy" = "kopija",
-//"to inform, informs, informed what? who?" = "perduoti, perduoda, perdavė ką? kam?",
-//"to give/hand, gives/hands, gave what? to whom?" = "paduoti, paduoda, padavė ką? kam?",
-//"to say, says, said what? to whom?" = "pasakyti, pasako, pasakė ką? kam?",
-//"to take, takes, took what? to whom?" = "nunešti, nuneša, nunešė ką? kam?",
-//"to write, writes, wrote what? to whom?" = "rašyti, rašo, raše ką? kam?",
-//"to send, sends, sent what?" = "išsiųsti, išsiunčia, išsiunte ką?",
+//"holidays vacation" = "atostogos"
+//"to print prints printed what?" = "išspausdinti išspausdina išspausdino ką?"
+//"Document" = "dokumentas"
+//"copy" = "kopija"
+//"to inform informs informed what? who?" = "perduoti perduoda perdavė ką? kam?"
+//"to give/hand gives/hands gave what? to whom?" = "paduoti paduoda padavė ką? kam?"
+//"to say says said what? to whom?" = "pasakyti pasako pasakė ką? kam?"
+//"to take takes took what? to whom?" = "nunešti nuneša nunešė ką? kam?"
+//"to write writes wrote what? to whom?" = "rašyti rašo raše ką? kam?"
+//"to send sends sent what?" = "išsiųsti išsiunčia išsiunte ką?"
 
 // Food and Ingerdients
 //"egg" = "kiaušinis"
@@ -62,10 +62,10 @@ package com.example.visuallithuanian
 //"pepper" = "pipirai"
 //
 //"lunch" = "pietūs"
-//"fish" = "žuvis",
-//"raspberry" = "avietė",
+//"fish" = "žuvis"
+//"raspberry" = "avietė"
 //"vegetables" = "daržovės"
-//"fruit" = "vaisius",
+//"fruit" = "vaisius"
 //"garlic" = "česnakas"
 //"Chocolate" = "Šokoladas"
 //"sparkling water" = "gazuotas vanduo"
@@ -74,19 +74,19 @@ package com.example.visuallithuanian
 //
 //"snack" = "užkandis"
 //"sausage" = "dešra"
-//"pear" = "kriaušė",
-//"still water" = "Negazuotas vanduo",
+//"pear" = "kriaušė"
+//"still water" = "Negazuotas vanduo"
 //"Watermelon" = "arbūzas"
 //"Salad" = "salotos"
-//"Carrot" = "morką",
+//"Carrot" = "morką"
 //"Ham" = "kumpis"
 //"Beef" = "jautiena"
-//"Potato" = "bulvė",
+//"Potato" = "bulvė"
 //
 //"crumbs" = "dribsniai"
-//"Apples" = "obuolių",
+//"Apples" = "obuolių"
 //"marmalade" = "marmeladas"
-//"Pineapple" = "ananasas",
+//"Pineapple" = "ananasas"
 //"Tea" = "arbata"
 //"Bread" = "duona"
 //"cheese" = "sūris"
@@ -100,7 +100,7 @@ package com.example.visuallithuanian
 //"lemon" = "citrina"
 //"mustard" = "garstyčios"
 //"avocado" = "avokadas"
-//"Onion" = "svogūnas",
+//"Onion" = "svogūnas"
 //"mushroom" = "grybas"
 //"cherry" = "vyšnia"
 //"cauliflower" = "žiediniai kopūstai"
@@ -155,11 +155,11 @@ package com.example.visuallithuanian
 // Celebrations-Holidays
 
 //"celebration" = "švente"
-//"to celebrate, celebrates, celebrated what?" = "švęsti, švenčia, šventė ką?"
+//"to celebrate celebrates celebrated what?" = "švęsti švenčia šventė ką?"
 //"birthday" = "gimtadienis"
 //"name day" = "vardadienis"
 //"anniversary" = "jubiliejus"
-//"to invite, invites, invited what?" = "kviesti, kviečia, kviektė ką?"
+//"to invite invites invited what?" = "kviesti kviečia kviektė ką?"
 //"party" = "vakarėlis"
 //"guest" = "svečias"
 //"to go visit (as a guest)" = "eiti į svečius"
@@ -167,18 +167,18 @@ package com.example.visuallithuanian
 //
 //"to be a guest" = "būti svečiuose"
 //"to give" = "dovanoti"
-//"to get, gets, got what?" = "gauti, gauna, gavo ką?"
+//"to get gets got what?" = "gauti gauna gavo ką?"
 //"gift" = "dovana"
 //"flower" = "gėlė"
 //"Postcard" = "atvirukas"
 //"to send" = "išsiųsti"
-//"to write, writes, wrote postcard" = "užrašyti, užrašo, užrašė atvirukas"
+//"to write writes wrote postcard" = "užrašyti užrašo užrašė atvirukas"
 //"cake" = "tortas"
 //"candles" = "žvakutė"
 //"Christmas Eve" = "Kūčios"
 //
 //"to congratulate" = "sveikinti"
-//"to wish" = "linkėti,"
+//"to wish" = "linkėti"
 //"Christmas" = "Kalėdos"
 //"christmas tree" = "eglutė"
 //"Santa Claus" = "Kalėdų senelis"
@@ -197,7 +197,7 @@ package com.example.visuallithuanian
 //"Joy" = "džiaugsmas"
 //"happy" = "laimingas"
 //"beloved" = "mylimas"
-//"honourable" = "gerbiamas,"
+//"honourable" = "gerbiamas"
 //"colourful" = "spalvingas"
 //"Popular" = "popularus"
 
@@ -287,7 +287,7 @@ package com.example.visuallithuanian
 //"exchange" = "mainai"
 //"behavior" = "elgesį"
 //"to doubt something" = "abejoti kažkuo"
-//"Last but not least" = "Paskutinis, bet ne prasčiausias"
+//"Last but not least" = "Paskutinis bet ne prasčiausias"
 //"sneeze" = "čiaudėti"
 //"butterfly" = "drugelis"
 //"insurance" = "draudimas"
@@ -326,31 +326,31 @@ package com.example.visuallithuanian
 //"surprise" = "staigmena"
 //"The church" = "Bažnyčia"
 //"always" = "visada"
-//"suddenly" = "staiga",
-//"solution" = "sprendimas", 
-//"most importantly" = "svarbiausia", 
-//"beetle" = "vabalas", 
-//"asparagus" = "šparagai", 
-//"Government" = "Vyriausybė", 
-//"kindergarten" = "darželis", 
-//"noisy" = "triukšminga",
-//"flight" = "skrydis", 
-//"reason" = "priežastis", 
-//"at school" = "mokykloje",
-//"road" = "kelias", 
-//"seagull" = "žuvėdra",
-//"in short" = "trumpai", 
-//"decrease" = "sumažėjimas", 
-//"really" = "tikrai", 
-//"exactly" = "tiksliai",
-//"research" = "tyrimus", 
-//"Sheep" = "avių", 
-//"it seems" = "atrodo",
+//"suddenly" = "staiga"
+//"solution" = "sprendimas" 
+//"most importantly" = "svarbiausia" 
+//"beetle" = "vabalas" 
+//"asparagus" = "šparagai" 
+//"Government" = "Vyriausybė" 
+//"kindergarten" = "darželis" 
+//"noisy" = "triukšminga"
+//"flight" = "skrydis" 
+//"reason" = "priežastis" 
+//"at school" = "mokykloje"
+//"road" = "kelias" 
+//"seagull" = "žuvėdra"
+//"in short" = "trumpai" 
+//"decrease" = "sumažėjimas" 
+//"really" = "tikrai" 
+//"exactly" = "tiksliai"
+//"research" = "tyrimus" 
+//"Sheep" = "avių" 
+//"it seems" = "atrodo"
 //"officially" = "oficialiai"
 //"argument" = "argumentas"
-//"industry" = "pramonės",
-//"request" = "prašymą",
-//"in line" = "eilėje",
+//"industry" = "pramonės"
+//"request" = "prašymą"
+//"in line" = "eilėje"
 //"test" = "bandymas"
 //"opinion" = "nuomonę"
 
