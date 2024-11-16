@@ -425,5 +425,3 @@ package com.example.visuallithuanian
 
 
 
-
-
