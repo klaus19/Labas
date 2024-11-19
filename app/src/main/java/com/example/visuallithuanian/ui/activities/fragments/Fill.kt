@@ -419,9 +419,3 @@ package com.example.visuallithuanian
 //"tavo dovana" = "tavo dovana"
 
 
-
-
-
-
-
-
