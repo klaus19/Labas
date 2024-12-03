@@ -25,7 +25,7 @@ package com.example.visuallithuanian
 //"colleague" = "kolega / kolegė"
 //"employee" = "darbuotojas / darbotoja"
 //"client / customer" = "klientas / klientė"
-//"busy" = "užsiemęs (m) / užsiemusi (f)"
+//"busy" = "užsiemęs (m / užsiemusi (f"
 //"business trip" = "komandiruotė"
 //
 //"meeting" = "susirinkimas/susitinkimas"
@@ -162,7 +162,7 @@ package com.example.visuallithuanian
 //"to invite invites invited what?" = "kviesti kviečia kviektė ką?"
 //"party" = "vakarėlis"
 //"guest" = "svečias"
-//"to go visit (as a guest)" = "eiti į svečius"
+//"to go visit (as a guest" = "eiti į svečius"
 //"to invite guests" = "kviesti į svečius"
 //
 //"to be a guest" = "būti svečiuose"
@@ -267,7 +267,7 @@ package com.example.visuallithuanian
 //"clothes" = "drabužiai"
 //"shirt" = "marškiniai"
 //"to put on" = "apsivilkti"
-//"to take off (clothes)" = "nusivilkti"
+//"to take off (clothes" = "nusivilkti"
 //"short sleeves" = "trumpos rankovės"
 //"trousers" = "kelnės"
 //"skirt" = "sijonas"
@@ -282,7 +282,7 @@ package com.example.visuallithuanian
 //"Gold" = "auksas"
 //"weight" = "svoris"
 //"capacity" = "talpa"
-//"dimensions (dimension)" = "matmenys (matmuo)"
+//"dimensions (dimension" = "matmenys (matmuo"
 //"shoes" = "batai"
 //"sandals" = "sandalai"
 //"oil and gas" = "nafta ir dujos"
@@ -296,4 +296,5 @@ package com.example.visuallithuanian
 //"picture/image" = "nuotrauka"
 //"drugs" = "vaistai"
 //"tavo dovana" = "tavo dovana"
+
 
