@@ -4,6 +4,7 @@ plugins {
     id 'com.google.dagger.hilt.android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs'
+    id "com.google.devtools.ksp"
 
 }
 
@@ -45,9 +46,6 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    kapt {
-        generateStubs = true
-    }
 }
 
 dependencies {
@@ -71,6 +69,8 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1'
 
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.21'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.21"
     //newly added
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1'
 
@@ -88,14 +88,14 @@ dependencies {
 
     //Room Database
 
-    implementation("androidx.room:room-runtime:$rootProject.$roomVersion")
-    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
-    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
-    androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation "androidx.room:room-ktx:2.6.1"
+    ksp "androidx.room:room-compiler:2.6.1"
+    androidTestImplementation "androidx.room:room-testing:2.6.1"
 
     // hilt dependencies
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
