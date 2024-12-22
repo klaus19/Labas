@@ -70,6 +70,9 @@ package com.example.visuallithuanian
 //"Chocolate" = "Šokoladas"
 //"sparkling water" = "gazuotas vanduo"
 //"mushroom" = "pievagrybis"
+
+
+
 //"steak" = "kepsnys"  ///given to record
 //
 //"snack" = "užkandis"
@@ -165,7 +168,7 @@ package com.example.visuallithuanian
 //"a dress" = "suknelė"
 //"a white coat" = "baltas paltas"
 //"jeans" = "džinsai"
-//
+
 //"a ring" = "žiedas"
 //"sun glasses" = "saulės akiniai"
 //"scarf" = "skara"
@@ -173,7 +176,7 @@ package com.example.visuallithuanian
 //"Gold" = "auksas"
 //"weight" = "svoris"
 //"capacity" = "talpa"
-//"dimensions (dimension" = "matmenys (matmuo"
+//"dimensions" = "matmenys"
 //"shoes" = "batai"
 //"sandals" = "sandalai"
 //"oil and gas" = "nafta ir dujos"

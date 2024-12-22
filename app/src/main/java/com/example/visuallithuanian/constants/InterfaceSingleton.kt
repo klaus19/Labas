@@ -21,7 +21,7 @@ object InterfaceSingleton {
         hashMapInterface["Notifications"] = Triple("pranešimai", R.drawable.notifications, R.raw.notifications)
         hashMapInterface["reply to all"] = Triple("atsakyti visiems", R.drawable.replytoall, R.raw.replytoall)
         hashMapInterface["to forward"] = Triple("persiųsti", R.drawable.toforward, R.raw.toforward)
-        hashMapInterface["to snap"] = Triple("snausti", R.drawable.snap, R.raw.tonap)
+        hashMapInterface["to snap"] = Triple("spragtelėti", R.drawable.snap, R.raw.tosnap)
         hashMapInterface["Mark as important"] = Triple("pažymėti kaip svarbų", R.drawable.markasimportant, R.raw.markasimp)
         hashMapInterface["to delete"] = Triple("ištrinti", R.drawable.delete, R.raw.todelete)
         hashMapInterface["to archive"] = Triple("archyvuoti", R.drawable.toarchive, R.raw.toarchive)
