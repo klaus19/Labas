@@ -2,7 +2,6 @@ package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -64,7 +63,6 @@ class PractiseFragment : Fragment() {
         }
 
         val randomPairs = ImageStore.getRandomPairs(4)
-
         val imageResources = randomPairs.map { it.first }.toMutableList()
         val imageNames1 = randomPairs.map { it.second }.toMutableList()
 
@@ -98,16 +96,17 @@ class PractiseFragment : Fragment() {
         Glide.with(this).asGif().load(R.drawable.dumpster).into(binding.imageTrash)
         binding.freegift?.let { Glide.with(this).asGif().load(R.drawable.freegift).into(it) }
 
+        //Push this
         binding.freegift?.setOnClickListener {
-                getRewards()
+            getRewards()
             // Show loading indicator
             binding.freegift?.alpha = 0.5f  // Dim the button to indicate loading
             binding.freegift?.clearColorFilter()
-             }
+        }
 
         return binding.root
     }
-
+    //Push this
     private fun getRewards() {
         RewardedAd.load(
             requireContext(),
@@ -122,11 +121,14 @@ class PractiseFragment : Fragment() {
                 override fun onAdFailedToLoad(error: LoadAdError) {
                     Log.d("RewardAd", "Failed to load rewarded ad: ${error.message}")
                     rewardedAd = null
+                    // Reset button state on failure
+                    binding.freegift?.alpha = 1.0f
                 }
             }
         )
     }
 
+    // Push this
     private fun showRewardedAd() {
         rewardedAd?.let { ad ->
             ad.show(requireActivity()) { rewardItem ->
@@ -137,6 +139,26 @@ class PractiseFragment : Fragment() {
                 updateTextCountFire(newFireCount)
                 Log.d("RewardAd", "User rewarded with: ${rewardItem.amount}, new fire count: $newFireCount")
             }
+            // Reset button state after ad is displayed
+            ad.fullScreenContentCallback = object : FullScreenContentCallback() {
+                override fun onAdDismissedFullScreenContent() {
+                    binding.freegift?.alpha = 1.0f  // Restore button opacity
+                }
+
+                override fun onAdFailedToShowFullScreenContent(error: com.google.android.gms.ads.AdError) {
+                    Log.d("RewardAd", "Ad failed to show: ${error.message}")
+                    binding.freegift?.alpha = 1.0f  // Restore button opacity
+                }
+
+                override fun onAdShowedFullScreenContent() {
+                    // Ad is being shown; this might not be needed but ensures the flow is complete
+                    rewardedAd = null
+                }
+            }
+        } ?: run {
+            Log.d("RewardAd", "Rewarded ad is not ready")
+            // Reset button state if the ad is not ready
+            binding.freegift?.alpha = 1.0f
         }
     }
 
@@ -239,6 +261,4 @@ class PractiseFragment : Fragment() {
             binding.btnShuffle.visibility = View.VISIBLE
         }
     }
-
-
 }
