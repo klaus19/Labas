@@ -2,6 +2,7 @@ package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -63,6 +64,7 @@ class PractiseFragment : Fragment() {
         }
 
         val randomPairs = ImageStore.getRandomPairs(4)
+
         val imageResources = randomPairs.map { it.first }.toMutableList()
         val imageNames1 = randomPairs.map { it.second }.toMutableList()
 
@@ -109,7 +111,7 @@ class PractiseFragment : Fragment() {
     private fun getRewards() {
         RewardedAd.load(
             requireContext(),
-            "ca-app-pub-2048328349524526/1123399071",
+            "ca-app-pub-3940256099942544/5224354917",
             AdRequest.Builder().build(),
             object : RewardedAdLoadCallback() {
                 override fun onAdLoaded(ad: RewardedAd) {
@@ -120,8 +122,6 @@ class PractiseFragment : Fragment() {
                 override fun onAdFailedToLoad(error: LoadAdError) {
                     Log.d("RewardAd", "Failed to load rewarded ad: ${error.message}")
                     rewardedAd = null
-                    // Reset button state on failure
-                    binding.freegift?.alpha = 1.0f
                 }
             }
         )
@@ -137,26 +137,6 @@ class PractiseFragment : Fragment() {
                 updateTextCountFire(newFireCount)
                 Log.d("RewardAd", "User rewarded with: ${rewardItem.amount}, new fire count: $newFireCount")
             }
-            // Reset button state after ad is displayed
-            ad.fullScreenContentCallback = object : FullScreenContentCallback() {
-                override fun onAdDismissedFullScreenContent() {
-                    binding.freegift?.alpha = 1.0f  // Restore button opacity
-                }
-
-                override fun onAdFailedToShowFullScreenContent(error: com.google.android.gms.ads.AdError) {
-                    Log.d("RewardAd", "Ad failed to show: ${error.message}")
-                    binding.freegift?.alpha = 1.0f  // Restore button opacity
-                }
-
-                override fun onAdShowedFullScreenContent() {
-                    // Ad is being shown; this might not be needed but ensures the flow is complete
-                    rewardedAd = null
-                }
-            }
-        } ?: run {
-            Log.d("RewardAd", "Rewarded ad is not ready")
-            // Reset button state if the ad is not ready
-            binding.freegift?.alpha = 1.0f
         }
     }
 
@@ -259,4 +239,6 @@ class PractiseFragment : Fragment() {
             binding.btnShuffle.visibility = View.VISIBLE
         }
     }
+
+
 }
