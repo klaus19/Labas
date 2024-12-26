@@ -20,6 +20,9 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
 
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-2048328349524526~4989625920" />
         <activity
             android:name=".ui.activities.fragments.MainActivity"
             android:exported="true">
