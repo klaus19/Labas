@@ -139,7 +139,7 @@ class VerbsFragment : Fragment() {
         hashMap["to hear"] = Triple("girdėti", R.drawable.tohear, R.raw.whatkas)
         hashMap["see"] = Triple("matyti", R.drawable.tosee, R.raw.whatkas)
         hashMap["turn"] = Triple("posūkis", R.drawable.turn1, R.raw.whatkas)
-        hashMap["allow"] = Triple("leisti", R.drawable.allow1, R.raw.whatkas)
+        hashMap["allow"] = Triple("leisti", R.drawable.allow, R.raw.whatkas)
         hashMap["prepared"] = Triple("paruošti", R.drawable.prepared1, R.raw.whatkas)
         hashMap["to finish"] = Triple("baigti", R.drawable.finish1, R.raw.whatkas)
         hashMap["to lose"] = Triple("prarasti", R.drawable.tolose1, R.raw.whatkas)
