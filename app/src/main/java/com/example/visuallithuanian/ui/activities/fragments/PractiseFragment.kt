@@ -2,7 +2,6 @@ package com.example.visuallithuanian.ui.activities.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -20,6 +19,11 @@ import com.example.visuallithuanian.adapter.PractiseAdapter
 import com.example.visuallithuanian.constants.ImageStore
 import com.example.visuallithuanian.databinding.FragmentPractiseBinding
 import com.example.visuallithuanian.model.PreferencesHelper
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.rewarded.RewardedAd
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 
 class PractiseFragment : Fragment() {
     private lateinit var binding: FragmentPractiseBinding
@@ -29,7 +33,7 @@ class PractiseFragment : Fragment() {
     private var counter = 0
     private var counterDiamond = 0
     private var counterGem = 0
-
+    private var rewardedAd: RewardedAd? = null
 
     @SuppressLint("ClickableViewAccessibility", "UseCompatLoadingForDrawables")
     override fun onCreateView(
@@ -48,10 +52,10 @@ class PractiseFragment : Fragment() {
         binding.textCounterPurple.text = counterDiamond.toString()
         binding.textCounterRed.text = counterGem.toString()
 
-
         ImageStore.loadFromPreferences(requireContext())
 
-        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        val layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.recyclerViewPractise.layoutManager = layoutManager
 
         binding.backIcon.setOnClickListener {
@@ -59,7 +63,6 @@ class PractiseFragment : Fragment() {
         }
 
         val randomPairs = ImageStore.getRandomPairs(4)
-
         val imageResources = randomPairs.map { it.first }.toMutableList()
         val imageNames1 = randomPairs.map { it.second }.toMutableList()
 
@@ -70,24 +73,20 @@ class PractiseFragment : Fragment() {
             binding.recyclerViewPractise,
             preferencesHelper,
             this::removeCorrectPairFromImageStore,
-            this::handleNoCardsVisibility,  // Ensure the callback is properly referenced,
+            this::handleNoCardsVisibility,
             binding.textCounterFire,
             binding.textCounterPurple,
             binding.textCounterRed,
             this::updateTextCountFire,
             this::updateTextCountPurple,
-            this::updateTextCountRed,
+            this::updateTextCountRed
         )
 
         binding.recyclerViewPractise.adapter = practiseAdapter
         practiseAdapter.initsetRecyclerView(recyclerViewPractise)
 
-        // Initial visibility check
         handleNoCardsVisibility()
-
         updateSharedPreferences()
-
-        // Shuffle cards after the recyclerView has been initialized
         practiseAdapter.shuffleCards()
 
         loadTextCountFire()
@@ -95,11 +94,71 @@ class PractiseFragment : Fragment() {
         loadTextCountRed()
 
         Glide.with(this).asGif().load(R.drawable.dumpster).into(binding.imageTrash)
+        binding.freegift?.let { Glide.with(this).asGif().load(R.drawable.freegift).into(it) }
 
+        binding.freegift?.setOnClickListener {
+                getRewards()
+            // Show loading indicator
+            binding.freegift?.alpha = 0.5f  // Dim the button to indicate loading
+            binding.freegift?.clearColorFilter()
+             }
 
         return binding.root
     }
 
+    private fun getRewards() {
+        RewardedAd.load(
+            requireContext(),
+            "ca-app-pub-2048328349524526/1123399071",
+            AdRequest.Builder().build(),
+            object : RewardedAdLoadCallback() {
+                override fun onAdLoaded(ad: RewardedAd) {
+                    rewardedAd = ad
+                    showRewardedAd()
+                }
+
+                override fun onAdFailedToLoad(error: LoadAdError) {
+                    Log.d("RewardAd", "Failed to load rewarded ad: ${error.message}")
+                    rewardedAd = null
+                    // Reset button state on failure
+                    binding.freegift?.alpha = 1.0f
+                }
+            }
+        )
+    }
+
+    private fun showRewardedAd() {
+        rewardedAd?.let { ad ->
+            ad.show(requireActivity()) { rewardItem ->
+                val sharedPreferences: SharedPreferences =
+                    requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                val currentFireCount = sharedPreferences.getInt("textCount", 0)
+                val newFireCount = currentFireCount + 3
+                updateTextCountFire(newFireCount)
+                Log.d("RewardAd", "User rewarded with: ${rewardItem.amount}, new fire count: $newFireCount")
+            }
+            // Reset button state after ad is displayed
+            ad.fullScreenContentCallback = object : FullScreenContentCallback() {
+                override fun onAdDismissedFullScreenContent() {
+                    binding.freegift?.alpha = 1.0f  // Restore button opacity
+                }
+
+                override fun onAdFailedToShowFullScreenContent(error: com.google.android.gms.ads.AdError) {
+                    Log.d("RewardAd", "Ad failed to show: ${error.message}")
+                    binding.freegift?.alpha = 1.0f  // Restore button opacity
+                }
+
+                override fun onAdShowedFullScreenContent() {
+                    // Ad is being shown; this might not be needed but ensures the flow is complete
+                    rewardedAd = null
+                }
+            }
+        } ?: run {
+            Log.d("RewardAd", "Rewarded ad is not ready")
+            // Reset button state if the ad is not ready
+            binding.freegift?.alpha = 1.0f
+        }
+    }
 
     override fun onResume() {
         super.onResume()
@@ -108,26 +167,35 @@ class PractiseFragment : Fragment() {
         loadTextCountRed()
     }
 
+    override fun onDestroy() {
+        rewardedAd = null
+        super.onDestroy()
+    }
+
     private fun loadTextCountFire() {
-        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val sharedPreferences: SharedPreferences =
+            requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val savedCount = sharedPreferences.getInt("textCount", 0)
         binding.textCounterFire.text = savedCount.toString()
     }
 
-    private fun loadTextCountPurple(){
-        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
-        val saveCount = sharedPreferences.getInt("textCountPurple",0)
+    private fun loadTextCountPurple() {
+        val sharedPreferences: SharedPreferences =
+            requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val saveCount = sharedPreferences.getInt("textCountPurple", 0)
         binding.textCounterPurple.text = saveCount.toString()
     }
 
-    private fun loadTextCountRed(){
-        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
-        val saveCount = sharedPreferences.getInt("textCountRed",0)
+    private fun loadTextCountRed() {
+        val sharedPreferences: SharedPreferences =
+            requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val saveCount = sharedPreferences.getInt("textCountRed", 0)
         binding.textCounterRed.text = saveCount.toString()
     }
 
     private fun updateSharedPreferences() {
-        val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val sharedPreferences =
+            requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putInt("counter", counter)
         editor.putInt("counterDiamond", counterDiamond)
@@ -135,54 +203,45 @@ class PractiseFragment : Fragment() {
         editor.apply()
     }
 
-    // updating fire counter
-    private fun updateTextCountFire(newValue:Int){
+    private fun updateTextCountFire(newValue: Int) {
         binding.textCounterFire.text = newValue.toString()
         saveTextCount(newValue)
         val intent = Intent("com.example.UPDATE_TEXT_COUNT")
         intent.putExtra("textCount", newValue)
         requireContext().sendBroadcast(intent)
     }
-    private fun updateTextCountPurple(newValue: Int){
+
+    private fun updateTextCountPurple(newValue: Int) {
         binding.textCounterPurple.text = newValue.toString()
         saveTextCountPurple(newValue)
-        val intent = Intent(
-            "com.example.UPDATE_TEXT_COUNT")
-        intent.putExtra("textCountPurple",newValue)
-
     }
 
-    private fun updateTextCountRed(newValue: Int){
+    private fun updateTextCountRed(newValue: Int) {
         binding.textCounterRed.text = newValue.toString()
         saveTextCountRed(newValue)
-        val intent = Intent(
-            "com.example.UPDATE_TEXT_COUNT")
-        intent.putExtra("textCountRed",newValue)
-
     }
 
-
-
-    // saving fire text
     private fun saveTextCount(newValue: Int) {
-        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val sharedPreferences: SharedPreferences =
+            requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putInt("textCount", newValue)
         editor.apply()
     }
 
-    // saving Purple Diamond
-    private fun saveTextCountPurple(newValue: Int){
-        val sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
+    private fun saveTextCountPurple(newValue: Int) {
+        val sharedPreferences =
+            requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.putInt("textCountPurple",newValue)
+        editor.putInt("textCountPurple", newValue)
         editor.apply()
     }
 
-    private fun saveTextCountRed(newValue: Int){
-        val sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE)
+    private fun saveTextCountRed(newValue: Int) {
+        val sharedPreferences =
+            requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.putInt("textCountRed",newValue)
+        editor.putInt("textCountRed", newValue)
         editor.apply()
     }
 
@@ -194,12 +253,10 @@ class PractiseFragment : Fragment() {
     private fun handleNoCardsVisibility() {
         if (practiseAdapter.itemCount == 0) {
             binding.noCardsLayout.visibility = View.VISIBLE
-            binding.btnShuffle.visibility=View.GONE
+            binding.btnShuffle.visibility = View.GONE
         } else {
             binding.noCardsLayout.visibility = View.GONE
-            binding.btnShuffle.visibility=View.VISIBLE
+            binding.btnShuffle.visibility = View.VISIBLE
         }
     }
-
-
 }
