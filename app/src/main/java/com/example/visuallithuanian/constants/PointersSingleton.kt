@@ -9,7 +9,7 @@ object PointersSingleton {
       init {
 
           hashMapPointers["I"] = Triple("Aš", R.drawable.i, R.raw.i)
-          hashMapPointers["You"] = Triple("Tu", R.drawable.you, R.raw.you)
+         hashMapPointers["You"] = Triple("Tu", R.drawable.you, R.raw.you)
           hashMapPointers["He"] = Triple("Jis", R.drawable.he, R.raw.he)
           hashMapPointers["She"] = Triple("Ji", R.drawable.she, R.raw.she)
           hashMapPointers["We"] = Triple("Mes", R.drawable.we, R.raw.we)

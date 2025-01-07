@@ -1,8 +1,3 @@
 package com.example.visuallithuanian
 
 
-
-
-
-
-
