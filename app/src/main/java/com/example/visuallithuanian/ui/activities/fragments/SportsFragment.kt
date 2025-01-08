@@ -73,6 +73,12 @@ class SportsFragment : Fragment() {
 
         return listOf(
             ImageInfo(
+                R.drawable.basketball,"Basketball","Krepšinis",emptyList(),
+                R.drawable.mic,
+                R.raw.basketball,
+                "Basketball is a team sport with a hoop",
+                "Krepšinis yra komandinė sporto šaka su lanku"),
+            ImageInfo(
                 R.drawable.football,"Football","Futbolas",emptyList(), R.drawable.mic,
                 R.raw.potato,
                 "Football is a popular sport worldwide",
@@ -83,12 +89,7 @@ class SportsFragment : Fragment() {
                 R.raw.cabbage,
                 "Ice hockey is played on a frozen rink",
                 "Ledo ritulys žaidžiamas ant užšalusio ledo"),
-            ImageInfo(
-                R.drawable.basketball,"Basketball","Krepšinis",emptyList(),
-                R.drawable.mic,
-                R.raw.zuccini,
-                "Basketball is a team sport with a hoop",
-                "Krepšinis yra komandinė sporto šaka su lanku"),
+
             ImageInfo(
                 R.drawable.chess,"Chess","Šachmatai",emptyList(),
                 R.drawable.mic,

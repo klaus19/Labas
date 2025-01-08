@@ -63,57 +63,57 @@ class NumbersFragment : Fragment() {
         return listOf(
             ImageInfo(
                 R.drawable.zero,"Zero","nulis",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.zero,
                 "Zero means nothing",
                 "Nulis reiškia nieką"),
 
             ImageInfo(
                 R.drawable.one,"One","vienas",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.one,
                 "I have one apple",
                 "Mano turi vieną obuolį"),
             ImageInfo(
                 R.drawable.two,"Two","du",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.two,
                 "I have two books",
                 "Mano turi du knygas"),
             ImageInfo(
                 R.drawable.three,"Three","trys",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.three,
                 "I have three pencils",
                 "Mano turi tris pieštukus"),
             ImageInfo(
                 R.drawable.four,"Four","keturi",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.four,
                 "I have four chairs.",
                 "Mano turi keturias kėdes"),
             ImageInfo(
                 R.drawable.five,"Five","penki",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.five,
                 "I have five coins",
                 "Mano turi penkis monetas"),
             ImageInfo(
                 R.drawable.six,"Six","šeši",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.six,
                 "I have six apples",
                 "Mano turi šešis obuolius"),
             ImageInfo(
                 R.drawable.seven,"Seven","septyni",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.seven,
                 "I have seven books",
                 "Mano turi septynias knygas"),
             ImageInfo(
                 R.drawable.eight,"Eight","aštuoni",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.eight,
                 "I have eight pencils",
                 "Mano turi aštuonius pieštukus"),
             ImageInfo(
                 R.drawable.nine,"Nine","devyni",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.nine,
                 "I have nine apples","Mano turi devynis obuolius."),
             ImageInfo(
                 R.drawable.ten,"Ten","dešimt",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.ten,
                 "I have ten pens",
                 "Mano turi dešimt rašiklių"),
         )

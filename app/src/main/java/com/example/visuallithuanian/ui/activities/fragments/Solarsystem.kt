@@ -78,11 +78,11 @@ class Solarsystem : Fragment() {
         return listOf(
             ImageInfo(
                 R.drawable.sun,"Sun","Saulė",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.sun,
                 "The sun is bright","Saulė yra ryški"),
             ImageInfo(
                 R.drawable.star,"Star","Žvaigždė",emptyList(), R.drawable.mic,
-                R.raw.cabbage,
+                R.raw.star,
                 "The star shines in the night sky.",
                 "Žvaigždė šviečia nakties danguje."),
             ImageInfo(

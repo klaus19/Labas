@@ -88,20 +88,11 @@ class AnimalsFragment : Fragment() {
                 R.drawable.wolf,"Wolf","Vilkas", listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
                 "The wolf howled towards the moon" , "Vilkas šaukė į mėnulį"),
             ImageInfo(
-                R.drawable.lion,"Lion","Liūtas", listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
-                "The lion roared loudly", "Liūtas garsiai riaumojo"),
-            ImageInfo(
-                R.drawable.tiger,"Tiger","Tigras", listOf(R.drawable.purp),
-                R.drawable.mic,R.raw.potato,"The tiger was walking","Tigras vaikščiojo"),
-            ImageInfo(
                 R.drawable.squir,"Squirrel","Voverė", listOf(R.drawable.purp),
                 R.drawable.mic,R.raw.potato,"The squirrel climbed up the tree","Voveraitė kopė į medį"),
             ImageInfo(
                 R.drawable.moose,"Moose","Briedis", listOf(R.drawable.purp),
                 R.drawable.mic,R.raw.potato,"The moose was standing in the pond","Briedis stovėjo ežere"),
-            ImageInfo(
-                R.drawable.deer,"Deer","elnias", listOf(R.drawable.purp),
-                R.drawable.mic,R.raw.potato,"The deer was grazing in the meadow","Elnias žiūrėjo pievoje "),
             ImageInfo(
                 R.drawable.beaver,"Beaver","Bebras", listOf(R.drawable.purp),
                 R.drawable.mic,R.raw.potato,"The beaver was swimming in the river","Bebras plaukiojo upėje"),
@@ -111,21 +102,13 @@ class AnimalsFragment : Fragment() {
             ImageInfo(
                 R.drawable.frog,"Frog","Varlė", listOf(R.drawable.purp),
                 R.drawable.mic,R.raw.potato,"The frog jumped into the pond","Varlė šoko į ežerą"),
-            ImageInfo(
-                R.drawable.fish,"Fish","Žuvis", listOf(R.drawable.purp),
-                R.drawable.mic,R.raw.potato,"The fish swam within the stream","Žuvis plaukiojo srovėje"),
+
             ImageInfo(
                 R.drawable.cat,"Cat","Katė", listOf(R.drawable.purp),
                 R.drawable.mic,R.raw.potato,"The cat was sleeping on the windowsill","Katė miegojo ant palangės"),
             ImageInfo(
                 R.drawable.dog,"Dog","šuo", listOf(R.drawable.purp),
                 R.drawable.mic,R.raw.potato,"The dog barked at the mailman","Šuo lojo ant pašto darbuotoją"),
-            ImageInfo(
-                R.drawable.rabbit,"Rabbit","Triušis", listOf(R.drawable.purp),
-                R.drawable.mic,R.raw.potato,"The rabbit was hopping across the garden","Triušis šokinėjo per sodą"),
-            ImageInfo(
-                R.drawable.snake,"Snake","Gyvatė", listOf(R.drawable.purp),
-                R.drawable.mic,R.raw.potato,"The snake was moving","Gyvatė judėjo"),
             ImageInfo(
                 R.drawable.boar,"Wild Boar","Šernas", listOf(R.drawable.purp),
                 R.drawable.mic,R.raw.potato,"The wild boar was searching for food","Šernas ieškojo maisto"),
@@ -137,13 +120,31 @@ class AnimalsFragment : Fragment() {
                 R.drawable.bear,"Bear","Meška", listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
                 "The bear was searching for honey inside the forest","Meška ieškojo medaus girioje"),
             ImageInfo(
-                R.drawable.cow,"Cow","Karvė", listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+                R.drawable.horse,"Horse","Arklys", listOf(R.drawable.purp), R.drawable.mic,R.raw.horse,
+                "The horse is running","Arklys bėga"),
+            ImageInfo(
+                R.drawable.snake,"Snake","Gyvatė", listOf(R.drawable.purp),
+                R.drawable.mic,R.raw.snake,"The snake was moving","Gyvatė judėjo"),
+            ImageInfo(
+                R.drawable.rabbit,"Rabbit","Triušis", listOf(R.drawable.purp),
+                R.drawable.mic,R.raw.rabbit,"The rabbit was hopping across the garden","Triušis šokinėjo per sodą"),
+            ImageInfo(
+                R.drawable.fish,"Fish","Žuvis", listOf(R.drawable.purp),
+                R.drawable.mic,R.raw.fish,"The fish swam within the stream","Žuvis plaukiojo srovėje"),
+            ImageInfo(
+                R.drawable.cow,"Cow","Karvė", listOf(R.drawable.purp), R.drawable.mic,R.raw.cow,
                 "The cow gives milk","Karvė duoda pieno"),
             ImageInfo(
-                R.drawable.horse,"Horse","Arklys", listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
-                "The horse is running","Arklys bėga"),
+                R.drawable.deer,"Deer","elnias", listOf(R.drawable.purp),
+                R.drawable.mic,R.raw.deer,"The deer was grazing in the meadow","Elnias žiūrėjo pievoje "),
+            ImageInfo(
+                R.drawable.lion,"Lion","Liūtas", listOf(R.drawable.purp), R.drawable.mic,R.raw.lion,
+                "The lion roared loudly", "Liūtas garsiai riaumojo"),
+            ImageInfo(
+                R.drawable.tiger,"Tiger","Tigras", listOf(R.drawable.purp),
+                R.drawable.mic,R.raw.tiger,"The tiger was walking","Tigras vaikščiojo"),
 
-        )
+            )
 
     }
 

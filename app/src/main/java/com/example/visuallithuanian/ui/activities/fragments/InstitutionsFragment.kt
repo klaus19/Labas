@@ -53,16 +53,6 @@ class InstitutionsFragment : Fragment() {
 
         return listOf(
             ImageInfo(
-                R.drawable.museum,"Museum","Muziejus",emptyList(), R.drawable.mic,
-                R.raw.potato,
-                "The museum displays many interesting exhibits",
-                "Muziejus rodo daug įdomių eksponatų."),
-            ImageInfo(
-                R.drawable.hospital,"Hospital","Ligoninė",emptyList(), R.drawable.mic,
-                R.raw.potato,
-                "The hospital provides excellent care for its patients",
-                "Ligoniai gauna puikią priežiūrą ligoninėje"),
-            ImageInfo(
                 R.drawable.zoo,"Zoo","Zoo",emptyList(), R.drawable.mic,
                 R.raw.potato,
                 "The zoo is home to many exotic animals",
@@ -76,19 +66,6 @@ class InstitutionsFragment : Fragment() {
                 R.raw.potato,
                 "The school has many classrooms.","Mokykloje yra daug klasių"),
             ImageInfo(
-                R.drawable.university,"University","Universitetas",emptyList(),
-                R.drawable.mic,
-                R.raw.potato,
-                "The university offers various courses.","Universitetas siūlo įvairius kursus"),
-            ImageInfo(
-                R.drawable.church,"Church","Bažnyčia",emptyList(), R.drawable.mic,
-                R.raw.potato,
-                "The church is quiet and peaceful.","Bažnyčia yra tylu ir ramų"),
-            ImageInfo(
-                R.drawable.bank,"Bank","Bankas",emptyList(), R.drawable.mic,
-                R.raw.potato,
-                "The bank is open from 9 to 5","Bankas dirba nuo 9 iki 17 valandos"),
-            ImageInfo(
                 R.drawable.supermarket,"Supermarket","prekybos centras",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
@@ -98,12 +75,6 @@ class InstitutionsFragment : Fragment() {
                 R.raw.potato,
                 "The resort offers beautiful views and relaxation",
                 "Kurortas siūlo gražius vaizdus ir poilsį"),
-            ImageInfo(
-                R.drawable.restaurant,"Restaurant","Restoranas",emptyList(),
-                R.drawable.mic,
-                R.raw.potato,
-                "The restaurant serves delicious meals.",
-                "Restoranas pateikia skanius patiekalus."),
             ImageInfo(
                 R.drawable.aquarium,"Aquarium","Akvariumas",emptyList(), R.drawable.mic,
                 R.raw.potato,
@@ -119,6 +90,37 @@ class InstitutionsFragment : Fragment() {
                 R.raw.potato,
                 "The pub is a great place to meet friends",
                 "Pubas yra puiki vieta susitikti su draugais"),
+
+
+            ImageInfo(
+                R.drawable.restaurant,"Restaurant","Restoranas",emptyList(),
+                R.drawable.mic,
+                R.raw.restaurant,
+                "The restaurant serves delicious meals.",
+                "Restoranas pateikia skanius patiekalus."),
+            ImageInfo(
+                R.drawable.university,"University","Universitetas",emptyList(),
+                R.drawable.mic,
+                R.raw.university,
+                "The university offers various courses.","Universitetas siūlo įvairius kursus"),
+            ImageInfo(
+                R.drawable.church,"Church","Bažnyčia",emptyList(), R.drawable.mic,
+                R.raw.thechurch,
+                "The church is quiet and peaceful.","Bažnyčia yra tylu ir ramų"),
+            ImageInfo(
+                R.drawable.bank,"Bank","Bankas",emptyList(), R.drawable.mic,
+                R.raw.bank,
+                "The bank is open from 9 to 5","Bankas dirba nuo 9 iki 17 valandos"),
+            ImageInfo(
+                R.drawable.museum,"Museum","Muziejus",emptyList(), R.drawable.mic,
+                R.raw.museam,
+                "The museum displays many interesting exhibits",
+                "Muziejus rodo daug įdomių eksponatų."),
+            ImageInfo(
+                R.drawable.hospital,"Hospital","Ligoninė",emptyList(), R.drawable.mic,
+                R.raw.hospitak,
+                "The hospital provides excellent care for its patients",
+                "Ligoniai gauna puikią priežiūrą ligoninėje"),
 
         )
     }

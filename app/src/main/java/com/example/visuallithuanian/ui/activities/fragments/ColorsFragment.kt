@@ -64,42 +64,37 @@ class ColorsFragment : Fragment() {
        return listOf(
            ImageInfo(
                R.drawable.red,"Red","Raudona",listOf(R.drawable.purp), R.drawable.mic,
-               R.raw.potato,
+               R.raw.red,
                "The apple is red.",
                "Obuolys yra raudonas"),
            ImageInfo(
                R.drawable.blue,"Blue","Mėlyna",listOf(R.drawable.purp), R.drawable.mic,
-               R.raw.potato,
+               R.raw.blue,
                "The sky is blue",
                "Dangus yra mėlynas"),
            ImageInfo(
                R.drawable.yellow,"Yellow","Geltona",listOf(R.drawable.purp), R.drawable.mic,
-               R.raw.potato,
+               R.raw.yellow,
                "The sun is yellow",
                "Saulė yra geltona"),
            ImageInfo(
                R.drawable.green,"Green","Žalia",listOf(R.drawable.purp), R.drawable.mic,
-               R.raw.potato,
+               R.raw.green,
                "The grass is green",
                "Žolė yra žalia."),
            ImageInfo(
                R.drawable.orange,"Orange","Oranžinė",listOf(R.drawable.purp), R.drawable.mic,
-               R.raw.potato,
+               R.raw.orange,
                "The sunset is orange.",
                "Saulei leidžiantis dangaus spalva tampa oranžinė"),
            ImageInfo(
-               R.drawable.purple,"Purple","Violetinė",listOf(R.drawable.purp), R.drawable.mic,
-               R.raw.potato,
-               "The flowers are purple",
-               "Gėlės yra violetinės"),
-           ImageInfo(
                R.drawable.black,"Black","Juoda",listOf(R.drawable.purp), R.drawable.mic,
-               R.raw.potato,
+               R.raw.black,
                "The cat is black",
                "Katė yra juoda"),
            ImageInfo(
                R.drawable.white,"White","Balta",listOf(R.drawable.purp), R.drawable.mic,
-               R.raw.potato,
+               R.raw.white,
                "The snow is white.",
                "Sniegas yra baltas"),
            ImageInfo(
@@ -107,6 +102,11 @@ class ColorsFragment : Fragment() {
                R.raw.potato,
                "The sky is gray",
                "Dangus yra pilkas."),
+           ImageInfo(
+               R.drawable.purple,"Purple","Violetinė",listOf(R.drawable.purp), R.drawable.mic,
+               R.raw.potato,
+               "The flowers are purple",
+               "Gėlės yra violetinės")
        )
     }
 

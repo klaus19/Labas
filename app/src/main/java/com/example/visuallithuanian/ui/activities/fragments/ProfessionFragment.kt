@@ -64,36 +64,37 @@ class ProfessionFragment : Fragment() {
         return listOf(
             ImageInfo(
                 R.drawable.doctor,"Doctor","Gydytojas",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.doctor,
                 "The doctor helps people stay healthy",
                 "Gydytojas padeda žmonėms išlikti sveikiems."),
             ImageInfo(
                 R.drawable.lawyer,"Lawyer","Advokatas",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.lawyer,
                 "The lawyer provides legal advice.",
                 "Advokatas teikia teisines konsultacijas"),
             ImageInfo(
                 R.drawable.teacher,"Teacher","Mokytojas",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.teacher,
                 "The teacher is in the classroom.",
                 "Mokytojas (mokytoja) yra klasėje"),
             ImageInfo(
                 R.drawable.engineer,"Engineer","Inžinierius",emptyList(),
                 R.drawable.mic,
-                R.raw.potato,
+                R.raw.engineer,
                 "The engineer designs buildings.",
                 "Inžinierius projektuoja pastatus."),
+            ImageInfo(
+                R.drawable.programmer,"Programmer","Programuotojas",emptyList(),
+                R.drawable.mic,
+                R.raw.programmer,
+                "The programmer writes code.","Programuotojas rašo kodą"),
             ImageInfo(
                 R.drawable.accountant,"Accountant","Buhalteris",emptyList(),
                 R.drawable.mic,
                 R.raw.potato,
                 "The accountant manages finances",
                 "Apskaitininkas (buhalteris) tvarko finansus"),
-            ImageInfo(
-                R.drawable.programmer,"Programmer","Programuotojas",emptyList(),
-                R.drawable.mic,
-                R.raw.potato,
-                "The programmer writes code.","Programuotojas rašo kodą"),
+
             ImageInfo(
                 R.drawable.architect,"Architect","Architektas",emptyList(),
                 R.drawable.mic,

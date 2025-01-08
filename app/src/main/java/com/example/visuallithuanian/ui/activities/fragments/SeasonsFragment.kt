@@ -72,7 +72,7 @@ class SeasonsFragment : Fragment() {
         return listOf(
             ImageInfo(
                 R.drawable.summer,"Summer","Vasara",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.summer,
                 "Summer is warm and sunny",
                 "Vasara yra šilta ir saulėta"),
             ImageInfo(
@@ -87,7 +87,7 @@ class SeasonsFragment : Fragment() {
                 "Žiema yra šalta ir snieginga"),
             ImageInfo(
                 R.drawable.spring,"Spring","Pavasaris",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.spring,
                 "Spring brings new flowers.",
                 "Pavasaris atneša naujų gėlių."),
         )

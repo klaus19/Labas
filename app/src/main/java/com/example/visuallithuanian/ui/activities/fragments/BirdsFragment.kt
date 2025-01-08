@@ -120,7 +120,7 @@ class BirdsFragment : Fragment() {
                 R.drawable.mic,
                 R.raw.potato,
                 "The buzzard soars high in the sky.",
-                "Sklandytuvas kyla aukštai danguje"),
+                "Sklandytuvas kyla aukštai danguje")
 
         )
 

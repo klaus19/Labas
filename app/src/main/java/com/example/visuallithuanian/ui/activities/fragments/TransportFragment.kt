@@ -61,15 +61,15 @@ class TransportFragment : Fragment() {
 
         return listOf(
             ImageInfo(
-                R.drawable.car,"Car","Automobilis",emptyList(), R.drawable.mic,
-                R.raw.potato,
-                "The car is fast",
-                "Automobilis yra greitas"),
-            ImageInfo(
                 R.drawable.bus,"Bus","Autobusas",emptyList(), R.drawable.mic,
                 R.raw.potato,
                 "The bus is late.",
                 "Autobusas vėluoja"),
+            ImageInfo(
+                R.drawable.car,"Car","Automobilis",emptyList(), R.drawable.mic,
+                R.raw.potato,
+                "The car is fast",
+                "Automobilis yra greitas"),
             ImageInfo(
                 R.drawable.rail,"Train","Traukinys",emptyList(), R.drawable.mic,
                 R.raw.potato,

@@ -281,10 +281,6 @@ class KeyPhrasesFragment : Fragment() {
             R.drawable.enjoyurstay,
             R.raw.download
         )
-        hashMap["How long does it take to get to ....?"] = Triple("Per kiek laiko reikia patekti į ....?",
-            R.drawable.howlong,
-            R.raw.download
-        )
         hashMap["Can I get your ID card?"] = Triple("Ar galiu gauti jūsų asmens tapatybės kortelę?",
             R.drawable.idcard1,
             R.raw.download

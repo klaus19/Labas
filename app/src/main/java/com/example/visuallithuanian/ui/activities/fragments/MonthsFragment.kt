@@ -62,62 +62,62 @@ class MonthsFragment : Fragment() {
         return listOf(
             ImageInfo(
                 R.drawable.january,"January","Sausis",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.january,
                 "January is the first month of the year",
                 "Sausis yra pirmas mėnuo metų"),
             ImageInfo(
                 R.drawable.february,"February","Vasaris",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.february,
                 "February is the shortest month.",
                 "Vasaris yra trumpiausias mėnuo"),
             ImageInfo(
                 R.drawable.march,"March","Kovas",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.march,
                 "March marks the beginning of spring",
                 "Kovas žymi pavasario pradžią"),
             ImageInfo(
                 R.drawable.april,"April","Balandis",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.april,
                 "April often brings rain.",
                 "Balandis dažnai atneša lietų"),
             ImageInfo(
                 R.drawable.may,"May","Gegužė",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.may,
                 "May is a month of blooming flowers.",
                 "Gegužė yra mėnuo, kai žydi gėlės"),
             ImageInfo(
                 R.drawable.june,"June","Birželis",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.june,
                 "June is the start of summer",
                 "Birželis yra vasaros pradžia"),
             ImageInfo(
                 R.drawable.july,"July","Liepa",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.july,
                 "July is a warm month",
                 "Liepa yra šiltas mėnuo."),
             ImageInfo(
                 R.drawable.august,"August","Rugpjūtis",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.august,
                 "August is a time for vacations",
                 "Rugpjūtis yra atostogų metas"),
             ImageInfo(
                 R.drawable.september,"September","Rugsėjis",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.september,
                 "September marks the beginning of autumn",
                 "Rugsėjis žymi rudens pradžią"),
             ImageInfo(
                 R.drawable.october,"October","Spalis",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.october,
                 "October is known for its colorful leaves",
                 "Spalis yra žinomas dėl spalvingų lapų."),
             ImageInfo(
                 R.drawable.november,"November","Lapkritis",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.november,
                 "November often brings cooler weather",
                 "Lapkritis dažnai atneša vėsesnį orą"),
             ImageInfo(
                 R.drawable.december,"December","Gruodis",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.december,
                 "December is the last month of the year",
                 "Gruodis yra paskutinis metų mėnuo"),
             )
