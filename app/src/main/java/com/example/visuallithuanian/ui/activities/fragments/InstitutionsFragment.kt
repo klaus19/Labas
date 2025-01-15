@@ -53,41 +53,41 @@ class InstitutionsFragment : Fragment() {
 
         return listOf(
             ImageInfo(
-                R.drawable.zoo,"Zoo","Zoo",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.drawable.zoo,"Zoo","Zoologijos sodas",emptyList(), R.drawable.mic,
+                R.raw.zoo,
                 "The zoo is home to many exotic animals",
                 "Zoo yra namai daugeliui egzotinių gyvūnų"),
             ImageInfo(
                 R.drawable.park,"Park","Parkas",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.park,
                 "The park is full of green trees","Parke yra daug žalių medžių"),
             ImageInfo(
                 R.drawable.school,"School","Mokykla",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.school,
                 "The school has many classrooms.","Mokykloje yra daug klasių"),
             ImageInfo(
                 R.drawable.supermarket,"Supermarket","prekybos centras",emptyList(),
                 R.drawable.mic,
-                R.raw.potato,
+                R.raw.supermarket,
                 "The supermarket has a wide selection of products.","Prekybos centras turi platų prekių pasirinkimą."),
             ImageInfo(
                 R.drawable.resort,"Resort","Kurortas",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.resort,
                 "The resort offers beautiful views and relaxation",
                 "Kurortas siūlo gražius vaizdus ir poilsį"),
             ImageInfo(
                 R.drawable.aquarium,"Aquarium","Akvariumas",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.aquarium,
                 "The aquarium has many colorful fish.","Akvariumas turi daug spalvingų žuvų."),
             ImageInfo(
-                R.drawable.gymnasium,"Gymnasium","sporto salė",emptyList(),
+                R.drawable.gymnasium,"Gym","Sporto salė",emptyList(),
                 R.drawable.mic,
-                R.raw.potato,
+                R.raw.gym,
                 "The gymnasium has exercise equipment",
                 "Sporto salėje yra treniruoklių"),
             ImageInfo(
                 R.drawable.pub,"Pub","Pubas",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.pub,
                 "The pub is a great place to meet friends",
                 "Pubas yra puiki vieta susitikti su draugais"),
 

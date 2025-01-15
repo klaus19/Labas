@@ -62,47 +62,47 @@ class TransportFragment : Fragment() {
         return listOf(
             ImageInfo(
                 R.drawable.bus,"Bus","Autobusas",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.bus,
                 "The bus is late.",
                 "Autobusas vėluoja"),
             ImageInfo(
                 R.drawable.car,"Car","Automobilis",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.car,
                 "The car is fast",
                 "Automobilis yra greitas"),
             ImageInfo(
                 R.drawable.rail,"Train","Traukinys",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.train,
                 "The train arrives soon","Traukinys atvyksta netrukus"),
             ImageInfo(
                 R.drawable.bicycle,"Bicycle","Dviratis",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.bicycle,
                 "I ride a bicycle.","Aš važiuoju dviračiu"),
             ImageInfo(
                 R.drawable.motorbike,"Motorcycle","Motociklas",emptyList(),
                 R.drawable.mic,
-                R.raw.potato,
+                R.raw.motocycle,
                 "The motorcycle is loud.","Motociklas yra garsus."),
             ImageInfo(
                 R.drawable.boat,"Boat","Valtis",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.boat,
                 "The boat is on the water.","Valtis yra ant vandens"),
             ImageInfo(
                 R.drawable.airplane,"Airplane","Lėktuvas",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.airplane,
                 "The airplane is flying","Lėktuvas skrenda"),
             ImageInfo(
                 R.drawable.helicopter,"Helicopter","Sraigtasparnis",emptyList(),
                 R.drawable.mic,
-                R.raw.potato,
+                R.raw.helicoptor,
                 "The helicopter is in the sky","Sraigtasparnis yra danguje"),
             ImageInfo(
                 R.drawable.truck,"Truck","Sunkvežimis",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.truck,
                 "The truck is carrying cargo","Vilkikas veža krovin"),
             ImageInfo(
                 R.drawable.taxi,"Taxi","Taksi",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.taxi,
                 "The taxi is waiting outside.","Taksas laukia lauke"),
         )
 

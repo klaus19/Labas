@@ -77,12 +77,12 @@ class SeasonsFragment : Fragment() {
                 "Vasara yra šilta ir saulėta"),
             ImageInfo(
                 R.drawable.autumn,"Autumn","Ruduo",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.autumn,
                 "Autumn leaves turn colorful",
                 "Rudens lapai tampa spalvingi"),
             ImageInfo(
                 R.drawable.winter,"Winter","Žiema",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.winter,
                 "Winter is cold and snowy",
                 "Žiema yra šalta ir snieginga"),
             ImageInfo(

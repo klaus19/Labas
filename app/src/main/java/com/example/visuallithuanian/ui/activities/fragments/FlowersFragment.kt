@@ -74,32 +74,32 @@ class FlowersFragment : Fragment() {
         return listOf(
             ImageInfo(
                 R.drawable.rose,"Rose","Rožė",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.rose,
                 "Rose is a beautiful flower","Rožė yra graži gėlė"),
             ImageInfo(
-                R.drawable.daffodil,"Daffodil","Narcizai",emptyList(),
+                R.drawable.daffodil,"Daffodil","Narcizas",emptyList(),
                 R.drawable.mic,
-                R.raw.cabbage,
+                R.raw.daffodil,
                 "The daffodil blooms brightly in the spring","Narcizas ryškiai žydi pavasarį."),
             ImageInfo(
-                R.drawable.sunflower,"Sunflower","Saulėgrąžos",emptyList(),
+                R.drawable.sunflower,"Sunflower","Saulėgrąža",emptyList(),
                 R.drawable.mic,
-                R.raw.zuccini,
+                R.raw.sunflower,
                 "The sunflower always turns towards the sun.","Saulėgrąža visada atsisuka į saulę"),
             ImageInfo(
                 R.drawable.peony,"Peony","bijūnas",emptyList(),
                 R.drawable.mic,
-                R.raw.carrot,
+                R.raw.peony,
                 "The peony is blooming in the garden.","Bijūnas žydi sode"),
             ImageInfo(
                 R.drawable.tulips,"Tulip","Tulpė",emptyList(),
                 R.drawable.mic,
-                R.raw.beet,
+                R.raw.tulip,
                 "The tulip petals are vibrant and colorful.","Tulpės žiedlapiai yra ryškūs ir spalvoti"),
             ImageInfo(
                 R.drawable.daisies,"Daisy","ramunė",emptyList(),
                 R.drawable.mic,
-                R.raw.onion,
+                R.raw.daisy,
                 "The daisy's simplicity is its true beauty.","Ramunės paprastumas yra jos tikrasis grožis."),
         )
 

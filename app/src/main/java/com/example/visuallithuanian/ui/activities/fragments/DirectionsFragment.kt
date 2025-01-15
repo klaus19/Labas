@@ -72,47 +72,45 @@ class DirectionsFragment : Fragment() {
             ImageInfo(
                 R.drawable.north,"North","Šiaurės",emptyList(),
                 R.drawable.mic,
-                R.raw.potato,
+                R.raw.north,
                 "The north is often cold",
                 "Šiaurė dažnai būna šalta."),
             ImageInfo(
                 R.drawable.south,"South","Pietų",emptyList(),
                 R.drawable.mic,
-                R.raw.potato,
+                R.raw.south,
                 "The south is usually warmer",
                 "Pietūs paprastai būna šiltesni"),
             ImageInfo(
                 R.drawable.west,"West","Vakarų",emptyList(),
                 R.drawable.mic,
-                R.raw.potato,
+                R.raw.west,
                 "West is where the sun goes down",
                 "Vakarai yra ten, kur saulė nusileidžia"),
             ImageInfo(
-                R.drawable.east,"East","Rytų",emptyList(), R.drawable.mic, R.raw.potato,
+                R.drawable.east,"East","Rytų",emptyList(), R.drawable.mic, R.raw.east,
                 "The east is where the sun rises",
                 "Rytai yra ten, kur saulė kyla"),
             ImageInfo(
                 R.drawable.northwest,"North West","Šiaurės vakarai",emptyList(),
-                R.drawable.mic, R.raw.potato,
+                R.drawable.mic, R.raw.northweat,
                 "Northwest is a direction between north and west",
                 "Šiaurės vakarų kryptis yra tarp šiaurės ir vakarų."),
             ImageInfo(
                 R.drawable.northeast,"North East","Šiaurės rytai",emptyList(),
-                R.drawable.mic, R.raw.potato,
+                R.drawable.mic, R.raw.northeast,
                 "Northwest is a direction between north and east.",
                 "Šiaurės rytai yra kryptis tarp šiaurės ir rytų."),
             ImageInfo(
                 R.drawable.southwest,"South West","Pietvakariai",emptyList(),
-                R.drawable.mic, R.raw.potato,
+                R.drawable.mic, R.raw.southwest,
                 "Southwest is between south and west.",
                 "Pietvakariai yra tarp pietų ir vakarų."),
             ImageInfo(
                 R.drawable.southeast,"South East","Pietryčiai",emptyList(),
-                R.drawable.mic, R.raw.potato,
+                R.drawable.mic, R.raw.southeast,
                 "Southeast is between south and east",
                 "Pietryčiai yra tarp pietų ir rytų."),
-
-
 
         )
 

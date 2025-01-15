@@ -85,19 +85,19 @@ class FruitsFragment : Fragment() {
 
             ImageInfo(
                 R.drawable.raspberry,"Raspberries","Avietės",emptyList(),
-                R.drawable.mic,R.raw.potato,"I like raspberry juice","Mėgstu aviečių sultis"),
+                R.drawable.mic,R.raw.raspberries,"I like raspberry juice","Mėgstu aviečių sultis"),
             ImageInfo(
                 R.drawable.gooseberry,"GooseBerry","agrastas",emptyList(),
-                R.drawable.mic,R.raw.potato,"I don't like GooseBerry","Nemėgstu agrastas"),
-            ImageInfo(R.drawable.plum,"Plum","Slyvos",emptyList(), R.drawable.mic,R.raw.potato,
+                R.drawable.mic,R.raw.gooseberry,"I don't like GooseBerry","Nemėgstu agrastas"),
+            ImageInfo(R.drawable.plum,"Plum","Slyva",emptyList(), R.drawable.mic,R.raw.plum,
                 "The plum was juicy and delicious","Slyva buvo sultinga ir skani"),
             ImageInfo(
                 R.drawable.banana,"Banana","Bananas",emptyList(),
-                R.drawable.mic,R.raw.potato,"She likes to eat bananas","Ji mėgsta valgyti bananus"),
+                R.drawable.mic,R.raw.banana,"She likes to eat bananas","Ji mėgsta valgyti bananus"),
             ImageInfo(
                 R.drawable.blackcurrant,"Black currant","Juodieji serbentai",emptyList(),
-                R.drawable.mic,R.raw.potato,"Black currants are sweet","Juodieji serbentai yra saldūs"),
-            ImageInfo(R.drawable.mango,"Mango","Mango", emptyList(), R.drawable.mic,R.raw.potato,
+                R.drawable.mic,R.raw.blackcurrant,"Black currants are sweet","Juodieji serbentai yra saldūs"),
+            ImageInfo(R.drawable.mango,"Mango","Mangas", emptyList(), R.drawable.mic,R.raw.mango,
                 "I like Mango juice","Man patinka mangų sultys."),
             ImageInfo(
                 R.drawable.strawberry,"Strawberry","braškių", emptyList(), R.drawable.mic,R.raw.strawberry,

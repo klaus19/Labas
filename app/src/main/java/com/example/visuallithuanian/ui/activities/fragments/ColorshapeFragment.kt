@@ -102,6 +102,7 @@ class ColorshapeFragment : Fragment() {
         hashMap["blue"] = Triple("mėlynas", R.drawable.blue, R.raw.blue)
         hashMap["pink"] = Triple("rožinis", R.drawable.pink, R.raw.pink)
         hashMap["stripped"] = Triple("dryžuotas", R.drawable.stripped, R.raw.stripped)
+        hashMap["grey"] = Triple("pilka",R.drawable.gray,R.raw.grey)
         hashMap["round"] = Triple("apvalus", R.drawable.round, R.raw.round)
 
         hashMap["squared"] = Triple("kvadratas", R.drawable.square, R.raw.square)

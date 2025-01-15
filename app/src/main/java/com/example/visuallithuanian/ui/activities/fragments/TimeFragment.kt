@@ -82,34 +82,34 @@ class TimeFragment : Fragment() {
                 "Šie metai praeina greitai"),
             ImageInfo(
                 R.drawable.month,"Month","Mėnuo",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.month,
                 "March is the third month of the year",
                 "Kovas yra trečiasis mėnuo metų."),
             ImageInfo(
                 R.drawable.decade,"Decade","Dešimtmetis",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.decade,
                 "The 1990s was an interesting decade.",
                 "1990-ieji buvo įdomus dešimtmetis"),
             ImageInfo(
                 R.drawable.century,"Century","Amžius",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.century,
                 "The 21st century has brought many changes.",
                 "21 amžius atnešė daug pokyčių"),
             ImageInfo(
                 R.drawable.millenium,"Millennium","Tūkstantmetis",emptyList(),
                 R.drawable.mic,
-                R.raw.potato,
+                R.raw.millenium,
                 "We entered the new millennium in 2000",
                 "Įžengėme į naują tūkstantmetį 2000 metais"),
 
             ImageInfo(
                 R.drawable.second,"Second","Sekundė",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.second,
                 "A minute has sixty seconds",
                 "Minutė turi šešiasdešimt sekundžių"),
             ImageInfo(
                 R.drawable.minute,"Minute","Minutė",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.minute,
                 "A minute has sixty seconds",
                 "Minutė turi šešiasdešimt sekundžių"),
         )

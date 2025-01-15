@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -34,6 +35,8 @@ class PractiseFragment : Fragment() {
     private var counterDiamond = 0
     private var counterGem = 0
     private var rewardedAd: RewardedAd? = null
+    val duration = 60 * 60 * 1000L  // 1 hour
+    val interval = 1000L // Update every second (1000 ms)
 
     @SuppressLint("ClickableViewAccessibility", "UseCompatLoadingForDrawables")
     override fun onCreateView(
@@ -100,8 +103,26 @@ class PractiseFragment : Fragment() {
         binding.freegift?.setOnClickListener {
             getRewards()
             // Show loading indicator
+            binding.freegift?.isEnabled = false
             binding.freegift?.alpha = 0.5f  // Dim the button to indicate loading
-            binding.freegift?.clearColorFilter()
+
+            // Start the countdown timer
+            object :CountDownTimer(duration,interval){
+                override fun onTick(millisUntilFinished: Long) {
+                    // Calculate the current alpha value (gradual increase)
+                    val progress = (duration - millisUntilFinished).toFloat() / duration
+                    val alphaValue = 0.5f + (0.5f * progress) // Range: 0.5 to 1.0
+                    binding.freegift?.alpha = alphaValue
+                }
+
+                override fun onFinish() {
+                    // Fully enable the button when the timer is complete
+                    binding.freegift?.alpha = 1.0f
+                    binding.freegift?.isEnabled = true
+                }
+
+            }.start()
+
         }
 
         return binding.root
@@ -138,6 +159,8 @@ class PractiseFragment : Fragment() {
                 val newFireCount = currentFireCount + 3
                 updateTextCountFire(newFireCount)
                 Log.d("RewardAd", "User rewarded with: ${rewardItem.amount}, new fire count: $newFireCount")
+                // Disable button for one hour
+                disableGiftButtonForOneHour()
             }
             // Reset button state after ad is displayed
             ad.fullScreenContentCallback = object : FullScreenContentCallback() {
@@ -162,11 +185,68 @@ class PractiseFragment : Fragment() {
         }
     }
 
+    private fun disableGiftButtonForOneHour() {
+        // Disable the button
+        binding.freegift?.isEnabled = false
+        binding.freegift?.alpha = 0.5f
+
+        // Save the current timestamp
+        val sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        val currentTimeMillis = System.currentTimeMillis()
+        editor.putLong("freeGiftLastClickedTime", currentTimeMillis)
+        editor.apply()
+
+        // Start a 1-hour timer
+        val oneHourMillis = 60 * 60 * 1000L
+
+
+        object : CountDownTimer(oneHourMillis, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val progress = ((oneHourMillis - millisUntilFinished).toFloat() / oneHourMillis * 100).toInt()
+            }
+
+            override fun onFinish() {
+                binding.freegift?.isEnabled = true
+                binding.freegift?.alpha = 1.0f
+            }
+        }.start()
+    }
+
     override fun onResume() {
         super.onResume()
+        initializeGiftButton()
         loadTextCountFire()
         loadTextCountPurple()
         loadTextCountRed()
+    }
+
+    private fun initializeGiftButton() {
+        val sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val lastClickedTime = sharedPreferences.getLong("freeGiftLastClickedTime", 0L)
+        val currentTimeMillis = System.currentTimeMillis()
+        val oneHourMillis = 60 * 60 * 1000L
+
+        if (currentTimeMillis - lastClickedTime < oneHourMillis) {
+            val remainingTime = oneHourMillis - (currentTimeMillis - lastClickedTime)
+            binding.freegift?.isEnabled = false
+            binding.freegift?.alpha = 0.5f
+
+
+            object : CountDownTimer(remainingTime, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    val progress = ((oneHourMillis - millisUntilFinished).toFloat() / oneHourMillis * 100).toInt()
+                }
+
+                override fun onFinish() {
+                    binding.freegift?.isEnabled = true
+                    binding.freegift?.alpha = 1.0f
+                }
+            }.start()
+        } else {
+            binding.freegift?.isEnabled = true
+            binding.freegift?.alpha = 1.0f
+        }
     }
 
     override fun onDestroy() {

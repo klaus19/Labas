@@ -127,11 +127,8 @@ class FamilyFlashcards : Fragment() {
         hashMap["married(m)"] = Triple("vedes", R.drawable.marriedman, R.raw.married)
         hashMap["married(w)"] = Triple("ištekėjusi", R.drawable.marriedwoman, R.raw.married1)
         hashMap["single"] = Triple("nevedęs / netekejusi", R.drawable.single, R.raw.single)
-        hashMap["to marry(m)"] = Triple("vesti - veda - vedė", R.drawable.tomarryman, R.raw.tomarry)
-        hashMap["to marry(w)"] = Triple("išteketi - išteka - ištekėjo",
-            R.drawable.tomarrywoman,
-            R.raw.sleep
-        )
+        hashMap["to marry"] = Triple("vesti - veda - vedė", R.drawable.tomarryman, R.raw.tomarry)
+
 
 
         hashMap["to be born"] = Triple("gimti - gimsta - gimė", R.drawable.tobeborn, R.raw.tobeborn)

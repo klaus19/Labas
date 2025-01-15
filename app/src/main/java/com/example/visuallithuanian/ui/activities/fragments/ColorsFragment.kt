@@ -99,12 +99,12 @@ class ColorsFragment : Fragment() {
                "Sniegas yra baltas"),
            ImageInfo(
                R.drawable.gray,"Gray","Pilka",listOf(R.drawable.purp), R.drawable.mic,
-               R.raw.potato,
+               R.raw.grey,
                "The sky is gray",
                "Dangus yra pilkas."),
            ImageInfo(
                R.drawable.purple,"Purple","Violetinė",listOf(R.drawable.purp), R.drawable.mic,
-               R.raw.potato,
+               R.raw.purple,
                "The flowers are purple",
                "Gėlės yra violetinės")
        )

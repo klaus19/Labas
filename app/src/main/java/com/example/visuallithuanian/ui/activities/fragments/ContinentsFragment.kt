@@ -60,41 +60,41 @@ class ContinentsFragment : Fragment() {
         return listOf(
             ImageInfo(
                 R.drawable.europe,"Europe","Europa",listOf(R.drawable.purp), R.drawable.mic,
-                R.raw.potato,
+                R.raw.europe,
                 "Europe has many diverse countries",
                 "Europa turi daug įvairių šalių."),
             ImageInfo(
                 R.drawable.asia,"Asia","Azija",listOf(R.drawable.purp), R.drawable.mic,
-                R.raw.potato,
+                R.raw.asia,
                 "Asia is the largest continent",
                 "Azija yra didžiausia kontinenta."),
             ImageInfo(
                 R.drawable.africa,"Africa","Afrika",listOf(R.drawable.purp), R.drawable.mic,
-                R.raw.potato,
+                R.raw.africa,
                 "Africa is known for its diverse wildlife",
                 "Afrika yra žinoma dėl savo įvairios faunos"),
             ImageInfo(
                 R.drawable.northamerica,"North America","Šiaurės Amerika",listOf(R.drawable.purp),
                 R.drawable.mic,
-                R.raw.potato,
+                R.raw.northamerica,
                 "North America has a variety of climates",
                 "Šiaurės Amerika turi įvairias klimato zonas."),
             ImageInfo(
                 R.drawable.southamerica,"South America","Pietų Amerika",listOf(R.drawable.purp),
                 R.drawable.mic,
-                R.raw.potato,
+                R.raw.southamerica,
                 "South America is known for its rainforests",
                 "Pietų Amerika yra žinoma dėl savo atogrąžų miškų"),
             ImageInfo(
                 R.drawable.australia,"Australia","Australija",listOf(R.drawable.purp),
                 R.drawable.mic,
-                R.raw.potato,
+                R.raw.australia,
                 "Australia is famous for its unique wildlife",
                 "Australija yra žinoma dėl savo unikalios faunos."),
             ImageInfo(
                 R.drawable.antartica,"Antarctica","Antarktida",listOf(R.drawable.purp),
                 R.drawable.mic,
-                R.raw.potato,
+                R.raw.antarctica,
                 "Antarctica is covered in ice and snow.",
                 "Antarktida yra padengta ledu ir sniegu."),
         )

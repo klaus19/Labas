@@ -80,44 +80,44 @@ class SportsFragment : Fragment() {
                 "Krepšinis yra komandinė sporto šaka su lanku"),
             ImageInfo(
                 R.drawable.football,"Football","Futbolas",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.football,
                 "Football is a popular sport worldwide",
                 "Futbolas yra populiarus sportas visame pasaulyje"),
             ImageInfo(
                 R.drawable.hockey,"Ice Hockey","Ledo ritulys",emptyList(),
                 R.drawable.mic,
-                R.raw.cabbage,
+                R.raw.icehockey,
                 "Ice hockey is played on a frozen rink",
                 "Ledo ritulys žaidžiamas ant užšalusio ledo"),
 
             ImageInfo(
                 R.drawable.chess,"Chess","Šachmatai",emptyList(),
                 R.drawable.mic,
-                R.raw.carrot,
+                R.raw.chess,
                 "Chess is a game of strategy.",
                 "Šachmatai yra strategijos žaidimas"),
             ImageInfo(
                 R.drawable.cycling,"Cycling","Dviračių sportas",emptyList(),
                 R.drawable.mic,
-                R.raw.beet,
+                R.raw.cycling,
                 "Cycling is a great way to stay fit",
                 "Dviračių sportas yra puikus būdas išlikti fiziškai aktyviam"),
             ImageInfo(
                 R.drawable.swimming,"Swimming","Plaukimas",emptyList(),
                 R.drawable.mic,
-                R.raw.onion,
+                R.raw.swimming,
                 "Swimming is a relaxing exercise.",
                 "Plaukimas yra atpalaiduojantis pratimas"),
             ImageInfo(
                 R.drawable.rugby,"Rugby","Regbis",emptyList(),
                 R.drawable.mic,
-                R.raw.beet,
+                R.raw.rugby,
                 "Rugby is a fast and physical sport",
                 "Regbis yra greitas ir fiziniškas sportas"),
             ImageInfo(
                 R.drawable.skating,"Skating","slidinėjimas",emptyList(),
                 R.drawable.mic,
-                R.raw.onion,
+                R.raw.skating,
                 "Skating on ice is a fun winter activity.",
                 "Slidinėjimas ledu yra smagus žiemos užsiėmimas"),
         )

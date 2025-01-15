@@ -91,28 +91,28 @@ class ProfessionFragment : Fragment() {
             ImageInfo(
                 R.drawable.accountant,"Accountant","Buhalteris",emptyList(),
                 R.drawable.mic,
-                R.raw.potato,
+                R.raw.accountant,
                 "The accountant manages finances",
                 "Apskaitininkas (buhalteris) tvarko finansus"),
 
             ImageInfo(
                 R.drawable.architect,"Architect","Architektas",emptyList(),
                 R.drawable.mic,
-                R.raw.potato,
+                R.raw.architect,
                 "The architect designs buildings","Architektas projektuoja pastatus"),
             ImageInfo(
                 R.drawable.chef,"Chef","Šefas",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.chef,
                 "The chef cooks delicious meals.",
                 "Virėjas gamina skanius patiekalus"),
             ImageInfo(
                 R.drawable.nurse,"Nurse","Slaugytojas",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.nurse,
                 "The nurse cares for patients.",
                 "Slaugytoja rūpinasi pacientais"),
             ImageInfo(
                 R.drawable.musician,"Musician","Muzikantas",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.musician,
                 "The musician plays the piano",
                 "Muzikantas groja pianinu."),
         )

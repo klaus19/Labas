@@ -82,42 +82,42 @@ class AnimalsFragment : Fragment() {
     private fun generateExampleList(): List<ImageInfo> {
         return listOf(
             ImageInfo(
-                R.drawable.fox,"Red Fox","Raudona lapė",listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+                R.drawable.fox,"Red Fox","Raudona lapė",listOf(R.drawable.purp), R.drawable.mic,R.raw.redfox,
                 "A red fox ran across the field","Raudona lapė bėgo per lauką"),
             ImageInfo(
-                R.drawable.wolf,"Wolf","Vilkas", listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+                R.drawable.wolf,"Wolf","Vilkas", listOf(R.drawable.purp), R.drawable.mic,R.raw.wolf,
                 "The wolf howled towards the moon" , "Vilkas šaukė į mėnulį"),
             ImageInfo(
                 R.drawable.squir,"Squirrel","Voverė", listOf(R.drawable.purp),
-                R.drawable.mic,R.raw.potato,"The squirrel climbed up the tree","Voveraitė kopė į medį"),
+                R.drawable.mic,R.raw.squireel,"The squirrel climbed up the tree","Voveraitė kopė į medį"),
             ImageInfo(
                 R.drawable.moose,"Moose","Briedis", listOf(R.drawable.purp),
-                R.drawable.mic,R.raw.potato,"The moose was standing in the pond","Briedis stovėjo ežere"),
+                R.drawable.mic,R.raw.moose,"The moose was standing in the pond","Briedis stovėjo ežere"),
             ImageInfo(
                 R.drawable.beaver,"Beaver","Bebras", listOf(R.drawable.purp),
-                R.drawable.mic,R.raw.potato,"The beaver was swimming in the river","Bebras plaukiojo upėje"),
+                R.drawable.mic,R.raw.beaver,"The beaver was swimming in the river","Bebras plaukiojo upėje"),
             ImageInfo(
-                R.drawable.bison,"Bison","bizonų", listOf(R.drawable.purp),
-                R.drawable.mic,R.raw.potato,"The bison roamed the prairie","Bizonas klajojo per prerijas"),
+                R.drawable.bison,"Bison","bizonas", listOf(R.drawable.purp),
+                R.drawable.mic,R.raw.bison,"The bison roamed the prairie","Bizonas klajojo per prerijas"),
             ImageInfo(
                 R.drawable.frog,"Frog","Varlė", listOf(R.drawable.purp),
-                R.drawable.mic,R.raw.potato,"The frog jumped into the pond","Varlė šoko į ežerą"),
+                R.drawable.mic,R.raw.frog,"The frog jumped into the pond","Varlė šoko į ežerą"),
 
             ImageInfo(
                 R.drawable.cat,"Cat","Katė", listOf(R.drawable.purp),
-                R.drawable.mic,R.raw.potato,"The cat was sleeping on the windowsill","Katė miegojo ant palangės"),
+                R.drawable.mic,R.raw.cat,"The cat was sleeping on the windowsill","Katė miegojo ant palangės"),
             ImageInfo(
                 R.drawable.dog,"Dog","šuo", listOf(R.drawable.purp),
-                R.drawable.mic,R.raw.potato,"The dog barked at the mailman","Šuo lojo ant pašto darbuotoją"),
+                R.drawable.mic,R.raw.dog,"The dog barked at the mailman","Šuo lojo ant pašto darbuotoją"),
             ImageInfo(
                 R.drawable.boar,"Wild Boar","Šernas", listOf(R.drawable.purp),
-                R.drawable.mic,R.raw.potato,"The wild boar was searching for food","Šernas ieškojo maisto"),
+                R.drawable.mic,R.raw.wildboar,"The wild boar was searching for food","Šernas ieškojo maisto"),
             ImageInfo(
                 R.drawable.polarbear,"Polar Bear","Baltoji meška", listOf(R.drawable.purp),
-                R.drawable.mic,R.raw.potato,"The polar bear hunted the seal on the ice",
+                R.drawable.mic,R.raw.polarbear,"The polar bear hunted the seal on the ice",
                 "Baltoji meška  medžiojo ruonius ant ledo"),
             ImageInfo(
-                R.drawable.bear,"Bear","Meška", listOf(R.drawable.purp), R.drawable.mic,R.raw.potato,
+                R.drawable.bear,"Bear","Meška", listOf(R.drawable.purp), R.drawable.mic,R.raw.bear,
                 "The bear was searching for honey inside the forest","Meška ieškojo medaus girioje"),
             ImageInfo(
                 R.drawable.horse,"Horse","Arklys", listOf(R.drawable.purp), R.drawable.mic,R.raw.horse,

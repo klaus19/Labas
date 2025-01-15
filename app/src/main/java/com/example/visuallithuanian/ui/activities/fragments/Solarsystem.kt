@@ -87,56 +87,56 @@ class Solarsystem : Fragment() {
                 "Žvaigždė šviečia nakties danguje."),
             ImageInfo(
                 R.drawable.meteor,"Meteor","Meteoras",emptyList(), R.drawable.mic,
-                R.raw.carrot,
+                R.raw.meteor,
                 "The meteor moves quickly across the sky",
                 "Meteoritas greitai juda per dangų"),
             ImageInfo(
                 R.drawable.comet,"Comet","Kometa",emptyList(), R.drawable.mic,
-                R.raw.beet,
+                R.raw.comet,
                 "The comet has a bright tail",
                 "Kometa turi ryškią uodegą"),
             ImageInfo(
                 R.drawable.mercury,"Mercury","Merkurijus",emptyList(), R.drawable.mic,
-                R.raw.radish,
+                R.raw.mercury,
                 "Mercury is the closest planet to the sun",
                 "Merkurijus yra arčiausia planeta prie saulės"),
             ImageInfo(
                 R.drawable.venus,"Venus","Venera",emptyList(), R.drawable.mic,
-                R.raw.cucumber,
+                R.raw.venus,
                 "Venus is known as the hottest planet",
                 "Venera yra žinoma kaip karščiausia planeta"),
             ImageInfo(
                 R.drawable.earth,"Earth","Žemė",emptyList(), R.drawable.mic,
-                R.raw.zuccini,
+                R.raw.earth,
                 "Earth is our home planet",
                 "Žemė yra mūsų namų planeta."),
             ImageInfo(
                 R.drawable.mars,"Mars","Marsas",emptyList(), R.drawable.mic,
-                R.raw.tomato,
+                R.raw.mars,
                 "Mars is called the red planet",
                 "Marsas vadinamas raudonąja planeta"),
             ImageInfo(
                 R.drawable.jupiter,"Jupiter","Jupiteris",emptyList(), R.drawable.mic,
-                R.raw.onion,
+                R.raw.jupiter,
                 "Jupiter is the largest planet in the solar system.",
                 "Jupiteris yra didžiausia planeta saulės sistemoje"),
             ImageInfo(
                 R.drawable.saturn,"Saturn","Saturnas",emptyList(), R.drawable.mic,
-                R.raw.pepper,
+                R.raw.saturn,
                 "Saturn has beautiful rings around it.",
                 "Saturnas turi gražius žiedus aplink save"),
             ImageInfo(
                 R.drawable.uranus,"Uranus","Uranas",emptyList(), R.drawable.mic,
-                R.raw.zuccini,
+                R.raw.uranus,
                 "Uranus rotates on its side","Uranas sukasi ant šono"),
             ImageInfo(
                 R.drawable.moon,"Moon","Mėnulis",emptyList(), R.drawable.mic,
-                R.raw.potato,
+                R.raw.moon,
                 "The moon shines at night",
                 "Mėnulis šviečia naktį."),
             ImageInfo(
                 R.drawable.planets,"Planets","Planetos",emptyList(), R.drawable.mic,
-                R.raw.radish,
+                R.raw.planets,
                 "The planets orbit the sun.",
                 "Planetos sukasi aplink saulę"),
 
