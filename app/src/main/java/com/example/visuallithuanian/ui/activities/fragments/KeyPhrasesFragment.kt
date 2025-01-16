@@ -124,30 +124,30 @@ class KeyPhrasesFragment : Fragment() {
             R.drawable.busstop,
             R.raw.kuryraautobusustotele
         )
-        hashMap["How much it costs?"] = Triple("Kiek tai kainuoja?",
+        hashMap["How much does it costs?"] = Triple("Kiek tai kainuoja?",
             R.drawable.howmuchcost,
-            R.raw.potato
+            R.raw.howmuchdoesitcoast
         )
         hashMap["Go left"] = Triple("Eik į kairę", R.drawable.left1, R.raw.eikikaire)
         hashMap["I do not understand"] = Triple("Nesuprantu",
             R.drawable.dontunderstand,
-            R.raw.potato
+            R.raw.idonotunderstand
         )
         hashMap["Where is the nearest pharmacy?"] = Triple("Kur yra artimiausia vaistinė?",
             R.drawable.pharmacy,
-            R.raw.potato
+            R.raw.whereisthenearestpharmacy
         )
         hashMap["I need a doctor."] = Triple("Man reikia daktaro.",
             R.drawable.needdoctor,
-            R.raw.potato
+            R.raw.ineedadoctor
         )
         hashMap["We meet at the train station."] = Triple("Susitinkame traukinių stotyje.",
             R.drawable.trainstation,
-            R.raw.potato
+            R.raw.wemeetattrainstation
         )
         hashMap["separate beds"] = Triple("atskiros lovos",
             R.drawable.separatebeds,
-            R.raw.potato
+            R.raw.separatebeds
         )
         hashMap["Please slow down"] = Triple("Prašau lėčiau.", R.drawable.slowdown, R.raw.pleaseslowdown)
         hashMap["In cash"] = Triple("grynais", R.drawable.cash, R.raw.incash)
