@@ -109,7 +109,8 @@ class SettingsFragment : Fragment(), AvatarDialogFragment.AvatarSelectionListene
         val messageHtml = """
             My name is Tejas khartude.This App is about learning Lithuanian words visually.
         Follow me on <a href="https://github.com/klaus19">GitHub</a> and 
-        <a href="https://www.linkedin.com/in/tejas-khartude-7601b640/">LinkedIn</a>.
+        <a href="https://www.linkedin.com/in/tejas-khartude-7601b640/">LinkedIn.</a>.
+        Bigger thanks to voice artist <a href = "https://www.linkedin.com/in/gabriele-jurkonyte/">Gabrielė Jurkonytė</a>.
     """.trimIndent()
         messageTextView.text = Html.fromHtml(messageHtml, Html.FROM_HTML_MODE_LEGACY)
         messageTextView.movementMethod = LinkMovementMethodCompat.getInstance()
