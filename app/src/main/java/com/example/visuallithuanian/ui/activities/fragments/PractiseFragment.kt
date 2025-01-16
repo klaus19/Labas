@@ -25,6 +25,7 @@ import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
+import kotlin.random.Random
 
 class PractiseFragment : Fragment() {
     private lateinit var binding: FragmentPractiseBinding
@@ -38,7 +39,7 @@ class PractiseFragment : Fragment() {
     val duration = 60 * 60 * 1000L  // 1 hour
     val interval = 1000L // Update every second (1000 ms)
 
-    @SuppressLint("ClickableViewAccessibility", "UseCompatLoadingForDrawables")
+    @SuppressLint("ClickableViewAccessibility", "UseCompatLoadingForDrawables", "SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -156,7 +157,7 @@ class PractiseFragment : Fragment() {
                 val sharedPreferences: SharedPreferences =
                     requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
                 val currentFireCount = sharedPreferences.getInt("textCount", 0)
-                val newFireCount = currentFireCount + 3
+                val newFireCount = currentFireCount + getRandomNumber()
                 updateTextCountFire(newFireCount)
                 Log.d("RewardAd", "User rewarded with: ${rewardItem.amount}, new fire count: $newFireCount")
                 // Disable button for one hour
@@ -183,6 +184,11 @@ class PractiseFragment : Fragment() {
             // Reset button state if the ad is not ready
             binding.freegift?.alpha = 1.0f
         }
+    }
+
+    private fun getRandomNumber(): Int {
+        return Random.nextInt(1,4)
+
     }
 
     private fun disableGiftButtonForOneHour() {
