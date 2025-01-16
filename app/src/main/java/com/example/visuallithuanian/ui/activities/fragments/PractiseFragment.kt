@@ -132,7 +132,7 @@ class PractiseFragment : Fragment() {
     private fun getRewards() {
         RewardedAd.load(
             requireContext(),
-            "ca-app-pub-3940256099942544/5224354917",
+            "ca-app-pub-2048328349524526/1123399071",
             AdRequest.Builder().build(),
             object : RewardedAdLoadCallback() {
                 override fun onAdLoaded(ad: RewardedAd) {
