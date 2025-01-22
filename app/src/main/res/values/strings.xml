@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">VisualLithuanian</string>
+    <string name="app_name">Labas</string>
     <string name="english" translatable="false">English</string>
     <string name="lithuanian" translatable="false">Lithuanian</string>
     <string name="action_up" translatable="false">Up</string>
