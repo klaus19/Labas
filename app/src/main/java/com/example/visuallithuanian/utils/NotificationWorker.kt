@@ -21,7 +21,7 @@ class NotificationWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, p
         val notification = NotificationCompat.Builder(applicationContext, channelId)
             .setContentTitle("Reminder")
             .setContentText("Please open the app!")
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setSmallIcon(R.mipmap.ic_launcher_foreground)
             .build()
 
         notificationManager.notify(1, notification)
