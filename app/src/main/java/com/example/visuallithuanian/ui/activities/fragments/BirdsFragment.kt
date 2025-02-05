@@ -103,12 +103,6 @@ class BirdsFragment : Fragment() {
                 R.raw.blackbird,
                 "The blackbird has a melodious song",
                 "Juodasis varnėnas turi melodingą dainą"),
-            ImageInfo(
-                R.drawable.buzzard,"Buzzard","suopis",emptyList(),
-                R.drawable.mic,
-                R.raw.buzzarrd,
-                "The buzzard soars high in the sky.",
-                "Sklandytuvas kyla aukštai danguje")
 
         )
 

@@ -53,7 +53,6 @@ class UserFragment : Fragment() {
                 "Seasons" -> navController.navigate(R.id.action_userFragment_to_seasonsFragment)
                 "Directions" -> navController.navigate(R.id.action_userFragment_to_directionsFragment)
                 "Animals" -> navController.navigate(R.id.action_userFragment_to_animals)
-                "Birds" -> navController.navigate(R.id.action_userFragment_to_birdsFragment)
                 "Sports" -> navController.navigate(R.id.action_userFragment_to_sportsFragment)
                 "Colors" -> findNavController().navigate(R.id.action_userFragment_to_colorsFragment)
                 "Continents" -> findNavController().navigate(R.id.action_userFragment_to_continentsFragment)
