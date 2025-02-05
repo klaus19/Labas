@@ -98,18 +98,6 @@ class BirdsFragment : Fragment() {
                 "The common chaffinch has a bright red chest",
                 "Paprastasis žvirblis turi ryškiai raudoną krūtinę"),
             ImageInfo(
-                R.drawable.jay,"Eurasian Jay","eurazinis žvirblis",emptyList(),
-                R.drawable.mic,
-                R.raw.eurasianjay,
-                "The Eurasian Jay is known for its colorful feathers",
-                "Eurazinis žvirblis yra žinomas dėl savo spalvingų plunksnų."),
-            ImageInfo(
-                R.drawable.robin,"Robin","raudonoji zylė",emptyList(),
-                R.drawable.mic,
-                R.raw.robin,
-                "The robin sings beautifully in the morning",
-                "Raudonasis zylė gražiai dainuoja ryte"),
-            ImageInfo(
                 R.drawable.blackbird,"Blackbird","juodasis varnėnas",emptyList(),
                 R.drawable.mic,
                 R.raw.blackbird,
